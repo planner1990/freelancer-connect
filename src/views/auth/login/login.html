@@ -1,0 +1,33 @@
+<v-container class="fill-height overflow-hidden bgImage pa-0" fluid>
+  <v-row align="scratch" justify="end" class="fill-height">
+    <v-col cols="12" sm="8" md="8" class="pa-0">
+      <v-card class="fill-height py-md-10 py-3 px-md-16 px-0" flat>
+        <v-row align="center" justify="start" class="px-5">
+          <v-icon color="primary" size="50" class="pe-3">
+            mdi-monitor-dashboard
+          </v-icon>
+          <p class="text-capitalize text-h5 mb-0">General Dashboard</p>
+        </v-row>
+        <v-divider class="mt-4" />
+        <v-row justify="center" align="start" class="fill-height mt-sm-16 mt-0">
+          <v-col cols="12" sm="9" md="5">
+            <v-card-text class="px-0">
+              <v-row justify="center" class="mb-0">
+                <v-avatar size="100">
+                  <v-icon size="100" color="primary"
+                    >mdi-shield-account-outline</v-icon
+                  >
+                </v-avatar>
+              </v-row>
+              <h2 class="text-capitalize text-h5 text--secondary my-5">
+                welcome Back, <br />
+                Please login to your account
+              </h2>
+              <loginComp />
+            </v-card-text>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-col>
+  </v-row>
+</v-container>

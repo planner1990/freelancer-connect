@@ -1,0 +1,49 @@
+<v-app-bar
+  :clipped-left="$vuetify.rtl === false"
+  :clipped-right="$vuetify.rtl === true"
+  app
+  flat
+>
+  <v-app-bar-nav-icon @click.stop="drawer()"></v-app-bar-nav-icon>
+  <v-btn icon large>
+    <v-avatar item size="32px" >
+      <v-img alt="Vuetify" src="../../../../assets/logo-holding.png"></v-img>
+    </v-avatar>
+  </v-btn>
+  <v-toolbar-title data-v-step="0">Ernyka Dashboard Sample</v-toolbar-title>
+  <v-spacer></v-spacer>
+  <customizeTheme />
+
+  <v-menu bottom offset-y origin="top right" transition="scale-transition">
+    <template v-slot:activator="{ on, attrs }">
+      <v-btn icon v-bind="attrs" v-on="on">
+        <v-badge bottom color="primary" content="6" left overlap>
+          <v-icon data-v-step="1">mdi-bell-outline</v-icon>
+        </v-badge>
+      </v-btn>
+    </template>
+
+    <v-card max-width="450">
+      <v-list three-line>
+        <template v-for="item in items">
+          <v-list-item :key="item.title">
+            <v-list-item-avatar>
+              <v-img :src="item.avatar"></v-img>
+            </v-list-item-avatar>
+
+            <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle
+                v-html="item.subtitle"
+              ></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </template>
+      </v-list>
+    </v-card>
+  </v-menu>
+
+  <v-btn icon  data-v-step="2">
+    <v-icon>mdi-magnify</v-icon>
+  </v-btn>
+</v-app-bar>

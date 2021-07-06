@@ -1,0 +1,11 @@
+<section class="layout">
+  <v-tour name="myTour" :steps="steps" :callbacks="tourCallbacks"></v-tour>
+  <appBar />
+  <navigationDrawer />
+  <v-main>
+    <transitionPage>
+      <router-view />
+    </transitionPage>
+  </v-main>
+  <panelFooter />
+</section>
