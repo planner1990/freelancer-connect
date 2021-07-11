@@ -1,0 +1,28 @@
+/* When setting CSS, remember that priority increases with specificity, so don't forget to select the exisiting classes as well */
+
+.Vue-Toastification__toast--success.custom-toast {
+  background-color: var(--v-black-base);
+  height: 48px;
+  min-height: 48px;
+  border-radius: 12px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  opacity: .85;
+}
+
+.Vue-Toastification__toast--error.custom-toast {
+  background-color: var(--v-black-base);
+  height: 48px;
+  min-height: 48px;
+  border-radius: 12px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  opacity: .85;
+}
+
+/* Applied to the toast body when using regular strings as content */
+.Vue-Toastification__toast-body.custom-toast-body {
+  font-size: 14px;
+}

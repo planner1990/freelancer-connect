@@ -1,0 +1,107 @@
+.table-ag-grid {
+  border-spacing: 0 0 !important;
+  .ag-header {
+    border-color: transparent !important;
+    background: rgba(243, 245, 249, 1) 0 0 no-repeat padding-box !important;
+    border-radius: 8px;
+    .update-cell {
+      padding: 8px !important;
+    }
+    .operation-cell {
+      .ag-header-cell-text {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .feature-cell {
+      .ag-header-cell-text {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+    .update-cell-symbol {
+      padding-right: 14px !important;
+      padding-left: 14px !important;
+    }
+    .header-table-ag-grid-cell {
+      .ag-header-cell-text {
+        font-size: 12px !important;
+        font-family: webIRANSansRegular, "sans-serif" !important;
+        color: var(--v-darker-base) !important;
+        font-weight: 500;
+      }
+    }
+    //.ag-header-viewport:before {
+    //  content: "\2039";
+    //  position: absolute;
+    //  font-size: 24px;
+    //  font-weight: 500;
+    //  width: 20px;
+    //  top: 0;
+    //  left: 0;
+    //  z-index: 3;
+    //  direction: ltr;
+    //  background-color: var(--v-lighter-base);
+    //  text-align: center;
+    //}
+  }
+  .custom-table-row {
+    height: 46px !important;
+    border-width: 0 !important;
+    &:nth-child(even) {
+      background-color: var(--v-lightest-base);
+      border-radius: 8px;
+    }
+    .ag-cell {
+      font-size: 12px;
+      font-family: webIRANSansRegular, "sans-serif";
+    }
+  }
+  .ag-row-hover {
+    background-color: #f3f5f9 !important;
+    border-radius: 8px;
+  }
+  .ag-paging-description {
+    display: none !important;
+  }
+  .ag-paging-button {
+    .ag-icon-last {
+      display: none;
+    }
+    .ag-icon-first {
+      display: none;
+    }
+  }
+  .ag-paging-panel {
+    border-top-width: 0 !important;
+    background-color: var(--v-lightest-base);
+    margin: 15px 0;
+    border-radius: 8px;
+    height: 46px !important;
+    .ag-paging-row-summary-panel {
+      margin-left: 0;
+      & span {
+        font-size: 12px;
+        font-family: webIRANSansRegular, "sans-serif";
+        color: var(--v-darkest-base);
+      }
+    }
+    .ag-paging-page-summary-panel {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+}
+.ag-theme-material .ag-icon {
+  font-size: 24px !important;
+}
+
+@media(max-width: 800px) {
+  .ag-paging-row-summary-panel {
+    margin-left: 24px !important;
+  }
+  .ag-paging-page-summary-panel {
+    margin-right: 24px !important;
+    margin-left: 24px !important;
+  }
+}

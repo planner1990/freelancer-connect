@@ -1,0 +1,11 @@
+.cancel-icon {
+  & g path {
+    stroke: var(--v-black-base) !important;
+  }
+}
+
+.dashboard-perfect-icon {
+  & g path {
+    stroke: var(--v-primary-base) !important;
+  }
+}

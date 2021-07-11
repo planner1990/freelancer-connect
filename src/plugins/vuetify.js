@@ -1,24 +1,35 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib";
 import fa from "vuetify/es5/locale/fa";
+// import CustomIcons from "../utiles/customIcons";
 
 Vue.use(Vuetify);
 
 export default new Vuetify({
-  rtl: false,
+  rtl: true,
+  icons: {
+    // values: CustomIcons
+  },
   theme: {
     options: {
       customProperties: true
     },
     themes: {
       light: {
-        primary: "#9734cf",
-        secondary: "#424242",
-        accent: "#82B1FF",
-        error: "#FF5252",
-        info: "#2196F3",
-        success: "#4CAF50",
-        warning: "#FFC107"
+        white: "#FFFFFF",
+        lightest: "#FAFBFF",
+        lighter: "#F3F5F9",
+        primary: "#500fe9",
+        primary_light: "#5e15ef",
+        secondary: "#40DDD5",
+        secondary_light: "#43e8e0",
+        black: "#000022",
+        darker: "#768391",
+        darkest: "#56606B",
+        error: "#ec484a",
+        info: "#3889d0",
+        success: "#00b947",
+        warning: "#eb8149"
       }
     }
   },

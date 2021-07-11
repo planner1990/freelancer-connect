@@ -1,0 +1,22 @@
+.banner-slider-pagination {
+  width: auto !important;
+  position: relative;
+  &.swiper-pagination-bullets {
+    position: absolute !important;
+    z-index: 4;
+    left: 18px !important;
+    bottom: 18px !important;
+    background-color: rgba(#000, 0.4);
+    border-radius: 20px;
+    padding: 0 4px;
+    .swiper-pagination-bullet {
+      background: rgba(255, 255, 255, 0.4) !important;
+      margin: 0 2px;
+      width: 9px;
+      height: 9px;
+    }
+    .swiper-pagination-bullet-active {
+      background: rgba(255, 255, 255, 1) !important;
+    }
+  }
+}

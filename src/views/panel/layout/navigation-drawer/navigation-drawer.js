@@ -1,5 +1,5 @@
 import { mapGetters } from "vuex";
-import * as types from "../../../../store/types";
+import * as types from "../../../../shared/store/types";
 
 export default {
   name: "navigation-drawer",

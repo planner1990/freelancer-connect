@@ -1,0 +1,32 @@
+.network-chip {
+  &.v-chip.v-size--default {
+    height: 38px;
+  }
+  &.v-chip--clickable:active {
+    box-shadow: none;
+  }
+  &.v-chip.v-chip--outlined {
+    border-width: 1px;
+    border-color: #0000002e;
+  }
+  .theme--light.v-chip--active:hover::before,
+  .theme--light.v-chip--active::before {
+    opacity: 0 !important;
+  }
+}
+.theme--light.v-chip--active:hover::before,
+.theme--light.v-chip--active::before {
+  opacity: 0 !important;
+}
+.custom-chip {
+  background-color: var(--v-lightest-base) !important;
+  &:hover {
+    background-color: var(--v-lighter-base) !important;
+    cursor: pointer;
+  }
+}
+.custom-chip-active, .network-chip-active {
+  &.v-chip.v-chip--outlined.v-chip.v-chip {
+    background-color: rgba(80, 15, 233, 0.1) !important;
+  }
+}

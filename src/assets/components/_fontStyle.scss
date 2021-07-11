@@ -1,0 +1,16 @@
+*, body, html {
+  font-family: webIRANSansRegular, 'sans-serif';
+  font-size: 14px;
+}
+.ltr {
+  direction: ltr;
+}
+.rtl {
+  direction: rtl;
+}
+@media(max-width: 600px) {
+  *, body, html {
+    font-family: mobileIRANSansRegular, 'sans-serif';
+    font-size: 14px;
+  }
+}

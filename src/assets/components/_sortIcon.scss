@@ -1,0 +1,13 @@
+.order-table-wrapper {
+  .prices-data-table {
+    thead tr {
+      .active {
+        svg {
+          path:last-child {
+            fill: #500fe9 !important;
+          }
+        }
+      }
+    }
+  }
+}

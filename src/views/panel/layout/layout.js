@@ -4,7 +4,12 @@ import panelFooter from "./footer/index";
 import transitionPage from "../../../components/transitionPage/index";
 export default {
   name: "layout",
-  components: { appBar, navigationDrawer, panelFooter, transitionPage },
+  components: {
+    appBar,
+    navigationDrawer,
+    panelFooter,
+    transitionPage
+  },
   data() {
     return {
       tourCallbacks: {

@@ -1,0 +1,17 @@
+.range-in-table {
+  .border-progress-bar {
+    border: 1px solid rgba(0, 0, 34, 0.1);
+    .v-progress-linear__determinate {
+      background-color: rgba(80, 15, 233, 0.3) !important;
+    }
+    .content-progress-bar {
+      margin-top: 2px !important;
+    }
+  }
+}
+
+.dashboard {
+  .v-progress-circular__underlay {
+    stroke: var(--v-lighter-base);
+  }
+}

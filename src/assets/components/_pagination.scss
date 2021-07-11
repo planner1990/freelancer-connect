@@ -1,0 +1,21 @@
+.custom-number-pagination {
+  ul {
+    li {
+      .v-pagination__item,
+      .v-pagination__navigation {
+        box-shadow: none;
+        background: var(--v-lightest-base) !important;
+        outline: none;
+        border-radius: 8px;
+      }
+      .v-pagination__item {
+        &--active {
+          &.primary {
+            border: 1px solid var(--v-primary-base);
+            color: var(--v-primary-base);
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,9 +5,15 @@ export default {
   components: { loginComp },
   props: [],
   data() {
-    return {};
+    return {
+      changeLang: false
+    };
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {
+    changeRTL() {
+      this.$vuetify.rtl = this.$vuetify.rtl !== true;
+    }
+  }
 };

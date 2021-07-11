@@ -1,0 +1,35 @@
+.custom-stepper {
+  &.v-stepper {
+    background-color: transparent !important;
+    box-shadow: unset;
+    .v-stepper__header {
+      margin-bottom: 24px;
+      .v-divider {
+        border-color: #76839133 !important;
+        background-color: #76839133 !important;
+        border-width: 2px;
+        margin: 0 -36px;
+      }
+      .active-divider {
+        background-color: var(--v-primary-base) !important;
+      }
+    }
+  }
+  .v-stepper__step__step {
+    display: none;
+  }
+  .custom-stepper-step {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid var(--v-primary-base);
+    margin: 10px auto 3px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--v-lighter-base);
+  }
+  .active-step {
+    background-color: var(--v-primary-base) !important;
+  }
+}

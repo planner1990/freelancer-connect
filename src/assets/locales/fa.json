@@ -1,0 +1,27 @@
+{
+  "sidebar": {
+    "dashboard": "داشبورد",
+    "orders": "سفارشات",
+    "projects": "پروژه ها",
+    "services": "خدمات",
+    "serviceOrder": "سفارش خدمت",
+    "reviewOptions": "گزینه بررسی",
+    "manageUsers": "مدیریت کاربران",
+    "payments": "پرداخت",
+    "settings": "تنظیمات",
+    "masterData": "داده اصلی",
+    "logOut": "خروج",
+    "accountSettings": "تنظیمات حساب",
+    "generalSettings": "تنظیمات عمومی",
+    "resetPassword": "تغییر رمز عبور",
+    "skills": "مهارت ها",
+    "jobCategory": "دسته بندی شغلی",
+    "departments": "بخش ها",
+    "languages": "زبان ها",
+    "locations": "موقعیت",
+    "badges": "نشان ها",
+    "deliveryTime": "زمان تحویل",
+    "responseTime": "زمان پاسخ",
+    "admin": "ادمین"
+  }
+}

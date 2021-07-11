@@ -1,0 +1,104 @@
+@import "./abstract/variables/variables";
+@import "./abstract/mixins/responsive";
+@import "./abstract/mixins/fontClassGenerator";
+@import "./abstract/mixins/positionClassGenerator";
+//@import "./font/webFonts";
+//@import "./font/mobileFonts";
+@import "./rtl/rtl";
+@import "./components/fontStyle";
+@import "./components/positions";
+@import "./components/input";
+@import "./components/btn";
+@import "./components/table";
+@import "./components/tabs";
+@import "./components/card";
+@import "./components/toast";
+@import "./components/switch";
+@import "./components/dropdown";
+@import "./components/sortIcon";
+@import "./components/badge";
+@import "./components/scroll";
+@import "./components/progressBar";
+@import "./components/walletCheckBox";
+@import "./components/agGrid";
+@import "./components/tooltip";
+@import "./components/selectOption";
+@import "./components/pagination";
+@import "./components/customPagination";
+@import "./components/checkbox";
+@import "./components/tableChip";
+@import "./components/chip";
+@import "./components/radioBtn";
+@import "./components/color";
+@import "./components/stepper";
+@import "./components/inputStyle";
+@import "./components/dialog";
+@import "./components/swpier";
+@import "./components/icon";
+@import "./components/autoComplete";
+//@import "./utilities/priceAnimation";
+@import "styles/styles";
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.v-divider {
+  border-color: var(--v-lighter-base) !important;
+}
+
+.trading-vue-toolbar,
+.trading-vue-legend {
+  z-index: 5 !important;
+}
+
+@media only screen and (max-width: 500px) {
+  .custom-app-bar {
+    .v-toolbar__content {
+      display: flex !important;
+      align-items: flex-start !important;
+    }
+  }
+}
+
+.vpd-is-popover[data-placement="bottom-right"] .vpd-container {
+  top: -12px !important;
+  right: -15px !important;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.rotate {
+  animation: rotate 3s infinite linear;
+}
+
+.border-radius-12 {
+  border-radius: 12px;
+}
+
+.crypto-link {
+  text-decoration: underline !important;
+}
+
+.custom-expansion-header {
+  & .v-expansion-panel-header__icon {
+    margin-left: auto !important;
+    margin-right: unset !important;
+  }
+}
