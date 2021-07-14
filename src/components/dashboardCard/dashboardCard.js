@@ -1,22 +1,13 @@
-
 export default {
   name: "dashboard-card",
   components: {},
-  props: [],
-  data () {
-    return {
-
-    }
+  props: ["titleCard"],
+  data() {
+    return {};
   },
-  computed: {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
-  }
-}
+  computed: {},
+  mounted() {},
+  methods: {}
+};
 
 

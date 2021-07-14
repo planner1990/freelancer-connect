@@ -1,5 +1,6 @@
 @use "sass:list";
 @import "./mixins";
+@import "variable";
 @import url("../fonts/WebFonts/css/style.css");
 
 //body {
@@ -231,7 +232,7 @@ body {
   }
 }
 
-$body-font-family: IRANSans,sans-serif;
+$body-font-family: IRANSans, sans-serif;
 
 .v-application {
   .text-h1,
@@ -250,5 +251,42 @@ $body-font-family: IRANSans,sans-serif;
   .text-caption,
   .text-overline {
     font-family: $body-font-family !important;
+  }
+}
+
+.v-application {
+  font-family: $body-font-family !important;
+}
+
+.v-btn {
+  letter-spacing: unset !important;
+}
+
+
+.table-dashboard {
+  .theme--light.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+    height: 51px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: $surface-150;
+  }
+
+  .v-pagination {
+    button {
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+  .v-btn:not(.v-btn--round).v-size--small {
+    height: 28px;
+    min-width: 12px;
+    padding: 0 4.444444px;
+  }
+
+  tbody {
+    td {
+      color: #767676;
+    }
   }
 }

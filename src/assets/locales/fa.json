@@ -23,5 +23,8 @@
     "deliveryTime": "زمان تحویل",
     "responseTime": "زمان پاسخ",
     "admin": "ادمین"
+  },
+  "actions": {
+    "save&update": "ذخیره و به روزرسانی"
   }
 }

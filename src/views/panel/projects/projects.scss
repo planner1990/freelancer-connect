@@ -1,3 +1,40 @@
-.projects {
+@import "src/assets/styles/variable";
+@import "src/assets/styles/mixins";
+.project-row {
+  background-color: $surface-150;
+  height: 170px;
+  padding: 30px;
+  margin-bottom: 18px;
 
+  .custom-border{
+    > div {
+      figure {
+        margin: 0;
+        color: $surface-600;
+        font-size: 18px;
+        font-weight: 300;
+
+        figcaption {
+          margin-top: 10px;
+          font-size: 12px;
+        }
+      }
+
+      &:not(:last-child) {
+        @include addLine($position: "left-center", $width: 2px, $height: 50%, $space: 0, $bgColor: linear-gradient(to right, transparent, $surface-300, transparent));
+      }
+
+      &:nth-child(3) {
+        @include addLine($position: "left-center", $width: 2px, $height: 0, $bgColor: linear-gradient(to right, transparent, $surface-300, transparent));
+        @include medium() {
+          @include addLine($position: "left-center", $width: 2px, $height: 50%, $space: 0, $bgColor: linear-gradient(to right, transparent, $surface-300, transparent));
+        }
+      }
+    }
+  }
+  .expired {
+    color: $green-100;
+    font-size: 16px;
+    font-weight: 500;
+  }
 }

@@ -39,6 +39,18 @@ const routes = [
           import(
             /* webpackChunkName: "projects" */ "../views/panel/projects/index"
           )
+      },
+      {
+        path: "edit-project",
+        name: "edit-project",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/edit-project/index")
+      },
+      {
+        path: "manage-users",
+        name: "manage-users",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/manage-users/index")
       }
     ]
   }
