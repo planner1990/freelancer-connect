@@ -1,0 +1,68 @@
+<div class="d-md-flex d-sm-block">
+    <dashboard-card class="col-md-5 col-sm-12" minHeight665="true" :title-card="$t('actions.addNewCategory')">
+        <v-form
+                ref="form"
+                v-model="valid"
+                lazy-validation
+        >
+            <v-row>
+                <v-text-field
+                        v-model="name"
+                        :counter="50"
+                        :rules="nameRules"
+                        label="عنوان مهارت"
+                        required
+                        outlined
+                ></v-text-field>
+            </v-row>
+            <v-row>
+                <v-textarea
+                        outlined
+                        name="input-7-4"
+                        label="توضیحات"
+                        value="پروژه ای که روی آن کار می کنم یک پروژه ی تستی است که قرار است در جستجوی گوگل در صفحات اول تا دوم ارتقا داده شود."
+                ></v-textarea>
+            </v-row>
+            <v-row>
+                <v-file-input
+                        v-model="files"
+                        color="deep-purple accent-4"
+                        counter="1"
+                        label="File input"
+                        placeholder="Select your files"
+                        prepend-icon="mdi-paperclip"
+                        outlined
+                        :show-size="1000"
+                >
+                    <template v-slot:selection="{ index, text }">
+                        <v-chip
+                                v-if="index < 2"
+                                color="error"
+                                dark
+                                label
+                                small
+                        >
+                            {{ text }}
+                        </v-chip>
+                    </template>
+                </v-file-input>
+            </v-row>
+            <v-row class="my-10">
+                <v-btn
+                        color="error"
+                        :disabled="!valid"
+                        @click="resetValidation"
+                >
+                    {{ $t("actions.addNewCategory") }}
+                </v-btn>
+            </v-row>
+        </v-form>
+    </dashboard-card>
+    <dashboard-card class="col-md-7 col-sm-12" :title-card="$t('actions.categories')" minHeight665="true">
+        <table-dashboard
+                :headersUserManagement="headersUserManagement"
+                :dataUserManagement="dataUserManagement"
+                :show-select="showSelect"
+        ></table-dashboard>
+    </dashboard-card>
+</div>

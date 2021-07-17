@@ -51,6 +51,67 @@ const routes = [
         name: "manage-users",
         meta: { transitionName: "slide" },
         component: () => import("../views/panel/manage-users/index")
+      },
+      {
+        path: "account-setting",
+        name: "account-setting",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/setting/account-setting/index")
+      },
+      {
+        path: "skills",
+        name: "skills",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/masterData/skills/index")
+      },
+      {
+        path: "job-categories",
+        name: "job-categories",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/panel/masterData/job-categories/index")
+      },
+      {
+        path: "departments",
+        name: "departments",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/masterData/departments/index")
+      },
+      {
+        path: "languages",
+        name: "languages",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/masterData/languages/index")
+      },
+      {
+        path: "locations",
+        name: "locations",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/masterData/locations/index")
+      },
+      {
+        path: "badges",
+        name: "badges",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/masterData/badges/index")
+      },
+      {
+        path: "delivery-time",
+        name: "delivery-time",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/masterData/delivery-time/index")
+      },
+      {
+        path: "response-time",
+        name: "response-time",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/masterData/response-time/index")
+      },
+      {
+        path: "services",
+        name: "services",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/services/index")
       }
     ]
   }

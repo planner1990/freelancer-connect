@@ -1,5 +1,5 @@
 export default {
-  name: "footer",
+  name: "footer-panel",
   components: {},
   props: [],
   data() {

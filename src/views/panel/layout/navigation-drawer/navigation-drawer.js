@@ -10,6 +10,7 @@ export default {
     show: false,
     mini: false,
     toggle: false,
+    logoutLoading: false,
     selected: [2],
     admins: [
       ["Management", "mdi-account-group"],
@@ -28,5 +29,9 @@ export default {
     })
   },
   mounted() {},
-  methods: {}
+  methods: {
+    logout() {
+      this.$router.push({ name: "login" }).then(r => console.log(r));
+    }
+  }
 };

@@ -1,0 +1,44 @@
+<div class="d-md-flex d-sm-block">
+    <dashboard-card class="col-md-5 col-sm-12" minHeight665="true" :title-card="$t('actions.addDeliveryTime')">
+        <v-form
+                ref="form"
+                v-model="valid"
+                lazy-validation
+        >
+            <v-row>
+                <v-text-field
+                        v-model="name"
+                        :counter="50"
+                        :rules="nameRules"
+                        label="عنوان زمان تحویل"
+                        required
+                        outlined
+                ></v-text-field>
+            </v-row>
+            <v-row>
+                <v-textarea
+                        outlined
+                        name="input-7-4"
+                        label="توضیحات"
+                        value="توضیحاتی در مورد زمان تحویل..."
+                ></v-textarea>
+            </v-row>
+            <v-row class="my-10">
+                <v-btn
+                        color="error"
+                        :disabled="!valid"
+                        @click="resetValidation"
+                >
+                    {{ $t("actions.addDeliveryTime") }}
+                </v-btn>
+            </v-row>
+        </v-form>
+    </dashboard-card>
+    <dashboard-card class="col-md-7 col-sm-12" :title-card="$t('sidebar.deliveryTime')" minHeight665="true">
+        <table-dashboard
+                :headersUserManagement="headersUserManagement"
+                :dataUserManagement="dataUserManagement"
+                :show-select="showSelect"
+        ></table-dashboard>
+    </dashboard-card>
+</div>

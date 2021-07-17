@@ -1,4 +1,3 @@
-
 export default {
   name: "dialog-dashboard",
   components: {},
@@ -10,9 +9,5 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {
-    aa(event) {
-      console.log(event);
-    }
-  }
+  methods: {}
 };

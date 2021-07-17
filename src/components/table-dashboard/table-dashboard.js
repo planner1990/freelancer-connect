@@ -1,11 +1,11 @@
-
 export default {
   name: "table-dashboard",
   components: {},
-  props: ["headersUserManagement", "dataUserManagement"],
+  props: ["headersUserManagement", "dataUserManagement", "showSelect", "name"],
   data() {
     return {
       page: 1,
+      e2: "پیش نویس",
       pageCount: 0,
       itemsPerPage: 8
     };
@@ -23,6 +23,9 @@ export default {
       this.editedIndex = this.dataUserManagement.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialogDelete = true;
+    },
+    confirmChangeServiceStatus() {
+      console.log("confirmChangeServiceStatus");
     }
   }
 };

@@ -16,15 +16,28 @@
     "resetPassword": "تغییر رمز عبور",
     "skills": "مهارت ها",
     "jobCategory": "دسته بندی شغلی",
-    "departments": "بخش ها",
+    "departments": "دپارتمان ها",
     "languages": "زبان ها",
-    "locations": "موقعیت",
+    "locations": "موقعیت ها",
     "badges": "نشان ها",
     "deliveryTime": "زمان تحویل",
     "responseTime": "زمان پاسخ",
     "admin": "ادمین"
   },
   "actions": {
-    "save&update": "ذخیره و به روزرسانی"
+    "save&update": "ذخیره و به روزرسانی",
+    "addNewCategory": "افزودن دسته بندی جدید",
+    "categories": "دسته بندی ها",
+    "addDepartment": "اضافه کردن دپارتمان",
+    "addLanguage": "اضافه کردن زبان جدید",
+    "addNewLocation": "اضافه کردن موقعیت جدید",
+    "addBadge": "اضافه کردن نشان",
+    "addDeliveryTime": "اضافه کردن زمان تحویل",
+    "addResponseTime": "اضافه کردن زمان پاسخ",
+    "servicesLists": "لیست خدمات"
+  },
+  "form": {
+    "responseTimeTitle": "عنوان زمان پاسخ",
+    "description": "توضیحات"
   }
 }

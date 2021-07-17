@@ -63,7 +63,7 @@
                 </v-list-item-title>
             </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link to="/panel/services">
             <v-list-item-action>
                 <v-icon>mdi-toolbox-outline</v-icon>
             </v-list-item-action>
@@ -109,7 +109,7 @@
                     <v-list-item-title>{{ $t("sidebar.settings") }}</v-list-item-title>
                 </v-list-item-content>
             </template>
-            <v-list-item link>
+            <v-list-item link to="/panel/account-setting">
                 <v-list-item-action>
                     <v-icon>mdi-account-cog-outline</v-icon>
                 </v-list-item-action>
@@ -117,22 +117,22 @@
                     <v-list-item-title>{{ $t("sidebar.accountSettings") }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item link>
-                <v-list-item-action>
-                    <v-icon>mdi-file-cog-outline</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.generalSettings") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link>
-                <v-list-item-action>
-                    <v-icon>mdi-lock-plus</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.resetPassword") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
+<!--            <v-list-item link>-->
+<!--                <v-list-item-action>-->
+<!--                    <v-icon>mdi-file-cog-outline</v-icon>-->
+<!--                </v-list-item-action>-->
+<!--                <v-list-item-content>-->
+<!--                    <v-list-item-title>{{ $t("sidebar.generalSettings") }}</v-list-item-title>-->
+<!--                </v-list-item-content>-->
+<!--            </v-list-item>-->
+<!--            <v-list-item link>-->
+<!--                <v-list-item-action>-->
+<!--                    <v-icon>mdi-lock-plus</v-icon>-->
+<!--                </v-list-item-action>-->
+<!--                <v-list-item-content>-->
+<!--                    <v-list-item-title>{{ $t("sidebar.resetPassword") }}</v-list-item-title>-->
+<!--                </v-list-item-content>-->
+<!--            </v-list-item>-->
             <!--            <v-list-group sub-group value="true">-->
             <!--                <template v-slot:activator>-->
             <!--                    <v-list-item-content>-->
@@ -168,7 +168,7 @@
                     <v-list-item-title>{{ $t("sidebar.masterData") }}</v-list-item-title>
                 </v-list-item-content>
             </template>
-            <v-list-item link>
+            <v-list-item link to="/panel/skills">
                 <v-list-item-action>
                     <v-icon>mdi-youtube-studio</v-icon>
                 </v-list-item-action>
@@ -176,7 +176,7 @@
                     <v-list-item-title>{{ $t("sidebar.skills") }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item link>
+            <v-list-item link to="/panel/job-categories">
                 <v-list-item-action>
                     <v-icon>mdi-account-box-multiple-outline</v-icon>
                 </v-list-item-action>
@@ -184,7 +184,7 @@
                     <v-list-item-title>{{ $t("sidebar.jobCategory") }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item link>
+            <v-list-item link to="/panel/departments">
                 <v-list-item-action>
                     <v-icon>mdi-vector-intersection</v-icon>
                 </v-list-item-action>
@@ -192,7 +192,7 @@
                     <v-list-item-title>{{ $t("sidebar.departments") }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item link>
+            <v-list-item link to="/panel/languages">
                 <v-list-item-action>
                     <v-icon>mdi-web</v-icon>
                 </v-list-item-action>
@@ -200,7 +200,7 @@
                     <v-list-item-title>{{ $t("sidebar.languages") }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item link>
+            <v-list-item link to="/panel/locations">
                 <v-list-item-action>
                     <v-icon>mdi-map-marker-radius</v-icon>
                 </v-list-item-action>
@@ -208,7 +208,7 @@
                     <v-list-item-title>{{ $t("sidebar.locations") }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item link>
+            <v-list-item link to="/panel/badges">
                 <v-list-item-action>
                     <v-icon>mdi-shield-star</v-icon>
                 </v-list-item-action>
@@ -216,7 +216,7 @@
                     <v-list-item-title>{{ $t("sidebar.badges") }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item link>
+            <v-list-item link to="/panel/delivery-time">
                 <v-list-item-action>
                     <v-icon>mdi-truck-delivery</v-icon>
                 </v-list-item-action>
@@ -224,7 +224,7 @@
                     <v-list-item-title>{{ $t("sidebar.deliveryTime") }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item link>
+            <v-list-item link to="/panel/response-time">
                 <v-list-item-action>
                     <v-icon>mdi-responsive</v-icon>
                 </v-list-item-action>

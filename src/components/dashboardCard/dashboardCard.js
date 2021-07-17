@@ -1,7 +1,7 @@
 export default {
   name: "dashboard-card",
   components: {},
-  props: ["titleCard"],
+  props: ["titleCard", "minHeight665"],
   data() {
     return {};
   },
@@ -9,5 +9,3 @@ export default {
   mounted() {},
   methods: {}
 };
-
-

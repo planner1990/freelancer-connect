@@ -1,0 +1,44 @@
+<div class="d-md-flex d-sm-block">
+    <dashboard-card class="col-md-5 col-sm-12" minHeight665="true" :title-card="$t('actions.addResponseTime')">
+        <v-form
+                ref="form"
+                v-model="valid"
+                lazy-validation
+        >
+            <v-row>
+                <v-text-field
+                        v-model="name"
+                        :counter="50"
+                        :rules="nameRules"
+                        :label="$t('form.responseTimeTitle')"
+                        required
+                        outlined
+                ></v-text-field>
+            </v-row>
+            <v-row>
+                <v-textarea
+                        outlined
+                        name="input-7-4"
+                        :label="$t('form.description')"
+                        value="توضیحاتی در مورد زمان پاسخ..."
+                ></v-textarea>
+            </v-row>
+            <v-row class="my-10">
+                <v-btn
+                        color="error"
+                        :disabled="!valid"
+                        @click="resetValidation"
+                >
+                    {{ $t("actions.addResponseTime") }}
+                </v-btn>
+            </v-row>
+        </v-form>
+    </dashboard-card>
+    <dashboard-card class="col-md-7 col-sm-12" :title-card="$t('sidebar.responseTime')" minHeight665="true">
+        <table-dashboard
+                :headersUserManagement="headersUserManagement"
+                :dataUserManagement="dataUserManagement"
+                :show-select="showSelect"
+        ></table-dashboard>
+    </dashboard-card>
+</div>

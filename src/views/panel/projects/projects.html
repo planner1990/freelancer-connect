@@ -1,479 +1,596 @@
 <dashboard-card :titleCard="titleCard">
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
             </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
         </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
-            </div>
-        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
     </div>
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
+  </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
             </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
         </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
-            </div>
-        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
     </div>
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
+  </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
             </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
         </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
-            </div>
-        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
     </div>
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
+  </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
             </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
         </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
-            </div>
-        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
     </div>
-    <div class="container--fluid d-lg-flex d-md-block project-row">
-        <div class="col-lg-6 col-md-12">
-            <div><span><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima Asadi</span></div>
-            <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
-            <div>
-                <div class="container mar-b-48">
-                    <div class="row justify-content-center align-items-center text-white text-center rtl custom-border">
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    $ 10000
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col col-md-2">
-                            <figure>
-                                <figcaption>
-                                    Australia
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-3 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="red darken-2">mdi-bulletin-board</v-icon>Type Fixed</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-5 d-none d-md-block">
-                            <figure>
-                                <figcaption>
-                                    <span><v-icon color="blue darken-2">mdi-timetable</v-icon>Duration: Less than a week</span>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
+  </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="row justify-space-around align-center">
-                <div>
-                    <v-btn depressed color="error" @click="redirectToEditJob()">
-                        ویرایش پروژه
-                    </v-btn>
-                    <v-btn depressed color="error" class="mr-2 ml-2">
-                        <dialog-dashboard :componentData="componentData"></dialog-dashboard>
-                    </v-btn>
-                </div>
-                <div class="expired">منقضی شده</div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
             </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
+        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
+    </div>
+  </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
+        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
+    </div>
+  </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
+        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
+    </div>
+  </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
+        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
+    </div>
+  </div>
+  <div class="container--fluid d-lg-flex d-md-block project-row">
+    <div class="col-lg-6 col-md-12">
+      <div>
+        <span
+          ><v-icon color="green darken-2">mdi-check-circle</v-icon> Nima
+          Asadi</span
+        >
+      </div>
+      <div>پروژه ترجمه کامل سایت از فارسی به عربی</div>
+      <div>
+        <div class="container mar-b-48">
+          <div
+            class="row justify-content-center align-items-center text-white text-center rtl custom-border"
+          >
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  $ 10000
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col col-md-2">
+              <figure>
+                <figcaption>
+                  Australia
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-3 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="red darken-2">mdi-bulletin-board</v-icon
+                    >Type Fixed</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-5 d-none d-md-block">
+              <figure>
+                <figcaption>
+                  <span
+                    ><v-icon color="blue darken-2">mdi-timetable</v-icon
+                    >Duration: Less than a week</span
+                  >
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 d-flex">
+      <div class="row justify-space-around align-center">
+        <div>
+          <v-btn depressed color="error" @click="redirectToEditJob()">
+            ویرایش پروژه
+          </v-btn>
+          <v-btn depressed color="error" class="mr-2 ml-2">
+            <dialog-dashboard :componentData="componentData"></dialog-dashboard>
+          </v-btn>
+        </div>
+        <div class="expired">منقضی شده</div>
+      </div>
+    </div>
+  </div>
 </dashboard-card>

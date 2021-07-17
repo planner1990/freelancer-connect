@@ -102,25 +102,10 @@ export default {
           role: "فریلنسر",
           verificationStatus: "تایید شده"
         }
-      ],
-      files: [],
-      ss: ""
+      ]
     };
   },
   computed: {},
   mounted() {},
-  methods: {
-    aa() {
-      // console.log(this.files.toDataURL("image/jpeg", 1.0));
-      new Promise(resolve => {
-        var file = new File(this.files, "ddd");
-        var reader = new FileReader();
-        // Read file content on file loaded event
-        reader.onload = function (event) {
-          resolve(event.target.result);
-        };
-        reader.readAsDataURL(file);
-      }).then(r => (this.ss = r));
-    }
-  }
+  methods: {}
 };

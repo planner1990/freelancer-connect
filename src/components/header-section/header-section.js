@@ -1,22 +1,11 @@
-
 export default {
   name: "header-section",
   components: {},
   props: ["headerSectionTitle"],
   data() {
-    return {
-
-    }
+    return {};
   },
-  computed: {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
-  }
-}
-
-
+  computed: {},
+  mounted() {},
+  methods: {}
+};

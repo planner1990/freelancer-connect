@@ -262,9 +262,13 @@ $body-font-family: IRANSans, sans-serif;
   letter-spacing: unset !important;
 }
 
-
 .table-dashboard {
-  .theme--light.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  .theme--light.v-data-table
+    > .v-data-table__wrapper
+    > table
+    > thead
+    > tr
+    > th {
     height: 51px;
     font-size: 16px;
     font-weight: 500;
@@ -289,4 +293,10 @@ $body-font-family: IRANSans, sans-serif;
       color: #767676;
     }
   }
+}
+
+.v-input__append-outer .v-icon,
+.v-input__prepend-outer .v-icon {
+  font-size: 30px !important;
+  color: #00cc8d !important;
 }
