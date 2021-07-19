@@ -144,6 +144,27 @@ const routes = [
         component: () => import("../views/panel/service-orders/index")
       }
     ]
+  },
+  {
+    path: "/freelancer",
+    name: "freelancer",
+    // redirect: `/panel/dashboard`,
+    meta: { transitionName: "slide" },
+    component: () =>
+      import(
+        /* webpackChunkName: "panel-layout" */ "../views/panel/layout/index"
+      ),
+    children: [
+      {
+        path: "post-service",
+        name: "post-service",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            /* webpackChunkName: "projects" */ "../views/freelancer/post-service/index"
+          )
+      }
+    ]
   }
   // {
   //   path: "/",

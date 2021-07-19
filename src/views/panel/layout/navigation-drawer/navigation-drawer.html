@@ -1,285 +1,119 @@
 <v-navigation-drawer
-        :right="$vuetify.rtl === true"
-        app
-        clipped
-        :mini-variant="mini"
-        :value="drawer"
+  :right="$vuetify.rtl === true"
+  app
+  clipped
+  :mini-variant="mini"
+  :value="drawer"
 >
-    <template v-slot:prepend>
-        <div class="timeline mar-b-120">
-            <!--            <v-list>-->
-            <!--                <v-list-item class="px-2">-->
-            <!--                    <v-list-item-avatar>-->
-            <!--                        <img src="../../../../assets/image/logo.png" alt="">-->
-            <!--                    </v-list-item-avatar>-->
-            <!--                </v-list-item>-->
+  <template v-slot:prepend>
+    <div class="timeline mar-b-120">
+      <div class="username-info d-flex flex-column align-center">
+        <img src="../../../../assets/image/a.png" alt="" />
+        <div class="username">Akbar GH</div>
+        <div class="sub">{{ $t("sidebar.admin") }}</div>
+      </div>
+    </div>
 
-            <!--                <v-list-item link>-->
-            <!--                    <v-list-item-content>-->
-            <!--                        <v-list-item-title class="text-h6">-->
-            <!--                            Username-->
-            <!--                        </v-list-item-title>-->
-            <!--                        <v-list-item-subtitle>{{ $t("sidebar.admin") }}</v-list-item-subtitle>-->
-            <!--                    </v-list-item-content>-->
-            <!--                </v-list-item>-->
-            <!--            </v-list>-->
-            <div class="username-info d-flex flex-column align-center">
-                <img src="../../../../assets/image/a.png" alt="">
-                <div class="username">Akbar GH</div>
-                <div class="sub">{{ $t("sidebar.admin") }}</div>
-            </div>
-        </div>
-
-        <v-divider></v-divider>
-    </template>
-    <v-list dense>
-        <v-list-item link to="/panel/dashboard" exact>
-            <v-list-item-action>
-                <v-icon>mdi-view-dashboard-variant</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-                <v-list-item-title>
-                    {{ $t("sidebar.dashboard") }}
-                </v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
-        <v-list-item link to="/panel/orders">
-            <v-list-item-action>
-                <v-icon>mdi-order-bool-descending</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-                <v-list-item-title>{{ $t("sidebar.orders") }}</v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
-        <v-list-item link to="/panel/projects">
-            <v-list-item-action>
-                <v-icon>mdi-briefcase</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-                <v-list-item-title>
-                    <v-list-item-title>
-                        {{ $t("sidebar.projects") }}
-                    </v-list-item-title>
-                </v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
-        <v-list-item link to="/panel/services">
-            <v-list-item-action>
-                <v-icon>mdi-toolbox-outline</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-                <v-list-item-title>{{ $t("sidebar.services") }}</v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
-        <v-list-item link to="/panel/service-orders">
-            <v-list-item-action>
-                <v-icon>mdi-border-all</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-                <v-list-item-title>{{ $t("sidebar.serviceOrder") }}</v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
-        <v-list-item link to="/panel/review-option">
-            <v-list-item-action>
-                <v-icon>mdi-file-find</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-                <v-list-item-title>{{ $t("sidebar.reviewOptions") }}</v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
-        <v-list-item link to="/panel/manage-users">
-            <v-list-item-action>
-                <v-icon>mdi-account-group</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-                <v-list-item-title>{{ $t("sidebar.manageUsers") }}</v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
-        <v-list-item link to="/panel/payout">
-            <v-list-item-action>
-                <v-icon>mdi-credit-card-marker-outline</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-                <v-list-item-title>{{ $t("sidebar.payments") }}</v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
-        <v-list-group prepend-icon="mdi-cog-transfer-outline">
-            <template v-slot:activator>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.settings") }}</v-list-item-title>
-                </v-list-item-content>
-            </template>
-            <v-list-item link to="/panel/account-setting">
-                <v-list-item-action>
-                    <v-icon>mdi-account-cog-outline</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.accountSettings") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-<!--            <v-list-item link>-->
-<!--                <v-list-item-action>-->
-<!--                    <v-icon>mdi-file-cog-outline</v-icon>-->
-<!--                </v-list-item-action>-->
-<!--                <v-list-item-content>-->
-<!--                    <v-list-item-title>{{ $t("sidebar.generalSettings") }}</v-list-item-title>-->
-<!--                </v-list-item-content>-->
-<!--            </v-list-item>-->
-<!--            <v-list-item link>-->
-<!--                <v-list-item-action>-->
-<!--                    <v-icon>mdi-lock-plus</v-icon>-->
-<!--                </v-list-item-action>-->
-<!--                <v-list-item-content>-->
-<!--                    <v-list-item-title>{{ $t("sidebar.resetPassword") }}</v-list-item-title>-->
-<!--                </v-list-item-content>-->
-<!--            </v-list-item>-->
-            <!--            <v-list-group sub-group value="true">-->
-            <!--                <template v-slot:activator>-->
-            <!--                    <v-list-item-content>-->
-            <!--                        <v-list-item-title>Admin</v-list-item-title>-->
-            <!--                    </v-list-item-content>-->
-            <!--                </template>-->
-
-            <!--                <v-list-item :key="i" link v-for="(admin, i) in admins">-->
-            <!--                    <v-list-item-icon>-->
-            <!--                        <v-icon v-text="admin[1]"></v-icon>-->
-            <!--                    </v-list-item-icon>-->
-            <!--                    <v-list-item-title v-text="admin[0]"></v-list-item-title>-->
-            <!--                </v-list-item>-->
-            <!--            </v-list-group>-->
-
-            <!--            <v-list-group sub-group>-->
-            <!--                <template v-slot:activator>-->
-            <!--                    <v-list-item-content>-->
-            <!--                        <v-list-item-title>Actions</v-list-item-title>-->
-            <!--                    </v-list-item-content>-->
-            <!--                </template>-->
-            <!--                <v-list-item :key="i" link v-for="(crud, i) in cruds">-->
-            <!--                    <v-list-item-action>-->
-            <!--                        <v-icon v-text="crud[1]"></v-icon>-->
-            <!--                    </v-list-item-action>-->
-            <!--                    <v-list-item-title v-text="crud[0]"></v-list-item-title>-->
-            <!--                </v-list-item>-->
-            <!--            </v-list-group>-->
-        </v-list-group>
-        <v-list-group prepend-icon="mdi-database">
-            <template v-slot:activator>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.masterData") }}</v-list-item-title>
-                </v-list-item-content>
-            </template>
-            <v-list-item link to="/panel/skills">
-                <v-list-item-action>
-                    <v-icon>mdi-youtube-studio</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.skills") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link to="/panel/job-categories">
-                <v-list-item-action>
-                    <v-icon>mdi-account-box-multiple-outline</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.jobCategory") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link to="/panel/departments">
-                <v-list-item-action>
-                    <v-icon>mdi-vector-intersection</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.departments") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link to="/panel/languages">
-                <v-list-item-action>
-                    <v-icon>mdi-web</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.languages") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link to="/panel/locations">
-                <v-list-item-action>
-                    <v-icon>mdi-map-marker-radius</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.locations") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link to="/panel/badges">
-                <v-list-item-action>
-                    <v-icon>mdi-shield-star</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.badges") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link to="/panel/delivery-time">
-                <v-list-item-action>
-                    <v-icon>mdi-truck-delivery</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.deliveryTime") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item link to="/panel/response-time">
-                <v-list-item-action>
-                    <v-icon>mdi-responsive</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>{{ $t("sidebar.responseTime") }}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-        </v-list-group>
-        <v-list-item link color="error" @click="logout()" dense>
-            <template v-if="!logoutLoading">
-                <v-list-item-action>
-                    <v-icon color="error">mdi-power</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title class="dangerFontColor">{{ $t("sidebar.logOut") }}</v-list-item-title>
-                </v-list-item-content>
-            </template>
-            <template v-else>
-                <v-list-item-content>
-                    <v-progress-circular
-                            indeterminate
-                            color="error"
-                    ></v-progress-circular>
-                </v-list-item-content>
-            </template>
-        </v-list-item>
-        <!--        <v-list-item-->
-        <!--                @click="-->
-        <!--            $vuetify.rtl === true-->
-        <!--              ? ($vuetify.rtl = false)-->
-        <!--              : ($vuetify.rtl = true)-->
-        <!--          "-->
-        <!--                link-->
-        <!--        >-->
-        <!--            <v-list-item-action>-->
-        <!--                <v-icon>mdi-arrow-expand-right</v-icon>-->
-        <!--            </v-list-item-action>-->
-        <!--            <v-list-item-content>-->
-        <!--                <v-list-item-title>RTL mode</v-list-item-title>-->
-        <!--            </v-list-item-content>-->
-        <!--        </v-list-item>-->
-    </v-list>
-    <template v-slot:append>
-        <!--        <v-list-item link color="info" @click.stop="mini = !mini" dense>-->
-        <!--            <v-list-item-action>-->
-        <!--                <template v-if="!mini">-->
-        <!--                    <v-icon class="text-info">mdi-arrow-collapse-left</v-icon>-->
-        <!--                </template>-->
-        <!--                <template v-else>-->
-        <!--                    <v-icon class="text-info">mdi-arrow-collapse-right</v-icon>-->
-        <!--                </template>-->
-        <!--            </v-list-item-action>-->
-        <!--            <v-list-item-content>-->
-        <!--                <v-list-item-title class="text-info">minimize</v-list-item-title>-->
-        <!--            </v-list-item-content>-->
-        <!--        </v-list-item>-->
-    </template>
+    <v-divider></v-divider>
+  </template>
+  <v-list dense>
+    <v-list-item
+      v-for="item in sidebarItems"
+      :key="sidebarItems.title"
+      v-if="!item.subCategory"
+      link
+      :to="item.route"
+      exact
+    >
+      <v-list-item-action>
+        <v-icon>{{ item.symbol }}</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>
+          {{ $t(`sidebar.${item.title}`) }}
+        </v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-group
+      v-for="item in sidebarItems"
+      :key="item.subCategory"
+      v-if="item.subCategory"
+      :prepend-icon="item.symbol"
+    >
+      <template v-slot:activator>
+        <v-list-item-content>
+          <v-list-item-title
+            >{{ $t(`sidebar.${item.title}`) }}</v-list-item-title
+          >
+        </v-list-item-content>
+      </template>
+      <v-list-item
+        v-for="subCat in item.subCategory"
+        :key="subCat.title"
+        link
+        :to="subCat.route"
+      >
+        <v-list-item-action>
+          <v-icon>{{ subCat.symbol }}</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title
+            >{{ $t(`sidebar.${subCat.title}`) }}</v-list-item-title
+          >
+        </v-list-item-content>
+      </v-list-item>
+    </v-list-group>
+    <v-list-item link color="error" @click="logout()" dense>
+      <template v-if="!logoutLoading">
+        <v-list-item-action>
+          <v-icon color="error">mdi-power</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title class="dangerFontColor"
+            >{{ $t("sidebar.logOut") }}</v-list-item-title
+          >
+        </v-list-item-content>
+      </template>
+      <template v-else>
+        <v-list-item-content>
+          <v-progress-circular
+            indeterminate
+            color="error"
+          ></v-progress-circular>
+        </v-list-item-content>
+      </template>
+    </v-list-item>
+  </v-list>
 </v-navigation-drawer>
+
+<!--        <v-list-item-->
+<!--                @click="-->
+<!--            $vuetify.rtl === true-->
+<!--              ? ($vuetify.rtl = false)-->
+<!--              : ($vuetify.rtl = true)-->
+<!--          "-->
+<!--                link-->
+<!--        >-->
+<!--            <v-list-item-action>-->
+<!--                <v-icon>mdi-arrow-expand-right</v-icon>-->
+<!--            </v-list-item-action>-->
+<!--            <v-list-item-content>-->
+<!--                <v-list-item-title>RTL mode</v-list-item-title>-->
+<!--            </v-list-item-content>-->
+<!--        </v-list-item>-->
+
+<!--  <template v-slot:append>-->
+<!--        <v-list-item link color="info" @click.stop="mini = !mini" dense>-->
+<!--            <v-list-item-action>-->
+<!--                <template v-if="!mini">-->
+<!--                    <v-icon class="text-info">mdi-arrow-collapse-left</v-icon>-->
+<!--                </template>-->
+<!--                <template v-else>-->
+<!--                    <v-icon class="text-info">mdi-arrow-collapse-right</v-icon>-->
+<!--                </template>-->
+<!--            </v-list-item-action>-->
+<!--            <v-list-item-content>-->
+<!--                <v-list-item-title class="text-info">minimize</v-list-item-title>-->
+<!--            </v-list-item-content>-->
+<!--        </v-list-item>-->
+<!--  </template>-->
