@@ -26,7 +26,7 @@ export default {
       evt.preventDefault();
       this.loading = true;
       this.signInLoading = true;
-      this.$router.push("/panel/dashboard");
+      this.handleUsers(this.username);
       /*authService
         .login(this.username, this.password)
         .then(response => {
@@ -42,6 +42,22 @@ export default {
           this.loading = false;
           this.signInLoading = false;
         });*/
+    },
+    handleUsers(username) {
+      debugger;
+      switch (username) {
+        case "admin":
+          this.$router.push("/panel/dashboard");
+          break;
+        case "freelancer":
+          this.$router.push("/freelancer/dashboard");
+          break;
+        case "employer":
+          this.$router.push("/employer/dashboard");
+          break;
+        default:
+          this.$router.push("/panel/dashboard");
+      }
     }
     /*showNotification() {
       let option = {

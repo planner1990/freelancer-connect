@@ -19,7 +19,7 @@
   <v-list dense>
     <v-list-item
       v-for="item in sidebarItems"
-      :key="sidebarItems.title"
+      :key="item.title"
       v-if="!item.subCategory"
       link
       :to="item.route"
@@ -36,7 +36,7 @@
     </v-list-item>
     <v-list-group
       v-for="item in sidebarItems"
-      :key="item.subCategory"
+      :key="item.title"
       v-if="item.subCategory"
       :prepend-icon="item.symbol"
     >

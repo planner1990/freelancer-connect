@@ -43,6 +43,106 @@ export default {
       switch (role) {
         case "freelancer":
           this.role = 1;
+          this.sidebarItems = [
+            {
+              title: "dashboard",
+              route: "/freelancer/dashboard",
+              symbol: "mdi-view-dashboard-variant"
+            },
+            {
+              title: "messageCenter",
+              route: "/freelancer/message-center",
+              symbol: "mdi-view-dashboard-variant"
+            },
+            {
+              title: "settings",
+              symbol: "mdi-cog-transfer-outline",
+              subCategory: [
+                {
+                  title: "profileSettings",
+                  route: "/freelancer/profile-setting",
+                  symbol: "mdi-account-cog-outline"
+                },
+                {
+                  title: "accountSettings",
+                  route: "/freelancer/account-setting",
+                  symbol: "mdi-account-cog-outline"
+                }
+              ]
+            },
+            {
+              title: "manageProject",
+              symbol: "mdi-cog-transfer-outline",
+              subCategory: [
+                {
+                  title: "completedProjects",
+                  route: "/freelancer/completed-projects",
+                  symbol: "mdi-account-cog-outline"
+                },
+                {
+                  title: "cancelledProjects",
+                  route: "/freelancer/cancelled-projects",
+                  symbol: "mdi-account-cog-outline"
+                },
+                {
+                  title: "ongoingProjects",
+                  route: "/freelancer/ongoing-projects",
+                  symbol: "mdi-account-cog-outline"
+                }
+              ]
+            },
+            {
+              title: "manageServices",
+              symbol: "mdi-cog-transfer-outline",
+              subCategory: [
+                {
+                  title: "postedServices",
+                  route: "/freelancer/posted-services",
+                  symbol: "mdi-account-cog-outline"
+                },
+                {
+                  title: "ongoingServices",
+                  route: "/freelancer/ongoing-services",
+                  symbol: "mdi-account-cog-outline"
+                },
+                {
+                  title: "completedServices",
+                  route: "/freelancer/completed-services",
+                  symbol: "mdi-account-cog-outline"
+                },
+                {
+                  title: "cancelledServices",
+                  route: "/freelancer/cancelled-services",
+                  symbol: "mdi-account-cog-outline"
+                }
+              ]
+            },
+            {
+              title: "proposals",
+              route: "/freelancer/proposals",
+              symbol: "mdi-view-dashboard-variant"
+            },
+            {
+              title: "payout",
+              route: "/freelancer/payout",
+              symbol: "mdi-view-dashboard-variant"
+            },
+            {
+              title: "invoices",
+              route: "/freelancer/invoices",
+              symbol: "mdi-view-dashboard-variant"
+            },
+            {
+              title: "packages",
+              route: "/freelancer/packages",
+              symbol: "mdi-view-dashboard-variant"
+            },
+            {
+              title: "mySavedItems",
+              route: "/freelancer/my-saved-items",
+              symbol: "mdi-view-dashboard-variant"
+            }
+          ];
           break;
         case "employer":
           this.role = 2;

@@ -156,13 +156,106 @@ const routes = [
       ),
     children: [
       {
+        path: "dashboard",
+        name: "dashboard-freelancer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/dashboard/index")
+      },
+      {
         path: "post-service",
         name: "post-service",
         meta: { transitionName: "slide" },
-        component: () =>
-          import(
-            /* webpackChunkName: "projects" */ "../views/freelancer/post-service/index"
-          )
+        component: () => import("../views/freelancer/post-service/index")
+      },
+      {
+        path: "message-center",
+        name: "message-center",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/message-center/index")
+      },
+      {
+        path: "profile-setting",
+        name: "profile-setting",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/profile-setting/index")
+      },
+      {
+        path: "account-setting",
+        name: "account-setting-freelancer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/account-setting/index")
+      },
+      {
+        path: "completed-projects",
+        name: "completed-projects",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/completed-projects/index")
+      },
+      {
+        path: "cancelled-projects",
+        name: "cancelled-projects",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/cancelled-projects/index")
+      },
+      {
+        path: "ongoing-projects",
+        name: "ongoing-projects",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/ongoing-projects/index")
+      },
+      {
+        path: "posted-services",
+        name: "posted-services",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/posted-services/index")
+      },
+      {
+        path: "ongoing-services",
+        name: "ongoing-services",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/ongoing-services/index")
+      },
+      {
+        path: "completed-services",
+        name: "completed-services",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/completed-services/index")
+      },
+      {
+        path: "cancelled-services",
+        name: "cancelled-services",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/cancelled-services/index")
+      },
+      {
+        path: "proposals",
+        name: "proposals",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/proposals/index")
+      },
+      {
+        path: "payout",
+        name: "payout-freelancer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/payout/index")
+      },
+      {
+        path: "invoices",
+        name: "invoices",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/invoices/index")
+      },
+      {
+        path: "packages",
+        name: "packages",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/packages/index")
+      },
+      {
+        path: "my-saved-items",
+        name: "my-saved-items",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/my-saved-items/index")
       }
     ]
   }
