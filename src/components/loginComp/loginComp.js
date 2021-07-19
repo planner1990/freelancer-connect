@@ -26,7 +26,7 @@ export default {
       evt.preventDefault();
       this.loading = true;
       this.signInLoading = true;
-      this.$router.push("/panel");
+      this.$router.push("/panel/dashboard");
       /*authService
         .login(this.username, this.password)
         .then(response => {

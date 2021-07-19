@@ -112,6 +112,36 @@ const routes = [
         name: "services",
         meta: { transitionName: "slide" },
         component: () => import("../views/panel/services/index")
+      },
+      {
+        path: "review-option",
+        name: "review-option",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/review-option/index")
+      },
+      {
+        path: "payout",
+        name: "payout",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/payout/index")
+      },
+      {
+        path: "dashboard",
+        name: "dashboard",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/dashboard/index")
+      },
+      {
+        path: "orders",
+        name: "orders",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/orders/index")
+      },
+      {
+        path: "service-orders",
+        name: "service-orders",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/panel/service-orders/index")
       }
     ]
   }

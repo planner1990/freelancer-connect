@@ -24,7 +24,7 @@
             <!--                </v-list-item>-->
             <!--            </v-list>-->
             <div class="username-info d-flex flex-column align-center">
-                <img src="../../../../assets/image/a.jpg" alt="">
+                <img src="../../../../assets/image/a.png" alt="">
                 <div class="username">Akbar GH</div>
                 <div class="sub">{{ $t("sidebar.admin") }}</div>
             </div>
@@ -33,7 +33,7 @@
         <v-divider></v-divider>
     </template>
     <v-list dense>
-        <v-list-item link to="/panel" exact>
+        <v-list-item link to="/panel/dashboard" exact>
             <v-list-item-action>
                 <v-icon>mdi-view-dashboard-variant</v-icon>
             </v-list-item-action>
@@ -43,7 +43,7 @@
                 </v-list-item-title>
             </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link to="/panel/orders">
             <v-list-item-action>
                 <v-icon>mdi-order-bool-descending</v-icon>
             </v-list-item-action>
@@ -71,7 +71,7 @@
                 <v-list-item-title>{{ $t("sidebar.services") }}</v-list-item-title>
             </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link to="/panel/service-orders">
             <v-list-item-action>
                 <v-icon>mdi-border-all</v-icon>
             </v-list-item-action>
@@ -79,7 +79,7 @@
                 <v-list-item-title>{{ $t("sidebar.serviceOrder") }}</v-list-item-title>
             </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link to="/panel/review-option">
             <v-list-item-action>
                 <v-icon>mdi-file-find</v-icon>
             </v-list-item-action>
@@ -95,7 +95,7 @@
                 <v-list-item-title>{{ $t("sidebar.manageUsers") }}</v-list-item-title>
             </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link to="/panel/payout">
             <v-list-item-action>
                 <v-icon>mdi-credit-card-marker-outline</v-icon>
             </v-list-item-action>
