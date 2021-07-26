@@ -1,5 +1,6 @@
-
-<section class="cancelled-services">
-  <h1>cancelled-services Component</h1>
-</section>
-
+<dashboard-card :titleCard="$t('sidebar.cancelledServices')">
+    <table-dashboard
+            :headersUserManagement="headersUserManagement"
+            :dataUserManagement="dataUserManagement"
+    ></table-dashboard>
+</dashboard-card>

@@ -44,7 +44,6 @@ export default {
         });*/
     },
     handleUsers(username) {
-      debugger;
       switch (username) {
         case "admin":
           this.$router.push("/panel/dashboard");

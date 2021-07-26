@@ -1,0 +1,134 @@
+<div>
+  <v-form ref="newForm" v-model="valid" lazy-validation>
+    <v-row justify="center">
+      <v-dialog v-model="dialog" persistent max-width="600px">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="primary open-dialog" text dark v-bind="attrs" v-on="on">
+            + {{ dataForDialogForm.titleButton }}
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-title class="justify-center">
+            <span class="text-h6 text--secondary font-weight-regular">
+              {{ dataForDialogForm.titleButton }}
+            </span>
+          </v-card-title>
+          <v-card-text class="d-flex flex-wrap justify-space-around">
+            <div
+              v-for="(dialogFormField, index) in dataForDialogForm.formField"
+              :key="dialogFormField.label"
+              :class="dialogFormField.class"
+            >
+              <v-text-field
+                v-if="dialogFormField.type === 'text-field'"
+                :label="dialogFormField.label"
+                v-model="newForm.name"
+                :counter="10"
+                :rules="nameRules"
+                required
+              ></v-text-field>
+              <v-menu
+                v-if="dialogFormField.type === 'date-picker-from'"
+                v-model="start"
+                :close-on-content-click="false"
+                offset-y
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="newForm.start"
+                    :label="dialogFormField.label"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="newForm.start"
+                  no-title
+                  scrollable
+                  @input="start = false"
+                >
+                </v-date-picker>
+              </v-menu>
+
+              <v-menu
+                v-if="dialogFormField.type === 'date-picker-to'"
+                v-model="end"
+                :close-on-content-click="false"
+                offset-y
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="newForm.end"
+                    :label="dialogFormField.label"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="newForm.end"
+                  no-title
+                  scrollable
+                  @input="end = false"
+                >
+                </v-date-picker>
+              </v-menu>
+              <v-file-input
+                v-if="dialogFormField.type === 'file-input'"
+                v-model="files"
+                color="deep-purple accent-4"
+                counter
+                :label="dialogFormField.label"
+                multiple
+                :placeholder="dialogFormField.label"
+                prepend-icon="mdi-paperclip"
+                :show-size="1000"
+                dense
+              >
+                <template v-slot:selection="{ index, text }">
+                  <v-chip
+                    v-if="index < 3"
+                    color="red accent-4"
+                    dark
+                    label
+                    small
+                  >
+                    {{ text }}
+                  </v-chip>
+
+                  <span
+                    v-else-if="index === 3"
+                    class="text-overline grey--text text--darken-3 mx-2"
+                  >
+                    +{{ files.length - 3 }} File(s)
+                  </span>
+                </template>
+              </v-file-input>
+              <v-textarea
+                v-if="dialogFormField.type === 'text-area'"
+                outlined
+                :label="dialogFormField.label"
+                class="col-12"
+              ></v-textarea>
+            </div>
+            <!--            <small>*indicates required field</small>-->
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="error darken-1" text @click="validate">
+              رد کردن
+            </v-btn>
+            <v-btn color="blue darken-1" text @click.prevent="handleDataForm()">
+              تایید اطلاعات
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+  </v-form>
+</div>

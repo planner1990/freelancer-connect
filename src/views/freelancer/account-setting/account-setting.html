@@ -1,5 +1,216 @@
+<dashboard-card :titleCard="$t('sidebar.profileSettings')">
+  <v-card class="my-saved-items">
+    <v-tabs :vertical="this.$vuetify.breakpoint.width >= 1264" color="error">
+      <v-tab>
+        <v-icon left>
+          mdi-content-save-all-outline
+        </v-icon>
+        مدیریت حساب کاربری
+      </v-tab>
+      <v-tab>
+        <v-icon left>
+          mdi-domain
+        </v-icon>
+        اعلان های ایمیل
+      </v-tab>
+      <v-tab>
+        <v-icon left>
+          mdi-thumb-up-outline
+        </v-icon>
+        حذف حساب کاربری
+      </v-tab>
+      <v-tab>
+        <v-icon left>
+          mdi-thumb-up-outline
+        </v-icon>
+        تغییر رمز عبور
+      </v-tab>
 
-<section class="account-setting">
-  <h1>account-setting Component</h1>
-</section>
+      <v-tab-item>
+        <v-card flat>
+          <v-card-text>
+            <header-section
+              header-section-title="مدیریت حساب کاربری"
+            ></header-section>
+            <v-form ref="form" v-model="valid" lazy-validation>
+              <v-switch
+                v-model="switch1"
+                label="غیر فعال کردن حساب کاربری به صورت موقت"
+                class="mb-10"
+              ></v-switch>
+              <v-combobox
+                v-model="model"
+                :items="items"
+                :search-input.sync="search"
+                hide-selected
+                hint="حداکثر ۳ زبان می توانید انتخاب کنید."
+                label="انتخاب زبان مورد نظر"
+                multiple
+                persistent-hint
+                chips
+                outlined
+                class="mb-10"
+              >
+                <template v-slot:no-data>
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        No results matching "<strong>{{ search }}</strong>".
+                        Press <kbd>enter</kbd> to create a new one
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </template>
+              </v-combobox>
+              <v-select
+                v-model="select"
+                :items="items"
+                label="سطح زبان"
+                required
+                outlined
+                class="col-12"
+              ></v-select>
+              <v-row class="my-10">
+                <v-btn
+                  color="error"
+                  :disabled="!valid"
+                  @click="resetValidation"
+                >
+                  {{ $t("actions.save&update") }}
+                </v-btn>
+              </v-row>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat>
+          <v-card-text>
+            <header-section
+              header-section-title="اعلان های ایمیل"
+            ></header-section>
+            <v-form ref="form" v-model="valid" lazy-validation>
+              <v-text-field
+                v-model="email"
+                :rules="emailRules"
+                label="عنوان پروژه"
+                required
+                readonly
+                disabled
+                outlined
+              ></v-text-field>
+              <v-row class="my-10">
+                <v-btn
+                  color="error"
+                  :disabled="!valid"
+                  @click="resetValidation"
+                >
+                  {{ $t("actions.save&update") }}
+                </v-btn>
+              </v-row>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat>
+          <v-card-text>
+            <header-section
+              header-section-title="حذف حساب کاربری"
+            ></header-section>
+            <v-form ref="form" v-model="valid" lazy-validation>
+              <div class="d-flex">
+                <v-text-field
+                  v-model="pass"
+                  :rules="emailRules"
+                  label="رمز عبور"
+                  required
+                  outlined
+                  class="col-lg-6 col-md-12 pl-2"
+                ></v-text-field>
+                <v-text-field
+                  v-model="pass"
+                  :rules="emailRules"
+                  label="تکرار رمز عبور"
+                  required
+                  outlined
+                  class="col-lg-6 col-md-12 pr-2"
+                ></v-text-field>
+              </div>
 
+              <v-select
+                v-model="select"
+                :items="items"
+                label="انتخاب دلیل "
+                required
+                outlined
+                class="col-12"
+              ></v-select>
+              <v-textarea
+                outlined
+                name="input-7-4"
+                label="توضیحات"
+                value="پروژه ای که روی آن کار می کنم یک پروژه ی تستی است که قرار است در جستجوی گوگل در صفحات اول تا دوم ارتقا داده شود."
+              ></v-textarea>
+              <v-row class="my-10">
+                <v-btn
+                  color="error"
+                  :disabled="!valid"
+                  @click="resetValidation"
+                >
+                  {{ $t("actions.save&update") }}
+                </v-btn>
+              </v-row>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat>
+          <v-card-text>
+            <header-section
+              header-section-title="تغییر رمز عبور"
+            ></header-section>
+            <v-form ref="form" v-model="valid" lazy-validation>
+              <div class="d-flex">
+                <v-text-field
+                  v-model="pass"
+                  :rules="emailRules"
+                  label="رمز عبور قبلی"
+                  required
+                  outlined
+                  class="col-lg-6 col-md-12 pl-2"
+                ></v-text-field>
+                <v-text-field
+                  v-model="pass"
+                  :rules="emailRules"
+                  label="رمز عبور جدید"
+                  required
+                  outlined
+                  class="col-lg-6 col-md-12 pr-2"
+                ></v-text-field>
+              </div>
+              <v-text-field
+                v-model="pass"
+                :rules="emailRules"
+                label="رمز عبور جدید"
+                required
+                outlined
+                class="col-12"
+              ></v-text-field>
+              <v-row class="my-10">
+                <v-btn
+                  color="error"
+                  :disabled="!valid"
+                  @click="resetValidation"
+                >
+                  {{ $t("actions.save&update") }}
+                </v-btn>
+              </v-row>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+    </v-tabs>
+  </v-card>
+</dashboard-card>

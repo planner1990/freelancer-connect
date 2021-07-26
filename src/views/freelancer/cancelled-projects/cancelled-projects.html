@@ -1,5 +1,6 @@
-
-<section class="cancelled-projects">
-  <h1>cancelled-projects Component</h1>
-</section>
-
+<dashboard-card :titleCard="$t('sidebar.cancelledProjects')">
+    <table-dashboard
+            :headersUserManagement="headersUserManagement"
+            :dataUserManagement="dataUserManagement"
+    ></table-dashboard>
+</dashboard-card>

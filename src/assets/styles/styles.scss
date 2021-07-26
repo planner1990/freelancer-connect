@@ -300,3 +300,18 @@ $body-font-family: IRANSans, sans-serif;
   font-size: 30px !important;
   color: #00cc8d !important;
 }
+
+.my-saved-items {
+  .v-slide-group__wrapper {
+    width: 283px !important;
+    border-left: 1px solid $surface-350 !important;
+    margin-left: 30px !important;
+  }
+  .v-tab {
+    justify-content: flex-start;
+    letter-spacing: 0 ;
+  }
+  .v-icon.v-icon {
+    margin: 0 10px;
+  }
+}

@@ -1,5 +1,6 @@
-
-<section class="completed-services">
-  <h1>completed-services Component</h1>
-</section>
-
+<dashboard-card :titleCard="$t('sidebar.completedServices')">
+    <table-dashboard
+            :headersUserManagement="headersUserManagement"
+            :dataUserManagement="dataUserManagement"
+    ></table-dashboard>
+</dashboard-card>

@@ -137,7 +137,7 @@ export default {
           },
           serviceStatus: ["پیش نویس", "منتشر شده"],
           queue: "۰ نفر در صف"
-        },
+        }
       ]
     };
   },

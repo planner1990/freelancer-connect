@@ -5,7 +5,7 @@
         multiple
         accept="image/*"
         prepend-icon="mdi-paperclip"
-        @change="uploadImage"
+        @change="uploadImage()"
         solo
         class="col-md-4 col-sm-6 col-xs-12"
 
@@ -20,4 +20,6 @@
 <!--        </v-chip>-->
         <img :src="imageUrl" alt="">
     </template>
+
+
 </v-file-input>

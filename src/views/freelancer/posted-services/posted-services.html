@@ -1,5 +1,7 @@
-
-<section class="posted-services">
-  <h1>posted-services Component</h1>
-</section>
+<dashboard-card :titleCard="$t('sidebar.postedServices')">
+    <table-dashboard
+            :headersUserManagement="headersUserManagement"
+            :dataUserManagement="dataUserManagement"
+    ></table-dashboard>
+</dashboard-card>
 

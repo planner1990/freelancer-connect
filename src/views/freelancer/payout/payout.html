@@ -1,5 +1,6 @@
-
-<section class="payout">
-  <h1>payout Component</h1>
-</section>
-
+<dashboard-card :titleCard="$t('sidebar.payments')">
+    <table-dashboard
+            :headersUserManagement="headersUserManagement"
+            :dataUserManagement="dataUserManagement"
+    ></table-dashboard>
+</dashboard-card>

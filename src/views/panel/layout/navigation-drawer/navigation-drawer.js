@@ -52,7 +52,7 @@ export default {
             {
               title: "messageCenter",
               route: "/freelancer/message-center",
-              symbol: "mdi-view-dashboard-variant"
+              symbol: "mdi-message-bulleted"
             },
             {
               title: "settings",
@@ -66,28 +66,28 @@ export default {
                 {
                   title: "accountSettings",
                   route: "/freelancer/account-setting",
-                  symbol: "mdi-account-cog-outline"
+                  symbol: "mdi-account-edit-outline"
                 }
               ]
             },
             {
               title: "manageProject",
-              symbol: "mdi-cog-transfer-outline",
+              symbol: "mdi-projector-screen-outline",
               subCategory: [
                 {
                   title: "completedProjects",
                   route: "/freelancer/completed-projects",
-                  symbol: "mdi-account-cog-outline"
+                  symbol: "mdi-folder-star-multiple-outline"
                 },
                 {
                   title: "cancelledProjects",
                   route: "/freelancer/cancelled-projects",
-                  symbol: "mdi-account-cog-outline"
+                  symbol: "mdi-close-box-multiple"
                 },
                 {
                   title: "ongoingProjects",
                   route: "/freelancer/ongoing-projects",
-                  symbol: "mdi-account-cog-outline"
+                  symbol: "mdi-google-circles-group"
                 }
               ]
             },
@@ -103,44 +103,44 @@ export default {
                 {
                   title: "ongoingServices",
                   route: "/freelancer/ongoing-services",
-                  symbol: "mdi-account-cog-outline"
+                  symbol: "mdi-google-circles-group"
                 },
                 {
                   title: "completedServices",
                   route: "/freelancer/completed-services",
-                  symbol: "mdi-account-cog-outline"
+                  symbol: "mdi-folder-star-multiple-outline"
                 },
                 {
                   title: "cancelledServices",
                   route: "/freelancer/cancelled-services",
-                  symbol: "mdi-account-cog-outline"
+                  symbol: "mdi-close-box-multiple"
                 }
               ]
             },
             {
               title: "proposals",
               route: "/freelancer/proposals",
-              symbol: "mdi-view-dashboard-variant"
+              symbol: "mdi-human-greeting-proximity"
             },
             {
               title: "payout",
               route: "/freelancer/payout",
-              symbol: "mdi-view-dashboard-variant"
+              symbol: "mdi-credit-card-marker-outline"
             },
             {
               title: "invoices",
               route: "/freelancer/invoices",
-              symbol: "mdi-view-dashboard-variant"
+              symbol: "mdi-sitemap"
             },
-            {
-              title: "packages",
-              route: "/freelancer/packages",
-              symbol: "mdi-view-dashboard-variant"
-            },
+            // {
+            //   title: "packages",
+            //   route: "/freelancer/packages",
+            //   symbol: "mdi-package-variant-closed"
+            // },
             {
               title: "mySavedItems",
               route: "/freelancer/my-saved-items",
-              symbol: "mdi-view-dashboard-variant"
+              symbol: "mdi-content-save-edit-outline"
             }
           ];
           break;

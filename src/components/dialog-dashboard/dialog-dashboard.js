@@ -1,7 +1,7 @@
 export default {
   name: "dialog-dashboard",
   components: {},
-  props: ["componentData"],
+  props: ["simpleDialogData", "title"],
   data() {
     return {
       dialog: false

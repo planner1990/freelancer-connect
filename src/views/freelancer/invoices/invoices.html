@@ -1,5 +1,7 @@
-
-<section class="invoices">
-  <h1>invoices Component</h1>
-</section>
-
+<dashboard-card :title-card="$t('actions.categories')" minHeight665="true">
+    <table-dashboard
+            :headersUserManagement="headersUserManagement"
+            :dataUserManagement="dataUserManagement"
+            :show-select="showSelect"
+    ></table-dashboard>
+</dashboard-card>

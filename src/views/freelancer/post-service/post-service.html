@@ -1,5 +1,193 @@
+<dashboard-card :titleCard="titleCard">
+    <v-form
+            ref="form"
+            v-model="valid"
+            lazy-validation
+    >
+        <header-section :headerSectionTitle="'توضیحات پروژه'"></header-section>
+        <v-row>
+            <v-text-field
+                    v-model="name"
+                    :counter="10"
+                    :rules="nameRules"
+                    label="عنوان پروژه"
+                    required
+                    outlined
+            ></v-text-field>
+        </v-row>
+        <v-row class="d-lg-flex d-md-block">
+            <v-select
+                    v-model="select"
+                    :items="items"
+                    label="Basic level"
+                    required
+                    outlined
+                    class="col-lg-6 col-md-12 pl-2"
+            ></v-select>
+            <v-select
+                    v-model="select"
+                    :items="items"
+                    label="Less than a week"
+                    required
+                    outlined
+                    class="col-lg-6 col-md-12 pr-2"
+            ></v-select>
+        </v-row>
+        <v-row class="d-lg-flex d-md-block">
+            <v-text-field
+                    v-model="name"
+                    :counter="10"
+                    :rules="nameRules"
+                    label="مبلغ"
+                    required
+                    outlined
+                    class="col-lg-6 col-md-12 pl-2"
+            ></v-text-field>
+            <v-select
+                    v-model="select"
+                    :items="items"
+                    label="Less than a week"
+                    required
+                    outlined
+                    class="col-lg-6 col-md-12 pr-2"
+            ></v-select>
+        </v-row>
+        <header-section :headerSectionTitle="'دسته بندی شغلی'"></header-section>
+        <v-row class="d-lg-flex d-md-block">
+            <v-combobox
+                    v-model="model"
+                    :items="items"
+                    :search-input.sync="search"
+                    hide-selected
+                    hint="Maximum of 5 tags"
+                    label="انتخاب دسته بندی"
+                    multiple
+                    persistent-hint
+                    required
+                    outlined
+                    clearable
+                    small-chips
+            >
+                <template v-slot:no-data>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                No results matching "<strong>{{ search }}</strong>". Press <kbd>enter</kbd> to create a
+                                new one
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </template>
+            </v-combobox>
+        </v-row>
+        <header-section :headerSectionTitle="'انتخاب زبان'"></header-section>
+        <v-row class="d-lg-flex d-md-block">
+            <v-combobox
+                    v-model="model"
+                    :items="items"
+                    :search-input.sync="search"
+                    hide-selected
+                    hint="Maximum of 5 tags"
+                    label="انتخاب زبان مورد نظر"
+                    multiple
+                    persistent-hint
+                    required
+                    outlined
+                    clearable
+                    small-chips
+            >
+                <template v-slot:no-data>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                No results matching "<strong>{{ search }}</strong>". Press <kbd>enter</kbd> to create a
+                                new one
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </template>
+            </v-combobox>
+        </v-row>
+        <header-section :headerSectionTitle="'جزییات پروژه'"></header-section>
+        <v-row class="d-block">
+            <vue-editor v-model="content"></vue-editor>
+        </v-row>
+        <header-section :headerSectionTitle="'مهارت های مورد نیاز'"></header-section>
+        <v-row class="d-lg-flex d-md-block">
+            <v-combobox
+                    v-model="model"
+                    :items="items"
+                    :search-input.sync="search"
+                    hide-selected
+                    hint="Maximum of 5 tags"
+                    label="انتخاب زبان مورد نظر"
+                    multiple
+                    persistent-hint
+                    required
+                    outlined
+                    clearable
+                    small-chips
+            >
+                <template v-slot:no-data>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                موردی یافت نشد "<strong>{{ search }}</strong>". برای افزودن مهارت مورد نظر
+                                <kbd>enter</kbd>را فشار دهید
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </template>
+            </v-combobox>
+        </v-row>
+        <header-section :headerSectionTitle="'ضمیمه مدارک مورد نیاز'"></header-section>
+        <v-row class="d-lg-flex d-md-block">
+            <v-file-input
+                    v-model="files"
+                    color="deep-purple accent-4"
+                    counter
+                    label="File input"
+                    multiple
+                    placeholder="Select your files"
+                    prepend-icon="mdi-paperclip"
+                    outlined
+                    :show-size="1000"
+                    dense
+            >
+                <template v-slot:selection="{ index, text }">
+                    <v-chip
+                            v-if="index < 3"
+                            color="red accent-4"
+                            dark
+                            label
+                            small
+                    >
+                        {{ text }}
+                    </v-chip>
 
-<section class="post-service">
-  <h1>post-service Component</h1>
-</section>
-
+                    <span
+                            v-else-if="index === 3"
+                            class="text-overline grey--text text--darken-3 mx-2"
+                    >
+        +{{ files.length - 3 }} File(s)
+      </span>
+                </template>
+            </v-file-input>
+        </v-row>
+        <!--        <v-checkbox-->
+        <!--                v-model="checkbox"-->
+        <!--                :rules="[v => !!v || 'You must agree to continue!']"-->
+        <!--                label="Do you agree?"-->
+        <!--                required-->
+        <!--        ></v-checkbox>-->
+        <v-row class="my-10">
+            <v-btn
+                    color="error"
+                    :disabled="!valid"
+                    @click="resetValidation"
+            >
+                {{ $t("actions.save&update") }}
+            </v-btn>
+        </v-row>
+    </v-form>
+</dashboard-card>

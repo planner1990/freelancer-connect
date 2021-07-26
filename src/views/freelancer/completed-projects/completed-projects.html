@@ -1,5 +1,6 @@
-
-<section class="completed-projects">
-  <h1>completed-projects Component</h1>
-</section>
-
+<dashboard-card :titleCard="$t('sidebar.completedProjects')">
+    <table-dashboard
+            :headersUserManagement="headersUserManagement"
+            :dataUserManagement="dataUserManagement"
+    ></table-dashboard>
+</dashboard-card>
