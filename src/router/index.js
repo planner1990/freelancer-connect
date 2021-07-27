@@ -45,9 +45,9 @@ const routes = [
         name: "messageCenterPanel",
         meta: { transitionName: "slide" },
         component: () =>
-            import(
-                /* webpackChunkName: "projects" */ "../views/panel/message-center/index"
-                )
+          import(
+            /* webpackChunkName: "projects" */ "../views/panel/message-center/index"
+          )
       },
       {
         path: "edit-project",
@@ -263,6 +263,129 @@ const routes = [
       {
         path: "my-saved-items",
         name: "my-saved-items",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/my-saved-items/index")
+      }
+    ]
+  },
+  {
+    path: "/employer",
+    name: "employer",
+    // redirect: `/panel/dashboard`,
+    meta: { transitionName: "slide" },
+    component: () =>
+      import(
+        /* webpackChunkName: "panel-layout" */ "../views/panel/layout/index"
+      ),
+    children: [
+      {
+        path: "dashboard",
+        name: "dashboard-employer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/employer/dashboard-employer/index")
+      },
+      {
+        path: "post-job",
+        name: "post-job",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/employer/post-job/index")
+      },
+      {
+        path: "message-center",
+        name: "message-center-employer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/message-center/index")
+      },
+      {
+        path: "profile-setting",
+        name: "profile-setting-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/employer/setting/profile-setting-employer/index")
+      },
+      {
+        path: "account-setting",
+        name: "account-setting-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/employer/setting/account-setting-employer/index")
+      },
+      {
+        path: "completed-projects",
+        name: "completed-projects-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            "../views/employer/manage-job/completed-projects-employer/index"
+          )
+      },
+      {
+        path: "cancelled-projects",
+        name: "cancelled-projects-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            "../views/employer/manage-job/cancelled-projects-employer/index"
+          )
+      },
+      {
+        path: "ongoing-projects",
+        name: "ongoing-projects-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/employer/manage-job/ongoing-projects-employer/index")
+      },
+      {
+        path: "posted-services",
+        name: "posted-services-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            "../views/employer/manage-services/posted-services-employer/index"
+          )
+      },
+      {
+        path: "ongoing-services",
+        name: "ongoing-services-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            "../views/employer/manage-services/ongoing-services-employer/index"
+          )
+      },
+      {
+        path: "completed-services",
+        name: "completed-services-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            "../views/employer/manage-services/completed-services-employer/index"
+          )
+      },
+      {
+        path: "cancelled-services",
+        name: "cancelled-services-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            "../views/employer/manage-services/cancelled-services-employer/index"
+          )
+      },
+      {
+        path: "payout",
+        name: "payout-employer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/employer/payout-employer/index")
+      },
+      {
+        path: "invoices",
+        name: "invoices-employer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/employer/invoices-employer/index")
+      },
+      {
+        path: "my-saved-items",
+        name: "my-saved-items-employer",
         meta: { transitionName: "slide" },
         component: () => import("../views/freelancer/my-saved-items/index")
       }

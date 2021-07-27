@@ -20,6 +20,13 @@
               </v-btn>
           </v-col>
       </v-row>
+      <v-row v-if="role === 2">
+          <v-col cols="12" class="d-flex justify-center my-5">
+              <v-btn depressed color="error" class="post-project" link to="/employer/post-job">
+                  ایجاد یک پروژه
+              </v-btn>
+          </v-col>
+      </v-row>
     <v-divider></v-divider>
   </template>
   <v-list dense>

@@ -146,6 +146,96 @@ export default {
           break;
         case "employer":
           this.role = 2;
+          this.sidebarItems = [
+            {
+              title: "dashboard",
+              route: "/employer/dashboard",
+              symbol: "mdi-view-dashboard-variant"
+            },
+            {
+              title: "messageCenter",
+              route: "/employer/message-center",
+              symbol: "mdi-message-bulleted"
+            },
+            {
+              title: "settings",
+              symbol: "mdi-cog-transfer-outline",
+              subCategory: [
+                {
+                  title: "profileSettings",
+                  route: "/employer/profile-setting",
+                  symbol: "mdi-account-cog-outline"
+                },
+                {
+                  title: "accountSettings",
+                  route: "/employer/account-setting",
+                  symbol: "mdi-account-edit-outline"
+                }
+              ]
+            },
+            {
+              title: "manageProject",
+              symbol: "mdi-projector-screen-outline",
+              subCategory: [
+                {
+                  title: "completedProjects",
+                  route: "/employer/completed-projects",
+                  symbol: "mdi-folder-star-multiple-outline"
+                },
+                {
+                  title: "cancelledProjects",
+                  route: "/employer/cancelled-projects",
+                  symbol: "mdi-close-box-multiple"
+                },
+                {
+                  title: "ongoingProjects",
+                  route: "/employer/ongoing-projects",
+                  symbol: "mdi-google-circles-group"
+                }
+              ]
+            },
+            {
+              title: "manageServices",
+              symbol: "mdi-cog-transfer-outline",
+              subCategory: [
+                {
+                  title: "postedServices",
+                  route: "/employer/posted-services",
+                  symbol: "mdi-account-cog-outline"
+                },
+                {
+                  title: "ongoingServices",
+                  route: "/employer/ongoing-services",
+                  symbol: "mdi-google-circles-group"
+                },
+                {
+                  title: "completedServices",
+                  route: "/employer/completed-services",
+                  symbol: "mdi-folder-star-multiple-outline"
+                },
+                {
+                  title: "cancelledServices",
+                  route: "/employer/cancelled-services",
+                  symbol: "mdi-close-box-multiple"
+                }
+              ]
+            },
+            {
+              title: "payout",
+              route: "/employer/payout",
+              symbol: "mdi-credit-card-marker-outline"
+            },
+            {
+              title: "invoices",
+              route: "/employer/invoices",
+              symbol: "mdi-sitemap"
+            },
+            {
+              title: "mySavedItems",
+              route: "/employer/my-saved-items",
+              symbol: "mdi-content-save-edit-outline"
+            }
+          ];
           break;
         default:
           this.role = null;

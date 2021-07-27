@@ -1,0 +1,64 @@
+<dashboard-card :titleCard="$t('sidebar.mySavedItems')">
+  <v-card class="my-saved-items">
+    <v-tabs :vertical="this.$vuetify.breakpoint.width >= 1264" color="error">
+      <v-tab>
+        <v-icon left>
+          mdi-content-save-all-outline
+        </v-icon>
+        موارد ذخیره شده
+      </v-tab>
+      <v-tab>
+        <v-icon left>
+          mdi-domain
+        </v-icon>
+        شرکت های دنبال کننده
+      </v-tab>
+      <v-tab>
+        <v-icon left>
+          mdi-thumb-up-outline
+        </v-icon>
+        فریلنسرهای تایید شده
+      </v-tab>
+
+      <v-tab-item>
+        <v-card flat>
+          <header-section
+            header-section-title="موارد ذخیره شده"
+          ></header-section>
+          <v-card-text>
+            <project-list
+              :projectListItems="projectListItems"
+              :simpleDialogData="simpleDialogData"
+            ></project-list>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat>
+          <header-section
+            header-section-title="شرکت های دنبال شده"
+          ></header-section>
+          <v-card-text>
+            <project-list
+              :projectListItems="projectListItems"
+              :simpleDialogData="simpleDialogData"
+            ></project-list>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat>
+          <header-section
+            header-section-title="فریلنسرهای تایید شده"
+          ></header-section>
+          <v-card-text>
+            <project-list
+              :projectListItems="projectListItems"
+              :simpleDialogData="simpleDialogData"
+            ></project-list>
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+    </v-tabs>
+  </v-card>
+</dashboard-card>
