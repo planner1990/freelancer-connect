@@ -156,6 +156,11 @@ export default {
               symbol: "mdi-view-dashboard-variant"
             },
             {
+              title: "messageCenter",
+              route: "/panel/message-center-panel",
+              symbol: "mdi-message-bulleted"
+            },
+            {
               title: "orders",
               route: "/panel/orders",
               symbol: "mdi-order-bool-descending"

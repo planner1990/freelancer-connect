@@ -41,6 +41,15 @@ const routes = [
           )
       },
       {
+        path: "message-center-panel",
+        name: "messageCenterPanel",
+        meta: { transitionName: "slide" },
+        component: () =>
+            import(
+                /* webpackChunkName: "projects" */ "../views/panel/message-center/index"
+                )
+      },
+      {
         path: "edit-project",
         name: "edit-project",
         meta: { transitionName: "slide" },
