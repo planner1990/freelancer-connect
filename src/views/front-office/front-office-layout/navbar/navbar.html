@@ -1,0 +1,36 @@
+<div :class="{change_background_color: scrollPosition > 50}" class="navbar-front-office">
+    <v-app-bar
+            :clipped-left="$vuetify.rtl === false"
+            :clipped-right="$vuetify.rtl === true"
+            app
+            flat
+    >
+        <v-app-bar-nav-icon @click.stop="drawer()" v-if="showSidebar"></v-app-bar-nav-icon>
+        <v-btn icon large>
+            <v-avatar item size="32px">
+                <v-img
+                        alt="Vuetify"
+                        src="../../../../assets/image/logo-holding.png"
+                ></v-img>
+            </v-avatar>
+        </v-btn>
+        <v-toolbar-title data-v-step="0"></v-toolbar-title>
+        <v-spacer></v-spacer>
+<!--        <customizeTheme />-->
+        <v-list flat nav dense v-if="!showSidebar">
+            <v-list-item-group class="d-flex align-center" v-model="selectedItem" color="teal accent-3">
+                <v-list-item v-for="(item, i) in items" :key="i" class="ma-0" link :to="item.route">
+                    <v-list-item-content>
+                        <v-list-item-title>{{$t(`${item.text}`)}}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list-item-group>
+        </v-list>
+        <v-btn color="teal accent-3" class="mx-5" text>
+            {{$t('actions.enter')}}
+        </v-btn>
+        <v-btn color="teal accent-3" dark>
+            {{$t('actions.register')}}
+        </v-btn>
+    </v-app-bar>
+</div>

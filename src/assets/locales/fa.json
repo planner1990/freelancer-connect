@@ -51,10 +51,21 @@
     "addDeliveryTime": "اضافه کردن زمان تحویل",
     "addResponseTime": "اضافه کردن زمان پاسخ",
     "addReviewOption": "اضافه کردن گزینه بررسی",
-    "servicesLists": "لیست خدمات"
+    "servicesLists": "لیست خدمات",
+    "enter": "ورود",
+    "register": "ثبت نام"
   },
   "form": {
     "responseTimeTitle": "عنوان زمان پاسخ",
     "description": "توضیحات"
+  },
+  "navbar": {
+    "home": "خانه",
+    "blog": "بلاگ",
+    "companies": "آشنایی با شرکت ها",
+    "opportunities": "فرصت های شغلی",
+    "resumeBuilder": "رزومه ساز",
+    "knowYourself": "خودت را بشناس",
+    "morePowerful": "توانمندتر شو"
   }
 }

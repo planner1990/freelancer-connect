@@ -7,19 +7,32 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    redirect: `/login`
-  },
-  {
     path: "/login",
     name: "login",
     meta: { transitionName: "slide" },
-    component: () =>
-      import(/* webpackChunkName: "login" */ "../views/auth/login/index")
-    // beforeEnter: (to, from, next) => {
-    //   if (!store.state.auth.isAuth) next();
-    //   else next("/panel");
-    // }
+    component: () => import("../views/auth/login/index")
+  },
+  {
+    path: "/",
+    redirect: `/home`
+  },
+  {
+    path: "/front-office",
+    redirect: `/home`
+  },
+  {
+    path: "/front-office",
+    name: "front-office",
+    meta: { transitionName: "slide" },
+    component: () => import("../views/front-office/front-office-layout/index"),
+    children: [
+      {
+        path: "/home",
+        name: "home",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/home-page/index")
+      }
+    ]
   },
   {
     path: "/panel",

@@ -1,0 +1,50 @@
+<div class="best-projects">
+  <v-container>
+    <v-row
+      no-gutters
+      class="d-flex flex-column justify-center align-center text-center"
+    >
+      <v-col cols="9">
+        <div class="best-project-title">برترین <strong>پروژه‌ها</strong></div>
+        <div class="mt-5 text-font">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+          از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
+        </div>
+      </v-col>
+    </v-row>
+    <v-row class="d-flex justify-center align-center mt-15 mx-sm-5">
+      <v-col
+        cols="11"
+        lg="3"
+        md="4"
+        sm="12"
+        class="best-projects-card d-flex flex-column align-center justify-center pa-10"
+        v-for="(card, i) in cards"
+        :key="i"
+      >
+        <div class="best-projects-img">{{ card.img }}</div>
+        <div class="mt-5 best-project-card-title">{{ card.projectTitle }}</div>
+        <div class="mt-5 text-font">{{card.projectDescription}}</div>
+      </v-col>
+      <v-col
+        cols="11"
+        lg="3"
+        md="4"
+        sm="12"
+        class="best-projects-card d-flex flex-column align-center justify-center read-more"
+      >
+        <div
+          class="inside-box d-flex flex-column align-center justify-center col-sm-12 pa-4"
+        >
+          <div class="mt-5 best-project-card-title">پروژه های بیشتر</div>
+          <div class="mt-5 text-font">
+            لورم ایپسوم متن ساختگی با تولید سادگی نا گرافیک است
+          </div>
+          <div class="mt-5">
+            <v-btn elevation="2">مشاهده همه</v-btn>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+</div>

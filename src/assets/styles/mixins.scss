@@ -236,13 +236,13 @@
 }
 
 @mixin small {
-  @media (min-width: #{$small-min-width}) {
+  @media (max-width: #{$small-min-width}) {
     @content;
   }
 }
 
 @mixin medium {
-  @media (min-width: #{$medium-min-width}) {
+  @media (max-width: #{$medium-max-width}) {
     @content;
   }
 }

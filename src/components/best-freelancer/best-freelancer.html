@@ -1,0 +1,53 @@
+<div class="best-freelancer">
+  <v-container>
+    <v-row class="d-flex flex-column justify-center align-center text-center">
+      <v-col cols="9">
+        <div class="best-project-title">برترین <strong>پروژه‌ها</strong></div>
+        <div class="mt-5 text-font">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+          از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
+        </div>
+      </v-col>
+    </v-row>
+    <v-row class="d-flex justify-center align-center my-15 mx-sm-5">
+      <v-col
+        cols="11"
+        md="2"
+        sm="5"
+        xs="11"
+        class="best-freelancer-card d-flex flex-column pa-4 mx-2 my-sm-2"
+        v-for="(project, i) in 4"
+        :key="i"
+      >
+        <div class="best-freelancer-card_image">Picture</div>
+        <div class="best-freelancer-card_name">
+          <v-icon class="px-1" color="green darken-2" dense
+            >mdi-check-decagram</v-icon
+          >احمد احمدی
+        </div>
+        <div class="best-freelancer-card_title mb-6">
+          چگونه ارتباطات اتفاق می افتد
+        </div>
+        <div class="best-freelancer-card_detail">
+          <v-icon class="px-1" color="grey darken-3" dense
+            >mdi-account-clock-outline</v-icon
+          >۴۰۰.۰۰۰ تومان / ساعتی
+        </div>
+        <div class="best-freelancer-card_detail">
+          <v-icon class="px-1" color="grey darken-3" dense
+            >mdi-map-marker-outline</v-icon
+          >تهران
+        </div>
+        <div class="best-freelancer-card_detail">
+          <v-icon class="px-1" color="grey darken-3" dense
+            >mdi-cards-heart</v-icon
+          >افزودن به علاقمندی ها
+        </div>
+        <div class="best-freelancer-card_detail">
+          <v-icon class="px-1" color="yellow darken-1" dense>mdi-star</v-icon
+          >۵/۵
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+</div>
