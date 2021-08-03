@@ -12,18 +12,15 @@ export default {
     toggle: false,
     selectedItem: 0,
     items: [
-      { text: "navbar.home", route: "/", icon: "mdi-folder" },
-      { text: "navbar.blog", route: "/", icon: "mdi-account-multiple" },
-      { text: "navbar.companies", route: "/aa", icon: "mdi-star" },
-      { text: "navbar.opportunities", route: "/aa", icon: "mdi-check-circle" },
-      { text: "navbar.resumeBuilder", route: "/aa", icon: "mdi-upload" },
-      { text: "navbar.knowYourself", route: "/aa", icon: "mdi-upload" },
-      { text: "navbar.morePowerful", route: "/aa", icon: "mdi-cloud-upload" }
+      { text: "navbar.home", route: "/" },
+      { text: "navbar.blog", route: "/" },
+      { text: "navbar.browseServices", route: "/browse-service" },
+      { text: "navbar.browseProjects", route: "/browse-projects" }
     ]
   }),
   computed: {
     ...mapGetters({
-      drawer: types.GET_DRAWER
+      drawerFront: types.GET_DRAWER_FRONT
     })
   },
   created() {},

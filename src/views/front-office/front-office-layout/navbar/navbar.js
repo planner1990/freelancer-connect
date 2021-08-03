@@ -14,11 +14,8 @@ export default {
     items: [
       { text: "navbar.home", route: "/" },
       { text: "navbar.blog", route: "/" },
-      { text: "navbar.companies", route: "/aa" },
-      { text: "navbar.opportunities", route: "/aa" },
-      { text: "navbar.resumeBuilder", route: "/aa" },
-      { text: "navbar.knowYourself", route: "/aa" },
-      { text: "navbar.morePowerful", route: "/aa" }
+      { text: "navbar.browseServices", route: "/browse-services" },
+      { text: "navbar.browseProjects", route: "/browse-projects" }
     ],
     scrollPosition: null
   }),
@@ -28,7 +25,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      drawerAction: types.ACTION_DRAWER
+      drawerAction: types.ACTION_DRAWER_FRONT
     }),
     drawer() {
       this.drawerAction();
@@ -37,7 +34,6 @@ export default {
       this.scrollPosition = window.scrollY;
     },
     myEventHandler(e) {
-      console.log(e.target.innerWidth);
       this.showSidebar = e.target.innerWidth <= 968;
     }
   },

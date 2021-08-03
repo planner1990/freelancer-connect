@@ -1,9 +1,11 @@
 /*import { mapActions } from "vuex";
 import * as types from "./../../store/types";*/
+import TransitionPage from "../transitionPage/index";
+import AuthService from "../../core/services/modules/authService";
 
 export default {
   name: "login-comp",
-  components: {},
+  components: { TransitionPage },
   props: [],
   mixins: [],
   data() {
@@ -11,22 +13,36 @@ export default {
       loading: false,
       signInLoading: false,
       username: "",
-      password: "",
-      errors: []
+      errors: [],
+      step: 1,
+      timer: 119,
+      items: ["نوع اول", "نوع دوم", "نوع سوم"],
+      personality: "",
+      registerForm: {
+        phone: null,
+        OTPCode: null,
+        role: "",
+        firstName: "",
+        lastName: ""
+      },
+      radios: null
     };
   },
   computed: {},
 
-  mounted() {},
+  mounted() {
+    setInterval(this.handleTimer, 1000);
+  },
   methods: {
     /*...mapActions({
       checkIsAuth: types.ACTION_CHECK_IS_AUTH
     }),*/
     onSubmit(evt) {
       evt.preventDefault();
-      this.loading = true;
-      this.signInLoading = true;
-      this.handleUsers(this.username);
+      this.step = 2;
+      // this.loading = true;
+      // this.signInLoading = true;
+      // this.handleUsers(this.username);
       /*authService
         .login(this.username, this.password)
         .then(response => {
@@ -57,13 +73,38 @@ export default {
         default:
           this.$router.push("/panel/dashboard");
       }
-    }
-    /*showNotification() {
-      let option = {
-        body: "this is body of notification",
-        icon: "/img/icons/android-96x196.png"
+    },
+    handleTimer() {
+      if (this.step === 2 && this.timer > 0) {
+        this.timer--;
+      }
+    },
+    resendConfirmCode() {
+      this.timer = 119;
+    },
+    goToNextStep(step, role = "employer") {
+      this.step = step;
+      this.registerForm.role = role;
+    },
+    handlePersonality(personality) {
+      this.personality = personality;
+    },
+    backToPrevStep(step) {
+      this.step = step;
+    },
+    registration() {
+      const body = {
+        first_name: this.registerForm.firstName,
+        last_name: this.registerForm.lastName,
+        phone: this.registerForm.phone,
+        code: this.registerForm.OTPCode,
+        role: this.registerForm.role
       };
-      new Notification("hi this is from chaintracker", option);
-    }*/
-  }
+      console.log(body);
+      AuthService.register(body).then(res => {
+        console.log(res);
+      });
+    }
+  },
+  created() {}
 };

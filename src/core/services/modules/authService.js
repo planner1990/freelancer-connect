@@ -1,8 +1,12 @@
-import { API_V4 } from "@/services/config/auth-axios";
+import { API_V1, API_V4 } from "../config/auth-axios";
 
 class AuthService {
   getAccessToken() {
     return localStorage.getItem("accessToken");
+  }
+
+  register(body) {
+    return API_V1.post("auth/register", body);
   }
 
   getOtpToken() {

@@ -17,6 +17,10 @@ const routes = [
     redirect: `/home`
   },
   {
+    path: "*",
+    redirect: `/home`
+  },
+  {
     path: "/front-office",
     redirect: `/home`
   },
@@ -31,6 +35,18 @@ const routes = [
         name: "home",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/home-page/index")
+      },
+      {
+        path: "/browse-services",
+        name: "browse-services",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/services-browse/index")
+      },
+      {
+        path: "/browse-projects",
+        name: "browse-projects",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/projects-browse/index")
       }
     ]
   },

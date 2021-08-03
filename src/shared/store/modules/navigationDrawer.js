@@ -1,6 +1,6 @@
 import * as types from "../types";
 const state = {
-  drawer: false
+  drawer: true
 };
 const getters = {
   [types.GET_DRAWER]: state => {

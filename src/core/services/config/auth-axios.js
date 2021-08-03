@@ -1,6 +1,5 @@
 import axios from "axios";
 import authService from "../modules/authService";
-// import store from "../../store";
 import Vue from "vue";
 
 const headers = {
@@ -10,8 +9,8 @@ const headers = {
   version: "1000"
 };
 
-const API_V3 = axios.create({
-  baseURL: process.env.VUE_APP_BASE_URL_V3,
+const API_V1 = axios.create({
+  baseURL: process.env.VUE_APP_BASE_URL_V1,
   headers: headers
 });
 
@@ -50,7 +49,7 @@ API_V4.interceptors.request.use(
     Promise.reject(error);
   }
 );
-API_V3.interceptors.request.use(
+API_V1.interceptors.request.use(
   config => {
     const token = authService.getAccessToken();
     if (token) {
@@ -106,4 +105,4 @@ API_V4.interceptors.response.use(
 //   }
 // );
 
-export { API_V3, API_V4, API_DEV };
+export { API_V1, API_V4, API_DEV };

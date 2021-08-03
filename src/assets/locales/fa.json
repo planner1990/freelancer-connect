@@ -53,19 +53,33 @@
     "addReviewOption": "اضافه کردن گزینه بررسی",
     "servicesLists": "لیست خدمات",
     "enter": "ورود",
-    "register": "ثبت نام"
+    "register": "ثبت نام",
+    "continue": "ادامه"
   },
   "form": {
     "responseTimeTitle": "عنوان زمان پاسخ",
-    "description": "توضیحات"
+    "description": "توضیحات",
+    "mobileAndEmail": "شماره موبایل یا ایمیل",
+    "otherWays": "یا از طریق راههای زیر ادامه دهید",
+    "enterAndRegisterByGoogle": "ورود/ثبت نام با گوگل",
+    "enterAndRegisterByLinkedin": "ورود/ثبت نام با لینکدین",
+    "enterConfirmCode": "کد تایید را وارد نمایید",
+    "IAmPerson": "فرد هستم",
+    "WeAreCompany": "شرکت هستیم",
+    "IAmFreelancer": "فریلنسر هستم",
+    "IAmEmployer": "کارفرما هستم",
+    "firstname": "نام",
+    "lastname": "نام خانوادگی",
+    "typeOfActivity": "نوع فعالیت",
+    "companyName": "نام شرکت",
+    "registerComplete": "تکمیل ثبت نام"
   },
   "navbar": {
     "home": "خانه",
     "blog": "بلاگ",
-    "companies": "آشنایی با شرکت ها",
-    "opportunities": "فرصت های شغلی",
-    "resumeBuilder": "رزومه ساز",
-    "knowYourself": "خودت را بشناس",
-    "morePowerful": "توانمندتر شو"
+    "browseServices": "جستجوی خدمات",
+    "browseProjects": "جستجوی پروژه ها",
+    "enterAndRegister": "ورود/ثبت نام",
+    "createProject": "ثبت پروژه"
   }
 }
