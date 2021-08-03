@@ -12,7 +12,6 @@ export default {
     return {
       loading: false,
       signInLoading: false,
-      username: "",
       errors: [],
       step: 1,
       timer: 119,
