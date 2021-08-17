@@ -9,6 +9,10 @@ class AuthService {
     return API_V1.post("auth/register", body);
   }
 
+  getAssignedRole() {
+    return API_V1.get("get_assigned_role");
+  }
+
   getOtpToken() {
     return localStorage.getItem("otpToken");
   }

@@ -1,8 +1,8 @@
 <dashboard-card :titleCard="$t('sidebar.completedProjects')">
-    <table-dashboard
-            :headersUserManagement="headersUserManagement"
-            :dataUserManagement="dataUserManagement"
-    ></table-dashboard>
+    <project-list
+            :simpleDialogData="simpleDialogData"
+            :status="status"
+    ></project-list>
 </dashboard-card>
 
 

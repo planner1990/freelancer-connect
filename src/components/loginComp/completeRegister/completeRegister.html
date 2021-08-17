@@ -1,0 +1,65 @@
+<div class="step-second">
+  <p>
+    <v-icon dense @click="backToPrevStep()">
+      mdi-arrow-right
+    </v-icon>
+  </p>
+  <v-text-field
+    :label="$t('form.firstname')"
+    name="Username"
+    type="text"
+    autofocus
+    outlined
+    v-model="firstName"
+    class="mb-2"
+    dense
+    v-if="getDataFromStore.is_company === 0"
+  ></v-text-field>
+  <v-text-field
+    :label="$t('form.lastname')"
+    name="Username"
+    type="text"
+    autofocus
+    outlined
+    v-model="lastName"
+    class="mb-2"
+    dense
+    v-if="getDataFromStore.is_company === 0"
+  ></v-text-field>
+  <v-text-field
+    :label="$t('form.companyName')"
+    name="Username"
+    type="text"
+    autofocus
+    outlined
+    v-model="companyName"
+    class="mb-2"
+    dense
+    v-if="getDataFromStore.is_company === 1"
+  ></v-text-field>
+  <v-select
+    class="mb-4"
+    :items="companyTypeLists"
+    item-text="title"
+    item-value="id"
+    v-model="companyList"
+    :label="$t('form.typeOfActivity')"
+    outlined
+    dense
+  >
+    <template v-slot:append>
+      <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>
+    </template>
+  </v-select>
+  <v-card-actions class="pa-0">
+    <v-btn
+      color="teal accent-3"
+      dark
+      :loading="signInLoading"
+      block
+      class="py-5"
+      @click="registration"
+      >{{ $t('form.registerComplete') }}</v-btn
+    >
+  </v-card-actions>
+</div>

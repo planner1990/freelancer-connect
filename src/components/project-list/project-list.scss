@@ -1,12 +1,12 @@
 @import "src/assets/styles/variable";
-@import "src/assets/styles/mixins";
 .project-row {
   background-color: $surface-150;
   min-height: 170px;
+  height: 185px;
   padding: 30px;
   margin-bottom: 18px;
 
-  .custom-border{
+  .custom-border {
     > div {
       figure {
         margin: 0;
@@ -17,17 +17,6 @@
         figcaption {
           margin-top: 10px;
           font-size: 12px;
-        }
-      }
-
-      &:not(:last-child) {
-        @include addLine($position: "left-center", $width: 2px, $height: 50%, $space: 0, $bgColor: linear-gradient(to right, transparent, $surface-300, transparent));
-      }
-
-      &:nth-child(3) {
-        @include addLine($position: "left-center", $width: 2px, $height: 0, $bgColor: linear-gradient(to right, transparent, $surface-300, transparent));
-        @include medium() {
-          @include addLine($position: "left-center", $width: 2px, $height: 50%, $space: 0, $bgColor: linear-gradient(to right, transparent, $surface-300, transparent));
         }
       }
     }

@@ -40,19 +40,19 @@ export default {
   },
   computed: {},
   mounted() {
-    this.launchTour();
+    // this.launchTour();
   },
   methods: {
-    launchTour() {
-      const tourStatus = localStorage.getItem("tour_status");
-      if (tourStatus !== "off") {
-        this.$tours["myTour"].start();
-      } else {
-        this.$tours["myTour"].finish();
-      }
-    },
-    onFinishStepsCallback() {
-      localStorage.setItem("tour_status", "off");
-    }
+    // launchTour() {
+    //   const tourStatus = localStorage.getItem("tour_status");
+    //   if (tourStatus !== "off") {
+    //     this.$tours["myTour"].start();
+    //   } else {
+    //     this.$tours["myTour"].finish();
+    //   }
+    // },
+    // onFinishStepsCallback() {
+    //   localStorage.setItem("tour_status", "off");
+    // }
   }
 };

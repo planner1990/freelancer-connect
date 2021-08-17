@@ -1,0 +1,54 @@
+<div class="step-first" key="step1">
+    <h5 class="text-h6 my-5">
+        {{$t('navbar.enterAndRegister')}}
+    </h5>
+    <p>برای ادامه شماره موبایل خود را وارد کنید.</p>
+    <v-text-field
+            :label="$t('form.mobileAndEmail')"
+            name="Username"
+            type="text"
+            autofocus
+            outlined
+            v-model="phone"
+            dense
+    ></v-text-field>
+    <v-card-actions class="pa-0">
+        <v-btn
+                color="teal accent-3"
+                :loading="signInLoading"
+                block
+                :disabled="!phone"
+                :dark="!!phone"
+                class="py-5"
+                @click="handleSendOTP()"
+        >{{ $t('actions.continue') }}</v-btn
+        >
+    </v-card-actions>
+    <v-card-text>
+        <div class="mt-5 text">{{ $t('form.otherWays') }}:</div>
+    </v-card-text>
+    <div class="d-xl-flex d-lg-block google ma-0">
+        <div class="mb-sm-5">
+            <v-btn :loading="signInLoading" block>
+                <v-icon left>
+                    mdi-google
+                </v-icon>
+                {{ $t('form.enterAndRegisterByGoogle') }}</v-btn
+            >
+        </div>
+        <div>
+            <v-btn
+                    color="light-blue darken-4"
+                    dark
+                    :loading="signInLoading"
+                    block
+                    type="submit"
+            >
+                <v-icon left>
+                    mdi-linkedin
+                </v-icon>
+                {{ $t('form.enterAndRegisterByLinkedin') }}</v-btn
+            >
+        </div>
+    </div>
+</div>

@@ -37,7 +37,8 @@ export default {
   mounted() {},
   methods: {
     logout() {
-      this.$router.push({ name: "login" }).then(r => console.log(r));
+      localStorage.removeItem("accessToken");
+      this.$router.push("/");
     },
     checkRole(role) {
       switch (role) {
@@ -191,6 +192,11 @@ export default {
                   title: "ongoingProjects",
                   route: "/employer/ongoing-projects",
                   symbol: "mdi-google-circles-group"
+                },
+                {
+                  title: "pendingProjects",
+                  route: "/employer/pending-projects",
+                  symbol: "mdi-folder-star-multiple-outline"
                 }
               ]
             },

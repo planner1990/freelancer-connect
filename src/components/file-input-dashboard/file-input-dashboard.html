@@ -1,7 +1,6 @@
 <v-file-input
         v-model="files"
-        placeholder="بارگزاری تصویر"
-        label="تصویر بارگزاری شده"
+        :label="$t('form.uploadImage')"
         multiple
         accept="image/*"
         prepend-icon="mdi-paperclip"

@@ -8,9 +8,44 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/login",
-    name: "login",
+    name: "",
     meta: { transitionName: "slide" },
-    component: () => import("../views/auth/login/index")
+    component: () => import("../views/auth/login/index"),
+    children: [
+      {
+        path: "/",
+        name: "enter-phone-number",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../components/loginComp/enterPhoneNumber/index")
+      },
+      {
+        path: "enter-otp-code",
+        name: "enter-otp-code",
+        meta: { transitionName: "slide" },
+        component: () => import("../components/loginComp/enterOTPCode/index")
+      },
+      {
+        path: "freelancer-or-employer",
+        name: "freelancer-or-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../components/loginComp/freelancerOrEmployer/index")
+      },
+      {
+        path: "personality",
+        name: "personality",
+        meta: { transitionName: "slide" },
+        component: () => import("../components/loginComp/personality/index")
+      },
+      {
+        path: "complete-register",
+        name: "complete-register",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../components/loginComp/completeRegister/index")
+      }
+    ]
   },
   {
     path: "/",
@@ -363,6 +398,13 @@ const routes = [
         meta: { transitionName: "slide" },
         component: () =>
           import("../views/employer/manage-job/ongoing-projects-employer/index")
+      },
+      {
+        path: "pending-projects",
+        name: "pending-projects-employer",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/employer/manage-job/pending-projects-employer/index")
       },
       {
         path: "posted-services",

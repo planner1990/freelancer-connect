@@ -1,6 +1,10 @@
 <v-container>
   <v-row>
-    <v-col cols="12" v-for="projectList in projectListItems" :key="projectList.name">
+    <v-col
+      cols="12"
+      v-for="projectList in showProjects"
+      :key="projectList.id"
+    >
       <div class="container--fluid d-lg-flex d-md-block project-row">
         <div class="col-lg-6 col-md-12">
           <div>
@@ -9,38 +13,20 @@
               {{ projectList.name }}
             </span>
           </div>
-          <div>{{projectList.title}}</div>
+          <div class="font-weight-medium">{{projectList.title}}</div>
           <div>
             <div class="container mar-b-48">
               <div
                 class="row justify-content-center align-items-center text-white text-center rtl custom-border"
               >
-                <div class="col col-md-2">
+                <div class="col-3 d-flex align-center justify-center">
                   <figure>
                     <figcaption>
-                      {{ projectList.amount }}
+                      {{ projectList.amount}}
                     </figcaption>
                   </figure>
                 </div>
-                <div class="col col-md-2">
-                  <figure>
-                    <figcaption>
-                      {{ projectList.country }}
-                    </figcaption>
-                  </figure>
-                </div>
-                <div class="col-3 d-md-block">
-                  <figure>
-                    <figcaption>
-                      <span
-                        ><v-icon color="red darken-2"
-                          >mdi-bulletin-board</v-icon
-                        >
-                        Type Fixed
-                      </span>
-                    </figcaption>
-                  </figure>
-                </div>
+                  <v-divider class="divide" vertical ></v-divider>
                 <div class="col-5 d-md-block">
                   <figure>
                     <figcaption>
@@ -69,10 +55,13 @@
                 ></dialog-dashboard>
               </div>
             </div>
-            <div class="expired">{{projectList.expirationStatus}}</div>
+            <div class="expired">{{$t(`form.${projectList.expirationStatus}`)}}</div>
           </div>
         </div>
       </div>
     </v-col>
+      <div class="col-12 text-center pt-2">
+          <v-pagination color="red" :length="totalPage" :value="page" @input="changePage($event)"></v-pagination>
+      </div>
   </v-row>
 </v-container>

@@ -1,148 +1,87 @@
 import DashboardCard from "../../../../components/dashboardCard/index";
 import HeaderSection from "../../../../components/header-section/index";
-import ProjectList from "../../../../components/project-list/index";
 import FileInputDashboard from "../../../../components/file-input-dashboard/index";
-import DynamicExpansionPanel from "../../../../components/dynamic-expansion-panel/index";
-import FormDialog from "../../../../components/form-dialog/index";
+import projectsService from "../../../../core/services/modules/projectsService";
+import profileServices from "../../../../core/services/modules/profileServices";
 export default {
   name: "profile-setting-employer",
   components: {
     DashboardCard,
     HeaderSection,
-    ProjectList,
-    FileInputDashboard,
-    DynamicExpansionPanel,
-    FormDialog
+    FileInputDashboard
   },
   props: [],
   data() {
     return {
-      valid: true,
+      valid: false,
       name: "",
-      nameRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length <= 10) || "Name must be less than 10 characters"
-      ],
-      email: "",
-      emailRules: [
-        v => !!v || "E-mail is required",
-        v => /.+@.+\..+/.test(v) || "E-mail must be valid"
-      ],
       select: "",
-      items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-      checkbox: false,
-      date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-          .toISOString()
-          .substr(0, 10),
-      picker: false,
-      model: ["گوگل آنالتیکس"],
-      search: null,
-      content: "<h3 style='text-align: right'>توضیحات در مورد پروژه...</h3>",
-      files: [],
-      dialog: false,
-      isMobile: true,
+      isDisable: false,
+      companyCriteriaItems: [],
+      companyTypeLists: [],
       titleCard: "پروژه ها",
-      simpleDialogData: {
-        buttonTitle: "حذف پروژه",
-        header: "آیا می خواهید پروژه را حذف کنید؟",
-        rejectTitle: "خیر",
-        confirmTitle: "بله"
+      profileForm: {
+        firstName: "",
+        lastName: "",
+        description: "",
+        categoryId: null,
+        noOfEmployees: ""
       },
-      addExperienceDataForDialogForm: {
-        titleButton: "افزودن تجربیات",
-        formField: [
-          { type: "text-field", label: "عنوان", class: "col-lg-6 col-md-12" },
-          {
-            type: "text-field",
-            label: "نام شرکت",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "date-picker-from",
-            label: "از تاریخ",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "date-picker-to",
-            label: "تا تاریخ",
-            class: "col-lg-6 col-md-12"
-          },
-          { type: "text-area", label: "توضیحات", class: "col-md-12" }
-        ]
-      },
-      addEducationDataForDialogForm: {
-        titleButton: "افزودن تحصیلات",
-        formField: [
-          {
-            type: "text-field",
-            label: "عنوان مدرک تحصیلی",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "text-field",
-            label: "نام دانشگاه یا موسسه",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "date-picker-from",
-            label: "از تاریخ",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "date-picker-to",
-            label: "تا تاریخ",
-            class: "col-lg-6 col-md-12"
-          },
-          { type: "text-area", label: "توضیحات", class: "col-md-12" }
-        ]
-      },
-      addProjectsDataForDialogForm: {
-        titleButton: "افزودن پروژه ها",
-        formField: [
-          {
-            type: "text-field",
-            label: "عنوان پروژه",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "text-field",
-            label: "وارد نمودن URL",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "file-input",
-            label: "انتخاب فایل مورد نظر",
-            class: "col-md-12"
-          }
-        ]
-      },
-      addAwardDataForDialogForm: {
-        titleButton: "افزودن دستاوردها",
-        formField: [
-          {
-            type: "text-field",
-            label: "عنوان دستاورد",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "date-picker-to",
-            label: "تاریخ کسب دستاورد",
-            class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "file-input",
-            label: "انتخاب فایل مورد نظر",
-            class: "col-md-12"
-          }
+      profileRule: {
+        firstnameRules: [
+          v => !!v || "Name is required",
+          v => v.length >= 3 || "Name must be more than 3 characters"
+        ],
+        lastnameRules: [
+          v => !!v || "Lastname is required",
+          v => v.length >= 3 || "Name must be more than 3 characters"
         ]
       }
     };
   },
   computed: {},
-  mounted() {},
+  mounted() {
+    this.getCompanyCriteriaItems();
+    this.getCategoryId();
+    this.getProfileInfo();
+  },
   methods: {
-    resetValidation() {
-      this.$refs.form.resetValidation();
+    updateProfile() {
+      if (this.$refs[`form`].validate() === true) {
+        const body = {
+          first_name: this.profileForm.firstName,
+          last_name: this.profileForm.lastName,
+          description: this.profileForm.description,
+          category_id: this.profileForm.categoryId,
+          no_of_employees: this.profileForm.noOfEmployees
+        };
+        profileServices.employerUpdateProfile(body).then(res => {
+          console.log(res);
+          // this.$refs.form.resetValidation();
+        });
+      }
+    },
+    getProfileInfo() {
+      profileServices.employerGetProfile().then(res => {
+        const user = res.data.data.user;
+        this.profileForm = {
+          firstName: user.first_name,
+          lastName: user.last_name,
+          description: user.profile.description,
+          categoryId: user.id,
+          noOfEmployees: String(user.profile.no_of_employees)
+        };
+      });
+    },
+    getCompanyCriteriaItems() {
+      projectsService.companyCriteria().then(res => {
+        this.companyCriteriaItems = res.data.data["criterias"];
+      });
+    },
+    getCategoryId() {
+      projectsService.activityTypes().then(res => {
+        this.companyTypeLists = res.data.data;
+      });
     }
   },
   watch: {}

@@ -1,9 +1,8 @@
 import DashboardCard from "../../../components/dashboardCard/index";
 import HeaderSection from "../../../components/header-section/index";
-import { VueEditor } from "vue2-editor";
 export default {
   name: "post-service",
-  components: { DashboardCard, HeaderSection, VueEditor },
+  components: { DashboardCard, HeaderSection },
   props: [],
   data() {
     return {

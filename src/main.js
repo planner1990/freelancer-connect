@@ -9,7 +9,6 @@ import "@mdi/font/css/materialdesignicons.css";
 import i18n from "./i18n";
 import "./assets/styles/styles.scss";
 import "./assets/styles/overrides.scss";
-
 Vue.config.productionTip = false;
 new Vue({
   router,
