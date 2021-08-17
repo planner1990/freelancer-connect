@@ -1,7 +1,6 @@
 <div class="text-center ma-2">
   <v-snackbar v-model="showSnackbar" color="secondary">
     {{ snackbarMessage }}
-
     <template v-slot:action="{ attrs }">
       <v-btn color="pink" text v-bind="attrs" @click="hiddenSnackbar()">
         بستن
