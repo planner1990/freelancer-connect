@@ -1,0 +1,27 @@
+<div class="step-second">
+  <p>
+    <v-icon dense @click="backToPrevStep(2)">
+      mdi-arrow-right
+    </v-icon>
+  </p>
+  <div>
+    <v-btn
+      outlined
+      :loading="signInLoading"
+      block
+      class="py-5"
+      @click="goToNextStep(0)"
+      >{{ $t('form.IAmPerson') }}</v-btn
+    >
+  </div>
+  <div class="mt-5">
+    <v-btn
+      outlined
+      :loading="signInLoading"
+      block
+      class="py-5"
+      @click="goToNextStep(1)"
+      >{{ $t('form.WeAreCompany') }}</v-btn
+    >
+  </div>
+</div>

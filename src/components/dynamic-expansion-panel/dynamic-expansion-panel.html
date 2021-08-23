@@ -1,0 +1,109 @@
+<div>
+
+  <v-expansion-panels v-if="listOfFormData">
+    <v-expansion-panel v-for="(item, index) in listOfFormData" :key="index">
+      <v-expansion-panel-header>
+        <template v-slot:default="{ open }">
+          <v-row no-gutters>
+            <v-col cols="4">
+              عنوان ( از تاریخ - تا تاریخ):
+            </v-col>
+            <v-col cols="8" class="text--secondary">
+              <v-fade-transition leave-absolute>
+                <span v-if="open" key="0">
+                  عنوان ( از تاریخ - تا تاریخ)
+                </span>
+                <span v-else key="1" dir="ltr">
+                  {{item.start}} - {{item.end}} : {{ item.name }}
+                </span>
+              </v-fade-transition>
+            </v-col>
+          </v-row>
+        </template>
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+        <v-text-field
+          v-model="name || item.name"
+          placeholder="Caribbean Cruise"
+        ></v-text-field>
+        <v-row justify="space-around" no-gutters>
+          <v-col cols="12" sm="6" md="6">
+            <v-menu
+              ref="startMenu"
+              :close-on-content-click="false"
+              :return-value.sync="start"
+              offset-y
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="start || item.start"
+                  label="شروع از تاریخ"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker v-model="date" no-title scrollable>
+                <v-spacer></v-spacer>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.startMenu.isActive = false"
+                >
+                  Cancel
+                </v-btn>
+                <v-btn text color="primary" @click="$refs.startMenu.save(date)">
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-menu>
+          </v-col>
+
+          <v-col cols="12" sm="6" md="6">
+            <v-menu
+              ref="endMenu"
+              :close-on-content-click="false"
+              :return-value.sync="end"
+              offset-y
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="end || item.end"
+                  label="خاتمه در تاریخ"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker v-model="date" no-title scrollable>
+                <v-spacer></v-spacer>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.endMenu.isActive = false"
+                >
+                  Cancel
+                </v-btn>
+                <v-btn text color="primary" @click="$refs.endMenu.save(date)">
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-menu>
+          </v-col>
+          <v-col cols="12">
+            <v-textarea
+              outlined
+              name="input-7-4"
+              :label="$t('form.description')"
+              :value="item.companyName"
+            ></v-textarea>
+          </v-col>
+        </v-row>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
+</div>

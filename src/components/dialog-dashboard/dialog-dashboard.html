@@ -1,0 +1,35 @@
+<v-row justify="center">
+  <v-dialog v-model="dialog" persistent max-width="512">
+    <template v-slot:activator="{ on, attrs }">
+      <v-btn depressed color="error" v-bind="attrs" v-on="on">
+        {{ title }}
+      </v-btn>
+    </template>
+    <v-card>
+      <v-card-title class="text-h5 justify-content: center;">
+        {{ simpleDialogData.header }}
+      </v-card-title>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <div class="container d-flex justify-center">
+          <v-btn
+            depressed
+            color="error"
+            @click="dialog = false"
+            class="mr-2 ml-2"
+          >
+            {{ simpleDialogData.rejectTitle }}
+          </v-btn>
+          <v-btn
+            depressed
+            color="error"
+            @click="dialog = false"
+            class="mr-2 ml-2"
+          >
+            {{ simpleDialogData.confirmTitle }}
+          </v-btn>
+        </div>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</v-row>

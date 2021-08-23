@@ -1,0 +1,10 @@
+<v-container class="grey lighten-5 container--fluid">
+    <v-row no-gutters>
+        <div :class="{card : titleCard, minHeight665: minHeight665}">
+            <div>
+                <h4>{{titleCard}}</h4>
+                <slot />
+            </div>
+        </div>
+    </v-row>
+</v-container>

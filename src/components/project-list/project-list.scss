@@ -1,0 +1,29 @@
+@import "src/assets/styles/variable";
+.project-row {
+  background-color: $surface-150;
+  min-height: 170px;
+  height: 185px;
+  padding: 30px;
+  margin-bottom: 18px;
+
+  .custom-border {
+    > div {
+      figure {
+        margin: 0;
+        color: $surface-600;
+        font-size: 18px;
+        font-weight: 300;
+
+        figcaption {
+          margin-top: 10px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .expired {
+    color: $green-100;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}

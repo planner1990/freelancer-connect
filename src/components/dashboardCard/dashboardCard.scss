@@ -1,0 +1,17 @@
+@import "src/assets/styles/variable";
+.card {
+  background-color: $surface-100;
+  width: 100%;
+  box-shadow: 1px 1px 3px 0 rgb(0 0 0 / 42%);
+  border-radius: 5px;
+  padding: 30px;
+
+  h4 {
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ababab38;
+    margin-bottom: 50px;
+  }
+  &.minHeight665 {
+    min-height: 656px;
+  }
+}

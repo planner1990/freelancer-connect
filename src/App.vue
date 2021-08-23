@@ -15,6 +15,7 @@
 
 <script>
 import transitionPage from "./components/transitionPage/index";
+
 export default {
   name: "App",
   props: {},
@@ -23,3 +24,4 @@ export default {
   created() {}
 };
 </script>
+<style lang="scss"></style>

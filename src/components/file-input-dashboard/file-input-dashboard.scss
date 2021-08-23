@@ -1,0 +1,6 @@
+@import "src/assets/styles/variable";
+img {
+  width: 255px;
+  height: 255px;
+  border: 4px dashed $surface-700;
+}

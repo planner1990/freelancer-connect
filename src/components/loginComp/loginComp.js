@@ -1,19 +1,12 @@
-/*import { mapActions } from "vuex";
-import * as types from "./../../store/types";*/
+import TransitionPage from "../transitionPage/index";
 
 export default {
   name: "login-comp",
-  components: {},
+  components: { TransitionPage },
   props: [],
   mixins: [],
   data() {
-    return {
-      loading: false,
-      signInLoading: false,
-      username: "",
-      password: "",
-      errors: []
-    };
+    return {};
   },
   computed: {},
 
@@ -24,9 +17,9 @@ export default {
     }),*/
     onSubmit(evt) {
       evt.preventDefault();
-      this.loading = true;
-      this.signInLoading = true;
-      this.$router.push("/panel");
+      // this.loading = true;
+      // this.signInLoading = true;
+      // this.handleUsers(this.username);
       /*authService
         .login(this.username, this.password)
         .then(response => {
@@ -43,12 +36,6 @@ export default {
           this.signInLoading = false;
         });*/
     }
-    /*showNotification() {
-      let option = {
-        body: "this is body of notification",
-        icon: "/img/icons/android-96x196.png"
-      };
-      new Notification("hi this is from chaintracker", option);
-    }*/
-  }
+  },
+  created() {}
 };

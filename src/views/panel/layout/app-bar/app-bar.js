@@ -1,5 +1,5 @@
 import { mapActions } from "vuex";
-import * as types from "../../../../store/types";
+import * as types from "../../../../shared/store/types";
 
 import customizeTheme from "../../../../components/cotumizeTheme/index";
 

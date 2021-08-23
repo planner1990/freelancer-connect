@@ -1,3 +1,75 @@
-.login-comp {
+@import "src/assets/styles/variable";
+@import "src/assets/styles/mixins";
 
+.step-first,
+.step-second {
+  .text {
+    color: $surface-550;
+    font-size: 14px;
+  }
+  .google {
+    .v-btn:not(.v-btn--round).v-size--default {
+      font-size: 10px;
+    }
+    @include extraLarge {
+      div {
+        width: 40%;
+
+        &:first-child {
+          margin-left: 5%;
+        }
+      }
+    }
+    h5 {
+      color: $surface-550;
+    }
+    p {
+      color: $surface-550;
+      font-size: 14px;
+    }
+
+    @include large {
+      div {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.2s;
+  transition-property: height, opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
+}
+.fade-leave-active {
+  transition-duration: 0.2s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition-duration: 0.5s;
+  transition-property: height, opacity, transform;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  overflow: hidden;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(10em, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-10em, 0);
 }
