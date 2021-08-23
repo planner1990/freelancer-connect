@@ -3,9 +3,16 @@ export default {
   components: {},
   props: [],
   data() {
-    return {};
+    return {
+      length: 10,
+      page: 1
+    };
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {
+    changePage(currentPage) {
+      this.page = currentPage;
+    }
+  }
 };
