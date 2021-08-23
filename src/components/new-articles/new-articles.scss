@@ -1,15 +1,20 @@
 @import "src/assets/styles/variable";
 .best-freelancer {
   min-height: 600px;
-  background-color: $surface-100;
+  //background-color: $surface-100;
   padding-top: 0;
 
   .best-freelancer-card {
-    min-width: 31.3%;
     min-height: 360px;
+    &.width_31 {
+      min-width: 31.3%;
+    }
+    &.width_45 {
+      min-width: 44%;
+    }
 
     &_image {
-      background-color: #e55039;
+      background-color: $surface-350;
     }
     &_name {
       font-size: 14px;
@@ -21,6 +26,12 @@
     }
     &_detail {
       color: $surface-200;
+
+      strong {
+        color: $danger-500;
+        font-size: 14px;
+        font-weight: 600;
+      }
     }
   }
 }

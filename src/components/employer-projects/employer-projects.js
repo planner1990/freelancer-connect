@@ -1,7 +1,7 @@
 export default {
-  name: "new-articles",
+  name: "employer-projects",
   components: {},
-  props: ["isService"],
+  props: [],
   data() {
     return {};
   },
