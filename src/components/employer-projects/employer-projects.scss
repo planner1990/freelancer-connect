@@ -1,0 +1,30 @@
+@import "src/assets/styles/variable";
+.employer-projects {
+  &-card {
+    height: 280px;
+    background-color: #0a607a;
+    border-radius: 4px;
+    .divide-card {
+      margin: 0 8px;
+    }
+    &-name {
+      font-size: 14px;
+      color: $surface-600;
+    }
+    &-title {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    &-description {
+      font-size: 14px;
+      color: $surface-200;
+      margin-top: 12px;
+    }
+    &-right {
+      width: 65%;
+    }
+    &-left {
+      width: 35%;
+    }
+  }
+}

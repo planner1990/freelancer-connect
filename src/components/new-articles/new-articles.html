@@ -1,39 +1,58 @@
 <div class="best-freelancer">
-    <v-container>
-        <v-row class="d-flex flex-column justify-center align-center text-center">
-            <v-col cols="9">
-                <div class="best-project-title">برترین <strong>پروژه‌ها</strong></div>
-                <div class="mt-5 text-font">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                </div>
-            </v-col>
-        </v-row>
-        <v-row class="d-flex justify-center align-center mt-15 mx-sm-5">
-            <v-col
-                    cols="11"
-                    md="2"
-                    sm="5"
-                    xs="11"
-                    class="best-freelancer-card d-flex flex-column mx-2 my-sm-2 pa-0 pb-4"
-                    v-for="(project, i) in 3"
-                    :key="i"
-            >
-                <div class="best-freelancer-card_image">Picture</div>
-                <div class="best-freelancer-card_name px-4">
-                    <v-icon class="px-1" color="green darken-2" dense
-                    >mdi-check-decagram</v-icon
-                    >احمد احمدی
-                </div>
-                <div class="best-freelancer-card_title mb-6 px-4">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                </div>
-                <div class="best-freelancer-card_detail px-4">
-                    <v-icon class="px-1" color="grey lighten-1" dense
-                    >mdi-calendar-month</v-icon
-                    >1400/04/12 - 20:30
-                </div>
-            </v-col>
-        </v-row>
-    </v-container>
+  <v-container class="pl-0">
+    <v-row
+      v-if="!isService"
+      class="d-flex flex-column justify-center align-center text-center"
+    >
+      <v-col cols="9">
+        <div class="best-project-title">برترین <strong>پروژه‌ها</strong></div>
+        <div class="mt-5 text-font">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+          از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
+        </div>
+      </v-col>
+    </v-row>
+    <v-row
+      :class="`d-flex justify-center align-center mx-sm-5 mt-${isService ? 0 : 15}`"
+    >
+      <v-col
+        cols="11"
+        md="2"
+        sm="5"
+        xs="11"
+        :class="`best-freelancer-card ${isService ? 'width_45' : 'width_31'} d-flex flex-column mx-${isService ? '5' : '2'} my-sm-2 pa-0 pb-4`"
+        v-for="(project, i) in 3"
+        :key="i"
+      >
+        <div class="best-freelancer-card_image">Picture</div>
+        <div class="best-freelancer-card_name px-4">
+          <v-icon class="px-1" color="green darken-2" dense
+            >mdi-check-decagram</v-icon
+          >احمد احمدی
+        </div>
+        <div class="best-freelancer-card_title mb-6 px-4">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+        </div>
+        <div v-if="isService" class="best-freelancer-card_detail mb-6 px-4">
+          قیمت واحد <strong>20 هزار تومان</strong>
+        </div>
+        <v-divider v-if="isService" class="divide-card"></v-divider>
+        <div v-if="!isService" class="best-freelancer-card_detail px-4">
+          <v-icon class="px-1" color="grey lighten-1" dense
+            >mdi-calendar-month</v-icon
+          >1400/04/12 - 20:30
+        </div>
+        <div v-if="isService" class="d-flex justify-space-around">
+          <div class="best-freelancer-card_detail px-4 mb-0">
+            ۰ نفر در صف
+          </div>
+          <v-divider class="divide-card-vertical" vertical></v-divider>
+          <div class="best-freelancer-card_detail px-4 mb-0">
+            0/5 (0)
+            <v-icon class="px-1" color="warning" dense>mdi-star</v-icon>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
 </div>

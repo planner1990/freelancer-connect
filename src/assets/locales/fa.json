@@ -87,7 +87,14 @@
     "noOfEmployees": "تعداد کارمندان",
     "profileImage": "تصویر پروفایل",
     "bannerImage": "تصویر بنر",
-    "uploadImage": "بارگزاری تصویر"
+    "uploadImage": "بارگزاری تصویر",
+    "startSearch": "شروع جستجو",
+    "servicesSearch": "جستجوی خدمات",
+    "priceRange": "بازه قیمت",
+    "ImLookingFor": "من به دنبال",
+    "applyLatestChanges": "جهت به روزرسانی تغییرات کلیک کنید",
+    "applyFilter": "اعمال تغییرات",
+    "priceRangeBetweenToNum": "بازه بین {min} تومان تا {max} تومان"
   },
   "navbar": {
     "home": "خانه",
