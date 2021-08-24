@@ -1,0 +1,104 @@
+<v-container class="side-filter">
+  <v-row class="mt-2">
+    <v-col cols="12" class="side-info-card">
+      <div class="d-flex side-info-card-budget">
+        <div class="side-info-card-budget-price pa-5 text-center">
+          <div>۵ میلیون تومان</div>
+          <div>بودجه کلاینت</div>
+        </div>
+        <v-divider class="divide-card-vertical my-4" vertical></v-divider>
+        <div class="text-center pt-3 side-info-card-budget-icon">
+          <v-icon color="yellow darken-2">
+            mdi-chevron-double-down
+          </v-icon>
+          <br />
+          <v-icon x-large color="yellow darken-2">
+            mdi-cash-multiple
+          </v-icon>
+        </div>
+      </div>
+      <v-divider class="divide-card"></v-divider>
+      <div class="d-flex side-info-card-budget">
+        <div class="side-info-card-budget-price pa-5 text-center">
+          <div>0</div>
+          <div>پروپوزال دریافتی تا ۱۴۰۰/۰۵/۳۰</div>
+        </div>
+        <v-divider class="divide-card-vertical my-4" vertical></v-divider>
+        <div class="text-center pt-3 side-info-card-budget-icon">
+          <v-icon color="yellow darken-2">
+            mdi-chevron-double-down
+          </v-icon>
+          <br />
+          <v-icon x-large color="yellow darken-2">
+            mdi-newspaper-variant-multiple
+          </v-icon>
+        </div>
+      </div>
+      <v-divider class="divide-card"></v-divider>
+      <div class="side-info-card-budget mb-7">
+        <div class="pt-4 pb-2 text-center">
+          <div class="project-id">شناسه پروژه: A1UDS262</div>
+        </div>
+        <div class="d-flex align-center justify-center">
+          <v-btn class="ma-2" outlined x-large color="primary">
+            کلیک بر روی ذخیره
+              <v-icon dense class="mx-2">
+                  mdi-heart-outline
+              </v-icon>
+          </v-btn>
+        </div>
+      </div>
+    </v-col>
+    <v-col cols="12" class="side-filter-card mt-8">
+      <strong>{{ $t('form.priceRange') }}</strong>
+      <v-divider class="divide-card"></v-divider>
+      <div class="mt-8 mb-4">
+        {{ $t('form.priceRangeBetweenToNum', { min: `${min}`, max: `${max}` })
+        }}
+      </div>
+      <v-range-slider
+        max="1000"
+        min="0"
+        v-model="value"
+        @change="setSlider($event)"
+        class="mt-8"
+        thumb-label
+        ticks
+      ></v-range-slider>
+    </v-col>
+    <v-col cols="12" class="side-filter-card mt-8">
+      <strong>{{ $t('sidebar.jobCategory') }}</strong>
+      <v-divider class="divide-card"></v-divider>
+      <div
+        class="col-md-12 pa-md-0 col-sm-12 px-sm-15 d-md-flex d-sm-block mt-8 home-page-hero"
+      >
+        <v-text-field
+          :placeholder="$t('form.ImLookingFor')"
+          outlined
+          dense
+        ></v-text-field>
+        <v-btn shaped color="teal accent-3" dark style="height: 40px;">
+          <v-icon>
+            mdi-magnify
+          </v-icon>
+        </v-btn>
+      </div>
+      <div class="category-checkbox">
+        <v-checkbox
+          v-for="(item, index) in checkboxLabel"
+          :key="index"
+          :label="item"
+        ></v-checkbox>
+      </div>
+    </v-col>
+    <v-col cols="12" class="side-filter-card mt-8 text-center">
+      <div class="mb-4">
+        {{ $t('form.applyLatestChanges') }}
+      </div>
+      <v-divider class="divide-card"></v-divider>
+      <v-btn depressed color="primary">
+        {{ $t('form.applyFilter') }}
+      </v-btn>
+    </v-col>
+  </v-row>
+</v-container>
