@@ -25,16 +25,29 @@
         :key="i"
       >
         <div class="best-freelancer-card_image">Picture</div>
-        <div class="best-freelancer-card_name px-4">
-          <v-icon class="px-1" color="green darken-2" dense
-            >mdi-check-decagram</v-icon
-          >احمد احمدی
-        </div>
-        <div class="best-freelancer-card_title mb-6 px-4">
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-        </div>
-        <div v-if="isService" class="best-freelancer-card_detail mb-6 px-4">
-          قیمت واحد <strong>20 هزار تومان</strong>
+        <div class="d-flex justify-center">
+          <div v-if="isService">
+            <div class="mt-3 mr-2 img-profile">
+              <img src="../../assets/image/front-office/profile.jpg" alt="" />
+            </div>
+          </div>
+          <div class="detail-container">
+            <div class="best-freelancer-card_name px-2">
+              <v-icon class="px-1" color="green darken-2" dense
+                >mdi-check-decagram</v-icon
+              >احمد احمدی
+            </div>
+            <div
+              class="best-freelancer-card_title mb-6 px-4"
+              @click="goToDetail()"
+            >
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+              استفاده
+            </div>
+            <div v-if="isService" class="best-freelancer-card_detail mb-6 px-4">
+              قیمت واحد <strong>20 هزار تومان</strong>
+            </div>
+          </div>
         </div>
         <v-divider v-if="isService" class="divide-card"></v-divider>
         <div v-if="!isService" class="best-freelancer-card_detail px-4">

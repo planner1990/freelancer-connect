@@ -1,5 +1,5 @@
 export default {
-  name: "side-info",
+  name: "service-side-info",
   components: {},
   props: [],
   data() {

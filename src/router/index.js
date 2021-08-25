@@ -88,6 +88,12 @@ const routes = [
         name: "project-details",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/project-details/index")
+      },
+      {
+        path: "/service-details",
+        name: "service-details",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/service-details/index")
       }
     ]
   },

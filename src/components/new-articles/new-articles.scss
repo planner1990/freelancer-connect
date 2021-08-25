@@ -23,6 +23,7 @@
     }
     &_title {
       font-weight: 400;
+      cursor: pointer;
     }
     &_detail {
       color: $surface-200;
@@ -32,6 +33,19 @@
         font-size: 14px;
         font-weight: 600;
       }
+    }
+    .img-profile {
+      width: 40px;
+      height: 40px;
+      background-color: red;
+      border-radius: 50%;
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    .detail-container {
+      width: 88%;
     }
   }
 }

@@ -1,0 +1,54 @@
+@import "src/assets/styles/variable";
+.employer-projects {
+  &-card {
+    background-color: $surface-100;
+    border-radius: 6px;
+    box-shadow: 2px 2px 38px -25px rgba(0, 0, 0, 0.72);
+    transition: all 300ms;
+    .divide-card {
+      margin: 0;
+    }
+    &-title {
+      font-size: 25px;
+      font-weight: 600;
+    }
+    &-description {
+      font-size: 15px;
+      color: $surface-200;
+      margin-top: 12px;
+    }
+    button {
+      border: 1px solid #ddd;
+      font-size: 15px;
+      color: $surface-200;
+      border-radius: 20px;
+      padding: 4px 18px;
+      transition: all 300ms ease-in-out;
+
+      &:hover {
+        background-color: $primary;
+        color: $surface-100;
+      }
+    }
+    .v-list-item {
+      border: 1px solid #ddd;
+      margin-top: 5px;
+    }
+    .navbar-front-office
+      .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+      color: $surface-200 !important;
+    }
+
+    .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+      color: $surface-200 !important;
+    }
+
+    .v-list-item__title {
+      align-self: center;
+      font-size: 14px !important;
+    }
+    &-detail {
+      color: $surface-200;
+    }
+  }
+}

@@ -7,5 +7,11 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {
+    goToDetail() {
+      if (this.isService === true) {
+        this.$router.push("/service-details");
+      }
+    }
+  }
 };
