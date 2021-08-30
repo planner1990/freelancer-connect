@@ -25,10 +25,10 @@ export default {
             title: item.title,
             description: item.description,
             price: item.price,
-            image: item.attachment
+            image: item["attachments"],
+            username: item.username
           });
         });
-        console.log(serviceListItems);
         return serviceListItems;
       }
     },
@@ -54,9 +54,9 @@ export default {
         this.setBrowseServiceData(res.data.data);
       });
     },
-    goToDetail() {
+    goToDetail(id) {
       if (this.isService === true) {
-        this.$router.push("/service-details");
+        this.$router.push(`/service-details/${id}`);
       }
     },
     goToPublicProfile() {

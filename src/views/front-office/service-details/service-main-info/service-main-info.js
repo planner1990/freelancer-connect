@@ -1,7 +1,7 @@
 export default {
   name: "service-main-info",
   components: {},
-  props: [],
+  props: ["serviceDetailsById"],
   data() {
     return {
       length: 10,

@@ -195,7 +195,8 @@
     font-size: 11px !important;
   }
 
-  .theme--dark.v-btn--active:hover::before, .theme--dark.v-btn--active::before {
+  .theme--dark.v-btn--active:hover::before,
+  .theme--dark.v-btn--active::before {
     opacity: 0.18;
     width: 19px;
     height: 19px;
@@ -205,7 +206,8 @@
     margin: 0 0;
   }
 
-  .v-window__prev, .v-window__next {
+  .v-window__prev,
+  .v-window__next {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 20px 0 0 20px;
     position: absolute;
@@ -216,7 +218,8 @@
       left: -1px;
       border-radius: 20px 0 0 20px;
     }
-    &.v-btn--icon.v-size--default .v-icon, .v-btn--fab.v-size--default .v-icon {
+    &.v-btn--icon.v-size--default .v-icon,
+    .v-btn--fab.v-size--default .v-icon {
       height: 38px;
       font-size: 24px;
       width: 32px;
@@ -228,6 +231,10 @@
       right: 0;
       border-radius: 0 20px 20px 0;
     }
+  }
+  .v-image__image,
+  .v-image__placeholder {
+    height: 198px;
   }
 }
 
@@ -321,7 +328,6 @@
   width: 1px;
 }
 
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -340,8 +346,6 @@ input:-webkit-autofill:active {
     margin-top: 8px;
   }
 }
-
-
 
 ::-webkit-scrollbar {
   width: 5px !important;
@@ -364,4 +368,21 @@ input:-webkit-autofill:active {
   background: $secondary !important;
 }
 
+.send-jobOffer-freelancer {
+  .v-text-field.v-text-field--enclosed .v-text-field__details {
+    padding-top: 0;
+    margin-bottom: 0;
+    height: 0;
+  }
 
+  .v-text-field.v-text-field--enclosed .v-text-field__details {
+    padding: 0 12px;
+  }
+  .v-text-field__details {
+    display: flex;
+    flex: 1 0 auto;
+    max-width: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+}

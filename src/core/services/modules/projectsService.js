@@ -10,6 +10,12 @@ class projectsService {
   getAllServices() {
     return API_V1.get(`services`);
   }
+  getServiceById(id) {
+    return API_V1.get(`services/${id}`);
+  }
+  sendJobOffer(body) {
+    return API_V1.post("admin/employer/service", body);
+  }
   employerProjectStatus(options) {
     return API_V1.get(
       `admin/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`

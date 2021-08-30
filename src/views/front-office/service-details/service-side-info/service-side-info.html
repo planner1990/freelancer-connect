@@ -3,7 +3,7 @@
     <v-col cols="12" class="side-info-card">
       <div class="d-flex side-info-card-budget">
         <div class="side-info-card-budget-price pa-5 text-center">
-          <div>۱۰۰ هزار تومان</div>
+          <div>{{ serviceDetailsById.price }} هزار تومان</div>
           <div>هزینه هر ساعت کار</div>
         </div>
         <v-divider class="divide-card-vertical my-4" vertical></v-divider>
@@ -20,9 +20,85 @@
       <v-divider class="divide-card"></v-divider>
       <div class="side-info-card-budget mb-7">
         <div class="d-flex align-center justify-center">
-          <v-btn class="ma-2" x-large block color="primary">
-            درخواست سرویس به من
-          </v-btn>
+          <v-row justify="center" class="px-5">
+            <v-dialog v-model="dialog" persistent max-width="600px">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  class="ma-2"
+                  x-large
+                  block
+                  color="primary"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  درخواست سرویس به من
+                </v-btn>
+              </template>
+              <v-card class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer">
+                <v-card-title>
+<!--                  <span class="text-h5">ارسال درخواست به فریلنسر</span>-->
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-row>
+                      <v-col cols="12">
+                        <v-text-field
+                          label="عنوان*"
+                          required
+                          outlined
+                          dense
+                          v-model="jobOfferForm.title"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-textarea
+                          outlined
+                          label="توضیحات*"
+                          required
+                          v-model="jobOfferForm.description"
+                        ></v-textarea>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-file-input
+                          @change="handleFileInput($event)"
+                          counter
+                          label="File input"
+                          placeholder="Select your files"
+                          prepend-icon="mdi-paperclip"
+                          outlined
+                          multiple
+                          :show-size="1000"
+                        >
+                          <template v-slot:selection="{ index, text }">
+                            <v-chip v-if="index < 3" dark label small>
+                              {{ text }}
+                            </v-chip>
+
+                            <span
+                              v-else-if="index === 3"
+                              class="text-overline grey--text text--darken-3 mx-2"
+                            >
+                              +{{ files.length - 3 }} File(s)
+                            </span>
+                          </template>
+                        </v-file-input>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                  <small>*موارد ستاره دار خالی نماند.</small>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="error" @click="dialog = false">
+                    بستن
+                  </v-btn>
+                  <v-btn color="primary" @click="sendJobOfferToFreelancer">
+                    ارسال پیشنهاد کاری
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-row>
         </div>
       </div>
     </v-col>

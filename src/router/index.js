@@ -90,7 +90,7 @@ const routes = [
         component: () => import("../views/front-office/project-details/index")
       },
       {
-        path: "/service-details",
+        path: "/service-details/:id",
         name: "service-details",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/service-details/index")
