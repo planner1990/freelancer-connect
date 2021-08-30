@@ -53,3 +53,17 @@ export const paginationData = {
     PAGINATION_ACTION: "PAGINATION_ACTION"
   }
 };
+
+export const browseServiceData = {
+  getters: {
+    BROWSE_SERVICE_GET: "BROWSE_SERVICE_GET"
+  },
+
+  mutations: {
+    BROWSE_SERVICE_MUTATE: "BROWSE_SERVICE_MUTATE"
+  },
+
+  actions: {
+    BROWSE_SERVICE_ACTION: "BROWSE_SERVICE_ACTION"
+  }
+};

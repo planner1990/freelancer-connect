@@ -1,17 +1,66 @@
+import { mapActions, mapGetters } from "vuex";
+import * as types from "../../shared/store/types";
+import projectsService from "../../core/services/modules/projectsService";
+
 export default {
   name: "new-articles",
   components: {},
   props: ["isService"],
   data() {
-    return {};
+    return {
+      model: 0,
+      colors: ["primary", "secondary", "yellow darken-2", "red", "orange"]
+    };
   },
-  computed: {},
+  computed: {
+    ...mapGetters({
+      getBrowseServiceData: types.browseServiceData.getters.BROWSE_SERVICE_GET
+    }),
+    showServices() {
+      let serviceListItems = [];
+      if (Object.entries(this.getBrowseServiceData).length > 0) {
+        this.getBrowseServiceData.map(item => {
+          serviceListItems.push({
+            id: item.id,
+            title: item.title,
+            description: item.description,
+            price: item.price,
+            image: item.attachment
+          });
+        });
+        console.log(serviceListItems);
+        return serviceListItems;
+      }
+    },
+    totalPage() {
+      if (Object.entries(this.getBrowseServiceData).length > 0) {
+        return Math.ceil(this.getBrowseServiceData.pagination.total / 5);
+      }
+    }
+  },
   mounted() {},
   methods: {
+    ...mapActions({
+      setBrowseServiceData: types.paginationData.actions.PAGINATION_ACTION
+    }),
+    changePage(currentPage) {
+      const options = {
+        status: this.status,
+        page: currentPage,
+        perPage: 5
+      };
+      projectsService.getAllServices(options).then(res => {
+        this.page = currentPage;
+        this.setBrowseServiceData(res.data.data);
+      });
+    },
     goToDetail() {
       if (this.isService === true) {
         this.$router.push("/service-details");
       }
+    },
+    goToPublicProfile() {
+      this.$router.push("/public-profile");
     }
   }
 };

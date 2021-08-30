@@ -4,6 +4,12 @@ class projectsService {
   createProject(body) {
     return API_V1.post("admin/employer/projects", body);
   }
+  createService(body) {
+    return API_V1.post("admin/freelancer/service", body);
+  }
+  getAllServices() {
+    return API_V1.get(`services`);
+  }
   employerProjectStatus(options) {
     return API_V1.get(
       `admin/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`

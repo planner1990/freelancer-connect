@@ -94,6 +94,12 @@ const routes = [
         name: "service-details",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/service-details/index")
+      },
+      {
+        path: "/public-profile",
+        name: "public-profile",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/public-profile/index")
       }
     ]
   },
