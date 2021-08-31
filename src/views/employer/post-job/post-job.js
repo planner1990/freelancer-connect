@@ -137,6 +137,7 @@ export default {
     handleFileInput(file) {
       let formData = new FormData();
       formData.append("attachment", file);
+      console.log(formData);
       UploadService.uploadFile(formData).then(res => {
         console.log(res);
         this.projectForm.attachmentId = res.data.data.attachment_id;

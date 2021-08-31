@@ -82,6 +82,24 @@ const routes = [
         name: "browse-projects",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/projects-browse/index")
+      },
+      {
+        path: "/project-details",
+        name: "project-details",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/project-details/index")
+      },
+      {
+        path: "/service-details/:id",
+        name: "service-details",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/service-details/index")
+      },
+      {
+        path: "/public-profile",
+        name: "public-profile",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/public-profile/index")
       }
     ]
   },

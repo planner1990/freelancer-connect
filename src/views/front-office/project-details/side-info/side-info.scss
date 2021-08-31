@@ -1,0 +1,44 @@
+@import "src/assets/styles/variable";
+.side-info {
+  &-card {
+    background-color: $surface-100;
+    border-radius: 4px;
+    strong {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .category-checkbox {
+      max-height: 190px;
+      overflow: auto;
+    }
+    &-budget {
+      &-price {
+        width: 70%;
+        div:first-child {
+          color: $green-100;
+          font-size: 19px;
+          font-weight: 600;
+        }
+        div:last-child,
+        .project-id {
+          font-size: 15px;
+          color: $surface-200;
+          margin-top: 5px;
+        }
+      }
+      &-icon {
+        width: 30%;
+      }
+      .project-id {
+        font-size: 15px;
+        color: $surface-200;
+        margin-top: 5px;
+      }
+    }
+    .share-project {
+      font-size: 15px;
+      color: $surface-200;
+      margin-top: 5px;
+    }
+  }
+}

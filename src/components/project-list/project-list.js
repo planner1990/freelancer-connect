@@ -45,7 +45,7 @@ export default {
   mounted() {},
   methods: {
     ...mapActions({
-      setPaginationData: types.paginationData.actions.PAGINATION_ACTION
+      setBrowseServiceData: types.paginationData.actions.PAGINATION_ACTION
     }),
     redirectToEditJob() {
       this.$router.push({ name: "edit-project" }).catch(() => {});
@@ -58,7 +58,7 @@ export default {
       };
       projectsService.employerProjectStatus(options).then(res => {
         this.page = currentPage;
-        this.setPaginationData(res.data.data);
+        this.setBrowseServiceData(res.data.data);
       });
     }
   },

@@ -6,6 +6,7 @@ import formDialogData from "./modules/formDialogData";
 import navigationDrawerFront from "./modules/navigationDrawerFront";
 import registrationForm from "./modules/registrationForm";
 import paginationData from "./modules/paginationData";
+import browseServiceData from "./modules/browseServiceData";
 
 Vue.use(Vuex);
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     navigationDrawerFront,
     formDialogData,
     registrationForm,
-    paginationData
+    paginationData,
+    browseServiceData
   }
 });

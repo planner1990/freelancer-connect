@@ -1,0 +1,74 @@
+<section class="employer-projects">
+  <v-container>
+    <v-row class="justify-center mt-2 mb-8">
+      <v-col cols="11" class="d-flex employer-projects-card pa-0">
+        <div class="pa-5" style="width: 100%">
+          <div class="employer-projects-card-title">
+            {{serviceDetailsById.title}}
+          </div>
+          <div class="d-flex my-5">
+            <div class="employer-projects-card-detail px-4 mb-0">
+              {{serviceDetailsById.username}}
+            </div>
+            <v-divider class="divide-card-vertical" vertical></v-divider>
+            <div class="employer-projects-card-detail px-4 mb-0">
+              ۰ نفر در صف
+            </div>
+            <v-divider class="divide-card-vertical" vertical></v-divider>
+            <div class="employer-projects-card-detail px-4 mb-0">
+              0/5 (0)
+              <v-icon class="px-1" color="warning" dense>mdi-star</v-icon>
+            </div>
+          </div>
+          <v-carousel height="auto">
+            <v-carousel-item
+              v-for="(src, index) in serviceDetailsById['attachments']"
+              :key="index"
+            >
+              <v-img :src="src" aspect-ratio="1.7"></v-img>
+            </v-carousel-item>
+          </v-carousel>
+          <v-img
+            v-if="!serviceDetailsById['attachments'].length"
+            lazy-src="https://picsum.photos/id/11/10/6"
+            src="../../../../assets/image/front-office/Why-do-apps-need-constant-updates_.png"
+            :aspect-ratio="16/9"
+          ></v-img>
+          <h2 class="mt-10">توضیحات در مورد سرویس مورد نظر</h2>
+          <div class="employer-projects-card-description mt-6 mb-15">
+            {{serviceDetailsById.description}}
+          </div>
+
+          <!--          <div class="employer-projects-card-title mt-14">-->
+          <!--            مهارت های من-->
+          <!--          </div>-->
+          <!--          <div class="mt-8">-->
+          <!--            <button class="ml-2">HTML</button>-->
+          <!--            <button class="ml-2">PHP</button>-->
+          <!--            <button class="ml-2">My SQL</button>-->
+          <!--          </div>-->
+          <!--          <div class="employer-projects-card-title mt-8">-->
+          <!--            رزومه و نمونه کارها-->
+          <!--          </div>-->
+          <!--          <v-list>-->
+          <!--            <v-list-item v-for="(file, index) in files" :key="index">-->
+          <!--              <v-list-item-avatar>-->
+          <!--                <v-icon :class="file.color" dark v-text="file.icon"></v-icon>-->
+          <!--              </v-list-item-avatar>-->
+
+          <!--              <v-list-item-content>-->
+          <!--                <v-list-item-title v-text="file.title"></v-list-item-title>-->
+          <!--              </v-list-item-content>-->
+
+          <!--              <v-list-item-action>-->
+          <!--                <v-btn icon>-->
+          <!--                  <v-icon small>mdi-arrow-down</v-icon>-->
+          <!--                </v-btn>-->
+          <!--              </v-list-item-action>-->
+          <!--            </v-list-item>-->
+          <!--          </v-list>-->
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+</section>
