@@ -24,7 +24,7 @@ export default {
             id: item.id,
             title: item.title,
             description: item.description,
-            price: item.price,
+            price: item.min_price,
             image: item["attachments"],
             username: item.username
           });

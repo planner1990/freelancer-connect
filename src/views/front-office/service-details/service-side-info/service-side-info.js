@@ -1,13 +1,16 @@
 import UploadService from "../../../../core/services/modules/uploadService";
 import projectsService from "../../../../core/services/modules/projectsService";
+import { mapMutations } from "vuex";
+import * as types from "../../../../shared/store/types";
 export default {
   name: "service-side-info",
   components: {},
-  props: ["serviceDetailsById"],
+  props: ["serviceDetailsById", "role"],
   data() {
     return {
       value: [0, 1000],
       dialog: false,
+      valid: false,
       min: 0,
       max: 1000,
       checkboxLabel: [
@@ -58,7 +61,11 @@ export default {
       }
     };
   },
-  computed: {},
+  computed: {
+    ...mapMutations([
+      types.HandleEmployerToLogin.mutations.HANDLE_EMPLOYER_TO_LOGIN_MUTATE
+    ])
+  },
   mounted() {},
   methods: {
     handleFileInput(file) {
@@ -68,7 +75,6 @@ export default {
           formData.append(`attachment[` + i + `]`, file[i]);
         }
         UploadService.uploadFile(formData).then(res => {
-          debugger
           this.jobOfferForm.attachmentId = res.data.data.attachment_id;
         });
       }
@@ -80,10 +86,26 @@ export default {
         description: this.jobOfferForm.description,
         attachment_id: this.jobOfferForm.attachmentId
       };
-      projectsService.sendJobOffer(body).then(res => {
-        console.log(res);
-        this.dialog = false;
-      });
+      projectsService
+        .sendJobOffer(body)
+        .then(res => {
+          console.log(res);
+          this.$refs.form.reset();
+          this.dialog = false;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    goToLogin() {
+      this.$store.commit(
+        types.HandleEmployerToLogin.mutations.HANDLE_EMPLOYER_TO_LOGIN_MUTATE,
+        {
+          currentURL: this.$route.fullPath,
+          serviceId: this.$route.params.id
+        }
+      );
+      this.$router.push("/login");
     }
   }
 };

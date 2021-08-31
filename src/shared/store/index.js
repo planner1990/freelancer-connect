@@ -7,6 +7,7 @@ import navigationDrawerFront from "./modules/navigationDrawerFront";
 import registrationForm from "./modules/registrationForm";
 import paginationData from "./modules/paginationData";
 import browseServiceData from "./modules/browseServiceData";
+import guideEmployerToLogin from "./modules/guideEmployertoLogin";
 
 Vue.use(Vuex);
 
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     formDialogData,
     registrationForm,
     paginationData,
-    browseServiceData
+    browseServiceData,
+    guideEmployerToLogin
   }
 });

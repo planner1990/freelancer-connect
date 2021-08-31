@@ -67,3 +67,17 @@ export const browseServiceData = {
     BROWSE_SERVICE_ACTION: "BROWSE_SERVICE_ACTION"
   }
 };
+
+export const HandleEmployerToLogin = {
+  getters: {
+    HANDLE_EMPLOYER_TO_LOGIN_GET: "HANDLE_EMPLOYER_TO_LOGIN_GET"
+  },
+
+  mutations: {
+    HANDLE_EMPLOYER_TO_LOGIN_MUTATE: "HANDLE_EMPLOYER_TO_LOGIN_MUTATE"
+  },
+
+  actions: {
+    HANDLE_EMPLOYER_TO_LOGIN_ACTION: "HANDLE_EMPLOYER_TO_LOGIN_ACTION"
+  }
+};

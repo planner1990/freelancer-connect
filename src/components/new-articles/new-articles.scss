@@ -6,11 +6,12 @@
 
   .best-freelancer-card {
     min-height: 430px;
+    min-width: 315px;
     &.width_31 {
       min-width: 31.3%;
     }
     &.width_45 {
-      min-width: 44%;
+      min-width: 315px;
     }
 
     &_image {

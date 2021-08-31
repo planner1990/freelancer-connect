@@ -2,7 +2,7 @@
   <v-container class="pl-0">
     <v-row
       v-if="!isService"
-      class="d-flex flex-column justify-center align-center text-center"
+      class="d-flex flex-column justify-start align-center text-center"
     >
       <v-col cols="9">
         <div class="best-project-title">برترین <strong>پروژه‌ها</strong></div>
@@ -13,7 +13,7 @@
       </v-col>
     </v-row>
     <v-row
-      :class="`d-flex justify-center align-center mx-sm-5 mt-${isService ? 0 : 15}`"
+      :class="`d-flex justify-start align-center mx-sm-5 mt-${isService ? 0 : 15}`"
     >
       <v-col
         cols="11"
@@ -36,12 +36,12 @@
         </div>
         <div class="d-flex justify-center">
           <div v-if="isService">
-            <div class="mt-3 mr-2 img-profile" @click="goToPublicProfile()">
+            <div class="mt-6 mr-2 img-profile" @click="goToPublicProfile()">
               <img src="../../assets/image/front-office/profile.jpg" alt="" />
             </div>
           </div>
           <div class="detail-container">
-            <div class="best-freelancer-card_name px-2">
+            <div class="best-freelancer-card_name px-2 mt-6 mb-2">
               <v-icon class="px-1" color="green darken-2" dense
                 >mdi-check-decagram</v-icon
               >

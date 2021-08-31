@@ -13,8 +13,7 @@ export default {
     };
   },
   computed: {
-    ...mapMutations([types.storeRegisterForm.REGISTER_FORM_MUTATE]),
-    registrationData() {}
+    ...mapMutations([types.storeRegisterForm.REGISTER_FORM_MUTATE])
   },
   mounted() {},
   methods: {
