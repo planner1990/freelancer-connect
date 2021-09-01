@@ -7,8 +7,8 @@ export default {
   props: ["headersUserManagement", "dataUserManagement", "showSelect", "name"],
   data() {
     return {
-      page: 1,
       e2: "پیش نویس",
+      page: 1,
       pageCount: 0,
       itemsPerPage: 8,
       dialog: false,
