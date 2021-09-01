@@ -15,6 +15,7 @@
     "@mdi/font": "^5.9.55",
     "core-js": "^3.6.5",
     "css-loader": "^5.2.6",
+    "dayjs": "^1.10.6",
     "gulp-util": "^3.0.8",
     "register-service-worker": "^1.7.1",
     "resolve-url-loader": "^4.0.0",
