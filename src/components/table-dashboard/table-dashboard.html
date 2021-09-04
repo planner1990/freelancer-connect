@@ -21,6 +21,7 @@
               color="primary"
               v-bind="attrs"
               v-on="on"
+              @click="showEstimationEmployer(item.id)"
             >
               مشاهده درخواست
             </v-btn>
@@ -30,31 +31,34 @@
               class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
             >
               <v-card-title>
-                <!--                  <span class="text-h5">ارسال درخواست به فریلنسر</span>-->
+                <span class="text-h6" v-if="disableInput"
+                  >درخواست ارسال شده از فریلنسر</span
+                >
               </v-card-title>
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12">
+                    <v-col cols="12" v-if="!disableInput">
                       <v-text-field
                         label="عنوان*"
                         required
                         outlined
                         dense
-                        v-model="confirmJobOfferForm.title"
+                        v-model="item.title? item.title : confirmJobOfferForm.title"
+                        :value="item.title"
                         disabled
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12">
+                    <v-col cols="12" v-if="!disableInput">
                       <v-textarea
                         outlined
                         label="توضیحات*"
                         required
-                        v-model="confirmJobOfferForm.description"
+                        v-model="item.description? item.description : confirmJobOfferForm.description"
                         disabled
                       ></v-textarea>
                     </v-col>
-                    <v-col cols="12">
+                    <v-col cols="12" v-if="!disableInput">
                       <v-file-input
                         @change="handleFileInput($event)"
                         counter
@@ -83,12 +87,14 @@
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
-                        label="قیمت پیشنهادی پایه*"
+                        label="قیمت پیشنهادی پایه (ریال)*"
                         required
                         outlined
                         dense
+                        type="number"
                         v-model="confirmJobOfferForm.minPrice"
                         :rules="confirmJobOfferRule.minPrice"
+                        :disabled="disableInput"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
@@ -97,22 +103,25 @@
                         required
                         outlined
                         dense
+                        type="number"
                         v-model="confirmJobOfferForm.duration"
                         :rules="confirmJobOfferRule.duration"
+                        :disabled="disableInput"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
-                        label="پیش پرداخت*"
+                        label="پیش پرداخت (ریال)"
                         required
                         outlined
                         dense
+                        type="number"
                         v-model="confirmJobOfferForm.prepayment"
-                        :rules="confirmJobOfferRule.prepayment"
+                        :disabled="disableInput"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <strong>برآورد کل قیمتی: </strong>
+                      <strong>برآورد کل قیمتی: {{total_price}}</strong>
                     </v-col>
                     <v-col cols="12">
                       <v-textarea
@@ -121,9 +130,32 @@
                         required
                         v-model="confirmJobOfferForm.freelancerDescription"
                         :rules="confirmJobOfferRule.freelancerDescription"
+                        :disabled="disableInput"
                       ></v-textarea>
                     </v-col>
                     <v-col cols="12">
+                      <div class="employer-projects-card-title mt-8">
+                        فایل های ضمیمه شده
+                      </div>
+                      <v-list>
+                        <v-list-item
+                          v-for="(file, index) in confirmJobOfferForm.attachmentId"
+                          :key="index"
+                        >
+                          <v-list-item-content>
+                            <v-list-item-title>
+                                فایل شماره {{index + 1}}
+                            </v-list-item-title>
+                          </v-list-item-content>
+                          <v-list-item-action>
+                            <v-btn icon :href="file" target="_blank">
+                              <v-icon small>mdi-arrow-down</v-icon>
+                            </v-btn>
+                          </v-list-item-action>
+                        </v-list-item>
+                      </v-list>
+                    </v-col>
+                    <v-col cols="12" v-if="!disableInput">
                       <v-file-input
                         @change="handleFileInput($event)"
                         counter
@@ -151,14 +183,14 @@
                     </v-col>
                   </v-row>
                 </v-container>
-                <small>*موارد ستاره دار خالی نماند.</small>
+                <small v-if="!disableInput">*موارد ستاره دار خالی نماند.</small>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="error" @click="dialog = false">
+                <v-btn color="error" @click="rejectEstimation(item.id)">
                   رد پیشنهاد
                 </v-btn>
-                <v-btn color="primary" @click="sendJobOfferToFreelancer">
+                <v-btn color="primary" @click="confirmEstimation(item.id)">
                   تایید و ارسال
                 </v-btn>
               </v-card-actions>

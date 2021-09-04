@@ -1,10 +1,16 @@
 import UploadService from "../../core/services/modules/uploadService";
-import projectsService from "../../core/services/modules/projectsService";
+import { ServiceEmploymentService } from "../../core/services";
 
 export default {
   name: "table-dashboard",
   components: {},
-  props: ["headersUserManagement", "dataUserManagement", "showSelect", "name"],
+  props: [
+    "headersUserManagement",
+    "dataUserManagement",
+    "showSelect",
+    "name",
+    "disableInput"
+  ],
   data() {
     return {
       e2: "پیش نویس",
@@ -13,13 +19,14 @@ export default {
       itemsPerPage: 8,
       dialog: false,
       valid: false,
+      total_price: null,
       confirmJobOfferForm: {
         title: "",
         description: "",
         attachmentId: [],
-        minPrice: "",
-        duration: "",
-        prepayment: "",
+        minPrice: null,
+        duration: null,
+        prepayment: null,
         freelancerDescription: ""
       },
       confirmJobOfferRule: {
@@ -37,19 +44,39 @@ export default {
           v => !!v || "Name is required",
           v => (v && v.length >= 3) || "Name must be more than 3 characters"
         ],
-        time: [
+        duration: [
           v => !!v || "Name is required",
           v => (v && v.length >= 3) || "Name must be more than 3 characters"
         ],
-        prepayment: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
-        ],
+        // prepayment: [
+        //   v => !!v || "Name is required",
+        //   v => (v && v.length >= 3) || "Name must be more than 3 characters"
+        // ],
         freelancerDescription: [
           v => !!v || "Name is required",
           v => (v && v.length >= 3) || "Name must be more than 3 characters"
         ]
-      }
+      },
+      files: [
+        {
+          color: "blue",
+          icon: "mdi-clipboard-text",
+          subtitle: "Jan 20, 2014",
+          title: "Vacation itinerary"
+        },
+        {
+          color: "amber",
+          icon: "mdi-gesture-tap-button",
+          subtitle: "Jan 10, 2014",
+          title: "Kitchen remodel"
+        },
+        {
+          color: "red",
+          icon: "mdi-clipboard-text",
+          subtitle: "Jan 20, 2014",
+          title: "Vacation itinerary"
+        }
+      ]
     };
   },
   computed: {},
@@ -76,27 +103,61 @@ export default {
           formData.append(`attachment[` + i + `]`, file[i]);
         }
         UploadService.uploadFile(formData).then(res => {
-          this.jobOfferForm.attachmentId = res.data.data.attachment_id;
+          this.confirmJobOfferForm.attachmentId = res.data.data.attachment_id;
         });
       }
     },
-    sendJobOfferToFreelancer() {
+    estimationForFreelancer(id) {
       const body = {
-        service_id: this.serviceDetailsById.id,
-        title: this.jobOfferForm.title,
-        description: this.jobOfferForm.description,
-        attachment_id: this.jobOfferForm.attachmentId
+        job_offer_id: id,
+        price: this.confirmJobOfferForm.minPrice,
+        duration: this.confirmJobOfferForm.duration,
+        description: this.confirmJobOfferForm.freelancerDescription,
+        prepayment: this.confirmJobOfferForm.prepayment,
+        attachment_id: this.confirmJobOfferForm.attachmentId
       };
-      projectsService
-        .sendJobOffer(body)
-        .then(res => {
+      ServiceEmploymentService.estimationForFreelancer(body).then(res => {
+        console.log(res);
+      });
+    },
+    showEstimationEmployer(id) {
+      if (this.disableInput === true) {
+        ServiceEmploymentService.showEstimationEmployer(id).then(res => {
           console.log(res);
-          this.$refs.form.reset();
-          this.dialog = false;
-        })
-        .catch(error => {
-          console.log(error);
+          const response = res.data.data[0];
+          this.total_price = response.total_price;
+          this.confirmJobOfferForm = {
+            title: response.description,
+            description: response.description,
+            attachmentId: response["attachments"],
+            minPrice: response.price,
+            duration: response.duration,
+            prepayment: response.prepayment,
+            freelancerDescription: response.description
+          };
         });
+      }
+    },
+    rejectEstimation(id) {
+      if (this.disableInput === true) {
+        ServiceEmploymentService.rejectEstimationEmployer(id).then(res => {
+          console.log(res);
+          this.dialog = false;
+        });
+      }
+    },
+    hiredServiceByEmployer(id) {
+      ServiceEmploymentService.employmentService(id).then(res => {
+        console.log(res);
+        this.dialog = false;
+      });
+    },
+    confirmEstimation(id) {
+      if (this.disableInput === true) {
+        this.hiredServiceByEmployer(id);
+      } else {
+        this.estimationForFreelancer(id);
+      }
     }
   }
 };

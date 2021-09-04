@@ -10,68 +10,86 @@ export default {
         {
           src: "bg23",
           notification: 0,
-          title: "سفارشات",
-          routeName: "orders"
+          title: "مرکز پیام",
+          routeName: "message-center"
         },
         {
           src: "logo",
           notification: 0,
-          title: "پروژه ها",
-          routeName: "projects"
+          title: "طرح های پیشنهادی",
+          routeName: "proposals"
         },
         {
           src: "bg23",
           notification: 0,
-          title: "مدیریت کاربران",
-          routeName: "manage-users"
+          title: "مدیریت پرداخت ها",
+          routeName: "payout-freelancer"
+        },
+        {
+          src: "bg23",
+          notification: 0,
+          title: "فاکتورها",
+          routeName: "invoices"
+        },
+        {
+          src: "bg23",
+          notification: 0,
+          title: "موارد ذخیره شده",
+          routeName: "my-saved-items"
+        },
+        {
+          src: "logo",
+          notification: 0,
+          title: "تنظیمات پروفایل",
+          routeName: "profile-setting"
         },
         {
           src: "bg23",
           notification: 0,
           title: "تنظیمات حساب",
-          routeName: "account-setting"
-        },
-        {
-          src: "bg23",
-          notification: 0,
-          title: "مهارت ها",
-          routeName: "skills"
+          routeName: "account-setting-freelancer"
         },
         {
           src: "logo",
           notification: 0,
-          title: "دسته بندی شغلی",
-          routeName: "job-categories"
+          title: "پروژه های تکمیل شده",
+          routeName: "completed-projects"
         },
         {
           src: "bg23",
           notification: 0,
-          title: "دپارتمان ها",
-          routeName: "departments"
-        },
-        {
-          src: "logo",
-          notification: 0,
-          title: "زبان ها",
-          routeName: "languages"
+          title: "پروژه های ناتمام",
+          routeName: "cancelled-projects"
         },
         {
           src: "bg23",
           notification: 0,
-          title: "خدمات",
-          routeName: "services"
-        },
-        {
-          src: "bg23",
-          notification: 0,
-          title: "گزینه بررسی",
-          routeName: "review-option"
+          title: "پروژه های در حال انجام",
+          routeName: "ongoing-projects"
         },
         {
           src: "a",
           notification: 0,
-          title: "پرداخت ها",
-          routeName: "payout"
+          title: "خدمات در حال انتظار",
+          routeName: "posted-services"
+        },
+        {
+          src: "bg23",
+          notification: 0,
+          title: "خدمات تکمیل شده",
+          routeName: "completed-services"
+        },
+        {
+          src: "a",
+          notification: 0,
+          title: "خدمات ناتمام",
+          routeName: "cancelled-services"
+        },
+        {
+          src: "bg23",
+          notification: 0,
+          title: "خدمات در حال انجام",
+          routeName: "ongoing-services"
         }
       ]
     };
