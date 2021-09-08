@@ -1,6 +1,7 @@
-<dashboard-card :titleCard= "$t('sidebar.proposals')">
-    <project-list
-            :projectListItems="projectListItems"
-            :simpleDialogData="simpleDialogData"
-    ></project-list>
+<dashboard-card :titleCard="$t('sidebar.proposals')">
+  <proposals-table
+    :headerProposalTable="headerProposalTable"
+    :dataProposalTable="dataProposalTable"
+  >
+  </proposals-table>
 </dashboard-card>

@@ -84,7 +84,7 @@ const routes = [
         component: () => import("../views/front-office/projects-browse/index")
       },
       {
-        path: "/project-details",
+        path: "/project-details/:id",
         name: "project-details",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/project-details/index")
@@ -277,6 +277,21 @@ const routes = [
         component: () => import("../views/freelancer/account-setting/index")
       },
       {
+        path: "posted-projects",
+        name: "posted-projects",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/posted-projects/index"),
+        children: [
+          {
+            path: ":id/project-detail",
+            name: "project-detail",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import("../views/freelancer/posted-projects/project-detail/index")
+          }
+        ]
+      },
+      {
         path: "completed-projects",
         name: "completed-projects",
         meta: { transitionName: "slide" },
@@ -422,7 +437,20 @@ const routes = [
         name: "pending-projects-employer",
         meta: { transitionName: "slide" },
         component: () =>
-          import("../views/employer/manage-job/pending-projects-employer/index")
+          import(
+            "../views/employer/manage-job/pending-projects-employer/index"
+          ),
+        children: [
+          {
+            path: ":id/project-detail",
+            name: "project-detail",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-job/pending-projects-employer/project-detail/index"
+              )
+          }
+        ]
       },
       {
         path: "posted-services",

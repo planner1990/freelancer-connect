@@ -1,7 +1,7 @@
 export default {
   name: "side-info",
   components: {},
-  props: [],
+  props: ["projectDetailsById"],
   data() {
     return {
       value: [0, 1000],

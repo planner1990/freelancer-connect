@@ -76,6 +76,11 @@ export default {
               symbol: "mdi-projector-screen-outline",
               subCategory: [
                 {
+                  title: "postedProjects",
+                  route: "/freelancer/posted-projects",
+                  symbol: "mdi-folder-star-multiple-outline"
+                },
+                {
                   title: "completedProjects",
                   route: "/freelancer/completed-projects",
                   symbol: "mdi-folder-star-multiple-outline"

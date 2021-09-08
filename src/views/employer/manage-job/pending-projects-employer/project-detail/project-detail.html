@@ -1,0 +1,97 @@
+<div>
+  <v-container>
+    <v-row>
+      <v-col cols="12" class="px-0">
+        <div class="container--fluid d-lg-flex d-md-block project-row">
+          <div
+            class="col-lg-8 col-md-12 d-flex flex-column align-start justify-center"
+          >
+            <div>
+              <span
+                ><v-icon color="primary">mdi-check-circle</v-icon>
+                {{ projectDetails.username }}
+              </span>
+            </div>
+            <div class="font-weight-medium mx-2">{{projectDetails.title}}</div>
+            <span>
+              {{ projectDetails.description | readMore(250, "...") }}
+            </span>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex">
+            <div class="row justify-space-around align-center">
+              <div>
+                <v-icon class="mb-1">
+                  mdi-cash-multiple
+                </v-icon>
+                {{projectDetails.price | roundNumber | thousandMask}} ریال
+              </div>
+              <div>
+                <v-icon>
+                  mdi-timetable
+                </v-icon>
+                بیشتر از یک هفته
+              </div>
+            </div>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+
+  <header-section :headerSectionTitle="'طرح های پیشنهادی'"></header-section>
+  <v-container>
+    <v-row>
+      <v-col
+        cols="12"
+        class="px-0"
+        v-for="proposal in proposalsList"
+        :key="proposal.id"
+      >
+        <div class="container--fluid d-lg-flex d-md-block project-row">
+          <div class="col-lg-8 col-md-12 d-flex align-center justify-start">
+            <div class="col-6 pa-0">
+              <div class="d-flex align-center">
+                <span class="img-profile">
+                  <img
+                    src="../../../../../assets/image/front-office/profile.jpg"
+                    alt=""
+                  />
+                </span>
+                <span class="mx-3 font-weight-medium">
+                  {{ proposal.content | readMore(10, "...") }}
+                </span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div>
+                <span
+                  ><v-icon>mdi-timetable</v-icon>
+                  {{ proposal['hire_request_at'] | changeDate}}
+                </span>
+              </div>
+              <span class="mt-3 d-block">
+                <v-icon class="mb-2">mdi-cash-multiple</v-icon>
+                {{ proposal.amount | roundNumber | thousandMask}} ریال
+              </span>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-12 d-flex justify-space-around align-center"
+          >
+            <div>
+              <proposal-detail-dialog :proposalId="proposal.id"></proposal-detail-dialog>
+            </div>
+          </div>
+        </div>
+      </v-col>
+      <div class="col-12 text-center pt-2">
+        <v-pagination
+          color="primary"
+          :length="totalPage"
+          :value="page"
+          @input="changePage($event)"
+        ></v-pagination>
+      </div>
+    </v-row>
+  </v-container>
+</div>

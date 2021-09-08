@@ -8,6 +8,7 @@ import registrationForm from "./modules/registrationForm";
 import paginationData from "./modules/paginationData";
 import browseServiceData from "./modules/browseServiceData";
 import guideEmployerToLogin from "./modules/guideEmployertoLogin";
+import browseProjectData from "./modules/browseProjectData";
 
 Vue.use(Vuex);
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     registrationForm,
     paginationData,
     browseServiceData,
-    guideEmployerToLogin
+    guideEmployerToLogin,
+    browseProjectData
   }
 });

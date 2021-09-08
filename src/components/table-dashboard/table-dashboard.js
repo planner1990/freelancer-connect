@@ -123,7 +123,6 @@ export default {
     showEstimationEmployer(id) {
       if (this.disableInput === true) {
         ServiceEmploymentService.showEstimationEmployer(id).then(res => {
-          console.log(res);
           const response = res.data.data[0];
           this.total_price = response.total_price;
           this.confirmJobOfferForm = {

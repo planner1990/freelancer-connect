@@ -1,72 +1,72 @@
 <section class="employer-projects">
   <v-container>
-    <v-row class="justify-center mt-2 mb-8" v-for="(item, index) in 4" :key="index">
+    <v-row
+      class="justify-center mt-2 mb-8"
+      v-for="projectList in showServices"
+      :key="projectList.id"
+    >
       <v-col cols="11" class="d-flex employer-projects-card pa-0">
         <div class="employer-projects-card-right pa-5">
           <div class="employer-projects-card-name">
             <v-icon dense color="primary">
               mdi-check-circle
             </v-icon>
-            محمد حسینی
+              {{ projectList.username }}
           </div>
           <div class="employer-projects-card-title">
-            توسعه دهنده فرانت
+              {{ projectList.title }}
           </div>
           <div class="employer-projects-card-description">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم
-            ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن
-            ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با
-            تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید
-            سادگی نامفهوم از صنعت چاپ...
+            {{projectList.description | readMore(330, "...")}}
           </div>
           <div class="mt-8">
-              <button class="ml-2">HTML</button>
-              <button class="ml-2">PHP</button>
-              <button class="ml-2">My SQL</button>
+            <button class="ml-2">HTML</button>
+            <button class="ml-2">PHP</button>
+            <button class="ml-2">My SQL</button>
           </div>
         </div>
         <v-divider class="divide-card" vertical></v-divider>
         <div class="d-flex flex-column employer-projects-card-left pa-5">
-            <div>
-                <v-icon dense color="blue darken-2">
-                    mdi-folder
-                </v-icon>
-                <span class="mx-4">نوع پروژه</span>
-            </div>
-            <div>
-                <v-icon dense color="error">
-                    mdi-calendar-clock
-                </v-icon>
-                <span class="mx-4">کمتر از یک ماه</span>
-            </div>
-            <div>
-                <v-icon dense color="purple darken-1">
-                    mdi-briefcase
-                </v-icon>
-                <span class="mx-4">کد پروژه: A1UDS262</span>
-            </div>
-            <div>
-                <v-icon dense>
-                    mdi-heart-outline
-                </v-icon>
-                <span class="mx-4">افزودن به علاقمندی ها</span>
-            </div>
-            <div class="mt-8">
-                <v-btn color="primary" block to="/project-details">
-                    نمایش پروژه
-                </v-btn>
-            </div>
+          <div>
+            <v-icon dense color="blue darken-2">
+              mdi-folder
+            </v-icon>
+            <span class="mx-4">نوع پروژه</span>
+          </div>
+          <div>
+            <v-icon dense color="error">
+              mdi-calendar-clock
+            </v-icon>
+            <span class="mx-4">کمتر از یک ماه</span>
+          </div>
+          <div>
+            <v-icon dense color="purple darken-1">
+              mdi-briefcase
+            </v-icon>
+            <span class="mx-4">کد پروژه: A1UDS262</span>
+          </div>
+          <div>
+            <v-icon dense>
+              mdi-heart-outline
+            </v-icon>
+            <span class="mx-4">افزودن به علاقمندی ها</span>
+          </div>
+          <div class="mt-8">
+            <v-btn color="primary" block @click="goToDetail(projectList.id)">
+              نمایش پروژه
+            </v-btn>
+          </div>
         </div>
       </v-col>
     </v-row>
-      <div class="col-12 text-center pt-2">
-          <v-pagination
-                  color="red"
-                  :length="length"
-                  :value="page"
-                  :total-visible="5"
-                  @input="changePage($event)"
-          ></v-pagination>
-      </div>
+    <div class="col-12 text-center pt-2">
+      <v-pagination
+        color="primary"
+        :length="length"
+        :value="page"
+        :total-visible="5"
+        @input="changePage($event)"
+      ></v-pagination>
+    </div>
   </v-container>
 </section>

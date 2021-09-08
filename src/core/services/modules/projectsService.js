@@ -13,13 +13,11 @@ class projectsService {
   getServiceById(id) {
     return API_V1.get(`services/${id}`);
   }
+  getProjectById(id) {
+    return API_V1.get(`projects/${id}`);
+  }
   sendJobOffer(body) {
     return API_V1.post("admin/employer/service", body);
-  }
-  employerProjectStatus(options) {
-    return API_V1.get(
-      `admin/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
-    );
   }
   projectDurations() {
     return API_V1.get(`type/project_durations`);
@@ -32,6 +30,14 @@ class projectsService {
   }
   companyCriteria() {
     return API_V1.get(`type/company_criteria`);
+  }
+
+  getAllProjects() {
+    return API_V1.get(`projects`);
+  }
+
+  submitProposal(body) {
+    return API_V1.post("admin/freelancer/proposals", body);
   }
 }
 

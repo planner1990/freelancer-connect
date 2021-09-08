@@ -4,6 +4,8 @@ import OtpService from "./modules/otpService";
 import profileServices from "./modules/profileServices";
 import UploadService from "./modules/uploadService";
 import ServiceEmploymentService from "./modules/serviceEmploymentService";
+import freelancerServices from "./modules/freelancerServices";
+import employerServices from "./modules/employerServices";
 
 export {
   AuthService,
@@ -11,5 +13,7 @@ export {
   OtpService,
   profileServices,
   UploadService,
-  ServiceEmploymentService
+  ServiceEmploymentService,
+  freelancerServices,
+  employerServices
 };
