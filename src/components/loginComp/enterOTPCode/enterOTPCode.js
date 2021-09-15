@@ -16,7 +16,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      registrationData: types.storeRegisterForm.REGISTER_FORM_GET
+      registrationData: types.storeRegisterForm.REGISTER_FORM_GET,
+      getEmployerData:
+        types.HandleEmployerToLogin.getters.HANDLE_EMPLOYER_TO_LOGIN_GET
     }),
     getDataFromStore() {
       return this.registrationData;
@@ -59,8 +61,16 @@ export default {
           localStorage.setItem("accessToken", res.data.data.token);
           this.$router.push("/login/freelancer-or-employer");
         } else {
-          localStorage.setItem("accessToken", res.data.data.token);
-          this.goToDashboard();
+          if (
+            this.getEmployerData.currentURL &&
+            this.getEmployerData.serviceId
+          ) {
+            localStorage.setItem("accessToken", res.data.data.token);
+            this.$router.push(this.getEmployerData.currentURL);
+          } else {
+            localStorage.setItem("accessToken", res.data.data.token);
+            this.goToDashboard();
+          }
         }
       });
     },

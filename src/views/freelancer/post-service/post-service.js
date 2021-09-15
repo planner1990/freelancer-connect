@@ -49,7 +49,7 @@ export default {
     createService() {
       if (this.$refs[`form`].validate() === true) {
         const body = {
-          price: this.serviceForm.price,
+          min_price: this.serviceForm.price,
           title: this.serviceForm.title,
           description: this.serviceForm.description,
           attachment_id: this.serviceForm.attachmentId

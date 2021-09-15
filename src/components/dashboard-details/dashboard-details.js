@@ -9,7 +9,7 @@ export default {
   mounted() {},
   methods: {
     goToRoute(routeName) {
-      this.$router.push({ name: `${routeName}` }).then(r => console.log(r));
+      this.$router.push({ name: `${routeName}` });
     }
   }
 };

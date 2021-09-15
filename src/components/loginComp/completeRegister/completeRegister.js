@@ -20,7 +20,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      registrationData: types.storeRegisterForm.REGISTER_FORM_GET
+      registrationData: types.storeRegisterForm.REGISTER_FORM_GET,
+      getEmployerData:
+        types.HandleEmployerToLogin.getters.HANDLE_EMPLOYER_TO_LOGIN_GET
     }),
     ...mapMutations([types.storeRegisterForm.REGISTER_FORM_MUTATE]),
     getDataFromStore() {
@@ -54,8 +56,17 @@ export default {
       AuthService.register(body).then(res => {
         localStorage.setItem("accessToken", res.data.data.token);
         if (res.status === 200) {
-          this.routToDashboard();
-          this.signInLoading = false;
+          if (
+            this.getEmployerData.currentURL &&
+            this.getDataFromStore.role === "employer"
+          ) {
+            localStorage.setItem("accessToken", res.data.data.token);
+            this.signInLoading = false;
+            this.$router.push(this.getEmployerData.currentURL);
+          } else {
+            this.routToDashboard();
+            this.signInLoading = false;
+          }
         }
       });
     },

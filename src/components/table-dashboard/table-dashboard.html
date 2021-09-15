@@ -11,28 +11,193 @@
     :show-select="showSelect"
   >
     <template v-slot:item.actions="{ item }">
-      <v-btn class="ml-4" dark small color="info" @click="editItem(item)">
-        <v-icon dark>
-          mdi-pencil
-        </v-icon>
-      </v-btn>
-      <v-btn class="ml-4" dark small color="error" @click="deleteItem(item)">
-        <v-icon dark>
-          mdi-delete
-        </v-icon>
-      </v-btn>
-      <v-btn
-        v-if="item.title || item.id"
-        class="ml-4"
-        dark
-        small
-        color="#00cc8d"
-        @click="deleteItem(item)"
-      >
-        <v-icon dark>
-          mdi-eye-outline
-        </v-icon>
-      </v-btn>
+      <v-row justify="center" class="px-5">
+        <v-dialog v-model="dialog" max-width="600px">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="ma-2"
+              dark
+              small
+              color="primary"
+              v-bind="attrs"
+              v-on="on"
+              @click="showEstimationEmployer(item.id)"
+            >
+              مشاهده درخواست
+            </v-btn>
+          </template>
+          <v-form ref="form" v-model="valid" lazy-validation>
+            <v-card
+              class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+            >
+              <v-card-title>
+                <span class="text-h6" v-if="disableInput"
+                  >درخواست ارسال شده از فریلنسر</span
+                >
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12" v-if="!disableInput">
+                      <v-text-field
+                        label="عنوان*"
+                        required
+                        outlined
+                        dense
+                        v-model="item.title? item.title : confirmJobOfferForm.title"
+                        :value="item.title"
+                        disabled
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" v-if="!disableInput">
+                      <v-textarea
+                        outlined
+                        label="توضیحات*"
+                        required
+                        v-model="item.description? item.description : confirmJobOfferForm.description"
+                        disabled
+                      ></v-textarea>
+                    </v-col>
+                    <v-col cols="12" v-if="!disableInput">
+                      <v-file-input
+                        @change="handleFileInput($event)"
+                        counter
+                        label="File input"
+                        placeholder="Select your files"
+                        prepend-icon="mdi-paperclip"
+                        outlined
+                        multiple
+                        :show-size="1000"
+                        disabled
+                        dense
+                      >
+                        <template v-slot:selection="{ index, text }">
+                          <v-chip v-if="index < 3" dark label small>
+                            {{ text }}
+                          </v-chip>
+
+                          <span
+                            v-else-if="index === 3"
+                            class="text-overline grey--text text--darken-3 mx-2"
+                          >
+                            +{{ files.length - 3 }} File(s)
+                          </span>
+                        </template>
+                      </v-file-input>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        label="قیمت پیشنهادی پایه (ریال)*"
+                        required
+                        outlined
+                        dense
+                        type="number"
+                        v-model="confirmJobOfferForm.minPrice"
+                        :rules="confirmJobOfferRule.minPrice"
+                        :disabled="disableInput"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        label="مدت زمان تخمینی اجرای پروژه*"
+                        required
+                        outlined
+                        dense
+                        type="number"
+                        v-model="confirmJobOfferForm.duration"
+                        :rules="confirmJobOfferRule.duration"
+                        :disabled="disableInput"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        label="پیش پرداخت (ریال)"
+                        required
+                        outlined
+                        dense
+                        type="number"
+                        v-model="confirmJobOfferForm.prepayment"
+                        :disabled="disableInput"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <strong>برآورد کل قیمتی: {{total_price}}</strong>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-textarea
+                        outlined
+                        label="توضیحات*"
+                        required
+                        v-model="confirmJobOfferForm.freelancerDescription"
+                        :rules="confirmJobOfferRule.freelancerDescription"
+                        :disabled="disableInput"
+                      ></v-textarea>
+                    </v-col>
+                    <v-col cols="12">
+                      <div class="employer-projects-card-title mt-8">
+                        فایل های ضمیمه شده
+                      </div>
+                      <v-list>
+                        <v-list-item
+                          v-for="(file, index) in confirmJobOfferForm.attachmentId"
+                          :key="index"
+                        >
+                          <v-list-item-content>
+                            <v-list-item-title>
+                                فایل شماره {{index + 1}}
+                            </v-list-item-title>
+                          </v-list-item-content>
+                          <v-list-item-action>
+                            <v-btn icon :href="file" target="_blank">
+                              <v-icon small>mdi-arrow-down</v-icon>
+                            </v-btn>
+                          </v-list-item-action>
+                        </v-list-item>
+                      </v-list>
+                    </v-col>
+                    <v-col cols="12" v-if="!disableInput">
+                      <v-file-input
+                        @change="handleFileInput($event)"
+                        counter
+                        label="File input"
+                        placeholder="Select your files"
+                        prepend-icon="mdi-paperclip"
+                        outlined
+                        multiple
+                        dense
+                        :show-size="1000"
+                      >
+                        <template v-slot:selection="{ index, text }">
+                          <v-chip v-if="index < 3" dark label small>
+                            {{ text }}
+                          </v-chip>
+
+                          <span
+                            v-else-if="index === 3"
+                            class="text-overline grey--text text--darken-3 mx-2"
+                          >
+                            +{{ files.length - 3 }} File(s)
+                          </span>
+                        </template>
+                      </v-file-input>
+                    </v-col>
+                  </v-row>
+                </v-container>
+                <small v-if="!disableInput">*موارد ستاره دار خالی نماند.</small>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="error" @click="rejectEstimation(item.id)">
+                  رد پیشنهاد
+                </v-btn>
+                <v-btn color="primary" @click="confirmEstimation(item.id)">
+                  تایید و ارسال
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </v-dialog>
+      </v-row>
     </template>
     <template v-slot:item.icon="{ item }">
       <v-img
@@ -44,16 +209,34 @@
     </template>
     <template v-slot:item.title="{ item }">
       <div class="d-flex justify-center align-center service-table">
-        <div>
-          <img :src="item.title.src" alt="" />
-        </div>
+        <!--        <div>-->
+        <!--          <img :src="item.title.src" alt="" />-->
+        <!--        </div>-->
         <div class="d-flex flex-column align-start px-4">
-          <v-btn class="white--text" color="error" depressed small>
-            featured
-          </v-btn>
-          <div class="m-0 my-1 service-table-title">{{item.title.title}}</div>
+          <!--          <v-btn class="white&#45;&#45;text" color="error" depressed small>-->
+          <!--            featured-->
+          <!--          </v-btn>-->
+          <div class="m-0 my-1 service-table-title">{{item.title}}</div>
+          <!--          <div class="m-0">-->
+          <!--            شروع قیمت از <strong>{{item.title.price}}</strong>-->
+          <!--          </div>-->
+        </div>
+      </div>
+    </template>
+    <template v-slot:item.description="{ item }">
+      <div class="d-flex justify-center align-center service-table">
+        <div class="d-flex flex-column align-start px-4">
           <div class="m-0">
-            شروع قیمت از <strong>{{item.title.price}}</strong>
+            {{item.description | readMore(15, '...')}}
+          </div>
+        </div>
+      </div>
+    </template>
+    <template v-slot:item.updated_at="{ item }">
+      <div class="d-flex justify-center align-center service-table">
+        <div class="d-flex flex-column align-start px-4">
+          <div class="m-0">
+            {{item['updated_at'] | changeDate() }}
           </div>
         </div>
       </div>
