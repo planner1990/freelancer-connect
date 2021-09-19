@@ -1,6 +1,65 @@
 <dashboard-card :titleCard="$t('sidebar.ongoingProjects')">
-    <table-dashboard
-            :headersUserManagement="headersUserManagement"
-            :dataUserManagement="dataUserManagement"
-    ></table-dashboard>
+  <v-container v-if="!this.$route.params.id">
+    <v-row>
+      <v-col
+        cols="12"
+        v-for="projectList in indexProjectsList"
+        :key="projectList.id"
+      >
+        <div class="container--fluid d-lg-flex d-md-block project-row">
+          <div
+            class="col-lg-7 col-md-12 d-flex flex-column align-start justify-center"
+          >
+            <div>
+              <span
+                ><v-icon color="primary">mdi-check-circle</v-icon>
+                {{ projectList.title}}
+              </span>
+            </div>
+            <div class="font-weight-medium mx-2">
+              {{projectList.description | readMore(60, "...")}}
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-12 d-flex">
+            <div class="row justify-space-around align-center">
+              <div class="d-flex align-center">
+                <v-btn
+                  depressed
+                  color="primary"
+                  @click="redirectToProjectDetail(projectList.id, projectList.proposal_id)"
+                >
+                  {{ projectList['unread_messages']}} پیام جدید
+                  <v-icon right dark>
+                    mdi-chat
+                  </v-icon>
+                </v-btn>
+              </div>
+              <div class="expired">
+                <v-btn
+                  depressed
+                  fab
+                  text
+                  @click="redirectToProjectDetail(projectList.id)"
+                >
+                  <v-icon x-large>
+                    mdi-chevron-left
+                  </v-icon>
+                </v-btn>
+              </div>
+            </div>
+          </div>
+        </div>
+      </v-col>
+      <div class="col-12 text-center pt-2">
+        <v-pagination
+          color="primary"
+          :length="totalPage"
+          :value="page"
+        ></v-pagination>
+      </div>
+    </v-row>
+  </v-container>
+  <transitionPage>
+    <router-view v-if="this.$route.params.id" />
+  </transitionPage>
 </dashboard-card>

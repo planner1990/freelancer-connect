@@ -1,7 +1,7 @@
 export default {
   name: "file-input-dashboard",
   components: {},
-  props: [],
+  props: ["status"],
   data() {
     return {
       files: [],
@@ -12,6 +12,7 @@ export default {
   mounted() {},
   methods: {
     uploadImage() {
+      console.log(this.status);
       this.files = this.files.slice(this.files[0], 1);
       new Promise(resolve => {
         const file = new File(this.files, "img");

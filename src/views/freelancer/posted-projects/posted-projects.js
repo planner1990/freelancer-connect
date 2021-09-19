@@ -49,7 +49,7 @@ export default {
       //   perPage: 5
       // };
       freelancerServices.getPendingProposals().then(res => {
-        this.indexProjectsList = res.data.data.projects;
+        this.indexProjectsList = res.data.data;
       });
     },
     // changePage(currentPage) {

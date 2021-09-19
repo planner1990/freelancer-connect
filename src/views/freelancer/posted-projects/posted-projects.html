@@ -13,27 +13,27 @@
             <div>
               <span
                 ><v-icon color="primary">mdi-check-circle</v-icon>
-                {{ projectList.title }}
+                {{ projectList.content | readMore(35, "...")}}
               </span>
             </div>
             <div class="font-weight-medium mx-2">{{projectList.status}}</div>
           </div>
           <div class="col-lg-4 col-md-12 d-flex">
             <div class="row justify-space-around align-center">
-              <div class="d-flex align-center">
-                <v-btn
-                  depressed
-                  color="primary"
-                  @click="redirectToProjectDetail(projectList.id)"
-                >
-                  ۱۴ پیشنهاد
-                  <v-icon right dark>
-                    mdi-briefcase-account
-                  </v-icon>
-                </v-btn>
-              </div>
+<!--              <div class="d-flex align-center">-->
+<!--                <v-btn-->
+<!--                  depressed-->
+<!--                  color="primary"-->
+<!--                  @click="redirectToProjectDetail(projectList.id)"-->
+<!--                >-->
+<!--                  ۱۴ پیشنهاد-->
+<!--                  <v-icon right dark>-->
+<!--                    mdi-briefcase-account-->
+<!--                  </v-icon>-->
+<!--                </v-btn>-->
+<!--              </div>-->
               <div class="expired">
-                <v-btn depressed fab text>
+                <v-btn depressed fab text  @click="redirectToProjectDetail(projectList.id)">
                   <v-icon x-large>
                     mdi-chevron-left
                   </v-icon>

@@ -284,7 +284,7 @@ const routes = [
         children: [
           {
             path: ":id/project-detail",
-            name: "project-detail",
+            name: "project-detail-freelancer",
             meta: { transitionName: "slide" },
             component: () =>
               import("../views/freelancer/posted-projects/project-detail/index")
@@ -307,7 +307,19 @@ const routes = [
         path: "ongoing-projects",
         name: "ongoing-projects",
         meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/ongoing-projects/index")
+        component: () => import("../views/freelancer/ongoing-projects/index"),
+        children: [
+          {
+            path: ":id/progress-section",
+            name: "progress-section-freelancer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/freelancer/ongoing-projects/progress-section/index"
+              ),
+            props: true
+          }
+        ]
       },
       {
         path: "posted-services",
@@ -317,9 +329,21 @@ const routes = [
       },
       {
         path: "ongoing-services",
-        name: "ongoing-services",
+        name: "ongoing-services-Freelancer",
         meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/ongoing-services/index")
+        component: () => import("../views/freelancer/ongoing-services/index"),
+        children: [
+          {
+            path: ":id/progress-section",
+            name: "ongoing-service-detail-freelancer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/freelancer/ongoing-services/progress-section/index"
+              ),
+            props: true
+          }
+        ]
       },
       {
         path: "completed-services",
@@ -430,7 +454,21 @@ const routes = [
         name: "ongoing-projects-employer",
         meta: { transitionName: "slide" },
         component: () =>
-          import("../views/employer/manage-job/ongoing-projects-employer/index")
+          import(
+            "../views/employer/manage-job/ongoing-projects-employer/index"
+          ),
+        children: [
+          {
+            path: ":id/progress-section",
+            name: "progress-section-employer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-job/ongoing-projects-employer/progress-section/index"
+              ),
+            props: true
+          }
+        ]
       },
       {
         path: "pending-projects",
@@ -465,10 +503,22 @@ const routes = [
         path: "ongoing-services",
         name: "ongoing-services-employer",
         meta: { transitionName: "slide" },
+        props: true,
         component: () =>
           import(
             "../views/employer/manage-services/ongoing-services-employer/index"
-          )
+          ),
+        children: [
+          {
+            path: ":id/service-detail",
+            name: "ongoing-service-detail",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-services/ongoing-services-employer/service-detail/index"
+              )
+          }
+        ]
       },
       {
         path: "completed-services",

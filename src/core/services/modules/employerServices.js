@@ -22,6 +22,34 @@ class employerServices {
   proposalAction(body) {
     return API_V1.post("admin/employer/proposal/update", body);
   }
+
+  indexMilestone(proposalId) {
+    return API_V1.get(`/admin/milestone/proposal/${proposalId}`);
+  }
+
+  indexJobOffers(status) {
+    return API_V1.get(`/admin/employer/service/job_offers?status=${status}`);
+  }
+
+  showJobOfferById(id) {
+    return API_V1.get(`/admin/employer/service/job_offers/${id}`);
+  }
+
+  indexEstimations(id) {
+    return API_V1.get(`/admin/employer/service/job_offers/estimation/${id}`);
+  }
+
+  showEstimation(id) {
+    return API_V1.get(`/admin/employer/service/estimation/${id}`);
+  }
+
+  confirmServiceEmployment(id) {
+    return API_V1.get(`/admin/employer/service/employment/${id}`);
+  }
+
+  rejectServiceEstimation(id) {
+    return API_V1.get(`/admin/employer/service/reject_estimation/${id}`);
+  }
 }
 
 export default new employerServices();

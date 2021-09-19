@@ -1,5 +1,5 @@
 @import "src/assets/styles/variable";
-.project-row {
+.project-row  {
   background-color: $surface-150;
   min-height: 185px;
   padding: 30px;
@@ -27,4 +27,16 @@
       border-radius: 50%;
     }
   }
+}
+.sentProposal {
+  background-color: $surface-150;
+  min-height: 185px;
+  padding: 30px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+}
+.v-list-item {
+  background-color: $surface-hover !important;
+  margin: 10px 0;
+  border-radius: 8px;
 }

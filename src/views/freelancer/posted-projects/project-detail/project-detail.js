@@ -3,6 +3,7 @@ import ProjectList from "../../../../components/project-list/index";
 import DialogDashboard from "../../../../components/dialog-dashboard/index";
 import employerServices from "../../../../core/services/modules/employerServices";
 import headerSection from "../../../../components/header-section/index";
+import freelancerServices from "../../../../core/services/modules/freelancerServices";
 export default {
   name: "project-detail",
   components: {
@@ -18,11 +19,11 @@ export default {
       pageCount: 5,
       page: 1,
       showSelect: true,
-      indexProjectsList: [],
+      attachments: [],
       totalData: null,
       status: "pending",
       projectDetails: {},
-      proposalsList: [],
+      proposalForm: {},
       nameRules: [
         v => !!v || "Name is required",
         v => (v && v.length <= 50) || "Name must be less than 10 characters"
@@ -47,7 +48,7 @@ export default {
   },
   mounted() {
     this.showDetailProject();
-    this.getProposalsPerProject();
+    this.getProposalsById();
   },
   methods: {
     showDetailProject() {
@@ -56,23 +57,13 @@ export default {
         this.projectDetails = res.data.data;
       });
     },
-    getProposalsPerProject() {
-      const body = {
-        project_id: this.$route.params.id
-      };
-      employerServices.getProposalsPerProject(body).then(res => {
-        this.proposalsList = res.data.data;
-      });
-    },
-    getOngoingProject() {
-      const options = {
-        status: this.status,
-        page: 1,
-        perPage: 5
-      };
-      employerServices.getIndexProjects(options).then(res => {
-        this.indexProjectsList = res.data.data.projects;
-      });
+    getProposalsById() {
+      freelancerServices
+        .getPendingProposalById(this.$route.params.id)
+        .then(res => {
+          this.proposalForm = res.data.data["freelancer"];
+          this.attachments = res.data.data.attachments;
+        });
     },
     changePage(currentPage) {
       const options = {
@@ -80,13 +71,7 @@ export default {
         page: currentPage,
         perPage: 5
       };
-      employerServices.getIndexProjects(options).then(res => {
-        this.page = currentPage;
-        console.log(res);
-      });
-    },
-    redirectToEditJob() {
-      this.$router.push({ name: "edit-project" }).catch(() => {});
+      console.log(options);
     }
   }
 };

@@ -4,6 +4,9 @@ import ProjectList from "../../../components/project-list/index";
 import FileInputDashboard from "../../../components/file-input-dashboard/index";
 import DynamicExpansionPanel from "../../../components/dynamic-expansion-panel/index";
 import FormDialog from "../../../components/form-dialog/index";
+import freelancerServices from "../../../core/services/modules/freelancerServices";
+import projectsService from "../../../core/services/modules/projectsService";
+
 export default {
   name: "profile-setting",
   components: {
@@ -135,14 +138,29 @@ export default {
             class: "col-md-12"
           }
         ]
-      }
+      },
+      profileInfo: {},
+      categories: {}
     };
   },
   computed: {},
-  mounted() {},
+  mounted() {
+    this.showProfile();
+    this.showCategoryById();
+  },
   methods: {
     resetValidation() {
       this.$refs.form.resetValidation();
+    },
+    showProfile() {
+      freelancerServices.showProfile().then(res => {
+        this.profileInfo = res.data.data;
+      });
+    },
+    showCategoryById() {
+      projectsService.activityTypes().then(res => {
+        this.categories = res.data.data;
+      });
     }
   },
   watch: {}

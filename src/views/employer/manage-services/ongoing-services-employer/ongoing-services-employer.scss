@@ -1,3 +1,19 @@
-.ongoing-services-employer {
+@import "src/assets/styles/variable";
+.project-row {
+  background-color: $surface-150;
+  min-height: 170px;
+  height: 185px;
+  padding: 30px;
+  margin-bottom: 18px;
+  border-radius: 8px;
 
+  &:hover {
+    box-shadow: $card-box-shadow;
+    background-color: $surface-hover;
+  }
+  .expired {
+    color: $green-100;
+    font-size: 16px;
+    font-weight: 500;
+  }
 }
