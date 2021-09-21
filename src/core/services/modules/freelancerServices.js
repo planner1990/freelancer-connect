@@ -44,6 +44,18 @@ class freelancerServices {
   showProfile() {
     return API_V1.get(`/admin/freelancer/profile`);
   }
+
+  updateProfile(body) {
+    return API_V1.post(`/admin/freelancer/update/profile`, body);
+  }
+
+  updateExperienceEducation(body) {
+    return API_V1.post(`/admin/freelancer/update-experience-education`, body);
+  }
+
+  updateProjectsAward(body) {
+    return API_V1.post(`/admin/freelancer/update-project-award`, body);
+  }
 }
 
 export default new freelancerServices();

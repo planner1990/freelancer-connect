@@ -8,7 +8,32 @@ export default {
     return {
       valid: false,
       dialog: false,
-      proposalForm: {}
+      proposalForm: {
+        project_duration_id: "",
+        price: "",
+        minPrice: "",
+        description: "",
+        attachmentId: [],
+        durationList: []
+      },
+      proposalRule: {
+        duration: [
+          v => !!v || "Name is required",
+          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+        ],
+        price: [
+          v => !!v || "Name is required",
+          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+        ],
+        minPrice: [
+          v => !!v || "Name is required",
+          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+        ],
+        description: [
+          v => !!v || "Description is required",
+          v => (v && v.length >= 20) || "Description must be more than 20 "
+        ]
+      }
     };
   },
   computed: {},

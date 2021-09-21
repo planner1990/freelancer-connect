@@ -95,3 +95,17 @@ export const BrowseProjectData = {
     BROWSE_PROJECT_ACTION: "BROWSE_PROJECT_ACTION"
   }
 };
+
+export const avatarManagement = {
+  getters: {
+    AVATAR_MANAGEMENT_GET: "AVATAR_MANAGEMENT_GET"
+  },
+
+  mutations: {
+    AVATAR_MANAGEMENT_MUTATE: "AVATAR_MANAGEMENT_MUTATE"
+  },
+
+  actions: {
+    AVATAR_MANAGEMENT_ACTION: "AVATAR_MANAGEMENT_ACTION"
+  }
+};

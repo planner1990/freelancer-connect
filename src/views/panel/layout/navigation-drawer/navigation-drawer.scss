@@ -5,6 +5,9 @@
   height: 132px;
   background-color: $blue-300;
   position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   .username-info {
     position: absolute;

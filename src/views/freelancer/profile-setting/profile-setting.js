@@ -6,6 +6,12 @@ import DynamicExpansionPanel from "../../../components/dynamic-expansion-panel/i
 import FormDialog from "../../../components/form-dialog/index";
 import freelancerServices from "../../../core/services/modules/freelancerServices";
 import projectsService from "../../../core/services/modules/projectsService";
+import Experience from "./experience/index";
+import Education from "./education/index";
+import Projects from "./projects/index";
+import Award from "./award/index";
+import { mapActions, mapGetters } from "vuex";
+import * as types from "../../../shared/store/types";
 
 export default {
   name: "profile-setting",
@@ -15,7 +21,11 @@ export default {
     ProjectList,
     FileInputDashboard,
     DynamicExpansionPanel,
-    FormDialog
+    FormDialog,
+    Experience,
+    Education,
+    Projects,
+    Award
   },
   props: [],
   data() {
@@ -53,6 +63,7 @@ export default {
       },
       addExperienceDataForDialogForm: {
         titleButton: "افزودن تجربیات",
+        type: "experience",
         formField: [
           { type: "text-field", label: "عنوان", class: "col-lg-6 col-md-12" },
           {
@@ -75,6 +86,7 @@ export default {
       },
       addEducationDataForDialogForm: {
         titleButton: "افزودن تحصیلات",
+        type: "education",
         formField: [
           {
             type: "text-field",
@@ -101,6 +113,7 @@ export default {
       },
       addProjectsDataForDialogForm: {
         titleButton: "افزودن پروژه ها",
+        type: "projects",
         formField: [
           {
             type: "text-field",
@@ -111,16 +124,12 @@ export default {
             type: "text-field",
             label: "وارد نمودن URL",
             class: "col-lg-6 col-md-12"
-          },
-          {
-            type: "file-input",
-            label: "انتخاب فایل مورد نظر",
-            class: "col-md-12"
           }
         ]
       },
       addAwardDataForDialogForm: {
         titleButton: "افزودن دستاوردها",
+        type: "award",
         formField: [
           {
             type: "text-field",
@@ -140,26 +149,95 @@ export default {
         ]
       },
       profileInfo: {},
-      categories: {}
+      categories: {},
+      profileForm: {
+        first_name: "",
+        last_name: "",
+        gender: ""
+      },
+      attachments: []
     };
   },
-  computed: {},
+  computed: {
+    ...mapGetters({
+      formData: types.dialogForm.FORM_LIST_GET
+    }),
+    listOfFormData() {
+      return this.formData;
+    }
+  },
   mounted() {
     this.showProfile();
     this.showCategoryById();
   },
   methods: {
+    ...mapActions({
+      avatarProfile: types.avatarManagement.actions.AVATAR_MANAGEMENT_ACTION
+    }),
     resetValidation() {
       this.$refs.form.resetValidation();
     },
     showProfile() {
       freelancerServices.showProfile().then(res => {
         this.profileInfo = res.data.data;
+        this.avatarProfile(this.profileInfo);
       });
     },
     showCategoryById() {
       projectsService.activityTypes().then(res => {
         this.categories = res.data.data;
+      });
+    },
+    updateProfile() {
+      const body = {
+        first_name: this.profileInfo.user["first_name"],
+        last_name: this.profileInfo.user["last_name"],
+        gender: this.profileForm.gender,
+        attachments: this.attachments
+      };
+      freelancerServices.updateProfile(body).then(res => {
+        console.log(res);
+      });
+    },
+    getFileId(value) {
+      this.attachments.push(value);
+    },
+    updateExperienceEducation() {
+      let experience = [];
+      let education = [];
+      this.listOfFormData.map(item => {
+        if (item.type === "experience") {
+          experience.push(item.form);
+        } else if (item.type === "education") {
+          education.push(item.form);
+        }
+      });
+      const body = {
+        experience: experience,
+        education: education
+      };
+      console.log(body);
+      freelancerServices.updateExperienceEducation(body).then(res => {
+        console.log(res);
+      });
+    },
+    updateProjectsAward() {
+      let projects = [];
+      let award = [];
+      this.listOfFormData.map(item => {
+        if (item.type === "projects") {
+          projects.push(item.form);
+        } else if (item.type === "award") {
+          award.push(item.form);
+        }
+      });
+      const body = {
+        award: award,
+        project: projects
+      };
+      console.log(body);
+      freelancerServices.updateProjectsAward(body).then(res => {
+        console.log(res);
       });
     }
   },

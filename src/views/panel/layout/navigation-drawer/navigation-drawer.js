@@ -1,5 +1,6 @@
 import { mapGetters } from "vuex";
 import * as types from "../../../../shared/store/types";
+import freelancerServices from "../../../../core/services/modules/freelancerServices";
 
 export default {
   name: "navigation-drawer",
@@ -23,7 +24,8 @@ export default {
       ["Read", "mdi-book-open-blank-variant"],
       ["Update", "mdi-update"],
       ["Delete", "mdi-delete"]
-    ]
+    ],
+    profileInfo: {}
   }),
   computed: {
     ...mapGetters({
@@ -34,8 +36,15 @@ export default {
     const role = this.$route.matched[0].name;
     this.checkRole(role);
   },
-  mounted() {},
+  mounted() {
+    this.showProfile();
+  },
   methods: {
+    showProfile() {
+      freelancerServices.showProfile().then(res => {
+        this.profileInfo = res.data.data;
+      });
+    },
     logout() {
       localStorage.removeItem("accessToken");
       this.$router.push("/");

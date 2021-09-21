@@ -144,7 +144,7 @@
                         >
                           <v-list-item-content>
                             <v-list-item-title>
-                                فایل شماره {{index + 1}}
+                              فایل شماره {{index + 1}}
                             </v-list-item-title>
                           </v-list-item-content>
                           <v-list-item-action>
@@ -256,6 +256,10 @@
     </template>
   </v-data-table>
   <div class="text-center pt-2">
-    <v-pagination v-model="page" :length="pageCount" color="primary"></v-pagination>
+    <v-pagination
+      v-model="page"
+      :length="pageCount"
+      color="primary"
+    ></v-pagination>
   </div>
 </div>
