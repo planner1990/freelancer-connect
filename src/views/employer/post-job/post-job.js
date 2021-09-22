@@ -97,9 +97,9 @@ export default {
           categories: this.categories,
           attachment_id: this.projectForm.attachmentId
         };
-        console.log(body);
         projectsService.createProject(body).then(res => {
           console.log(res);
+          this.$refs.form.reset();
         });
       } else {
         this.showSnackbar = true;
@@ -136,12 +136,14 @@ export default {
     },
     handleFileInput(file) {
       let formData = new FormData();
-      formData.append("attachment", file);
-      console.log(formData);
-      UploadService.uploadFile(formData).then(res => {
-        console.log(res);
-        this.projectForm.attachmentId = res.data.data.attachment_id;
-      });
+      if (file) {
+        for (let i = 0; i <= file.length - 1; i++) {
+          formData.append(`attachment[` + i + `]`, file[i]);
+        }
+        UploadService.uploadFile(formData).then(res => {
+          this.projectForm.attachmentId = res.data.data.attachment_id;
+        });
+      }
     }
   },
   watch: {

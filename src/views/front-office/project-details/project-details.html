@@ -16,7 +16,9 @@
         <v-col class="mx-auto pr-1 pl-0" cols="12">
           <div class="px-8 py-12 d-flex align-center header-details">
             <div class="col-9">
-              <div class="mb-3 header-details-title">Internet Developer</div>
+              <div class="mb-3 header-details-title">
+                {{ projectDetailsById.title }}
+              </div>
               <div class="d-flex header-details-icons">
                 <div>
                   <v-icon dense color="blue darken-2">
@@ -34,7 +36,9 @@
                   <v-icon dense color="purple darken-1">
                     mdi-briefcase
                   </v-icon>
-                  <span class="mx-1">کد پروژه: A1UDS262</span>
+                  <span class="mx-1"
+                    >کد پروژه: {{ projectDetailsById.id }}</span
+                  >
                 </div>
                 <div>
                   <v-icon dense>
@@ -45,19 +49,149 @@
               </div>
             </div>
             <div class="col-3">
-              <v-btn color="primary" block large>
-                ارسال پروپوزال
-              </v-btn>
+              <div class="d-flex align-center justify-center">
+                <v-row justify="center" class="px-5">
+                  <template>
+                    <v-btn
+                      class="ma-2"
+                      color="primary"
+                      block
+                      large
+                      v-if="role !== 'freelancer'"
+                      @click="goToLogin"
+                    >
+                      برای ارسال درخواست وارد شوید
+                    </v-btn>
+                  </template>
+                  <v-dialog
+                    v-model="dialog"
+                    persistent
+                    max-width="600px"
+                    v-if="role === 'freelancer'"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        class="ma-2"
+                        x-large
+                        block
+                        color="primary"
+                        v-bind="attrs"
+                        v-on="on"
+                      >
+                        ارسال پروپوزال
+                      </v-btn>
+                    </template>
+                    <v-form ref="form" v-model="valid" lazy-validation>
+                      <v-card
+                        class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+                      >
+                        <v-card-title>
+                          <!--                  <span class="text-h5">ارسال درخواست به فریلنسر</span>-->
+                        </v-card-title>
+                        <v-card-text>
+                          <v-container>
+                            <v-row>
+                              <v-col cols="12">
+                                <v-select
+                                  v-model="proposalForm.project_duration_id"
+                                  :rules="proposalRule.duration"
+                                  :items="durationList"
+                                  item-value="id"
+                                  item-text="title"
+                                  :label="$t('form.duration')+'*'"
+                                  required
+                                  dense
+                                  outlined
+                                ></v-select>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field
+                                  label="قیمت پیشنهادی*"
+                                  required
+                                  outlined
+                                  dense
+                                  v-model="proposalForm.price"
+                                  :rules="proposalRule.price"
+                                ></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field
+                                  label="مقدار پیش پرداخت"
+                                  outlined
+                                  dense
+                                  v-model="proposalForm.minPrice"
+                                  :rules="proposalRule.minPrice"
+                                ></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-textarea
+                                  outlined
+                                  label="توضیحات*"
+                                  required
+                                  v-model="proposalForm.description"
+                                  :rules="proposalRule.description"
+                                ></v-textarea>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-file-input
+                                  @change="handleFileInput($event)"
+                                  counter
+                                  label="File input"
+                                  placeholder="Select your files"
+                                  prepend-icon="mdi-paperclip"
+                                  outlined
+                                  dense
+                                  multiple
+                                  :show-size="1000"
+                                >
+                                  <template v-slot:selection="{ index, text }">
+                                    <v-chip v-if="index < 3" dark label small>
+                                      {{ text }}
+                                    </v-chip>
+
+                                    <span
+                                      v-else-if="index === 3"
+                                      class="text-overline grey--text text--darken-3 mx-2"
+                                    >
+                                      +{{ files.length - 3 }} File(s)
+                                    </span>
+                                  </template>
+                                </v-file-input>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                          <small>*موارد ستاره دار خالی نماند.</small>
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="error" @click="dialog = false">
+                            بستن
+                          </v-btn>
+                          <v-btn
+                            color="primary"
+                            @click="sendJobOfferToFreelancer"
+                          >
+                            ارسال پروپوزال
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-form>
+                  </v-dialog>
+                </v-row>
+              </div>
             </div>
           </div>
         </v-col>
       </v-row>
       <v-row no-gutters>
         <v-col cols="12" sm="6" md="8">
-          <main-info></main-info>
+          <main-info :projectDetailsById="projectDetailsById"></main-info>
         </v-col>
         <v-col>
-            <side-info></side-info>
+          <side-info
+            :projectDetailsById="projectDetailsById"
+            :role="role"
+          ></side-info>
         </v-col>
       </v-row>
     </v-container>

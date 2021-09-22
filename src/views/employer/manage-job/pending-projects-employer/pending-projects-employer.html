@@ -1,6 +1,59 @@
 <dashboard-card :titleCard="$t('sidebar.ongoingProjects')">
-    <project-list
-            :simpleDialogData="simpleDialogData"
-            :status="status"
-    ></project-list>
+  <v-container v-if="!this.$route.params.id">
+    <v-row>
+      <v-col
+        cols="12"
+        v-for="projectList in indexProjectsList"
+        :key="projectList.id"
+      >
+        <div class="container--fluid d-lg-flex d-md-block project-row">
+          <div
+            class="col-lg-8 col-md-12 d-flex flex-column align-start justify-center"
+          >
+            <div>
+              <span
+                ><v-icon color="primary">mdi-check-circle</v-icon>
+                {{ projectList.title }}
+              </span>
+            </div>
+            <div class="font-weight-medium mx-2">{{projectList.status}}</div>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex">
+            <div class="row justify-space-around align-center">
+              <div class="d-flex align-center">
+                <v-btn
+                  depressed
+                  color="primary"
+                  @click="redirectToProjectDetail(projectList.id)"
+                >
+                  ۱۴ پیشنهاد
+                  <v-icon right dark>
+                    mdi-briefcase-account
+                  </v-icon>
+                </v-btn>
+              </div>
+              <div class="expired">
+                <v-btn depressed fab text>
+                  <v-icon x-large>
+                    mdi-chevron-left
+                  </v-icon>
+                </v-btn>
+              </div>
+            </div>
+          </div>
+        </div>
+      </v-col>
+      <div class="col-12 text-center pt-2">
+        <v-pagination
+          color="primary"
+          :length="totalPage"
+          :value="page"
+          @input="changePage($event)"
+        ></v-pagination>
+      </div>
+    </v-row>
+  </v-container>
+  <transitionPage>
+    <router-view v-if="this.$route.params.id" />
+  </transitionPage>
 </dashboard-card>

@@ -4,7 +4,6 @@
     <v-row>
       <v-text-field
         v-model="projectForm.title"
-        :counter="10"
         :rules="createProjectRule.title"
         :label="$t('form.projectTitle')"
         required
@@ -176,6 +175,7 @@
         placeholder="Select your files"
         prepend-icon="mdi-paperclip"
         outlined
+        multiple
         :show-size="1000"
       >
         <template v-slot:selection="{ index, text }">

@@ -1,0 +1,49 @@
+<div>
+  <v-expansion-panels
+    v-for="(item, index) in listOfFormData"
+    v-if="item.type === 'projects'"
+    :key="index"
+  >
+    <v-expansion-panel>
+      <v-expansion-panel-header>
+        <template v-slot:default="{ open }">
+          <v-row no-gutters>
+            <v-col cols="4">
+              عنوان
+            </v-col>
+            <v-col cols="8" class="text--secondary">
+              <v-fade-transition leave-absolute>
+                <span v-if="open" key="0">
+                  عنوان
+                </span>
+                <span v-else key="1" dir="ltr">{{ item.form.title }} </span>
+              </v-fade-transition>
+            </v-col>
+          </v-row>
+        </template>
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+        <v-row justify="space-around" no-gutters>
+          <v-col cols="12" sm="6" md="6">
+            <v-text-field
+              v-model="item.form.title"
+              placeholder=""
+              class="pl-2"
+              outlined
+              dense
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="6" md="6">
+            <v-text-field
+              v-model="item.form.url"
+              placeholder=""
+              class="pr-2"
+              outlined
+              dense
+            ></v-text-field>
+          </v-col>
+        </v-row>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
+</div>

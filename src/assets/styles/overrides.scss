@@ -386,3 +386,9 @@ input:-webkit-autofill:active {
     overflow: hidden;
   }
 }
+
+.proposal-detail-dialog {
+  textarea {
+    color: rgb(136 131 131 / 87%) !important;
+  }
+}

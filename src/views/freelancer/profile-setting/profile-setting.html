@@ -28,108 +28,93 @@
                 :header-section-title="'جزییات فردی و مهارتی'"
               ></header-section>
               <v-row class="d-lg-flex d-md-block">
-                <v-select
-                  v-model="select"
-                  :items="items"
-                  label="Basic level"
-                  required
-                  outlined
-                  class="col-lg-6 col-md-12 pl-2"
-                ></v-select>
                 <v-text-field
-                  v-model="select"
-                  :items="items"
-                  label="نام خانوادگی"
-                  required
-                  outlined
-                  class="col-lg-6 pr-lg-2 col-md-12 pr-md-0"
-                ></v-text-field>
-              </v-row>
-              <v-row class="d-lg-flex d-md-block">
-                <v-text-field
-                  v-model="select"
-                  :items="items"
+                  v-if="profileInfo.user"
+                  v-model="profileInfo.user['first_name']"
                   label="نام"
                   required
+                  lazy
                   outlined
                   class="col-lg-6 pl-lg-2 col-md-12  pl-md-0"
                 ></v-text-field>
                 <v-text-field
-                  v-model="select"
-                  :items="items"
+                  v-if="profileInfo.user"
+                  v-model="profileInfo.user['last_name']"
                   label="نام خانوادگی"
                   required
+                  lazy
                   outlined
-                  class="col-lg-6 pr-lg-2 col-md-12 pr-md-0"
+                  class="col-lg-6 col-md-12 pl-2"
                 ></v-text-field>
               </v-row>
-              <v-row>
-                <v-text-field
-                  v-model="name"
-                  :counter="10"
-                  :rules="nameRules"
-                  label="ایمیل"
+              <v-row class="d-lg-flex d-md-block">
+                <v-select
+                  v-if="profileInfo.user"
+                  v-model="profileForm.gender"
+                  :items="profileInfo['genders']"
+                  item-text="value"
+                  item-value="key"
+                  label="جنسیت"
                   required
                   outlined
-                ></v-text-field>
+                  class="col-lg-6 col-md-12 pl-2"
+                ></v-select>
+                <v-select
+                  v-if="profileInfo.user"
+                  :items="profileInfo['skills']"
+                  item-text="value"
+                  item-value="key"
+                  label="مهارت ها"
+                  required
+                  outlined
+                  class="col-lg-6 col-md-12 pl-2"
+                ></v-select>
               </v-row>
               <v-row>
-                <v-textarea
+                <v-select
+                  v-if="profileInfo.user"
+                  :items="categories"
+                  item-text="title"
+                  item-value="id"
+                  label="دسته بندی ها"
+                  :value="profileInfo.user['category_id']"
+                  required
                   outlined
-                  name="input-7-4"
-                  label="توضیحات"
-                  value="پروژه ای که روی آن کار می کنم یک پروژه ی تستی است که قرار است در جستجوی گوگل در صفحات اول تا دوم ارتقا داده شود."
-                ></v-textarea>
+                ></v-select>
               </v-row>
+              <!--              <v-row>-->
+              <!--                <v-textarea-->
+              <!--                  outlined-->
+              <!--                  name="input-7-4"-->
+              <!--                  label="توضیحات"-->
+              <!--                  value="پروژه ای که روی آن کار می کنم یک پروژه ی تستی است که قرار است در جستجوی گوگل در صفحات اول تا دوم ارتقا داده شود."-->
+              <!--                ></v-textarea>-->
+              <!--              </v-row>-->
               <header-section
                 :header-section-title="'تصویر پروفایل'"
               ></header-section>
               <v-row>
-                <file-input-dashboard></file-input-dashboard>
+                <file-input-dashboard
+                  :status="'avatar'"
+                  @clicked="getFileId"
+                  v-if="profileInfo.user"
+                  :imageProfile="profileInfo.user.profile.avatar"
+                >
+                </file-input-dashboard>
               </v-row>
 
               <header-section
                 :header-section-title="'تصویر بنر'"
               ></header-section>
               <v-row>
-                <file-input-dashboard></file-input-dashboard>
-              </v-row>
-              <header-section
-                :headerSectionTitle="'دسته بندی شغلی'"
-              ></header-section>
-              <v-row class="d-lg-flex d-md-block">
-                <v-combobox
-                  v-model="model"
-                  :items="items"
-                  :search-input.sync="search"
-                  hide-selected
-                  hint="Maximum of 5 tags"
-                  label="انتخاب دسته بندی"
-                  multiple
-                  persistent-hint
-                  required
-                  outlined
-                  clearable
-                  small-chips
-                >
-                  <template v-slot:no-data>
-                    <v-list-item>
-                      <v-list-item-content>
-                        <v-list-item-title>
-                          No results matching "<strong>{{ search }}</strong>".
-                          Press <kbd>enter</kbd> to create a new one
-                        </v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </template>
-                </v-combobox>
+                <file-input-dashboard
+                  :status="'banner'"
+                  @clicked="getFileId"
+                  :imageProfile="profileInfo.user.profile.banner"
+                ></file-input-dashboard>
               </v-row>
               <v-row class="my-10">
-                <v-btn
-                  color="error"
-                  :disabled="!valid"
-                  @click="resetValidation"
-                >
+                <v-btn color="error" @click="updateProfile">
                   {{ $t("actions.save&update") }}
                 </v-btn>
               </v-row>
@@ -144,14 +129,18 @@
             <form-dialog
               :dataForDialogForm="addExperienceDataForDialogForm"
             ></form-dialog>
-            <dynamic-expansion-panel></dynamic-expansion-panel>
+            <experience></experience>
             <header-section header-section-title="بخش تحصیلات"></header-section>
             <form-dialog
               :dataForDialogForm="addEducationDataForDialogForm"
             ></form-dialog>
-            <dynamic-expansion-panel></dynamic-expansion-panel>
+            <education></education>
             <v-row class="my-10">
-              <v-btn color="error" :disabled="!valid" @click="resetValidation">
+              <v-btn
+                color="error"
+                :disabled="!valid"
+                @click="updateExperienceEducation"
+              >
                 {{ $t("actions.save&update") }}
               </v-btn>
             </v-row>
@@ -161,21 +150,25 @@
       <v-tab-item>
         <v-card flat>
           <v-card-text>
-              <header-section header-section-title="بخش پروژه ها"></header-section>
-              <form-dialog
-                      :dataForDialogForm="addProjectsDataForDialogForm"
-              ></form-dialog>
-              <dynamic-expansion-panel></dynamic-expansion-panel>
-              <header-section header-section-title="بخش افتخارات"></header-section>
-              <form-dialog
-                      :dataForDialogForm="addAwardDataForDialogForm"
-              ></form-dialog>
-              <dynamic-expansion-panel></dynamic-expansion-panel>
-              <v-row class="my-10">
-                  <v-btn color="error" :disabled="!valid" @click="resetValidation">
-                      {{ $t("actions.save&update") }}
-                  </v-btn>
-              </v-row>
+            <header-section
+              header-section-title="بخش پروژه ها"
+            ></header-section>
+            <form-dialog
+              :dataForDialogForm="addProjectsDataForDialogForm"
+            ></form-dialog>
+            <projects></projects>
+            <header-section
+              header-section-title="بخش افتخارات"
+            ></header-section>
+            <form-dialog
+              :dataForDialogForm="addAwardDataForDialogForm"
+            ></form-dialog>
+            <award></award>
+            <v-row class="my-10">
+              <v-btn color="error" @click="updateProjectsAward">
+                {{ $t("actions.save&update") }}
+              </v-btn>
+            </v-row>
           </v-card-text>
         </v-card>
       </v-tab-item>

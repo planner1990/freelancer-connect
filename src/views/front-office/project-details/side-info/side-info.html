@@ -3,8 +3,10 @@
     <v-col cols="12" class="side-info-card mr-3">
       <div class="d-flex side-info-card-budget">
         <div class="side-info-card-budget-price pa-5 text-center">
-          <div>۵ میلیون تومان</div>
-          <div>بودجه کلاینت</div>
+          <div>
+            {{ projectDetailsById.price | roundNumber |thousandMask }} تومان
+          </div>
+          <div>بودجه پروژه</div>
         </div>
         <v-divider class="divide-card-vertical my-4" vertical></v-divider>
         <div class="text-center pt-3 side-info-card-budget-icon">
@@ -37,7 +39,7 @@
       <v-divider class="divide-card"></v-divider>
       <div class="side-info-card-budget mb-7">
         <div class="pt-4 pb-2 text-center">
-          <div class="project-id">شناسه پروژه: A1UDS262</div>
+          <div class="project-id">شناسه پروژه: {{ projectDetailsById.id }}</div>
         </div>
         <div class="d-flex align-center justify-center">
           <v-btn class="ma-2" outlined x-large color="primary">

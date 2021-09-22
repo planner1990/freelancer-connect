@@ -1,7 +1,7 @@
 export default {
   name: "main-info",
   components: {},
-  props: [],
+  props: ["projectDetailsById"],
   data() {
     return {
       length: 10,

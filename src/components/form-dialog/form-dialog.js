@@ -7,35 +7,42 @@ export default {
   props: ["dataForDialogForm"],
   data() {
     return {
-      newForm: {
+      experienceForm: {
         name: "",
         companyName: "",
         start: null,
         end: null
       },
+      educationForm: {
+        educationLevel: "",
+        educationLocation: "",
+        educationStart: null,
+        educationEnd: null
+      },
+      projectsForm: {
+        title: "",
+        url: ""
+      },
+      awardForm: {
+        title: "",
+        achieved_date: null,
+        attachment_id: ""
+      },
       date: null,
       start: false,
+      educationStart: false,
       end: false,
+      educationEnd: false,
       dialog: false,
       valid: true,
-      files: [],
-      nameRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length <= 10) || "Name must be less than 10 characters"
-      ]
+      files: []
     };
   },
   computed: {
-    // ...mapGetters({
-    //   form: types.dialogForm.FORM_GET
-    // }),
     ...mapMutations([types.dialogForm.FORM_MUTATE])
   },
   mounted() {},
   methods: {
-    // ...mapActions({
-    //   addList: types.dialogForm.FORM_ACTION
-    // }),
     validate() {
       this.$refs.newForm.validate();
       this.dialog = false;
@@ -43,16 +50,58 @@ export default {
     resetValidation() {
       this.$refs.newForm.resetValidation();
     },
-    handleDataForm() {
-      this.newForm = {
-        name: this.newForm.name,
-        companyName: this.newForm.companyName,
-        start: this.newForm.start,
-        end: this.newForm.end
-      };
-      this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, this.newForm);
+    handleDataForm(type) {
+      switch (type) {
+        case "experience":
+          this.experienceForm = {
+            job_title: this.experienceForm.name,
+            company_title: this.experienceForm.companyName,
+            start_date: this.experienceForm.start,
+            end_date: this.experienceForm.end
+          };
+          this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
+            form: this.experienceForm,
+            type: type
+          });
+          break;
+        case "education":
+          this.educationForm = {
+            degree_title: this.educationForm.educationLevel,
+            institute_title: this.educationForm.educationLocation,
+            start_date: this.educationForm.educationStart,
+            end_date: this.educationForm.educationEnd
+          };
+          this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
+            form: this.educationForm,
+            type: type
+          });
+          break;
+        case "projects":
+          this.projectsForm = {
+            title: this.projectsForm.title,
+            url: this.projectsForm.url
+          };
+          this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
+            form: this.projectsForm,
+            type: type
+          });
+          break;
+        case "award":
+          this.awardForm = {
+            title: this.awardForm.title,
+            achieved_date: this.awardForm.achieved_date
+          };
+          this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
+            form: this.awardForm,
+            type: type
+          });
+          break;
+      }
       this.dialog = false;
-      this.newForm = {};
+      this.educationForm = {};
+      this.experienceForm = {};
+      this.awardForm = {};
+      this.projectsForm = {};
       this.resetValidation();
     }
   }

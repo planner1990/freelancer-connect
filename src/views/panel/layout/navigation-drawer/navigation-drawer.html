@@ -6,27 +6,49 @@
   :value="drawer"
 >
   <template v-slot:prepend>
-    <div class="timeline mar-b-120">
+    <div
+      v-if="profileInfo.user"
+      class="timeline mar-b-120"
+      :style="{ 'background-image': 'url(' + profileInfo.user.profile.banner + ')' }"
+    >
       <div class="username-info d-flex flex-column align-center">
-        <img src="../../../../assets/image/a.png" alt="" />
-        <div class="username">Akbar GH</div>
-        <div class="sub">{{ $t("sidebar.admin") }}</div>
+        <img
+          v-if="profileInfo.user"
+          :src="profileInfo.user.profile.avatar"
+          alt=""
+        />
+        <div class="username">
+          {{ profileInfo.user.first_name + " " + profileInfo.user.last_name}}
+        </div>
+        <div class="sub">{{ profileInfo.user.roles[0].name }}</div>
       </div>
     </div>
-      <v-row v-if="role === 1">
-          <v-col cols="12" class="d-flex justify-center my-5">
-              <v-btn depressed color="secondary" class="post-project" link to="/freelancer/post-service">
-                  ایجاد یک سرویس
-              </v-btn>
-          </v-col>
-      </v-row>
-      <v-row v-if="role === 2">
-          <v-col cols="12" class="d-flex justify-center my-5">
-              <v-btn depressed color="secondary" class="post-project" link to="/employer/post-job">
-                  ایجاد یک پروژه
-              </v-btn>
-          </v-col>
-      </v-row>
+    <v-row v-if="role === 1">
+      <v-col cols="12" class="d-flex justify-center my-5">
+        <v-btn
+          depressed
+          color="secondary"
+          class="post-project"
+          link
+          to="/freelancer/post-service"
+        >
+          ایجاد یک سرویس
+        </v-btn>
+      </v-col>
+    </v-row>
+    <v-row v-if="role === 2">
+      <v-col cols="12" class="d-flex justify-center my-5">
+        <v-btn
+          depressed
+          color="secondary"
+          class="post-project"
+          link
+          to="/employer/post-job"
+        >
+          ایجاد یک پروژه
+        </v-btn>
+      </v-col>
+    </v-row>
     <v-divider></v-divider>
   </template>
   <v-list dense>

@@ -1,24 +1,17 @@
-<v-file-input
-        v-model="files"
-        :label="$t('form.uploadImage')"
-        multiple
-        accept="image/*"
-        prepend-icon="mdi-paperclip"
-        @change="uploadImage()"
-        solo
-        class="col-md-4 col-sm-6 col-xs-12"
-
->
+<section>
+  <v-file-input
+    v-model="files"
+    :label="$t('form.uploadImage')"
+    multiple
+    accept="image/*"
+    prepend-icon="mdi-paperclip"
+    @change="uploadImage()"
+    solo
+    class="col-md-12 col-sm-6 col-xs-12"
+  >
     <template v-slot:selection="{ text }">
-<!--        <v-chip-->
-<!--                small-->
-<!--                label-->
-<!--                color="primary"-->
-<!--        >-->
-<!--            {{ text }}-->
-<!--        </v-chip>-->
-        <img :src="imageUrl" alt="">
+      <img :src="imageUrl" alt="" />
     </template>
-
-
-</v-file-input>
+  </v-file-input>
+  <img v-if="!imageUrl" :src="imageProfile" alt="" />
+</section>

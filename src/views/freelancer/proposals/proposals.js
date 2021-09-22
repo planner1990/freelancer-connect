@@ -1,8 +1,10 @@
 import ProjectList from "../../../components/project-list/index";
 import DashboardCard from "../../../components/dashboardCard/index";
+import ProposalsTable from "../../../components/proposals-table/index";
+import freelancerServices from "../../../core/services/modules/freelancerServices";
 export default {
   name: "proposals",
-  components: { ProjectList, DashboardCard },
+  components: { ProjectList, DashboardCard, ProposalsTable },
   props: [],
   data() {
     return {
@@ -13,63 +15,43 @@ export default {
         rejectTitle: "خیر",
         confirmTitle: "بله"
       },
-      projectListItems: [
+      headerProposalTable: [
         {
-          name: "Esmail Khodadad",
-          title: "پروژه ترجمه کامل سایت از فارسی به عربی",
-          amount: "$ 10000",
-          country: "ایران",
-          time: "کمتر از یک هفته",
-          expirationStatus: "منقضی شده"
+          text: "نام پروژه",
+          align: "center",
+          sortable: false,
+          value: "content"
         },
         {
-          name: "Esmail Khodadad2",
-          title: "پروژه ترجمه کامل سایت از فارسی به عربی",
-          amount: "$ 10000",
-          country: "ایران",
-          time: "کمتر از یک هفته",
-          expirationStatus: "منقضی شده"
+          text: "توضیحات",
+          align: "center",
+          sortable: false,
+          value: "content"
         },
         {
-          name: "Esmail Khodadad3",
-          title: "پروژه ترجمه کامل سایت از فارسی به عربی",
-          amount: "$ 10000",
-          country: "ایران",
-          time: "کمتر از یک هفته",
-          expirationStatus: "منقضی شده"
+          text: "تاریخ انتشار",
+          value: "updated_at",
+          sortable: false,
+          align: "center"
         },
-        {
-          name: "Esmail Khodadad4",
-          title: "پروژه ترجمه کامل سایت از فارسی به عربی",
-          amount: "$ 10000",
-          country: "ایران",
-          time: "کمتر از یک هفته",
-          expirationStatus: "منقضی شده"
-        },
-        {
-          name: "Esmail Khodadad5",
-          title: "پروژه ترجمه کامل سایت از فارسی به عربی",
-          amount: "$ 10000",
-          country: "ایران",
-          time: "کمتر از یک هفته",
-          expirationStatus: "منقضی شده"
-        },
-        {
-          name: "Esmail Khodadad6",
-          title: "پروژه ترجمه کامل سایت از فارسی به عربی",
-          amount: "$ 10000",
-          country: "ایران",
-          time: "کمتر از یک هفته",
-          expirationStatus: "منقضی شده"
-        }
-      ]
+        { text: "وضعیت", value: "status", sortable: false, align: "center" },
+        { text: "عملیات", value: "actions", sortable: false, align: "center" }
+      ],
+      dataProposalTable: []
     };
   },
   computed: {},
-  mounted() {},
+  mounted() {
+    this.getAllFreelancerProposals();
+  },
   methods: {
     redirectToEditJob() {
       this.$router.push({ name: "edit-project" }).catch(() => {});
+    },
+    getAllFreelancerProposals() {
+      freelancerServices.getAllProposals().then(res => {
+        this.dataProposalTable = res.data.data;
+      });
     }
   },
   watch: {}

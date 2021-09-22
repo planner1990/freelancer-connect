@@ -1,7 +1,12 @@
 <div>
   <v-form ref="newForm" v-model="valid" lazy-validation>
     <v-row justify="center">
-      <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-dialog
+        v-model="dialog"
+        persistent
+        max-width="600px"
+        v-if="dataForDialogForm.type === 'experience'"
+      >
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary open-dialog" text dark v-bind="attrs" v-on="on">
             + {{ dataForDialogForm.titleButton }}
@@ -13,6 +18,7 @@
               {{ dataForDialogForm.titleButton }}
             </span>
           </v-card-title>
+
           <v-card-text class="d-flex flex-wrap justify-space-around">
             <div
               v-for="(dialogFormField, index) in dataForDialogForm.formField"
@@ -20,11 +26,15 @@
               :class="dialogFormField.class"
             >
               <v-text-field
-                v-if="dialogFormField.type === 'text-field'"
+                v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'عنوان'"
                 :label="dialogFormField.label"
-                v-model="newForm.name"
-                :counter="10"
-                :rules="nameRules"
+                v-model="experienceForm.name"
+                required
+              ></v-text-field>
+              <v-text-field
+                v-if="dialogFormField.type === 'text-field' && dialogFormField.label !== 'عنوان'"
+                :label="dialogFormField.label"
+                v-model="experienceForm.companyName"
                 required
               ></v-text-field>
               <v-menu
@@ -36,7 +46,7 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="newForm.start"
+                    v-model="experienceForm.start"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -45,7 +55,7 @@
                   ></v-text-field>
                 </template>
                 <v-date-picker
-                  v-model="newForm.start"
+                  v-model="experienceForm.start"
                   no-title
                   scrollable
                   @input="start = false"
@@ -55,14 +65,14 @@
 
               <v-menu
                 v-if="dialogFormField.type === 'date-picker-to'"
-                v-model="end"
+                v-model="start"
                 :close-on-content-click="false"
                 offset-y
                 min-width="290px"
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="newForm.end"
+                    v-model="experienceForm.end"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -71,10 +81,10 @@
                   ></v-text-field>
                 </template>
                 <v-date-picker
-                  v-model="newForm.end"
+                  v-model="experienceForm.end"
                   no-title
                   scrollable
-                  @input="end = false"
+                  @input="start = false"
                 >
                 </v-date-picker>
               </v-menu>
@@ -118,12 +128,283 @@
             </div>
             <!--            <small>*indicates required field</small>-->
           </v-card-text>
+
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="error darken-1" text @click="validate">
               رد کردن
             </v-btn>
-            <v-btn color="blue darken-1" text @click.prevent="handleDataForm()">
+            <v-btn
+              color="blue darken-1"
+              text
+              @click.prevent="handleDataForm(dataForDialogForm.type)"
+            >
+              تایید اطلاعات
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+      <v-dialog
+        v-model="dialog"
+        persistent
+        max-width="600px"
+        v-if="dataForDialogForm.type === 'education'"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="primary open-dialog" text dark v-bind="attrs" v-on="on">
+            + {{ dataForDialogForm.titleButton }}
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-title class="justify-center">
+            <span class="text-h6 text--secondary font-weight-regular">
+              {{ dataForDialogForm.titleButton }}
+            </span>
+          </v-card-title>
+
+          <v-card-text class="d-flex flex-wrap justify-space-around">
+            <div
+              v-for="(dialogFormField, index) in dataForDialogForm.formField"
+              :key="dialogFormField.label"
+              :class="dialogFormField.class"
+            >
+              <v-text-field
+                v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'عنوان مدرک تحصیلی'"
+                :label="dialogFormField.label"
+                v-model="educationForm.educationLevel"
+                required
+              ></v-text-field>
+              <v-text-field
+                v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'نام دانشگاه یا موسسه'"
+                :label="dialogFormField.label"
+                v-model="educationForm.educationLocation"
+                required
+              ></v-text-field>
+              <v-menu
+                v-if="dialogFormField.type === 'date-picker-from'"
+                v-model="start"
+                :close-on-content-click="false"
+                offset-y
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="educationForm.educationStart"
+                    :label="dialogFormField.label"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="educationForm.educationStart"
+                  no-title
+                  scrollable
+                  @input="start = false"
+                >
+                </v-date-picker>
+              </v-menu>
+
+              <v-menu
+                v-if="dialogFormField.type === 'date-picker-to'"
+                v-model="end"
+                :close-on-content-click="false"
+                offset-y
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="educationForm.educationEnd"
+                    :label="dialogFormField.label"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="educationForm.educationEnd"
+                  no-title
+                  scrollable
+                  @input="end = false"
+                >
+                </v-date-picker>
+              </v-menu>
+            </div>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="error darken-1" text @click="validate">
+              رد کردن
+            </v-btn>
+            <v-btn
+              color="blue darken-1"
+              text
+              @click.prevent="handleDataForm(dataForDialogForm.type)"
+            >
+              تایید اطلاعات
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+      <v-dialog
+        v-model="dialog"
+        persistent
+        max-width="600px"
+        v-if="dataForDialogForm.type === 'projects'"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="primary open-dialog" text dark v-bind="attrs" v-on="on">
+            + {{ dataForDialogForm.titleButton }}
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-title class="justify-center">
+            <span class="text-h6 text--secondary font-weight-regular">
+              {{ dataForDialogForm.titleButton }}
+            </span>
+          </v-card-title>
+
+          <v-card-text class="d-flex flex-wrap justify-space-around">
+            <div
+              v-for="(dialogFormField, index) in dataForDialogForm.formField"
+              :key="dialogFormField.label"
+              :class="dialogFormField.class"
+            >
+              <v-text-field
+                v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'عنوان پروژه'"
+                :label="dialogFormField.label"
+                v-model="projectsForm.title"
+                required
+              ></v-text-field>
+              <v-text-field
+                v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'وارد نمودن URL'"
+                :label="dialogFormField.label"
+                v-model="projectsForm.url"
+                required
+              ></v-text-field>
+            </div>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="error darken-1" text @click="validate">
+              رد کردن
+            </v-btn>
+            <v-btn
+              color="blue darken-1"
+              text
+              @click.prevent="handleDataForm(dataForDialogForm.type)"
+            >
+              تایید اطلاعات
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+      <v-dialog
+        v-model="dialog"
+        persistent
+        max-width="600px"
+        v-if="dataForDialogForm.type === 'award'"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="primary open-dialog" text dark v-bind="attrs" v-on="on">
+            + {{ dataForDialogForm.titleButton }}
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-title class="justify-center">
+            <span class="text-h6 text--secondary font-weight-regular">
+              {{ dataForDialogForm.titleButton }}
+            </span>
+          </v-card-title>
+
+          <v-card-text class="d-flex flex-wrap justify-space-around">
+            <div
+              v-for="(dialogFormField, index) in dataForDialogForm.formField"
+              :key="dialogFormField.label"
+              :class="dialogFormField.class"
+            >
+              <v-text-field
+                v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'عنوان دستاورد'"
+                :label="dialogFormField.label"
+                v-model="awardForm.title"
+                required
+              ></v-text-field>
+              <v-menu
+                v-if="dialogFormField.type === 'date-picker-to'"
+                v-model="start"
+                :close-on-content-click="false"
+                offset-y
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="awardForm.achieved_date"
+                    :label="dialogFormField.label"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="awardForm.achieved_date"
+                  no-title
+                  scrollable
+                  @input="start = false"
+                >
+                </v-date-picker>
+              </v-menu>
+<!--              <v-file-input-->
+<!--                v-if="dialogFormField.type === 'file-input'"-->
+<!--                v-model="awardForm.attachment_id"-->
+<!--                color="deep-purple accent-4"-->
+<!--                counter-->
+<!--                :label="dialogFormField.label"-->
+<!--                multiple-->
+<!--                :placeholder="dialogFormField.label"-->
+<!--                prepend-icon="mdi-paperclip"-->
+<!--                :show-size="1000"-->
+<!--                dense-->
+<!--              >-->
+<!--                <template v-slot:selection="{ index, text }">-->
+<!--                  <v-chip-->
+<!--                    v-if="index < 3"-->
+<!--                    color="red accent-4"-->
+<!--                    dark-->
+<!--                    label-->
+<!--                    small-->
+<!--                  >-->
+<!--                    {{ text }}-->
+<!--                  </v-chip>-->
+
+<!--                  <span-->
+<!--                    v-else-if="index === 3"-->
+<!--                    class="text-overline grey&#45;&#45;text text&#45;&#45;darken-3 mx-2"-->
+<!--                  >-->
+<!--                    +{{ files.length - 3 }} File(s)-->
+<!--                  </span>-->
+<!--                </template>-->
+<!--              </v-file-input>-->
+            </div>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="error darken-1" text @click="validate">
+              رد کردن
+            </v-btn>
+            <v-btn
+              color="blue darken-1"
+              text
+              @click.prevent="handleDataForm(dataForDialogForm.type)"
+            >
               تایید اطلاعات
             </v-btn>
           </v-card-actions>

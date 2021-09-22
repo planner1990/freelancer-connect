@@ -1,147 +1,73 @@
 import DashboardCard from "../../../../components/dashboardCard/index";
-import TableDashboard from "../../../../components/table-dashboard/index";
+import ProjectList from "../../../../components/project-list/index";
+import DialogDashboard from "../../../../components/dialog-dashboard/index";
+import employerServices from "../../../../core/services/modules/employerServices";
+import transitionPage from "../../../../components/transitionPage/index";
 export default {
   name: "ongoing-services-employer",
-  components: { DashboardCard, TableDashboard },
+  components: { DashboardCard, ProjectList, DialogDashboard, transitionPage },
   props: [],
+  mixins: [],
   data() {
     return {
+      dialog: false,
+      pageCount: 5,
+      page: 1,
       showSelect: true,
-      valid: true,
-      name: "",
+      indexProjectsList: [],
+      totalData: null,
+      status: "ongoing",
       nameRules: [
         v => !!v || "Name is required",
         v => (v && v.length <= 50) || "Name must be less than 10 characters"
       ],
-      headersUserManagement: [
+      projectListItems: [
         {
-          text: "نام سرویس",
-          align: "center",
-          sortable: false,
-          value: "title"
-        },
-        {
-          text: "وضعیت سرویس",
-          value: "serviceStatus",
-          sortable: false,
-          align: "center"
-        },
-        { text: "صف", value: "queue", sortable: false, align: "center" },
-        { text: "عملیات", value: "actions", sortable: false, align: "center" }
-      ],
-      dataUserManagement: [
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
+          id: 1,
+          name: "name",
+          title: "ssssss",
+          amount: "در انتظار تایید کارفرما",
+          time: "29/2/1400",
+          expirationStatus: "منقضی شده"
         }
       ]
     };
   },
-  computed: {},
-  mounted() {},
-  methods: {}
+  computed: {
+    totalPage() {
+      return 3;
+    }
+  },
+  mounted() {
+    this.getOngoingJobOffer();
+  },
+  methods: {
+    getOngoingJobOffer() {
+      // const options = {
+      //   status: this.status,
+      //   page: 1,
+      //   perPage: 5
+      // };
+      employerServices.indexJobOffers(this.status).then(res => {
+        this.indexProjectsList = res.data.data;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        status: this.status,
+        page: currentPage,
+        perPage: 5
+      };
+      employerServices.indexJobOffers(options).then(res => {
+        this.page = currentPage;
+        console.log(res);
+      });
+    },
+    redirectToServiceDetail(id, serviceId) {
+      this.$router.push({
+        path: `ongoing-services/${id}/service-detail`,
+        query: { serviceId: serviceId }
+      });
+    }
+  }
 };

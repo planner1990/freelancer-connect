@@ -84,7 +84,7 @@ const routes = [
         component: () => import("../views/front-office/projects-browse/index")
       },
       {
-        path: "/project-details",
+        path: "/project-details/:id",
         name: "project-details",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/project-details/index")
@@ -100,139 +100,6 @@ const routes = [
         name: "public-profile",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/public-profile/index")
-      }
-    ]
-  },
-  {
-    path: "/panel",
-    name: "panel",
-    // redirect: `/panel/dashboard`,
-    meta: { transitionName: "slide" },
-    component: () =>
-      import(
-        /* webpackChunkName: "panel-layout" */ "../views/panel/layout/index"
-      ),
-    children: [
-      {
-        path: "projects",
-        name: "projects",
-        meta: { transitionName: "slide" },
-        component: () =>
-          import(
-            /* webpackChunkName: "projects" */ "../views/panel/projects/index"
-          )
-      },
-      {
-        path: "message-center-panel",
-        name: "messageCenterPanel",
-        meta: { transitionName: "slide" },
-        component: () =>
-          import(
-            /* webpackChunkName: "projects" */ "../views/panel/message-center/index"
-          )
-      },
-      {
-        path: "edit-project",
-        name: "edit-project",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/edit-project/index")
-      },
-      {
-        path: "manage-users",
-        name: "manage-users",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/manage-users/index")
-      },
-      {
-        path: "account-setting",
-        name: "account-setting",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/setting/account-setting/index")
-      },
-      {
-        path: "skills",
-        name: "skills",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/masterData/skills/index")
-      },
-      {
-        path: "job-categories",
-        name: "job-categories",
-        meta: { transitionName: "slide" },
-        component: () =>
-          import("../views/panel/masterData/job-categories/index")
-      },
-      {
-        path: "departments",
-        name: "departments",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/masterData/departments/index")
-      },
-      {
-        path: "languages",
-        name: "languages",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/masterData/languages/index")
-      },
-      {
-        path: "locations",
-        name: "locations",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/masterData/locations/index")
-      },
-      {
-        path: "badges",
-        name: "badges",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/masterData/badges/index")
-      },
-      {
-        path: "delivery-time",
-        name: "delivery-time",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/masterData/delivery-time/index")
-      },
-      {
-        path: "response-time",
-        name: "response-time",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/masterData/response-time/index")
-      },
-      {
-        path: "services",
-        name: "services",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/services/index")
-      },
-      {
-        path: "review-option",
-        name: "review-option",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/review-option/index")
-      },
-      {
-        path: "payout",
-        name: "payout",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/payout/index")
-      },
-      {
-        path: "dashboard",
-        name: "dashboard",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/dashboard/index")
-      },
-      {
-        path: "orders",
-        name: "orders",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/orders/index")
-      },
-      {
-        path: "service-orders",
-        name: "service-orders",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/panel/service-orders/index")
       }
     ]
   },
@@ -277,6 +144,21 @@ const routes = [
         component: () => import("../views/freelancer/account-setting/index")
       },
       {
+        path: "posted-projects",
+        name: "posted-projects",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/posted-projects/index"),
+        children: [
+          {
+            path: ":id/project-detail",
+            name: "project-detail-freelancer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import("../views/freelancer/posted-projects/project-detail/index")
+          }
+        ]
+      },
+      {
         path: "completed-projects",
         name: "completed-projects",
         meta: { transitionName: "slide" },
@@ -292,7 +174,19 @@ const routes = [
         path: "ongoing-projects",
         name: "ongoing-projects",
         meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/ongoing-projects/index")
+        component: () => import("../views/freelancer/ongoing-projects/index"),
+        children: [
+          {
+            path: ":id/progress-section",
+            name: "progress-section-freelancer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/freelancer/ongoing-projects/progress-section/index"
+              ),
+            props: true
+          }
+        ]
       },
       {
         path: "posted-services",
@@ -302,9 +196,21 @@ const routes = [
       },
       {
         path: "ongoing-services",
-        name: "ongoing-services",
+        name: "ongoing-services-Freelancer",
         meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/ongoing-services/index")
+        component: () => import("../views/freelancer/ongoing-services/index"),
+        children: [
+          {
+            path: ":id/progress-section",
+            name: "ongoing-service-detail-freelancer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/freelancer/ongoing-services/progress-section/index"
+              ),
+            props: true
+          }
+        ]
       },
       {
         path: "completed-services",
@@ -415,14 +321,41 @@ const routes = [
         name: "ongoing-projects-employer",
         meta: { transitionName: "slide" },
         component: () =>
-          import("../views/employer/manage-job/ongoing-projects-employer/index")
+          import(
+            "../views/employer/manage-job/ongoing-projects-employer/index"
+          ),
+        children: [
+          {
+            path: ":id/progress-section",
+            name: "progress-section-employer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-job/ongoing-projects-employer/progress-section/index"
+              ),
+            props: true
+          }
+        ]
       },
       {
         path: "pending-projects",
         name: "pending-projects-employer",
         meta: { transitionName: "slide" },
         component: () =>
-          import("../views/employer/manage-job/pending-projects-employer/index")
+          import(
+            "../views/employer/manage-job/pending-projects-employer/index"
+          ),
+        children: [
+          {
+            path: ":id/project-detail",
+            name: "project-detail",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-job/pending-projects-employer/project-detail/index"
+              )
+          }
+        ]
       },
       {
         path: "posted-services",
@@ -437,10 +370,22 @@ const routes = [
         path: "ongoing-services",
         name: "ongoing-services-employer",
         meta: { transitionName: "slide" },
+        props: true,
         component: () =>
           import(
             "../views/employer/manage-services/ongoing-services-employer/index"
-          )
+          ),
+        children: [
+          {
+            path: ":id/service-detail",
+            name: "ongoing-service-detail",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-services/ongoing-services-employer/service-detail/index"
+              )
+          }
+        ]
       },
       {
         path: "completed-services",

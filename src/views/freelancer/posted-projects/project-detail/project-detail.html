@@ -1,0 +1,111 @@
+<div>
+  <v-container>
+    <v-row>
+      <v-col cols="12" class="px-0">
+        <div class="container--fluid d-lg-flex d-md-block project-row">
+          <div
+            class="col-lg-8 col-md-12 d-flex flex-column align-start justify-center"
+          >
+            <div>
+              <span
+                ><v-icon color="primary">mdi-check-circle</v-icon>
+                {{ projectDetails.username }}
+              </span>
+            </div>
+            <div class="font-weight-medium mx-2">{{projectDetails.title}}</div>
+            <span>
+              {{ projectDetails.description | readMore(250, "...") }}
+            </span>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex">
+            <div class="row justify-space-around align-center">
+              <div>
+                <v-icon class="mb-1">
+                  mdi-cash-multiple
+                </v-icon>
+                {{projectDetails.price | roundNumber | thousandMask}} ریال
+              </div>
+              <div>
+                <v-icon>
+                  mdi-timetable
+                </v-icon>
+                بیشتر از یک هفته
+              </div>
+            </div>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+
+  <header-section
+    :headerSectionTitle="'طرح پیشنهادی ارسال شده'"
+  ></header-section>
+  <v-container>
+    <v-row class="sentProposal">
+      <v-col cols="12">
+        <v-text-field
+          label="نام و نام خانوادگی"
+          disabled
+          outlined
+          dense
+          v-model="proposalForm['first_name'] + proposalForm['last_name']"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="12">
+        <v-text-field
+          label="مدت زمان تحویل"
+          disabled
+          outlined
+          dense
+          v-model="proposalForm['updated_at']"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="12">
+        <v-text-field
+          label="مبلغ پروژه"
+          disabled
+          outlined
+          dense
+          v-model="proposalForm['updated_at']"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="12">
+        <v-text-field
+          label="مقدار پیش پرداخت"
+          disabled
+          outlined
+          dense
+        ></v-text-field>
+      </v-col>
+      <v-col cols="12" class="proposal-detail-dialog">
+        <v-textarea
+          outlined
+          dense
+          label="توضیحات"
+          v-model="proposalForm['created_at']"
+          color="red"
+        ></v-textarea>
+      </v-col>
+      <v-col cols="12">
+        <div class="employer-projects-card-title mt-8">
+          فایل های ضمیمه شده
+        </div>
+        <v-list>
+          <v-list-item v-for="(file, index) in attachments" :key="index">
+            <v-list-item-content>
+              <v-list-item-title>
+                فایل شماره {{index + 1}}
+              </v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-btn icon :href="file" target="_blank">
+                <v-icon small>mdi-arrow-down</v-icon>
+              </v-btn>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list>
+      </v-col>
+    </v-row>
+  </v-container>
+</div>

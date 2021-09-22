@@ -1,51 +1,70 @@
 import DashboardCard from "../../../../components/dashboardCard/index";
-import projectsService from "../../../../core/services/modules/projectsService";
 import ProjectList from "../../../../components/project-list/index";
-import { mapActions } from "vuex";
-import * as types from "../../../../shared/store/types";
+import DialogDashboard from "../../../../components/dialog-dashboard/index";
+import employerServices from "../../../../core/services/modules/employerServices";
+import transitionPage from "../../../../components/transitionPage/index";
 export default {
   name: "pending-projects-employer",
-  components: { DashboardCard, ProjectList },
+  components: { DashboardCard, ProjectList, DialogDashboard, transitionPage },
   props: [],
   mixins: [],
   data() {
     return {
-      showSelect: true,
-      valid: true,
-      name: "",
+      dialog: false,
+      pageCount: 5,
       page: 1,
+      showSelect: true,
+      indexProjectsList: [],
       totalData: null,
       status: "pending",
       nameRules: [
         v => !!v || "Name is required",
         v => (v && v.length <= 50) || "Name must be less than 10 characters"
       ],
-      simpleDialogData: {
-        buttonTitle: "حذف پروژه",
-        header: "آیا می خواهید پروژه را حذف کنید؟",
-        rejectTitle: "خیر",
-        confirmTitle: "بله"
-      },
-      projectListItems: []
+      projectListItems: [
+        {
+          id: 1,
+          name: "name",
+          title: "ssssss",
+          amount: "در انتظار تایید کارفرما",
+          time: "29/2/1400",
+          expirationStatus: "منقضی شده"
+        }
+      ]
     };
   },
-  computed: {},
+  computed: {
+    totalPage() {
+      return 3;
+    }
+  },
   mounted() {
     this.getOngoingProject();
   },
   methods: {
-    ...mapActions({
-      setPaginationData: types.paginationData.actions.PAGINATION_ACTION
-    }),
     getOngoingProject() {
       const options = {
         status: this.status,
         page: 1,
         perPage: 5
       };
-      projectsService.employerProjectStatus(options).then(res => {
-        this.setPaginationData(res.data.data);
+      employerServices.getIndexProjects(options).then(res => {
+        this.indexProjectsList = res.data.data.projects;
       });
+    },
+    changePage(currentPage) {
+      const options = {
+        status: this.status,
+        page: currentPage,
+        perPage: 5
+      };
+      employerServices.getIndexProjects(options).then(res => {
+        this.page = currentPage;
+        console.log(res);
+      });
+    },
+    redirectToProjectDetail(id) {
+      this.$router.push({ path: `pending-projects/${id}/project-detail` });
     }
   }
 };

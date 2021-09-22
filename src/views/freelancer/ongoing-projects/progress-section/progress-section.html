@@ -1,0 +1,220 @@
+<div>
+  <v-container>
+    <v-row>
+      <v-expansion-panels>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <template v-slot:default="{ open }">
+              <v-row no-gutters>
+                <v-col cols="4">
+                  نام پروژه: سایت فروشگاهی
+                </v-col>
+                <v-col cols="6">
+                  {{ projectDetails.description | readMore(60, "...") }}
+                </v-col>
+                <v-col cols="8" class="text--secondary">
+                  <v-fade-transition leave-absolute>
+                    <span class="d-block mt-3" v-if="open" key="0">
+                      نام کارفرما: {{ projectDetails.username }}
+                    </span>
+                    <span v-else key="1">
+                      <!--                      {{ trip.name }}-->
+                    </span>
+                  </v-fade-transition>
+                </v-col>
+              </v-row>
+            </template>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="container--fluid d-lg-flex d-md-block project-row">
+              <div
+                class="col-lg-8 col-md-12 d-flex flex-column align-start justify-center"
+              >
+                <div>
+                  <span
+                    ><v-icon color="primary">mdi-check-circle</v-icon>
+                    {{ projectDetails.username }}
+                  </span>
+                </div>
+                <div class="font-weight-medium mx-2">
+                  {{projectDetails.title}}
+                </div>
+                <span>
+                  {{ projectDetails.description }}
+                </span>
+              </div>
+              <div class="col-lg-4 col-md-12 d-flex">
+                <div class="row justify-space-around align-center">
+                  <div>
+                    <v-icon class="mb-1">
+                      mdi-cash-multiple
+                    </v-icon>
+                    {{projectDetails.price | roundNumber | thousandMask}} ریال
+                  </div>
+                  <div>
+                    <v-icon>
+                      mdi-timetable
+                    </v-icon>
+                    بیشتر از یک هفته
+                  </div>
+                </div>
+              </div>
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </v-row>
+  </v-container>
+
+  <header-section :headerSectionTitle="'مراحل پیشرفت'"></header-section>
+  <v-container>
+    <v-row class="progress-level">
+      <v-col class="level d-flex justify-space-between" cols="4">
+        <div>
+          <div>بخش اول</div>
+          <div>اتمام</div>
+        </div>
+        <div>
+          <v-btn class="ma-2" outlined color="primary">
+            انجام شد
+          </v-btn>
+        </div>
+      </v-col>
+      <v-col class="level d-flex justify-space-between" cols="4">
+        <div>
+          <div>بخش دوم</div>
+          <div>انجام شده</div>
+        </div>
+        <div>
+          <v-dialog v-model="dialog" persistent max-width="600px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                class="ma-2"
+                color="primary"
+                outlined
+                v-bind="attrs"
+                v-on="on"
+              >
+                انجام شد
+              </v-btn>
+            </template>
+            <v-form ref="form" v-model="valid" lazy-validation>
+              <v-card
+                class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+              >
+                <v-card-title>
+                  <span class="text-h5">تکمیل بخش دوم</span>
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-row>
+                      <v-col cols="12">
+                        <v-text-field
+                          label="لینک"
+                          required
+                          outlined
+                          dense
+                          v-model="jobOfferForm.linkName"
+                          :rules="jobOfferRule.linkName"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-file-input
+                          @change="handleFileInput($event)"
+                          counter
+                          label="فایل پیوستی"
+                          placeholder="Select your files"
+                          prepend-icon="mdi-paperclip"
+                          outlined
+                          dense
+                          multiple
+                          :show-size="1000"
+                        >
+                          <template v-slot:selection="{ index, text }">
+                            <v-chip v-if="index < 3" dark label small>
+                              {{ text }}
+                            </v-chip>
+
+                            <span
+                              v-else-if="index === 3"
+                              class="text-overline grey--text text--darken-3 mx-2"
+                            >
+                              +{{ files.length - 3 }} File(s)
+                            </span>
+                          </template>
+                        </v-file-input>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                  <small>*موارد ستاره دار خالی نماند.</small>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="error" @click="dialog = false">
+                    بستن
+                  </v-btn>
+                  <v-btn color="primary" @click="submitMilestone">
+                    ارسال
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-form>
+          </v-dialog>
+        </div>
+      </v-col>
+      <v-col class="level d-flex justify-space-between" cols="4">
+        <div>
+          <div>بخش سوم</div>
+          <div>قفل</div>
+        </div>
+        <div>
+          <v-btn class="ma-2" outlined color="primary">
+            انجام شد
+          </v-btn>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+
+  <v-container class="pa-0">
+    <div class="chat-header">
+      <v-icon large>mdi-account-circle</v-icon>
+      محمد حسینی
+    </div>
+    <section ref="chatArea" class="chat-area ma-0">
+      <p
+        v-for="message in messages"
+        class="message"
+        :class="{ 'message-out': message.role === 'freelancer', 'message-in': message.role === 'employer' }"
+      >
+        {{ message.text }}
+      </p>
+    </section>
+
+    <section class="chat-inputs">
+      <form
+        class="d-flex justify-space-between align-center"
+        @submit.prevent="sendMessage('out')"
+        id="person2-form"
+      >
+        <v-textarea
+          v-model="youMessage"
+          class="mt-3 col-10"
+          type="text"
+          label="پیام شما"
+          rows="2"
+          height="45"
+          outlined
+          dense
+        >
+        </v-textarea>
+        <v-btn depressed class="mb-4" large color="primary" type="submit">
+          ارسال پیام
+          <v-icon class="mx-2">
+            mdi-message-text
+          </v-icon>
+        </v-btn>
+      </form>
+    </section>
+  </v-container>
+</div>

@@ -1,109 +1,286 @@
-<div>
+<!--<div>-->
 
-  <v-expansion-panels v-if="listOfFormData">
-    <v-expansion-panel v-for="(item, index) in listOfFormData" :key="index">
-      <v-expansion-panel-header>
-        <template v-slot:default="{ open }">
-          <v-row no-gutters>
-            <v-col cols="4">
-              عنوان ( از تاریخ - تا تاریخ):
-            </v-col>
-            <v-col cols="8" class="text--secondary">
-              <v-fade-transition leave-absolute>
-                <span v-if="open" key="0">
-                  عنوان ( از تاریخ - تا تاریخ)
-                </span>
-                <span v-else key="1" dir="ltr">
-                  {{item.start}} - {{item.end}} : {{ item.name }}
-                </span>
-              </v-fade-transition>
-            </v-col>
-          </v-row>
-        </template>
-      </v-expansion-panel-header>
-      <v-expansion-panel-content>
-        <v-text-field
-          v-model="name || item.name"
-          placeholder="Caribbean Cruise"
-        ></v-text-field>
-        <v-row justify="space-around" no-gutters>
-          <v-col cols="12" sm="6" md="6">
-            <v-menu
-              ref="startMenu"
-              :close-on-content-click="false"
-              :return-value.sync="start"
-              offset-y
-              min-width="290px"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="start || item.start"
-                  label="شروع از تاریخ"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-              <v-date-picker v-model="date" no-title scrollable>
-                <v-spacer></v-spacer>
-                <v-btn
-                  text
-                  color="primary"
-                  @click="$refs.startMenu.isActive = false"
-                >
-                  Cancel
-                </v-btn>
-                <v-btn text color="primary" @click="$refs.startMenu.save(date)">
-                  OK
-                </v-btn>
-              </v-date-picker>
-            </v-menu>
-          </v-col>
 
-          <v-col cols="12" sm="6" md="6">
-            <v-menu
-              ref="endMenu"
-              :close-on-content-click="false"
-              :return-value.sync="end"
-              offset-y
-              min-width="290px"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="end || item.end"
-                  label="خاتمه در تاریخ"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-              <v-date-picker v-model="date" no-title scrollable>
-                <v-spacer></v-spacer>
-                <v-btn
-                  text
-                  color="primary"
-                  @click="$refs.endMenu.isActive = false"
-                >
-                  Cancel
-                </v-btn>
-                <v-btn text color="primary" @click="$refs.endMenu.save(date)">
-                  OK
-                </v-btn>
-              </v-date-picker>
-            </v-menu>
-          </v-col>
-          <v-col cols="12">
-            <v-textarea
-              outlined
-              name="input-7-4"
-              :label="$t('form.description')"
-              :value="item.companyName"
-            ></v-textarea>
-          </v-col>
-        </v-row>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels>
-</div>
+<!--    <div>-->
+<!--        <v-expansion-panels-->
+<!--                v-for="(item, index) in listOfFormData"-->
+<!--                v-if="item.type === 'experience'"-->
+<!--                :key="index"-->
+<!--        >-->
+<!--            <v-expansion-panel>-->
+<!--                <v-expansion-panel-header>-->
+<!--                    <template v-slot:default="{ open }">-->
+<!--                        <v-row no-gutters>-->
+<!--                            <v-col cols="4">-->
+<!--                                عنوان ( از تاریخ - تا تاریخ):-->
+<!--                            </v-col>-->
+<!--                            <v-col cols="8" class="text&#45;&#45;secondary">-->
+<!--                                <v-fade-transition leave-absolute>-->
+<!--                <span v-if="open" key="0">-->
+<!--                  عنوان ( از تاریخ - تا تاریخ)-->
+<!--                </span>-->
+<!--                                    <span v-else key="1" dir="ltr">-->
+<!--                  {{item.form.start}} - {{item.form.end}} : {{ item.form.name }}-->
+<!--                </span>-->
+<!--                                </v-fade-transition>-->
+<!--                            </v-col>-->
+<!--                        </v-row>-->
+<!--                    </template>-->
+<!--                </v-expansion-panel-header>-->
+<!--                <v-expansion-panel-content>-->
+<!--                    <v-row justify="space-around" no-gutters>-->
+<!--                        <v-col cols="12" sm="6" md="6">-->
+<!--                            <v-text-field-->
+<!--                                    v-model="item.form.name"-->
+<!--                                    placeholder="Caribbean Cruise"-->
+<!--                                    class="pl-2"-->
+<!--                                    outlined-->
+<!--                                    dense-->
+<!--                            ></v-text-field>-->
+<!--                        </v-col>-->
+<!--                        <v-col cols="12" sm="6" md="6">-->
+<!--                            <v-text-field-->
+<!--                                    v-model="item.form.companyName"-->
+<!--                                    placeholder="Caribbean Cruise"-->
+<!--                                    class="pr-2"-->
+<!--                                    outlined-->
+<!--                                    dense-->
+<!--                            ></v-text-field>-->
+<!--                        </v-col>-->
+<!--                    </v-row>-->
+<!--                    <v-row justify="space-around" no-gutters>-->
+<!--                        <v-col cols="12" sm="6" md="6">-->
+<!--                            <v-menu-->
+<!--                                    ref="startMenu"-->
+<!--                                    :close-on-content-click="false"-->
+<!--                                    :return-value.sync="start"-->
+<!--                                    offset-y-->
+<!--                                    min-width="290px"-->
+<!--                            >-->
+<!--                                <template v-slot:activator="{ on, attrs }">-->
+<!--                                    <v-text-field-->
+<!--                                            v-model="item.form.start"-->
+<!--                                            label="شروع از تاریخ"-->
+<!--                                            readonly-->
+<!--                                            v-bind="attrs"-->
+<!--                                            v-on="on"-->
+<!--                                            class="pl-2"-->
+<!--                                            outlined-->
+<!--                                            dense-->
+<!--                                    ></v-text-field>-->
+<!--                                </template>-->
+<!--                                <v-date-picker v-model="date" no-title scrollable>-->
+<!--                                    <v-spacer></v-spacer>-->
+<!--                                    <v-btn-->
+<!--                                            text-->
+<!--                                            color="primary"-->
+<!--                                            @click="$refs.startMenu.isActive = false"-->
+<!--                                    >-->
+<!--                                        Cancel-->
+<!--                                    </v-btn>-->
+<!--                                    <v-btn text color="primary" @click="$refs.startMenu.save(date)">-->
+<!--                                        OK-->
+<!--                                    </v-btn>-->
+<!--                                </v-date-picker>-->
+<!--                            </v-menu>-->
+<!--                        </v-col>-->
+
+<!--                        <v-col cols="12" sm="6" md="6">-->
+<!--                            <v-menu-->
+<!--                                    ref="endMenu"-->
+<!--                                    :close-on-content-click="false"-->
+<!--                                    :return-value.sync="end"-->
+<!--                                    offset-y-->
+<!--                                    min-width="290px"-->
+<!--                            >-->
+<!--                                <template v-slot:activator="{ on, attrs }">-->
+<!--                                    <v-text-field-->
+<!--                                            v-model="item.form.end"-->
+<!--                                            label="خاتمه در تاریخ"-->
+<!--                                            readonly-->
+<!--                                            v-bind="attrs"-->
+<!--                                            v-on="on"-->
+<!--                                            class="pr-2"-->
+<!--                                            outlined-->
+<!--                                            dense-->
+<!--                                    ></v-text-field>-->
+<!--                                </template>-->
+<!--                                <v-date-picker v-model="date" no-title scrollable>-->
+<!--                                    <v-spacer></v-spacer>-->
+<!--                                    <v-btn-->
+<!--                                            text-->
+<!--                                            color="primary"-->
+<!--                                            @click="$refs.endMenu.isActive = false"-->
+<!--                                    >-->
+<!--                                        Cancel-->
+<!--                                    </v-btn>-->
+<!--                                    <v-btn text color="primary" @click="$refs.endMenu.save(date)">-->
+<!--                                        OK-->
+<!--                                    </v-btn>-->
+<!--                                </v-date-picker>-->
+<!--                            </v-menu>-->
+<!--                        </v-col>-->
+<!--                        <v-col cols="12">-->
+<!--                            <v-textarea-->
+<!--                                    outlined-->
+<!--                                    name="input-7-4"-->
+<!--                                    :label="$t('form.description')"-->
+<!--                                    :value="item.form.companyName"-->
+<!--                            ></v-textarea>-->
+<!--                        </v-col>-->
+<!--                    </v-row>-->
+<!--                </v-expansion-panel-content>-->
+<!--            </v-expansion-panel>-->
+<!--        </v-expansion-panels>-->
+<!--    </div>-->
+
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <v-expansion-panels>&ndash;&gt;-->
+<!--&lt;!&ndash;            <v-expansion-panel&ndash;&gt;-->
+<!--&lt;!&ndash;                    v-for="(item, index) in listOfFormData"&ndash;&gt;-->
+<!--&lt;!&ndash;                    v-if="item.type === 'education'"&ndash;&gt;-->
+<!--&lt;!&ndash;                    :key="index"&ndash;&gt;-->
+<!--&lt;!&ndash;            >&ndash;&gt;-->
+<!--&lt;!&ndash;                <v-expansion-panel-header>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <template v-slot:default="{ open }">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <v-row no-gutters>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <v-col cols="4">&ndash;&gt;-->
+<!--&lt;!&ndash;                                عنوان ( از تاریخ - تا تاریخ):&ndash;&gt;-->
+<!--&lt;!&ndash;                            </v-col>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <v-col cols="8" class="text&#45;&#45;secondary">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <v-fade-transition leave-absolute>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span v-if="open" key="0">&ndash;&gt;-->
+<!--&lt;!&ndash;                  عنوان ( از تاریخ - تا تاریخ)&ndash;&gt;-->
+<!--&lt;!&ndash;                </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    &lt;!&ndash;                <span v-else key="1" dir="ltr">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    &lt;!&ndash;                  {{item.start}} - {{item.end}} : {{ item.name }}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    &lt;!&ndash;                </span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                </v-fade-transition>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </v-col>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </v-row>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </template>&ndash;&gt;-->
+<!--&lt;!&ndash;                </v-expansion-panel-header>&ndash;&gt;-->
+<!--&lt;!&ndash;                <v-expansion-panel-content>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <v-row justify="space-around" no-gutters>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <v-col cols="12" sm="6" md="6">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <v-text-field&ndash;&gt;-->
+<!--&lt;!&ndash;                                    v-model="item.form.educationLevel"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    placeholder="Caribbean Cruise"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    class="pl-2"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    outlined&ndash;&gt;-->
+<!--&lt;!&ndash;                                    dense&ndash;&gt;-->
+<!--&lt;!&ndash;                            ></v-text-field>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </v-col>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <v-col cols="12" sm="6" md="6">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <v-text-field&ndash;&gt;-->
+<!--&lt;!&ndash;                                    v-model="item.form.educationLocation"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    placeholder="Caribbean Cruise"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    class="pr-2"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    outlined&ndash;&gt;-->
+<!--&lt;!&ndash;                                    dense&ndash;&gt;-->
+<!--&lt;!&ndash;                            ></v-text-field>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </v-col>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </v-row>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <v-row justify="space-around" no-gutters>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <v-col cols="12" sm="6" md="6">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <v-menu&ndash;&gt;-->
+<!--&lt;!&ndash;                                    ref="startMenu"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    :close-on-content-click="false"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    :return-value.sync="start"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    offset-y&ndash;&gt;-->
+<!--&lt;!&ndash;                                    min-width="290px"&ndash;&gt;-->
+<!--&lt;!&ndash;                            >&ndash;&gt;-->
+<!--&lt;!&ndash;                                <template v-slot:activator="{ on, attrs }">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <v-text-field&ndash;&gt;-->
+<!--&lt;!&ndash;                                            v-model="item.form.educationStart"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            label="شروع از تاریخ"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            readonly&ndash;&gt;-->
+<!--&lt;!&ndash;                                            v-bind="attrs"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            v-on="on"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="pl-2"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            outlined&ndash;&gt;-->
+<!--&lt;!&ndash;                                            dense&ndash;&gt;-->
+<!--&lt;!&ndash;                                    ></v-text-field>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </template>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <v-date-picker v-model="date" no-title scrollable>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <v-spacer></v-spacer>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <v-btn&ndash;&gt;-->
+<!--&lt;!&ndash;                                            text&ndash;&gt;-->
+<!--&lt;!&ndash;                                            color="primary"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            @click="$refs.startMenu.isActive = false"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    >&ndash;&gt;-->
+<!--&lt;!&ndash;                                        Cancel&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </v-btn>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <v-btn text color="primary" @click="$refs.startMenu.save(date)">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        OK&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </v-btn>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </v-date-picker>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </v-menu>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </v-col>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        <v-col cols="12" sm="6" md="6">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <v-menu&ndash;&gt;-->
+<!--&lt;!&ndash;                                    ref="endMenu"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    :close-on-content-click="false"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    :return-value.sync="end"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    offset-y&ndash;&gt;-->
+<!--&lt;!&ndash;                                    min-width="290px"&ndash;&gt;-->
+<!--&lt;!&ndash;                            >&ndash;&gt;-->
+<!--&lt;!&ndash;                                <template v-slot:activator="{ on, attrs }">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <v-text-field&ndash;&gt;-->
+<!--&lt;!&ndash;                                            v-model="item.form.educationEnd"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            label="خاتمه در تاریخ"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            readonly&ndash;&gt;-->
+<!--&lt;!&ndash;                                            v-bind="attrs"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            v-on="on"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="pr-2"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            outlined&ndash;&gt;-->
+<!--&lt;!&ndash;                                            dense&ndash;&gt;-->
+<!--&lt;!&ndash;                                    ></v-text-field>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </template>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <v-date-picker v-model="date" no-title scrollable>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <v-spacer></v-spacer>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <v-btn&ndash;&gt;-->
+<!--&lt;!&ndash;                                            text&ndash;&gt;-->
+<!--&lt;!&ndash;                                            color="primary"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            @click="$refs.endMenu.isActive = false"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    >&ndash;&gt;-->
+<!--&lt;!&ndash;                                        Cancel&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </v-btn>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <v-btn text color="primary" @click="$refs.endMenu.save(date)">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        OK&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </v-btn>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </v-date-picker>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </v-menu>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </v-col>&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;          <v-col cols="12">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;            <v-textarea&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;              outlined&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;              name="input-7-4"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;              :label="$t('form.description')"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;              :value="item.companyName"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;            ></v-textarea>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        &lt;!&ndash;          </v-col>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    </v-row>&ndash;&gt;-->
+<!--&lt;!&ndash;                </v-expansion-panel-content>&ndash;&gt;-->
+<!--&lt;!&ndash;            </v-expansion-panel>&ndash;&gt;-->
+<!--&lt;!&ndash;        </v-expansion-panels>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+
+
+
+
+
+
+
+<!--</div>-->

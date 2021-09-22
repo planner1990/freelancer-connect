@@ -10,17 +10,9 @@ import i18n from "./i18n";
 import "./assets/styles/styles.scss";
 import "./assets/styles/overrides.scss";
 import "./shared/filters/index";
-import dayjs from "dayjs";
-dayjs.locale("fa");
+
 Vue.config.productionTip = false;
-Vue.filter("readMore", function(text, length, suffix = " ") {
-  return text ? text.substring(0, length) + suffix : "";
-});
-Vue.filter("changeDate", function(date) {
-  return dayjs(date)
-    .locale("fa")
-    .format("YYYY-MM-DD");
-});
+
 new Vue({
   router,
   store,

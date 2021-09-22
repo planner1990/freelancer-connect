@@ -1,5 +1,5 @@
-import subStringFilter from "../filters/subStringFilter";
-
-export default {
-  subStringFilter
-};
+import "./roundNumber";
+import "./readMore";
+import "./changeDate";
+import "./thaousandMask";
+import "./proposalStatus";

@@ -1,5 +1,6 @@
 {
-  "name": "generalpanel",
+  "name": "connecta",
+  "author": "Mohammad Hoseini Parto",
   "version": "0.1.0",
   "private": true,
   "scripts": {

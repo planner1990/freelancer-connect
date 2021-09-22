@@ -1,0 +1,77 @@
+<div>
+  <v-expansion-panels
+    v-for="(item, index) in listOfFormData"
+    v-if="item.type === 'award'"
+    :key="index"
+  >
+    <v-expansion-panel>
+      <v-expansion-panel-header>
+        <template v-slot:default="{ open }">
+          <v-row no-gutters>
+            <v-col cols="4">
+              عنوان ( تاریخ ):
+            </v-col>
+            <v-col cols="8" class="text--secondary">
+              <v-fade-transition leave-absolute>
+                <span v-if="open" key="0">
+                  عنوان ( تاریخ )
+                </span>
+                <span v-else key="1" dir="ltr">
+                  {{item.form.achieved_date}} : {{ item.form.title }}
+                </span>
+              </v-fade-transition>
+            </v-col>
+          </v-row>
+        </template>
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+        <v-row justify="space-around" no-gutters>
+          <v-col cols="12" sm="6" md="6">
+            <v-text-field
+              v-model="item.form.title"
+              placeholder="sefsefsefsefsef"
+              class="pl-2"
+              outlined
+              dense
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="6" md="6">
+            <v-menu
+              ref="startMenu"
+              :close-on-content-click="false"
+              :return-value.sync="start"
+              offset-y
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="item.form.achieved_date"
+                  label="تاریخ دستاورد"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                  class="pl-2"
+                  outlined
+                  dense
+                ></v-text-field>
+              </template>
+              <v-date-picker v-model="date" no-title scrollable>
+                <v-spacer></v-spacer>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.startMenu.isActive = false"
+                >
+                  Cancel
+                </v-btn>
+                <v-btn text color="primary" @click="$refs.startMenu.save(date)">
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-menu>
+          </v-col>
+        </v-row>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
+</div>
