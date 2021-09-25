@@ -392,3 +392,9 @@ input:-webkit-autofill:active {
     color: rgb(136 131 131 / 87%) !important;
   }
 }
+
+.create-project {
+  .v-input__prepend-outer {
+    display: none !important;
+  }
+}

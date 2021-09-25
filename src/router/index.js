@@ -104,6 +104,45 @@ const routes = [
     ]
   },
   {
+    path: "/create-project",
+    name: "create-project",
+    meta: { transitionName: "slide" },
+    component: () => import("../views/front-office/create-project/index"),
+    redirect: {
+      name: "create-project"
+    },
+    children: [
+      {
+        path: "/",
+        name: "name-description",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/front-office/create-project/name-description/index")
+      },
+      {
+        path: "/activity",
+        name: "activity",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/front-office/create-project/activity/index")
+      },
+      {
+        path: "/detail",
+        name: "detail",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/front-office/create-project/detail/index")
+      },
+      {
+        path: "/confirm-info",
+        name: "confirm-info",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/front-office/create-project/confirm-info/index")
+      }
+    ]
+  },
+  {
     path: "/freelancer",
     name: "freelancer",
     // redirect: `/panel/dashboard`,

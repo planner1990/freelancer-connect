@@ -1,0 +1,37 @@
+<div class="step-first create-project" key="step1">
+  <h5 class="text-h6 my-5">
+    حوزه فعالیت
+  </h5>
+  <p>
+    حوزه فعالیت خود را انتخاب کنید
+  </p>
+  <v-select
+    class="mb-4"
+    :items="companyTypeLists"
+    item-text="title"
+    item-value="id"
+    v-model="companyList"
+    :label="$t('form.typeOfActivity')"
+    outlined
+    dense
+  >
+    <template v-slot:append>
+      <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>
+    </template>
+  </v-select>
+  <v-card-actions class="pa-0 my-5">
+    <v-btn
+      color="teal accent-3"
+      :loading="signInLoading"
+      block
+      :disabled="!companyList"
+      :dark="!!companyList"
+      class="py-5"
+      @click="goToActivity()"
+      >{{ $t('actions.continue') }}</v-btn
+    >
+  </v-card-actions>
+  <v-card-text>
+    <!--    <div class="mt-5 text">{{ $t('form.otherWays') }}:</div>-->
+  </v-card-text>
+</div>

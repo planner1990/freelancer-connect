@@ -29,7 +29,7 @@
         <v-btn color="white" class="mx-5" text link to="/login">
             {{$t('navbar.enterAndRegister')}}
         </v-btn>
-        <v-btn color="teal accent-3" dark>
+        <v-btn color="teal accent-3" dark @click="goToCreateProject">
             {{$t('navbar.createProject')}}
         </v-btn>
     </v-app-bar>

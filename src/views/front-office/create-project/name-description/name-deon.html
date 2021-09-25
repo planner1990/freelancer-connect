@@ -1,0 +1,66 @@
+<div class="step-first create-project" key="step1">
+  <h5 class="text-h6 my-5">
+    نامی برای پروژه خود انتخاب کنید
+  </h5>
+  <v-text-field
+    :label="'نام پروژه'"
+    placeholder="مثلا ایجاد وبسایت فروشگاهی"
+    name="Username"
+    type="text"
+    outlined
+    v-model="title"
+    dense
+  ></v-text-field>
+    <h5 class="text-h6 mt-5 mb-1">
+        درباره پروژه خود بیشتر برایمان بگویید
+    </h5>
+    <p>
+        کمی از خودتان یا کسب و کار خود شروع کنید و یک نمای کلی از کارهایی را که باید انجام دهید, درج کنید.
+    </p>
+    <v-textarea
+            :label="'توضیحاتی در مورد پروژه'"
+            name="Username"
+            outlined
+            v-model="description"
+            rows="3"
+    ></v-textarea>
+    <v-file-input
+            @change="handleFileInput($event)"
+            counter
+            label="انتخاب فایل"
+            placeholder="فایل خود را انتخاب کنید"
+            append-icon="mdi-paperclip"
+            outlined
+            multiple
+            dense
+            :show-size="1000"
+    >
+        <template v-slot:selection="{ index, text }">
+            <v-chip v-if="index < 3" dark label small>
+                {{ text }}
+            </v-chip>
+
+            <span
+                    v-else-if="index === 3"
+                    class="text-overline grey--text text--darken-3 mx-2"
+            >
+            +{{ files.length - 3 }} File(s)
+          </span>
+        </template>
+    </v-file-input>
+  <v-card-actions class="pa-0 my-5">
+    <v-btn
+      color="teal accent-3"
+      :loading="signInLoading"
+      block
+      :disabled="!title"
+      :dark="!!title"
+      class="py-5"
+      @click="goToActivity()"
+      >{{ $t('actions.continue') }}</v-btn
+    >
+  </v-card-actions>
+  <v-card-text>
+<!--    <div class="mt-5 text">{{ $t('form.otherWays') }}:</div>-->
+  </v-card-text>
+</div>

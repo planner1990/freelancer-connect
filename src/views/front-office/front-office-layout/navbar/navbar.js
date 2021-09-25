@@ -35,6 +35,9 @@ export default {
     },
     myEventHandler(e) {
       this.showSidebar = e.target.innerWidth <= 968;
+    },
+    goToCreateProject() {
+      this.$router.push("/create-project");
     }
   },
   created() {

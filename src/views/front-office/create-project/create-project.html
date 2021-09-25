@@ -1,0 +1,23 @@
+<v-container class="fill-height overflow-hidden bgImage pa-0" fluid>
+  <v-row justify="end" class="fill-height">
+    <v-col cols="12" sm="6" md="6" class="pa-0">
+      <v-card class="fill-height py-md-10 py-3 px-md-16 px-0" flat>
+        <div class="px-5 d-flex align-center">
+          <v-icon color="primary" size="50" class="pe-3">
+            mdi-monitor-dashboard
+          </v-icon>
+        </div>
+        <!--        <v-divider class="mt-4" />-->
+        <v-row justify="center" class="fill-height mt-sm-16 mt-0">
+          <v-col cols="11" sm="9" md="7">
+            <v-card-text class="px-0">
+              <transitionPage>
+                <router-view />
+              </transitionPage>
+            </v-card-text>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-col>
+  </v-row>
+</v-container>
