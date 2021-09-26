@@ -1,5 +1,6 @@
 import projectsService from "../../../../core/services/modules/projectsService";
 import * as types from "../../../../shared/store/types";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "activity",
@@ -7,30 +8,61 @@ export default {
   props: [],
   data() {
     return {
-      title: "",
       signInLoading: false,
-      companyTypeLists: [],
-      companyList: ""
+      categories: [],
+      activitiesList: [],
+      search: null,
+      projectForm: {
+        categories: []
+      }
     };
   },
-  computed: {},
+  computed: {
+    ...mapGetters({
+      registrationData: types.storeRegisterForm.REGISTER_FORM_GET
+    }),
+    ...mapMutations([types.storeRegisterForm.REGISTER_FORM_MUTATE]),
+    getDataFromStore() {
+      return this.registrationData;
+    }
+  },
   mounted() {
-    this.getCompanyTypes();
+    this.getActivitiesList();
+    this.resetRegister();
   },
   methods: {
-    getCompanyTypes() {
-      projectsService.activityTypes().then(res => {
-        this.companyTypeLists = res.data.data;
-      });
-    },
     goToActivity() {
-      const body = {
-        companyList: this.companyList
+      const activity = {
+        companyList: this.categories
       };
       this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
-        body
+        activity
       });
       this.$router.push("/detail");
+    },
+    resetRegister() {
+      if (!this.getDataFromStore.body) {
+        this.$router.push("/create-project");
+      }
+    },
+    selectCategories(list) {
+      let tempData = [];
+      for (let index = 0; index < list.length; index++) {
+        tempData.push(list[index].id);
+      }
+      return (this.categories = tempData);
+    },
+    getActivitiesList() {
+      projectsService.activityTypes().then(res => {
+        this.activitiesList = res.data.data;
+      });
+    }
+  },
+  watch: {
+    model(val) {
+      if (val.length > 5) {
+        this.$nextTick(() => this.model.pop());
+      }
     }
   }
 };

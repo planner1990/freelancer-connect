@@ -12,6 +12,10 @@ class AuthService {
   getAssignedRole() {
     return API_V1.get("get_assigned_role");
   }
+
+  showProfile() {
+    return API_V1.get("/api/profile");
+  }
 }
 
 export default new AuthService();

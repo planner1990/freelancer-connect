@@ -1,65 +1,52 @@
 <div class="step-first create-project" key="step1">
-    <h5 class="text-h6 my-5">
-        مدت زمان برآورد شده شما چقدر است؟
-    </h5>
-    <v-select
-            class="mb-4"
-            :items="companyTypeLists"
-            item-text="title"
-            item-value="id"
-            v-model="timeRange"
-            :label="'بازه زمانی'"
-            outlined
-            dense
+  <h5 class="text-h6 my-5">
+    مدت زمان برآورد شده شما چقدر است؟
+  </h5>
+  <v-select
+    v-model="project_duration_id"
+    :rules="createProjectRule.duration"
+    :items="durationList"
+    item-value="id"
+    item-text="title"
+    :label="$t('form.duration')"
+    required
+    dense
+    outlined
+  ></v-select>
+  <h5 class="text-h6 my-5">
+    بودجه برآورد شده شما چقدر است؟
+  </h5>
+  <v-text-field
+    :label="'حداقل قیمت(ریال)'"
+    type="text"
+    outlined
+    v-model="price"
+    dense
+  ></v-text-field>
+  <v-text-field
+    :label="'حداقل قیمت(ریال)'"
+    type="text"
+    outlined
+    v-model="minPrice"
+    dense
+  ></v-text-field>
+  <v-text-field
+    :label="'حداکثر قیمت(ریال)'"
+    type="text"
+    outlined
+    v-model="maxPrice"
+    dense
+  ></v-text-field>
+  <v-card-actions class="pa-0 my-5">
+    <v-btn
+      color="teal accent-3"
+      :loading="signInLoading"
+      block
+      :disabled="!price"
+      :dark="!!price"
+      class="py-5"
+      @click="goToActivity()"
+      >{{ $t('actions.continue') }}</v-btn
     >
-        <template v-slot:append>
-            <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>
-        </template>
-    </v-select>
-    <h5 class="text-h6 my-5">
-        بودجه برآورد شده شما چقدر است؟
-    </h5>
-    <v-select
-            :items="companyTypeLists"
-            item-text="title"
-            item-value="id"
-            v-model="price"
-            :label="'قیمت دلخواه'"
-            outlined
-            dense
-    >
-        <template v-slot:append>
-            <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>
-        </template>
-    </v-select>
-    <v-text-field
-            :label="'حداقل قیمت(ریال)'"
-            type="text"
-            outlined
-            v-model="minPrice"
-            dense
-    ></v-text-field>
-    <v-text-field
-            :label="'حداکثر قیمت(ریال)'"
-            type="text"
-            outlined
-            v-model="maxPrice"
-            dense
-    ></v-text-field>
-    <v-card-actions class="pa-0 my-5">
-        <v-btn
-                color="teal accent-3"
-                :loading="signInLoading"
-                block
-                :disabled="!price"
-                :dark="!!price"
-                class="py-5"
-                @click="goToActivity()"
-        >{{ $t('actions.continue') }}</v-btn
-        >
-    </v-card-actions>
-    <v-card-text>
-        <!--    <div class="mt-5 text">{{ $t('form.otherWays') }}:</div>-->
-    </v-card-text>
+  </v-card-actions>
 </div>
-

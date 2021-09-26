@@ -6,6 +6,10 @@
   &_title {
     font-weight: bold;
   }
+  &_description {
+    height: 245px;
+    overflow: auto;
+  }
   .tag {
     border: 1px solid #ddd;
     font-size: 15px;

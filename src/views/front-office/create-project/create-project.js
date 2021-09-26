@@ -13,6 +13,9 @@ export default {
   methods: {
     changeRTL() {
       this.$vuetify.rtl = this.$vuetify.rtl !== true;
+    },
+    goToHome() {
+      this.$router.push("/");
     }
   }
 };
