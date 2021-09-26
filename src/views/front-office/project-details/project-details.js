@@ -55,7 +55,6 @@ export default {
     getProjectListById() {
       const id = this.$route.params.id;
       projectsService.getProjectById(id).then(res => {
-        console.log(res);
         this.projectDetailsById = res.data.data;
       });
     },

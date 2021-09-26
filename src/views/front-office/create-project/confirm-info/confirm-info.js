@@ -41,9 +41,7 @@ export default {
         skills: [],
         attachment_id: null
       };
-      projectsService.createProject(projectData).then(res => {
-        console.log(res);
-      });
+      projectsService.createProject(projectData).then();
       this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
         projectData
       });

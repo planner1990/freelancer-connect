@@ -100,9 +100,7 @@ export default {
       });
     },
     storeChat(body) {
-      freelancerServices.storeChat(body).then(res => {
-        console.log(res);
-      });
+      freelancerServices.storeChat(body).then();
     },
     handleFileInput(file) {
       let formData = new FormData();

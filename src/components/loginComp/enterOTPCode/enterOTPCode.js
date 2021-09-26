@@ -56,7 +56,6 @@ export default {
         code: this.OTPCode
       };
       OtpService.verifyOTP(body).then(res => {
-        console.log(res);
         if (res.data.data["is_registered"] === false) {
           localStorage.setItem("accessToken", res.data.data.token);
           this.$router.push("/login/freelancer-or-employer");

@@ -2,7 +2,7 @@ import { mapActions } from "vuex";
 import * as types from "../../../../shared/store/types";
 
 import customizeTheme from "../../../../components/cotumizeTheme/index";
-import { AuthService } from "../../../../core/services";
+import { AuthService } from "@/core/services";
 
 export default {
   name: "navbar",
@@ -49,9 +49,7 @@ export default {
     showProfile() {
       const token = localStorage.getItem("accessToken");
       if (token) {
-        AuthService.showProfile().then(res => {
-          console.log(res);
-        });
+        AuthService.showProfile().then();
       }
     }
   },
@@ -60,5 +58,6 @@ export default {
   },
   destroyed() {
     window.removeEventListener("resize", this.myEventHandler);
+    window.addEventListener("scroll", this.updateScroll);
   }
 };

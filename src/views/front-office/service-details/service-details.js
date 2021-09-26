@@ -21,7 +21,6 @@ export default {
     getServiceListById() {
       const id = this.$route.params.id;
       projectsService.getServiceById(id).then(res => {
-        console.log(res);
         this.serviceDetailsById = res.data.data;
       });
     },

@@ -1,6 +1,6 @@
 import DashboardCard from "../../../../components/dashboardCard/index";
 import TableDashboard from "../../../../components/table-dashboard/index";
-import projectsService from "../../../../core/services/modules/projectsService";
+// import projectsService from "../../../../core/services/modules/projectsService";
 export default {
   name: "cancelled-projects-employer",
   components: { DashboardCard, TableDashboard },
@@ -144,13 +144,13 @@ export default {
   },
   computed: {},
   mounted() {
-    this.getCancelledProject();
+    // this.getCancelledProject();
   },
   methods: {
-    getCancelledProject() {
-      projectsService.employerProjectStatus("cancelled", 1).then(res => {
-        console.log(res);
-      });
-    }
+    // getCancelledProject() {
+    //   projectsService.employerProjectStatus("cancelled", 1).then(res => {
+    //     console.log(res);
+    //   });
+    // }
   }
 };

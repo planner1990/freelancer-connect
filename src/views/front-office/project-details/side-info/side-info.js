@@ -42,7 +42,7 @@ export default {
   mounted() {},
   methods: {
     setSlider(e) {
-      console.log(e);
+      // console.log(e);
       this.min = e[0];
       this.max = e[1];
     }

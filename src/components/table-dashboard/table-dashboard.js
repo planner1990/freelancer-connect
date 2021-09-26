@@ -116,9 +116,7 @@ export default {
         prepayment: this.confirmJobOfferForm.prepayment,
         attachment_id: this.confirmJobOfferForm.attachmentId
       };
-      ServiceEmploymentService.estimationForFreelancer(body).then(res => {
-        console.log(res);
-      });
+      ServiceEmploymentService.estimationForFreelancer(body).then();
     },
     showEstimationEmployer(id) {
       if (this.disableInput === true) {
