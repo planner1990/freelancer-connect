@@ -32,12 +32,6 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
-    <v-btn color="white" class="mx-5" text link to="/login">
-      {{$t('navbar.enterAndRegister')}}
-    </v-btn>
-    <v-btn color="teal accent-3" dark @click="goToCreateProject">
-      {{$t('navbar.createProject')}}
-    </v-btn>
     <v-toolbar-title data-v-step="0"></v-toolbar-title>
     <v-spacer></v-spacer>
     <!--        <v-btn icon large>-->
@@ -48,16 +42,33 @@
     <!--            ></v-img>-->
     <!--          </v-avatar>-->
     <!--        </v-btn>-->
-    <v-menu bottom min-width="200px" rounded offset-y>
+    <v-btn
+      color="white"
+      class="mx-5"
+      text
+      link
+      to="/login"
+      v-if="!role || !user"
+    >
+      {{$t('navbar.enterAndRegister')}}
+    </v-btn>
+    <v-menu bottom min-width="200px" rounded offset-y v-if="role && user">
       <template v-slot:activator="{ on }">
         <v-btn text x-large v-on="on" class="mx-1 pa-0">
           <v-icon size="30" color="white">
             mdi-chevron-down
           </v-icon>
-          <v-avatar item size="48">
+          <v-avatar item size="38">
             <v-img
+              v-if="profileImage"
               alt="Vuetify"
-              src="../../../../assets/image/front-office/profile.jpg"
+              :lazy-src="profileImage"
+              :src="profileImage"
+            ></v-img>
+            <v-img
+              v-if="!profileImage"
+              alt="Vuetify"
+              src="../../../../assets/image/front-office/115-1150152_default-profile-picture-avatar-png-green.png"
             ></v-img>
           </v-avatar>
         </v-btn>
@@ -69,27 +80,37 @@
               <v-btn text x-large class="mx-1 pa-0">
                 <v-avatar item size="48">
                   <v-img
+                    v-if="profileImage"
                     alt="Vuetify"
-                    src="../../../../assets/image/front-office/profile.jpg"
+                    :lazy-src="profileImage"
+                    :src="profileImage"
+                  ></v-img>
+                  <v-img
+                    v-if="!profileImage"
+                    alt="Vuetify"
+                    src="../../../../assets/image/front-office/115-1150152_default-profile-picture-avatar-png-green.png"
                   ></v-img>
                 </v-avatar>
               </v-btn>
             </v-avatar>
-            <h3>{{ user.fullName }}</h3>
+            <h3 class="mt-2">{{ user.first_name + ' ' + user.last_name}}</h3>
             <p class="text-caption mt-1">
-              {{ user.email }}
+              {{ role }}
             </p>
             <v-divider class="my-3"></v-divider>
-            <v-btn depressed rounded text>
+            <v-btn depressed rounded text @click="goToDashboard(role)">
               ورود به داشبورد
             </v-btn>
             <v-divider class="my-3"></v-divider>
-            <v-btn color="red" depressed rounded text>
+            <v-btn color="red" depressed rounded text @click="logout">
               خروج
             </v-btn>
           </div>
         </v-list-item-content>
       </v-card>
     </v-menu>
+    <v-btn color="teal accent-3" dark @click="goToCreateProject">
+      {{$t('navbar.createProject')}}
+    </v-btn>
   </v-app-bar>
 </div>

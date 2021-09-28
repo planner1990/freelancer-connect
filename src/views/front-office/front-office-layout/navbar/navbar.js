@@ -3,6 +3,8 @@ import * as types from "../../../../shared/store/types";
 
 import customizeTheme from "../../../../components/cotumizeTheme/index";
 import { AuthService } from "@/core/services";
+import profileServices from "../../../../core/services/modules/profileServices";
+import freelancerServices from "../../../../core/services/modules/freelancerServices";
 
 export default {
   name: "navbar",
@@ -19,16 +21,14 @@ export default {
       { text: "navbar.browseProjects", route: "/browse-projects" }
     ],
     scrollPosition: null,
-    user: {
-      initials: "JD",
-      fullName: "John Doe",
-      email: "john.doe@doe.com"
-    }
+    user: {},
+    role: "",
+    profileImage: ""
   }),
   computed: {},
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
-    this.showProfile();
+    this.getAssignedRole();
   },
   methods: {
     ...mapActions({
@@ -46,11 +46,39 @@ export default {
     goToCreateProject() {
       this.$router.push("/create-project");
     },
-    showProfile() {
+    getAssignedRole() {
       const token = localStorage.getItem("accessToken");
       if (token) {
-        AuthService.showProfile().then();
+        AuthService.getAssignedRole().then(res => {
+          this.role = res.data.data.role;
+          this.showProfile(this.role);
+        });
       }
+    },
+    showProfile(role) {
+      if (role === "employer") {
+        profileServices.employerGetProfile().then(res => {
+          this.user = res.data.data.user;
+          this.profileImage = this.user.profile.avatar;
+        });
+      } else if (role === "freelancer") {
+        freelancerServices.showProfile().then(res => {
+          this.user = res.data.data.user;
+          this.profileImage = this.user.profile.avatar;
+        });
+      }
+    },
+    goToDashboard(role) {
+      if (role === "employer") {
+        this.$router.push("/employer/profile-setting");
+      } else if (role === "freelancer") {
+        this.$router.push("/freelancer/profile-setting");
+      }
+    },
+    logout() {
+      localStorage.removeItem("accessToken");
+      this.role = "";
+      this.user = {};
     }
   },
   created() {

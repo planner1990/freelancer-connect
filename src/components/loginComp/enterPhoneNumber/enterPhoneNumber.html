@@ -21,13 +21,14 @@
       :dark="!!phone"
       class="py-5"
       @click="handleSendOTP()"
+      @keyup.enter="handleSendOTP()"
       >{{ $t('actions.continue') }}</v-btn
     >
   </v-card-actions>
   <v-card-text>
     <div class="mt-5 text">{{ $t('form.otherWays') }}:</div>
   </v-card-text>
-  <div class="d-xl-flex d-lg-block google ma-0">
+  <div class="d-lg-block google ma-0">
     <div class="mb-sm-5">
       <v-btn :loading="signInLoading" block>
         <v-icon left>

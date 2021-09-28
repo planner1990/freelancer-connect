@@ -13,5 +13,7 @@
       <img :src="imageUrl" alt="" />
     </template>
   </v-file-input>
-  <img v-if="!imageUrl" :src="imageProfile" alt="" />
+  <span v-if="imageProfile && !imageUrl">
+    <img :src="imageProfile" alt="" />
+  </span>
 </section>

@@ -1,6 +1,7 @@
 import { mapGetters } from "vuex";
 import * as types from "../../../../shared/store/types";
 import freelancerServices from "../../../../core/services/modules/freelancerServices";
+import profileServices from "../../../../core/services/modules/profileServices";
 
 export default {
   name: "navigation-drawer",
@@ -41,9 +42,23 @@ export default {
   },
   methods: {
     showProfile() {
-      freelancerServices.showProfile().then(res => {
-        this.profileInfo = res.data.data;
-      });
+      if (this.role === 1) {
+        freelancerServices.showProfile().then(res => {
+          this.profileInfo = res.data.data;
+        });
+      } else if (this.role === 2) {
+        profileServices.employerGetProfile().then(res => {
+          const user = res.data.data.user;
+          this.profileInfo = res.data.data;
+          this.profileForm = {
+            firstName: user.first_name,
+            lastName: user.last_name,
+            description: user.profile.description,
+            categoryId: user.id,
+            noOfEmployees: String(user.profile.no_of_employees)
+          };
+        });
+      }
     },
     logout() {
       localStorage.removeItem("accessToken");

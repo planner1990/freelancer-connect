@@ -7,7 +7,24 @@
 >
   <template v-slot:prepend>
     <div
-      v-if="profileInfo.user"
+      v-if="profileInfo.user && role === 1"
+      class="timeline mar-b-120"
+      :style="{ 'background-image': 'url(' + profileInfo.user.profile.banner + ')' }"
+    >
+      <div class="username-info d-flex flex-column align-center">
+        <img
+          v-if="profileInfo.user"
+          :src="profileInfo.user.profile.avatar"
+          alt=""
+        />
+        <div class="username">
+          {{ profileInfo.user.first_name + " " + profileInfo.user.last_name}}
+        </div>
+        <div class="sub">{{ profileInfo.user.roles[0].name }}</div>
+      </div>
+    </div>
+    <div
+      v-if="profileInfo.user && role === 2"
       class="timeline mar-b-120"
       :style="{ 'background-image': 'url(' + profileInfo.user.profile.banner + ')' }"
     >

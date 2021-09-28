@@ -14,11 +14,13 @@ export default {
   data() {
     return {
       valid: false,
+      profileImage: "",
       name: "",
       select: "",
       isDisable: false,
       companyCriteriaItems: [],
       companyTypeLists: [],
+      attachments: [],
       titleCard: "پروژه ها",
       profileForm: {
         firstName: "",
@@ -53,17 +55,16 @@ export default {
           last_name: this.profileForm.lastName,
           description: this.profileForm.description,
           category_id: this.profileForm.categoryId,
-          no_of_employees: this.profileForm.noOfEmployees
+          no_of_employees: this.profileForm.noOfEmployees,
+          attachments: this.attachments
         };
-        profileServices.employerUpdateProfile(body).then(res => {
-          console.log(res);
-          // this.$refs.form.resetValidation();
-        });
+        profileServices.employerUpdateProfile(body).then();
       }
     },
     getProfileInfo() {
       profileServices.employerGetProfile().then(res => {
         const user = res.data.data.user;
+        this.profileImage = res.data.data.user;
         this.profileForm = {
           firstName: user.first_name,
           lastName: user.last_name,
@@ -82,6 +83,9 @@ export default {
       projectsService.activityTypes().then(res => {
         this.companyTypeLists = res.data.data;
       });
+    },
+    getFileId(value) {
+      this.attachments.push(value);
     }
   },
   watch: {}

@@ -1,7 +1,4 @@
 import UploadService from "../../core/services/modules/uploadService";
-import { mapGetters } from "vuex";
-import * as types from "../../shared/store/types";
-
 export default {
   name: "file-input-dashboard",
   components: {},
@@ -12,14 +9,7 @@ export default {
       imageUrl: ""
     };
   },
-  computed: {
-    ...mapGetters({
-      getAvatarProfile: types.avatarManagement.getters.AVATAR_MANAGEMENT_GET
-    }),
-    showAvatarProfile() {
-      return this.getAvatarProfile.user.profile;
-    }
-  },
+  computed: {},
   mounted() {},
   methods: {
     uploadImage() {

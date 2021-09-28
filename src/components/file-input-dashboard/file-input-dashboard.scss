@@ -1,6 +1,10 @@
 @import "src/assets/styles/variable";
-img {
-  width: 255px;
-  height: 255px;
-  border: 4px dashed $surface-700;
+
+section {
+  min-width: 300px;
+  img {
+    width: 255px;
+    height: 255px;
+    border: 4px dashed $surface-700;
+  }
 }

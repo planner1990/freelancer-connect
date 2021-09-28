@@ -55,14 +55,25 @@
       :header-section-title="$t('form.profileImage')"
     ></header-section>
     <v-row>
-      <file-input-dashboard></file-input-dashboard>
+      <file-input-dashboard
+        :status="'avatar'"
+        @clicked="getFileId"
+        v-if="profileImage"
+        :imageProfile="profileImage.profile.avatar"
+      >
+      </file-input-dashboard>
     </v-row>
 
     <header-section
       :header-section-title="$t('form.bannerImage')"
     ></header-section>
     <v-row>
-      <file-input-dashboard></file-input-dashboard>
+      <file-input-dashboard
+        :status="'banner'"
+        @clicked="getFileId"
+        v-if="profileImage"
+        :imageProfile="profileImage.profile.banner"
+      ></file-input-dashboard>
     </v-row>
     <v-row class="my-10">
       <v-btn color="error" @click="updateProfile">

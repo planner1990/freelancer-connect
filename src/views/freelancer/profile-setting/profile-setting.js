@@ -195,9 +195,7 @@ export default {
         gender: this.profileForm.gender,
         attachments: this.attachments
       };
-      freelancerServices.updateProfile(body).then(res => {
-        console.log(res);
-      });
+      freelancerServices.updateProfile(body).then();
     },
     getFileId(value) {
       this.attachments.push(value);
@@ -217,9 +215,7 @@ export default {
         education: education
       };
       console.log(body);
-      freelancerServices.updateExperienceEducation(body).then(res => {
-        console.log(res);
-      });
+      freelancerServices.updateExperienceEducation(body).then();
     },
     updateProjectsAward() {
       let projects = [];
@@ -236,9 +232,7 @@ export default {
         project: projects
       };
       console.log(body);
-      freelancerServices.updateProjectsAward(body).then(res => {
-        console.log(res);
-      });
+      freelancerServices.updateProjectsAward(body).then();
     }
   },
   watch: {}
