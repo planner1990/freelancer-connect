@@ -26,8 +26,9 @@ export default {
         identification: this.phone
       });
       OtpService.sendOTP(body).then(res => {
-        console.log(res);
-        this.$router.push("/login/enter-otp-code");
+        if (res.data.status === "OK") {
+          this.$router.push("/login/enter-otp-code");
+        }
       });
     }
   }

@@ -10,7 +10,7 @@
   }
   .theme--light.v-app-bar.v-toolbar.v-sheet {
     background-color: transparent;
-    border-bottom: 1px solid $surface-350;
+    border-bottom: 1px solid $surface-hover;
   }
   &.v-main {
     padding: 77px 0 36px !important;
@@ -27,6 +27,9 @@
   .v-icon {
     //color: var(--v-lightest-base) !important;
   }
+  .create-project_button {
+    min-width: 116px !important;
+  }
 }
 .change_background_color {
   .theme--light.v-app-bar.v-toolbar.v-sheet {
@@ -42,8 +45,12 @@
 }
 
 .home-page-hero {
+  .v-input__slot {
+    align-items: stretch;
+    min-height: 60px !important;
+  }
   .v-btn:not(.v-btn--round).v-size--default {
-    height: 56px;
+    height: 60px;
     min-width: 64px;
     padding: 0 16px;
     border-radius: 5px 0 0 5px;
@@ -113,13 +120,18 @@
   .best-projects-card {
     border: 1px solid $border-light-gray;
     height: 300px;
-    .best-projects-img {
-      width: 70px;
-      height: 70px;
+    .border-image {
+      border: 1px solid $surface-hover;
+      padding: 10px;
       border-radius: 50%;
+    }
+    .best-projects-img {
+      width: 40px;
+      height: 40px;
       background-color: #0a3d62;
       text-align: center;
-      line-height: 70px;
+      line-height: 40px;
+      font-size: 9px;
     }
     .best-project-card-title {
       font-weight: bold;

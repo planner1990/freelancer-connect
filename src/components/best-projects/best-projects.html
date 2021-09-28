@@ -12,7 +12,10 @@
         </div>
       </v-col>
     </v-row>
-    <v-row class="d-flex justify-center align-center mt-15 mx-sm-5">
+    <v-row
+      class="d-flex justify-center align-center mt-15 mx-auto"
+      style="max-width: 1140px"
+    >
       <v-col
         cols="11"
         lg="3"
@@ -22,7 +25,9 @@
         v-for="(card, i) in cards"
         :key="i"
       >
-        <div class="best-projects-img">{{ card.img }}</div>
+        <div class="border-image">
+          <div class="best-projects-img">{{ card.img }}</div>
+        </div>
         <div class="mt-5 best-project-card-title">{{ card.projectTitle }}</div>
         <div class="mt-5 text-font">{{card.projectDescription}}</div>
       </v-col>
@@ -41,7 +46,7 @@
             لورم ایپسوم متن ساختگی با تولید سادگی نا گرافیک است
           </div>
           <div class="mt-5">
-            <v-btn elevation="2">مشاهده همه</v-btn>
+            <v-btn elevation="2" style="border-radius: 12px;">مشاهده همه</v-btn>
           </div>
         </div>
       </v-col>
