@@ -13,7 +13,7 @@
     border-bottom: 1px solid $surface-hover;
   }
   &.v-main {
-    padding: 77px 0 36px !important;
+    //padding: 77px 0 36px !important;
   }
   &.v-navigation-drawer {
     top: 77px !important;
@@ -104,7 +104,6 @@
 .best-freelancer {
   min-height: 850px;
   margin-bottom: 80px;
-
   .text-font {
     font-size: 14px;
     color: $surface-200;
@@ -251,10 +250,12 @@
 }
 
 .footer-front-office {
+  width: 100%;
+  background-color: $gray-footer-background;
   &_top,
   &_bottom {
     min-height: 357px;
-    background-color: $gray-footer-background;
+    margin: 0 auto;
     &_text {
       font-size: 16px;
       color: $gray-footer-color;
@@ -408,5 +409,21 @@ input:-webkit-autofill:active {
 .create-project {
   .v-input__prepend-outer {
     display: none !important;
+  }
+}
+
+.step-first,
+.step-second {
+  .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state)
+    > .v-input__control
+    > .v-input__slot
+    fieldset {
+    color: rgba(169, 169, 169, 0.33);
+  }
+  .v-text-field {
+    input {
+      color: $surface-500;
+      font-size: 14px;
+    }
   }
 }

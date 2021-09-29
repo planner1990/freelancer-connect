@@ -1,0 +1,53 @@
+<div class="best-freelancer">
+  <v-container class="pl-0">
+    <v-row class="d-flex flex-column justify-start align-center text-center">
+      <v-col cols="9">
+        <div class="best-project-title">جدیدترین <strong>مقالات</strong></div>
+        <div class="mt-5 text-font">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+          از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
+        </div>
+      </v-col>
+    </v-row>
+    <v-row
+      :class="`d-flex justify-start align-center mx-auto mt-15`"
+      style="max-width: 1140px"
+    >
+      <v-col
+        cols="11"
+        md="2"
+        sm="5"
+        xs="11"
+        :class="`best-freelancer-card width_31 d-flex flex-column mx-2 my-sm-2 pa-0 pb-4`"
+        v-for="i in 3"
+        :key="i"
+      >
+        <div class="d-flex justify-center">
+          <div class="detail-container">
+            <img
+              class="best-freelancer-card_image"
+              src="../../assets/image/bg23.png"
+              alt=""
+            />
+            <div class="best-freelancer-card_name px-2 mt-6 mb-2">
+              <v-icon class="px-1" color="primary" dense
+                >mdi-check-decagram</v-icon
+              >
+              دسته بندی
+            </div>
+            <div class="best-freelancer-card_title mb-6 px-4">
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+              استفاده
+            </div>
+          </div>
+        </div>
+        <!--        <v-divider v-if="isService" class="divide-card"></v-divider>-->
+        <div class="best-freelancer-card_detail px-4">
+          <v-icon class="px-1" color="grey lighten-1" dense
+            >mdi-calendar-month</v-icon
+          >1400/04/12 - 20:30
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+</div>

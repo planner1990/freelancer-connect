@@ -1,0 +1,60 @@
+@import "src/assets/styles/variable";
+.best-freelancer {
+  min-height: 600px;
+  background-color: $surface-100;
+  padding-top: 76px;
+  padding-bottom: 76px;
+  margin-bottom: 0;
+
+  .best-freelancer-card {
+    min-height: 360px;
+    min-width: 350px;
+    &.width_31 {
+      min-width: 31.3%;
+    }
+    //&.width_45 {
+    //  min-width: 315px;
+    //}
+
+    //&_image {
+    //  background-color: $surface-350;
+    //}
+    &_name {
+      font-size: 14px;
+      margin: 10px 0;
+      color: $light-green;
+    }
+    &_title {
+      font-weight: 400;
+      min-height: 54px;
+      cursor: pointer;
+    }
+    &_detail {
+      color: $surface-200;
+
+      strong {
+        color: $danger-500;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+    .img-profile {
+      width: 40px;
+      height: 40px;
+      background-color: red;
+      border-radius: 50%;
+      cursor: pointer;
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    .detail-container {
+      width: 100%;
+      min-height: 164px;
+    }
+  }
+  .best-freelancer-card_image {
+    line-height: 4vh;
+  }
+}

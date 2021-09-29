@@ -7,6 +7,7 @@
     :label="$t('form.mobileAndEmail')"
     name="Username"
     type="text"
+    class="text-green"
     autofocus
     outlined
     v-model="phone"
@@ -17,8 +18,8 @@
       color="teal accent-3"
       :loading="signInLoading"
       block
-      :disabled="!phone"
-      :dark="!!phone"
+      depressed
+      dark
       class="py-5"
       @click="handleSendOTP()"
       @keyup.enter="handleSendOTP()"
@@ -30,7 +31,7 @@
   </v-card-text>
   <div class="d-lg-block google ma-0">
     <div class="mb-sm-5">
-      <v-btn :loading="signInLoading" block>
+      <v-btn :loading="signInLoading" block depressed>
         <v-icon left>
           mdi-google
         </v-icon>
@@ -43,6 +44,7 @@
         dark
         :loading="signInLoading"
         block
+        depressed
         type="submit"
       >
         <v-icon left>
