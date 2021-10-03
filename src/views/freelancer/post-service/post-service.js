@@ -9,7 +9,7 @@ export default {
   props: [],
   data() {
     return {
-      titleCard: "ویرایش پروژه",
+      titleCard: "ایجاد خدمت",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
       showSnackbar: false,
       valid: false,
@@ -66,15 +66,21 @@ export default {
       }
     },
     handleFileInput(file) {
+      this.showSnackbar = false;
       let formData = new FormData();
-      console.log(file);
-      if (file) {
+      if (file.length >= 1) {
         for (let i = 0; i <= file.length - 1; i++) {
           formData.append(`attachment[` + i + `]`, file[i]);
         }
-        UploadService.uploadFile(formData).then(res => {
-          this.serviceForm.attachmentId = res.data.data.attachment_id;
-        });
+        UploadService.uploadFile(formData)
+          .then(res => {
+            this.serviceForm.attachmentId = res.data.data.attachment_id;
+          })
+          .catch(err => {
+            console.log(err);
+            this.showSnackbar = true;
+            this.snackbarMessage = "حجم فایل بارگزاری شده بیش از حد مجاز است.";
+          });
       }
     },
     validate() {

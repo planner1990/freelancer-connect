@@ -4,13 +4,14 @@
   </h5>
   <p>برای ادامه شماره موبایل خود را وارد کنید.</p>
   <v-text-field
-    :label="$t('form.mobileAndEmail')"
+    :label="$t('form.mobile')"
     name="Username"
     type="text"
     class="text-green"
     autofocus
     outlined
     v-model="phone"
+    :rules="phoneRules"
     dense
   ></v-text-field>
   <v-card-actions class="pa-0">

@@ -87,6 +87,7 @@ export default {
       this.autoselectMenu = !this.autoselectMenu;
     },
     createProject() {
+      this.showSnackbar = false;
       if (this.$refs[`form`].validate() === true) {
         const body = {
           title: this.projectForm.title,
@@ -98,8 +99,11 @@ export default {
           attachment_id: this.projectForm.attachmentId
         };
         projectsService.createProject(body).then(res => {
-          console.log(res);
-          this.$refs.form.reset();
+          if (res) {
+            this.showSnackbar = true;
+            this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
+            this.$refs.form.reset();
+          }
         });
       } else {
         this.showSnackbar = true;
@@ -136,7 +140,7 @@ export default {
     },
     handleFileInput(file) {
       let formData = new FormData();
-      if (file) {
+      if (file.length >= 1) {
         for (let i = 0; i <= file.length - 1; i++) {
           formData.append(`attachment[` + i + `]`, file[i]);
         }

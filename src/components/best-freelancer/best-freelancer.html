@@ -19,26 +19,28 @@
         sm="5"
         xs="11"
         class="best-freelancer-card d-flex flex-column pa-4 mx-2 my-sm-2"
-        v-for="(project, i) in 4"
+        v-for="(freelancer, i) in bestFreelancerList"
         :key="i"
       >
-        <div class="best-freelancer-card_image">Picture</div>
-        <div class="best-freelancer-card_name">
+        <div class="best-freelancer-card_image">
+            <v-img :src="require(`../../assets/image/best-project/${freelancer.img}`)" />
+        </div>
+        <div class="best-freelancer-card_name mt-5">
           <v-icon class="px-1" color="primary" dense>mdi-check-decagram</v-icon
-          >احمد احمدی
+          >{{freelancer.name}}
         </div>
         <div class="best-freelancer-card_title mb-6">
-          چگونه ارتباطات اتفاق می افتد
+            {{freelancer.title | readMore(25, "...")}}
         </div>
         <div class="best-freelancer-card_detail">
           <v-icon class="px-1" color="grey darken-3" dense
             >mdi-account-clock-outline</v-icon
-          >۴۰۰.۰۰۰ تومان / ساعتی
+          >{{freelancer.price}} تومان / ساعتی
         </div>
         <div class="best-freelancer-card_detail">
           <v-icon class="px-1" color="grey darken-3" dense
             >mdi-map-marker-outline</v-icon
-          >تهران
+          >{{freelancer.location}}
         </div>
         <div class="best-freelancer-card_detail">
           <v-icon class="px-1" color="grey darken-3" dense

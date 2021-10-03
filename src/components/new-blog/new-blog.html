@@ -19,25 +19,23 @@
         sm="5"
         xs="11"
         :class="`best-freelancer-card width_31 d-flex flex-column mx-2 my-sm-2 pa-0 pb-4`"
-        v-for="i in 3"
-        :key="i"
+        v-for="article in lastArticles"
+        :key="article.title"
       >
         <div class="d-flex justify-center">
           <div class="detail-container">
-            <img
-              class="best-freelancer-card_image"
-              src="../../assets/image/bg23.png"
-              alt=""
+            <v-img
+              max-height="200"
+              :src="require(`../../assets/image/best-project/${article.image}`)"
             />
             <div class="best-freelancer-card_name px-2 mt-6 mb-2">
               <v-icon class="px-1" color="primary" dense
                 >mdi-check-decagram</v-icon
               >
-              دسته بندی
+              دسته بندی: {{article.category}}
             </div>
             <div class="best-freelancer-card_title mb-6 px-4">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-              استفاده
+              {{article.title | readMore(150, "...")}}
             </div>
           </div>
         </div>
@@ -45,7 +43,7 @@
         <div class="best-freelancer-card_detail px-4">
           <v-icon class="px-1" color="grey lighten-1" dense
             >mdi-calendar-month</v-icon
-          >1400/04/12 - 20:30
+          >{{ article.date }} - {{ article.time }}
         </div>
       </v-col>
     </v-row>

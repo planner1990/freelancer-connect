@@ -1,11 +1,11 @@
 <dashboard-card :titleCard="titleCard">
   <v-form ref="form" v-model="valid" lazy-validation>
-    <header-section :headerSectionTitle="'جزییات پروژه'"></header-section>
+    <header-section :headerSectionTitle="'جزییات خدمت'"></header-section>
     <v-row>
       <v-text-field
         v-model="serviceForm.title"
         :rules="createServiceRule.title"
-        label="عنوان پروژه"
+        label="عنوان خدمت"
         required
         outlined
         class="col-lg-6 col-md-12 pl-2"

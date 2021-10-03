@@ -26,7 +26,7 @@
         :key="i"
       >
         <div class="border-image">
-          <div class="best-projects-img">{{ card.img }}</div>
+          <div class="best-projects-img"><v-img :src="require(`../../assets/image/best-project/${card.img}`)" /></div>
         </div>
         <div class="mt-5 best-project-card-title">{{ card.projectTitle }}</div>
         <div class="mt-5 text-font">{{card.projectDescription}}</div>

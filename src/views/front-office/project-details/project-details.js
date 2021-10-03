@@ -24,10 +24,7 @@ export default {
         attachmentId: []
       },
       proposalRule: {
-        duration: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
-        ],
+        duration: [v => !!v || "Name is required"],
         price: [
           v => !!v || "Name is required",
           v => (v && v.length >= 3) || "Name must be more than 3 characters"
@@ -68,7 +65,7 @@ export default {
     },
     handleFileInput(file) {
       let formData = new FormData();
-      if (file) {
+      if (file.length >= 1) {
         for (let i = 0; i <= file.length - 1; i++) {
           formData.append(`attachment[` + i + `]`, file[i]);
         }

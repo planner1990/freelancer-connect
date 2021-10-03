@@ -1,6 +1,6 @@
 import DashboardCard from "../../../components/dashboardCard/index";
 import TableDashboard from "../../../components/table-dashboard/index";
-import { ServiceEmploymentService } from "../../../core/services";
+import freelancerServices from "../../../core/services/modules/freelancerServices";
 export default {
   name: "posted-services",
   components: { DashboardCard, TableDashboard },
@@ -12,7 +12,7 @@ export default {
       name: "",
       nameRules: [
         v => !!v || "Name is required",
-        v => (v && v.length <= 50) || "Name must be less than 10 characters"
+        v => (v && v.length <= 30) || "Name must be less than 30 characters"
       ],
       headersUserManagement: [
         {
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     getJobOfferOngoingFreelancer() {
-      ServiceEmploymentService.getJobOfferFreelancer().then(res => {
+      freelancerServices.indexJobOffers("pending").then(res => {
         this.dataUserManagement = res.data.data;
       });
     }

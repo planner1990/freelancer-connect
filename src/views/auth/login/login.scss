@@ -1,7 +1,16 @@
 @import "src/assets/styles/variable";
 .bgImage {
-  background-image: url("./../../../assets/image/front-office/pic.jpg");
-  background-position: right;
+  background-image: url("./../../../assets/image/pic.jpg");
+  background-position: center;
   background-size: cover;
+
+  h2 {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.82);
+    margin-right: 24px;
+    &:first-child {
+      margin-top: 150px;
+    }
+  }
 }
 

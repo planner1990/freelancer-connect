@@ -46,7 +46,7 @@ export default {
         ],
         duration: [
           v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => (v && v.length >= 1) || "Name must be more than 3 characters"
         ],
         // prepayment: [
         //   v => !!v || "Name is required",
@@ -54,7 +54,7 @@ export default {
         // ],
         freelancerDescription: [
           v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => (v && v.length >= `3`) || "Name must be more than 3 characters"
         ]
       },
       files: [
@@ -152,8 +152,10 @@ export default {
     confirmEstimation(id) {
       if (this.disableInput === true) {
         this.hiredServiceByEmployer(id);
+        this.dialog = false;
       } else {
         this.estimationForFreelancer(id);
+        this.dialog = false;
       }
     }
   }

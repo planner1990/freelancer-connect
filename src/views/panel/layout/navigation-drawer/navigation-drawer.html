@@ -5,6 +5,7 @@
   :mini-variant="mini"
   :value="drawer"
 >
+  <!--    <img src="../../../../assets/image/connecta-logo-2.png" alt="">-->
   <template v-slot:prepend>
     <div
       v-if="profileInfo.user && role === 1"
@@ -13,8 +14,13 @@
     >
       <div class="username-info d-flex flex-column align-center">
         <img
-          v-if="profileInfo.user"
+          v-if="profileInfo.user.profile.avatar"
           :src="profileInfo.user.profile.avatar"
+          alt=""
+        />
+        <img
+          v-if="!profileInfo.user.profile.avatar"
+          src="../../../../assets/image/logo.png"
           alt=""
         />
         <div class="username">
@@ -30,8 +36,13 @@
     >
       <div class="username-info d-flex flex-column align-center">
         <img
-          v-if="profileInfo.user"
+          v-if="profileInfo.user.profile.avatar"
           :src="profileInfo.user.profile.avatar"
+          alt=""
+        />
+        <img
+          v-if="!profileInfo.user.profile.avatar"
+          src="../../../../assets/image/logo.png"
           alt=""
         />
         <div class="username">

@@ -9,7 +9,11 @@ export default {
   data() {
     return {
       phone: null,
-      signInLoading: false
+      signInLoading: false,
+      phoneRules: [
+        v => !!v || "Name is required",
+        v => (v && v.length === 11) || "Phone must be 11 characters"
+      ]
     };
   },
   computed: {
@@ -18,7 +22,7 @@ export default {
   mounted() {},
   methods: {
     handleSendOTP() {
-      if (this.phone) {
+      if (this.phone && this.phone.length === 11) {
         const body = {
           identification: this.phone,
           type: 0

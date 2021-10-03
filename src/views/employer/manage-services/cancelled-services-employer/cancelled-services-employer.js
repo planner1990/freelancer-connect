@@ -9,19 +9,22 @@ export default {
       showSelect: true,
       valid: true,
       name: "",
+      page: 1,
+      pageCount: 0,
+      itemsPerPage: 8,
       nameRules: [
         v => !!v || "Name is required",
         v => (v && v.length <= 50) || "Name must be less than 10 characters"
       ],
       headersUserManagement: [
         {
-          text: "نام سرویس",
+          text: "نام خدمات",
           align: "center",
           sortable: false,
           value: "title"
         },
         {
-          text: "وضعیت سرویس",
+          text: "وضعیت خدمات",
           value: "serviceStatus",
           sortable: false,
           align: "center"
@@ -32,111 +35,21 @@ export default {
       dataUserManagement: [
         {
           title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
+            title: "تولید محتوا",
             src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
+            price: "200.000 تومان"
           },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
+          serviceStatus: ["جاری شدن پروژه"],
+          queue: "سرویس ناتمام"
         },
         {
           title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
+            title: "دیجیتال مارکتینگ",
+            src: "https://picsum.photos/id/732/500/300",
+            price: "350.000 تومان"
           },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
-        },
-        {
-          title: {
-            title: "من در حال توسعه اپلیکیشن اندروید و IOS هستم",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200 هزار تومان"
-          },
-          serviceStatus: ["پیش نویس", "منتشر شده"],
-          queue: "۰ نفر در صف"
+          serviceStatus: ["جاری شدن پروژه"],
+          queue: "سرویس ناتمام"
         }
       ]
     };

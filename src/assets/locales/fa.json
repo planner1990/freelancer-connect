@@ -61,7 +61,7 @@
   "form": {
     "responseTimeTitle": "عنوان زمان پاسخ",
     "description": "توضیحات",
-    "mobileAndEmail": "شماره موبایل یا ایمیل",
+    "mobile": "شماره موبایل",
     "otherWays": "یا از طریق راههای زیر ادامه دهید",
     "enterAndRegisterByGoogle": "ورود/ثبت نام با گوگل",
     "enterAndRegisterByLinkedin": "ورود/ثبت نام با لینکدین",
