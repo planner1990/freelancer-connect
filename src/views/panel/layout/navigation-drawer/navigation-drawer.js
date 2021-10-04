@@ -30,6 +30,12 @@ export default {
   }),
   computed: {
     ...mapGetters({
+      imageSrc: types.avatarManagement.getters.AVATAR_MANAGEMENT_GET
+    }),
+    getDrawerImage() {
+      return this.imageSrc;
+    },
+    ...mapGetters({
       drawer: types.GET_DRAWER
     })
   },

@@ -26,10 +26,10 @@ export default {
       status: "ongoing",
       projectDetails: {},
       proposalForm: {},
-      nameRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length <= 50) || "Name must be less than 10 characters"
-      ],
+      // nameRules: [
+      //   v => !!v || "Name is required",
+      //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
+      // ],
       youMessage: "",
       messages: [],
       amount: null,
@@ -39,14 +39,12 @@ export default {
       },
       jobOfferRule: {
         linkName: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "لطفا لینک را وارد کنید",
+          v => (v && v.length >= 3) || "لینک باید حداقل ۳ کاراکتر باشد"
         ],
         description: [
-          v => !!v || "Description is required",
-          v =>
-            (v && v.length >= 20) ||
-            "Description must be more than 20 characters"
+          v => !!v || "لطفا توضیحات را وارد کنید",
+          v => (v && v.length >= 20) || "توضیحات حداقل باید ۲۰ کاراکتر باشد"
         ]
       },
       dialog: false,

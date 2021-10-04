@@ -24,10 +24,10 @@ export default {
       status: "pending",
       projectDetails: {},
       proposalForm: {},
-      nameRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length <= 50) || "Name must be less than 10 characters"
-      ],
+      // nameRules: [
+      //   v => !!v || "Name is required",
+      //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
+      // ],
       projectListItems: [
         {
           id: 1,

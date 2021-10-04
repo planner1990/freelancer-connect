@@ -17,21 +17,22 @@ export default {
         durationList: []
       },
       proposalRule: {
-        duration: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
-        ],
+        duration: [v => !!v || "مدت زمان را مشخص کنید"],
         price: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "لطفا مبلغ را تعیین کنید",
+          v =>
+            (v && v.length >= 3) || "مبلغ مورد نظر باید بیش از ۳ کاراکتر باشد"
         ],
         minPrice: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "لطفا حداقل مبلغ را مشخص کنید",
+          v =>
+            (v && v.length >= 3) || "مبلغ مورد نظر باید بیش از ۳ کاراکتر باشد"
         ],
         description: [
-          v => !!v || "Description is required",
-          v => (v && v.length >= 20) || "Description must be more than 20 "
+          v => !!v || "لطفا توضیحات را وارد کنید",
+          v =>
+            (v && v.length >= 20) ||
+            "توضیحات مورد نظر باید بیش از ۲۰ کاراکتر باشد"
         ]
       }
     };

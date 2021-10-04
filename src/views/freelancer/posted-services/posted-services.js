@@ -11,8 +11,8 @@ export default {
       valid: true,
       name: "",
       nameRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length <= 30) || "Name must be less than 30 characters"
+        v => !!v || "لطفا نام خود را وارد کنید",
+        v => (v && v.length <= 30) || "نام وارد شده باید بیش از ۳۰ کاراکتر باشد"
       ],
       headersUserManagement: [
         {

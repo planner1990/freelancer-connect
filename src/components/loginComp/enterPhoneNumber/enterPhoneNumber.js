@@ -11,8 +11,8 @@ export default {
       phone: null,
       signInLoading: false,
       phoneRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length === 11) || "Phone must be 11 characters"
+        v => !!v || "لطفا موبایل خود را وارد کنید",
+        v => (v && v.length === 11) || "شماره موبایل باید ۱۱ رقم باشد"
       ]
     };
   },

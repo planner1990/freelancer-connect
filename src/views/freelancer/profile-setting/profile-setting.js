@@ -10,6 +10,7 @@ import Experience from "./experience/index";
 import Education from "./education/index";
 import Projects from "./projects/index";
 import Award from "./award/index";
+import Snackbar from "../../../components/snackbar/index";
 import { mapActions, mapGetters } from "vuex";
 import * as types from "../../../shared/store/types";
 
@@ -25,7 +26,8 @@ export default {
     Experience,
     Education,
     Projects,
-    Award
+    Award,
+    Snackbar
   },
   props: [],
   data() {
@@ -33,13 +35,13 @@ export default {
       valid: true,
       name: "",
       nameRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length <= 10) || "Name must be less than 10 characters"
+        v => !!v || "لطفا نام خود را وارد کنید",
+        v => (v && v.length <= 10) || "نام وارد شده باید بیش از ۱۰ کاراکتر باشد"
       ],
       email: "",
       emailRules: [
-        v => !!v || "E-mail is required",
-        v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+        v => !!v || "لطفا ایمیل خود را وارد کنید",
+        v => /.+@.+\..+/.test(v) || "ایمیل وارد شده معتبر نیست"
       ],
       select: "",
       items: ["Item 1", "Item 2", "Item 3", "Item 4"],
@@ -55,6 +57,8 @@ export default {
       dialog: false,
       isMobile: true,
       titleCard: "پروژه ها",
+      snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
+      showSnackbar: false,
       simpleDialogData: {
         buttonTitle: "حذف پروژه",
         header: "آیا می خواهید پروژه را حذف کنید؟",
@@ -177,6 +181,9 @@ export default {
     resetValidation() {
       this.$refs.form.resetValidation();
     },
+    hideSnackbar() {
+      this.showSnackbar = false;
+    },
     showProfile() {
       freelancerServices.showProfile().then(res => {
         this.profileInfo = res.data.data;
@@ -189,13 +196,19 @@ export default {
       });
     },
     updateProfile() {
+      this.showSnackbar = false;
       const body = {
         first_name: this.profileInfo.user["first_name"],
         last_name: this.profileInfo.user["last_name"],
         gender: this.profileForm.gender,
         attachments: this.attachments
       };
-      freelancerServices.updateProfile(body).then();
+      freelancerServices.updateProfile(body).then(res => {
+        if (res) {
+          this.showSnackbar = true;
+          this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
+        }
+      });
     },
     getFileId(value) {
       this.attachments.push(value);

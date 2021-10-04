@@ -49,4 +49,11 @@
       >بله, ثبت نهایی پروژه</v-btn
     >
   </v-card-actions>
+  <v-row>
+    <snackbar
+      :snackbarMessage="snackbarMessage"
+      :showSnackbar="showSnackbar"
+      @hideSnackbar="hideSnackbar"
+    ></snackbar>
+  </v-row>
 </div>

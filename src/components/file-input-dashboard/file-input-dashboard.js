@@ -1,4 +1,6 @@
 import UploadService from "../../core/services/modules/uploadService";
+import { mapMutations } from "vuex";
+import * as types from "../../shared/store/types";
 export default {
   name: "file-input-dashboard",
   components: {},
@@ -9,7 +11,9 @@ export default {
       imageUrl: ""
     };
   },
-  computed: {},
+  computed: {
+    ...mapMutations([types.avatarManagement.mutations.AVATAR_MANAGEMENT_MUTATE])
+  },
   mounted() {},
   methods: {
     uploadImage() {
@@ -30,6 +34,14 @@ export default {
         };
         reader.readAsDataURL(file);
       }).then(r => {
+        if (r) {
+          this.$store.commit(
+            types.avatarManagement.mutations.AVATAR_MANAGEMENT_MUTATE,
+            {
+              imageSrc: { image: r, status: this.status }
+            }
+          );
+        }
         this.imageUrl = r;
       });
     }

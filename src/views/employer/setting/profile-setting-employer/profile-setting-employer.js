@@ -32,20 +32,22 @@ export default {
         noOfEmployees: "",
         showSnackbar: false
       },
+      companyName: "",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
       showSnackbar: false,
       profileRule: {
         firstnameRules: [
-          v => !!v || "Name is required",
-          v => v.length >= 3 || "Name must be more than 3 characters"
+          v => !!v || "لطفا نام خود را وارد کنید",
+          v => v.length >= 3 || "نام وارد شده باید بیش از ۳ کاراکتر باشد"
         ],
         lastnameRules: [
-          v => !!v || "Lastname is required",
-          v => v.length >= 3 || "Name must be more than 3 characters"
+          v => !!v || "نام خانوادگی خود را وارد کنید",
+          v =>
+            v.length >= 3 || "نام خانوادگی وارد شده باید بیش از ۳ کاراکتر باشد"
         ],
         description: [
-          v => !!v || "description is required",
-          v => v.length >= 10 || "Name must be more than 50 characters"
+          v => !!v || "لطفا توضیحات را وارد کنید",
+          v => v.length >= 10 || "توضیحات وارد شده باید بیش از ۱۰ کاراکتر باشد"
         ]
       }
     };
@@ -79,6 +81,7 @@ export default {
     getProfileInfo() {
       profileServices.employerGetProfile().then(res => {
         const user = res.data.data.user;
+        this.companyName = user["company"].name;
         this.profileImage = res.data.data.user;
         this.profileForm = {
           firstName: user.first_name,

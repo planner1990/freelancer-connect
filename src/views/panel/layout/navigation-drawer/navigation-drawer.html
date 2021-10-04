@@ -23,10 +23,18 @@
           src="../../../../assets/image/logo.png"
           alt=""
         />
-        <div class="username">
+        <div class="username" v-if="!profileInfo.user['company'].name">
           {{ profileInfo.user.first_name + " " + profileInfo.user.last_name}}
         </div>
-        <div class="sub">{{ profileInfo.user.roles[0].name }}</div>
+        <div class="username" v-if="profileInfo.user['company'].name">
+          {{ profileInfo.user['company'].name }}
+        </div>
+        <div class="sub" v-if="!profileInfo.user['company'].name">
+          {{ profileInfo.user.roles[0].name }}
+        </div>
+        <div class="sub" v-if="profileInfo.user['company'].name">
+          {{ profileInfo.user['company'].name }}
+        </div>
       </div>
     </div>
     <div
@@ -36,7 +44,7 @@
     >
       <div class="username-info d-flex flex-column align-center">
         <img
-          v-if="profileInfo.user.profile.avatar"
+          v-if="profileInfo.user.profile.avatar && !getDrawerImage.imageSrc"
           :src="profileInfo.user.profile.avatar"
           alt=""
         />
@@ -45,10 +53,19 @@
           src="../../../../assets/image/logo.png"
           alt=""
         />
-        <div class="username">
+        <div v-if="getDrawerImage.imageSrc && getDrawerImage.imageSrc.image">
+          <img :src="getDrawerImage.imageSrc.image" alt="" />
+        </div>
+
+        <div class="username" v-if="!profileInfo.user['company'].name">
           {{ profileInfo.user.first_name + " " + profileInfo.user.last_name}}
         </div>
-        <div class="sub">{{ profileInfo.user.roles[0].name }}</div>
+        <div class="username" v-if="profileInfo.user['company'].name">
+          {{ profileInfo.user['company'].name }}
+        </div>
+        <div class="sub">
+          {{ profileInfo.user.roles[0].name }}
+        </div>
       </div>
     </div>
     <v-row v-if="role === 1">
@@ -79,29 +96,84 @@
     </v-row>
     <v-divider></v-divider>
   </template>
+  <!--  <v-list dense>-->
+  <!--    <v-list-item-->
+  <!--      v-for="item in sidebarItems"-->
+  <!--      :key="item.title"-->
+  <!--      v-if="!item.subCategory"-->
+  <!--      link-->
+  <!--      :to="item.route"-->
+  <!--      exact-->
+  <!--    >-->
+  <!--      <v-list-item-action>-->
+  <!--        <v-icon>{{ item.symbol }}</v-icon>-->
+  <!--      </v-list-item-action>-->
+  <!--      <v-list-item-content>-->
+  <!--        <v-list-item-title>-->
+  <!--          {{ $t(`sidebar.${item.title}`) }}-->
+  <!--        </v-list-item-title>-->
+  <!--      </v-list-item-content>-->
+  <!--    </v-list-item>-->
+  <!--    <v-list-group-->
+  <!--      v-for="item in sidebarItems"-->
+  <!--      :key="item.title"-->
+  <!--      v-if="item.subCategory"-->
+  <!--      :prepend-icon="item.symbol"-->
+  <!--    >-->
+  <!--      <template v-slot:activator>-->
+  <!--        <v-list-item-content>-->
+  <!--          <v-list-item-title-->
+  <!--            >{{ $t(`sidebar.${item.title}`) }}</v-list-item-title-->
+  <!--          >-->
+  <!--        </v-list-item-content>-->
+  <!--      </template>-->
+  <!--      <v-list-item-->
+  <!--        v-for="subCat in item.subCategory"-->
+  <!--        :key="subCat.title"-->
+  <!--        link-->
+  <!--        :to="subCat.route"-->
+  <!--      >-->
+  <!--        <v-list-item-action>-->
+  <!--          <v-icon>{{ subCat.symbol }}</v-icon>-->
+  <!--        </v-list-item-action>-->
+  <!--        <v-list-item-content>-->
+  <!--          <v-list-item-title-->
+  <!--            >{{ $t(`sidebar.${subCat.title}`) }}</v-list-item-title-->
+  <!--          >-->
+  <!--        </v-list-item-content>-->
+  <!--      </v-list-item>-->
+  <!--    </v-list-group>-->
+  <!--    <v-list-item link color="error" @click="logout()" dense>-->
+  <!--      <template v-if="!logoutLoading">-->
+  <!--        <v-list-item-action>-->
+  <!--          <v-icon color="error">mdi-power</v-icon>-->
+  <!--        </v-list-item-action>-->
+  <!--        <v-list-item-content>-->
+  <!--          <v-list-item-title class="dangerFontColor"-->
+  <!--            >{{ $t("sidebar.logOut") }}</v-list-item-title-->
+  <!--          >-->
+  <!--        </v-list-item-content>-->
+  <!--      </template>-->
+  <!--      <template v-else>-->
+  <!--        <v-list-item-content>-->
+  <!--          <v-progress-circular-->
+  <!--            indeterminate-->
+  <!--            color="error"-->
+  <!--          ></v-progress-circular>-->
+  <!--        </v-list-item-content>-->
+  <!--      </template>-->
+  <!--    </v-list-item>-->
+  <!--  </v-list>-->
+
   <v-list dense>
-    <v-list-item
-      v-for="item in sidebarItems"
-      :key="item.title"
-      v-if="!item.subCategory"
-      link
-      :to="item.route"
-      exact
-    >
-      <v-list-item-action>
-        <v-icon>{{ item.symbol }}</v-icon>
-      </v-list-item-action>
-      <v-list-item-content>
-        <v-list-item-title>
-          {{ $t(`sidebar.${item.title}`) }}
-        </v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
     <v-list-group
       v-for="item in sidebarItems"
       :key="item.title"
-      v-if="item.subCategory"
       :prepend-icon="item.symbol"
+      :append-icon="item.subCategory ? '$expand' : null"
+      link
+      :to="item.route"
+      exact
     >
       <template v-slot:activator>
         <v-list-item-content>

@@ -24,20 +24,22 @@ export default {
         attachmentId: []
       },
       proposalRule: {
-        duration: [v => !!v || "Name is required"],
+        duration: [v => !!v || "لطفا مدت زمان را مشخص کنید"],
         price: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "لطفا مبلغ را وارد کنید",
+          v =>
+            (v && v.length >= 3) || "مبلغ وارد شده باید بیش از ۳ کاراکتر باشد"
         ],
         minPrice: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "حداقل مبلغ را وارد کنید",
+          v =>
+            (v && v.length >= 3) || "حداقل وارد شده باید بیش از ۳ کاراکتر باشد"
         ],
         description: [
-          v => !!v || "Description is required",
+          v => !!v || "لطفا توضیحات را وارد کنید",
           v =>
             (v && v.length >= 20) ||
-            "Description must be more than 20 characters"
+            "توضیحات وارد شده باید بیش از ۲۰ کاراکتر باشد"
         ]
       }
     };

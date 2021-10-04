@@ -3,7 +3,7 @@
     <header-section
       :header-section-title="$t('form.IndividualAndSkillDetails')"
     ></header-section>
-    <v-row class="d-lg-flex d-md-block">
+    <v-row class="d-lg-flex d-md-block" v-if="!companyName">
       <v-text-field
         v-model="profileForm.firstName"
         :label="$t('form.firstname')"
@@ -16,6 +16,24 @@
         v-model="profileForm.lastName"
         :label="$t('form.lastname')"
         :rules="profileRule.lastnameRules"
+        required
+        outlined
+        class="col-lg-6 pr-lg-2 col-md-12 pr-md-0"
+      ></v-text-field>
+    </v-row>
+    <v-row class="d-lg-flex d-md-block" v-if="companyName">
+      <v-text-field
+        v-model="companyName"
+        :label="$t('form.companyName')"
+        :rules="profileRule.firstnameRules"
+        required
+        disabled
+        outlined
+        class="col-lg-6 col-md-12 pr-md-0"
+      ></v-text-field>
+      <v-text-field
+        :label="$t('form.companyNumber')"
+        value="1400545323"
         required
         outlined
         class="col-lg-6 pr-lg-2 col-md-12 pr-md-0"

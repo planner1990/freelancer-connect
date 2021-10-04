@@ -31,30 +31,28 @@ export default {
       },
       confirmJobOfferRule: {
         title: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "لطفا عنوان را وارد کنید",
+          v =>
+            (v && v.length >= 3) || "عنوان مورد نظر حداقل باید ۳ کاراکتر باشد"
         ],
         description: [
-          v => !!v || "Description is required",
+          v => !!v || "لطفا توضیحات خود را وارد کنید",
           v =>
             (v && v.length >= 20) ||
-            "Description must be more than 20 characters"
+            "توضیحات مورد نظر باید بیش از ۲۰ کاراکتر باشد"
         ],
         minPrice: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "لطفا مبلغ را وارد کنید",
+          v => (v && v.length >= 3) || "مبلغ مورد نظر باید بیش از ۳ رقم باشد"
         ],
-        duration: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 1) || "Name must be more than 3 characters"
-        ],
+        duration: [v => !!v || "لطفا مدت زمان را وارد کنید"],
         // prepayment: [
         //   v => !!v || "Name is required",
         //   v => (v && v.length >= 3) || "Name must be more than 3 characters"
         // ],
         freelancerDescription: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= `3`) || "Name must be more than 3 characters"
+          v => !!v || "لطفا توضیحات را وارد کنید",
+          v => (v && v.length >= `3`) || "توضیحات باید بیش از ۳ کاراکتر باشد"
         ]
       },
       files: [

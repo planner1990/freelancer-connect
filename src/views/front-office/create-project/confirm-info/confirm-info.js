@@ -1,10 +1,11 @@
 import * as types from "../../../../shared/store/types";
 import { mapGetters, mapMutations } from "vuex";
 import projectsService from "../../../../core/services/modules/projectsService";
+import Snackbar from "../../../../components/snackbar/index";
 
 export default {
   name: "confirm-info",
-  components: {},
+  components: { Snackbar },
   props: [],
   data() {
     return {
@@ -14,7 +15,9 @@ export default {
       price: "",
       minPrice: "",
       maxPrice: "",
-      duration: ""
+      duration: "",
+      snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
+      showSnackbar: false
     };
   },
   computed: {
@@ -32,6 +35,7 @@ export default {
   },
   methods: {
     createProject() {
+      this.showSnackbar = false;
       const projectData = {
         title: this.getDataFromStore.body.title,
         description: this.getDataFromStore.body.description,
@@ -41,11 +45,19 @@ export default {
         skills: [],
         attachment_id: null
       };
-      projectsService.createProject(projectData).then();
+      projectsService.createProject(projectData).then(res => {
+        if (res) {
+          this.showSnackbar = true;
+          this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
+        }
+      });
       this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
         projectData
       });
       // this.$router.push("/confirm-info");
+    },
+    hideSnackbar() {
+      this.showSnackbar = false;
     },
     resetRegister() {
       if (!this.getDataFromStore.body) {

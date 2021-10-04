@@ -24,29 +24,29 @@ export default {
       valid: false,
       createProjectRule: {
         title: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "لطفا عنوان را وارد کنید",
+          v =>
+            (v && v.length >= 3) || "عنوان وارد شده باید بیش از ۳ کاراکتر باشد"
         ],
         price: [
-          v => !!v || "Price is required",
-          v => (v && v.length >= 7) || "Name must be more than 7 characters"
+          v => !!v || "لطفا مبلغ را وارد کنید",
+          v =>
+            (v && v.length >= 7) || "مبلغ وارد شده باید بیش از ۷ کاراکتر باشد"
         ],
-        duration: [v => !!v || "Duration is required"],
+        duration: [v => !!v || "لطفا مدت زمان را وارد کنید"],
         description: [
-          v => !!v || "Description is required",
+          v => !!v || "لطفا توضیحات را وارد کنید",
           v =>
             (v && v.length >= 20) ||
-            "Description must be more than 20 characters"
+            "توضیحات وارد شده باید بیش از ۲۰ کاراکتر باشد"
         ],
         categories: [
-          v => !!v || "Description is required",
-          v =>
-            (v && v.length >= 1) || "Description must be more than 1 characters"
+          v => !!v || "لطفا دسته بندی را مشخص کنید",
+          v => (v && v.length >= 1) || "حداقل یک مورد را باید انتخاب کنید"
         ],
         skills: [
-          v => !!v || "Description is required",
-          v =>
-            (v && v.length >= 1) || "Description must be more than 1 characters"
+          v => !!v || "مهارت مورد نیاز را انتخاب کنید",
+          v => (v && v.length >= 1) || "حداقل یک مورد را باید انتخاب کنید"
         ]
       },
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)

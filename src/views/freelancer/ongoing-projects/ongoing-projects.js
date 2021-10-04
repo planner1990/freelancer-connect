@@ -14,11 +14,11 @@ export default {
       page: 1,
       showSelect: true,
       indexProjectsList: [],
-      totalPage: null,
-      nameRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length <= 50) || "Name must be less than 10 characters"
-      ]
+      totalPage: null
+      // nameRules: [
+      //   v => !!v || "Name is required",
+      //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
+      // ]
     };
   },
   computed: {},

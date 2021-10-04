@@ -21,18 +21,20 @@ export default {
       },
       createServiceRule: {
         title: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 3) || "Name must be more than 3 characters"
+          v => !!v || "لطفا عنوان را وارد کنید",
+          v =>
+            (v && v.length >= 3) || "عنوان وارد شده باید بیش از ۳ کاراکتر باشد"
         ],
         price: [
-          v => !!v || "Price is required",
-          v => (v && v.length >= 3) || "Name must be more than 7 characters"
+          v => !!v || "لطفا مبلغ را وارد کنید",
+          v =>
+            (v && v.length >= 3) || "مبلغ وارد شده باید بیش از ۳ کاراکتر باشد"
         ],
         description: [
-          v => !!v || "Description is required",
+          v => !!v || "لطفا توضیحات را وارد کنید",
           v =>
             (v && v.length >= 20) ||
-            "Description must be more than 20 characters"
+            "توضیحات وارد شده باید بیش از ۲۰ کاراکتر باشد"
         ]
       },
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
@@ -47,6 +49,7 @@ export default {
       this.showSnackbar = false;
     },
     createService() {
+      this.showSnackbar = false;
       if (this.$refs[`form`].validate() === true) {
         const body = {
           min_price: this.serviceForm.price,

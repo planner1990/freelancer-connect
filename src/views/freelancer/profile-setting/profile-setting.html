@@ -27,9 +27,9 @@
               <header-section
                 :header-section-title="'جزییات فردی و مهارتی'"
               ></header-section>
-              <v-row class="d-lg-flex d-md-block">
+              <v-row class="d-lg-flex d-md-block"  v-if="!profileInfo.user['company']">
                 <v-text-field
-                  v-if="profileInfo.user"
+                  v-if="profileInfo.user && !profileInfo.user['company']"
                   v-model="profileInfo.user['first_name']"
                   label="نام"
                   required
@@ -38,9 +38,29 @@
                   class="col-lg-6 pl-lg-2 col-md-12  pl-md-0"
                 ></v-text-field>
                 <v-text-field
-                  v-if="profileInfo.user"
+                  v-if="profileInfo.user && !profileInfo.user['company']"
                   v-model="profileInfo.user['last_name']"
                   label="نام خانوادگی"
+                  required
+                  lazy
+                  outlined
+                  class="col-lg-6 col-md-12 pl-2"
+                ></v-text-field>
+              </v-row>
+              <v-row class="d-lg-flex d-md-block" v-if="profileInfo.user['company']">
+                <v-text-field
+                  v-if="profileInfo.user && profileInfo.user['company']"
+                  v-model="profileInfo.user.company.name"
+                  label="نام شرکت"
+                  required
+                  lazy
+                  outlined
+                  class="col-lg-6 pl-lg-2 col-md-12  pl-md-0"
+                ></v-text-field>
+                <v-text-field
+                  v-if="profileInfo.user && profileInfo.user['company']"
+                  valu="1400554556"
+                  label="شماره ثبت شرکت"
                   required
                   lazy
                   outlined
@@ -80,6 +100,7 @@
                   :value="profileInfo.user['category_id']"
                   required
                   outlined
+                  class="pl-2"
                 ></v-select>
               </v-row>
               <!--              <v-row>-->
@@ -173,5 +194,12 @@
         </v-card>
       </v-tab-item>
     </v-tabs>
+    <v-row>
+      <snackbar
+        :snackbarMessage="snackbarMessage"
+        :showSnackbar="showSnackbar"
+        @hideSnackbar="hideSnackbar"
+      ></snackbar>
+    </v-row>
   </v-card>
 </dashboard-card>
