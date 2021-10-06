@@ -1,4 +1,5 @@
 @import "src/assets/styles/variable";
+@import "src/assets/styles/mixins";
 .home-page-hero {
   width: 100%;
   height: 400px;
@@ -12,10 +13,19 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  .first-slogan,
-  .second-slogan {
+  .first-slogan, .second-slogan {
     font-size: 2.5vw;
     color: $gray-100;
+    @include small {
+      font-size: 1rem;
+    }
+  }
+  .third-slogan {
+    font-size: 1vw;
+    color: $gray-100;
+    @include small {
+      font-size: 12px;
+    }
   }
 }
 .header-details {

@@ -85,7 +85,7 @@
   </div>
   <v-list nav dense>
     <v-list-item-group v-model="selectedItem" color="teal accent-3">
-      <v-list-item v-for="(item, i) in items" :key="i">
+      <v-list-item v-for="(item, i) in items" link :to="item.route" :key="i">
         <v-list-item-icon>
           <v-icon v-text="item.icon"></v-icon>
         </v-list-item-icon>

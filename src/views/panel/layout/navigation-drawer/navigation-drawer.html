@@ -14,25 +14,28 @@
     >
       <div class="username-info d-flex flex-column align-center">
         <img
-          v-if="profileInfo.user.profile.avatar"
+          v-if="profileInfo.user.profile.avatar && !getDrawerImage.imageSrc"
           :src="profileInfo.user.profile.avatar"
           alt=""
         />
         <img
-          v-if="!profileInfo.user.profile.avatar"
+          v-if="!profileInfo.user.profile.avatar && !getDrawerImage.imageSrc"
           src="../../../../assets/image/logo.png"
           alt=""
         />
-        <div class="username" v-if="!profileInfo.user['company'].name">
+        <div v-if="getDrawerImage.imageSrc && getDrawerImage.imageSrc.image">
+          <img :src="getDrawerImage.imageSrc.image" alt="" />
+        </div>
+        <div class="username" v-if="!profileInfo.user['company']">
           {{ profileInfo.user.first_name + " " + profileInfo.user.last_name}}
         </div>
-        <div class="username" v-if="profileInfo.user['company'].name">
+        <div class="username" v-if="profileInfo.user['company']">
           {{ profileInfo.user['company'].name }}
         </div>
-        <div class="sub" v-if="!profileInfo.user['company'].name">
+        <div class="sub" v-if="!profileInfo.user['company']">
           {{ profileInfo.user.roles[0].name }}
         </div>
-        <div class="sub" v-if="profileInfo.user['company'].name">
+        <div class="sub" v-if="profileInfo.user['company']">
           {{ profileInfo.user['company'].name }}
         </div>
       </div>
@@ -49,7 +52,7 @@
           alt=""
         />
         <img
-          v-if="!profileInfo.user.profile.avatar"
+          v-if="!profileInfo.user.profile.avatar && !getDrawerImage.imageSrc"
           src="../../../../assets/image/logo.png"
           alt=""
         />
@@ -57,10 +60,10 @@
           <img :src="getDrawerImage.imageSrc.image" alt="" />
         </div>
 
-        <div class="username" v-if="!profileInfo.user['company'].name">
+        <div class="username" v-if="!profileInfo.user['company']">
           {{ profileInfo.user.first_name + " " + profileInfo.user.last_name}}
         </div>
-        <div class="username" v-if="profileInfo.user['company'].name">
+        <div class="username" v-if="profileInfo.user['company']">
           {{ profileInfo.user['company'].name }}
         </div>
         <div class="sub">

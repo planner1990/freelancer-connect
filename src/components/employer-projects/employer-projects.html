@@ -11,10 +11,10 @@
             <v-icon dense color="primary">
               mdi-check-circle
             </v-icon>
-              {{ projectList.username }}
+            {{ projectList.username }}
           </div>
           <div class="employer-projects-card-title">
-              {{ projectList.title }}
+            {{ projectList.title }}
           </div>
           <div class="employer-projects-card-description">
             {{projectList.description | readMore(330, "...")}}
@@ -59,14 +59,15 @@
         </div>
       </v-col>
     </v-row>
-<!--    <div class="col-12 text-center pt-2">-->
-<!--      <v-pagination-->
-<!--        color="primary"-->
-<!--        :length="length"-->
-<!--        :value="page"-->
-<!--        :total-visible="5"-->
-<!--        @input="changePage($event)"-->
-<!--      ></v-pagination>-->
-<!--    </div>-->
+
+    <!--        <div class="col-12 text-center pt-2">-->
+    <!--          <v-pagination-->
+    <!--            color="primary"-->
+    <!--            :length="length"-->
+    <!--            :value="page"-->
+    <!--            :total-visible="5"-->
+    <!--            @input="changePage($event)"-->
+    <!--          ></v-pagination>-->
+    <!--        </div>-->
   </v-container>
 </section>

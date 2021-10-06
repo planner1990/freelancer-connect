@@ -45,7 +45,6 @@
                         outlined
                         dense
                         v-model="item.title? item.title : confirmJobOfferForm.title"
-                        :value="item.title"
                         disabled
                       ></v-text-field>
                     </v-col>
@@ -255,6 +254,9 @@
       ></v-select>
     </template>
   </v-data-table>
+  <!--  <div class="text-center text-h6 my-3" v-if="!dataUserManagement.length >= 1">-->
+  <!--    هیچ موردی یافت نشد-->
+  <!--  </div>-->
   <div class="text-center pt-2">
     <v-pagination
       v-model="page"

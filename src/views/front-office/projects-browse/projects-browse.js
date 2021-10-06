@@ -10,7 +10,9 @@ export default {
   components: { HomePageHero, NewArticles, SideFilter, EmployerProjects },
   props: [],
   data() {
-    return {};
+    return {
+      ProjectList: []
+    };
   },
   computed: {},
   mounted() {
@@ -23,6 +25,7 @@ export default {
     }),
     getAllProjectList() {
       projectsService.getAllProjects().then(res => {
+        this.ProjectList = res.data.data;
         this.setBrowseProjectData(res.data.data);
       });
     }

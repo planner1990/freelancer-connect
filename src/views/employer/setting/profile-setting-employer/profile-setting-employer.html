@@ -3,7 +3,7 @@
     <header-section
       :header-section-title="$t('form.IndividualAndSkillDetails')"
     ></header-section>
-    <v-row class="d-lg-flex d-md-block" v-if="!companyName">
+    <v-row class="d-lg-flex d-md-block" v-if="companyName === ''">
       <v-text-field
         v-model="profileForm.firstName"
         :label="$t('form.firstname')"
@@ -21,7 +21,7 @@
         class="col-lg-6 pr-lg-2 col-md-12 pr-md-0"
       ></v-text-field>
     </v-row>
-    <v-row class="d-lg-flex d-md-block" v-if="companyName">
+    <v-row class="d-lg-flex d-md-block" v-if="companyName !== ''">
       <v-text-field
         v-model="companyName"
         :label="$t('form.companyName')"

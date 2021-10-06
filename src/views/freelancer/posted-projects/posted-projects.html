@@ -5,6 +5,7 @@
         cols="12"
         v-for="projectList in indexProjectsList"
         :key="projectList.id"
+        @click="redirectToProjectDetail(projectList.id)"
       >
         <div class="container--fluid d-lg-flex d-md-block project-row">
           <div
@@ -20,20 +21,25 @@
           </div>
           <div class="col-lg-4 col-md-12 d-flex">
             <div class="row justify-space-around align-center">
-<!--              <div class="d-flex align-center">-->
-<!--                <v-btn-->
-<!--                  depressed-->
-<!--                  color="primary"-->
-<!--                  @click="redirectToProjectDetail(projectList.id)"-->
-<!--                >-->
-<!--                  ۱۴ پیشنهاد-->
-<!--                  <v-icon right dark>-->
-<!--                    mdi-briefcase-account-->
-<!--                  </v-icon>-->
-<!--                </v-btn>-->
-<!--              </div>-->
+              <!--              <div class="d-flex align-center">-->
+              <!--                <v-btn-->
+              <!--                  depressed-->
+              <!--                  color="primary"-->
+              <!--                  @click="redirectToProjectDetail(projectList.id)"-->
+              <!--                >-->
+              <!--                  ۱۴ پیشنهاد-->
+              <!--                  <v-icon right dark>-->
+              <!--                    mdi-briefcase-account-->
+              <!--                  </v-icon>-->
+              <!--                </v-btn>-->
+              <!--              </div>-->
               <div class="expired">
-                <v-btn depressed fab text  @click="redirectToProjectDetail(projectList.id)">
+                <v-btn
+                  depressed
+                  fab
+                  text
+                  @click="redirectToProjectDetail(projectList.id)"
+                >
                   <v-icon x-large>
                     mdi-chevron-left
                   </v-icon>
@@ -43,14 +49,17 @@
           </div>
         </div>
       </v-col>
-      <div class="col-12 text-center pt-2">
-        <v-pagination
-          color="primary"
-          :length="totalPage"
-          :value="page"
-        ></v-pagination>
-      </div>
     </v-row>
+    <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
+      هیچ موردی یافت نشد
+    </div>
+    <div class="col-12 text-center pt-2">
+      <v-pagination
+        color="primary"
+        :length="totalPage"
+        :value="page"
+      ></v-pagination>
+    </div>
   </v-container>
   <transitionPage>
     <router-view v-if="this.$route.params.id" />

@@ -1,52 +1,43 @@
-<div
-        class="step-second"
-        key="step2"
->
-    <p>
-        <v-icon dense @click="backToPrevStep()">
-            mdi-arrow-right
-        </v-icon>
-    </p>
-    <h5 class="text-h6 my-5">
-        {{$t('form.enterConfirmCode')}}
-    </h5>
-    <p>
-        حساب کاربری با شماره موبایل {{ getDataFromStore.identification }} وجود ندارد. برای ساخت حساب جدید،
-        کد تایید برای این شماره ارسال گردید.
-    </p>
-    <v-text-field
-            :label="$t('form.enterConfirmCode')"
-            name="Username"
-            type="number"
-            autofocus
-            outlined
-            v-model="OTPCode"
-            class="mb-0"
-            dense
-    ></v-text-field>
-    <v-card-text class="text-center">
-        <div v-if="timer > 0" class="text">
-            ارسال مجدد کد تا {{ timer }} ثانیه دیگر
-        </div>
-        <v-btn
-                v-if="timer <= 0"
-                text
-                color="primary"
-                @click="resendConfirmCode"
-        >
-            ارسال مجدد کد
-        </v-btn>
-    </v-card-text>
-    <v-card-actions class="pa-0">
-        <v-btn
-                color="teal accent-3"
-                dark
-                :loading="signInLoading"
-                block
-                class="py-5"
-                @click="handleVerifyOTP()"
-        >{{ $t('actions.continue') }}</v-btn
-        >
-    </v-card-actions>
+<div class="step-second" key="step2">
+  <p>
+    <v-icon dense @click="backToPrevStep()">
+      mdi-arrow-right
+    </v-icon>
+  </p>
+  <h5 class="text-h6 my-5">
+    {{$t('form.enterConfirmCode')}}
+  </h5>
+  <p>
+    کد تایید برای شماره موبایل {{ getDataFromStore.identification }} ارسال شد.
+    لطفا کد ارسالی را وارد نمایید.
+  </p>
+  <v-text-field
+    :label="$t('form.enterConfirmCode')"
+    name="Username"
+    type="number"
+    autofocus
+    outlined
+    v-model="OTPCode"
+    class="mb-0"
+    dense
+  ></v-text-field>
+  <v-card-text class="text-center">
+    <div v-if="timer > 0" class="text">
+      ارسال مجدد کد تا {{ timer }} ثانیه دیگر
+    </div>
+    <v-btn v-if="timer <= 0" text color="primary" @click="resendConfirmCode">
+      ارسال مجدد کد
+    </v-btn>
+  </v-card-text>
+  <v-card-actions class="pa-0">
+    <v-btn
+      color="teal accent-3"
+      dark
+      :loading="signInLoading"
+      block
+      class="py-5"
+      @click="handleVerifyOTP()"
+      >{{ $t('actions.continue') }}</v-btn
+    >
+  </v-card-actions>
 </div>
-

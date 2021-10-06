@@ -5,6 +5,7 @@
         cols="12"
         v-for="projectList in indexProjectsList"
         :key="projectList.id"
+        @click="redirectToProjectDetail(projectList.id, projectList.proposal_id)"
       >
         <div class="container--fluid d-lg-flex d-md-block project-row">
           <div
@@ -50,14 +51,17 @@
           </div>
         </div>
       </v-col>
-      <div class="col-12 text-center pt-2">
-        <v-pagination
-          color="primary"
-          :length="totalPage"
-          :value="page"
-        ></v-pagination>
-      </div>
     </v-row>
+    <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
+      هیچ پروژه ای یافت نشد
+    </div>
+    <div class="col-12 text-center pt-2">
+      <v-pagination
+        color="primary"
+        :length="totalPage"
+        :value="page"
+      ></v-pagination>
+    </div>
   </v-container>
   <transitionPage>
     <router-view v-if="this.$route.params.id" />

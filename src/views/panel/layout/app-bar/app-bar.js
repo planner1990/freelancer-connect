@@ -26,6 +26,15 @@ export default {
     }),
     drawer() {
       this.drawerAction();
+    },
+    myEventHandler(e) {
+      this.showSidebar = e.target.innerWidth <= 968;
     }
+  },
+  created() {
+    window.addEventListener("resize", this.myEventHandler);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.myEventHandler);
   }
 };

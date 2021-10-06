@@ -81,7 +81,9 @@ export default {
     getProfileInfo() {
       profileServices.employerGetProfile().then(res => {
         const user = res.data.data.user;
-        this.companyName = user["company"].name;
+        if (user.company) {
+          this.companyName = user.company.name;
+        }
         this.profileImage = res.data.data.user;
         this.profileForm = {
           firstName: user.first_name,

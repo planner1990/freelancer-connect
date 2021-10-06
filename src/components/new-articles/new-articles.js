@@ -9,7 +9,8 @@ export default {
   data() {
     return {
       model: 0,
-      colors: ["primary", "secondary", "yellow darken-2", "red", "orange"]
+      colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
+      test: require("../../assets/image/connecta-logo-2.png")
     };
   },
   computed: {

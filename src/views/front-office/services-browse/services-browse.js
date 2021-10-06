@@ -9,7 +9,9 @@ export default {
   components: { HomePageHero, NewArticles, SideFilter },
   props: [],
   data() {
-    return {};
+    return {
+      ProjectList: []
+    };
   },
   computed: {},
   mounted() {
@@ -22,6 +24,7 @@ export default {
     }),
     getAllServicesList() {
       projectsService.getAllServices().then(res => {
+        this.ProjectList = res.data.data;
         this.setBrowseServiceData(res.data.data);
       });
     }

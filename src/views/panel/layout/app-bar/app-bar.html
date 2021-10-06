@@ -4,7 +4,7 @@
   app
   flat
 >
-  <v-app-bar-nav-icon @click.stop="drawer()"></v-app-bar-nav-icon>
+  <v-app-bar-nav-icon @click.native="drawer()"></v-app-bar-nav-icon>
   <v-btn icon large>
     <v-avatar item size="32px" >
       <v-img alt="Vuetify" src="../../../../assets/image/logo-holding.png"></v-img>
@@ -20,7 +20,7 @@
             </v-list-item>
         </v-list-item-group>
     </v-list>
-  <customizeTheme />
+<!--  <customizeTheme />-->
 
 <!--  <v-menu bottom offset-y origin="top right" transition="scale-transition">-->
 <!--    <template v-slot:activator="{ on, attrs }">-->
@@ -49,9 +49,9 @@
 <!--        </template>-->
 <!--      </v-list>-->
 <!--    </v-card>-->
-  </v-menu>
+<!--  </v-menu>-->
 
-  <v-btn icon  data-v-step="2">
-    <v-icon>mdi-magnify</v-icon>
-  </v-btn>
+<!--  <v-btn icon  data-v-step="2">-->
+<!--    <v-icon>mdi-magnify</v-icon>-->
+<!--  </v-btn>-->
 </v-app-bar>

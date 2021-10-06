@@ -72,11 +72,10 @@
       </template>
     </v-data-table>
     <div class="text-center pt-2">
-      <v-pagination
-        v-model="page"
-        :length="pageCount"
-        color="red"
-      ></v-pagination>
+      <v-pagination v-model="page" :length="pageCount"></v-pagination>
     </div>
+  </div>
+  <div class="text-center text-h6 my-3" v-if="!dataUserManagement">
+    هیچ پروژه ای یافت نشد
   </div>
 </dashboard-card>

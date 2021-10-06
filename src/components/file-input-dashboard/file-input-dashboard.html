@@ -10,7 +10,7 @@
     dense
     class="col-md-12 col-sm-6 col-xs-12"
   >
-    <template v-slot:selection="{ text }">
+    <template v-if="imageUrl" v-slot:selection="{ text }">
       <img :src="imageUrl" alt="" />
     </template>
   </v-file-input>

@@ -1,9 +1,12 @@
 @import "src/assets/styles/variable";
+@import "src/assets/styles/mixins";
 .bgImage {
   background-image: url("./../../../assets/image/pic.jpg");
   background-position: center;
   background-size: cover;
-
+  @media (max-width: 599px) {
+    display: none;
+  }
   h2 {
     font-size: 40px;
     color: rgba(255, 255, 255, 0.82);

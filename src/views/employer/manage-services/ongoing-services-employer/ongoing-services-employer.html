@@ -5,6 +5,7 @@
         cols="12"
         v-for="projectList in indexProjectsList"
         :key="projectList.id"
+        @click="redirectToServiceDetail(projectList.id, projectList.service_id)"
       >
         <div class="container--fluid d-lg-flex d-md-block project-row">
           <div
@@ -20,20 +21,25 @@
           </div>
           <div class="col-lg-4 col-md-12 d-flex">
             <div class="row justify-space-around align-center">
-<!--              <div class="d-flex align-center">-->
-<!--                <v-btn-->
-<!--                  depressed-->
-<!--                  color="primary"-->
-<!--                  @click="redirectToServiceDetail(projectList.id)"-->
-<!--                >-->
-<!--                  ۱۴ پیشنهاد-->
-<!--                  <v-icon right dark>-->
-<!--                    mdi-briefcase-account-->
-<!--                  </v-icon>-->
-<!--                </v-btn>-->
-<!--              </div>-->
+              <!--              <div class="d-flex align-center">-->
+              <!--                <v-btn-->
+              <!--                  depressed-->
+              <!--                  color="primary"-->
+              <!--                  @click="redirectToServiceDetail(projectList.id)"-->
+              <!--                >-->
+              <!--                  ۱۴ پیشنهاد-->
+              <!--                  <v-icon right dark>-->
+              <!--                    mdi-briefcase-account-->
+              <!--                  </v-icon>-->
+              <!--                </v-btn>-->
+              <!--              </div>-->
               <div class="expired">
-                <v-btn depressed fab text  @click="redirectToServiceDetail(projectList.id, projectList.service_id)">
+                <v-btn
+                  depressed
+                  fab
+                  text
+                  @click="redirectToServiceDetail(projectList.id, projectList.service_id)"
+                >
                   <v-icon x-large>
                     mdi-chevron-left
                   </v-icon>
@@ -52,6 +58,17 @@
         ></v-pagination>
       </div>
     </v-row>
+    <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
+      هیچ خدماتی یافت نشد
+    </div>
+    <div class="col-12 text-center pt-2">
+      <v-pagination
+        color="primary"
+        :length="totalPage"
+        :value="page"
+        @input="changePage($event)"
+      ></v-pagination>
+    </div>
   </v-container>
   <transitionPage>
     <router-view v-if="this.$route.params.id" />
