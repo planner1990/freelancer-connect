@@ -21,18 +21,6 @@
           </div>
           <div class="col-lg-4 col-md-12 d-flex">
             <div class="row justify-space-around align-center">
-              <!--              <div class="d-flex align-center">-->
-              <!--                <v-btn-->
-              <!--                  depressed-->
-              <!--                  color="primary"-->
-              <!--                  @click="redirectToProjectDetail(projectList.id)"-->
-              <!--                >-->
-              <!--                  ۱۴ پیشنهاد-->
-              <!--                  <v-icon right dark>-->
-              <!--                    mdi-briefcase-account-->
-              <!--                  </v-icon>-->
-              <!--                </v-btn>-->
-              <!--              </div>-->
               <div class="expired">
                 <v-btn
                   depressed
@@ -52,13 +40,6 @@
     </v-row>
     <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
       هیچ موردی یافت نشد
-    </div>
-    <div class="col-12 text-center pt-2">
-      <v-pagination
-        color="primary"
-        :length="totalPage"
-        :value="page"
-      ></v-pagination>
     </div>
   </v-container>
   <transitionPage>
