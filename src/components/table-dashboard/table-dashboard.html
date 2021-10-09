@@ -16,11 +16,12 @@
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               class="ma-2"
-              dark
+              :dark="item['has_estimation']"
               small
               color="primary"
               v-bind="attrs"
               v-on="on"
+              :disabled="!item['has_estimation']"
               @click="showEstimationEmployer(item.id)"
             >
               مشاهده درخواست

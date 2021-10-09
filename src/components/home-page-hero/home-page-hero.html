@@ -1,21 +1,35 @@
 <section class="home-page-hero d-flex flex-column align-center justify-center">
   <v-container>
-    <v-row>
-      <div class="col-md-6 col-sm-11 offset-md-3 text-center pa-0 first-slogan">
+    <v-row class="flex-column">
+      <v-col cols="12" md="6" sm="11" class="mx-auto pa-0 first-slogan">
         فریلنسر های متخصص استخدام کنید
-      </div>
-      <div
-        class="col-md-6 col-sm-11 offset-md-3 text-center pa-0 font-weight-bold second-slogan"
+      </v-col>
+      <v-col
+        cols="12"
+        md="6"
+        sm="11"
+        class="mx-auto pa-0 font-weight-bold second-slogan"
       >
         برای هر شغلی، آنلاین
+      </v-col>
+      <div
+        class="col-md-6 col-sm-11 offset-md-3 text-center my-10 third-slogan"
+      >
+        کانکتا به عنوان یک سایت فریلنسینگ امکان کسب درآمد از طریق دورکاری رو
+        برای فریلنسرها فراهم کرده. همچنین برونسپاری پروژه‌های طراحی وب و برنامه
+        نویسی، تولید محتوا، طراحی گرافیک، تایپ، ترجمه و بسیاری مهارت های دیگه هم
+        از طریق کارلنسر امکان پذیره.
       </div>
-      <div class="col-md-6 col-sm-11 offset-md-3 text-center my-10 third-slogan">
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، از طراحان
-        گرافیک است، بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-      </div>
-      <div class="col-md-6 offset-md-3 text-center pa-0 d-md-flex d-sm-block">
-        <div class="col-md-4 col-sm-12 pa-md-0 px-sm-15 select-category-hero pb-0">
-          <v-select class="pb-0" :items="items" placeholder="انتخاب کنید" outlined>
+      <v-col cols="12" md="6" sm="11" class="mx-auto pa-0 d-md-flex d-sm-block">
+        <div
+          class="col-md-4 col-sm-12 pa-md-0 px-sm-15 select-category-hero pb-0"
+        >
+          <v-select
+            class="pb-0"
+            :items="items"
+            placeholder="انتخاب کنید"
+            outlined
+          >
             <template v-slot:append>
               <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>
             </template>
@@ -29,7 +43,7 @@
             </v-icon>
           </v-btn>
         </div>
-      </div>
+      </v-col>
     </v-row>
   </v-container>
 </section>

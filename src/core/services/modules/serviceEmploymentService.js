@@ -8,8 +8,8 @@ class ServiceEmploymentService {
     return API_V1.get(`admin/freelancer/service/job_offers/ongoing`);
   }
 
-  showJobOfferEmployer() {
-    return API_V1.get(`admin/employer/service/job_offers`);
+  showJobOfferEmployer(status) {
+    return API_V1.get(`admin/employer/service/job_offers?status=${status}`);
   }
 
   showEstimationEmployer(id) {
