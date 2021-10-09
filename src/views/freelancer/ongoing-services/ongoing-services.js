@@ -1,7 +1,7 @@
-import DashboardCard from "../../../components/dashboardCard/index";
-import TableDashboard from "../../../components/table-dashboard/index";
-import freelancerServices from "../../../core/services/modules/freelancerServices";
-import transitionPage from "../../../components/transitionPage/index";
+import DashboardCard from "@/components/dashboardCard/index";
+import TableDashboard from "@/components/table-dashboard/index";
+import freelancerServices from "@/core/services/modules/freelancerServices";
+import transitionPage from "@/components/transitionPage/index";
 export default {
   name: "ongoing-services",
   components: { DashboardCard, TableDashboard, transitionPage },

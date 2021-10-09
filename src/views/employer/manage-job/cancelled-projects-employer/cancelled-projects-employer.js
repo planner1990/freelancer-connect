@@ -1,5 +1,5 @@
-import DashboardCard from "../../../../components/dashboardCard/index";
-import TableDashboard from "../../../../components/table-dashboard/index";
+import DashboardCard from "@/components/dashboardCard/index";
+import TableDashboard from "@/components/table-dashboard/index";
 export default {
   name: "cancelled-projects-employer",
   components: { DashboardCard, TableDashboard },
