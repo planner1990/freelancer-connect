@@ -1,66 +1,74 @@
 <dashboard-card :titleCard="titleCard">
   <v-form ref="form" v-model="valid" lazy-validation>
-    <header-section :headerSectionTitle="'جزییات خدمت'"></header-section>
+    <header-section :headerSectionTitle="'جزئیات خدمت'"></header-section>
     <v-row>
-      <v-text-field
-        v-model="serviceForm.title"
-        :rules="createServiceRule.title"
-        label="عنوان خدمت"
-        required
-        outlined
-        class="col-lg-6 col-md-12 pl-2"
-      ></v-text-field>
-      <v-text-field
-        v-model="serviceForm.price"
-        :rules="createServiceRule.price"
-        label="حداقل مبلغ در هر ساعت"
-        type="number"
-        required
-        outlined
-        class="col-lg-6 col-md-12 pr-2"
-      ></v-text-field>
+      <v-col lg="6" md="12">
+        <v-text-field
+          v-model="serviceForm.title"
+          :rules="createServiceRule.title"
+          label="عنوان خدمت"
+          required
+          outlined
+        ></v-text-field>
+      </v-col>
+      <v-col lg="6" md="12">
+        <v-text-field
+          v-model="serviceForm.price"
+          :rules="createServiceRule.price"
+          label="حداقل مبلغ در هر ساعت"
+          type="number"
+          required
+          outlined
+        ></v-text-field>
+      </v-col>
     </v-row>
     <v-row class="d-block">
-      <v-textarea
-        outlined
-        name="input-7-4"
-        :label="$t('form.description')"
-        v-model="serviceForm.description"
-        :rules="createServiceRule.description"
-      ></v-textarea>
+      <v-col md="12">
+        <v-textarea
+          outlined
+          name="input-7-4"
+          :label="$t('form.description')"
+          v-model="serviceForm.description"
+          :rules="createServiceRule.description"
+        ></v-textarea>
+      </v-col>
     </v-row>
     <header-section
       :headerSectionTitle="'ضمیمه مدارک مورد نیاز'"
     ></header-section>
     <v-row class="d-lg-flex d-md-block">
-      <v-file-input
-        @change="handleFileInput($event)"
-        counter
-        label="File input"
-        placeholder="Select your files"
-        prepend-icon="mdi-paperclip"
-        outlined
-        multiple
-        :show-size="1000"
-      >
-        <template v-slot:selection="{ index, text }">
-          <v-chip v-if="index < 3" dark label small>
-            {{ text }}
-          </v-chip>
+      <v-col md="12">
+        <v-file-input
+          @change="handleFileInput($event)"
+          counter
+          label="File input"
+          placeholder="Select your files"
+          prepend-icon="mdi-paperclip"
+          outlined
+          multiple
+          :show-size="1000"
+        >
+          <template v-slot:selection="{ index, text }">
+            <v-chip v-if="index < 3" dark label small>
+              {{ text }}
+            </v-chip>
 
-          <span
-            v-else-if="index === 3"
-            class="text-overline grey--text text--darken-3 mx-2"
-          >
-            +{{ files.length - 3 }} File(s)
-          </span>
-        </template>
-      </v-file-input>
+            <span
+              v-else-if="index === 3"
+              class="text-overline grey--text text--darken-3 mx-2"
+            >
+              +{{ files.length - 3 }} File(s)
+            </span>
+          </template>
+        </v-file-input>
+      </v-col>
     </v-row>
     <v-row class="my-10">
-      <v-btn color="secondary" @click="createService">
-        {{ $t("actions.save&update") }}
-      </v-btn>
+      <v-col md="12">
+        <v-btn color="secondary" @click="createService">
+          {{ $t("actions.save&update") }}
+        </v-btn>
+      </v-col>
     </v-row>
     <v-row>
       <snackbar

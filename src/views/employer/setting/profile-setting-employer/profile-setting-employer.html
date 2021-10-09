@@ -3,101 +3,115 @@
     <header-section
       :header-section-title="$t('form.IndividualAndSkillDetails')"
     ></header-section>
-    <v-row class="d-lg-flex d-md-block" v-if="companyName === ''">
-      <v-text-field
-        v-model="profileForm.firstName"
-        :label="$t('form.firstname')"
-        :rules="profileRule.firstnameRules"
-        required
-        outlined
-        class="col-lg-6 col-md-12 pr-md-0"
-      ></v-text-field>
-      <v-text-field
-        v-model="profileForm.lastName"
-        :label="$t('form.lastname')"
-        :rules="profileRule.lastnameRules"
-        required
-        outlined
-        class="col-lg-6 pr-lg-2 col-md-12 pr-md-0"
-      ></v-text-field>
+    <v-row v-if="companyName === ''">
+      <v-col lg="6" md="12">
+        <v-text-field
+          v-model="profileForm.firstName"
+          :label="$t('form.firstname')"
+          :rules="profileRule.firstnameRules"
+          required
+          outlined
+        ></v-text-field>
+      </v-col>
+      <v-col lg="6" md="12">
+        <v-text-field
+          v-model="profileForm.lastName"
+          :label="$t('form.lastname')"
+          :rules="profileRule.lastnameRules"
+          required
+          outlined
+        ></v-text-field>
+      </v-col>
     </v-row>
-    <v-row class="d-lg-flex d-md-block" v-if="companyName !== ''">
-      <v-text-field
-        v-model="companyName"
-        :label="$t('form.companyName')"
-        :rules="profileRule.firstnameRules"
-        required
-        disabled
-        outlined
-        class="col-lg-6 col-md-12 pr-md-0"
-      ></v-text-field>
-      <v-text-field
-        :label="$t('form.companyNumber')"
-        value="1400545323"
-        required
-        outlined
-        class="col-lg-6 pr-lg-2 col-md-12 pr-md-0"
-      ></v-text-field>
-    </v-row>
-    <v-row class="d-lg-flex d-md-block">
-      <v-select
-        v-model="profileForm.categoryId"
-        :items="companyTypeLists"
-        item-text="title"
-        item-value="id"
-        :label="$t('form.categories')"
-        required
-        outlined
-        class="col-lg-6 col-md-12 pr-md-0"
-      ></v-select>
-      <v-select
-        v-model="profileForm.noOfEmployees"
-        :items="companyCriteriaItems"
-        item-text="name"
-        item-value="max_value"
-        :label="$t('form.noOfEmployees')"
-        required
-        outlined
-        class="col-lg-6 pr-lg-2 col-md-12 pr-md-0"
-      ></v-select>
+    <v-row v-if="companyName !== ''">
+      <v-col lg="6" md="12">
+        <v-text-field
+          v-model="companyName"
+          :label="$t('form.companyName')"
+          :rules="profileRule.firstnameRules"
+          required
+          disabled
+          outlined
+        ></v-text-field>
+      </v-col>
+      <v-col lg="6" md="12">
+        <v-text-field
+          :label="$t('form.companyNumber')"
+          value="1400545323"
+          required
+          outlined
+        ></v-text-field>
+      </v-col>
     </v-row>
     <v-row>
-      <v-textarea
-        v-model="profileForm.description"
-        :rules="profileRule.description"
-        outlined
-        name="input-7-4"
-        :label="$t('form.description')"
-      ></v-textarea>
+      <v-col lg="6" md="12">
+        <v-select
+          v-model="profileForm.categoryId"
+          :items="companyTypeLists"
+          item-text="title"
+          item-value="id"
+          :label="$t('form.categories')"
+          required
+          outlined
+        ></v-select>
+      </v-col>
+      <v-col lg="6" md="12">
+        <v-select
+          v-model="profileForm.noOfEmployees"
+          :items="companyCriteriaItems"
+          item-text="name"
+          item-value="max_value"
+          :label="$t('form.noOfEmployees')"
+          required
+          outlined
+        ></v-select>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col md="12">
+        <v-textarea
+          v-model="profileForm.description"
+          :rules="profileRule.description"
+          outlined
+          name="input-7-4"
+          :label="$t('form.description')"
+        ></v-textarea>
+      </v-col>
     </v-row>
     <header-section
       :header-section-title="$t('form.profileImage')"
     ></header-section>
     <v-row>
-      <file-input-dashboard
-        :status="'avatar'"
-        @clicked="getFileId"
-        v-if="profileImage"
-        :imageProfile="profileImage.profile.avatar"
-      >
-      </file-input-dashboard>
+      <v-col lg="4" md="12">
+        <file-input-dashboard
+          :status="'avatar'"
+          @clicked="getFileId"
+          v-if="profileImage"
+          :imageProfile="profileImage.profile.avatar"
+        >
+        </file-input-dashboard>
+      </v-col>
     </v-row>
 
     <header-section
       :header-section-title="$t('form.bannerImage')"
     ></header-section>
     <v-row>
-      <file-input-dashboard
-        :status="'banner'"
-        @clicked="getFileId"
-        v-if="profileImage"
-        :imageProfile="profileImage.profile.banner"
-      ></file-input-dashboard>
+      <v-col lg="4" md="12">
+        <file-input-dashboard
+          :status="'banner'"
+          @clicked="getFileId"
+          v-if="profileImage"
+          :imageProfile="profileImage.profile.banner"
+        ></file-input-dashboard>
+      </v-col>
     </v-row>
     <v-row class="my-10">
-      <v-btn color="error" @click="updateProfile">
-        {{ $t("actions.save&update") }}
-      </v-btn>
+      <v-col lg="6" md="12">
+        <v-btn color="error" @click="updateProfile">
+          {{ $t("actions.save&update") }}
+        </v-btn>
+      </v-col>
     </v-row>
     <v-row>
       <snackbar

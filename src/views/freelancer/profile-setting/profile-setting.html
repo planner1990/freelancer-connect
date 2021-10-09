@@ -27,77 +27,84 @@
               <header-section
                 :header-section-title="'جزییات فردی و مهارتی'"
               ></header-section>
-              <v-row class="d-lg-flex d-md-block" v-if="!isCompany">
-                <v-text-field
-                  v-model="profileInfo.user['first_name']"
-                  label="نام"
-                  required
-                  lazy
-                  outlined
-                  class="col-lg-6 pl-lg-2 col-md-12  pl-md-0"
-                ></v-text-field>
-                <v-text-field
-                  v-model="profileInfo.user['last_name']"
-                  label="نام خانوادگی"
-                  required
-                  lazy
-                  outlined
-                  class="col-lg-6 col-md-12 pl-2"
-                ></v-text-field>
+              <v-row v-if="!isCompany">
+                <v-col lg="6" md="12">
+                  <v-text-field
+                    v-model="profileInfo.user['first_name']"
+                    label="نام"
+                    required
+                    lazy
+                    outlined
+                  ></v-text-field>
+                </v-col>
+                <v-col lg="6" md="12">
+                  <v-text-field
+                    v-model="profileInfo.user['last_name']"
+                    label="نام خانوادگی"
+                    required
+                    lazy
+                    outlined
+                  ></v-text-field>
+                </v-col>
               </v-row>
-              <v-row class="d-lg-flex d-md-block" v-if="isCompany">
-                <v-text-field
-                  v-model="profileInfo.user.company.name"
-                  label="نام شرکت"
-                  required
-                  lazy
-                  outlined
-                  class="col-lg-6 pl-lg-2 col-md-12  pl-md-0"
-                ></v-text-field>
-                <v-text-field
-                  valu="1400554556"
-                  label="شماره ثبت شرکت"
-                  required
-                  lazy
-                  outlined
-                  class="col-lg-6 col-md-12 pl-2"
-                ></v-text-field>
-              </v-row>
-              <v-row class="d-lg-flex d-md-block">
-                <v-select
-                  v-if="profileInfo.user"
-                  v-model="profileForm.gender"
-                  :items="profileInfo['genders']"
-                  item-text="value"
-                  item-value="key"
-                  label="جنسیت"
-                  required
-                  outlined
-                  class="col-lg-6 col-md-12 pl-2"
-                ></v-select>
-                <v-select
-                  v-if="profileInfo.user"
-                  :items="profileInfo['skills']"
-                  item-text="value"
-                  item-value="key"
-                  label="مهارت ها"
-                  required
-                  outlined
-                  class="col-lg-6 col-md-12 pl-2"
-                ></v-select>
+              <v-row v-if="isCompany">
+                <v-col lg="6" md="12">
+                  <v-text-field
+                    v-model="profileInfo.user.company.name"
+                    label="نام شرکت"
+                    required
+                    lazy
+                    outlined
+                  ></v-text-field>
+                </v-col>
+                <v-col lg="6" md="12">
+                  <v-text-field
+                    valu="1400554556"
+                    label="شماره ثبت شرکت"
+                    required
+                    lazy
+                    outlined
+                  ></v-text-field>
+                </v-col>
               </v-row>
               <v-row>
-                <v-select
-                  v-if="profileInfo.user"
-                  :items="categories"
-                  item-text="title"
-                  item-value="id"
-                  label="دسته بندی ها"
-                  :value="profileInfo.user['category_id']"
-                  required
-                  outlined
-                  class="pl-2"
-                ></v-select>
+                <v-col lg="6" md="12">
+                  <v-select
+                    v-if="profileInfo.user"
+                    v-model="profileForm.gender"
+                    :items="profileInfo['genders']"
+                    item-text="value"
+                    item-value="key"
+                    label="جنسیت"
+                    required
+                    outlined
+                  ></v-select>
+                </v-col>
+                <v-col lg="6" md="12">
+                  <v-select
+                    v-if="profileInfo.user"
+                    :items="profileInfo['skills']"
+                    item-text="value"
+                    item-value="key"
+                    label="مهارت ها"
+                    required
+                    outlined
+                  ></v-select>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col md="12">
+                  <v-select
+                    v-if="profileInfo.user"
+                    :items="categories"
+                    item-text="title"
+                    item-value="id"
+                    label="دسته بندی ها"
+                    :value="profileInfo.user['category_id']"
+                    required
+                    outlined
+                  ></v-select>
+                </v-col>
               </v-row>
               <!--              <v-row>-->
               <!--                <v-textarea-->
@@ -111,29 +118,35 @@
                 :header-section-title="'تصویر پروفایل'"
               ></header-section>
               <v-row>
-                <file-input-dashboard
-                  :status="'avatar'"
-                  @clicked="getFileId"
-                  v-if="profileInfo.user"
-                  :imageProfile="profileInfo.user.profile.avatar"
-                >
-                </file-input-dashboard>
+                <v-col lg="6" md="12">
+                  <file-input-dashboard
+                    :status="'avatar'"
+                    @clicked="getFileId"
+                    v-if="profileInfo.user"
+                    :imageProfile="profileInfo.user.profile.avatar"
+                  >
+                  </file-input-dashboard>
+                </v-col>
               </v-row>
 
               <header-section
                 :header-section-title="'تصویر بنر'"
               ></header-section>
               <v-row>
-                <file-input-dashboard
-                  :status="'banner'"
-                  @clicked="getFileId"
-                  :imageProfile="profileInfo.user.profile.banner"
-                ></file-input-dashboard>
+                <v-col lg="6" md="12">
+                  <file-input-dashboard
+                    :status="'banner'"
+                    @clicked="getFileId"
+                    :imageProfile="profileInfo.user.profile.banner"
+                  ></file-input-dashboard>
+                </v-col>
               </v-row>
               <v-row class="my-10">
-                <v-btn color="error" @click="updateProfile">
-                  {{ $t("actions.save&update") }}
-                </v-btn>
+                <v-col lg="6" md="12">
+                  <v-btn color="error" @click="updateProfile">
+                    {{ $t("actions.save&update") }}
+                  </v-btn>
+                </v-col>
               </v-row>
             </v-form>
           </v-card-text>
@@ -142,7 +155,9 @@
       <v-tab-item>
         <v-card flat>
           <v-card-text>
-            <header-section header-section-title="بخش تجربه های کاری"></header-section>
+            <header-section
+              header-section-title="بخش تجربه های کاری"
+            ></header-section>
             <form-dialog
               :dataForDialogForm="addExperienceDataForDialogForm"
             ></form-dialog>
@@ -182,9 +197,11 @@
             ></form-dialog>
             <award></award>
             <v-row class="my-10">
-              <v-btn color="error" @click="updateProjectsAward">
-                {{ $t("actions.save&update") }}
-              </v-btn>
+              <v-col lg="6" md="12">
+                <v-btn color="error" @click="updateProjectsAward">
+                  {{ $t("actions.save&update") }}
+                </v-btn>
+              </v-col>
             </v-row>
           </v-card-text>
         </v-card>
