@@ -23,7 +23,7 @@
     "deliveryTime": "زمان تحویل",
     "responseTime": "زمان پاسخ",
     "admin": "ادمین",
-    "messageCenter": "مرکز پیام",
+    "messageCenter": "صندوق پیام",
     "profileSettings": "تنظیمات پروفایل",
     "manageProject": "مدیریت پروژه ها",
     "completedProjects": "پروژه های تکمیل شده",
@@ -40,10 +40,12 @@
     "payout": "مدیریت پرداخت ها",
     "invoices": "فاکتورها",
     "packages": "پکیج ها",
-    "mySavedItems": "موارد ذخیره شده"
+    "mySavedItems": "موارد ذخیره شده",
+    "myServices": "خدمات من",
+    "myProjects": "پروژه های من"
   },
   "actions": {
-    "save&update": "ذخیره و به روزرسانی",
+    "save&update": "ذخیره و به روز رسانی",
     "addNewCategory": "افزودن دسته بندی جدید",
     "categories": "دسته بندی ها",
     "addDepartment": "اضافه کردن دپارتمان",
@@ -94,7 +96,7 @@
     "servicesSearch": "جستجوی خدمات",
     "priceRange": "بازه قیمت",
     "ImLookingFor": "من به دنبال",
-    "applyLatestChanges": "جهت به روزرسانی تغییرات کلیک کنید",
+    "applyLatestChanges": "جهت به روز رسانی تغییرات کلیک کنید",
     "applyFilter": "اعمال تغییرات",
     "priceRangeBetweenToNum": "بازه بین {min} تومان تا {max} تومان"
   },

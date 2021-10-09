@@ -10,8 +10,8 @@ export default {
       experienceForm: {
         name: "",
         companyName: "",
-        start: null,
-        end: null
+        experienceStart: null,
+        experienceEnd: null
       },
       educationForm: {
         educationLevel: "",
@@ -29,6 +29,8 @@ export default {
         attachment_id: ""
       },
       date: null,
+      expStart: false,
+      expEnd: false,
       start: false,
       educationStart: false,
       end: false,
@@ -56,8 +58,8 @@ export default {
           this.experienceForm = {
             job_title: this.experienceForm.name,
             company_title: this.experienceForm.companyName,
-            start_date: this.experienceForm.start,
-            end_date: this.experienceForm.end
+            start_date: this.experienceForm.experienceStart,
+            end_date: this.experienceForm.experienceEnd
           };
           this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
             form: this.experienceForm,

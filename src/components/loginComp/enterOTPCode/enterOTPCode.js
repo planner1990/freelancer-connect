@@ -78,10 +78,10 @@ export default {
         const role = response.data.data.role;
         switch (role) {
           case "freelancer":
-            this.$router.push("/freelancer/profile-setting");
+            this.$router.push("/freelancer/dashboard");
             break;
           case "employer":
-            this.$router.push("/employer/profile-setting");
+            this.$router.push("/employer/dashboard");
             break;
           case "admin":
             this.$router.push("/panel");

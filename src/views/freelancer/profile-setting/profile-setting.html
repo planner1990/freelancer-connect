@@ -11,13 +11,13 @@
         <v-icon left>
           mdi-domain
         </v-icon>
-        تجارب و تحصیلات
+        تجربه ها و تحصیلات
       </v-tab>
       <v-tab>
         <v-icon left>
           mdi-thumb-up-outline
         </v-icon>
-        پروژه ها و جوایز
+        پروژه ها و دوره های آموزشی
       </v-tab>
 
       <v-tab-item>
@@ -27,9 +27,8 @@
               <header-section
                 :header-section-title="'جزییات فردی و مهارتی'"
               ></header-section>
-              <v-row class="d-lg-flex d-md-block"  v-if="!profileInfo.user['company']">
+              <v-row class="d-lg-flex d-md-block" v-if="!isCompany">
                 <v-text-field
-                  v-if="profileInfo.user && !profileInfo.user['company']"
                   v-model="profileInfo.user['first_name']"
                   label="نام"
                   required
@@ -38,7 +37,6 @@
                   class="col-lg-6 pl-lg-2 col-md-12  pl-md-0"
                 ></v-text-field>
                 <v-text-field
-                  v-if="profileInfo.user && !profileInfo.user['company']"
                   v-model="profileInfo.user['last_name']"
                   label="نام خانوادگی"
                   required
@@ -47,9 +45,8 @@
                   class="col-lg-6 col-md-12 pl-2"
                 ></v-text-field>
               </v-row>
-              <v-row class="d-lg-flex d-md-block" v-if="profileInfo.user['company']">
+              <v-row class="d-lg-flex d-md-block" v-if="isCompany">
                 <v-text-field
-                  v-if="profileInfo.user && profileInfo.user['company']"
                   v-model="profileInfo.user.company.name"
                   label="نام شرکت"
                   required
@@ -58,7 +55,6 @@
                   class="col-lg-6 pl-lg-2 col-md-12  pl-md-0"
                 ></v-text-field>
                 <v-text-field
-                  v-if="profileInfo.user && profileInfo.user['company']"
                   valu="1400554556"
                   label="شماره ثبت شرکت"
                   required
@@ -146,7 +142,7 @@
       <v-tab-item>
         <v-card flat>
           <v-card-text>
-            <header-section header-section-title="بخش تجارب"></header-section>
+            <header-section header-section-title="بخش تجربه های کاری"></header-section>
             <form-dialog
               :dataForDialogForm="addExperienceDataForDialogForm"
             ></form-dialog>

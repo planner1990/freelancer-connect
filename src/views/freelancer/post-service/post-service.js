@@ -62,6 +62,7 @@ export default {
           this.reset();
           this.showSnackbar = true;
           this.snackbarMessage = "سرویس شما با موفقیت ایجاد شد.";
+          this.$router.push("/freelancer/my-services");
         });
       } else {
         this.snackbarMessage = "لطفا کلیه موارد مشخص شده را کامل نمایید.";

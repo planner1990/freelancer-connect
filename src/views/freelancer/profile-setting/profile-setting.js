@@ -116,7 +116,7 @@ export default {
         ]
       },
       addProjectsDataForDialogForm: {
-        titleButton: "افزودن پروژه ها",
+        titleButton: "افزودن نمونه کار",
         type: "projects",
         formField: [
           {
@@ -168,6 +168,10 @@ export default {
     }),
     listOfFormData() {
       return this.formData;
+    },
+
+    isCompany() {
+      return this.profileInfo?.user?.is_company === 1;
     }
   },
   mounted() {

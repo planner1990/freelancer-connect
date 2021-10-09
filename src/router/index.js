@@ -171,6 +171,12 @@ const routes = [
         component: () => import("../views/freelancer/message-center/index")
       },
       {
+        path: "my-services",
+        name: "my-services",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/my-services/index")
+      },
+      {
         path: "profile-setting",
         name: "profile-setting",
         meta: { transitionName: "slide" },
@@ -317,11 +323,17 @@ const routes = [
         meta: { transitionName: "slide" },
         component: () => import("../views/employer/post-job/index")
       },
+      // {
+      //   path: "message-center",
+      //   name: "message-center-employer",
+      //   meta: { transitionName: "slide" },
+      //   component: () => import("../views/freelancer/message-center/index")
+      // },
       {
-        path: "message-center",
-        name: "message-center-employer",
+        path: "my-projects",
+        name: "my-projects",
         meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/message-center/index")
+        component: () => import("../views/employer/my-projects/index")
       },
       {
         path: "profile-setting",

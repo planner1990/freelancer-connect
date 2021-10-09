@@ -56,6 +56,10 @@ class freelancerServices {
   updateProjectsAward(body) {
     return API_V1.post(`/admin/freelancer/update-project-award`, body);
   }
+
+  myServices() {
+    return API_V1.get(`/admin/freelancer/services`);
+  }
 }
 
 export default new freelancerServices();

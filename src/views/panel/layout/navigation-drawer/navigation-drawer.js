@@ -86,6 +86,11 @@ export default {
               symbol: "mdi-message-bulleted"
             },
             {
+              title: "myServices",
+              route: "/freelancer/my-services",
+              symbol: "mdi-folder-star-multiple-outline"
+            },
+            {
               title: "settings",
               symbol: "mdi-cog-transfer-outline",
               subCategory: [
@@ -188,10 +193,15 @@ export default {
               route: "/employer/dashboard",
               symbol: "mdi-view-dashboard-variant"
             },
+            // {
+            //   title: "messageCenter",
+            //   route: "/employer/message-center",
+            //   symbol: "mdi-message-bulleted"
+            // },
             {
-              title: "messageCenter",
-              route: "/employer/message-center",
-              symbol: "mdi-message-bulleted"
+              title: "myProjects",
+              route: "/employer/my-projects",
+              symbol: "mdi-folder-star-multiple-outline"
             },
             {
               title: "settings",
@@ -385,6 +395,9 @@ export default {
             }
           ];
       }
+    },
+    goTo(item) {
+      this.$router.push(item);
     }
   }
 };

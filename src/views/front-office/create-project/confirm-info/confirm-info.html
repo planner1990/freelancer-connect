@@ -4,12 +4,17 @@
   </h5>
   <div class="confirm-info-container">
     <div class="confirm-info-container_title mb-3">
+        عنوان:
       {{ getDataFromStore.body.title }}
       <v-btn icon x-small color="primary">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
     </div>
     <div class="confirm-info-container_description">
+        توضیحات:
+        <div v-if="!getDataFromStore.body.description">
+            توضیحات شما در مورد پروژه در این بخش نمایش داده خواهد شد. در حال حاضر توضیحاتی ثبت نکردید.
+        </div>
       {{getDataFromStore.body.description}}
       <v-btn icon x-small color="primary">
         <v-icon>mdi-pencil</v-icon>

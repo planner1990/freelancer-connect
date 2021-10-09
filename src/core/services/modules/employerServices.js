@@ -50,6 +50,10 @@ class employerServices {
   rejectServiceEstimation(id) {
     return API_V1.get(`/admin/employer/service/reject_estimation/${id}`);
   }
+
+  myProjects() {
+    return API_V1.get(`/admin/employer/projects`);
+  }
 }
 
 export default new employerServices();

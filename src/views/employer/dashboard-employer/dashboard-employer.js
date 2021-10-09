@@ -8,70 +8,70 @@ export default {
       show: false,
       cards: [
         {
-          src: "bg23",
+          src: "امنیت",
           notification: 0,
-          title: "سفارشات",
-          routeName: "orders"
+          title: "ایجاد پروژه",
+          routeName: "post-job"
         },
         {
-          src: "logo",
+          src: "اپلیکیشن",
           notification: 0,
-          title: "پروژه ها",
-          routeName: "projects"
+          title: "پروژه های من",
+          routeName: "my-projects"
         },
         {
-          src: "bg23",
+          src: "بصری",
           notification: 0,
-          title: "مدیریت کاربران",
-          routeName: "manage-users"
+          title: "پروفایل",
+          routeName: "profile-setting-employer"
         },
         {
-          src: "bg23",
+          src: "تبلیغات",
           notification: 0,
-          title: "تنظیمات حساب",
-          routeName: "account-setting"
+          title: "پروژه های تکمیل شده",
+          routeName: "completed-projects-employer"
         },
         {
-          src: "bg23",
+          src: "داخلی",
           notification: 0,
-          title: "مهارت ها",
-          routeName: "skills"
+          title: "پروژه های در حال انجام",
+          routeName: "ongoing-projects-employer"
         },
         {
-          src: "logo",
+          src: "مارکتینگ",
           notification: 0,
-          title: "دسته بندی شغلی",
-          routeName: "job-categories"
+          title: "پروژه های ارسالی",
+          routeName: "posted-services-employer"
         },
         {
-          src: "bg23",
+          src: "وبسایت",
           notification: 0,
-          title: "دپارتمان ها",
-          routeName: "departments"
+          title: "خدمات در حال انجام",
+          routeName: "ongoing-services-employer"
         },
         {
-          src: "logo",
+          src: "امنیت",
           notification: 0,
-          title: "زبان ها",
-          routeName: "languages"
+          title: "خدمات تکمیل شده",
+          routeName: "completed-services-employer"
         },
         {
-          src: "bg23",
+          src: "اپلیکیشن",
           notification: 0,
-          title: "خدمات",
-          routeName: "services"
+          title: "پرداخت",
+          routeName: "payout-employer"
         },
         {
-          src: "bg23",
+          src: "بصری",
           notification: 0,
-          title: "گزینه بررسی",
-          routeName: "review-option"
+          title: "موارد ذخیره شده",
+          routeName: "my-saved-items-employer"
         },
         {
-          src: "a",
+          src: "مارکتینگ",
           notification: 0,
-          title: "پرداخت ها",
-          routeName: "payout"
+          title: "خدمات اتمام یافته",
+          routeName: "cancelled-services-employer"
         }
       ]
     };

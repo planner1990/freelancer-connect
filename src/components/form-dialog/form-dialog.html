@@ -30,61 +30,77 @@
                 :label="dialogFormField.label"
                 v-model="experienceForm.name"
                 required
+                outlined
+                dense
               ></v-text-field>
               <v-text-field
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label !== 'عنوان'"
                 :label="dialogFormField.label"
                 v-model="experienceForm.companyName"
                 required
+                outlined
+                dense
               ></v-text-field>
               <v-menu
                 v-if="dialogFormField.type === 'date-picker-from'"
-                v-model="start"
+                v-model="expStart"
                 :close-on-content-click="false"
                 offset-y
+                outlined
+                dense
                 min-width="290px"
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="experienceForm.start"
+                    v-model="experienceForm.experienceStart"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    outlined
+                    dense
                   ></v-text-field>
                 </template>
                 <v-date-picker
-                  v-model="experienceForm.start"
+                  v-model="experienceForm.experienceStart"
                   no-title
                   scrollable
-                  @input="start = false"
+                  outlined
+                  dense
+                  @input="expStart = false"
                 >
                 </v-date-picker>
               </v-menu>
 
               <v-menu
                 v-if="dialogFormField.type === 'date-picker-to'"
-                v-model="start"
+                v-model="expEnd"
                 :close-on-content-click="false"
                 offset-y
+                outlined
+                dense
                 min-width="290px"
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="experienceForm.end"
+                    v-model="experienceForm.experienceEnd"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    outlined
+                    dense
                   ></v-text-field>
                 </template>
                 <v-date-picker
-                  v-model="experienceForm.end"
+                  v-model="experienceForm.experienceEnd"
                   no-title
                   scrollable
-                  @input="start = false"
+                  outlined
+                  dense
+                  @input="expEnd = false"
                 >
                 </v-date-picker>
               </v-menu>
@@ -125,6 +141,7 @@
                 outlined
                 :label="dialogFormField.label"
                 class="col-12"
+                dense
               ></v-textarea>
             </div>
             <!--            <small>*indicates required field</small>-->
@@ -175,12 +192,16 @@
                 :label="dialogFormField.label"
                 v-model="educationForm.educationLevel"
                 required
+                outlined
+                dense
               ></v-text-field>
               <v-text-field
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'نام دانشگاه یا موسسه'"
                 :label="dialogFormField.label"
                 v-model="educationForm.educationLocation"
                 required
+                outlined
+                dense
               ></v-text-field>
               <v-menu
                 v-if="dialogFormField.type === 'date-picker-from'"
@@ -188,6 +209,8 @@
                 :close-on-content-click="false"
                 offset-y
                 min-width="290px"
+                outlined
+                dense
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
@@ -197,6 +220,8 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    outlined
+                    dense
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -204,6 +229,8 @@
                   no-title
                   scrollable
                   @input="start = false"
+                  outlined
+                  dense
                 >
                 </v-date-picker>
               </v-menu>
@@ -214,6 +241,8 @@
                 :close-on-content-click="false"
                 offset-y
                 min-width="290px"
+                outlined
+                dense
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
@@ -223,12 +252,16 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    outlined
+                    dense
                   ></v-text-field>
                 </template>
                 <v-date-picker
                   v-model="educationForm.educationEnd"
                   no-title
                   scrollable
+                  outlined
+                  dense
                   @input="end = false"
                 >
                 </v-date-picker>
@@ -281,12 +314,16 @@
                 :label="dialogFormField.label"
                 v-model="projectsForm.title"
                 required
+                outlined
+                dense
               ></v-text-field>
               <v-text-field
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'وارد نمودن URL'"
                 :label="dialogFormField.label"
                 v-model="projectsForm.url"
                 required
+                outlined
+                dense
               ></v-text-field>
             </div>
           </v-card-text>
@@ -336,6 +373,8 @@
                 :label="dialogFormField.label"
                 v-model="awardForm.title"
                 required
+                outlined
+                dense
               ></v-text-field>
               <v-menu
                 v-if="dialogFormField.type === 'date-picker-to'"
@@ -343,6 +382,8 @@
                 :close-on-content-click="false"
                 offset-y
                 min-width="290px"
+                outlined
+                dense
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
@@ -352,6 +393,8 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    outlined
+                    dense
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -359,6 +402,8 @@
                   no-title
                   scrollable
                   @input="start = false"
+                  outlined
+                  dense
                 >
                 </v-date-picker>
               </v-menu>

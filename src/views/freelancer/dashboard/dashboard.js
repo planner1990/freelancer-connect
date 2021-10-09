@@ -8,85 +8,85 @@ export default {
       show: false,
       cards: [
         {
-          src: "bg23",
+          src: "امنیت",
           notification: 0,
-          title: "مرکز پیام",
+          title: "ایجاد خدمات",
+          routeName: "post-service"
+        },
+        {
+          src: "اپلیکیشن",
+          notification: 0,
+          title: "صندوق پیام",
           routeName: "message-center"
         },
         {
-          src: "logo",
+          src: "بصری",
           notification: 0,
-          title: "طرح های پیشنهادی",
-          routeName: "proposals"
+          title: "خدمات من",
+          routeName: "my-services"
         },
         {
-          src: "bg23",
+          src: "تبلیغات",
           notification: 0,
-          title: "مدیریت پرداخت ها",
-          routeName: "payout-freelancer"
+          title: "پروفایل",
+          routeName: "profile-setting"
         },
         {
-          src: "bg23",
-          notification: 0,
-          title: "فاکتورها",
-          routeName: "invoices"
-        },
-        {
-          src: "bg23",
+          src: "داخلی",
           notification: 0,
           title: "موارد ذخیره شده",
           routeName: "my-saved-items"
         },
         {
-          src: "logo",
+          src: "مارکتینگ",
           notification: 0,
           title: "تنظیمات پروفایل",
           routeName: "profile-setting"
         },
         {
-          src: "bg23",
+          src: "وبسایت",
           notification: 0,
-          title: "تنظیمات حساب",
-          routeName: "account-setting-freelancer"
+          title: "پروژه ارسال شده",
+          routeName: "posted-projects"
         },
         {
-          src: "logo",
+          src: "امنیت",
           notification: 0,
           title: "پروژه های تکمیل شده",
           routeName: "completed-projects"
         },
         {
-          src: "bg23",
+          src: "اپلیکیشن",
           notification: 0,
           title: "پروژه های ناتمام",
           routeName: "cancelled-projects"
         },
         {
-          src: "bg23",
+          src: "بصری",
           notification: 0,
           title: "پروژه های در حال انجام",
           routeName: "ongoing-projects"
         },
         {
-          src: "a",
+          src: "وبسایت",
           notification: 0,
           title: "خدمات در حال انتظار",
           routeName: "posted-services"
         },
         {
-          src: "bg23",
+          src: "امنیت",
           notification: 0,
           title: "خدمات تکمیل شده",
           routeName: "completed-services"
         },
         {
-          src: "a",
+          src: "بصری",
           notification: 0,
           title: "خدمات ناتمام",
           routeName: "cancelled-services"
         },
         {
-          src: "bg23",
+          src: "داخلی",
           notification: 0,
           title: "خدمات در حال انجام",
           routeName: "ongoing-services"

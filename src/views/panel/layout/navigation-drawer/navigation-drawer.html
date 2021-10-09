@@ -174,8 +174,7 @@
       :key="item.title"
       :prepend-icon="item.symbol"
       :append-icon="item.subCategory ? '$expand' : null"
-      link
-      :to="item.route"
+      @click="goTo(item.route)"
       exact
     >
       <template v-slot:activator>

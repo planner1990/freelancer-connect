@@ -1,21 +1,33 @@
 <v-container fluid>
   <v-row dense class="d-flex text-center">
-    <v-col cols="12" lg="3" md="6" sm="6" v-for="card in cards" :key="card.title">
+    <v-col
+      cols="12"
+      lg="3"
+      md="6"
+      sm="6"
+      v-for="card in cards"
+      :key="card.title"
+    >
       <v-card class="py-8">
         <img
-          :src="require(`../../assets/image/${card.src}.png`)"
+          :src="require(`../../assets/image/best-project/${card.src}.jpg`)"
           :alt="card.src"
           class="mx-auto"
         />
-        <v-card-title class="justify-center">
-          {{ card.notification }}
-          <br />
-          {{ card.title }}
+        <v-card-title
+          class="justify-center "
+          @click="goToRoute(card.routeName)"
+        >
+          <!--          {{ card.notification }}-->
+          <!--          <br />-->
+          <v-btn color="blue darken-1" text @click="goToRoute(card.routeName)">
+            {{ card.title }}
+          </v-btn>
         </v-card-title>
         <v-card-actions class="flex-column">
-          <v-btn color="blue darken-1" text @click="goToRoute(card.routeName)">
-            کلیک کنید
-          </v-btn>
+          <!--          <v-btn color="blue darken-1" text @click="goToRoute(card.routeName)">-->
+          <!--            کلیک کنید-->
+          <!--          </v-btn>-->
         </v-card-actions>
       </v-card>
     </v-col>

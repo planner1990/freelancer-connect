@@ -103,6 +103,7 @@ export default {
             this.showSnackbar = true;
             this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
             this.$refs.form.reset();
+            this.$router.push("/employer/my-projects");
           }
         });
       } else {

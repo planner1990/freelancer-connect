@@ -73,7 +73,7 @@ export default {
         profileServices.employerUpdateProfile(body).then(res => {
           if (res) {
             this.showSnackbar = true;
-            this.snackbarMessage = "پروفایل شما با موفقیت به روزرسانی شد.";
+            this.snackbarMessage = "پروفایل شما با موفقیت به روز رسانی شد.";
           }
         });
       }
