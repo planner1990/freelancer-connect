@@ -27,7 +27,7 @@
               <header-section
                 :header-section-title="'جزییات فردی و مهارتی'"
               ></header-section>
-              <v-row v-if="!isCompany">
+              <v-row v-if="companyName === ''">
                 <v-col lg="6" md="12">
                   <v-text-field
                     v-model="profileInfo.user['first_name']"
@@ -47,7 +47,7 @@
                   ></v-text-field>
                 </v-col>
               </v-row>
-              <v-row v-if="isCompany">
+              <v-row v-if="companyName !== ''">
                 <v-col lg="6" md="12">
                   <v-text-field
                     v-model="profileInfo.user.company.name"
@@ -59,7 +59,7 @@
                 </v-col>
                 <v-col lg="6" md="12">
                   <v-text-field
-                    valu="1400554556"
+                    valu=""
                     label="شماره ثبت شرکت"
                     required
                     lazy

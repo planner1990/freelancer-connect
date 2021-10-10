@@ -33,24 +33,24 @@ export default {
         { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: [
-        {
-          title: {
-            title: "راه اندازی پروژه فروشگاهی",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "۸.۰۰۰.۰۰۰ تومان"
-          },
-          serviceStatus: ["جاری شدن پروژه"],
-          queue: "پروژه ناتمام"
-        },
-        {
-          title: {
-            title: "اپلیکیشن اعتبارسنجی بانکی",
-            src: "https://picsum.photos/id/732/500/300",
-            price: "۶.۵۰۰.۰۰۰ تومان"
-          },
-          serviceStatus: ["جاری شدن پروژه"],
-          queue: "پروژه ناتمام"
-        }
+        // {
+        //   title: {
+        //     title: "راه اندازی پروژه فروشگاهی",
+        //     src: "https://picsum.photos/id/11/500/300",
+        //     price: "۸.۰۰۰.۰۰۰ تومان"
+        //   },
+        //   serviceStatus: ["جاری شدن پروژه"],
+        //   queue: "پروژه ناتمام"
+        // },
+        // {
+        //   title: {
+        //     title: "اپلیکیشن اعتبارسنجی بانکی",
+        //     src: "https://picsum.photos/id/732/500/300",
+        //     price: "۶.۵۰۰.۰۰۰ تومان"
+        //   },
+        //   serviceStatus: ["جاری شدن پروژه"],
+        //   queue: "پروژه ناتمام"
+        // }
       ]
     };
   },

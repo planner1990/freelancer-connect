@@ -58,7 +58,8 @@
     "servicesLists": "لیست خدمات",
     "enter": "ورود",
     "register": "ثبت نام",
-    "continue": "ادامه"
+    "continue": "ادامه",
+    "createProject": "ثبت پروژه"
   },
   "form": {
     "responseTimeTitle": "عنوان زمان پاسخ",

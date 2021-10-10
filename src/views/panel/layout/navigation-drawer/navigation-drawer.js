@@ -98,12 +98,12 @@ export default {
                   title: "profileSettings",
                   route: "/freelancer/profile-setting",
                   symbol: "mdi-account-cog-outline"
-                },
-                {
-                  title: "accountSettings",
-                  route: "/freelancer/account-setting",
-                  symbol: "mdi-account-edit-outline"
                 }
+                // {
+                //   title: "accountSettings",
+                //   route: "/freelancer/account-setting",
+                //   symbol: "mdi-account-edit-outline"
+                // }
               ]
             },
             {
@@ -116,6 +116,11 @@ export default {
                   symbol: "mdi-folder-star-multiple-outline"
                 },
                 {
+                  title: "ongoingProjects",
+                  route: "/freelancer/ongoing-projects",
+                  symbol: "mdi-google-circles-group"
+                },
+                {
                   title: "completedProjects",
                   route: "/freelancer/completed-projects",
                   symbol: "mdi-folder-star-multiple-outline"
@@ -124,11 +129,6 @@ export default {
                   title: "cancelledProjects",
                   route: "/freelancer/cancelled-projects",
                   symbol: "mdi-close-box-multiple"
-                },
-                {
-                  title: "ongoingProjects",
-                  route: "/freelancer/ongoing-projects",
-                  symbol: "mdi-google-circles-group"
                 }
               ]
             },
@@ -211,18 +211,28 @@ export default {
                   title: "profileSettings",
                   route: "/employer/profile-setting",
                   symbol: "mdi-account-cog-outline"
-                },
-                {
-                  title: "accountSettings",
-                  route: "/employer/account-setting",
-                  symbol: "mdi-account-edit-outline"
                 }
+                // {
+                //   title: "accountSettings",
+                //   route: "/employer/account-setting",
+                //   symbol: "mdi-account-edit-outline"
+                // }
               ]
             },
             {
               title: "manageProject",
               symbol: "mdi-projector-screen-outline",
               subCategory: [
+                {
+                  title: "pendingProjects",
+                  route: "/employer/pending-projects",
+                  symbol: "mdi-folder-star-multiple-outline"
+                },
+                {
+                  title: "ongoingProjects",
+                  route: "/employer/ongoing-projects",
+                  symbol: "mdi-google-circles-group"
+                },
                 {
                   title: "completedProjects",
                   route: "/employer/completed-projects",
@@ -232,16 +242,6 @@ export default {
                   title: "cancelledProjects",
                   route: "/employer/cancelled-projects",
                   symbol: "mdi-close-box-multiple"
-                },
-                {
-                  title: "ongoingProjects",
-                  route: "/employer/ongoing-projects",
-                  symbol: "mdi-google-circles-group"
-                },
-                {
-                  title: "pendingProjects",
-                  route: "/employer/pending-projects",
-                  symbol: "mdi-folder-star-multiple-outline"
                 }
               ]
             },

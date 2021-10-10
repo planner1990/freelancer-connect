@@ -71,7 +71,7 @@ export default {
           src: "مارکتینگ",
           notification: 0,
           title: "خدمات اتمام یافته",
-          routeName: "cancelled-services-employer"
+          routeName: "completed-services-employer"
         }
       ]
     };

@@ -51,35 +51,50 @@
     <header-section :headerSectionTitle="'دسته بندی مورد نظر'"></header-section>
     <v-row>
       <v-col md="12">
-        <v-combobox
-          v-model="projectForm.categories"
+        <v-select
+          class="mb-4"
           :items="activitiesList"
           :rules="createProjectRule.categories"
-          item-value="id"
           item-text="title"
-          :search-input.sync="search"
-          hide-selected
-          hint="حداکثر ۵ گزینه میتوانید انتخاب کنید"
+          item-value="id"
+          v-model="projectForm.categories"
           :label="$t('form.categories')"
-          multiple
-          persistent-hint
-          required
           outlined
-          clearable
-          small-chips
-          @change="selectCategories(projectForm.categories)"
+          hint="یک گزینه میتوانید انتخاب کنید"
         >
-          <template v-slot:no-data>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title>
-                  موردی یافت نشد "<strong>{{ search }}</strong>". برای افزودن
-                  مهارت مورد نظر <kbd>enter</kbd>را فشار دهید
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
+          <template v-slot:append>
+            <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>
           </template>
-        </v-combobox>
+        </v-select>
+        <!--        <v-combobox-->
+        <!--          v-model="projectForm.categories"-->
+        <!--          :items="activitiesList"-->
+        <!--          :rules="createProjectRule.categories"-->
+        <!--          item-value="id"-->
+        <!--          item-text="title"-->
+        <!--          :search-input.sync="search"-->
+        <!--          hide-selected-->
+        <!--          hint="حداکثر ۵ گزینه میتوانید انتخاب کنید"-->
+        <!--          :label="$t('form.categories')"-->
+        <!--          multiple-->
+        <!--          persistent-hint-->
+        <!--          required-->
+        <!--          outlined-->
+        <!--          clearable-->
+        <!--          small-chips-->
+        <!--          @change="selectCategories(projectForm.categories)"-->
+        <!--        >-->
+        <!--          <template v-slot:no-data>-->
+        <!--            <v-list-item>-->
+        <!--              <v-list-item-content>-->
+        <!--                <v-list-item-title>-->
+        <!--                  موردی یافت نشد "<strong>{{ search }}</strong>". برای افزودن-->
+        <!--                  مهارت مورد نظر <kbd>enter</kbd>را فشار دهید-->
+        <!--                </v-list-item-title>-->
+        <!--              </v-list-item-content>-->
+        <!--            </v-list-item>-->
+        <!--          </template>-->
+        <!--        </v-combobox>-->
       </v-col>
     </v-row>
     <header-section
@@ -149,8 +164,8 @@
     </v-row>
     <v-row class="my-10">
       <v-col lg="6" md="12">
-        <v-btn color="secondary" @click="createProject">
-          {{ $t("actions.save&update") }}
+        <v-btn class="px-8" color="secondary" @click="createProject">
+          {{ $t("actions.createProject") }}
         </v-btn>
       </v-col>
     </v-row>

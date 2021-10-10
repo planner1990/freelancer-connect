@@ -79,6 +79,7 @@ export default {
       localStorage.removeItem("accessToken");
       this.role = "";
       this.user = {};
+      this.$router.push("/home");
     }
   },
   created() {

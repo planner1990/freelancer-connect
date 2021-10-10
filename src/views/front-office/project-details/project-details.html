@@ -57,7 +57,17 @@
                       color="primary"
                       block
                       large
-                      v-if="role !== 'freelancer'"
+                      disabled
+                      v-if="role === 'employer'"
+                    >
+                      با اکانت کارفرما نمی توانید درخواست ارسال کنید
+                    </v-btn>
+                    <v-btn
+                      class="ma-2"
+                      color="primary"
+                      block
+                      large
+                      v-if="role === '' || role === 'employer'"
                       @click="goToLogin"
                     >
                       برای ارسال درخواست وارد شوید

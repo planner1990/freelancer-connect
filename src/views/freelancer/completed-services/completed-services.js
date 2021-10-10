@@ -33,24 +33,24 @@ export default {
         { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: [
-        {
-          title: {
-            title: "وب اپلیکیشن با Vue js",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200.000 تومان"
-          },
-          serviceStatus: ["جاری شدن پروژه"],
-          queue: "پروژه ناتمام"
-        },
-        {
-          title: {
-            title: "طراحی UI و فرانت اند",
-            src: "https://picsum.photos/id/732/500/300",
-            price: "350.000 تومان"
-          },
-          serviceStatus: ["جاری شدن پروژه"],
-          queue: "پروژه ناتمام"
-        }
+        // {
+        //   title: {
+        //     title: "وب اپلیکیشن با Vue js",
+        //     src: "https://picsum.photos/id/11/500/300",
+        //     price: "200.000 تومان"
+        //   },
+        //   serviceStatus: ["جاری شدن پروژه"],
+        //   queue: "پروژه ناتمام"
+        // },
+        // {
+        //   title: {
+        //     title: "طراحی UI و فرانت اند",
+        //     src: "https://picsum.photos/id/732/500/300",
+        //     price: "350.000 تومان"
+        //   },
+        //   serviceStatus: ["جاری شدن پروژه"],
+        //   queue: "پروژه ناتمام"
+        // }
       ]
     };
   },

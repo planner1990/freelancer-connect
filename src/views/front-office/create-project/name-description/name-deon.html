@@ -53,7 +53,7 @@
       color="teal accent-3"
       :loading="signInLoading"
       block
-      :disabled="!title"
+      :disabled="!title || !description"
       :dark="!!title"
       class="py-5"
       @click="goToActivity()"

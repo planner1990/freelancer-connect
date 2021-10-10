@@ -34,6 +34,7 @@ export default {
     return {
       valid: true,
       name: "",
+      companyName: "",
       nameRules: [
         v => !!v || "لطفا نام خود را وارد کنید",
         v => (v && v.length <= 10) || "نام وارد شده باید بیش از ۱۰ کاراکتر باشد"
@@ -191,6 +192,9 @@ export default {
     showProfile() {
       freelancerServices.showProfile().then(res => {
         this.profileInfo = res.data.data;
+        if (this.profileInfo.user.company) {
+          this.companyName = this.profileInfo.user?.company?.name;
+        }
         this.avatarProfile(this.profileInfo);
       });
     },

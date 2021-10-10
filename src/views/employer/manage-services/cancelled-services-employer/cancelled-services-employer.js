@@ -33,24 +33,24 @@ export default {
         { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: [
-        {
-          title: {
-            title: "تولید محتوا",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "200.000 تومان"
-          },
-          serviceStatus: ["جاری شدن پروژه"],
-          queue: "سرویس ناتمام"
-        },
-        {
-          title: {
-            title: "دیجیتال مارکتینگ",
-            src: "https://picsum.photos/id/732/500/300",
-            price: "350.000 تومان"
-          },
-          serviceStatus: ["جاری شدن پروژه"],
-          queue: "سرویس ناتمام"
-        }
+        // {
+        //   title: {
+        //     title: "تولید محتوا",
+        //     src: "https://picsum.photos/id/11/500/300",
+        //     price: "200.000 تومان"
+        //   },
+        //   serviceStatus: ["جاری شدن پروژه"],
+        //   queue: "سرویس ناتمام"
+        // },
+        // {
+        //   title: {
+        //     title: "دیجیتال مارکتینگ",
+        //     src: "https://picsum.photos/id/732/500/300",
+        //     price: "350.000 تومان"
+        //   },
+        //   serviceStatus: ["جاری شدن پروژه"],
+        //   queue: "سرویس ناتمام"
+        // }
       ]
     };
   },

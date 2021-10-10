@@ -33,24 +33,24 @@ export default {
         { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: [
-        {
-          title: {
-            title: "طراحی UI & UX",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "۹۵۰.۰۰۰ تومان"
-          },
-          serviceStatus: ["تکمیل خدمات"],
-          queue: "اتمام خدمات"
-        },
-        {
-          title: {
-            title: "پیاده سازی طرح UI",
-            src: "https://picsum.photos/id/732/500/300",
-            price: "350.000 تومان"
-          },
-          serviceStatus: ["تکمیل خدمات"],
-          queue: "اتمام خدمات"
-        }
+        // {
+        //   title: {
+        //     title: "طراحی UI & UX",
+        //     src: "https://picsum.photos/id/11/500/300",
+        //     price: "۹۵۰.۰۰۰ تومان"
+        //   },
+        //   serviceStatus: ["تکمیل خدمات"],
+        //   queue: "اتمام خدمات"
+        // },
+        // {
+        //   title: {
+        //     title: "پیاده سازی طرح UI",
+        //     src: "https://picsum.photos/id/732/500/300",
+        //     price: "350.000 تومان"
+        //   },
+        //   serviceStatus: ["تکمیل خدمات"],
+        //   queue: "اتمام خدمات"
+        // }
       ]
     };
   },

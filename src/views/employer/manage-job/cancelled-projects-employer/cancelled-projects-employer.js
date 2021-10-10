@@ -29,24 +29,24 @@ export default {
         { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: [
-        {
-          title: {
-            title: "سئو سایت",
-            src: "https://picsum.photos/id/11/500/300",
-            price: "۱۰.۰۰۰.۰۰۰ تومان"
-          },
-          serviceStatus: ["جاری شدن پروژه"],
-          queue: "پروژه ناتمام"
-        },
-        {
-          title: {
-            title: "گوگل آنالتیکس",
-            src: "https://picsum.photos/id/732/500/300",
-            price: "۲.۰۰۰.۰۰۰ تومان"
-          },
-          serviceStatus: ["جاری شدن پروژه"],
-          queue: "پروژه ناتمام"
-        }
+        // {
+        //   title: {
+        //     title: "سئو سایت",
+        //     src: "https://picsum.photos/id/11/500/300",
+        //     price: "۱۰.۰۰۰.۰۰۰ تومان"
+        //   },
+        //   serviceStatus: ["جاری شدن پروژه"],
+        //   queue: "پروژه ناتمام"
+        // },
+        // {
+        //   title: {
+        //     title: "گوگل آنالتیکس",
+        //     src: "https://picsum.photos/id/732/500/300",
+        //     price: "۲.۰۰۰.۰۰۰ تومان"
+        //   },
+        //   serviceStatus: ["جاری شدن پروژه"],
+        //   queue: "پروژه ناتمام"
+        // }
       ]
     };
   },

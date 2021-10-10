@@ -1,4 +1,4 @@
-<dashboard-card :titleCard="$t('sidebar.ongoingProjects')">
+<dashboard-card :titleCard="$t('sidebar.pendingProjects')">
   <v-container v-if="!this.$route.params.id">
     <v-row>
       <v-col
@@ -27,7 +27,7 @@
                   color="primary"
                   @click="redirectToProjectDetail(projectList.id)"
                 >
-                  ۱۴ پیشنهاد
+                    {{ projectList['number_of_proposals'] }} پیشنهاد
                   <v-icon right dark>
                     mdi-briefcase-account
                   </v-icon>
