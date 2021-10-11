@@ -4,19 +4,19 @@
   </h5>
   <div class="confirm-info-container">
     <div class="confirm-info-container_title mb-3">
-        عنوان:
-      {{ getDataFromStore.body.title }}
-      <v-btn icon x-small color="primary">
+      عنوان: {{ getDataFromStore.body.title }}
+      <v-btn icon x-small color="primary" link to="/create-project">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
     </div>
     <div class="confirm-info-container_description">
-        توضیحات:
-        <div v-if="!getDataFromStore.body.description">
-            توضیحات شما در مورد پروژه در این بخش نمایش داده خواهد شد. در حال حاضر توضیحاتی ثبت نکردید.
-        </div>
+      توضیحات:
+      <div v-if="!getDataFromStore.body.description">
+        توضیحات شما در مورد پروژه در این بخش نمایش داده خواهد شد. در حال حاضر
+        توضیحاتی ثبت نکردید.
+      </div>
       {{getDataFromStore.body.description}}
-      <v-btn icon x-small color="primary">
+      <v-btn icon x-small color="primary" link to="/create-project">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
     </div>
@@ -32,19 +32,20 @@
     </div>
     <p class="mt-5">
       مدت زمان: <strong>{{duration}}</strong>
-      <v-btn icon x-small color="primary" class="mx-2">
+      <v-btn icon x-small color="primary" class="mx-2" link to="/detail">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
     </p>
     <p>
       هزینه: <strong>{{getDataFromStore.detail.price | thousandMask}} </strong>
-      <v-btn icon x-small color="primary" class="mx-2">
+      <v-btn icon x-small color="primary" class="mx-2" link to="/detail">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
     </p>
   </div>
   <v-card-actions class="pa-0 my-5">
     <v-btn
+      v-if="role === 'employer'"
       color="teal accent-3"
       :loading="signInLoading"
       block
@@ -52,6 +53,25 @@
       class="py-5"
       @click="createProject()"
       >بله, ثبت نهایی پروژه</v-btn
+    >
+    <v-btn
+      v-if="role === 'freelancer'"
+      color="teal accent-3"
+      :loading="signInLoading"
+      block
+      disabled
+      class="py-5"
+      >با اکانت کارفرما وارد شوید!</v-btn
+    >
+    <v-btn
+      v-if="role === ''"
+      color="teal accent-3"
+      :loading="signInLoading"
+      block
+      dark
+      class="py-5"
+      @click="createProject()"
+      >ابتدا به پنل وارد شوید</v-btn
     >
   </v-card-actions>
   <v-row>

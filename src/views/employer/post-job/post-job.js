@@ -125,14 +125,18 @@ export default {
     selectCategories(list) {
       let tempData = [];
       for (let index = 0; index < list.length; index++) {
-        tempData.push(list[index].id);
+        tempData.push(list[index]);
       }
       return (this.categories = tempData);
     },
     selectSkills(list) {
       let tempData = [];
       for (let index = 0; index < list.length; index++) {
-        tempData.push(list[index].id);
+        if (list[index].title) {
+          tempData.push(list[index].title);
+        } else {
+          tempData.push(list[index]);
+        }
       }
       return (this.skills = tempData);
     },

@@ -23,6 +23,10 @@ class employerServices {
     return API_V1.post("admin/employer/proposal/update", body);
   }
 
+  confirmProposalByEmployer(proposalId) {
+    return API_V1.get(`/admin/employer/proposal/hire/${proposalId}`);
+  }
+
   indexMilestone(proposalId) {
     return API_V1.get(`/admin/milestone/proposal/${proposalId}`);
   }

@@ -80,11 +80,11 @@ export default {
               route: "/freelancer/dashboard",
               symbol: "mdi-view-dashboard-variant"
             },
-            {
-              title: "messageCenter",
-              route: "/freelancer/message-center",
-              symbol: "mdi-message-bulleted"
-            },
+            // {
+            //   title: "messageCenter",
+            //   route: "/freelancer/message-center",
+            //   symbol: "mdi-message-bulleted"
+            // },
             {
               title: "myServices",
               route: "/freelancer/my-services",
@@ -163,26 +163,26 @@ export default {
               route: "/freelancer/proposals",
               symbol: "mdi-human-greeting-proximity"
             },
-            {
-              title: "payout",
-              route: "/freelancer/payout",
-              symbol: "mdi-credit-card-marker-outline"
-            },
+            // {
+            //   title: "payout",
+            //   route: "/freelancer/payout",
+            //   symbol: "mdi-credit-card-marker-outline"
+            // },
             {
               title: "invoices",
               route: "/freelancer/invoices",
               symbol: "mdi-sitemap"
-            },
+            }
             // {
             //   title: "packages",
             //   route: "/freelancer/packages",
             //   symbol: "mdi-package-variant-closed"
             // },
-            {
-              title: "mySavedItems",
-              route: "/freelancer/my-saved-items",
-              symbol: "mdi-content-save-edit-outline"
-            }
+            // {
+            //   title: "mySavedItems",
+            //   route: "/freelancer/my-saved-items",
+            //   symbol: "mdi-content-save-edit-outline"
+            // }
           ];
           break;
         case "employer":
@@ -271,21 +271,21 @@ export default {
                 }
               ]
             },
-            {
-              title: "payout",
-              route: "/employer/payout",
-              symbol: "mdi-credit-card-marker-outline"
-            },
+            // {
+            //   title: "payout",
+            //   route: "/employer/payout",
+            //   symbol: "mdi-credit-card-marker-outline"
+            // },
             {
               title: "invoices",
               route: "/employer/invoices",
               symbol: "mdi-sitemap"
-            },
-            {
-              title: "mySavedItems",
-              route: "/employer/my-saved-items",
-              symbol: "mdi-content-save-edit-outline"
             }
+            // {
+            //   title: "mySavedItems",
+            //   route: "/employer/my-saved-items",
+            //   symbol: "mdi-content-save-edit-outline"
+            // }
           ];
           break;
         default:
@@ -296,11 +296,11 @@ export default {
               route: "/panel/dashboard",
               symbol: "mdi-view-dashboard-variant"
             },
-            {
-              title: "messageCenter",
-              route: "/panel/message-center-panel",
-              symbol: "mdi-message-bulleted"
-            },
+            // {
+            //   title: "messageCenter",
+            //   route: "/panel/message-center-panel",
+            //   symbol: "mdi-message-bulleted"
+            // },
             {
               title: "orders",
               route: "/panel/orders",

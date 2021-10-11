@@ -2,6 +2,7 @@ import * as types from "../../../../shared/store/types";
 import { mapGetters, mapMutations } from "vuex";
 import projectsService from "../../../../core/services/modules/projectsService";
 import Snackbar from "../../../../components/snackbar/index";
+import { AuthService } from "../../../../core/services";
 
 export default {
   name: "confirm-info",
@@ -17,7 +18,8 @@ export default {
       maxPrice: "",
       duration: "",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
-      showSnackbar: false
+      showSnackbar: false,
+      role: ""
     };
   },
   computed: {
@@ -32,6 +34,7 @@ export default {
   mounted() {
     this.resetRegister();
     this.getProjectDurations();
+    this.getAssignedRole();
   },
   methods: {
     createProject() {
@@ -45,16 +48,29 @@ export default {
         skills: [],
         attachment_id: null
       };
-      projectsService.createProject(projectData).then(res => {
-        if (res) {
-          this.showSnackbar = true;
-          this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
-        }
-      });
+      if (this.role === "employer") {
+        projectsService.createProject(projectData).then(res => {
+          if (res) {
+            this.showSnackbar = true;
+            this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
+            this.$router.push("/browse-projects");
+          }
+        });
+      } else if (this.role === "") {
+        this.$router.push("/login");
+      }
       this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
         projectData
       });
       // this.$router.push("/confirm-info");
+    },
+    getAssignedRole() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        AuthService.getAssignedRole().then(res => {
+          this.role = res.data.data.role;
+        });
+      }
     },
     hideSnackbar() {
       this.showSnackbar = false;

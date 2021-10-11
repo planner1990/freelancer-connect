@@ -42,12 +42,12 @@ export default {
     this.showProposalById();
   },
   methods: {
-    proposalAction(status) {
-      const body = {
-        proposal_id: this.proposalId,
-        status: status
-      };
-      employerServices.proposalAction(body).then(res => {
+    proposalAction() {
+      // const body = {
+      //   proposal_id: this.proposalId,
+      //   status: status
+      // };
+      employerServices.confirmProposalByEmployer(this.proposalId).then(res => {
         console.log(res);
         this.dialog = false;
       });
