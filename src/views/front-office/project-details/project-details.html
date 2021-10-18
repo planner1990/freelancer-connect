@@ -206,6 +206,13 @@
           ></side-info>
         </v-col>
       </v-row>
+      <v-row>
+        <snackbar
+          :snackbarMessage="snackbarMessage"
+          :showSnackbar="showSnackbar"
+          @hideSnackbar="hideSnackbar"
+        ></snackbar>
+      </v-row>
     </v-container>
   </section>
 </div>

@@ -5,13 +5,16 @@ import projectsService from "../../../core/services/modules/projectsService";
 import { AuthService } from "../../../core/services";
 import UploadService from "../../../core/services/modules/uploadService";
 import * as types from "../../../shared/store/types";
+import Snackbar from "../../../components/snackbar/index";
 export default {
   name: "project-details",
-  components: { SideFilter, MainInfo, SideInfo },
+  components: { SideFilter, MainInfo, SideInfo, Snackbar },
   props: [],
   data() {
     return {
       projectDetailsById: {},
+      snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
+      showSnackbar: false,
       role: "",
       dialog: false,
       valid: false,
@@ -51,6 +54,9 @@ export default {
     this.getProjectDurations();
   },
   methods: {
+    hideSnackbar() {
+      this.showSnackbar = false;
+    },
     getProjectListById() {
       const id = this.$route.params.id;
       projectsService.getProjectById(id).then(res => {
@@ -77,6 +83,7 @@ export default {
       }
     },
     sendJobOfferToFreelancer() {
+      this.showSnackbar = false;
       const body = {
         project_id: this.projectDetailsById.id,
         project_duration_id: this.proposalForm.project_duration_id,
@@ -93,6 +100,10 @@ export default {
           this.dialog = false;
         })
         .catch(error => {
+          this.showSnackbar = true;
+          this.snackbarMessage =
+            "پیشنهاد از قبل ارسال شده است ، شما نمی توانید پیشنهادی را برای این پروژه ارسال کنید.";
+          this.dialog = false;
           console.log(error);
         });
     },

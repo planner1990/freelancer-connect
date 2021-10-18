@@ -35,6 +35,9 @@ export default {
     getDrawerImage() {
       return this.imageSrc;
     },
+    getStatusImage() {
+      return this.imageSrc?.status === "banner";
+    },
     ...mapGetters({
       drawer: types.GET_DRAWER
     })

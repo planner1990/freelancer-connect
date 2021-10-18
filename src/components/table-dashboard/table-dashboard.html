@@ -21,10 +21,10 @@
               color="primary"
               v-bind="attrs"
               v-on="on"
-              :disabled="!item['has_estimation']"
               @click="showEstimationEmployer(item.id)"
             >
-              مشاهده درخواست
+              <span v-if="!item['has_estimation']">در انتظار پاسخ</span>
+              <span v-if="item['has_estimation']">مشاهده درخواست</span>
             </v-btn>
           </template>
           <v-form ref="form" v-model="valid" lazy-validation>
@@ -85,6 +85,7 @@
                         </template>
                       </v-file-input>
                     </v-col>
+                      <v-col><v-divider class="divide-card"></v-divider></v-col>
                     <v-col cols="12">
                       <v-text-field
                         label="قیمت پیشنهادی پایه (ریال)*"

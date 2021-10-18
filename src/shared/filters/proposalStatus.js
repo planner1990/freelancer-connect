@@ -5,20 +5,16 @@ Vue.filter("proposalStatus", function(statusCode) {
   let status = "";
   switch (statusCode) {
     case 0:
-      status = "pending";
+      status = "در حال انتظار";
       break;
     case 1:
-      status = "ongoing";
+      status = "استخدام شده";
       break;
     case 2:
-      status = "hired";
+      status = "رد شده";
       break;
-    case 3:
-      status = "completed";
-      break;
-    case 4:
-      status = "rejected";
-      break;
+    default:
+      status = "در حال تعیین وضعیت";
   }
   return status;
 });
