@@ -6,3 +6,6 @@ import "./proposalStatus";
 import "./servicesStatus";
 import "./myProjectsStatus";
 import "./projectDurationId";
+import "./employerMileStoneStatus";
+import "./freelancerMileStoneStatus";
+import "./installments";

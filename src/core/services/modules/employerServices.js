@@ -3,7 +3,8 @@ import { API_V1 } from "../config/auth-axios";
 class employerServices {
   getIndexProjects(options) {
     return API_V1.get(
-      `admin/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
+      `admin/employer/projects/${options.status}`
+      // `admin/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
     );
   }
 
@@ -57,6 +58,14 @@ class employerServices {
 
   myProjects() {
     return API_V1.get(`/admin/employer/projects`);
+  }
+
+  fakePaymentEmployer(body) {
+    return API_V1.post("/admin/employer/milestone/pay", body);
+  }
+
+  mileStoneAction(body) {
+    return API_V1.post("/admin/employer/milestone/status", body);
   }
 }
 

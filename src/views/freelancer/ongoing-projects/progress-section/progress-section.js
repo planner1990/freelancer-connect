@@ -26,6 +26,8 @@ export default {
       status: "pending",
       projectDetails: {},
       proposalForm: {},
+      mileStones: [],
+      unlock: 0,
       nameRules: [
         v => !!v || "لطفا نام خود را وارد کنید",
         v => (v && v.length <= 50) || "نام وارد شده باید بیش از ۵۰ کاراکتر باشد"
@@ -74,6 +76,7 @@ export default {
     this.showDetailProject();
     this.getProposalsById();
     this.getChatList();
+    this.getIndexMilestone();
   },
   methods: {
     showDetailProject() {
@@ -135,21 +138,24 @@ export default {
         });
       }
     },
-    submitMilestone() {
-      const body = {
-        type: "proposal",
-        id: this.$route.query.proposalId,
-        attachment_id: this.jobOfferForm.attachmentId
-      };
-      freelancerServices
-        .submitMilestone(body)
-        .then(res => {
-          console.log(res);
-          this.dialog = false;
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    submitMilestone(index) {
+      if (index === this.unlock) {
+        const body = {
+          type: "proposal",
+          id: this.$route.query.proposalId,
+          attachment_id: this.jobOfferForm.attachmentId
+        };
+        freelancerServices
+          .submitMilestone(body)
+          .then(() => {
+            this.dialog = false;
+            this.unlock += 1;
+            this.getIndexMilestone();
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
     },
     getChatList() {
       const proposalId = this.$route.query.proposalId;
@@ -158,6 +164,22 @@ export default {
         .then(res => {
           console.log(res);
           this.messages = res.data.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    getIndexMilestone() {
+      const proposalId = this.$route.query.proposalId;
+      employerServices
+        .indexMilestone(proposalId)
+        .then(res => {
+          this.mileStones = res.data.data?.milestones;
+          res.data.data.milestones.forEach((item, index) => {
+            if (item.status === 2) {
+              this.unlock = index + 1;
+            }
+          });
         })
         .catch(error => {
           console.log(error);

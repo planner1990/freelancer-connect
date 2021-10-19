@@ -30,9 +30,7 @@ export default {
     },
     getOngoingProjects() {
       const options = {
-        status: "ongoing",
-        page: 1,
-        perPage: 5
+        status: "ongoing"
       };
       employerServices.getIndexProjects(options).then(res => {
         this.indexProjectsList = res.data.data.projects;

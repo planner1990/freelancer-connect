@@ -26,13 +26,13 @@ export default {
       status: "ongoing",
       projectDetails: {},
       proposalForm: {},
+      mileStones: [],
       // nameRules: [
       //   v => !!v || "Name is required",
       //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
       // ],
       youMessage: "",
       messages: [],
-      amount: null,
       jobOfferForm: {
         linkName: "",
         attachmentId: []
@@ -143,11 +143,34 @@ export default {
       employerServices
         .indexMilestone(proposalId)
         .then(res => {
-          this.amount = res.data.data;
+          this.mileStones = res.data.data?.milestones;
         })
         .catch(error => {
           console.log(error);
         });
+    },
+
+    fakePayment(mileStoneId) {
+      const body = {
+        milestone_id: mileStoneId
+      };
+      employerServices.fakePaymentEmployer(body).then(res => {
+        console.log(res);
+        this.getIndexMilestone();
+        this.dialog = false;
+      });
+    },
+
+    mileStoneAction(id, status) {
+      const body = {
+        milestone_id: id,
+        status: status
+      };
+      employerServices.mileStoneAction(body).then(res => {
+        console.log(res);
+        this.getIndexMilestone();
+        this.dialog = false;
+      });
     }
   }
 };

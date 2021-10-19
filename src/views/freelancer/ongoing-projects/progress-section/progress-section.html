@@ -7,7 +7,7 @@
             <template v-slot:default="{ open }">
               <v-row no-gutters>
                 <v-col cols="4">
-                  نام پروژه: سایت فروشگاهی
+                  نام پروژه: {{projectDetails.title}}
                 </v-col>
                 <v-col cols="6">
                   {{ projectDetails.description | readMore(60, "...") }}
@@ -69,33 +69,49 @@
   <header-section :headerSectionTitle="'مراحل پیشرفت'"></header-section>
   <v-container>
     <v-row class="progress-level">
-      <v-col class="level d-flex justify-space-between" cols="4">
-        <div>
-          <div>بخش اول</div>
-          <div>اتمام</div>
-        </div>
-        <div>
-          <v-btn class="ma-2" outlined color="primary">
-            انجام شد
-          </v-btn>
-        </div>
-      </v-col>
-      <v-col class="level d-flex justify-space-between" cols="4">
-        <div>
-          <div>بخش دوم</div>
-          <div>انجام شده</div>
-        </div>
-        <div>
-          <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-col
+        class="level"
+        v-for="(mileStone, mileStoneIndex) in mileStones"
+        :key="mileStoneIndex"
+        :class="{'lock': !mileStone.status, 'pending': mileStone.status === 0 || mileStone.status === 1, 'finished': mileStone.status === 2}"
+      >
+        <div class="d-flex justify-space-between align-center">
+          <div>
+            <!--          <div>بخش {{installments | installments}}</div>-->
+            <div class="lock-text" v-if="mileStone.status === undefined">
+              قفل
+            </div>
+            <div v-if="mileStone.status === 0">ارسال شد</div>
+            <div v-if="mileStone.status === 1">
+              ارسال شد, در انتظار پرداخت کارفرما
+            </div>
+            <div v-if="mileStone.status === 2">خاتمه یافته</div>
+          </div>
+          <div>
+            <v-btn
+              v-if="mileStone.status === 2"
+              class="ma-2"
+              outlined
+              color="primary"
+            >
+              تمام شده
+            </v-btn>
+          </div>
+          <v-dialog
+            v-if="mileStone.status === undefined"
+            v-model="dialog"
+            persistent
+            max-width="600px"
+          >
             <template v-slot:activator="{ on, attrs }">
-              <v-btn
+              <v-btn v-if="mileStoneIndex === unlock"
                 class="ma-2"
                 color="primary"
                 outlined
                 v-bind="attrs"
                 v-on="on"
               >
-                انجام شد
+                ارسال فایل
               </v-btn>
             </template>
             <v-form ref="form" v-model="valid" lazy-validation>
@@ -153,7 +169,7 @@
                   <v-btn color="error" @click="dialog = false">
                     بستن
                   </v-btn>
-                  <v-btn color="primary" @click="submitMilestone">
+                  <v-btn color="primary" @click="submitMilestone(unlock)">
                     ارسال
                   </v-btn>
                 </v-card-actions>
@@ -162,24 +178,13 @@
           </v-dialog>
         </div>
       </v-col>
-      <v-col class="level d-flex justify-space-between" cols="4">
-        <div>
-          <div>بخش سوم</div>
-          <div>قفل</div>
-        </div>
-        <div>
-          <v-btn class="ma-2" outlined color="primary">
-            انجام شد
-          </v-btn>
-        </div>
-      </v-col>
     </v-row>
   </v-container>
 
   <v-container class="pa-0">
     <div class="chat-header">
       <v-icon large>mdi-account-circle</v-icon>
-        {{ projectDetails.username }}
+      {{ projectDetails.username }}
     </div>
     <section ref="chatArea" class="chat-area ma-0">
       <p

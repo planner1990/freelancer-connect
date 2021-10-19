@@ -27,7 +27,6 @@
                 <v-btn
                   depressed
                   color="primary"
-                  @click="redirectToProjectDetail(projectList.id, projectList.proposal_id)"
                 >
                   {{ projectList['unread_messages']}} پیام جدید
                   <v-icon right dark>
@@ -40,7 +39,6 @@
                   depressed
                   fab
                   text
-                  @click="redirectToProjectDetail(projectList.id)"
                 >
                   <v-icon x-large>
                     mdi-chevron-left
