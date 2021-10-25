@@ -7,7 +7,7 @@
             <template v-slot:default="{ open }">
               <v-row no-gutters>
                 <v-col cols="4">
-                  نام پروژه: سایت فروشگاهی
+                  نام سرویس: {{projectDetails.title}}
                 </v-col>
                 <v-col cols="6">
                   {{ projectDetails.description | readMore(60, "...") }}
@@ -49,7 +49,7 @@
                     <v-icon class="mb-1">
                       mdi-cash-multiple
                     </v-icon>
-                    {{projectDetails.price | roundNumber | thousandMask}} ریال
+                    {{projectDetails.min_price | roundNumber | thousandMask}} ریال
                   </div>
                   <div>
                     <v-icon>
@@ -69,33 +69,50 @@
   <header-section :headerSectionTitle="'مراحل پیشرفت'"></header-section>
   <v-container>
     <v-row class="progress-level">
-      <v-col class="level d-flex justify-space-between" cols="4">
-        <div>
-          <div>بخش اول</div>
-          <div>اتمام</div>
-        </div>
-        <div>
-          <v-btn class="ma-2" outlined color="primary">
-            انجام شد
-          </v-btn>
-        </div>
-      </v-col>
-      <v-col class="level d-flex justify-space-between" cols="4">
-        <div>
-          <div>بخش دوم</div>
-          <div>انجام شده</div>
-        </div>
-        <div>
-          <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-col
+        class="level"
+        v-for="(mileStone, mileStoneIndex) in mileStones"
+        :key="mileStoneIndex"
+        :class="{'lock': !mileStone.status, 'pending': mileStone.status === 0 || mileStone.status === 1, 'finished': mileStone.status === 2}"
+      >
+        <div class="d-flex justify-space-between align-center">
+          <div>
+            <!--          <div>بخش {{installments | installments}}</div>-->
+            <div class="lock-text" v-if="mileStone.status === undefined">
+              قفل
+            </div>
+            <div v-if="mileStone.status === 0">ارسال شد</div>
+            <div v-if="mileStone.status === 1">
+              ارسال شد, در انتظار پرداخت کارفرما
+            </div>
+            <div v-if="mileStone.status === 2">خاتمه یافته</div>
+          </div>
+          <div>
+            <v-btn
+              v-if="mileStone.status === 2"
+              class="ma-2"
+              outlined
+              color="primary"
+            >
+              تمام شده
+            </v-btn>
+          </div>
+          <v-dialog
+            v-if="mileStone.status === undefined"
+            v-model="dialog"
+            persistent
+            max-width="600px"
+          >
             <template v-slot:activator="{ on, attrs }">
               <v-btn
+                v-if="mileStoneIndex === unlock"
                 class="ma-2"
                 color="primary"
                 outlined
                 v-bind="attrs"
                 v-on="on"
               >
-                انجام شد
+                ارسال فایل
               </v-btn>
             </template>
             <v-form ref="form" v-model="valid" lazy-validation>
@@ -153,24 +170,13 @@
                   <v-btn color="error" @click="dialog = false">
                     بستن
                   </v-btn>
-                  <v-btn color="primary" @click="submitMilestone">
+                  <v-btn color="primary" @click="submitMilestone(unlock)">
                     ارسال
                   </v-btn>
                 </v-card-actions>
               </v-card>
             </v-form>
           </v-dialog>
-        </div>
-      </v-col>
-      <v-col class="level d-flex justify-space-between" cols="4">
-        <div>
-          <div>بخش سوم</div>
-          <div>قفل</div>
-        </div>
-        <div>
-          <v-btn class="ma-2" outlined color="primary">
-            انجام شد
-          </v-btn>
         </div>
       </v-col>
     </v-row>
@@ -199,6 +205,7 @@
       >
         <v-textarea
           v-model="youMessage"
+          v-if="!completedAt"
           class="mt-3 col-10"
           type="text"
           label="پیام شما"
@@ -208,11 +215,28 @@
           dense
         >
         </v-textarea>
-        <v-btn depressed class="mb-4" large color="primary" type="submit">
+        <v-btn
+          v-if="!completedAt"
+          depressed
+          class="mb-4"
+          large
+          color="primary"
+          type="submit"
+        >
           ارسال پیام
           <v-icon class="mx-2">
             mdi-message-text
           </v-icon>
+        </v-btn>
+        <v-btn
+          v-if="completedAt"
+          depressed
+          class="mb-4 mt-5"
+          large
+          block
+          disabled
+        >
+          پیام بسته شد
         </v-btn>
       </form>
     </section>

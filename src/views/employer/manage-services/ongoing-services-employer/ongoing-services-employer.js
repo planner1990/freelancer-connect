@@ -1,72 +1,54 @@
-import DashboardCard from "../../../../components/dashboardCard/index";
-import ProjectList from "../../../../components/project-list/index";
-import DialogDashboard from "../../../../components/dialog-dashboard/index";
-import employerServices from "../../../../core/services/modules/employerServices";
+import DashboardCard from "@/components/dashboardCard/index";
+import TableDashboard from "@/components/table-dashboard/index";
 import transitionPage from "../../../../components/transitionPage/index";
+import employerServices from "../../../../core/services/modules/employerServices";
 export default {
   name: "ongoing-services-employer",
-  components: { DashboardCard, ProjectList, DialogDashboard, transitionPage },
+  components: { DashboardCard, TableDashboard, transitionPage },
   props: [],
-  mixins: [],
   data() {
     return {
-      dialog: false,
-      pageCount: 5,
+      valid: true,
+      name: "",
+      pageCount: 20,
       page: 1,
+      totalPage: 10,
+      paginationData: null,
       showSelect: true,
-      indexProjectsList: [],
-      totalData: null,
-      status: "ongoing",
-      // nameRules: [
-      //   v => !!v || "Name is required",
-      //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
-      // ],
-      projectListItems: [
-        {
-          id: 1,
-          name: "name",
-          title: "ssssss",
-          amount: "در انتظار تایید کارفرما",
-          time: "29/2/1400",
-          expirationStatus: "منقضی شده"
-        }
-      ]
+      indexProjectsList: []
     };
   },
-  computed: {
-    totalPage() {
-      return 3;
-    }
-  },
+  computed: {},
   mounted() {
-    this.getOngoingJobOffer();
+    this.getOngoingProjects();
   },
   methods: {
-    getOngoingJobOffer() {
-      // const options = {
-      //   status: this.status,
-      //   page: 1,
-      //   perPage: 5
-      // };
-      employerServices.indexJobOffers(this.status).then(res => {
+    redirectToProjectDetail(id, estimationId) {
+      this.$router.push({
+        path: `ongoing-services/${id}/service-detail`,
+        query: { estimationId }
+      });
+    },
+    getOngoingProjects() {
+      const options = {
+        status: "ongoing"
+        // page: 1,
+        // perPage: 5
+      };
+      employerServices.getIndexServices(options).then(res => {
         this.indexProjectsList = res.data.data;
+        this.paginationData = res.data.data?.pagination;
       });
     },
     changePage(currentPage) {
       const options = {
-        status: this.status,
+        status: "ongoing",
         page: currentPage,
         perPage: 5
       };
-      employerServices.indexJobOffers(options).then(res => {
+      employerServices.getIndexServices(options).then(res => {
+        this.indexProjectsList = res.data.data;
         this.page = currentPage;
-        console.log(res);
-      });
-    },
-    redirectToServiceDetail(id, serviceId) {
-      this.$router.push({
-        path: `ongoing-services/${id}/service-detail`,
-        query: { serviceId: serviceId }
       });
     }
   }

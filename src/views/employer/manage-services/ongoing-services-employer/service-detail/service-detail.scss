@@ -28,3 +28,75 @@
     }
   }
 }
+.progress-level {
+  background-color: $surface-150;
+  min-height: 120px;
+  padding: 30px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+
+  .level {
+    background-color: #fff;
+    border: 1px solid $surface-200;
+
+    &:first-child {
+      border-radius: 0 8px 8px 0;
+    }
+    &:last-child {
+      border-radius: 8px 0 0 8px;
+    }
+  }
+  .lock {
+    background-color: #8e8e8e;
+  }
+  .pending {
+    background-color: #e5a000;
+  }
+  .finished {
+    background-color: #59c1b8;
+  }
+  .lock-text {
+    line-height: 50px;
+  }
+}
+.v-list-item {
+  background-color: $surface-hover !important;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.chat-area {
+  background: $surface-100;
+  height: 50vh;
+  overflow: auto;
+  margin: 0 auto 2em auto;
+  border: 3px solid $surface-350;
+  padding-top: 30px;
+}
+.chat-header {
+  height: 70px;
+  padding: 15px;
+  line-height: 33px;
+  border: 3px solid $surface-350;
+  border-bottom: transparent;
+  border-radius: 10px 10px 0 0;
+}
+.message {
+  width: 45%;
+  border-radius: 10px;
+  padding: 0.9em;
+  font-size: 0.7em;
+}
+.message-out {
+  background: $blue-100;
+  color: $surface-100;
+  margin-left: 50%;
+  margin-right: 10px;
+}
+.message-in {
+  background: #f1f0f0;
+  color: black;
+  margin-right: 54%;
+  text-align: right;
+  padding-left: 10px;
+}

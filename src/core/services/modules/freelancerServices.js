@@ -13,8 +13,21 @@ class freelancerServices {
     return API_V1.get(`/admin/freelancer/proposals/${id}`);
   }
 
-  getFilteredProjects(status) {
-    return API_V1.get(`/admin/freelancer/projects/${status}`);
+  getOngoingProposalById(id) {
+    return API_V1.get(`/admin/freelancer/estimation/${id}`);
+  }
+
+  getFilteredProjects(options) {
+    return API_V1.get(
+      `/admin/freelancer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
+    );
+  }
+
+  getFilteredServices(options) {
+    return API_V1.get(
+      `/admin/freelancer/service/job_offers/${options}`
+      // `/admin/freelancer/services/${options.status}?per_page=${options.perPage}&page=${options.page}`
+    );
   }
 
   submitMilestone(body) {
@@ -23,6 +36,10 @@ class freelancerServices {
 
   getChatList(proposalId) {
     return API_V1.get(`/chat/proposal/${proposalId}`);
+  }
+
+  getChatListForService(estimationId) {
+    return API_V1.get(`/chat/estimation/${estimationId}`);
   }
 
   getChatListFreelancer(proposalId) {

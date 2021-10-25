@@ -1,45 +1,38 @@
-<dashboard-card :titleCard="$t('sidebar.ongoingServices')">
+<dashboard-card :titleCard="$t('sidebar.ongoingProjects')">
   <v-container v-if="!this.$route.params.id">
     <v-row>
       <v-col
         cols="12"
         v-for="projectList in indexProjectsList"
         :key="projectList.id"
-        @click="redirectToServiceDetail(projectList.id, projectList.service_id)"
+        @click="redirectToProjectDetail(projectList.id, projectList['estimation_id'])"
       >
         <div class="container--fluid d-lg-flex d-md-block project-row">
           <div
-            class="col-lg-8 col-md-12 d-flex flex-column align-start justify-center"
+            class="col-lg-7 col-md-12 d-flex flex-column align-start justify-center"
           >
             <div>
               <span
                 ><v-icon color="primary">mdi-check-circle</v-icon>
-                {{ projectList.title }}
+                {{ projectList.title}}
               </span>
             </div>
-            <div class="font-weight-medium mx-2">{{projectList.status}}</div>
+            <div class="font-weight-medium mx-2">
+              {{projectList.description | readMore(60, "...")}}
+            </div>
           </div>
-          <div class="col-lg-4 col-md-12 d-flex">
+          <div class="col-lg-5 col-md-12 d-flex">
             <div class="row justify-space-around align-center">
-              <!--              <div class="d-flex align-center">-->
-              <!--                <v-btn-->
-              <!--                  depressed-->
-              <!--                  color="primary"-->
-              <!--                  @click="redirectToServiceDetail(projectList.id)"-->
-              <!--                >-->
-              <!--                  ۱۴ پیشنهاد-->
-              <!--                  <v-icon right dark>-->
-              <!--                    mdi-briefcase-account-->
-              <!--                  </v-icon>-->
-              <!--                </v-btn>-->
-              <!--              </div>-->
+              <div class="d-flex align-center">
+                <v-btn depressed color="primary">
+                  {{ projectList['unread_messages']}} پیام جدید
+                  <v-icon right dark>
+                    mdi-chat
+                  </v-icon>
+                </v-btn>
+              </div>
               <div class="expired">
-                <v-btn
-                  depressed
-                  fab
-                  text
-                  @click="redirectToServiceDetail(projectList.id, projectList.service_id)"
-                >
+                <v-btn depressed fab text>
                   <v-icon x-large>
                     mdi-chevron-left
                   </v-icon>
@@ -51,8 +44,15 @@
       </v-col>
     </v-row>
     <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
-      هیچ خدماتی یافت نشد
+      هیچ موردی یافت نشد
     </div>
+    <!--    <div class="col-12 text-center pt-2">-->
+    <!--      <v-pagination-->
+    <!--        color="primary"-->
+    <!--        :length="totalPage"-->
+    <!--        :value="page"-->
+    <!--      ></v-pagination>-->
+    <!--    </div>-->
   </v-container>
   <transitionPage>
     <router-view v-if="this.$route.params.id" />

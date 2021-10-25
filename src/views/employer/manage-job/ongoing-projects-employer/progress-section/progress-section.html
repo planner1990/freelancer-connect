@@ -78,7 +78,9 @@
         <div class="d-flex justify-space-between align-center">
           <div>
             <!--          <div>بخش {{installments | installments}}</div>-->
-            <div class="lock-text" v-if="mileStone.status === undefined">قفل</div>
+            <div class="lock-text" v-if="mileStone.status === undefined">
+              قفل
+            </div>
             <div v-if="mileStone.status === 0">در انتظار پرداخت</div>
             <div v-if="mileStone.status === 1">در انتظار بررسی</div>
             <div v-if="mileStone.status === 2">خاتمه یافته</div>
@@ -112,7 +114,7 @@
                     <v-container>
                       <v-row>
                         <v-col cols="12">
-                          مبلغ {{projectDetails.price | roundNumber |
+                          مبلغ {{mileStone['payment_amount'] | roundNumber |
                           thousandMask}} ریال را پرداخت کنید.
                         </v-col>
                       </v-row>
@@ -211,65 +213,6 @@
           </div>
         </div>
       </v-col>
-      <!--      <v-col class="level d-flex justify-space-between" cols="4">-->
-      <!--        <div>-->
-      <!--          <div>بخش دوم</div>-->
-      <!--          <div>انجام شده</div>-->
-      <!--        </div>-->
-      <!--        <div>-->
-      <!--          <v-dialog v-model="dialog" persistent max-width="400px">-->
-      <!--            <template v-slot:activator="{ on, attrs }">-->
-      <!--              <v-btn-->
-      <!--                class="ma-2"-->
-      <!--                color="primary"-->
-      <!--                outlined-->
-      <!--                v-bind="attrs"-->
-      <!--                v-on="on"-->
-      <!--              >-->
-      <!--                انجام شد-->
-      <!--              </v-btn>-->
-      <!--            </template>-->
-      <!--            <v-form ref="form" v-model="valid" lazy-validation>-->
-      <!--              <v-card-->
-      <!--                class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"-->
-      <!--              >-->
-      <!--                <v-card-title>-->
-      <!--                  <span class="text-h5">فایل بخش دوم</span>-->
-      <!--                </v-card-title>-->
-      <!--                <v-card-text>-->
-      <!--                  <v-container>-->
-      <!--                    <v-row>-->
-      <!--                      <v-col cols="12">-->
-      <!--                        uygkugkugkug-->
-      <!--                      </v-col>-->
-      <!--                    </v-row>-->
-      <!--                  </v-container>-->
-      <!--                </v-card-text>-->
-      <!--                <v-card-actions>-->
-      <!--                  <v-spacer></v-spacer>-->
-      <!--                  <v-btn color="error" @click="dialog = false">-->
-      <!--                    بستن-->
-      <!--                  </v-btn>-->
-      <!--                  <v-btn color="primary" @click="submitMilestone">-->
-      <!--                    انتقال به صفحه پرداخت-->
-      <!--                  </v-btn>-->
-      <!--                </v-card-actions>-->
-      <!--              </v-card>-->
-      <!--            </v-form>-->
-      <!--          </v-dialog>-->
-      <!--        </div>-->
-      <!--      </v-col>-->
-      <!--      <v-col class="level d-flex justify-space-between" cols="4">-->
-      <!--        <div>-->
-      <!--          <div>بخش سوم</div>-->
-      <!--          <div>قفل</div>-->
-      <!--        </div>-->
-      <!--        <div>-->
-      <!--          <v-btn class="ma-2" outlined color="primary">-->
-      <!--            انجام شد-->
-      <!--          </v-btn>-->
-      <!--        </div>-->
-      <!--      </v-col>-->
     </v-row>
   </v-container>
 
@@ -295,6 +238,7 @@
         id="person2-form"
       >
         <v-textarea
+          v-if="!completedAt"
           v-model="youMessage"
           class="mt-3 col-10"
           type="text"
@@ -305,11 +249,28 @@
           dense
         >
         </v-textarea>
-        <v-btn depressed class="mb-4" large color="primary" type="submit">
+        <v-btn
+          v-if="!completedAt"
+          depressed
+          class="mb-4"
+          large
+          color="primary"
+          type="submit"
+        >
           ارسال پیام
           <v-icon class="mx-2">
             mdi-message-text
           </v-icon>
+        </v-btn>
+        <v-btn
+          v-if="completedAt"
+          depressed
+          class="mb-4 mt-5"
+          large
+          block
+          disabled
+        >
+          پیام بسته شد
         </v-btn>
       </form>
     </section>

@@ -85,7 +85,7 @@
                         </template>
                       </v-file-input>
                     </v-col>
-                      <v-col><v-divider class="divide-card"></v-divider></v-col>
+                    <v-col><v-divider class="divide-card"></v-divider></v-col>
                     <v-col cols="12">
                       <v-text-field
                         label="قیمت پیشنهادی پایه (ریال)*"
@@ -191,8 +191,19 @@
                 <v-btn color="error" @click="rejectEstimation(item.id)">
                   رد پیشنهاد
                 </v-btn>
-                <v-btn color="primary" @click="confirmEstimation(item['estimation_id'])">
-                  تایید و ارسال
+                <v-btn
+                  v-if="disableInput"
+                  color="primary"
+                  @click="confirmEstimation(item['estimation_id'])"
+                >
+                  تایید فریلنسر
+                </v-btn>
+                <v-btn
+                  v-if="!disableInput"
+                  color="primary"
+                  @click="confirmEstimation(item.id)"
+                >
+                  تایید پیشنهاد
                 </v-btn>
               </v-card-actions>
             </v-card>

@@ -46,6 +46,18 @@
       border-radius: 8px 0 0 8px;
     }
   }
+  .lock {
+    background-color: #8e8e8e;
+  }
+  .pending {
+    background-color: #e5a000;
+  }
+  .finished {
+    background-color: #59c1b8;
+  }
+  .lock-text {
+    line-height: 50px;
+  }
 }
 .v-list-item {
   background-color: $surface-hover !important;

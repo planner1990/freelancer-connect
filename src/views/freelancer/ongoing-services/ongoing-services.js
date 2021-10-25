@@ -1,7 +1,7 @@
-import DashboardCard from "@/components/dashboardCard/index";
-import TableDashboard from "@/components/table-dashboard/index";
-import freelancerServices from "@/core/services/modules/freelancerServices";
-import transitionPage from "@/components/transitionPage/index";
+import DashboardCard from "../../../components/dashboardCard/index";
+import TableDashboard from "../../../components/table-dashboard/index";
+import freelancerServices from "../../../core/services/modules/freelancerServices";
+import transitionPage from "../../../components/transitionPage/index";
 export default {
   name: "ongoing-services",
   components: { DashboardCard, TableDashboard, transitionPage },
@@ -15,31 +15,40 @@ export default {
       showSelect: true,
       indexProjectsList: [],
       totalPage: null,
-      nameRules: [
-        v => !!v || "لطفا نام خود را وارد کنید",
-        v => (v && v.length <= 50) || "نام وارد شده باید بیش از ۵۰ کاراکتر باشد"
-      ]
+      paginationData: null
     };
   },
   computed: {},
   mounted() {
-    this.getOngoingServices();
+    this.getOngoingProjects();
   },
   methods: {
-    redirectToProjectDetail(id, serviceId) {
+    redirectToProjectDetail(id, estimationId) {
       this.$router.push({
         path: `ongoing-services/${id}/progress-section`,
-        query: { serviceId }
+        query: { estimationId }
       });
     },
-    getOngoingServices() {
+    getOngoingProjects() {
       // const options = {
-      //   status: this.status,
+      //   status: "ongoing",
       //   page: 1,
       //   perPage: 5
       // };
-      freelancerServices.indexJobOffers("ongoing").then(res => {
+      freelancerServices.getFilteredServices("ongoing").then(res => {
         this.indexProjectsList = res.data.data;
+        this.paginationData = res.data.data?.pagination;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        status: "ongoing",
+        page: currentPage,
+        perPage: 5
+      };
+      freelancerServices.getFilteredServices(options).then(res => {
+        this.indexProjectsList = res.data.data;
+        this.page = currentPage;
       });
     }
   }

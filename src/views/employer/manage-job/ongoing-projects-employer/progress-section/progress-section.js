@@ -27,6 +27,7 @@ export default {
       projectDetails: {},
       proposalForm: {},
       mileStones: [],
+      completedAt: null,
       // nameRules: [
       //   v => !!v || "Name is required",
       //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
@@ -144,6 +145,7 @@ export default {
         .indexMilestone(proposalId)
         .then(res => {
           this.mileStones = res.data.data?.milestones;
+          this.completedAt = res.data.data?.completed_at;
         })
         .catch(error => {
           console.log(error);

@@ -1,6 +1,7 @@
 import DashboardCard from "../../../../components/dashboardCard/index";
 import ProjectList from "../../../../components/project-list/index";
 import DialogDashboard from "../../../../components/dialog-dashboard/index";
+import employerServices from "../../../../core/services/modules/employerServices";
 import headerSection from "../../../../components/header-section/index";
 import freelancerServices from "../../../../core/services/modules/freelancerServices";
 import Vue from "vue";
@@ -25,6 +26,9 @@ export default {
       status: "pending",
       projectDetails: {},
       proposalForm: {},
+      mileStones: [],
+      unlock: 0,
+      completedAt: null,
       nameRules: [
         v => !!v || "لطفا نام خود را وارد کنید",
         v => (v && v.length <= 50) || "نام وارد شده باید بیش از ۵۰ کاراکتر باشد"
@@ -70,25 +74,26 @@ export default {
     }
   },
   mounted() {
-    this.showDetailService();
-    this.getProposalsById();
+    this.showDetailProject();
+    // this.getProposalsById();
     this.getChatList();
+    this.getIndexMilestone();
   },
   methods: {
-    showDetailService() {
-      const serviceId = this.$route.query.serviceId;
-      freelancerServices.showServiceById(serviceId).then(res => {
+    showDetailProject() {
+      const id = this.$route.params.id;
+      employerServices.serviceShowById(id).then(res => {
         this.projectDetails = res.data.data;
       });
     },
-    getProposalsById() {
-      freelancerServices
-        .getPendingProposalById(this.$route.params.id)
-        .then(res => {
-          this.proposalForm = res.data.data["freelancer"];
-          this.attachments = res.data.data.attachments;
-        });
-    },
+    // getProposalsById() {
+    //   freelancerServices
+    //     .getPendingProposalById(this.$route.params.id)
+    //     .then(res => {
+    //       this.proposalForm = res.data.data["freelancer"];
+    //       this.attachments = res.data.data.attachments;
+    //     });
+    // },
     changePage(currentPage) {
       const options = {
         status: this.status,
@@ -105,7 +110,7 @@ export default {
         this.messages.push({ text: this.youMessage, role: "freelancer" });
         const body = {
           type: "estimation",
-          id: this.$route.query.serviceId,
+          id: this.$route.query.estimationId,
           text: this.youMessage
         };
         this.storeChat(body);
@@ -134,29 +139,49 @@ export default {
         });
       }
     },
-    submitMilestone() {
-      const body = {
-        type: "estimation",
-        id: this.$route.params.id,
-        attachment_id: this.jobOfferForm.attachmentId
-      };
+    submitMilestone(index) {
+      if (index === this.unlock) {
+        const body = {
+          type: "estimation",
+          id: this.$route.query.estimationId,
+          attachment_id: this.jobOfferForm.attachmentId
+        };
+        freelancerServices
+          .submitMilestone(body)
+          .then(() => {
+            this.dialog = false;
+            this.unlock += 1;
+            this.getIndexMilestone();
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    },
+    getChatList() {
+      const estimationId = this.$route.query.estimationId;
       freelancerServices
-        .submitMilestone(body)
+        .getChatListForService(estimationId)
         .then(res => {
           console.log(res);
-          this.dialog = false;
+          this.messages = res.data.data;
         })
         .catch(error => {
           console.log(error);
         });
     },
-    getChatList() {
-      const id = this.$route.params.id;
-      freelancerServices
-        .getChatListFreelancer(id)
-        .then(res => {
-          console.log(res);
-          this.messages = res.data.data;
+    getIndexMilestone() {
+      const estimationId = this.$route.query.estimationId;
+      employerServices
+        .indexMilestoneForServices(estimationId)
+        .then(response => {
+          this.mileStones = response.data.data?.milestones;
+          this.completedAt = response.data.data?.completed_at;
+          response.data.data.milestones.forEach((item, index) => {
+            if (item.status === 2) {
+              this.unlock = index + 1;
+            }
+          });
         })
         .catch(error => {
           console.log(error);

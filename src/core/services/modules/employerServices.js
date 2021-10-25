@@ -3,8 +3,13 @@ import { API_V1 } from "../config/auth-axios";
 class employerServices {
   getIndexProjects(options) {
     return API_V1.get(
-      `admin/employer/projects/${options.status}`
-      // `admin/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
+      `admin/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
+    );
+  }
+
+  getIndexServices(options) {
+    return API_V1.get(
+      `/admin/employer/service/job_offers?status=${options.status}`
     );
   }
 
@@ -14,6 +19,10 @@ class employerServices {
 
   projectShowById(id) {
     return API_V1.get(`projects/${id}`);
+  }
+
+  serviceShowById(id) {
+    return API_V1.get(`services/${id}`);
   }
 
   showProposalById(id) {
@@ -30,6 +39,10 @@ class employerServices {
 
   indexMilestone(proposalId) {
     return API_V1.get(`/admin/milestone/proposal/${proposalId}`);
+  }
+
+  indexMilestoneForServices(estimationId) {
+    return API_V1.get(`/admin/milestone/estimation/${estimationId}`);
   }
 
   indexJobOffers(status) {

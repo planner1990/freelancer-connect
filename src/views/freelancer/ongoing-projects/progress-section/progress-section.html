@@ -104,7 +104,8 @@
             max-width="600px"
           >
             <template v-slot:activator="{ on, attrs }">
-              <v-btn v-if="mileStoneIndex === unlock"
+              <v-btn
+                v-if="mileStoneIndex === unlock"
                 class="ma-2"
                 color="primary"
                 outlined
@@ -204,6 +205,7 @@
       >
         <v-textarea
           v-model="youMessage"
+          v-if="!completedAt"
           class="mt-3 col-10"
           type="text"
           label="پیام شما"
@@ -213,11 +215,28 @@
           dense
         >
         </v-textarea>
-        <v-btn depressed class="mb-4" large color="primary" type="submit">
+        <v-btn
+          v-if="!completedAt"
+          depressed
+          class="mb-4"
+          large
+          color="primary"
+          type="submit"
+        >
           ارسال پیام
           <v-icon class="mx-2">
             mdi-message-text
           </v-icon>
+        </v-btn>
+        <v-btn
+          v-if="completedAt"
+          depressed
+          class="mb-4 mt-5"
+          large
+          block
+          disabled
+        >
+          پیام بسته شد
         </v-btn>
       </form>
     </section>

@@ -24,10 +24,7 @@
           <div class="col-lg-5 col-md-12 d-flex">
             <div class="row justify-space-around align-center">
               <div class="d-flex align-center">
-                <v-btn
-                  depressed
-                  color="primary"
-                >
+                <v-btn depressed color="primary">
                   {{ projectList['unread_messages']}} پیام جدید
                   <v-icon right dark>
                     mdi-chat
@@ -35,11 +32,7 @@
                 </v-btn>
               </div>
               <div class="expired">
-                <v-btn
-                  depressed
-                  fab
-                  text
-                >
+                <v-btn depressed fab text>
                   <v-icon x-large>
                     mdi-chevron-left
                   </v-icon>
@@ -52,6 +45,15 @@
     </v-row>
     <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
       هیچ پروژه ای یافت نشد
+    </div>
+    <div class="col-12 text-center pt-2">
+      <v-pagination
+        color="primary"
+        :length="paginationData['last_page']"
+        :total-visible="paginationData.total"
+        v-model="paginationData['current_page']"
+        @input="changePage($event)"
+      ></v-pagination>
     </div>
   </v-container>
   <transitionPage>

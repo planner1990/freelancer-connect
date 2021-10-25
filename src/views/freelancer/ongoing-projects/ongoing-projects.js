@@ -14,11 +14,8 @@ export default {
       page: 1,
       showSelect: true,
       indexProjectsList: [],
-      totalPage: null
-      // nameRules: [
-      //   v => !!v || "Name is required",
-      //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
-      // ]
+      totalPage: null,
+      paginationData: null
     };
   },
   computed: {},
@@ -33,13 +30,25 @@ export default {
       });
     },
     getOngoingProjects() {
-      // const options = {
-      //   status: this.status,
-      //   page: 1,
-      //   perPage: 5
-      // };
-      freelancerServices.getFilteredProjects("ongoing").then(res => {
+      const options = {
+        status: "ongoing",
+        page: 1,
+        perPage: 5
+      };
+      freelancerServices.getFilteredProjects(options).then(res => {
         this.indexProjectsList = res.data.data.projects;
+        this.paginationData = res.data.data.pagination;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        status: "ongoing",
+        page: currentPage,
+        perPage: 5
+      };
+      freelancerServices.getFilteredProjects(options).then(res => {
+        this.indexProjectsList = res.data.data.projects;
+        this.page = currentPage;
       });
     }
   }

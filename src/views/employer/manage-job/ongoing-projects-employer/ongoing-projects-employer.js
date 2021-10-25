@@ -10,11 +10,12 @@ export default {
     return {
       valid: true,
       name: "",
-      pageCount: 5,
+      pageCount: 20,
       page: 1,
+      totalPage: 10,
+      paginationData: null,
       showSelect: true,
-      indexProjectsList: [],
-      totalPage: null
+      indexProjectsList: []
     };
   },
   computed: {},
@@ -30,10 +31,24 @@ export default {
     },
     getOngoingProjects() {
       const options = {
-        status: "ongoing"
+        status: "ongoing",
+        page: 1,
+        perPage: 5
       };
       employerServices.getIndexProjects(options).then(res => {
         this.indexProjectsList = res.data.data.projects;
+        this.paginationData = res.data.data.pagination;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        status: "ongoing",
+        page: currentPage,
+        perPage: 5
+      };
+      employerServices.getIndexProjects(options).then(res => {
+        this.indexProjectsList = res.data.data.projects;
+        this.page = currentPage;
       });
     }
   }
