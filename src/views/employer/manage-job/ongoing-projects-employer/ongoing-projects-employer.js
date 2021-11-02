@@ -1,7 +1,7 @@
 import DashboardCard from "@/components/dashboardCard/index";
 import TableDashboard from "@/components/table-dashboard/index";
-import transitionPage from "../../../../components/transitionPage/index";
-import employerServices from "../../../../core/services/modules/employerServices";
+import transitionPage from "@/components/transitionPage/index";
+import employerServices from "@/core/services/modules/employerServices";
 export default {
   name: "ongoing-projects-employer",
   components: { DashboardCard, TableDashboard, transitionPage },
