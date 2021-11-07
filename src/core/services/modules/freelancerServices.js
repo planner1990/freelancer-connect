@@ -2,31 +2,31 @@ import { API_V1 } from "../config/auth-axios";
 
 class freelancerServices {
   getAllProposals() {
-    return API_V1.get(`/admin/freelancer/proposal_list`);
+    return API_V1.get(`/freelancer/proposal_list`);
   }
 
   getPendingProposals() {
-    return API_V1.get(`/admin/freelancer/proposal_list?status=0`);
+    return API_V1.get(`/freelancer/proposal_list?status=0`);
   }
 
   getPendingProposalById(id) {
-    return API_V1.get(`/admin/freelancer/proposals/${id}`);
+    return API_V1.get(`/freelancer/proposals/${id}`);
   }
 
   getOngoingProposalById(id) {
-    return API_V1.get(`/admin/freelancer/estimation/${id}`);
+    return API_V1.get(`/freelancer/estimation/${id}`);
   }
 
   getFilteredProjects(options) {
     return API_V1.get(
-      `/admin/freelancer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
+      `/freelancer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
     );
   }
 
   getFilteredServices(options) {
     return API_V1.get(
-      `/admin/freelancer/service/job_offers/${options}`
-      // `/admin/freelancer/services/${options.status}?per_page=${options.perPage}&page=${options.page}`
+      `/freelancer/service/job_offers/${options}`
+      // `/freelancer/services/${options.status}?per_page=${options.perPage}&page=${options.page}`
     );
   }
 
@@ -51,7 +51,7 @@ class freelancerServices {
   }
 
   indexJobOffers(status) {
-    return API_V1.get(`/admin/freelancer/service/job_offers/${status}`);
+    return API_V1.get(`/freelancer/service/job_offers/${status}`);
   }
 
   showServiceById(serviceId) {
@@ -59,23 +59,23 @@ class freelancerServices {
   }
 
   showProfile() {
-    return API_V1.get(`/admin/freelancer/profile`);
+    return API_V1.get(`/freelancer/profile`);
   }
 
   updateProfile(body) {
-    return API_V1.post(`/admin/freelancer/update/profile`, body);
+    return API_V1.post(`/freelancer/update/profile`, body);
   }
 
   updateExperienceEducation(body) {
-    return API_V1.post(`/admin/freelancer/update-experience-education`, body);
+    return API_V1.post(`/freelancer/update-experience-education`, body);
   }
 
   updateProjectsAward(body) {
-    return API_V1.post(`/admin/freelancer/update-project-award`, body);
+    return API_V1.post(`/freelancer/update-project-award`, body);
   }
 
   myServices() {
-    return API_V1.get(`/admin/freelancer/services`);
+    return API_V1.get(`/freelancer/services`);
   }
 }
 

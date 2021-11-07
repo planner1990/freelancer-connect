@@ -3,18 +3,18 @@ import { API_V1 } from "../config/auth-axios";
 class employerServices {
   getIndexProjects(options) {
     return API_V1.get(
-      `admin/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
+      `/employer/projects/${options.status}?per_page=${options.perPage}&page=${options.page}`
     );
   }
 
   getIndexServices(options) {
     return API_V1.get(
-      `/admin/employer/service/job_offers?status=${options.status}`
+      `/employer/service/job_offers?status=${options.status}`
     );
   }
 
   getProposalsPerProject(body) {
-    return API_V1.post("admin/employer/proposals", body);
+    return API_V1.post("/employer/proposals", body);
   }
 
   projectShowById(id) {
@@ -26,15 +26,15 @@ class employerServices {
   }
 
   showProposalById(id) {
-    return API_V1.get(`admin/employer/proposal/${id}`);
+    return API_V1.get(`/employer/proposal/${id}`);
   }
 
   proposalAction(body) {
-    return API_V1.post("admin/employer/proposal/update", body);
+    return API_V1.post("/employer/proposal/update", body);
   }
 
   confirmProposalByEmployer(proposalId) {
-    return API_V1.get(`/admin/employer/proposal/hire/${proposalId}`);
+    return API_V1.get(`/employer/proposal/hire/${proposalId}`);
   }
 
   indexMilestone(proposalId) {
@@ -46,31 +46,31 @@ class employerServices {
   }
 
   indexJobOffers(status) {
-    return API_V1.get(`/admin/employer/service/job_offers?status=${status}`);
+    return API_V1.get(`/employer/service/job_offers?status=${status}`);
   }
 
   showJobOfferById(id) {
-    return API_V1.get(`/admin/employer/service/job_offers/${id}`);
+    return API_V1.get(`/employer/service/job_offers/${id}`);
   }
 
   indexEstimations(id) {
-    return API_V1.get(`/admin/employer/service/job_offers/estimation/${id}`);
+    return API_V1.get(`/employer/service/job_offers/estimation/${id}`);
   }
 
   showEstimation(id) {
-    return API_V1.get(`/admin/employer/service/estimation/${id}`);
+    return API_V1.get(`/employer/service/estimation/${id}`);
   }
 
   confirmServiceEmployment(id) {
-    return API_V1.get(`/admin/employer/service/employment/${id}`);
+    return API_V1.get(`/employer/service/employment/${id}`);
   }
 
   rejectServiceEstimation(id) {
-    return API_V1.get(`/admin/employer/service/reject_estimation/${id}`);
+    return API_V1.get(`/employer/service/reject_estimation/${id}`);
   }
 
   myProjects() {
-    return API_V1.get(`/admin/employer/projects`);
+    return API_V1.get(`/employer/projects`);
   }
 
   fakePaymentEmployer(body) {

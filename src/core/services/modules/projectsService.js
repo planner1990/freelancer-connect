@@ -2,10 +2,10 @@ import { API_V1 } from "../config/auth-axios";
 
 class projectsService {
   createProject(body) {
-    return API_V1.post("admin/employer/projects", body);
+    return API_V1.post("/employer/projects", body);
   }
   createService(body) {
-    return API_V1.post("admin/freelancer/service", body);
+    return API_V1.post("/freelancer/service", body);
   }
   getAllServices() {
     return API_V1.get(`services`);
@@ -17,7 +17,7 @@ class projectsService {
     return API_V1.get(`projects/${id}`);
   }
   sendJobOffer(body) {
-    return API_V1.post("admin/employer/service", body);
+    return API_V1.post("/employer/service", body);
   }
   projectDurations() {
     return API_V1.get(`type/project_durations`);
@@ -37,7 +37,7 @@ class projectsService {
   }
 
   submitProposal(body) {
-    return API_V1.post("admin/freelancer/proposals", body);
+    return API_V1.post("/freelancer/proposals", body);
   }
 }
 
