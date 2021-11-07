@@ -31,7 +31,7 @@ class freelancerServices {
   }
 
   submitMilestone(body) {
-    return API_V1.post(`/admin/milestone`, body);
+    return API_V1.post(`/freelancer/milestone`, body);
   }
 
   getChatList(proposalId) {

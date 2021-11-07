@@ -38,11 +38,11 @@ class employerServices {
   }
 
   indexMilestone(proposalId) {
-    return API_V1.get(`/admin/milestone/proposal/${proposalId}`);
+    return API_V1.get(`/milestone/proposal/${proposalId}`);
   }
 
   indexMilestoneForServices(estimationId) {
-    return API_V1.get(`/admin/milestone/estimation/${estimationId}`);
+    return API_V1.get(`/milestone/estimation/${estimationId}`);
   }
 
   indexJobOffers(status) {
@@ -74,11 +74,11 @@ class employerServices {
   }
 
   fakePaymentEmployer(body) {
-    return API_V1.post("/admin/employer/milestone/pay", body);
+    return API_V1.post("/employer/milestone/pay", body);
   }
 
   mileStoneAction(body) {
-    return API_V1.post("/admin/employer/milestone/status", body);
+    return API_V1.post("/employer/milestone/status", body);
   }
 }
 
