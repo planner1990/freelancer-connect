@@ -85,8 +85,8 @@ export default {
             type: "date-picker-to",
             label: "تا تاریخ",
             class: "col-lg-6 col-md-12"
-          },
-          { type: "text-area", label: "توضیحات", class: "col-md-12" }
+          }
+          // { type: "text-area", label: "توضیحات", class: "col-md-12" }
         ]
       },
       addEducationDataForDialogForm: {
@@ -112,8 +112,8 @@ export default {
             type: "date-picker-to",
             label: "تا تاریخ",
             class: "col-lg-6 col-md-12"
-          },
-          { type: "text-area", label: "توضیحات", class: "col-md-12" }
+          }
+          // { type: "text-area", label: "توضیحات", class: "col-md-12" }
         ]
       },
       addProjectsDataForDialogForm: {
@@ -235,7 +235,6 @@ export default {
         experience: experience,
         education: education
       };
-      console.log(body);
       freelancerServices.updateExperienceEducation(body).then();
     },
     updateProjectsAward() {
@@ -252,7 +251,6 @@ export default {
         award: award,
         project: projects
       };
-      console.log(body);
       freelancerServices.updateProjectsAward(body).then();
     }
   },

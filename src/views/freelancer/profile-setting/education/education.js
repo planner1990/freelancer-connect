@@ -1,6 +1,7 @@
 import DialogDashboard from "../../../../components/dialog-dashboard/index";
 import { mapGetters } from "vuex";
 import * as types from "../../../../shared/store/types";
+import freelancerServices from "../../../../core/services/modules/freelancerServices";
 export default {
   name: "education",
   components: { DialogDashboard },
@@ -10,7 +11,8 @@ export default {
       date: null,
       location: "",
       start: null,
-      end: null
+      end: null,
+      educationList: []
     };
   },
   computed: {
@@ -22,7 +24,15 @@ export default {
       return this.formData;
     }
   },
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.showProfile();
+  },
+  methods: {
+    showProfile() {
+      freelancerServices.showProfile().then(res => {
+        this.educationList = res.data.data.user.profile.education;
+      });
+    }
+  },
   watch: {}
 };
