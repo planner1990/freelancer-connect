@@ -11,6 +11,9 @@ Vue.filter("proposalStatus", function(statusCode) {
       status = "استخدام شده";
       break;
     case 2:
+      status = "تکمیل شده";
+      break;
+    case 3:
       status = "رد شده";
       break;
     default:

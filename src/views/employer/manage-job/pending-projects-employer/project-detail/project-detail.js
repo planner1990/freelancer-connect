@@ -59,10 +59,8 @@ export default {
       });
     },
     getProposalsPerProject() {
-      const body = {
-        project_id: this.$route.params.id
-      };
-      employerServices.getProposalsPerProject(body).then(res => {
+      const projectId = this.$route.params.id;
+      employerServices.getProposalsPerProject(projectId).then(res => {
         this.proposalsList = res.data.data;
       });
     },

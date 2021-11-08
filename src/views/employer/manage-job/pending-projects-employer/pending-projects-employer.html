@@ -17,7 +17,9 @@
                 {{ projectList.title }}
               </span>
             </div>
-            <div class="font-weight-medium mx-2">{{projectList.status}}</div>
+            <div class="font-weight-medium mx-2">
+              وضعیت پروژه: {{projectList.status | myProjectStatus}}
+            </div>
           </div>
           <div class="col-lg-4 col-md-12 d-flex">
             <div class="row justify-space-around align-center">

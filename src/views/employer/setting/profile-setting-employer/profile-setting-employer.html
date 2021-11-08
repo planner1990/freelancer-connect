@@ -3,7 +3,7 @@
     <header-section
       :header-section-title="$t('form.IndividualAndSkillDetails')"
     ></header-section>
-    <v-row v-if="companyName === ''">
+    <v-row v-if="profileForm.isCompany === 0">
       <v-col lg="6" md="12">
         <v-text-field
           v-model="profileForm.firstName"
@@ -23,7 +23,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-row v-if="companyName !== ''">
+    <v-row v-if="profileForm.isCompany === 1">
       <v-col lg="6" md="12">
         <v-text-field
           v-model="companyName"

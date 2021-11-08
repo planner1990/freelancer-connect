@@ -30,7 +30,8 @@ export default {
         description: "",
         categoryId: null,
         noOfEmployees: "",
-        showSnackbar: false
+        showSnackbar: false,
+        isCompany: null
       },
       companyName: "",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
@@ -90,7 +91,8 @@ export default {
           lastName: user.last_name,
           description: user.profile.description,
           categoryId: user.id,
-          noOfEmployees: String(user.profile.no_of_employees)
+          noOfEmployees: String(user.profile.no_of_employees),
+          isCompany: user.is_company
         };
       });
     },

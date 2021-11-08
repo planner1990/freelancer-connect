@@ -1,4 +1,4 @@
-<dashboard-card :titleCard="$t('sidebar.ongoingProjects')">
+<dashboard-card :titleCard="$t('sidebar.pendingProjects')">
   <v-container v-if="!this.$route.params.id">
     <v-row>
       <v-col
@@ -17,16 +17,14 @@
                 {{ projectList.content | readMore(35, "...")}}
               </span>
             </div>
-            <div class="font-weight-medium mx-2">{{projectList.status}}</div>
+            <div class="font-weight-medium mx-2">
+              وضعیت پروژه: {{projectList.status | proposalStatus}}
+            </div>
           </div>
           <div class="col-lg-4 col-md-12 d-flex">
             <div class="row justify-space-around align-center">
               <div class="expired">
-                <v-btn
-                  depressed
-                  fab
-                  text
-                >
+                <v-btn depressed fab text>
                   <v-icon x-large>
                     mdi-chevron-left
                   </v-icon>

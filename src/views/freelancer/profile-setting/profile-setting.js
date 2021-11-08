@@ -160,7 +160,9 @@ export default {
         last_name: "",
         gender: ""
       },
-      attachments: []
+      attachments: [],
+      experienceList: [],
+      educationList: []
     };
   },
   computed: {
@@ -192,6 +194,8 @@ export default {
     showProfile() {
       freelancerServices.showProfile().then(res => {
         this.profileInfo = res.data.data;
+        this.experienceList = res.data.data.user.profile.experience;
+        this.educationList = res.data.data.user.profile.education;
         if (this.profileInfo.user.company) {
           this.companyName = this.profileInfo.user?.company?.name;
         }
@@ -222,18 +226,16 @@ export default {
       this.attachments.push(value);
     },
     updateExperienceEducation() {
-      let experience = [];
-      let education = [];
       this.listOfFormData.map(item => {
         if (item.type === "experience") {
-          experience.push(item.form);
+          this.experienceList.push(item.form);
         } else if (item.type === "education") {
-          education.push(item.form);
+          this.educationList.push(item.form);
         }
       });
       const body = {
-        experience: experience,
-        education: education
+        experience: this.experienceList,
+        education: this.educationList
       };
       freelancerServices.updateExperienceEducation(body).then();
     },

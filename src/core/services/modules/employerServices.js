@@ -11,8 +11,8 @@ class employerServices {
     return API_V1.get(`/employer/service/job_offers?status=${options.status}`);
   }
 
-  getProposalsPerProject(body) {
-    return API_V1.post("/employer/proposals", body);
+  getProposalsPerProject(projectId) {
+    return API_V1.get(`/employer/proposal/project/${projectId}?status=0`);
   }
 
   projectShowById(id) {
