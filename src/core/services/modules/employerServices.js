@@ -72,7 +72,7 @@ class employerServices {
   }
 
   fakePaymentEmployer(body) {
-    return API_V1.post("/employer/milestone/pay", body);
+    return API_V1.post("/pay", body);
   }
 
   mileStoneAction(body) {

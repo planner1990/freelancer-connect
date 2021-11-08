@@ -1,7 +1,7 @@
 import DialogDashboard from "../../../../components/dialog-dashboard/index";
 import { mapGetters } from "vuex";
 import * as types from "../../../../shared/store/types";
-import freelancerServices from "../../../../core/services/modules/freelancerServices";
+import { freelancerServices } from "@/core/services";
 export default {
   name: "projects",
   components: { DialogDashboard },

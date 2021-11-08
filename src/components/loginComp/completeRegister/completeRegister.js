@@ -9,13 +9,20 @@ export default {
   props: [],
   data() {
     return {
-      firstName: null,
-      lastName: null,
-      companyName: null,
+      firstName: "",
+      lastName: "",
+      companyName: "",
       signInLoading: false,
+      valid: false,
       items: ["نوع اول", "نوع دوم", "نوع سوم"],
       companyTypeLists: [],
-      companyList: ""
+      companyList: "",
+      registerRule: {
+        firstname: [v => !!v || "لطفا موبایل خود را وارد کنید"],
+        lastname: [v => !!v || "لطفا نام خانوادگی را وارد کنید"],
+        companyName: [v => !!v || "لطفا نام شرکت را وارد کنید"],
+        typeOfActivity: [v => !!v || "لطفا یکی از موارد را انتخاب نمایید."]
+      }
     };
   },
   computed: {
@@ -38,37 +45,39 @@ export default {
       this.$router.push("/login/personality");
     },
     registration() {
-      this.signInLoading = true;
-      this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
-        first_name: this.firstName,
-        last_name: this.lastName,
-        company_name: this.companyName,
-        activity_type_id: 1
-      });
-      const body = {
-        first_name: this.firstName ? this.firstName : "",
-        last_name: this.lastName ? this.lastName : "",
-        company_name: this.companyName ? this.companyName : "",
-        role: this.getDataFromStore.role,
-        is_company: this.getDataFromStore.is_company,
-        category_id: this.companyList
-      };
-      AuthService.register(body).then(res => {
-        localStorage.setItem("accessToken", res.data.data.token);
-        if (res.status === 200) {
-          if (
-            this.getEmployerData.currentURL &&
-            this.getDataFromStore.role === "employer"
-          ) {
-            localStorage.setItem("accessToken", res.data.data.token);
-            this.signInLoading = false;
-            this.$router.push(this.getEmployerData.currentURL);
-          } else {
-            this.routToDashboard();
-            this.signInLoading = false;
+      if (this.$refs[`form`].validate() === true) {
+        this.signInLoading = true;
+        this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
+          first_name: this.firstName,
+          last_name: this.lastName,
+          company_name: this.companyName,
+          activity_type_id: 1
+        });
+        const body = {
+          first_name: this.firstName ? this.firstName : "",
+          last_name: this.lastName ? this.lastName : "",
+          company_name: this.companyName ? this.companyName : "",
+          role: this.getDataFromStore.role,
+          is_company: this.getDataFromStore.is_company,
+          category_id: this.companyList
+        };
+        AuthService.register(body).then(res => {
+          localStorage.setItem("accessToken", res.data.data.token);
+          if (res.status === 200) {
+            if (
+              this.getEmployerData.currentURL &&
+              this.getDataFromStore.role === "employer"
+            ) {
+              localStorage.setItem("accessToken", res.data.data.token);
+              this.signInLoading = false;
+              this.$router.push(this.getEmployerData.currentURL);
+            } else {
+              this.routToDashboard();
+              this.signInLoading = false;
+            }
           }
-        }
-      });
+        });
+      }
     },
     routToDashboard() {
       AuthService.getAssignedRole().then(response => {

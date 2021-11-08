@@ -154,7 +154,8 @@ export default {
 
     fakePayment(mileStoneId) {
       const body = {
-        milestone_id: mileStoneId
+        transactionable_type: "milestone",
+        transactionable_id: mileStoneId
       };
       employerServices.fakePaymentEmployer(body).then(res => {
         console.log(res);
