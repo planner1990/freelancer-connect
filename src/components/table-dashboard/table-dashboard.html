@@ -21,9 +21,11 @@
               color="primary"
               v-bind="attrs"
               v-on="on"
-              @click="showEstimationEmployer(item.id)"
+              :disabled="item['has_estimation'] === false"
+              @click="showEstimationEmployer(item['estimation_id'])"
             >
-              <span v-if="!item['has_estimation']">در انتظار پاسخ</span>
+              <span v-if="item['has_estimation'] === false">در انتظار پاسخ</span>
+              <span v-if="!item['has_estimation'] && item['has_estimation'] !== false">ارزیابی</span>
               <span v-if="item['has_estimation']">مشاهده درخواست</span>
             </v-btn>
           </template>

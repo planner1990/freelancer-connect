@@ -12,8 +12,12 @@ class ServiceEmploymentService {
     return API_V1.get(`/employer/service/job_offers?status=${status}`);
   }
 
+  // showEstimationEmployer(id) {
+  //   return API_V1.get(`/employer/service/job_offers/estimation/${id}`);
+  // }
+
   showEstimationEmployer(id) {
-    return API_V1.get(`/employer/service/job_offers/estimation/${id}`);
+    return API_V1.get(`/employer/service/estimation/${id}`);
   }
 
   rejectEstimationEmployer(id) {

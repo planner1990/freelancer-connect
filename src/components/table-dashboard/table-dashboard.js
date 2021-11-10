@@ -1,5 +1,6 @@
 import UploadService from "../../core/services/modules/uploadService";
 import { ServiceEmploymentService } from "../../core/services";
+import thousandMask from "@/shared/mixins/thousandMask";
 
 export default {
   name: "table-dashboard",
@@ -11,6 +12,7 @@ export default {
     "name",
     "disableInput"
   ],
+  mixins: [thousandMask],
   data() {
     return {
       e2: "پیش نویس",
@@ -77,7 +79,16 @@ export default {
       ]
     };
   },
-  computed: {},
+  computed: {
+    maskThousand: {
+      get: function() {
+        return this.numberWithCommas(this.confirmJobOfferForm.minPrice);
+      },
+      set: function(newValue) {
+        this.confirmJobOfferForm.minPrice = newValue;
+      }
+    }
+  },
   mounted() {},
   methods: {
     editItem(item) {
@@ -119,7 +130,7 @@ export default {
     showEstimationEmployer(id) {
       if (this.disableInput === true) {
         ServiceEmploymentService.showEstimationEmployer(id).then(res => {
-          const response = res.data.data[0];
+          const response = res.data.data;
           this.total_price = response.total_price;
           this.confirmJobOfferForm = {
             title: response.description,
