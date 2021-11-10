@@ -1,4 +1,4 @@
-import { mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import * as types from "../../../../shared/store/types";
 import UploadService from "../../../../core/services/modules/uploadService";
 
@@ -15,6 +15,14 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({
+      registrationData: types.storeRegisterForm.REGISTER_FORM_GET
+    }),
+    getDataFromStore() {
+      const data = this.registrationData?.body;
+      this.title = data?.title;
+      this.description = data?.description;
+    },
     ...mapMutations([types.storeRegisterForm.REGISTER_FORM_MUTATE])
   },
   mounted() {},

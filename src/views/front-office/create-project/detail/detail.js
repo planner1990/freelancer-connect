@@ -42,6 +42,9 @@ export default {
     }),
     ...mapMutations([types.storeRegisterForm.REGISTER_FORM_MUTATE]),
     getDataFromStore() {
+      const data = this.registrationData?.detail;
+      this.price = data?.price;
+      this.project_duration_id = data?.project_duration_id;
       return this.registrationData;
     }
   },
@@ -68,7 +71,7 @@ export default {
       });
     },
     resetRegister() {
-      if (!this.getDataFromStore.body) {
+      if (!this.getDataFromStore?.body) {
         this.$router.push("/create-project");
       }
     }
