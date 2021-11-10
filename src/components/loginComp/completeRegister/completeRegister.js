@@ -72,7 +72,6 @@ export default {
               this.getEmployerData.currentURL &&
               this.getDataFromStore.role === "employer"
             ) {
-              localStorage.setItem("accessToken", res.data.data.token);
               this.signInLoading = false;
               this.$router.push(this.getEmployerData.currentURL);
             } else {
