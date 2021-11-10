@@ -23,6 +23,14 @@ export default {
         title: "",
         url: ""
       },
+      projectRule: {
+        url: [
+          v => !!v || "لطفا آدرس پروژه را وارد کنید",
+          v =>
+            /^http[s]?:\/\/(www\.)?(.*)?\/?(.)*/.test(v) ||
+            "طبق مثال وارد نمایید: http(s)://test.com"
+        ]
+      },
       awardForm: {
         title: "",
         achieved_date: null,

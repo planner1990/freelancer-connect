@@ -68,39 +68,59 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col lg="6" md="12">
-                  <v-select
-                    v-if="profileInfo.user"
-                    v-model="profileForm.gender"
-                    :items="profileInfo['genders']"
-                    item-text="value"
-                    item-value="key"
-                    label="جنسیت"
-                    required
-                    outlined
-                  ></v-select>
-                </v-col>
-                <v-col lg="6" md="12">
-                  <v-select
-                    v-if="profileInfo.user"
-                    :items="profileInfo['skills']"
-                    item-text="value"
-                    item-value="key"
-                    label="مهارت ها"
-                    required
-                    outlined
-                  ></v-select>
-                </v-col>
+                <!--                <v-col lg="6" md="12">-->
+                <!--                  <v-select-->
+                <!--                    v-if="profileInfo.user"-->
+                <!--                    v-model="profileForm.gender"-->
+                <!--                    :items="profileInfo['genders']"-->
+                <!--                    item-text="value"-->
+                <!--                    item-value="key"-->
+                <!--                    label="جنسیت"-->
+                <!--                    required-->
+                <!--                    outlined-->
+                <!--                  ></v-select>-->
+                <!--                </v-col>-->
+<!--                <v-col md="12">-->
+<!--                  <v-combobox-->
+<!--                    v-if="profileInfo.user"-->
+<!--                    v-model="profileInfo.skills"-->
+<!--                    :items="skillsList"-->
+<!--                    item-text="title"-->
+<!--                    item-value="id"-->
+<!--                    :search-input.sync="search"-->
+<!--                    hide-selected-->
+<!--                    hint="حداکثر ۵ گزینه میتوانید انتخاب کنید"-->
+<!--                    :label="$t('form.skills')"-->
+<!--                    multiple-->
+<!--                    persistent-hint-->
+<!--                    required-->
+<!--                    outlined-->
+<!--                    clearable-->
+<!--                    small-chips-->
+<!--                    :counter="5"-->
+<!--                    @change="selectSkills(profileInfo.skills)"-->
+<!--                  >-->
+<!--                    <template v-slot:no-data>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-content>-->
+<!--                          <v-list-item-title>-->
+<!--                            موردی یافت نشد "<strong>{{ search }}</strong>". برای-->
+<!--                            افزودن مهارت مورد نظر <kbd>enter</kbd>را فشار دهید-->
+<!--                          </v-list-item-title>-->
+<!--                        </v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                    </template>-->
+<!--                  </v-combobox>-->
+<!--                </v-col>-->
               </v-row>
               <v-row>
                 <v-col md="12">
                   <v-select
-                    v-if="profileInfo.user"
                     :items="categories"
                     item-text="title"
                     item-value="id"
                     label="دسته بندی ها"
-                    :value="profileInfo.user['category_id']"
+                    v-model="profileInfo.user['category_id']"
                     required
                     outlined
                   ></v-select>
@@ -129,18 +149,18 @@
                 </v-col>
               </v-row>
 
-<!--              <header-section-->
-<!--                :header-section-title="'تصویر بنر'"-->
-<!--              ></header-section>-->
-<!--              <v-row>-->
-<!--                <v-col lg="6" md="12">-->
-<!--                  <file-input-dashboard-->
-<!--                    :status="'banner'"-->
-<!--                    @clicked="getFileId"-->
-<!--                    :imageProfile="profileInfo.user.profile.banner"-->
-<!--                  ></file-input-dashboard>-->
-<!--                </v-col>-->
-<!--              </v-row>-->
+              <!--              <header-section-->
+              <!--                :header-section-title="'تصویر بنر'"-->
+              <!--              ></header-section>-->
+              <!--              <v-row>-->
+              <!--                <v-col lg="6" md="12">-->
+              <!--                  <file-input-dashboard-->
+              <!--                    :status="'banner'"-->
+              <!--                    @clicked="getFileId"-->
+              <!--                    :imageProfile="profileInfo.user.profile.banner"-->
+              <!--                  ></file-input-dashboard>-->
+              <!--                </v-col>-->
+              <!--              </v-row>-->
               <v-row class="my-10">
                 <v-col lg="6" md="12">
                   <v-btn color="error" @click="updateProfile">

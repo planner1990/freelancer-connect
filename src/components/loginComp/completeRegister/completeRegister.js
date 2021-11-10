@@ -1,6 +1,6 @@
 import AuthService from "../../../core/services/modules/authService";
 import projectsService from "../../../core/services/modules/projectsService";
-import { mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import * as types from "../../../shared/store/types";
 
 export default {
@@ -41,18 +41,21 @@ export default {
     this.resetRegister();
   },
   methods: {
+    ...mapActions({
+      setRegisterFormData: types.storeRegisterForm.REGISTER_FORM_ACTION
+    }),
     backToPrevStep() {
       this.$router.push("/login/personality");
     },
     registration() {
       if (this.$refs[`form`].validate() === true) {
         this.signInLoading = true;
-        this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
-          first_name: this.firstName,
-          last_name: this.lastName,
-          company_name: this.companyName,
-          activity_type_id: 1
-        });
+        // this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
+        //   first_name: this.firstName,
+        //   last_name: this.lastName,
+        //   company_name: this.companyName,
+        //   activity_type_id: 1
+        // });
         const body = {
           first_name: this.firstName ? this.firstName : "",
           last_name: this.lastName ? this.lastName : "",
@@ -61,6 +64,7 @@ export default {
           is_company: this.getDataFromStore.is_company,
           category_id: this.companyList
         };
+        this.setRegisterFormData(body);
         AuthService.register(body).then(res => {
           localStorage.setItem("accessToken", res.data.data.token);
           if (res.status === 200) {

@@ -321,6 +321,7 @@
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'وارد نمودن URL'"
                 :label="dialogFormField.label"
                 v-model="projectsForm.url"
+                :rules="projectRule.url"
                 required
                 outlined
                 dense

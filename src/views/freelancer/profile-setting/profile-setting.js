@@ -162,7 +162,8 @@ export default {
       },
       attachments: [],
       experienceList: [],
-      educationList: []
+      educationList: [],
+      skillsList: []
     };
   },
   computed: {
@@ -180,6 +181,7 @@ export default {
   mounted() {
     this.showProfile();
     this.showCategoryById();
+    this.getSkillsList();
   },
   methods: {
     ...mapActions({
@@ -194,8 +196,9 @@ export default {
     showProfile() {
       freelancerServices.showProfile().then(res => {
         this.profileInfo = res.data.data;
-        this.experienceList = res.data.data.user.profile.experience;
-        this.educationList = res.data.data.user.profile.education;
+        this.experienceList = res.data.data.user.profile?.experience;
+        console.log(this.experienceList);
+        this.educationList = res.data.data.user.profile?.education;
         if (this.profileInfo.user.company) {
           this.companyName = this.profileInfo.user?.company?.name;
         }
@@ -213,12 +216,13 @@ export default {
         first_name: this.profileInfo.user["first_name"],
         last_name: this.profileInfo.user["last_name"],
         gender: this.profileForm.gender,
-        attachments: this.attachments
+        attachments: this.attachments,
+        category_id: this.profileInfo.user["category_id"]
       };
       freelancerServices.updateProfile(body).then(res => {
         if (res) {
           this.showSnackbar = true;
-          this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
+          this.snackbarMessage = "پروفایل شما با موفقیت به روز رسانی شد.";
         }
       });
     },
@@ -226,9 +230,12 @@ export default {
       this.attachments.push(value);
     },
     updateExperienceEducation() {
+      this.showSnackbar = false;
       this.listOfFormData.map(item => {
         if (item.type === "experience") {
+          console.log(item.form, "item form");
           this.experienceList.push(item.form);
+          console.log(this.experienceList);
         } else if (item.type === "education") {
           this.educationList.push(item.form);
         }
@@ -237,7 +244,12 @@ export default {
         experience: this.experienceList,
         education: this.educationList
       };
-      freelancerServices.updateExperienceEducation(body).then();
+      freelancerServices.updateExperienceEducation(body).then(res => {
+        if (res) {
+          this.showSnackbar = true;
+          this.snackbarMessage = "پروفایل شما با موفقیت به روز رسانی شد.";
+        }
+      });
     },
     updateProjectsAward() {
       let projects = [];
@@ -253,7 +265,28 @@ export default {
         award: award,
         project: projects
       };
-      freelancerServices.updateProjectsAward(body).then();
+      freelancerServices.updateProjectsAward(body).then(res => {
+        if (res) {
+          this.showSnackbar = true;
+          this.snackbarMessage = "پروفایل شما با موفقیت به روز رسانی شد.";
+        }
+      });
+    },
+    selectSkills(list) {
+      let tempData = [];
+      for (let index = 0; index < list.length; index++) {
+        if (list[index].title) {
+          tempData.push(list[index].title);
+        } else {
+          tempData.push(list[index]);
+        }
+      }
+      return (this.skills = tempData);
+    },
+    getSkillsList() {
+      projectsService.skills().then(res => {
+        this.skillsList = res.data.data;
+      });
     }
   },
   watch: {}
