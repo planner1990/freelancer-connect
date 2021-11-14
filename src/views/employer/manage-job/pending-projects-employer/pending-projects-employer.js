@@ -15,6 +15,7 @@ export default {
       page: 1,
       showSelect: true,
       indexProjectsList: [],
+      paginationData: null,
       totalData: null,
       status: "pending",
       // nameRules: [
@@ -50,6 +51,7 @@ export default {
       };
       employerServices.getIndexProjects(options).then(res => {
         this.indexProjectsList = res.data.data.projects;
+        this.paginationData = res.data.data.pagination;
       });
     },
     changePage(currentPage) {
@@ -59,8 +61,8 @@ export default {
         perPage: 5
       };
       employerServices.getIndexProjects(options).then(res => {
+        this.indexProjectsList = res.data.data.projects;
         this.page = currentPage;
-        console.log(res);
       });
     },
     redirectToProjectDetail(id) {

@@ -4,7 +4,7 @@
       :headers="headersUserManagement"
       :items="dataUserManagement"
       :page.sync="page"
-      :items-per-page="itemsPerPage"
+      :items-per-page="paginationData['per_page']"
       hide-default-footer
       class="elevation-1"
       @page-count="pageCount = $event"
@@ -69,8 +69,13 @@
         </div>
       </template>
     </v-data-table>
-<!--    <div class="text-center pt-2">-->
-<!--      <v-pagination v-model="page" :length="pageCount"></v-pagination>-->
-<!--    </div>-->
+    <div class="col-12 text-center pt-2">
+      <v-pagination
+        v-model="paginationData['current_page']"
+        :length="paginationData['last_page']"
+        @input="changePage($event)"
+        :total-visible="paginationData.total"
+      ></v-pagination>
+    </div>
   </div>
 </dashboard-card>

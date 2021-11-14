@@ -3,7 +3,7 @@ import HeaderSection from "../../../../components/header-section/index";
 import FileInputDashboard from "../../../../components/file-input-dashboard/index";
 import projectsService from "../../../../core/services/modules/projectsService";
 import profileServices from "../../../../core/services/modules/profileServices";
-import Snackbar from "../../../../components/snackbar/index";
+import Snackbar from "@/components/snackbar/index";
 export default {
   name: "profile-setting-employer",
   components: {
@@ -90,7 +90,7 @@ export default {
           firstName: user.first_name,
           lastName: user.last_name,
           description: user.profile.description,
-          categoryId: user.id,
+          categoryId: user.category_id,
           noOfEmployees: String(user.profile.no_of_employees),
           isCompany: user.is_company
         };

@@ -39,6 +39,7 @@ export default {
   methods: {
     createProject() {
       this.showSnackbar = false;
+      this.signInLoading = false;
       const projectData = {
         title: this.getDataFromStore.body.title,
         description: this.getDataFromStore.body.description,
@@ -53,16 +54,29 @@ export default {
           if (res) {
             this.showSnackbar = true;
             this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
-            this.$router.push("/browse-projects");
+            this.signInLoading = true;
+            setTimeout(() => {
+              this.$router.push("/browse-projects");
+            }, 2000);
           }
         });
       } else if (this.role === "") {
+        this.goToLogin();
         this.$router.push("/login");
       }
       this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
         projectData
       });
       // this.$router.push("/confirm-info");
+    },
+    goToLogin() {
+      this.$store.commit(
+        types.HandleEmployerToLogin.mutations.HANDLE_EMPLOYER_TO_LOGIN_MUTATE,
+        {
+          currentURL: this.$route.fullPath
+        }
+      );
+      this.$router.push("/login");
     },
     getAssignedRole() {
       const token = localStorage.getItem("accessToken");

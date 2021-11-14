@@ -18,18 +18,22 @@
   </h5>
   <v-text-field
     :label="'حداقل قیمت(ریال)'"
-    type="number"
+    type="text"
     outlined
-    v-model="price"
+    v-model.number="price"
     dense
+    @change="thousandMaskPrice"
+    ref="inputRef"
   ></v-text-field>
-  <v-text-field
-    :label="'حداکثر قیمت(ریال)'"
-    type="number"
-    outlined
-    v-model="maxPrice"
-    dense
-  ></v-text-field>
+<!--  <v-text-field-->
+<!--    :label="'حداکثر قیمت(ریال)'"-->
+<!--    type="text"-->
+<!--    outlined-->
+<!--    v-model.number="maxPrice"-->
+<!--    dense-->
+<!--    @change="thousandMaskMaxPrice"-->
+<!--    ref="inputRef2"-->
+<!--  ></v-text-field>-->
   <v-card-actions class="pa-0 my-5">
     <v-btn
       color="teal accent-3"

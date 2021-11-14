@@ -1,10 +1,11 @@
 import UploadService from "../../core/services/modules/uploadService";
 import { ServiceEmploymentService } from "../../core/services";
 import thousandMask from "@/shared/mixins/thousandMask";
+import Snackbar from "@/components/snackbar/index";
 
 export default {
   name: "table-dashboard",
-  components: {},
+  components: { Snackbar },
   props: [
     "headersUserManagement",
     "dataUserManagement",
@@ -15,6 +16,8 @@ export default {
   mixins: [thousandMask],
   data() {
     return {
+      snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
+      showSnackbar: false,
       e2: "پیش نویس",
       page: 1,
       pageCount: 0,
@@ -117,6 +120,7 @@ export default {
       }
     },
     estimationForFreelancer(id) {
+      this.showSnackbar = false;
       const body = {
         job_offer_id: id,
         price: this.confirmJobOfferForm.minPrice,
@@ -125,7 +129,12 @@ export default {
         prepayment: this.confirmJobOfferForm.prepayment,
         attachment_id: this.confirmJobOfferForm.attachmentId
       };
-      ServiceEmploymentService.estimationForFreelancer(body).then();
+      ServiceEmploymentService.estimationForFreelancer(body).then(res => {
+        if (res) {
+          this.snackbarMessage = "عملیات با موفقیت انجام شد.";
+          this.showSnackbar = true;
+        }
+      });
     },
     showEstimationEmployer(id) {
       if (this.disableInput === true) {
@@ -145,16 +154,22 @@ export default {
       }
     },
     rejectEstimation(id) {
+      this.showSnackbar = false;
       if (this.disableInput === true) {
         ServiceEmploymentService.rejectEstimationEmployer(id).then(res => {
           console.log(res);
+          this.snackbarMessage = "عملیات با موفقیت انجام شد.";
+          this.showSnackbar = true;
           this.dialog = false;
         });
       }
     },
     hiredServiceByEmployer(id) {
+      this.showSnackbar = false;
       ServiceEmploymentService.employmentService(id).then(res => {
         console.log(res);
+        this.snackbarMessage = "عملیات با موفقیت انجام شد.";
+        this.showSnackbar = true;
         this.dialog = false;
       });
     },
@@ -166,6 +181,9 @@ export default {
         this.estimationForFreelancer(id);
         this.dialog = false;
       }
+    },
+    hideSnackbar() {
+      this.showSnackbar = false;
     }
   }
 };

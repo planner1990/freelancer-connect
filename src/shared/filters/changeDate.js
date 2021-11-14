@@ -1,8 +1,9 @@
-import Vue from "vue";
 import dayjs from "dayjs";
-dayjs.locale("fa");
+import jalaliday from "jalaliday";
+import Vue from "vue";
+dayjs.extend(jalaliday).locale("fa");
+dayjs.calendar("jalali").locale("fa");
+
 Vue.filter("changeDate", function(date) {
-  return dayjs(date)
-    .locale("fa")
-    .format("YYYY-MM-DD");
+  return dayjs(date).format("YYYY/MM/DD");
 });

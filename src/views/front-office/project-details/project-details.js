@@ -31,7 +31,8 @@ export default {
         price: [
           v => !!v || "لطفا مبلغ را وارد کنید",
           v =>
-            (v && v.length >= 3) || "مبلغ وارد شده باید بیش از ۳ کاراکتر باشد"
+            (v && v.length >= 3) ||
+            "مبلغ وارد شده باید بیش از ۵۰۰,۰۰۰ ریال باشد"
         ],
         minPrice: [
           v => !!v || "حداقل مبلغ را وارد کنید",
@@ -98,13 +99,16 @@ export default {
           console.log(res);
           this.$refs.form.reset();
           this.dialog = false;
+          this.snackbarMessage = res.data?.message;
+          this.showSnackbar = true;
+          setTimeout(() => {
+            this.$router.push("/browse-projects");
+          }, 2000);
         })
         .catch(error => {
           this.showSnackbar = true;
-          this.snackbarMessage =
-            "پیشنهاد از قبل ارسال شده است ، شما نمی توانید پیشنهادی را برای این پروژه ارسال کنید.";
+          this.snackbarMessage = error?.response.data.errors.err;
           this.dialog = false;
-          console.log(error);
         });
     },
     goToLogin() {

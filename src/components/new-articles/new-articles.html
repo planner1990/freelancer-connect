@@ -41,6 +41,11 @@
             <div v-if="!serviceList.image.length > 0">
               <v-carousel-item :src="test"> </v-carousel-item>
             </div>
+            <div
+              v-if="serviceList.image.length > 0 && serviceList.image[0]['type']!=='image/jpg', 'image/jpeg', 'image/png'"
+            >
+              <v-carousel-item :src="test"> </v-carousel-item>
+            </div>
           </v-carousel>
         </div>
         <div class="d-flex justify-center">
@@ -63,7 +68,8 @@
               {{serviceList.title}}
             </div>
             <div v-if="isService" class="best-freelancer-card_detail mb-6 px-4">
-              شروع قیمت از <strong>{{serviceList.price | thousandMask}} ریال</strong>
+              شروع قیمت از
+              <strong>{{serviceList.price | thousandMask}} ریال</strong>
             </div>
           </div>
         </div>

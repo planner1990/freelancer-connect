@@ -1,9 +1,41 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+// import { AuthService } from "../core/services";
 // import store from "@/store";
 // import * as types from "@/store/types";
 
 Vue.use(VueRouter);
+
+// async function freelancerAuthGuard(to, from, next) {
+//   const token = localStorage.getItem("accessToken");
+//   if (token) {
+//     AuthService.getAssignedRole().then(res => {
+//       const role = res.data.data.role;
+//       if (role === "freelancer") {
+//         next();
+//       } else {
+//         next("/login");
+//       }
+//     });
+//   } else {
+//     next("/login");
+//   }
+// }
+// async function employerAuthGuard(to, from, next) {
+//   const token = localStorage.getItem("accessToken");
+//   if (token) {
+//     AuthService.getAssignedRole().then(res => {
+//       const role = res.data.data.role;
+//       if (role === "freelancer") {
+//         next();
+//       } else {
+//         next("/login");
+//       }
+//     });
+//   } else {
+//     next("/login");
+//   }
+// }
 
 const routes = [
   {
@@ -145,12 +177,14 @@ const routes = [
   {
     path: "/freelancer",
     name: "freelancer",
+    // beforeEnter: freelancerAuthGuard,
     // redirect: `/panel/dashboard`,
     meta: { transitionName: "slide" },
     component: () =>
       import(
         /* webpackChunkName: "panel-layout" */ "../views/panel/layout/index"
       ),
+
     children: [
       {
         path: "dashboard",
@@ -304,6 +338,7 @@ const routes = [
   {
     path: "/employer",
     name: "employer",
+    // beforeEnter: employerAuthGuard,
     // redirect: `/panel/dashboard`,
     meta: { transitionName: "slide" },
     component: () =>

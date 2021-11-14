@@ -3,10 +3,12 @@ import HeaderSection from "../../../components/header-section/index";
 import projectsService from "../../../core/services/modules/projectsService";
 import Snackbar from "../../../components/snackbar/index";
 import UploadService from "../../../core/services/modules/uploadService";
+import thousandMask from "../../../shared/mixins/thousandMask";
 export default {
   name: "post-service",
   components: { DashboardCard, HeaderSection, Snackbar },
   props: [],
+  mixins: [thousandMask],
   data() {
     return {
       titleCard: "ایجاد خدمت",
@@ -28,7 +30,9 @@ export default {
         price: [
           v => !!v || "لطفا مبلغ را وارد کنید",
           v =>
-            (v && v.length >= 3) || "مبلغ وارد شده باید بیش از ۳ کاراکتر باشد"
+            (v && v.length >= 3) ||
+            "مبلغ وارد شده باید بیش از ۵۰۰,۰۰۰ ریال باشد"
+          // v => /^[789]\d{9}$/.test(v) || "ایمیل وارد شده معتبر نیست"
         ],
         description: [
           v => !!v || "لطفا توضیحات را وارد کنید",
@@ -45,6 +49,11 @@ export default {
   computed: {},
   mounted() {},
   methods: {
+    thousandMaskPrice() {
+      this.serviceForm.price = this.numberWithCommas(
+        this.$refs?.inputRef?.value
+      );
+    },
     hideSnackbar() {
       this.showSnackbar = false;
     },
@@ -52,7 +61,7 @@ export default {
       this.showSnackbar = false;
       if (this.$refs[`form`].validate() === true) {
         const body = {
-          min_price: this.serviceForm.price,
+          min_price: this.serviceForm.price.replace(/,/g, ""),
           title: this.serviceForm.title,
           description: this.serviceForm.description,
           attachment_id: this.serviceForm.attachmentId

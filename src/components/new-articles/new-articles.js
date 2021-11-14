@@ -26,7 +26,7 @@ export default {
             title: item.title,
             description: item.description,
             price: item.min_price,
-            image: item["attachments"],
+            image: item?.attachments,
             username: item.username
           });
         });

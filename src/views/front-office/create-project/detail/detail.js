@@ -1,11 +1,13 @@
 import * as types from "../../../../shared/store/types";
 import { mapGetters, mapMutations } from "vuex";
 import projectsService from "../../../../core/services/modules/projectsService";
+import thousandMask from "../../../../shared/mixins/thousandMask";
 
 export default {
   name: "detail",
   components: {},
   props: [],
+  mixins: [thousandMask],
   data() {
     return {
       project_duration_id: null,
@@ -23,7 +25,8 @@ export default {
         price: [
           v => !!v || "لطفا مبلغ را وارد کنید",
           v =>
-            (v && v.length >= 7) || "مبلغ وارد شده باید بیش از ۷ کاراکتر باشد"
+            (v && v.length >= 7) ||
+            "مبلغ وارد شده باید بیش از ۵۰۰,۰۰۰ ریال باشد"
         ],
         duration: [v => !!v || "لطفا مدت زمان را مشخص کنید"],
         description: [
@@ -53,12 +56,18 @@ export default {
     this.resetRegister();
   },
   methods: {
+    thousandMaskPrice() {
+      this.price = this.numberWithCommas(this.$refs?.inputRef?.value);
+    },
+    thousandMaskMaxPrice() {
+      this.maxPrice = this.numberWithCommas(this.$refs?.inputRef2?.value);
+    },
     goToActivity() {
       const detail = {
         project_duration_id: this.project_duration_id,
-        price: this.price,
-        minPrice: this.price,
-        maxPrice: this.price
+        price: this.price.replace(/,/g, ""),
+        minPrice: this.price.replace(/,/g, ""),
+        maxPrice: this.price.replace(/,/g, "")
       };
       this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
         detail

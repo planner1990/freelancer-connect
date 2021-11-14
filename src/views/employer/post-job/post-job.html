@@ -15,12 +15,14 @@
     <v-row>
       <v-col lg="6" md="12">
         <v-text-field
-          v-model="projectForm.price"
+          v-model.number="projectForm.price"
           :rules="createProjectRule.price"
           :label="$t('form.price')"
-          type="number"
+          type="text"
           required
           outlined
+          ref="inputRef"
+          @change="thousandMaskPrice"
         ></v-text-field>
       </v-col>
       <v-col lg="6" md="12">
@@ -140,7 +142,7 @@
         <v-file-input
           @change="handleFileInput($event)"
           counter
-          label="File input"
+          label="ضمیمه فایل"
           placeholder="Select your files"
           prepend-icon="mdi-paperclip"
           outlined

@@ -1,16 +1,19 @@
-import UploadService from "../../../../core/services/modules/uploadService";
-import projectsService from "../../../../core/services/modules/projectsService";
+import UploadService from "@/core/services/modules/uploadService";
+import projectsService from "@/core/services/modules/projectsService";
 import { mapMutations } from "vuex";
 import * as types from "../../../../shared/store/types";
+import Snackbar from "@/components/snackbar/index";
 export default {
   name: "service-side-info",
-  components: {},
+  components: { Snackbar },
   props: ["serviceDetailsById", "role"],
   data() {
     return {
       value: [0, 1000],
       dialog: false,
       valid: false,
+      snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
+      showSnackbar: false,
       min: 0,
       max: 1000,
       checkboxLabel: [
@@ -81,6 +84,7 @@ export default {
       }
     },
     sendJobOfferToFreelancer() {
+      this.showSnackbar = false;
       const body = {
         service_id: this.serviceDetailsById.id,
         title: this.jobOfferForm.title,
@@ -90,12 +94,18 @@ export default {
       projectsService
         .sendJobOffer(body)
         .then(res => {
-          console.log(res);
           this.$refs.form.reset();
           this.dialog = false;
+          this.snackbarMessage = res.data?.message;
+          this.showSnackbar = true;
+          setTimeout(() => {
+            this.$router.push("/browse-services");
+          }, 2000);
         })
         .catch(error => {
-          console.log(error);
+          this.showSnackbar = true;
+          this.snackbarMessage = error?.response.data.errors.err;
+          this.dialog = false;
         });
     },
     goToLogin() {
@@ -107,6 +117,9 @@ export default {
         }
       );
       this.$router.push("/login");
+    },
+    hideSnackbar() {
+      this.showSnackbar = false;
     }
   }
 };

@@ -15,10 +15,10 @@
     :label="$t('form.enterConfirmCode')"
     name="Username"
     type="number"
-    autofocus
+    class="text-green"
     outlined
     v-model="OTPCode"
-    class="mb-0"
+    :rules="OTPCodeRule"
     dense
   ></v-text-field>
   <v-card-text class="text-center">
@@ -32,12 +32,18 @@
   <v-card-actions class="pa-0">
     <v-btn
       color="teal accent-3"
-      dark
       :loading="signInLoading"
       block
+      :disabled="!OTPCode"
+      :dark="!!OTPCode"
       class="py-5"
       @click="handleVerifyOTP()"
       >{{ $t('actions.continue') }}</v-btn
     >
+    <snackbar
+      :snackbarMessage="snackbarMessage"
+      :showSnackbar="showSnackbar"
+      @hideSnackbar="hideSnackbar"
+    ></snackbar>
   </v-card-actions>
 </div>

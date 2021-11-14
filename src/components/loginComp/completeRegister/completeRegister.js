@@ -64,13 +64,14 @@ export default {
           is_company: this.getDataFromStore.is_company,
           category_id: this.companyList
         };
-        this.setRegisterFormData(body);
+        // this.setRegisterFormData(body);
         AuthService.register(body).then(res => {
           localStorage.setItem("accessToken", res.data.data.token);
           if (res.status === 200) {
             if (
-              this.getEmployerData.currentURL &&
-              this.getDataFromStore.role === "employer"
+              this.getEmployerData.currentURL
+              //   &&
+              // this.getDataFromStore.role === "employer"
             ) {
               this.signInLoading = false;
               this.$router.push(this.getEmployerData.currentURL);

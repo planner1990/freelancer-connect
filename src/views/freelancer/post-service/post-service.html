@@ -13,12 +13,14 @@
       </v-col>
       <v-col lg="6" md="12">
         <v-text-field
-          v-model="serviceForm.price"
+          v-model.number="serviceForm.price"
           :rules="createServiceRule.price"
           label="حداقل مبلغ در هر ساعت"
-          type="number"
+          type="text"
           required
           outlined
+          ref="inputRef"
+          @change="thousandMaskPrice"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -41,7 +43,7 @@
         <v-file-input
           @change="handleFileInput($event)"
           counter
-          label="File input"
+          label="ضمیمه فایل"
           placeholder="Select your files"
           prepend-icon="mdi-paperclip"
           outlined

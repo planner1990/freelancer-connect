@@ -3,10 +3,12 @@ import HeaderSection from "../../../components/header-section/index";
 import projectsService from "../../../core/services/modules/projectsService";
 import UploadService from "../../../core/services/modules/uploadService";
 import Snackbar from "../../../components/snackbar/index";
+import thousandMask from "../../../shared/mixins/thousandMask";
 export default {
   name: "post-job",
   components: { DashboardCard, HeaderSection, Snackbar },
   props: [],
+  mixins: [thousandMask],
   data() {
     return {
       titleCard: "ویرایش پروژه",
@@ -31,7 +33,8 @@ export default {
         price: [
           v => !!v || "لطفا مبلغ را وارد کنید",
           v =>
-            (v && v.length >= 7) || "مبلغ وارد شده باید بیش از ۷ کاراکتر باشد"
+            (v && v.length >= 7) ||
+            "مبلغ وارد شده باید بیش از ۵۰۰,۰۰۰ ریال باشد"
         ],
         duration: [v => !!v || "لطفا مدت زمان را وارد کنید"],
         description: [
@@ -65,6 +68,11 @@ export default {
     this.getSkillsList();
   },
   methods: {
+    thousandMaskPrice() {
+      this.projectForm.price = this.numberWithCommas(
+        this.$refs?.inputRef?.value
+      );
+    },
     hideSnackbar() {
       this.showSnackbar = false;
     },
@@ -90,7 +98,7 @@ export default {
           title: this.projectForm.title,
           description: this.projectForm.description,
           project_duration_id: this.projectForm.project_duration_id,
-          price: this.projectForm.price,
+          price: this.projectForm.price.replace(/,/g, ""),
           skills: this.skills,
           categories: this.categories,
           attachment_id: this.projectForm.attachmentId

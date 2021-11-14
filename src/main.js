@@ -12,7 +12,6 @@ import "./assets/styles/overrides.scss";
 import "./shared/filters/index";
 
 Vue.config.productionTip = false;
-
 new Vue({
   router,
   store,

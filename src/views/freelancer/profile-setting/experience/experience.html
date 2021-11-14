@@ -13,7 +13,8 @@
                   عنوان ( از تاریخ - تا تاریخ)
                 </span>
                 <span v-else key="1" dir="ltr">
-                  {{item.start_date}} - {{item.end_date}} : {{ item.job_title }}
+                  {{item.start_date | changeDate()}} - {{item.end_date |
+                  changeDate()}} : {{ item.job_title }}
                 </span>
               </v-fade-transition>
             </v-col>
@@ -50,7 +51,6 @@
             >
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
-                  v-model="item.start_date"
                   label="شروع از تاریخ"
                   readonly
                   v-bind="attrs"
@@ -58,6 +58,7 @@
                   class="pl-2"
                   outlined
                   dense
+                  :value="item.start_date | changeDate"
                 ></v-text-field>
               </template>
               <v-date-picker v-model="date" no-title scrollable>
@@ -86,7 +87,6 @@
             >
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
-                  v-model="item.end_date"
                   label="خاتمه در تاریخ"
                   readonly
                   v-bind="attrs"
@@ -94,6 +94,7 @@
                   class="pr-2"
                   outlined
                   dense
+                  :value="item.end_date | changeDate"
                 ></v-text-field>
               </template>
               <v-date-picker v-model="date" no-title scrollable>
@@ -111,14 +112,14 @@
               </v-date-picker>
             </v-menu>
           </v-col>
-<!--          <v-col cols="12">-->
-<!--            <v-textarea-->
-<!--              outlined-->
-<!--              name="input-7-4"-->
-<!--              :label="$t('form.description')"-->
-<!--              :value="item.description"-->
-<!--            ></v-textarea>-->
-<!--          </v-col>-->
+          <!--          <v-col cols="12">-->
+          <!--            <v-textarea-->
+          <!--              outlined-->
+          <!--              name="input-7-4"-->
+          <!--              :label="$t('form.description')"-->
+          <!--              :value="item.description"-->
+          <!--            ></v-textarea>-->
+          <!--          </v-col>-->
         </v-row>
       </v-expansion-panel-content>
     </v-expansion-panel>
@@ -133,7 +134,7 @@
         <template v-slot:default="{ open }">
           <v-row no-gutters>
             <v-col cols="4">
-             عنوان ( از تاریخ - تا تاریخ):
+              عنوان ( از تاریخ - تا تاریخ):
             </v-col>
             <v-col cols="8" class="text--secondary">
               <v-fade-transition leave-absolute>
@@ -141,7 +142,7 @@
                   عنوان ( از تاریخ - تا تاریخ)
                 </span>
                 <span v-else key="1" dir="ltr">
-                  {{item.form.start_date}} - {{item.form.end_date}} : {{
+                  {{item.form.start_date | changeDate}} - {{item.form.end_date | changeDate}} : {{
                   item.form.job_title }}
                 </span>
               </v-fade-transition>
@@ -179,7 +180,6 @@
             >
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
-                  v-model="item.form.start_date"
                   label="شروع از تاریخ"
                   readonly
                   v-bind="attrs"
@@ -187,6 +187,7 @@
                   class="pl-2"
                   outlined
                   dense
+                  :value="item.form.start_date | changeDate"
                 ></v-text-field>
               </template>
               <v-date-picker v-model="date" no-title scrollable>
@@ -215,7 +216,6 @@
             >
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
-                  v-model="item.form.end_date"
                   label="خاتمه در تاریخ"
                   readonly
                   v-bind="attrs"
@@ -223,6 +223,7 @@
                   class="pr-2"
                   outlined
                   dense
+                  :value="item.form.end_date | changeDate"
                 ></v-text-field>
               </template>
               <v-date-picker v-model="date" no-title scrollable>
@@ -240,14 +241,14 @@
               </v-date-picker>
             </v-menu>
           </v-col>
-<!--          <v-col cols="12">-->
-<!--            <v-textarea-->
-<!--              outlined-->
-<!--              name="input-7-4"-->
-<!--              :label="$t('form.description')"-->
-<!--              :value="item.form.description"-->
-<!--            ></v-textarea>-->
-<!--          </v-col>-->
+          <!--          <v-col cols="12">-->
+          <!--            <v-textarea-->
+          <!--              outlined-->
+          <!--              name="input-7-4"-->
+          <!--              :label="$t('form.description')"-->
+          <!--              :value="item.form.description"-->
+          <!--            ></v-textarea>-->
+          <!--          </v-col>-->
         </v-row>
       </v-expansion-panel-content>
     </v-expansion-panel>

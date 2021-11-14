@@ -43,6 +43,17 @@
         </div>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col cols="12" class="text-center pt-2">
+        <v-pagination
+          color="primary"
+          :length="paginationData['last_page']"
+          :total-visible="paginationData.total"
+          v-model="paginationData['current_page']"
+          @input="changePage($event)"
+        ></v-pagination>
+      </v-col>
+    </v-row>
     <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
       هیچ پروژه ای یافت نشد
     </div>

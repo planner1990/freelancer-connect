@@ -24,8 +24,13 @@
               :disabled="item['has_estimation'] === false"
               @click="showEstimationEmployer(item['estimation_id'])"
             >
-              <span v-if="item['has_estimation'] === false">در انتظار پاسخ</span>
-              <span v-if="!item['has_estimation'] && item['has_estimation'] !== false">ارزیابی</span>
+              <span v-if="item['has_estimation'] === false"
+                >در انتظار پاسخ</span
+              >
+              <span
+                v-if="!item['has_estimation'] && item['has_estimation'] !== false"
+                >ارزیابی</span
+              >
               <span v-if="item['has_estimation']">مشاهده درخواست</span>
             </v-btn>
           </template>
@@ -61,31 +66,27 @@
                       ></v-textarea>
                     </v-col>
                     <v-col cols="12" v-if="!disableInput">
-                      <v-file-input
-                        @change="handleFileInput($event)"
-                        counter
-                        label="File input"
-                        placeholder="Select your files"
-                        prepend-icon="mdi-paperclip"
-                        outlined
-                        multiple
-                        :show-size="1000"
-                        disabled
-                        dense
-                      >
-                        <template v-slot:selection="{ index, text }">
-                          <v-chip v-if="index < 3" dark label small>
-                            {{ text }}
-                          </v-chip>
-
-                          <span
-                            v-else-if="index === 3"
-                            class="text-overline grey--text text--darken-3 mx-2"
-                          >
-                            +{{ files.length - 3 }} File(s)
-                          </span>
-                        </template>
-                      </v-file-input>
+                      <div class="employer-projects-card-title mt-8">
+                        فایل های ضمیمه شده
+                      </div>
+                      <v-list>
+                        <v-list-item
+                          v-for="(file, index) in item.attachments"
+                          :key="index"
+                          class="list-item"
+                        >
+                          <v-list-item-content>
+                            <v-list-item-title>
+                              فایل شماره {{index + 1}}
+                            </v-list-item-title>
+                          </v-list-item-content>
+                          <v-list-item-action>
+                            <v-btn icon :href="file" target="_blank">
+                              <v-icon small>mdi-arrow-down</v-icon>
+                            </v-btn>
+                          </v-list-item-action>
+                        </v-list-item>
+                      </v-list>
                     </v-col>
                     <v-col><v-divider class="divide-card"></v-divider></v-col>
                     <v-col cols="12">
@@ -144,6 +145,7 @@
                         <v-list-item
                           v-for="(file, index) in confirmJobOfferForm.attachmentId"
                           :key="index"
+                          class="list-item"
                         >
                           <v-list-item-content>
                             <v-list-item-title>
@@ -162,7 +164,7 @@
                       <v-file-input
                         @change="handleFileInput($event)"
                         counter
-                        label="File input"
+                        label="ضمیمه فایل"
                         placeholder="Select your files"
                         prepend-icon="mdi-paperclip"
                         outlined
@@ -276,4 +278,9 @@
       color="primary"
     ></v-pagination>
   </div>
+  <snackbar
+    :snackbarMessage="snackbarMessage"
+    :showSnackbar="showSnackbar"
+    @hideSnackbar="hideSnackbar"
+  ></snackbar>
 </div>

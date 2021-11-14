@@ -34,5 +34,10 @@ export default {
       });
     }
   },
-  watch: {}
+  watch: {
+    // changeDate(oldV, newV) {
+    //   console.log(oldV, newV, ";';;;;;;;;;;;;;;;;");
+    //   this.formData = this.$options.filters.upper(this.formData);
+    // }
+  }
 };

@@ -67,8 +67,10 @@ class employerServices {
     return API_V1.get(`/employer/service/reject_estimation/${id}`);
   }
 
-  myProjects() {
-    return API_V1.get(`/employer/projects`);
+  myProjects(options) {
+    return API_V1.get(
+      `/employer/projects?per_page=${options.perPage}&page=${options.page}`
+    );
   }
 
   fakePaymentEmployer(body) {

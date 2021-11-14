@@ -96,7 +96,7 @@
                           <v-file-input
                             @change="handleFileInput($event)"
                             counter
-                            label="File input"
+                            label="ضمیمه فایل"
                             placeholder="Select your files"
                             prepend-icon="mdi-paperclip"
                             outlined
@@ -180,5 +180,10 @@
     <!--        کلیک بر روی ذخیره-->
     <!--      </v-btn>-->
     <!--    </v-col>-->
+    <snackbar
+      :snackbarMessage="snackbarMessage"
+      :showSnackbar="showSnackbar"
+      @hideSnackbar="hideSnackbar"
+    ></snackbar>
   </v-row>
 </v-container>

@@ -52,7 +52,6 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="experienceForm.experienceStart"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -60,6 +59,7 @@
                     v-on="on"
                     outlined
                     dense
+                    :value="experienceForm.experienceStart | changeDate"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -84,7 +84,6 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="experienceForm.experienceEnd"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -92,6 +91,7 @@
                     v-on="on"
                     outlined
                     dense
+                    :value="experienceForm.experienceEnd | changeDate"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -150,7 +150,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="error darken-1" text @click="validate">
-              رد کردن
+              بستن
             </v-btn>
             <v-btn
               color="blue darken-1"
@@ -225,12 +225,12 @@
                   ></v-text-field>
                 </template>
                 <v-date-picker
-                  v-model="educationForm.educationStart"
                   no-title
                   scrollable
                   @input="start = false"
                   outlined
                   dense
+                  :value="educationForm.educationStart | changeDate"
                 >
                 </v-date-picker>
               </v-menu>
@@ -246,7 +246,6 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="educationForm.educationEnd"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -254,6 +253,7 @@
                     v-on="on"
                     outlined
                     dense
+                    :value="educationForm.educationEnd | changeDate"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -272,7 +272,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="error darken-1" text @click="validate">
-              رد کردن
+                بستن
             </v-btn>
             <v-btn
               color="blue darken-1"
@@ -332,7 +332,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="error darken-1" text @click="validate">
-              رد کردن
+                بستن
             </v-btn>
             <v-btn
               color="blue darken-1"
@@ -388,7 +388,6 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="awardForm.achieved_date"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -396,6 +395,7 @@
                     v-on="on"
                     outlined
                     dense
+                    :value="awardForm.achieved_date | changeDate"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -445,7 +445,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="error darken-1" text @click="validate">
-              رد کردن
+                بستن
             </v-btn>
             <v-btn
               color="blue darken-1"

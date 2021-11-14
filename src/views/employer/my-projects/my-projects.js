@@ -12,7 +12,8 @@ export default {
       name: "",
       page: 1,
       pageCount: 0,
-      itemsPerPage: 8,
+      itemsPerPage: 5,
+      paginationData: null,
       headersUserManagement: [
         {
           text: "نام پروژه",
@@ -49,8 +50,23 @@ export default {
   },
   methods: {
     showMyProjects() {
-      employerServices.myProjects().then(res => {
+      const options = {
+        page: 1,
+        perPage: 5
+      };
+      employerServices.myProjects(options).then(res => {
         this.dataUserManagement = res.data.data.projects;
+        this.paginationData = res.data.data.pagination;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        page: currentPage,
+        perPage: 5
+      };
+      employerServices.myProjects(options).then(res => {
+        this.dataUserManagement = res.data.data.projects;
+        this.page = currentPage;
       });
     }
   }

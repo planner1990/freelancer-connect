@@ -197,7 +197,6 @@ export default {
       freelancerServices.showProfile().then(res => {
         this.profileInfo = res.data.data;
         this.experienceList = res.data.data.user.profile?.experience;
-        console.log(this.experienceList);
         this.educationList = res.data.data.user.profile?.education;
         if (this.profileInfo.user.company) {
           this.companyName = this.profileInfo.user?.company?.name;
@@ -233,7 +232,6 @@ export default {
       this.showSnackbar = false;
       this.listOfFormData.map(item => {
         if (item.type === "experience") {
-          console.log(item.form, "item form");
           this.experienceList.push(item.form);
           console.log(this.experienceList);
         } else if (item.type === "education") {
