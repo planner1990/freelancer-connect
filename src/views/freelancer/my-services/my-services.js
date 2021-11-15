@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       showSelect: true,
+      selected: [],
       valid: true,
       name: "",
       page: 1,

@@ -104,7 +104,9 @@ export default {
         })
         .catch(error => {
           this.showSnackbar = true;
-          this.snackbarMessage = error?.response.data.errors.err;
+          this.snackbarMessage = error?.response.data.errors.err
+            ? error?.response.data.errors.err
+            : error?.response.data.message;
           this.dialog = false;
         });
     },

@@ -27,7 +27,12 @@ export default {
           sortable: false,
           align: "center"
         },
-        { text: "صف", value: "updated_at", sortable: false, align: "center" },
+        {
+          text: "تاریخ ثبت شده",
+          value: "updated_at",
+          sortable: false,
+          align: "center"
+        },
         { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: []

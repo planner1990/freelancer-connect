@@ -38,10 +38,13 @@
             <v-card
               class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
             >
-              <v-card-title>
+              <v-card-title class="justify-space-between title">
                 <span class="text-h6" v-if="disableInput"
                   >درخواست ارسال شده از فریلنسر</span
                 >
+                <v-btn icon @click="dialog = false">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
               </v-card-title>
               <v-card-text>
                 <v-container>
@@ -125,7 +128,7 @@
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <strong>برآورد کل قیمتی: {{total_price}}</strong>
+<!--                      <strong>برآورد کل قیمتی: {{total_price}}</strong>-->
                     </v-col>
                     <v-col cols="12">
                       <v-textarea

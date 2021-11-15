@@ -23,6 +23,7 @@
         :class="`best-freelancer-card ${isService ? 'width_45' : 'width_31'} d-flex flex-column mx-${isService ? '5' : '2'} my-sm-2 pa-0 pb-4`"
         v-for="serviceList in showServices"
         :key="serviceList.id"
+        @click="goToDetail(serviceList.id)"
       >
         <div v-if="serviceList.image" class="best-freelancer-card_image">
           <v-carousel
