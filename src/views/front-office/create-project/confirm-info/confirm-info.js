@@ -62,7 +62,7 @@ export default {
         });
       } else if (this.role === "") {
         this.goToLogin();
-        this.$router.push("/login");
+        // this.$router.push("/login");
       }
       this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
         projectData

@@ -115,6 +115,7 @@
         color="teal accent-3"
         dark
         @click="goToCreateProject"
+        v-if="role !== 'freelancer'"
       >
         {{$t('navbar.createProject')}}
       </v-btn>

@@ -72,10 +72,7 @@ export default {
             localStorage.setItem("accessToken", res.data.data.token);
             this.$router.push("/login/freelancer-or-employer");
           } else {
-            if (
-              this.getEmployerData.currentURL &&
-              this.getEmployerData.serviceId
-            ) {
+            if (this.getEmployerData.currentURL) {
               localStorage.setItem("accessToken", res.data.data.token);
               this.$router.push(this.getEmployerData.currentURL);
             } else {
