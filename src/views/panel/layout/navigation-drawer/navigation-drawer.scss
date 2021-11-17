@@ -12,7 +12,8 @@
   .username-info {
     position: absolute;
     top: 80px;
-    left: 32%;
+    left: 50%;
+    transform: translateX(-50%);
 
     .username {
       font-size: 12px;

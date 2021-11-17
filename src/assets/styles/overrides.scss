@@ -468,3 +468,21 @@ input:-webkit-autofill:active {
     height: 51px;
   }
 }
+
+.profile-setting {
+  .v-input__slot {
+    padding: 0 6px !important;
+  }
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

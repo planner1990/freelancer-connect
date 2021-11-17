@@ -1,0 +1,94 @@
+<dashboard-card :titleCard="'کیف پول'">
+  <v-container v-if="!this.$route.params.id" class="wallet">
+    <v-row>
+      <v-col md="4" sm="12">
+        <v-row class="flex-column ml-5 text-center border">
+          <v-col>موجودی کل:</v-col>
+          <v-col class="font-weight-bold">۸۰۰/۰۰۰ ریال</v-col>
+          <v-col>موجودی قابل برداشت:</v-col>
+          <v-col class="font-weight-bold">۸۰۰/۰۰۰ ریال</v-col>
+          <v-col>
+            <v-dialog
+              v-model="dialog"
+              max-width="600px"
+              persistent
+              :retain-focus="false"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn block color="secondary" v-bind="attrs" v-on="on">
+                  برداشت
+                </v-btn>
+              </template>
+              <v-form ref="form" v-model="valid" lazy-validation>
+                <v-card
+                  class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+                >
+                  <v-card-title class="justify-space-between title">
+                    <span class="text-h6">برداشت</span>
+                    <v-btn icon @click="dialog = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-container>
+                      <v-row>
+                        <v-col
+                          ><v-divider class="divide-card"></v-divider
+                        ></v-col>
+                        <v-col cols="12">
+                          <v-text-field
+                            label="مبلغ به ریال"
+                            required
+                            outlined
+                            dense
+                            type="number"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12">
+                          <v-select
+                            :items="items"
+                            label="انتخاب حساب بانکی"
+                            dense
+                            outlined
+                          ></v-select>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-card-text>
+                  <v-col>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-col cols="12">
+                        <v-btn color="secondary" block>
+                          تایید و برداشت
+                        </v-btn>
+                      </v-col>
+                    </v-card-actions>
+                  </v-col>
+                </v-card>
+              </v-form>
+            </v-dialog>
+          </v-col>
+          <v-col>
+            <v-btn color="primary" outlined block>
+              تاریخچه درخواست های برداشت
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col md="8" sm="12" class="border">
+        <v-chart autoresize :option="option" />
+      </v-col>
+    </v-row>
+  </v-container>
+  <!--  <transitionPage>-->
+  <!--    <router-view v-if="this.$route.params.id" />-->
+  <!--  </transitionPage>-->
+  <!--    <v-row>-->
+  <!--        <snackbar-->
+  <!--                :snackbarMessage="snackbarMessage"-->
+  <!--                :showSnackbar="showSnackbar"-->
+  <!--                @hideSnackbar="hideSnackbar"-->
+  <!--        ></snackbar>-->
+  <!--    </v-row>-->
+</dashboard-card>

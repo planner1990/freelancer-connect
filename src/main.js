@@ -10,7 +10,7 @@ import i18n from "./i18n";
 import "./assets/styles/styles.scss";
 import "./assets/styles/overrides.scss";
 import "./shared/filters/index";
-
+import "./plugins/eChart";
 Vue.config.productionTip = false;
 new Vue({
   router,

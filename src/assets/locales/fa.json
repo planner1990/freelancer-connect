@@ -42,7 +42,11 @@
     "packages": "پکیج ها",
     "mySavedItems": "موارد ذخیره شده",
     "myServices": "خدمات من",
-    "myProjects": "پروژه های من"
+    "myProjects": "پروژه های من",
+    "financialManagement": "مدیریت مالی",
+    "wallet": "کیف پول",
+    "transactions": "تراکنش ها",
+    "bankCard": "کارت بانکی"
   },
   "actions": {
     "save&update": "ذخیره و به روز رسانی",

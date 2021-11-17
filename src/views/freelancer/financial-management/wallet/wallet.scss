@@ -1,0 +1,10 @@
+@import "src/assets/styles/variable";
+.wallet {
+  .border {
+    border: 1px solid $surface-300;
+    border-radius: $border-radius;
+  }
+}
+.title {
+  width: 100%;
+}

@@ -1,47 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import { AuthService } from "../core/services";
+import { AuthGuard } from "@/core/services";
 // import store from "@/store";
 // import * as types from "@/store/types";
 
 Vue.use(VueRouter);
 
-// async function freelancerAuthGuard(to, from, next) {
-//   const token = localStorage.getItem("accessToken");
-//   if (token) {
-//     AuthService.getAssignedRole().then(res => {
-//       const role = res.data.data.role;
-//       if (role === "freelancer") {
-//         next();
-//       } else {
-//         next("/login");
-//       }
-//     });
-//   } else {
-//     next("/login");
-//   }
-// }
-// async function employerAuthGuard(to, from, next) {
-//   const token = localStorage.getItem("accessToken");
-//   if (token) {
-//     AuthService.getAssignedRole().then(res => {
-//       const role = res.data.data.role;
-//       if (role === "freelancer") {
-//         next();
-//       } else {
-//         next("/login");
-//       }
-//     });
-//   } else {
-//     next("/login");
-//   }
-// }
-
 const routes = [
   {
     path: "/login",
-    name: "",
     meta: { transitionName: "slide" },
+    beforeEnter: AuthGuard.loginGuard,
     component: () => import("../views/auth/login/index"),
     children: [
       {
@@ -177,7 +146,7 @@ const routes = [
   {
     path: "/freelancer",
     name: "freelancer",
-    // beforeEnter: freelancerAuthGuard,
+    beforeEnter: AuthGuard.freelancerAuthGuard,
     // redirect: `/panel/dashboard`,
     meta: { transitionName: "slide" },
     component: () =>
@@ -310,10 +279,25 @@ const routes = [
         component: () => import("../views/freelancer/proposals/index")
       },
       {
-        path: "payout",
-        name: "payout-freelancer",
+        path: "wallet",
+        name: "freelancer-wallet",
         meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/payout/index")
+        component: () =>
+          import("../views/freelancer/financial-management/wallet/index")
+      },
+      {
+        path: "transactions",
+        name: "freelancer-transactions",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/freelancer/financial-management/transactions/index")
+      },
+      {
+        path: "bank-card",
+        name: "freelancer-bank-card",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/freelancer/financial-management/bank-card/index")
       },
       {
         path: "invoices",
@@ -338,7 +322,7 @@ const routes = [
   {
     path: "/employer",
     name: "employer",
-    // beforeEnter: employerAuthGuard,
+    beforeEnter: AuthGuard.employerAuthGuard,
     // redirect: `/panel/dashboard`,
     meta: { transitionName: "slide" },
     component: () =>

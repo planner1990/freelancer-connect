@@ -110,6 +110,27 @@ export default {
               ]
             },
             {
+              title: "financialManagement",
+              symbol: "mdi-cash-multiple",
+              subCategory: [
+                {
+                  title: "wallet",
+                  route: "/freelancer/wallet",
+                  symbol: "mdi-wallet-travel"
+                },
+                {
+                  title: "transactions",
+                  route: "/freelancer/transactions",
+                  symbol: "mdi-cash-fast"
+                },
+                {
+                  title: "bankCard",
+                  route: "/freelancer/bank-card",
+                  symbol: "mdi-credit-card-check-outline"
+                }
+              ]
+            },
+            {
               title: "manageProject",
               symbol: "mdi-projector-screen-outline",
               subCategory: [
@@ -166,11 +187,6 @@ export default {
               route: "/freelancer/proposals",
               symbol: "mdi-human-greeting-proximity"
             },
-            // {
-            //   title: "payout",
-            //   route: "/freelancer/payout",
-            //   symbol: "mdi-credit-card-marker-outline"
-            // },
             {
               title: "invoices",
               route: "/freelancer/invoices",

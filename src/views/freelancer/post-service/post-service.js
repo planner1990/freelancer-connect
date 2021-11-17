@@ -1,9 +1,9 @@
-import DashboardCard from "../../../components/dashboardCard/index";
-import HeaderSection from "../../../components/header-section/index";
-import projectsService from "../../../core/services/modules/projectsService";
-import Snackbar from "../../../components/snackbar/index";
-import UploadService from "../../../core/services/modules/uploadService";
-import thousandMask from "../../../shared/mixins/thousandMask";
+import DashboardCard from "@/components/dashboardCard/index";
+import HeaderSection from "@/components/header-section/index";
+import projectsService from "@/core/services/modules/projectsService";
+import Snackbar from "@/components/snackbar/index";
+import { UploadService } from "@/core/services";
+import thousandMask from "@/shared/mixins/thousandMask";
 export default {
   name: "post-service",
   components: { DashboardCard, HeaderSection, Snackbar },

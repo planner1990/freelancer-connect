@@ -6,6 +6,7 @@ import UploadService from "./modules/uploadService";
 import ServiceEmploymentService from "./modules/serviceEmploymentService";
 import freelancerServices from "./modules/freelancerServices";
 import employerServices from "./modules/employerServices";
+import AuthGuard from "./modules/AuthGuard";
 
 export {
   AuthService,
@@ -15,5 +16,6 @@ export {
   UploadService,
   ServiceEmploymentService,
   freelancerServices,
-  employerServices
+  employerServices,
+  AuthGuard
 };
