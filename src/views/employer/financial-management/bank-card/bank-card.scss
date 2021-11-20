@@ -1,0 +1,15 @@
+@import "src/assets/styles/variable";
+.bank-card {
+  background-color: $surface-hover;
+  border: 3px solid $surface-350;
+  border-radius: 8px;
+  padding: 8px;
+}
+.add-bank-card {
+  border: 3px dashed $surface-350;
+  border-radius: $border-radius;
+  padding: 8px;
+}
+.title {
+  width: 100%;
+}

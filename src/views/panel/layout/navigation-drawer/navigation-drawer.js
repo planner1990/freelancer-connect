@@ -239,6 +239,27 @@ export default {
               ]
             },
             {
+              title: "financialManagement",
+              symbol: "mdi-cash-multiple",
+              subCategory: [
+                {
+                  title: "wallet",
+                  route: "/employer/wallet",
+                  symbol: "mdi-wallet-travel"
+                },
+                {
+                  title: "transactions",
+                  route: "/employer/transactions",
+                  symbol: "mdi-cash-fast"
+                },
+                {
+                  title: "bankCard",
+                  route: "/employer/bank-card",
+                  symbol: "mdi-credit-card-check-outline"
+                }
+              ]
+            },
+            {
               title: "manageProject",
               symbol: "mdi-projector-screen-outline",
               subCategory: [

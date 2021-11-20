@@ -1,0 +1,95 @@
+<dashboard-card :titleCard="$t('sidebar.bankCard')">
+  <v-container>
+    <v-row class="justify-center">
+      <v-col md="8" class="mt-8" v-for="(info, index) in accountInfo" :key="index">
+        <v-row class="bank-card">
+          <v-col md="6">{{ info.title }}</v-col>
+          <v-col md="6" class="text-left">بررسی اطلاعات حساب</v-col>
+          <v-col md="6">شماره کارت</v-col>
+          <v-col md="6" class="text-left">{{ info.cardId }}</v-col>
+          <v-col md="6">شماره شبا</v-col>
+          <v-col md="6" class="text-left">IR{{ info.sheba }}</v-col>
+        </v-row>
+      </v-col>
+      <v-col md="8" class="mt-8">
+        <v-row class="add-bank-card text-center">
+          <v-col>
+            <v-dialog
+              v-model="dialog"
+              max-width="600px"
+              persistent
+              :retain-focus="false"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn color="primary" text v-bind="attrs" v-on="on">
+                  <v-icon left>
+                    mdi-plus-circle-outline
+                  </v-icon>
+                  افزودن کارت بانکی
+                </v-btn>
+              </template>
+              <v-form ref="form" v-model="valid" lazy-validation>
+                <v-card
+                  class="d-flex flex-column justify-center align-center pb-4 send-jobOffer-freelancer"
+                >
+                  <v-card-title class="justify-space-between title">
+                    <span class="text-h6">افزودن کارت بانکی</span>
+                    <v-btn icon @click="dialog = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-container>
+                      <v-row>
+                        <v-col cols="12">
+                          <v-text-field
+                            v-model="title"
+                            label="عنوان حساب"
+                            required
+                            outlined
+                            dense
+                            type="text"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12">
+                          <v-text-field
+                            v-model="sheba"
+                            label="شماره شبا بدون IR"
+                            required
+                            outlined
+                            dense
+                            type="text"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12">
+                          <v-text-field
+                            v-model="cardId"
+                            label="شماره کارت"
+                            required
+                            outlined
+                            dense
+                            type="text"
+                          ></v-text-field>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-card-text>
+                  <v-col>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-col cols="12" class="py-0">
+                        <v-btn color="secondary" block @click="addToBankCard">
+                          تایید اطلاعات
+                        </v-btn>
+                      </v-col>
+                    </v-card-actions>
+                  </v-col>
+                </v-card>
+              </v-form>
+            </v-dialog>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
+</dashboard-card>

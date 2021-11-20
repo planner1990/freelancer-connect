@@ -475,7 +475,6 @@ input:-webkit-autofill:active {
   }
 }
 
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -483,6 +482,13 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.filter-form {
+  background-color: $surface-150;
+  padding: 45px;
+  border-radius: 10px;
+  border: 2px solid $surface-hover;
 }

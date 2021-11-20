@@ -147,7 +147,7 @@ const routes = [
     path: "/freelancer",
     name: "freelancer",
     beforeEnter: AuthGuard.freelancerAuthGuard,
-    // redirect: `/panel/dashboard`,
+    redirect: `/freelancer/dashboard`,
     meta: { transitionName: "slide" },
     component: () =>
       import(
@@ -353,6 +353,27 @@ const routes = [
         name: "my-projects",
         meta: { transitionName: "slide" },
         component: () => import("../views/employer/my-projects/index")
+      },
+      {
+        path: "wallet",
+        name: "employer-wallet",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/employer/financial-management/wallet/index")
+      },
+      {
+        path: "transactions",
+        name: "employer-transactions",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/employer/financial-management/transactions/index")
+      },
+      {
+        path: "bank-card",
+        name: "employer-bank-card",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/employer/financial-management/bank-card/index")
       },
       {
         path: "profile-setting",
