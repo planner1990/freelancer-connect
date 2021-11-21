@@ -14,7 +14,8 @@ export default {
         minPrice: "",
         description: "",
         attachmentId: [],
-        durationList: []
+        durationList: [],
+        prepayment: null
       },
       proposalRule: {
         duration: [v => !!v || "مدت زمان را مشخص کنید"],
@@ -52,6 +53,12 @@ export default {
         this.dialog = false;
       });
     },
+    inquiryPayment() {
+      this.$router.push({
+        path: `/employer/pending-projects/${this.proposalId}/payment`
+      });
+      this.dialog = false;
+    },
     rejectProposal(status) {
       const body = {
         proposal_id: this.proposalId,
@@ -66,6 +73,13 @@ export default {
       employerServices.showProposalById(this.proposalId).then(res => {
         this.proposalForm = res.data.data;
       });
+    },
+    hireFreelancerByPrepayment() {
+      if (this.proposalForm?.prepayment !== null) {
+        this.inquiryPayment();
+      } else {
+        this.proposalAction();
+      }
     }
   }
 };

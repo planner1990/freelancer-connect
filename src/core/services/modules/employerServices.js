@@ -80,6 +80,18 @@ class employerServices {
   mileStoneAction(body) {
     return API_V1.post("/employer/milestone/status", body);
   }
+
+  inquiryPayment(option) {
+    return API_V1.get(`/pay/inquiry/${option.type}/${option.id}`);
+  }
+
+  gateways() {
+    return API_V1.get(`/payment_gateways`);
+  }
+
+  paymentInvoice(body) {
+    return API_V1.post("/pay/invoice", body);
+  }
 }
 
 export default new employerServices();

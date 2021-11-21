@@ -22,7 +22,7 @@ export default {
       proposalForm: {
         project_duration_id: "",
         price: "",
-        minPrice: "",
+        prepayment: "",
         description: "",
         attachmentId: []
       },
@@ -34,11 +34,11 @@ export default {
             (v && v.length >= 3) ||
             "مبلغ وارد شده باید بیش از ۵۰۰,۰۰۰ ریال باشد"
         ],
-        minPrice: [
-          v => !!v || "حداقل مبلغ را وارد کنید",
-          v =>
-            (v && v.length >= 3) || "حداقل وارد شده باید بیش از ۳ کاراکتر باشد"
-        ],
+        // minPrice: [
+        //   v => !!v || "حداقل مبلغ را وارد کنید",
+        //   v =>
+        //     (v && v.length >= 3) || "حداقل وارد شده باید بیش از ۳ کاراکتر باشد"
+        // ],
         description: [
           v => !!v || "لطفا توضیحات را وارد کنید",
           v =>
@@ -89,7 +89,7 @@ export default {
         project_id: this.projectDetailsById.id,
         project_duration_id: this.proposalForm.project_duration_id,
         amount: this.proposalForm.price,
-        prepayment: this.proposalForm.minPrice,
+        prepayment: this.proposalForm.prepayment,
         content: this.proposalForm.description,
         attachment_id: this.proposalForm.attachmentId
       };

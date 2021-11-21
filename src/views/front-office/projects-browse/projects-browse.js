@@ -24,9 +24,14 @@ export default {
         types.BrowseProjectData.actions.BROWSE_PROJECT_ACTION
     }),
     getAllProjectList() {
-      projectsService.getAllProjects().then(res => {
+      const options = {
+        perPage: 10,
+        page: 1
+      };
+      projectsService.getAllProjects(options).then(res => {
         this.ProjectList = res.data.data;
         this.setBrowseProjectData(res.data.data);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     }
   }

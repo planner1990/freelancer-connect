@@ -59,5 +59,16 @@
         </div>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col class="mt-8" v-if="getBrowseProjectData.total >= 11">
+        <v-pagination
+          color="primary"
+          :length="getBrowseProjectData['last_page']"
+          :total-visible="getBrowseProjectData.total"
+          v-model="getBrowseProjectData['current_page']"
+          @input="changePage($event)"
+        ></v-pagination>
+      </v-col>
+    </v-row>
   </v-container>
 </section>

@@ -425,6 +425,15 @@ const routes = [
                 "../views/employer/manage-job/ongoing-projects-employer/progress-section/index"
               ),
             props: true
+          },
+          {
+            path: ":id/payment",
+            name: "employer-payment-milestone",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-job/ongoing-projects-employer/payment/index"
+              )
           }
         ]
       },
@@ -444,6 +453,15 @@ const routes = [
             component: () =>
               import(
                 "../views/employer/manage-job/pending-projects-employer/project-detail/index"
+              )
+          },
+          {
+            path: ":id/payment",
+            name: "employer-payment",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-job/pending-projects-employer/payment/index"
               )
           }
         ]

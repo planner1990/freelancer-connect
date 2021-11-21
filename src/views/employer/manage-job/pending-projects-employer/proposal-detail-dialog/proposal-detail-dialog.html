@@ -37,7 +37,7 @@
                 disabled
                 outlined
                 dense
-                v-model="proposalForm['project_duration_id']"
+                v-model="proposalForm['project_duration_fa']"
               ></v-text-field>
             </v-col>
             <v-col cols="12">
@@ -46,7 +46,7 @@
                 disabled
                 outlined
                 dense
-                v-model="proposalForm.amount"
+                v-model="proposalForm['final_amount']"
               ></v-text-field>
             </v-col>
             <v-col cols="12">
@@ -105,7 +105,7 @@
         <v-btn color="error" @click="rejectProposal(3)">
           رد پیشنهاد
         </v-btn>
-        <v-btn color="primary" @click="proposalAction()">
+        <v-btn color="primary" @click="hireFreelancerByPrepayment()">
           تایید پیشنهاد
         </v-btn>
       </v-card-actions>

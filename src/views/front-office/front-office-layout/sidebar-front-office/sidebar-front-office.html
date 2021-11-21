@@ -4,6 +4,7 @@
   disable-resize-watcher
   :value="drawerFront"
   class="navbar-front-office sidebar-front-office"
+  v-if="this.$vuetify.breakpoint.width <= 967"
 >
   <v-divider></v-divider>
   <div class="d-flex flex-column align-center justify-center">

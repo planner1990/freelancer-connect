@@ -9,6 +9,9 @@ export default {
   data() {
     return {
       model: 0,
+      // pageCount: 20,
+      page: 1,
+      // totalPage: 10,
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
       test: require("../../assets/image/connecta-logo-2.png")
     };
@@ -20,7 +23,7 @@ export default {
     showServices() {
       let serviceListItems = [];
       if (Object.entries(this.getBrowseServiceData).length > 0) {
-        this.getBrowseServiceData.map(item => {
+        this.getBrowseServiceData.data.map(item => {
           serviceListItems.push({
             id: item.id,
             title: item.title,
@@ -42,17 +45,18 @@ export default {
   mounted() {},
   methods: {
     ...mapActions({
-      setBrowseServiceData: types.paginationData.actions.PAGINATION_ACTION
+      setBrowseServiceData:
+        types.browseServiceData.actions.BROWSE_SERVICE_ACTION
     }),
     changePage(currentPage) {
       const options = {
-        status: this.status,
         page: currentPage,
-        perPage: 5
+        perPage: 10
       };
       projectsService.getAllServices(options).then(res => {
         this.page = currentPage;
         this.setBrowseServiceData(res.data.data);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     },
     goToDetail(id) {

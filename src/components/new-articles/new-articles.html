@@ -42,11 +42,11 @@
             <div v-if="!serviceList.image.length > 0">
               <v-carousel-item :src="test"> </v-carousel-item>
             </div>
-            <div
-              v-if="serviceList.image.length > 0 && serviceList.image[0]['type']!=='image/jpg', 'image/jpeg', 'image/png'"
-            >
-              <v-carousel-item :src="test"> </v-carousel-item>
-            </div>
+            <!--            <div-->
+            <!--              v-if="serviceList.image.length > 0 && serviceList.image[0]['type']!=='image/jpg', 'image/jpeg', 'image/png'"-->
+            <!--            >-->
+            <!--              <v-carousel-item :src="test"> </v-carousel-item>-->
+            <!--            </div>-->
           </v-carousel>
         </div>
         <div class="d-flex justify-center">
@@ -92,8 +92,16 @@
         </div>
       </v-col>
     </v-row>
-    <span class="text-center text-h6 my-3" v-if="!showServices.length > 0">
-      هیچ موردی یافت نشد
-    </span>
+    <v-row>
+      <v-col class="mt-8" v-if="getBrowseServiceData.total >= 11">
+        <v-pagination
+          color="primary"
+          :length="getBrowseServiceData['last_page']"
+          :total-visible="getBrowseServiceData.total"
+          v-model="getBrowseServiceData['current_page']"
+          @input="changePage($event)"
+        ></v-pagination>
+      </v-col>
+    </v-row>
   </v-container>
 </div>

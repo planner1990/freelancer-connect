@@ -24,7 +24,7 @@
       <v-row no-gutters>
         <v-col cols="12" sm="6" md="8">
           <new-articles :is-service="true"></new-articles>
-          <div class="text-center text-h6 my-3" v-if="!ProjectList.length >= 1">
+          <div class="text-center text-h6 my-3" v-if="ProjectList.data.length === 0">
             هیچ موردی یافت نشد
           </div>
         </v-col>

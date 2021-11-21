@@ -94,6 +94,11 @@ export default {
               symbol: "mdi-folder-star-multiple-outline"
             },
             {
+              title: "proposals",
+              route: "/freelancer/proposals",
+              symbol: "mdi-human-greeting-proximity"
+            },
+            {
               title: "settings",
               symbol: "mdi-cog-transfer-outline",
               subCategory: [
@@ -181,11 +186,6 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
-            },
-            {
-              title: "proposals",
-              route: "/freelancer/proposals",
-              symbol: "mdi-human-greeting-proximity"
             },
             {
               title: "invoices",

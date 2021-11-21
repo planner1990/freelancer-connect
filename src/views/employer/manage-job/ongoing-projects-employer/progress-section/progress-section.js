@@ -152,15 +152,11 @@ export default {
         });
     },
 
-    fakePayment(mileStoneId) {
-      const body = {
-        milestone_id: mileStoneId
-      };
-      employerServices.fakePaymentEmployer(body).then(res => {
-        console.log(res);
-        this.getIndexMilestone();
-        this.dialog = false;
+    goToPaymentPage(id) {
+      this.$router.push({
+        path: `/employer/ongoing-projects/${id}/payment`
       });
+      this.dialog = false;
     },
 
     mileStoneAction(id, status) {

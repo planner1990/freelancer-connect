@@ -1,0 +1,56 @@
+<v-container class="payment">
+  <v-row class="justify-space-between mb-6">
+    <v-col md="2" class="pa-0" @click="goBack">
+      <v-icon>
+        mdi-arrow-right
+      </v-icon>
+      بازگشت
+    </v-col>
+    <v-col md="3" class="pa-0 text-left">
+      صفحه پیش پرداخت
+    </v-col>
+  </v-row>
+  <v-row class="prepayment-card">
+    <v-col md="6">مبلغ پیش پرداخت:</v-col>
+    <v-col class="text-left" md="6"
+      >{{ paymentInfo['total_amount'] | roundNumber | thousandMask}} ریال</v-col
+    >
+  </v-row>
+  <v-row class="mt-8 prepayment-card">
+    <v-col md="6">موجودی کیف پول:</v-col>
+    <v-col class="text-left" md="6">{{ paymentInfo['credit'] }} ریال</v-col>
+    <v-col md="6" class="font-weight-bold">مبلغ قابل پرداخت:</v-col>
+    <v-col class="text-left font-weight-bold" md="6"
+      >{{ paymentInfo['payable_amount'] | thousandMask }} ریال</v-col
+    >
+  </v-row>
+  <v-row>
+    <v-col md="12">
+      <header-section
+        class="mt-8"
+        :headerSectionTitle="'انتخاب درگاه بانکی'"
+      ></header-section>
+    </v-col>
+    <v-col md="12">
+      <v-radio-group row>
+        <v-radio
+          class="flex-column-reverse"
+          v-for="(bank, index) in gatewaysList"
+          :value="index"
+          :key="index"
+        >
+          <template slot="label">
+            <v-img max-height="80" max-width="80" :src="bank['logo']"> </v-img>
+            <!--            {{bank["name_fa"]}}-->
+          </template>
+        </v-radio>
+        <!--        <v-radio label="Option 2" value="radio-2"></v-radio>-->
+      </v-radio-group>
+    </v-col>
+    <v-col>
+      <v-btn color="primary" depressed class="px-12" @click="paymentInvoice">
+        پرداخت
+      </v-btn>
+    </v-col>
+  </v-row>
+</v-container>

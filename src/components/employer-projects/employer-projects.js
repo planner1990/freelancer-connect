@@ -19,7 +19,7 @@ export default {
     showServices() {
       let serviceListItems = [];
       if (Object.entries(this.getBrowseProjectData).length > 0) {
-        this.getBrowseProjectData.map(item => {
+        this.getBrowseProjectData.data.map(item => {
           serviceListItems.push({
             id: item.id,
             title: item.title,
@@ -46,13 +46,13 @@ export default {
     }),
     changePage(currentPage) {
       const options = {
-        status: this.status,
         page: currentPage,
-        perPage: 5
+        perPage: 10
       };
       projectsService.getAllProjects(options).then(res => {
         this.page = currentPage;
         this.setBrowseProjectData(res.data.data);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     },
     goToDetail(id) {

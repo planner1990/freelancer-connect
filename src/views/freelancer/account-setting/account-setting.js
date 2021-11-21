@@ -1,5 +1,5 @@
-import DashboardCard from "../../../components/dashboardCard/index";
-import HeaderSection from "../../../components/header-section/index";
+import DashboardCard from "@/components/dashboardCard/index";
+import HeaderSection from "@/components/header-section/index";
 export default {
   name: "account-setting",
   components: { DashboardCard, HeaderSection },

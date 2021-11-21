@@ -7,8 +7,10 @@ class projectsService {
   createService(body) {
     return API_V1.post("/freelancer/service", body);
   }
-  getAllServices() {
-    return API_V1.get(`services`);
+  getAllServices(options) {
+    return API_V1.get(
+      `services?per_page=${options.perPage}&page=${options.page}`
+    );
   }
   getServiceById(id) {
     return API_V1.get(`services/${id}`);
@@ -32,8 +34,10 @@ class projectsService {
     return API_V1.get(`type/company_criteria`);
   }
 
-  getAllProjects() {
-    return API_V1.get(`projects`);
+  getAllProjects(options) {
+    return API_V1.get(
+      `projects?per_page=${options.perPage}&page=${options.page}`
+    );
   }
 
   submitProposal(body) {
