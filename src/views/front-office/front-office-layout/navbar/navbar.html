@@ -96,7 +96,7 @@
               </v-avatar>
               <h3 class="mt-2">{{ user.first_name + ' ' + user.last_name}}</h3>
               <p class="text-caption mt-1">
-                {{ role }}
+                {{ role | roleTranslator}}
               </p>
               <v-divider class="my-3"></v-divider>
               <v-btn depressed rounded text @click="goToDashboard(role)">

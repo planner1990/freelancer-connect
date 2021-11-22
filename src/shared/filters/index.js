@@ -9,3 +9,4 @@ import "./projectDurationId";
 import "./employerMileStoneStatus";
 import "./freelancerMileStoneStatus";
 import "./installments";
+import "./roleTranslator";

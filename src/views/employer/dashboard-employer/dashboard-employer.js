@@ -28,20 +28,14 @@ export default {
         {
           src: "تبلیغات",
           notification: 0,
-          title: "پروژه های تکمیل شده",
+          title: "پروژه های اجرا شده",
           routeName: "completed-projects-employer"
         },
         {
           src: "داخلی",
           notification: 0,
-          title: "پروژه های در حال انجام",
+          title: "پروژه های در حال اجرا",
           routeName: "ongoing-projects-employer"
-        },
-        {
-          src: "مارکتینگ",
-          notification: 0,
-          title: "پروژه های ارسالی",
-          routeName: "posted-services-employer"
         },
         {
           src: "وبسایت",
@@ -59,14 +53,14 @@ export default {
           src: "اپلیکیشن",
           notification: 0,
           title: "پرداخت",
-          routeName: "payout-employer"
+          routeName: "employer-transactions"
         },
-        {
-          src: "بصری",
-          notification: 0,
-          title: "موارد ذخیره شده",
-          routeName: "my-saved-items-employer"
-        },
+        // {
+        //   src: "بصری",
+        //   notification: 0,
+        //   title: "موارد ذخیره شده",
+        //   routeName: "my-saved-items-employer"
+        // },
         {
           src: "مارکتینگ",
           notification: 0,

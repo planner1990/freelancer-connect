@@ -1,9 +1,10 @@
-import DashboardCard from "../../../../components/dashboardCard/index";
-import TableDashboard from "../../../../components/table-dashboard/index";
-import ServiceEmploymentService from "../../../../core/services/modules/serviceEmploymentService";
+import DashboardCard from "@/components/dashboardCard/index";
+import TableDashboard from "@/components/table-dashboard/index";
+import { ServiceEmploymentService } from "@/core/services";
+import transitionPage from "@/components/transitionPage/index";
 export default {
   name: "posted-services-employer",
-  components: { DashboardCard, TableDashboard },
+  components: { DashboardCard, TableDashboard, transitionPage },
   props: [],
   data() {
     return {

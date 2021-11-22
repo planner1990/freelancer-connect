@@ -15,7 +15,7 @@
         <v-text-field
           v-model.number="serviceForm.price"
           :rules="createServiceRule.price"
-          label="حداقل مبلغ در هر ساعت"
+          label="نرخ ساعتی"
           type="text"
           required
           outlined
@@ -36,7 +36,7 @@
       </v-col>
     </v-row>
     <header-section
-      :headerSectionTitle="'ضمیمه مدارک مورد نیاز'"
+      :headerSectionTitle="'مدارک مورد نیاز'"
     ></header-section>
     <v-row class="d-lg-flex d-md-block">
       <v-col md="12">

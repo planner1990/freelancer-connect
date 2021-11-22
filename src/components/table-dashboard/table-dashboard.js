@@ -165,13 +165,21 @@ export default {
       }
     },
     hiredServiceByEmployer(id) {
-      this.showSnackbar = false;
-      ServiceEmploymentService.employmentService(id).then(res => {
-        console.log(res);
-        this.snackbarMessage = "عملیات با موفقیت انجام شد.";
-        this.showSnackbar = true;
+      if (this.confirmJobOfferForm.prepayment) {
+        this.showSnackbar = false;
+        this.$router.push({
+          path: `/employer/posted-services/${id}/payment`
+        });
         this.dialog = false;
-      });
+      } else {
+        this.showSnackbar = false;
+        ServiceEmploymentService.employmentService(id).then(res => {
+          console.log(res);
+          this.snackbarMessage = "عملیات با موفقیت انجام شد.";
+          this.showSnackbar = true;
+          this.dialog = false;
+        });
+      }
     },
     confirmEstimation(id) {
       if (this.disableInput === true) {

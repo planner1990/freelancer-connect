@@ -10,23 +10,23 @@
         dense
       ></v-text-field>
     </v-col>
-    <v-col cols="12" class="side-filter-card mt-8">
-      <strong>{{ $t('form.priceRange') }}</strong>
-      <v-divider class="divide-card"></v-divider>
-      <div class="mt-8 mb-4">
-        {{ $t('form.priceRangeBetweenToNum', { min: `${min}`, max: `${max}` })
-        }}
-      </div>
-      <v-range-slider
-        max="1000"
-        min="0"
-        v-model="value"
-        @change="setSlider($event)"
-        class="mt-8"
-        thumb-label
-        ticks
-      ></v-range-slider>
-    </v-col>
+<!--    <v-col cols="12" class="side-filter-card mt-8">-->
+<!--      <strong>{{ $t('form.priceRange') }}</strong>-->
+<!--      <v-divider class="divide-card"></v-divider>-->
+<!--      <div class="mt-8 mb-4">-->
+<!--        {{ $t('form.priceRangeBetweenToNum', { min: `${min}`, max: `${max}` })-->
+<!--        }}-->
+<!--      </div>-->
+<!--      <v-range-slider-->
+<!--        max="1000"-->
+<!--        min="0"-->
+<!--        v-model="value"-->
+<!--        @change="setSlider($event)"-->
+<!--        class="mt-8"-->
+<!--        thumb-label-->
+<!--        ticks-->
+<!--      ></v-range-slider>-->
+<!--    </v-col>-->
     <v-col cols="12" class="side-filter-card mt-8">
       <strong>{{ $t('sidebar.jobCategory') }}</strong>
       <v-divider class="divide-card"></v-divider>

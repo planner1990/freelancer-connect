@@ -106,7 +106,7 @@
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
-                        label="مدت زمان تخمینی اجرای پروژه*"
+                        label="مدت زمان تخمینی اجرای پروژه(ساعت)*"
                         required
                         outlined
                         dense
@@ -123,12 +123,12 @@
                         outlined
                         dense
                         type="number"
-                        disabled
+                        :disabled="disableInput"
                         v-model="confirmJobOfferForm.prepayment"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-<!--                      <strong>برآورد کل قیمتی: {{total_price}}</strong>-->
+                      <!--                      <strong>برآورد کل قیمتی: {{total_price}}</strong>-->
                     </v-col>
                     <v-col cols="12">
                       <v-textarea
@@ -210,7 +210,7 @@
                   color="primary"
                   @click="confirmEstimation(item.id)"
                 >
-                  تایید پیشنهاد
+                  ارسال ارزیابی
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -225,6 +225,15 @@
         :src="item.icon"
         class="ma-auto"
       ></v-img>
+    </template>
+    <template v-slot:item.service_title="{ item }">
+      <div class="d-flex justify-center align-center service-table">
+        <div class="d-flex flex-column align-start px-4">
+          <div class="m-0">
+            {{item['service_title'] | readMore(15, '...')}}
+          </div>
+        </div>
+      </div>
     </template>
     <template v-slot:item.title="{ item }">
       <div class="d-flex justify-center align-center service-table">

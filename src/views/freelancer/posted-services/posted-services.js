@@ -16,6 +16,12 @@ export default {
       ],
       headersUserManagement: [
         {
+          text: "عنوان خدمت",
+          align: "center",
+          sortable: false,
+          value: "service_title"
+        },
+        {
           text: "عنوان درخواستی",
           align: "center",
           sortable: false,

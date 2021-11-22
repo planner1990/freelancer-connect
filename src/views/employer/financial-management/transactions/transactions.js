@@ -34,7 +34,7 @@ export default {
           align: "center"
         },
         {
-          text: "زمان",
+          text: "تاریخ",
           value: "date",
           sortable: false,
           align: "center"

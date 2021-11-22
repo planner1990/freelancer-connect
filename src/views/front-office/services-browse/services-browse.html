@@ -5,7 +5,7 @@
     <v-container>
       <v-row class="flex-column text-center">
         <v-col cols="12" md="6" sm="11" class="mx-auto pa-0 first-slogan">
-          جستجوی خدمات ارایه شده از
+          خدمات ارائه شده توسط
         </v-col>
         <v-col
           cols="12"
@@ -24,7 +24,10 @@
       <v-row no-gutters>
         <v-col cols="12" sm="6" md="8">
           <new-articles :is-service="true"></new-articles>
-          <div class="text-center text-h6 my-3" v-if="ProjectList.data.length === 0">
+          <div
+            class="text-center text-h6 my-3"
+            v-if="ProjectList.data.length === 0"
+          >
             هیچ موردی یافت نشد
           </div>
         </v-col>

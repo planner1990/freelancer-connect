@@ -12,7 +12,7 @@ export default {
       signInLoading: false,
       phoneRules: [
         v => !!v || "لطفا موبایل خود را وارد کنید",
-        v => (v && v.length === 11) || "شماره موبایل باید ۱۱ رقم باشد"
+        v => (v && v.length === 11) || "شماره همراه باید ۱۱ رقم باشد"
       ]
     };
   },

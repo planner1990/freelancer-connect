@@ -1,7 +1,11 @@
 <dashboard-card :titleCard="$t('sidebar.postedServices')">
   <table-dashboard
+    v-if="!this.$route.params.id"
     :headersUserManagement="headersUserManagement"
     :dataUserManagement="dataUserManagement"
     :disableInput="true"
   ></table-dashboard>
+  <transitionPage>
+    <router-view v-if="this.$route.params.id" />
+  </transitionPage>
 </dashboard-card>

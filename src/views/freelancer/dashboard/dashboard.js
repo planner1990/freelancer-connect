@@ -13,12 +13,12 @@ export default {
           title: "ایجاد خدمات",
           routeName: "post-service"
         },
-        {
-          src: "اپلیکیشن",
-          notification: 0,
-          title: "صندوق پیام",
-          routeName: "message-center"
-        },
+        // {
+        //   src: "اپلیکیشن",
+        //   notification: 0,
+        //   title: "صندوق پیام",
+        //   routeName: "message-center"
+        // },
         {
           src: "بصری",
           notification: 0,
@@ -31,12 +31,12 @@ export default {
           title: "پروفایل",
           routeName: "profile-setting"
         },
-        {
-          src: "داخلی",
-          notification: 0,
-          title: "موارد ذخیره شده",
-          routeName: "my-saved-items"
-        },
+        // {
+        //   src: "داخلی",
+        //   notification: 0,
+        //   title: "موارد ذخیره شده",
+        //   routeName: "my-saved-items"
+        // },
         {
           src: "مارکتینگ",
           notification: 0,
@@ -46,25 +46,25 @@ export default {
         {
           src: "وبسایت",
           notification: 0,
-          title: "پروژه ارسال شده",
-          routeName: "posted-projects"
+          title: "لیست درخواست ها",
+          routeName: "proposals"
         },
         {
           src: "امنیت",
           notification: 0,
-          title: "پروژه های تکمیل شده",
+          title: "پروژه های اجرا شده",
           routeName: "completed-projects"
         },
         {
           src: "اپلیکیشن",
           notification: 0,
-          title: "پروژه های ناتمام",
+          title: "پروژه های ناموفق",
           routeName: "cancelled-projects"
         },
         {
           src: "بصری",
           notification: 0,
-          title: "پروژه های در حال انجام",
+          title: "پروژه های در حال اجرا",
           routeName: "ongoing-projects"
         },
         {

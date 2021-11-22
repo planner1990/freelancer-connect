@@ -5,7 +5,7 @@
         <v-icon left>
           mdi-content-save-all-outline
         </v-icon>
-        جزییات فردی و مهارتی
+          جزئیات پروفایل
       </v-tab>
       <v-tab>
         <v-icon left>
@@ -25,7 +25,7 @@
           <v-card-text>
             <v-form ref="form" v-model="valid" lazy-validation>
               <header-section
-                :header-section-title="'جزییات فردی و مهارتی'"
+                :header-section-title="'جزئیات پروفایل'"
               ></header-section>
               <v-row v-if="companyName === ''">
                 <v-col lg="6" md="12">
@@ -119,7 +119,7 @@
                     :items="categories"
                     item-text="title"
                     item-value="id"
-                    label="دسته بندی ها"
+                    label="زمینه کاری"
                     v-model="profileInfo.user['category_id']"
                     required
                     outlined
@@ -210,7 +210,7 @@
             ></form-dialog>
             <projects></projects>
             <header-section
-              header-section-title="بخش افتخارات"
+              header-section-title="دوره آموزشی"
             ></header-section>
             <form-dialog
               :dataForDialogForm="addAwardDataForDialogForm"

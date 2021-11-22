@@ -323,7 +323,7 @@ const routes = [
     path: "/employer",
     name: "employer",
     beforeEnter: AuthGuard.employerAuthGuard,
-    // redirect: `/panel/dashboard`,
+    redirect: `/employer/dashboard`,
     meta: { transitionName: "slide" },
     component: () =>
       import(
@@ -473,7 +473,18 @@ const routes = [
         component: () =>
           import(
             "../views/employer/manage-services/posted-services-employer/index"
-          )
+          ),
+        children: [
+          {
+            path: ":id/payment",
+            name: "posted-services-employer-payment",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-services/posted-services-employer/payment/index"
+              )
+          }
+        ]
       },
       {
         path: "ongoing-services",

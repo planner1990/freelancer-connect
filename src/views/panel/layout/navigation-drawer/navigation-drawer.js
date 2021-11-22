@@ -186,12 +186,12 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
-            },
-            {
-              title: "invoices",
-              route: "/freelancer/invoices",
-              symbol: "mdi-sitemap"
             }
+            // {
+            //   title: "invoices",
+            //   route: "/freelancer/invoices",
+            //   symbol: "mdi-sitemap"
+            // }
             // {
             //   title: "packages",
             //   route: "/freelancer/packages",
@@ -310,17 +310,17 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
-            },
+            }
             // {
             //   title: "payout",
             //   route: "/employer/payout",
             //   symbol: "mdi-credit-card-marker-outline"
             // },
-            {
-              title: "invoices",
-              route: "/employer/invoices",
-              symbol: "mdi-sitemap"
-            }
+            // {
+            //   title: "invoices",
+            //   route: "/employer/invoices",
+            //   symbol: "mdi-sitemap"
+            // }
             // {
             //   title: "mySavedItems",
             //   route: "/employer/my-saved-items",

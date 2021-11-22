@@ -35,7 +35,7 @@ export default {
         },
         { text: "وضعیت", value: "status", sortable: false, align: "center" },
         {
-          text: "تعداد پیشنهادات شغلی",
+          text: "پیشنهادات دریافت شده",
           value: "numOfJobOffer",
           sortable: false,
           align: "center"

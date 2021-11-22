@@ -9,12 +9,17 @@ export default {
       showSelect: true,
       headersUserManagement: [
         {
-          text: "آیدی فاکتور",
+          text: "آیدی صورتحساب",
           align: "center",
           sortable: false,
           value: "name"
         },
-        { text: "زمان", value: "issueDate", sortable: false, align: "center" },
+        {
+          text: "تاریخ/ساعت",
+          value: "issueDate",
+          sortable: false,
+          align: "center"
+        },
         { text: "مبلغ", value: "amount", sortable: false, align: "center" },
         { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],

@@ -9,7 +9,7 @@ export default {
       showSelect: true,
       headersUserManagement: [
         {
-          text: "آیدی فاکتور",
+          text: "آیدی صورتحساب",
           align: "center",
           sortable: false,
           value: "name"

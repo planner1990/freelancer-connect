@@ -46,7 +46,7 @@
     <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
       هیچ پروژه ای یافت نشد
     </div>
-    <div class="col-12 text-center pt-2">
+    <div class="col-12 text-center pt-2" v-if="indexProjectsList.length >= 1">
       <v-pagination
         color="primary"
         :length="paginationData['last_page']"

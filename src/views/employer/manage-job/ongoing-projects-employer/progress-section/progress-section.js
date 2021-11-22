@@ -1,11 +1,13 @@
-import DashboardCard from "../../../../../components/dashboardCard/index";
-import ProjectList from "../../../../../components/project-list/index";
-import DialogDashboard from "../../../../../components/dialog-dashboard/index";
-import employerServices from "../../../../../core/services/modules/employerServices";
-import headerSection from "../../../../../components/header-section/index";
-import freelancerServices from "../../../../../core/services/modules/freelancerServices";
+import DashboardCard from "@/components/dashboardCard/index";
+import ProjectList from "@/components/project-list/index";
+import DialogDashboard from "@/components/dialog-dashboard/index";
+import {
+  employerServices,
+  freelancerServices,
+  UploadService
+} from "@/core/services";
+import headerSection from "@/components/header-section/index";
 import Vue from "vue";
-import UploadService from "../../../../../core/services/modules/uploadService";
 export default {
   name: "progress-section",
   components: {
