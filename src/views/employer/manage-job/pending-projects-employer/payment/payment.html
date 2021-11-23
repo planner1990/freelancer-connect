@@ -38,6 +38,7 @@
           v-for="(bank, index) in gatewaysList"
           :value="index"
           :key="index"
+          @change="getBankId(bank.id)"
         >
           <template slot="label">
             <v-img max-height="80" max-width="80" :src="bank['logo']"> </v-img>

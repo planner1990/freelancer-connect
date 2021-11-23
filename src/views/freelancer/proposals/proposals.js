@@ -20,7 +20,7 @@ export default {
           text: "نام پروژه",
           align: "center",
           sortable: false,
-          value: "content"
+          value: "project_title"
         },
         {
           text: "توضیحات",

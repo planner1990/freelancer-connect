@@ -10,6 +10,7 @@ export default {
     return {
       paymentInfo: {},
       gatewaysList: [],
+      bankId: null,
       banksInfo: [
         {
           title: "بانک سامان",
@@ -47,14 +48,17 @@ export default {
         this.gatewaysList = res.data.data;
       });
     },
+    getBankId(bankId) {
+      this.bankId = bankId;
+    },
     paymentInvoice() {
       const body = {
         type: "estimation",
         id: this.$route.params.id,
-        gateway_id: "2"
+        gateway_id: this.bankId
       };
       employerServices.paymentInvoice(body).then(res => {
-        console.log(res);
+        window.open(res.data.data.url, "_parent");
       });
     },
     goBack() {

@@ -504,6 +504,15 @@ const routes = [
               import(
                 "../views/employer/manage-services/ongoing-services-employer/service-detail/index"
               )
+          },
+          {
+            path: ":id/payment",
+            name: "ongoing-services-employer-payment",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-services/ongoing-services-employer/payment/index"
+              )
           }
         ]
       },

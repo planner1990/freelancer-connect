@@ -10,6 +10,7 @@ export default {
     return {
       paymentInfo: {},
       gatewaysList: [],
+      bankId: null,
       banksInfo: [
         {
           title: "بانک سامان",
@@ -35,7 +36,7 @@ export default {
     inquiryPayment() {
       const option = {
         id: this.$route.params.id,
-        type: "estimation"
+        type: "milestone"
       };
       employerServices.inquiryPayment(option).then(res => {
         this.paymentInfo = res.data.data;
@@ -47,6 +48,9 @@ export default {
         this.gatewaysList = res.data.data;
       });
     },
+    getBankId(bankId) {
+      this.bankId = bankId;
+    },
     paymentInvoice() {
       const body = {
         type: "milestone",
@@ -54,7 +58,7 @@ export default {
         gateway_id: "2"
       };
       employerServices.paymentInvoice(body).then(res => {
-        console.log(res);
+        window.open(res.data.data.url, "_parent");
       });
     },
     goBack() {

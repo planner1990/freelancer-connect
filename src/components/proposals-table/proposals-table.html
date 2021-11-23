@@ -31,6 +31,15 @@
         </div>
       </div>
     </template>
+    <template v-slot:item.project_title="{ item }">
+      <div class="d-flex justify-center align-center service-table">
+        <div class="d-flex flex-column align-start px-4">
+          <div class="m-0">
+            {{item['project_title']}}
+          </div>
+        </div>
+      </div>
+    </template>
     <template v-slot:item.content="{ item }">
       <div class="d-flex justify-center align-center service-table">
         <div class="d-flex flex-column align-start px-4">
@@ -52,12 +61,18 @@
     <template v-slot:item.status="{ item }">
       <div class="d-flex justify-center align-center service-table">
         <div class="d-flex flex-column align-start px-4">
-          <div class="m-0 my-1 service-table-title">{{item.status | proposalStatus}}</div>
+          <div class="m-0 my-1 service-table-title">
+            {{item.status | proposalStatus}}
+          </div>
         </div>
       </div>
     </template>
   </v-data-table>
   <div class="text-center pt-2">
-    <v-pagination v-model="page" :length="pageCount" color="primary"></v-pagination>
+    <v-pagination
+      v-model="page"
+      :length="pageCount"
+      color="primary"
+    ></v-pagination>
   </div>
 </div>
