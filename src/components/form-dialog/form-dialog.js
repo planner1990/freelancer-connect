@@ -128,12 +128,12 @@ export default {
             break;
         }
       }
+      this.resetValidation();
       this.dialog = false;
       this.educationForm = {};
       this.experienceForm = {};
       this.awardForm = {};
       this.projectsForm = {};
-      this.resetValidation();
     }
   }
 };

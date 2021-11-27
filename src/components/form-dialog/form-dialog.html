@@ -223,7 +223,7 @@
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
                     :value="educationForm.educationStart | changeDate"
-                    :rules="educationForm.educationStart"
+                    :rules="educationFormRule.educationStart"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
                     v-on:click:prepend="start=true"
@@ -265,7 +265,7 @@
                     outlined
                     dense
                     :value="educationForm.educationEnd | changeDate"
-                    :rules="educationForm.educationEnd"
+                    :rules="educationFormRule.educationEnd"
                   ></v-text-field>
                 </template>
                 <v-date-picker
