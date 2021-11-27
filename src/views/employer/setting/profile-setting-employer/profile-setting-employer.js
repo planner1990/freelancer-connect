@@ -23,7 +23,7 @@ export default {
       companyCriteriaItems: [],
       companyTypeLists: [],
       attachments: [],
-      titleCard: "پروژه ها",
+      titleCard: "پروژه‌ها",
       profileForm: {
         firstName: "",
         lastName: "",

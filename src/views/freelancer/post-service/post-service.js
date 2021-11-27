@@ -3,12 +3,13 @@ import HeaderSection from "@/components/header-section/index";
 import projectsService from "@/core/services/modules/projectsService";
 import Snackbar from "@/components/snackbar/index";
 import { UploadService } from "@/core/services";
-import thousandMask from "@/shared/mixins/thousandMask";
+import $thousandMask from "@/shared/mixins/thousandMask";
+import $removeThousand from "@/shared/mixins/removeThousand";
 export default {
   name: "post-service",
   components: { DashboardCard, HeaderSection, Snackbar },
   props: [],
-  mixins: [thousandMask],
+  mixins: [$thousandMask, $removeThousand],
   data() {
     return {
       titleCard: "ایجاد خدمت",
@@ -18,7 +19,7 @@ export default {
       serviceForm: {
         title: "",
         description: "",
-        price: null,
+        price: "",
         attachmentId: ""
       },
       createServiceRule: {
@@ -49,10 +50,9 @@ export default {
   computed: {},
   mounted() {},
   methods: {
-    thousandMaskPrice() {
-      this.serviceForm.price = this.numberWithCommas(
-        this.$refs?.inputRef?.value
-      );
+    mask() {
+      this.serviceForm.price = this.$removeThousand(this.serviceForm.price);
+      this.serviceForm.price = this.$thousandMask(this.serviceForm.price);
     },
     hideSnackbar() {
       this.showSnackbar = false;

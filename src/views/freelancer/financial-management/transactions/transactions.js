@@ -52,7 +52,7 @@ export default {
           align: "center"
         },
         {
-          text: "پروژه ها",
+          text: "پروژه‌ها",
           value: "project",
           sortable: false,
           align: "center"

@@ -24,6 +24,7 @@ export default {
       status: "pending",
       projectDetails: {},
       proposalForm: {},
+      proposalOtherInfo: {},
       // nameRules: [
       //   v => !!v || "Name is required",
       //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
@@ -59,9 +60,10 @@ export default {
     },
     getProposalsById() {
       freelancerServices
-        .getPendingProposalById(this.$route.params.id)
+        .getPendingProposalById(this.$route.query.proposalId)
         .then(res => {
           this.proposalForm = res.data.data["freelancer"];
+          this.proposalOtherInfo = res.data.data;
           this.attachments = res.data.data.attachments;
         });
     },

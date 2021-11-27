@@ -9,7 +9,7 @@ export default {
     return {
       dialog: false,
       isMobile: true,
-      titleCard: "پروژه ها",
+      titleCard: "پروژه‌ها",
       simpleDialogData: {
         buttonTitle: "حذف پروژه",
         header: "آیا می خواهید پروژه را حذف کنید؟",

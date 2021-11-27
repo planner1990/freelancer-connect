@@ -43,6 +43,7 @@
         <v-row justify="space-around" no-gutters>
           <v-col cols="12" sm="6" md="6">
             <v-menu
+              v-model="test"
               ref="startMenu"
               :close-on-content-click="false"
               :return-value.sync="start"
@@ -142,8 +143,8 @@
                   عنوان ( از تاریخ - تا تاریخ)
                 </span>
                 <span v-else key="1" dir="ltr">
-                  {{item.form.start_date | changeDate}} - {{item.form.end_date | changeDate}} : {{
-                  item.form.job_title }}
+                  {{item.form.start_date | changeDate}} - {{item.form.end_date |
+                  changeDate}} : {{ item.form.job_title }}
                 </span>
               </v-fade-transition>
             </v-col>
@@ -172,6 +173,7 @@
         <v-row justify="space-around" no-gutters>
           <v-col cols="12" sm="6" md="6">
             <v-menu
+              v-model="start"
               ref="startMenu"
               :close-on-content-click="false"
               :return-value.sync="start"

@@ -13,15 +13,14 @@
       </v-col>
       <v-col lg="6" md="12">
         <v-text-field
-          v-model.number="serviceForm.price"
-          :rules="createServiceRule.price"
-          label="نرخ ساعتی"
-          type="text"
+          v-model="serviceForm.price"
+          @input="mask"
+          label=" نرخ ساعتی به ریال"
           required
           outlined
           ref="inputRef"
-          @change="thousandMaskPrice"
-        ></v-text-field>
+        >
+        </v-text-field>
       </v-col>
     </v-row>
     <v-row class="d-block">
@@ -35,16 +34,13 @@
         ></v-textarea>
       </v-col>
     </v-row>
-    <header-section
-      :headerSectionTitle="'مدارک مورد نیاز'"
-    ></header-section>
+    <header-section :headerSectionTitle="'مدارک مورد نیاز'"></header-section>
     <v-row class="d-lg-flex d-md-block">
       <v-col md="12">
         <v-file-input
           @change="handleFileInput($event)"
-          counter
           label="ضمیمه فایل"
-          placeholder="Select your files"
+          placeholder="فایل خود را انتخاب کنید"
           prepend-icon="mdi-paperclip"
           outlined
           multiple

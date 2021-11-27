@@ -12,6 +12,7 @@
     v-model="phone"
     :rules="phoneRules"
     dense
+    @keyup.enter="handleSendOTP()"
   ></v-text-field>
   <v-card-actions class="pa-0">
     <v-btn
@@ -22,7 +23,6 @@
       dark
       class="py-5"
       @click="handleSendOTP()"
-      @keyup.enter="handleSendOTP()"
       >{{ $t('actions.continue') }}</v-btn
     >
   </v-card-actions>

@@ -4,7 +4,6 @@
   </h5>
   <v-select
     v-model="project_duration_id"
-    :rules="createProjectRule.duration"
     :items="durationList"
     item-value="id"
     item-text="title"
@@ -17,29 +16,29 @@
     بودجه برآورد شده شما چقدر است؟
   </h5>
   <v-text-field
-    :label="'حداقل قیمت(ریال)'"
+    :label="'هزینه پیشنهادی به ریال'"
     type="text"
     outlined
-    v-model.number="price"
+    v-model="price"
+    @input="mask"
     dense
-    @change="thousandMaskPrice"
     ref="inputRef"
   ></v-text-field>
-<!--  <v-text-field-->
-<!--    :label="'حداکثر قیمت(ریال)'"-->
-<!--    type="text"-->
-<!--    outlined-->
-<!--    v-model.number="maxPrice"-->
-<!--    dense-->
-<!--    @change="thousandMaskMaxPrice"-->
-<!--    ref="inputRef2"-->
-<!--  ></v-text-field>-->
+  <!--  <v-text-field-->
+  <!--    :label="'حداکثر قیمت(ریال)'"-->
+  <!--    type="text"-->
+  <!--    outlined-->
+  <!--    v-model.number="maxPrice"-->
+  <!--    dense-->
+  <!--    @change="thousandMaskMaxPrice"-->
+  <!--    ref="inputRef2"-->
+  <!--  ></v-text-field>-->
   <v-card-actions class="pa-0 my-5">
     <v-btn
       color="teal accent-3"
       :loading="signInLoading"
       block
-      :disabled="!price"
+      :disabled="!price || !project_duration_id"
       :dark="!!price"
       class="py-5"
       @click="goToActivity()"

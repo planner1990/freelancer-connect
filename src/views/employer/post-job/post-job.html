@@ -15,14 +15,13 @@
     <v-row>
       <v-col lg="6" md="12">
         <v-text-field
-          v-model.number="projectForm.price"
+          v-model="projectForm.price"
           :rules="createProjectRule.price"
+          @input="mask"
           :label="$t('form.price')"
-          type="text"
           required
           outlined
           ref="inputRef"
-          @change="thousandMaskPrice"
         ></v-text-field>
       </v-col>
       <v-col lg="6" md="12">
@@ -50,7 +49,7 @@
         ></v-textarea>
       </v-col>
     </v-row>
-    <header-section :headerSectionTitle="'دسته بندی مورد نظر'"></header-section>
+    <header-section :headerSectionTitle="'دسته‌بندی مورد نظر'"></header-section>
     <v-row>
       <v-col md="12">
         <v-select
@@ -100,7 +99,7 @@
       </v-col>
     </v-row>
     <header-section
-      :headerSectionTitle="'مهارت های مورد نیاز'"
+      :headerSectionTitle="'مهارت‌های مورد نیاز'"
     ></header-section>
     <v-row>
       <v-col md="12">
@@ -119,6 +118,9 @@
           outlined
           clearable
           small-chips
+          deletable-chips
+          counter="5"
+          :rules="createProjectRule.skills"
           @change="selectSkills(projectForm.skills)"
         >
           <template v-slot:no-data>
@@ -134,14 +136,11 @@
         </v-combobox>
       </v-col>
     </v-row>
-    <header-section
-      :headerSectionTitle="'مدارک مورد نیاز'"
-    ></header-section>
+    <header-section :headerSectionTitle="'مدارک مورد نیاز'"></header-section>
     <v-row class="d-lg-flex d-md-block">
       <v-col md="12">
         <v-file-input
           @change="handleFileInput($event)"
-          counter
           label="ضمیمه فایل"
           placeholder="Select your files"
           prepend-icon="mdi-paperclip"

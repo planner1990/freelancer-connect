@@ -98,21 +98,26 @@ export default {
               route: "/freelancer/proposals",
               symbol: "mdi-human-greeting-proximity"
             },
+            // {
+            //   title: "settings",
+            //   symbol: "mdi-cog-transfer-outline",
+            //   subCategory: [
+            //     {
+            //       title: "profileSettings",
+            //       route: "/freelancer/profile-setting",
+            //       symbol: "mdi-account-cog-outline"
+            //     }
+            //     // {
+            //     //   title: "accountSettings",
+            //     //   route: "/freelancer/account-setting",
+            //     //   symbol: "mdi-account-edit-outline"
+            //     // }
+            //   ]
+            // },
             {
-              title: "settings",
-              symbol: "mdi-cog-transfer-outline",
-              subCategory: [
-                {
-                  title: "profileSettings",
-                  route: "/freelancer/profile-setting",
-                  symbol: "mdi-account-cog-outline"
-                }
-                // {
-                //   title: "accountSettings",
-                //   route: "/freelancer/account-setting",
-                //   symbol: "mdi-account-edit-outline"
-                // }
-              ]
+              title: "profileSettings",
+              route: "/freelancer/profile-setting",
+              symbol: "mdi-account-cog-outline"
             },
             {
               title: "financialManagement",
@@ -222,21 +227,26 @@ export default {
               route: "/employer/my-projects",
               symbol: "mdi-folder-star-multiple-outline"
             },
+            // {
+            //   title: "settings",
+            //   symbol: "mdi-cog-transfer-outline",
+            //   subCategory: [
+            //     {
+            //       title: "profileSettings",
+            //       route: "/employer/profile-setting",
+            //       symbol: "mdi-account-cog-outline"
+            //     }
+            //     // {
+            //     //   title: "accountSettings",
+            //     //   route: "/employer/account-setting",
+            //     //   symbol: "mdi-account-edit-outline"
+            //     // }
+            //   ]
+            // },
             {
-              title: "settings",
-              symbol: "mdi-cog-transfer-outline",
-              subCategory: [
-                {
-                  title: "profileSettings",
-                  route: "/employer/profile-setting",
-                  symbol: "mdi-account-cog-outline"
-                }
-                // {
-                //   title: "accountSettings",
-                //   route: "/employer/account-setting",
-                //   symbol: "mdi-account-edit-outline"
-                // }
-              ]
+              title: "profileSettings",
+              route: "/employer/profile-setting",
+              symbol: "mdi-account-cog-outline"
             },
             {
               title: "financialManagement",

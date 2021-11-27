@@ -5,7 +5,12 @@ import transitionPage from "../../../components/transitionPage/index";
 import freelancerServices from "../../../core/services/modules/freelancerServices";
 export default {
   name: "posted-projects",
-  components: { DashboardCard, ProjectList, DialogDashboard, transitionPage },
+  components: {
+    DashboardCard,
+    ProjectList,
+    DialogDashboard,
+    transitionPage
+  },
   props: [],
   mixins: [],
   data() {
@@ -63,8 +68,11 @@ export default {
     //     console.log(res);
     //   });
     // },
-    redirectToProjectDetail(id) {
-      this.$router.push({ path: `posted-projects/${id}/project-detail` });
+    redirectToProjectDetail(id, proposalId) {
+      this.$router.push({
+        path: `posted-projects/${id}/project-detail`,
+        query: { proposalId }
+      });
     }
   }
 };

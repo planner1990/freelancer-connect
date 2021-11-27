@@ -1,15 +1,16 @@
-import SideFilter from "../../../components/side-filter/index";
+import SideFilter from "@/components/side-filter/index";
 import MainInfo from "./main-info/index";
 import SideInfo from "./side-info/index";
-import projectsService from "../../../core/services/modules/projectsService";
-import { AuthService } from "../../../core/services";
-import UploadService from "../../../core/services/modules/uploadService";
-import * as types from "../../../shared/store/types";
-import Snackbar from "../../../components/snackbar/index";
+import { UploadService, AuthService, projectsService } from "@/core/services";
+import * as types from "@/shared/store/types";
+import Snackbar from "@/components/snackbar/index";
+import $thousandMask from "@/shared/mixins/thousandMask";
+import $removeThousand from "@/shared/mixins/removeThousand";
 export default {
   name: "project-details",
   components: { SideFilter, MainInfo, SideInfo, Snackbar },
   props: [],
+  mixins: [$thousandMask, $removeThousand],
   data() {
     return {
       projectDetailsById: {},
@@ -55,6 +56,16 @@ export default {
     this.getProjectDurations();
   },
   methods: {
+    mask() {
+      this.proposalForm.price = this.$removeThousand(this.proposalForm.price);
+      this.proposalForm.price = this.$thousandMask(this.proposalForm.price);
+      this.proposalForm.prepayment = this.$removeThousand(
+        this.proposalForm.prepayment
+      );
+      this.proposalForm.prepayment = this.$thousandMask(
+        this.proposalForm.prepayment
+      );
+    },
     hideSnackbar() {
       this.showSnackbar = false;
     },
@@ -88,8 +99,8 @@ export default {
       const body = {
         project_id: this.projectDetailsById.id,
         project_duration_id: this.proposalForm.project_duration_id,
-        amount: this.proposalForm.price,
-        prepayment: this.proposalForm.prepayment,
+        amount: this.proposalForm.price.replace(/,/g, ""),
+        prepayment: this.proposalForm.prepayment.replace(/,/g, ""),
         content: this.proposalForm.description,
         attachment_id: this.proposalForm.attachmentId
       };

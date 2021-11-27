@@ -19,6 +19,7 @@
     outlined
     v-model="OTPCode"
     :rules="OTPCodeRule"
+    @keyup.enter="handleVerifyOTP()"
     dense
   ></v-text-field>
   <v-card-text class="text-center">

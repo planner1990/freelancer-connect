@@ -24,6 +24,7 @@ export default {
         url: ""
       },
       projectRule: {
+        name: [v => !!v || "لطفا عنوان را وارد کنید"],
         url: [
           v => !!v || "لطفا آدرس پروژه را وارد کنید",
           v =>
@@ -35,6 +36,24 @@ export default {
         title: "",
         achieved_date: null,
         attachment_id: ""
+      },
+      experienceFormRule: {
+        name: [v => !!v || "لطفا عنوان را وارد کنید"],
+        companyName: [v => !!v || "لطفا نام شرکت را وارد کنید"],
+        experienceStart: [v => !!v || "لطفا تاریخ شروع فعالیت را وارد کنید"],
+        experienceEnd: [v => !!v || "لطفا پایان فعالیت را وارد کنید"]
+      },
+      educationFormRule: {
+        name: [v => !!v || "لطفا عنوان را وارد کنید"],
+        educationLocation: [
+          v => !!v || "لطفا نام دانشگاه یا موسسه را وارد کنید"
+        ],
+        educationStart: [v => !!v || "لطفا تاریخ شروع تحصیل را وارد کنید"],
+        educationEnd: [v => !!v || "لطفا پایان تحصیل را وارد کنید"]
+      },
+      awardFormRule: {
+        name: [v => !!v || "لطفا عنوان را وارد کنید"],
+        achieved_date: [v => !!v || "لطفا تاریخ شروع فعالیت را وارد کنید"]
       },
       date: null,
       expStart: false,
@@ -61,51 +80,53 @@ export default {
       this.$refs.newForm.resetValidation();
     },
     handleDataForm(type) {
-      switch (type) {
-        case "experience":
-          this.experienceForm = {
-            job_title: this.experienceForm.name,
-            company_title: this.experienceForm.companyName,
-            start_date: this.experienceForm.experienceStart,
-            end_date: this.experienceForm.experienceEnd
-          };
-          this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
-            form: this.experienceForm,
-            type: type
-          });
-          break;
-        case "education":
-          this.educationForm = {
-            degree_title: this.educationForm.educationLevel,
-            institute_title: this.educationForm.educationLocation,
-            start_date: this.educationForm.educationStart,
-            end_date: this.educationForm.educationEnd
-          };
-          this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
-            form: this.educationForm,
-            type: type
-          });
-          break;
-        case "projects":
-          this.projectsForm = {
-            title: this.projectsForm.title,
-            url: this.projectsForm.url
-          };
-          this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
-            form: this.projectsForm,
-            type: type
-          });
-          break;
-        case "award":
-          this.awardForm = {
-            title: this.awardForm.title,
-            achieved_date: this.awardForm.achieved_date
-          };
-          this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
-            form: this.awardForm,
-            type: type
-          });
-          break;
+      if (this.$refs.newForm.validate() === true) {
+        switch (type) {
+          case "experience":
+            this.experienceForm = {
+              job_title: this.experienceForm.name,
+              company_title: this.experienceForm.companyName,
+              start_date: this.experienceForm.experienceStart,
+              end_date: this.experienceForm.experienceEnd
+            };
+            this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
+              form: this.experienceForm,
+              type: type
+            });
+            break;
+          case "education":
+            this.educationForm = {
+              degree_title: this.educationForm.educationLevel,
+              institute_title: this.educationForm.educationLocation,
+              start_date: this.educationForm.educationStart,
+              end_date: this.educationForm.educationEnd
+            };
+            this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
+              form: this.educationForm,
+              type: type
+            });
+            break;
+          case "projects":
+            this.projectsForm = {
+              title: this.projectsForm.title,
+              url: this.projectsForm.url
+            };
+            this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
+              form: this.projectsForm,
+              type: type
+            });
+            break;
+          case "award":
+            this.awardForm = {
+              title: this.awardForm.title,
+              achieved_date: this.awardForm.achieved_date
+            };
+            this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
+              form: this.awardForm,
+              type: type
+            });
+            break;
+        }
       }
       this.dialog = false;
       this.educationForm = {};

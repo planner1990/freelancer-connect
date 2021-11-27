@@ -17,7 +17,7 @@
         <v-icon left>
           mdi-thumb-up-outline
         </v-icon>
-        پروژه ها و دوره های آموزشی
+        پروژه‌ها و دوره‌های آموزشی
       </v-tab>
 
       <v-tab-item>
@@ -35,6 +35,7 @@
                     required
                     lazy
                     outlined
+                    @change="enableUpdateProfileButton"
                   ></v-text-field>
                 </v-col>
                 <v-col lg="6" md="12">
@@ -44,6 +45,7 @@
                     required
                     lazy
                     outlined
+                    @change="enableUpdateProfileButton"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -55,6 +57,7 @@
                     required
                     lazy
                     outlined
+                    @change="enableUpdateProfileButton"
                   ></v-text-field>
                 </v-col>
                 <v-col lg="6" md="12">
@@ -64,6 +67,7 @@
                     required
                     lazy
                     outlined
+                    @change="enableUpdateProfileButton"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -123,6 +127,7 @@
                     v-model="profileInfo.user['category_id']"
                     required
                     outlined
+                    @change="enableUpdateProfileButton"
                   ></v-select>
                 </v-col>
               </v-row>
@@ -163,7 +168,7 @@
               <!--              </v-row>-->
               <v-row class="my-10">
                 <v-col lg="6" md="12">
-                  <v-btn color="error" @click="updateProfile">
+                  <v-btn :disabled="!enableButton" color="error" @click="updateProfile">
                     {{ $t("actions.save&update") }}
                   </v-btn>
                 </v-col>
@@ -203,7 +208,7 @@
         <v-card flat>
           <v-card-text>
             <header-section
-              header-section-title="بخش پروژه ها"
+              header-section-title="بخش پروژه‌ها"
             ></header-section>
             <form-dialog
               :dataForDialogForm="addProjectsDataForDialogForm"

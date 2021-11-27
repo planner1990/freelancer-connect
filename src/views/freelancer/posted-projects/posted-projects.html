@@ -5,7 +5,7 @@
         cols="12"
         v-for="projectList in indexProjectsList"
         :key="projectList.id"
-        @click="redirectToProjectDetail(projectList.project_id)"
+        @click="redirectToProjectDetail(projectList.project_id, projectList.id)"
       >
         <div class="container--fluid d-lg-flex d-md-block project-row">
           <div

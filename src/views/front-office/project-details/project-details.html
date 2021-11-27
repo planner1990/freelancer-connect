@@ -5,7 +5,7 @@
     <v-container>
       <v-row class="flex-column">
         <v-col cols="12" md="6" sm="11" class="mx-auto pa-0 first-slogan">
-            توضیحات پروژه
+          توضیحات پروژه
         </v-col>
       </v-row>
     </v-container>
@@ -116,21 +116,22 @@
                               </v-col>
                               <v-col cols="12">
                                 <v-text-field
-                                  label="هزینه تخمینی پیشنهادی*"
+                                  label="هزینه تخمینی پیشنهادی به ریال*"
                                   required
                                   outlined
-                                  type="number"
                                   dense
                                   v-model="proposalForm.price"
                                   :rules="proposalRule.price"
+                                  @input="mask"
                                 ></v-text-field>
                               </v-col>
                               <v-col cols="12">
                                 <v-text-field
-                                  label="درخواست پیش پرداخت"
+                                  label="درخواست پیش پرداخت به ریال"
                                   outlined
                                   dense
                                   v-model="proposalForm.prepayment"
+                                  @input="mask"
                                 ></v-text-field>
                               </v-col>
                               <v-col cols="12">
@@ -145,7 +146,6 @@
                               <v-col cols="12">
                                 <v-file-input
                                   @change="handleFileInput($event)"
-                                  counter
                                   label="ضمیمه فایل"
                                   placeholder="Select your files"
                                   prepend-icon="mdi-paperclip"

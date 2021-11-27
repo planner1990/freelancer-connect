@@ -18,7 +18,10 @@ export default {
       companyTypeLists: [],
       companyList: "",
       registerRule: {
-        firstname: [v => !!v || "لطفا موبایل خود را وارد کنید"],
+        firstname: [
+          v => !!v || "لطفا نام خود را وارد کنید",
+          v => (v && v.length <= 20) || "این آیتم بیشتر از ۲۰ کاراکتر نباشد"
+        ],
         lastname: [v => !!v || "لطفا نام خانوادگی را وارد کنید"],
         companyName: [v => !!v || "لطفا نام شرکت را وارد کنید"],
         typeOfActivity: [v => !!v || "لطفا یکی از موارد را انتخاب نمایید."]

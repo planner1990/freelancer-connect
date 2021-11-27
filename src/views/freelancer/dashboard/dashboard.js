@@ -46,25 +46,25 @@ export default {
         {
           src: "وبسایت",
           notification: 0,
-          title: "لیست درخواست ها",
+          title: "لیست درخواست‌ها",
           routeName: "proposals"
         },
         {
           src: "امنیت",
           notification: 0,
-          title: "پروژه های اجرا شده",
+          title: "پروژه‌های اجرا شده",
           routeName: "completed-projects"
         },
         {
           src: "اپلیکیشن",
           notification: 0,
-          title: "پروژه های ناموفق",
+          title: "پروژه‌های ناموفق",
           routeName: "cancelled-projects"
         },
         {
           src: "بصری",
           notification: 0,
-          title: "پروژه های در حال اجرا",
+          title: "پروژه‌های در حال اجرا",
           routeName: "ongoing-projects"
         },
         {

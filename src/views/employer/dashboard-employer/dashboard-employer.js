@@ -16,7 +16,7 @@ export default {
         {
           src: "اپلیکیشن",
           notification: 0,
-          title: "پروژه های من",
+          title: "پروژه‌های من",
           routeName: "my-projects"
         },
         {
@@ -28,13 +28,13 @@ export default {
         {
           src: "تبلیغات",
           notification: 0,
-          title: "پروژه های اجرا شده",
+          title: "پروژه‌های اجرا شده",
           routeName: "completed-projects-employer"
         },
         {
           src: "داخلی",
           notification: 0,
-          title: "پروژه های در حال اجرا",
+          title: "پروژه‌های در حال اجرا",
           routeName: "ongoing-projects-employer"
         },
         {

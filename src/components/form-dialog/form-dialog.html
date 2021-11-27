@@ -29,6 +29,7 @@
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'عنوان'"
                 :label="dialogFormField.label"
                 v-model="experienceForm.name"
+                :rules="experienceFormRule.name"
                 required
                 outlined
                 dense
@@ -37,6 +38,7 @@
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label !== 'عنوان'"
                 :label="dialogFormField.label"
                 v-model="experienceForm.companyName"
+                :rules="experienceFormRule.companyName"
                 required
                 outlined
                 dense
@@ -54,11 +56,13 @@
                   <v-text-field
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
+                    v-on:click:prepend="expStart=true"
                     readonly
                     v-bind="attrs"
                     v-on="on"
                     outlined
                     dense
+                    :rules="experienceFormRule.experienceStart"
                     :value="experienceForm.experienceStart | changeDate"
                   ></v-text-field>
                 </template>
@@ -86,11 +90,13 @@
                   <v-text-field
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
+                    v-on:click:prepend="expEnd=true"
                     readonly
                     v-bind="attrs"
                     v-on="on"
                     outlined
                     dense
+                    :rules="experienceFormRule.experienceEnd"
                     :value="experienceForm.experienceEnd | changeDate"
                   ></v-text-field>
                 </template>
@@ -191,6 +197,7 @@
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'عنوان مدرک تحصیلی'"
                 :label="dialogFormField.label"
                 v-model="educationForm.educationLevel"
+                :rules="educationFormRule.name"
                 required
                 outlined
                 dense
@@ -199,6 +206,7 @@
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'نام دانشگاه یا موسسه'"
                 :label="dialogFormField.label"
                 v-model="educationForm.educationLocation"
+                :rules="educationFormRule.educationLocation"
                 required
                 outlined
                 dense
@@ -215,8 +223,10 @@
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
                     :value="educationForm.educationStart | changeDate"
+                    :rules="educationForm.educationStart"
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
+                    v-on:click:prepend="start=true"
                     readonly
                     v-bind="attrs"
                     v-on="on"
@@ -248,12 +258,14 @@
                   <v-text-field
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
+                    v-on:click:prepend="end=true"
                     readonly
                     v-bind="attrs"
                     v-on="on"
                     outlined
                     dense
                     :value="educationForm.educationEnd | changeDate"
+                    :rules="educationForm.educationEnd"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -313,6 +325,7 @@
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'عنوان پروژه'"
                 :label="dialogFormField.label"
                 v-model="projectsForm.title"
+                :rules="projectRule.name"
                 required
                 outlined
                 dense
@@ -373,6 +386,7 @@
                 v-if="dialogFormField.type === 'text-field' && dialogFormField.label === 'عنوان دستاورد'"
                 :label="dialogFormField.label"
                 v-model="awardForm.title"
+                :rules="awardFormRule.name"
                 required
                 outlined
                 dense
@@ -390,12 +404,14 @@
                   <v-text-field
                     :label="dialogFormField.label"
                     prepend-icon="mdi-calendar"
+                    v-on:click:prepend="start=true"
                     readonly
                     v-bind="attrs"
                     v-on="on"
                     outlined
                     dense
                     :value="awardForm.achieved_date | changeDate"
+                    :rules="awardFormRule.achieved_date"
                   ></v-text-field>
                 </template>
                 <v-date-picker

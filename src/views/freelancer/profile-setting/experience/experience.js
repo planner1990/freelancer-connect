@@ -9,6 +9,7 @@ export default {
   data() {
     return {
       date: null,
+      test: null,
       location: "",
       start: null,
       end: null,

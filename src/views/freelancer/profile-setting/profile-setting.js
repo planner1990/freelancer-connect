@@ -57,7 +57,7 @@ export default {
       files: [],
       dialog: false,
       isMobile: true,
-      titleCard: "پروژه ها",
+      titleCard: "پروژه‌ها",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
       showSnackbar: false,
       simpleDialogData: {
@@ -163,7 +163,8 @@ export default {
       attachments: [],
       experienceList: [],
       educationList: [],
-      skillsList: []
+      skillsList: [],
+      enableButton: false
     };
   },
   computed: {
@@ -227,6 +228,7 @@ export default {
     },
     getFileId(value) {
       this.attachments.push(value);
+      this.enableButton = true;
     },
     updateExperienceEducation() {
       this.showSnackbar = false;
@@ -250,6 +252,7 @@ export default {
       });
     },
     updateProjectsAward() {
+      this.showSnackbar = false;
       let projects = [];
       let award = [];
       this.listOfFormData.map(item => {
@@ -285,6 +288,9 @@ export default {
       projectsService.skills().then(res => {
         this.skillsList = res.data.data;
       });
+    },
+    enableUpdateProfileButton() {
+      this.enableButton = true;
     }
   },
   watch: {}

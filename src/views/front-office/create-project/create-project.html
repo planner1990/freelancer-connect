@@ -2,10 +2,15 @@
   <v-row justify="end" class="fill-height">
     <v-col cols="12" sm="6" md="6" class="pa-0">
       <v-card class="fill-height py-md-10 py-3 px-md-16 px-0" flat>
-        <div class="px-5 d-flex align-center backHome" @click="goToHome">
-          <v-icon color="primary" size="50" class="pe-3">
-            mdi-monitor-dashboard
-          </v-icon>
+        <div class="px-5 d-flex align-center">
+          <v-img
+            @click="goToHome"
+            alt="connecta"
+            class="logo-connecta"
+            max-height="70"
+            max-width="70"
+            :src="require(`../../../assets/image/connecta-logo-1.png`)"
+          ></v-img>
         </div>
         <v-row justify="center" class="fill-height mt-sm-16 mt-0">
           <v-col cols="11" sm="9" md="7">

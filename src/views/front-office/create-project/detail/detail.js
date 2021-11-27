@@ -1,13 +1,14 @@
 import * as types from "../../../../shared/store/types";
 import { mapGetters, mapMutations } from "vuex";
-import projectsService from "../../../../core/services/modules/projectsService";
-import thousandMask from "../../../../shared/mixins/thousandMask";
+import { projectsService } from "@/core/services";
+import $thousandMask from "@/shared/mixins/thousandMask";
+import $removeThousand from "@/shared/mixins/removeThousand";
 
 export default {
   name: "detail",
   components: {},
   props: [],
-  mixins: [thousandMask],
+  mixins: [$thousandMask, $removeThousand],
   data() {
     return {
       project_duration_id: null,
@@ -17,25 +18,13 @@ export default {
       minPrice: "",
       maxPrice: "",
       createProjectRule: {
-        title: [
-          v => !!v || "لطفا عنوان را وارد کنید",
-          v =>
-            (v && v.length >= 3) || "عنوان وارد شده باید بیش از ۳ کاراکتر باشد"
-        ],
         price: [
           v => !!v || "لطفا مبلغ را وارد کنید",
           v =>
             (v && v.length >= 7) ||
             "مبلغ وارد شده باید بیش از ۵۰۰,۰۰۰ ریال باشد"
         ],
-        duration: [v => !!v || "لطفا مدت زمان را مشخص کنید"],
-        description: [
-          v => !!v || "لطفا توضیحات را وارد کنید",
-          v =>
-            (v && v.length >= 20) ||
-            "توضیحات وارد شده باید بیش از ۲۰ کاراکتر باشد"
-        ],
-        categories: [v => !!v || "لطفا یک دسته را انتخاب کنید"]
+        duration: [v => !!v || "لطفا مدت زمان را مشخص کنید"]
       }
     };
   },
@@ -56,11 +45,9 @@ export default {
     this.resetRegister();
   },
   methods: {
-    thousandMaskPrice() {
-      this.price = this.numberWithCommas(this.$refs?.inputRef?.value);
-    },
-    thousandMaskMaxPrice() {
-      this.maxPrice = this.numberWithCommas(this.$refs?.inputRef2?.value);
+    mask() {
+      this.price = this.$removeThousand(this.price);
+      this.price = this.$thousandMask(this.price);
     },
     goToActivity() {
       const detail = {

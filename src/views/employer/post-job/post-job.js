@@ -3,15 +3,16 @@ import HeaderSection from "../../../components/header-section/index";
 import projectsService from "../../../core/services/modules/projectsService";
 import UploadService from "../../../core/services/modules/uploadService";
 import Snackbar from "../../../components/snackbar/index";
-import thousandMask from "../../../shared/mixins/thousandMask";
+import $thousandMask from "@/shared/mixins/thousandMask";
+import $removeThousand from "@/shared/mixins/removeThousand";
 export default {
   name: "post-job",
   components: { DashboardCard, HeaderSection, Snackbar },
   props: [],
-  mixins: [thousandMask],
+  mixins: [$thousandMask, $removeThousand],
   data() {
     return {
-      titleCard: "ویرایش پروژه",
+      titleCard: "ایجاد پروژه",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
       showSnackbar: false,
       projectForm: {
@@ -24,6 +25,7 @@ export default {
         attachmentId: null
       },
       valid: false,
+      model: ["Vuetify"],
       createProjectRule: {
         title: [
           v => !!v || "لطفا عنوان را وارد کنید",
@@ -43,10 +45,11 @@ export default {
             (v && v.length >= 20) ||
             "توضیحات وارد شده باید بیش از ۲۰ کاراکتر باشد"
         ],
-        categories: [v => !!v || "لطفا دسته بندی پروژه را مشخص کنید"],
+        categories: [v => !!v || "لطفا دسته‌بندی پروژه را مشخص کنید"],
         skills: [
           v => !!v || "مهارت مورد نیاز را انتخاب کنید",
-          v => (v && v.length >= 1) || "حداقل یک مورد را باید انتخاب کنید"
+          v => (v && v.length >= 1) || "حداقل یک مورد را باید انتخاب کنید",
+          v => (v && v.length <= 5) || "تنها ۵ مورد را می توانید انتخاب کنید"
         ]
       },
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
@@ -68,10 +71,9 @@ export default {
     this.getSkillsList();
   },
   methods: {
-    thousandMaskPrice() {
-      this.projectForm.price = this.numberWithCommas(
-        this.$refs?.inputRef?.value
-      );
+    mask() {
+      this.projectForm.price = this.$removeThousand(this.projectForm.price);
+      this.projectForm.price = this.$thousandMask(this.projectForm.price);
     },
     hideSnackbar() {
       this.showSnackbar = false;
