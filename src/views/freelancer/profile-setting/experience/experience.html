@@ -5,7 +5,7 @@
         <template v-slot:default="{ open }">
           <v-row no-gutters>
             <v-col cols="4">
-              عنوان ( از تاریخ - تا تاریخ):
+              عنوان: {{ item.job_title | readMore(8, " ") }}
             </v-col>
             <v-col cols="8" class="text--secondary">
               <v-fade-transition leave-absolute>
@@ -14,7 +14,7 @@
                 </span>
                 <span v-else key="1" dir="ltr">
                   {{item.start_date | changeDate()}} - {{item.end_date |
-                  changeDate()}} : {{ item.job_title }}
+                  changeDate()}} : از تاریخ تا تاریخ
                 </span>
               </v-fade-transition>
             </v-col>

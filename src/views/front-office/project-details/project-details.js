@@ -19,6 +19,7 @@ export default {
       role: "",
       dialog: false,
       valid: false,
+      row: "2",
       durationList: [],
       proposalForm: {
         project_duration_id: "",

@@ -79,6 +79,9 @@ export default {
     resetValidation() {
       this.$refs.newForm.resetValidation();
     },
+    resetForm() {
+      this.$refs.newForm.reset();
+    },
     handleDataForm(type) {
       if (this.$refs.newForm.validate() === true) {
         switch (type) {
@@ -129,11 +132,23 @@ export default {
         }
       }
       this.resetValidation();
+      this.resetForm();
       this.dialog = false;
       this.educationForm = {};
       this.experienceForm = {};
       this.awardForm = {};
       this.projectsForm = {};
+      this.experienceForm = {
+        experienceStart: null,
+        experienceEnd: null
+      };
+      this.educationForm = {
+        educationStart: null,
+        educationEnd: null
+      };
+      this.awardForm = {
+        achieved_date: null
+      };
     }
   }
 };

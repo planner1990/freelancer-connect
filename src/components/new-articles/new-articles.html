@@ -1,5 +1,5 @@
 <div class="best-freelancer">
-  <v-container class="pl-0">
+  <v-container>
     <v-row
       v-if="!isService"
       class="d-flex flex-column justify-start align-center text-center"
@@ -12,11 +12,11 @@
       :class="`d-flex justify-start align-center mx-sm-5 mt-${isService ? 0 : 15}`"
     >
       <v-col
-        cols="11"
+        cols="12"
         md="2"
-        sm="5"
-        xs="11"
-        :class="`best-freelancer-card ${isService ? 'width_45' : 'width_31'} d-flex flex-column mx-${isService ? '5' : '2'} my-sm-2 pa-0 pb-4`"
+        sm="6"
+        xs="12"
+        :class="`best-freelancer-card ${isService ? 'width_45' : 'width_31'} d-flex flex-column mx-md-5 mx-${isService ? '0' : '2'} my-sm-2 mb-5 pa-0 pb-4`"
         v-for="serviceList in showServices"
         :key="serviceList.id"
         @click="goToDetail(serviceList.id)"
@@ -24,7 +24,7 @@
         <div v-if="serviceList.image" class="best-freelancer-card_image">
           <v-carousel
             v-if="isService"
-            style="height: 198px;"
+            height="190"
             :show-arrows="serviceList.image.length > 0"
           >
             <div v-if="serviceList.image.length > 0">
@@ -45,7 +45,7 @@
             <!--            </div>-->
           </v-carousel>
         </div>
-        <div class="d-flex justify-center">
+        <div class="d-flex justify-center mt-5">
           <div v-if="isService">
             <div class="mt-6 mr-2 img-profile" @click="goToPublicProfile()">
               <img src="../../assets/image/connecta-logo-1.png" alt="" />

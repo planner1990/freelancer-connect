@@ -68,7 +68,13 @@ export default {
   computed: {
     ...mapMutations([
       types.HandleEmployerToLogin.mutations.HANDLE_EMPLOYER_TO_LOGIN_MUTATE
-    ])
+    ]),
+    validationForm() {
+      return (this.valid = !!(
+        this.jobOfferForm.title.length >= 3 &&
+        this.jobOfferForm.description.length >= 20
+      ));
+    }
   },
   mounted() {},
   methods: {

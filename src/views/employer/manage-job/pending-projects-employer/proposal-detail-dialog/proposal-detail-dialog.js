@@ -1,4 +1,4 @@
-import employerServices from "../../../../../core/services/modules/employerServices";
+import { employerServices } from "@/core/services";
 
 export default {
   name: "proposal-detail-dialog",
@@ -75,7 +75,10 @@ export default {
       });
     },
     hireFreelancerByPrepayment() {
-      if (this.proposalForm?.prepayment !== null) {
+      if (
+        this.proposalForm?.prepayment !== null &&
+        Math.round(this.proposalForm?.prepayment) !== 0
+      ) {
         this.inquiryPayment();
       } else {
         this.proposalAction();

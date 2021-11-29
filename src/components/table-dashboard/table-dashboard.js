@@ -21,7 +21,7 @@ export default {
       e2: "پیش نویس",
       page: 1,
       pageCount: 0,
-      itemsPerPage: 8,
+      itemsPerPage: 5,
       dialog: false,
       valid: false,
       total_price: null,

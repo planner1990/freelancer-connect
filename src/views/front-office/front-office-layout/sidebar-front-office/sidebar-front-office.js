@@ -1,8 +1,10 @@
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import * as types from "../../../../shared/store/types";
-import profileServices from "../../../../core/services/modules/profileServices";
-import freelancerServices from "../../../../core/services/modules/freelancerServices";
-import { AuthService } from "../../../../core/services";
+import {
+  AuthService,
+  profileServices,
+  freelancerServices
+} from "@/core/services";
 
 export default {
   name: "sidebar-front-office",
@@ -27,13 +29,29 @@ export default {
   computed: {
     ...mapGetters({
       drawerFront: types.GET_DRAWER_FRONT
-    })
+    }),
+    drawerState: {
+      get() {
+        if (this.$vuetify.breakpoint.smAndDown) {
+          return this.drawerFront;
+        } else {
+          return true;
+        }
+      },
+      set(val) {
+        console.log(val);
+        this.drawerAction(val);
+      }
+    }
   },
   created() {},
   mounted() {
     this.getAssignedRole();
   },
   methods: {
+    ...mapActions({
+      drawerAction: types.ACTION_DRAWER_FRONT
+    }),
     goToCreateProject() {
       this.$router.push("/create-project");
     },

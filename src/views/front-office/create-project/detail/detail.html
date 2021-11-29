@@ -17,12 +17,13 @@
   </h5>
   <v-text-field
     :label="'هزینه پیشنهادی به ریال'"
-    type="text"
     outlined
+    required
     v-model="price"
+    :rules="createProjectRule.price"
     @input="mask"
     dense
-    ref="inputRef"
+    ref="form"
   ></v-text-field>
   <!--  <v-text-field-->
   <!--    :label="'حداکثر قیمت(ریال)'"-->

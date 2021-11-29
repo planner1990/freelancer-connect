@@ -213,6 +213,7 @@
           height="45"
           outlined
           dense
+          @keyup.enter.prevent="sendMessage('out')"
         >
         </v-textarea>
         <v-btn

@@ -16,7 +16,7 @@
     //padding: 77px 0 36px !important;
   }
   &.v-navigation-drawer {
-    top: 77px !important;
+    top: 0 !important;
   }
   .theme--light.v-list {
     background: transparent;
@@ -97,6 +97,11 @@
     .v-btn:not(.v-btn--round).v-size--default {
       border-radius: 5px;
     }
+  }
+}
+.mobile-filter {
+  @include small {
+    flex-direction: column-reverse;
   }
 }
 

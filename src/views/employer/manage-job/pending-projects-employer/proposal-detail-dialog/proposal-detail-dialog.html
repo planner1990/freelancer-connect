@@ -46,17 +46,17 @@
                 disabled
                 outlined
                 dense
-                v-model="proposalForm['final_amount']"
+                :value="proposalForm['final_amount'] | roundNumber| thousandMask"
               ></v-text-field>
             </v-col>
             <v-col cols="12">
               <v-text-field
                 label="درخواست پیش پرداخت"
+                placeholder="مبلغ پیش پرداخت تعیین نشده است"
                 disabled
                 outlined
                 dense
-                :value="proposalForm.prepayment ? proposalForm.prepayment : 'مبلغ پیش پرداخت تعیین نشده است'"
-                @input="proposalForm.prepayment = $event.target.value"
+                :value="proposalForm.prepayment | roundNumber | thousandMask"
               ></v-text-field>
             </v-col>
             <v-col cols="12" class="proposal-detail-dialog">
@@ -64,6 +64,7 @@
                 outlined
                 dense
                 label="توضیحات"
+                disabled
                 v-model="proposalForm.content"
                 color="red"
               ></v-textarea>

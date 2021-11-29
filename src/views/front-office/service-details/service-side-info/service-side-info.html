@@ -127,7 +127,11 @@
                     <v-btn color="error" @click="dialog = false">
                       بستن
                     </v-btn>
-                    <v-btn color="primary" @click="sendJobOfferToFreelancer">
+                    <v-btn
+                      color="primary"
+                      :disabled="!validationForm"
+                      @click="sendJobOfferToFreelancer"
+                    >
                       ارسال پیشنهاد کاری
                     </v-btn>
                   </v-card-actions>

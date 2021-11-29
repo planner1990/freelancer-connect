@@ -8,6 +8,7 @@ const getters = {
   }
 };
 
+// debugger;
 const mutations = {
   [types.MUTATE_DRAWER_FRONT]: state => {
     state.drawerFront = !state.drawerFront;

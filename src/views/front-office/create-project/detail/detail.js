@@ -43,9 +43,14 @@ export default {
   mounted() {
     this.getProjectDurations();
     this.resetRegister();
+    this.resetValidation();
   },
   methods: {
+    resetValidation() {
+      this.$refs.form.resetValidation();
+    },
     mask() {
+      this.resetValidation();
       this.price = this.$removeThousand(this.price);
       this.price = this.$thousandMask(this.price);
     },

@@ -3,13 +3,14 @@
   class="navbar-front-office"
 >
   <v-app-bar
-    :clipped-left="$vuetify.rtl === false"
-    :clipped-right="$vuetify.rtl === true"
+    :clipped-left="!$vuetify.rtl"
+    :clipped-right="$vuetify.rtl"
     app
     flat
   >
     <v-app-bar-nav-icon
-      @click.native="drawer()"
+      dark
+      @click="drawer()"
       v-if="showSidebar"
     ></v-app-bar-nav-icon>
     <!--        <customizeTheme />-->

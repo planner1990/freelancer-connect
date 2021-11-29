@@ -1,4 +1,5 @@
 @import "src/assets/styles/variable";
+@import "src/assets/styles/mixins";
 .employer-projects {
   &-card {
     height: 280px;
@@ -6,6 +7,14 @@
     border-radius: 6px;
     box-shadow: 2px 2px 38px -25px rgba(0, 0, 0, 0.72);
     transition: all 300ms;
+    @include small {
+      flex-wrap: wrap;
+      height: unset;
+      background-color: transparent;
+      .v-divider--vertical {
+        display: none;
+      }
+    }
     &:hover {
       box-shadow: 12px 12px 45px -16px rgb(0 0 0 / 72%);
     }
@@ -25,11 +34,18 @@
       color: $surface-200;
       margin-top: 12px;
       min-height: 100px;
+      overflow: hidden;
+      @include small {
+        min-height: 24px;
+      }
     }
     &-right {
       width: 65%;
       background-color: #fdfcf2;
       border-radius: 8px;
+      @include small {
+        width: 100%;
+      }
       button {
         border: 1px solid #ddd;
         font-size: 15px;
@@ -48,6 +64,10 @@
       width: 35%;
       justify-content: space-evenly;
       font-size: 13px;
+      @include small {
+        width: 100%;
+        background-color: #fdfcf2;
+      }
     }
   }
 }

@@ -1,10 +1,11 @@
 import { mapActions } from "vuex";
 import * as types from "../../../../shared/store/types";
-
-import customizeTheme from "../../../../components/cotumizeTheme/index";
-import { AuthService } from "@/core/services";
-import profileServices from "../../../../core/services/modules/profileServices";
-import freelancerServices from "../../../../core/services/modules/freelancerServices";
+import customizeTheme from "@/components/cotumizeTheme/index";
+import {
+  AuthService,
+  profileServices,
+  freelancerServices
+} from "@/core/services";
 
 export default {
   name: "navbar",
@@ -12,7 +13,7 @@ export default {
 
   props: [],
   data: () => ({
-    showSidebar: null,
+    showSidebar: false,
     selectedItem: 0,
     items: [
       { text: "navbar.home", route: "/" },
@@ -27,6 +28,7 @@ export default {
   }),
   computed: {},
   mounted() {
+    this.getInnerWidth();
     window.addEventListener("scroll", this.updateScroll);
     this.getAssignedRole();
   },
@@ -42,6 +44,9 @@ export default {
     },
     myEventHandler(e) {
       this.showSidebar = e.target.innerWidth <= 968;
+    },
+    getInnerWidth() {
+      this.showSidebar = window.innerWidth <= 968;
     },
     goToCreateProject() {
       this.$router.push("/create-project");
@@ -83,6 +88,7 @@ export default {
     }
   },
   created() {
+    this.getInnerWidth();
     window.addEventListener("resize", this.myEventHandler);
   },
   destroyed() {

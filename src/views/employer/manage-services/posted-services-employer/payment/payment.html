@@ -49,7 +49,7 @@
       </v-radio-group>
     </v-col>
     <v-col>
-      <v-btn color="primary" depressed class="px-12" @click="paymentInvoice">
+      <v-btn color="primary" depressed :disabled="!bankId" class="px-12" @click="paymentInvoice">
         پرداخت
       </v-btn>
     </v-col>
