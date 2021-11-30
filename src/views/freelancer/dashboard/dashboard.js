@@ -38,12 +38,6 @@ export default {
         //   routeName: "my-saved-items"
         // },
         {
-          src: "مارکتینگ",
-          notification: 0,
-          title: "تنظیمات پروفایل",
-          routeName: "profile-setting"
-        },
-        {
           src: "وبسایت",
           notification: 0,
           title: "لیست درخواست‌ها",

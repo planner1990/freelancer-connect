@@ -73,7 +73,7 @@ export default {
   mounted() {},
   methods: {
     validate() {
-      this.$refs.newForm.validate();
+      this.$refs.newForm.reset();
       this.dialog = false;
     },
     resetValidation() {
@@ -130,25 +130,25 @@ export default {
             });
             break;
         }
+        this.resetValidation();
+        this.resetForm();
+        this.dialog = false;
+        this.educationForm = {};
+        this.experienceForm = {};
+        this.awardForm = {};
+        this.projectsForm = {};
+        this.experienceForm = {
+          experienceStart: null,
+          experienceEnd: null
+        };
+        this.educationForm = {
+          educationStart: null,
+          educationEnd: null
+        };
+        this.awardForm = {
+          achieved_date: null
+        };
       }
-      this.resetValidation();
-      this.resetForm();
-      this.dialog = false;
-      this.educationForm = {};
-      this.experienceForm = {};
-      this.awardForm = {};
-      this.projectsForm = {};
-      this.experienceForm = {
-        experienceStart: null,
-        experienceEnd: null
-      };
-      this.educationForm = {
-        educationStart: null,
-        educationEnd: null
-      };
-      this.awardForm = {
-        achieved_date: null
-      };
     }
   }
 };

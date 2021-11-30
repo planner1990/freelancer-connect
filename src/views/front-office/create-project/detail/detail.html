@@ -39,8 +39,7 @@
       color="teal accent-3"
       :loading="signInLoading"
       block
-      :disabled="!price || !project_duration_id"
-      :dark="!!price"
+      :disabled="!price || price.length <= 6 || !project_duration_id"
       class="py-5"
       @click="goToActivity()"
       >{{ $t('actions.continue') }}</v-btn

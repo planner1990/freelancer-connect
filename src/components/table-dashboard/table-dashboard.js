@@ -46,19 +46,13 @@ export default {
             (v && v.length >= 20) ||
             "توضیحات مورد نظر باید بیش از ۲۰ کاراکتر باشد"
         ],
-        minPrice: [
-          v => !!v || "لطفا مبلغ را وارد کنید",
-          v => (v && v.length >= 3) || "مبلغ مورد نظر باید بیش از ۳ رقم باشد"
-        ],
+        minPrice: [v => !!v || "لطفا مبلغ را وارد کنید"],
         duration: [v => !!v || "لطفا مدت زمان را وارد کنید"],
         // prepayment: [
         //   v => !!v || "Name is required",
         //   v => (v && v.length >= 3) || "Name must be more than 3 characters"
         // ],
-        freelancerDescription: [
-          v => !!v || "لطفا توضیحات را وارد کنید",
-          v => (v && v.length >= `3`) || "توضیحات باید بیش از ۳ کاراکتر باشد"
-        ]
+        freelancerDescription: [v => !!v || "لطفا توضیحات را وارد کنید"]
       },
       files: [
         {
@@ -182,12 +176,16 @@ export default {
       }
     },
     confirmEstimation(id) {
-      if (this.disableInput === true) {
-        this.hiredServiceByEmployer(id);
-        this.dialog = false;
+      if (this.$refs[`form`].validate() === true) {
+        if (this.disableInput === true) {
+          this.hiredServiceByEmployer(id);
+          this.dialog = false;
+        } else {
+          this.estimationForFreelancer(id);
+          this.dialog = false;
+        }
       } else {
-        this.estimationForFreelancer(id);
-        this.dialog = false;
+        this.$refs[`form`].validate();
       }
     },
     hideSnackbar() {

@@ -1,11 +1,11 @@
-<dashboard-card :titleCard="$t('sidebar.ongoingProjects')">
+<dashboard-card :titleCard="$t('sidebar.ongoingServices')">
   <v-container v-if="!this.$route.params.id">
     <v-row>
       <v-col
         cols="12"
         v-for="projectList in indexProjectsList"
         :key="projectList.id"
-        @click="redirectToProjectDetail(projectList.id, projectList['estimation_id'])"
+        @click="redirectToProjectDetail(projectList.service_id, projectList['estimation_id'])"
       >
         <div class="container--fluid d-lg-flex d-md-block project-row">
           <div
@@ -14,7 +14,7 @@
             <div>
               <span
                 ><v-icon color="primary">mdi-check-circle</v-icon>
-                {{ projectList.title}}
+                {{ projectList['service_title']}}
               </span>
             </div>
             <div class="font-weight-medium mx-2">

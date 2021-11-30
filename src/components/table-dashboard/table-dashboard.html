@@ -12,7 +12,13 @@
   >
     <template v-slot:item.actions="{ item }">
       <v-row justify="center" class="px-5">
-        <v-dialog v-model="dialog" max-width="600px">
+        <v-dialog
+          v-model="dialog"
+          ref="form"
+          max-width="600px"
+          persistent
+          :retain-focus="false"
+        >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               class="ma-2"
@@ -70,7 +76,7 @@
                     </v-col>
                     <v-col cols="12" v-if="!disableInput">
                       <div class="employer-projects-card-title mt-8">
-                          فایل‌های ضمیمه شده
+                        فایل‌های ضمیمه شده
                       </div>
                       <v-list>
                         <v-list-item
@@ -142,7 +148,7 @@
                     </v-col>
                     <v-col cols="12">
                       <div class="employer-projects-card-title mt-8">
-                          فایل‌های ضمیمه شده
+                        فایل‌های ضمیمه شده
                       </div>
                       <v-list>
                         <v-list-item

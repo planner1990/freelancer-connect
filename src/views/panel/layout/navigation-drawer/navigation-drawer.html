@@ -27,7 +27,7 @@
           <img :src="getDrawerImage.imageSrc.image" alt="" />
         </div>
         <div class="username" v-if="!profileInfo.user['company']">
-          {{ profileInfo.user.first_name + " " + profileInfo.user.last_name}}
+          {{ profileInfo.user.first_name | readMore(8, " ") }} {{" " + profileInfo.user.last_name | readMore(8, " ")}}
         </div>
         <div class="username" v-if="profileInfo.user['company']">
           {{ profileInfo.user['company'].name }}

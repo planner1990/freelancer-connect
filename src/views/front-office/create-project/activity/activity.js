@@ -13,7 +13,7 @@ export default {
       activitiesList: [],
       search: null,
       projectForm: {
-        categories: []
+        categories: null
       }
     };
   },
