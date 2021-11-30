@@ -42,7 +42,7 @@ API_V1.interceptors.response.use(
       } catch (e) {
         return (
           e instanceof DOMException &&
-          // everything except Firefox
+          // everything except firefox
           (e.code === 22 ||
             // Firefox
             e.code === 1014 ||
