@@ -1,4 +1,4 @@
-import OtpService from "../../../core/services/modules/otpService";
+import { OtpService } from "@/core/services";
 import { mapMutations } from "vuex";
 import * as types from "../../../shared/store/types";
 
@@ -10,6 +10,7 @@ export default {
     return {
       phone: null,
       signInLoading: false,
+      dialog: false,
       phoneRules: [
         v => !!v || "لطفا موبایل خود را وارد کنید",
         v => (v && v.length === 11) || "شماره همراه باید ۱۱ رقم باشد",
@@ -25,7 +26,7 @@ export default {
   mounted() {},
   methods: {
     handleSendOTP() {
-      if (this.phone && this.phone.length === 11) {
+      if (this.$refs.form.validate() === true) {
         const body = {
           identification: this.phone,
           type: 0

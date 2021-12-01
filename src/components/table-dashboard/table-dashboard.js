@@ -190,6 +190,10 @@ export default {
     },
     hideSnackbar() {
       this.showSnackbar = false;
+    },
+    closeModal() {
+      this.dialog = false;
+      this.$refs[`form`].reset();
     }
   }
 };
