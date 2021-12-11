@@ -49,7 +49,8 @@
                     <v-icon class="mb-1">
                       mdi-cash-multiple
                     </v-icon>
-                    {{projectDetails.min_price | roundNumber | thousandMask}} ریال
+                    {{projectDetails.min_price | roundNumber | thousandMask}}
+                    ریال
                   </div>
                   <div>
                     <v-icon>
@@ -73,23 +74,28 @@
         class="level"
         v-for="(mileStone, mileStoneIndex) in mileStones"
         :key="mileStoneIndex"
-        :class="{'lock': !mileStone.status, 'pending': mileStone.status === 0 || mileStone.status === 1, 'finished': mileStone.status === 2}"
+        :class="{'lock': !mileStone['payment_status'], 'pending': mileStone['payment_status'] === 1 || mileStone['payment_status'] === 2, 'finished': mileStone['confirmation'] === 1}"
       >
         <div class="d-flex justify-space-between align-center">
           <div>
             <!--          <div>بخش {{installments | installments}}</div>-->
-            <div class="lock-text" v-if="mileStone.status === undefined">
+            <div
+              class="lock-text"
+              v-if="mileStone['payment_status'] === undefined"
+            >
               قفل
             </div>
-            <div v-if="mileStone.status === 0">ارسال شد</div>
-            <div v-if="mileStone.status === 1">
-              ارسال شد, در انتظار پرداخت کارفرما
+            <div v-if="mileStone['payment_status'] === 0">ارسال شد</div>
+            <div
+              v-if="mileStone['confirmation'] === 0 && (mileStone['payment_status'] === 1 || mileStone['payment_status'] === 2)"
+            >
+              ارسال شد, در انتظار تایید کارفرما
             </div>
-            <div v-if="mileStone.status === 2">خاتمه یافته</div>
+            <div v-if="mileStone['confirmation'] === 1">خاتمه یافته</div>
           </div>
           <div>
             <v-btn
-              v-if="mileStone.status === 2"
+              v-if="mileStone['confirmation'] === 1"
               class="ma-2"
               outlined
               color="primary"
@@ -98,7 +104,7 @@
             </v-btn>
           </div>
           <v-dialog
-            v-if="mileStone.status === undefined"
+            v-if="mileStone['payment_status'] === undefined"
             v-model="dialog"
             persistent
             max-width="600px"

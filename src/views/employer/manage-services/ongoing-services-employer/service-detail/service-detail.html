@@ -49,7 +49,8 @@
                     <v-icon class="mb-1">
                       mdi-cash-multiple
                     </v-icon>
-                    {{projectDetails.min_price | roundNumber | thousandMask}} ریال
+                    {{projectDetails.min_price | roundNumber | thousandMask}}
+                    ریال
                   </div>
                   <div>
                     <v-icon>
@@ -73,21 +74,28 @@
         class="level"
         v-for="(mileStone, index) in mileStones"
         :key="mileStone.id"
-        :class="{'lock': !mileStone.status, 'pending': mileStone.status === 0 || mileStone.status === 1, 'finished': mileStone.status === 2}"
+        :class="{'lock': !mileStone['payment_status'], 'pending': (mileStone['payment_status'] === 1 || mileStone['payment_status'] === 2), 'finished': mileStone['confirmation'] === 1}"
       >
         <div class="d-flex justify-space-between align-center">
           <div>
             <!--          <div>بخش {{installments | installments}}</div>-->
-            <div class="lock-text" v-if="mileStone.status === undefined">
+            <div
+              class="lock-text"
+              v-if="mileStone['payment_status'] === undefined"
+            >
               قفل
             </div>
-            <div v-if="mileStone.status === 0">در انتظار پرداخت</div>
-            <div v-if="mileStone.status === 1">در انتظار بررسی</div>
-            <div v-if="mileStone.status === 2">خاتمه یافته</div>
+            <div v-if="mileStone['payment_status'] === 0">در انتظار پرداخت</div>
+            <div
+              v-if="mileStone['confirmation'] === 0 && (mileStone['payment_status'] === 1 || mileStone['payment_status'] === 2)"
+            >
+              در انتظار بررسی
+            </div>
+            <div v-if="mileStone['confirmation'] === 1">خاتمه یافته</div>
           </div>
           <div>
             <v-dialog
-              v-if="mileStone.status === 0"
+              v-if="mileStone['payment_status'] === 0"
               v-model="dialog"
               persistent
               max-width="400px"
@@ -96,9 +104,9 @@
                 <v-btn
                   class="ma-2"
                   color="primary"
-                  outlined
                   v-bind="attrs"
                   v-on="on"
+                  depressed
                 >
                   پرداخت
                 </v-btn>
@@ -125,7 +133,10 @@
                     <v-btn color="error" @click="dialog = false">
                       بستن
                     </v-btn>
-                    <v-btn color="primary" @click="goToPaymentPage(mileStone.id)">
+                    <v-btn
+                      color="primary"
+                      @click="goToPaymentPage(mileStone.id)"
+                    >
                       انتقال به صفحه پرداخت
                     </v-btn>
                   </v-card-actions>
@@ -133,7 +144,7 @@
               </v-form>
             </v-dialog>
             <v-dialog
-              v-if="mileStone.status === 1"
+              v-if="mileStone['confirmation'] === 0 && (mileStone['payment_status'] === 1 || mileStone['payment_status'] === 2)"
               v-model="dialog"
               persistent
               max-width="400px"
@@ -141,8 +152,8 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   class="ma-2"
-                  color="primary"
-                  outlined
+                  color="secondary"
+                  depressed
                   v-bind="attrs"
                   v-on="on"
                 >
@@ -188,13 +199,13 @@
                     </v-btn>
                     <v-btn
                       color="error"
-                      @click="mileStoneAction(mileStone.id, 3)"
+                      @click="mileStoneAction(mileStone.id, 2)"
                     >
                       رد پروژه
                     </v-btn>
                     <v-btn
                       color="primary"
-                      @click="mileStoneAction(mileStone.id, 2)"
+                      @click="mileStoneAction(mileStone.id, 1)"
                     >
                       تایید پروژه
                     </v-btn>
@@ -203,7 +214,7 @@
               </v-form>
             </v-dialog>
             <v-btn
-              v-if="mileStone.status === 2"
+              v-if="mileStone['confirmation'] === 1"
               class="ma-2"
               outlined
               color="primary"

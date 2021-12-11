@@ -108,7 +108,6 @@ export default {
       projectsService
         .submitProposal(body)
         .then(res => {
-          console.log(res);
           this.$refs.form.reset();
           this.dialog = false;
           this.snackbarMessage = res.data?.message;
@@ -120,6 +119,8 @@ export default {
         .catch(error => {
           this.showSnackbar = true;
           this.snackbarMessage = error?.response.data.errors.err;
+          this.snackbarMessage = error?.response.data.errors.prepayment;
+          this.$refs.form.reset();
           this.dialog = false;
         });
     },

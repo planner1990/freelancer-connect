@@ -20,9 +20,13 @@
             {{projectList.description | readMore(330, "...")}}
           </div>
           <div class="mt-8">
-            <button class="ml-2">HTML</button>
-            <button class="ml-2">PHP</button>
-            <button class="ml-2">My SQL</button>
+            <button
+              class="ml-2"
+              v-for="(skill, index) in projectList.skills"
+              :key="index"
+            >
+              {{ skill }}
+            </button>
           </div>
         </div>
         <v-divider class="divide-card" vertical></v-divider>
@@ -37,7 +41,7 @@
             <v-icon dense color="error">
               mdi-calendar-clock
             </v-icon>
-            <span class="mx-4">کمتر از یک ماه</span>
+            <span class="mx-4">{{ showServices.createAt | changeDate }}</span>
           </div>
           <div>
             <v-icon dense color="purple darken-1">

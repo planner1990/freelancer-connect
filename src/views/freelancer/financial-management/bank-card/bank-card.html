@@ -1,14 +1,14 @@
 <dashboard-card :titleCard="$t('sidebar.bankCard')">
-  <v-container>
+  <v-container class="account-store">
     <v-row class="justify-center">
       <v-col md="8" class="mt-8" v-for="(info, index) in accountInfo" :key="index">
         <v-row class="bank-card">
-          <v-col md="6">{{ info.title }}</v-col>
-          <v-col md="6" class="text-left">بررسی اطلاعات حساب</v-col>
+          <v-col md="6">{{ info.name }}</v-col>
+          <v-col md="6" class="text-left">عنوان حساب</v-col>
           <v-col md="6">شماره کارت</v-col>
-          <v-col md="6" class="text-left">{{ info.cardId }}</v-col>
+          <v-col md="6" class="text-left">{{ info.card_number }}</v-col>
           <v-col md="6">شماره شبا</v-col>
-          <v-col md="6" class="text-left">IR{{ info.sheba }}</v-col>
+          <v-col md="6" class="text-left">IR{{ info.iban }}</v-col>
         </v-row>
       </v-col>
       <v-col md="8" class="mt-8">
@@ -34,7 +34,7 @@
                 >
                   <v-card-title class="justify-space-between title">
                     <span class="text-h6">افزودن کارت بانکی</span>
-                    <v-btn icon @click="dialog = false">
+                    <v-btn icon @click="closeDialog">
                       <v-icon>mdi-close</v-icon>
                     </v-btn>
                   </v-card-title>
@@ -44,6 +44,7 @@
                         <v-col cols="12">
                           <v-text-field
                             v-model="title"
+                            :rules="formRule.title"
                             label="عنوان حساب"
                             required
                             outlined
@@ -54,6 +55,7 @@
                         <v-col cols="12">
                           <v-text-field
                             v-model="sheba"
+                            :rules="formRule.sheba"
                             label="شماره شبا بدون IR"
                             required
                             outlined
@@ -64,6 +66,7 @@
                         <v-col cols="12">
                           <v-text-field
                             v-model="cardId"
+                            :rules="formRule.cardId"
                             label="شماره کارت"
                             required
                             outlined

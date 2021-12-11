@@ -10,7 +10,7 @@
     item-key="name"
     :show-select="showSelect"
   >
-    <template v-slot:item.actions="{ item }">
+    <template v-slot:item.actions="{ item, index }">
       <v-row justify="center" class="px-5">
         <v-dialog
           v-model="dialog"
@@ -28,14 +28,15 @@
               v-bind="attrs"
               v-on="on"
               :disabled="item['has_estimation'] === false"
-              @click="showEstimationEmployer(item['estimation_id'])"
+              @click="showEstimationEmployer(item['estimation_id'], item['id'])"
             >
               <span v-if="item['has_estimation'] === false"
                 >در انتظار پاسخ</span
               >
               <span
                 v-if="!item['has_estimation'] && item['has_estimation'] !== false"
-                >ارزیابی</span
+              >
+                ارزیابی</span
               >
               <span v-if="item['has_estimation']">مشاهده درخواست</span>
             </v-btn>
@@ -61,7 +62,7 @@
                         required
                         outlined
                         dense
-                        v-model="item.title? item.title : confirmJobOfferForm.title"
+                        v-model="showJobOfferFreelancer['title']? showJobOfferFreelancer['title'] : confirmJobOfferForm.title"
                         disabled
                       ></v-text-field>
                     </v-col>
@@ -70,7 +71,7 @@
                         outlined
                         label="توضیحات*"
                         required
-                        v-model="item.description? item.description : confirmJobOfferForm.description"
+                        v-model="showJobOfferFreelancer.description? showJobOfferFreelancer.description : confirmJobOfferForm.description"
                         disabled
                       ></v-textarea>
                     </v-col>

@@ -286,6 +286,15 @@ const routes = [
           import("../views/freelancer/financial-management/wallet/index")
       },
       {
+        path: "withdrawal-request-history",
+        name: "freelancer-withdrawal-request-history",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            "../views/freelancer/financial-management/wallet/withdrawal-request-history/index"
+          )
+      },
+      {
         path: "transactions",
         name: "freelancer-transactions",
         meta: { transitionName: "slide" },
@@ -360,6 +369,15 @@ const routes = [
         meta: { transitionName: "slide" },
         component: () =>
           import("../views/employer/financial-management/wallet/index")
+      },
+      {
+        path: "withdrawal-request-history",
+        name: "employer-withdrawal-request-history",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import(
+            "../views/employer/financial-management/wallet/withdrawal-request-history/index"
+          )
       },
       {
         path: "transactions",

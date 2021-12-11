@@ -124,9 +124,7 @@ export default {
       });
     },
     storeChat(body) {
-      freelancerServices.storeChat(body).then(res => {
-        console.log(res);
-      });
+      freelancerServices.storeChat(body).then(() => {});
     },
     handleFileInput(file) {
       let formData = new FormData();
@@ -163,7 +161,6 @@ export default {
       freelancerServices
         .getChatListForService(estimationId)
         .then(res => {
-          console.log(res);
           this.messages = res.data.data;
         })
         .catch(error => {
@@ -178,7 +175,7 @@ export default {
           this.mileStones = response.data.data?.milestones;
           this.completedAt = response.data.data?.completed_at;
           response.data.data.milestones.forEach((item, index) => {
-            if (item.status === 2) {
+            if (item["confirmation"] === 1) {
               this.unlock = index + 1;
             }
           });

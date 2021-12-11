@@ -66,8 +66,7 @@ export default {
           description: this.serviceForm.description,
           attachment_id: this.serviceForm.attachmentId
         };
-        projectsService.createService(body).then(res => {
-          console.log(res);
+        projectsService.createService(body).then(() => {
           this.reset();
           this.showSnackbar = true;
           this.snackbarMessage = "سرویس شما با موفقیت ایجاد شد.";

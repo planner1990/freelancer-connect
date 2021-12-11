@@ -48,8 +48,7 @@ export default {
       //   proposal_id: this.proposalId,
       //   status: status
       // };
-      employerServices.confirmProposalByEmployer(this.proposalId).then(res => {
-        console.log(res);
+      employerServices.confirmProposalByEmployer(this.proposalId).then(() => {
         this.dialog = false;
       });
     },
@@ -64,8 +63,7 @@ export default {
         proposal_id: this.proposalId,
         status: status
       };
-      employerServices.proposalAction(body).then(res => {
-        console.log(res);
+      employerServices.proposalAction(body).then(() => {
         this.dialog = false;
       });
     },

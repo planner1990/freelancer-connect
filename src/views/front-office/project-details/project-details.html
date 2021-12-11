@@ -30,7 +30,9 @@
                   <v-icon dense color="error">
                     mdi-calendar-clock
                   </v-icon>
-                  <span class="mx-1">کمتر از یک ماه</span>
+                  <span class="mx-1"
+                    >{{ projectDetailsById.created_at | changeDate }}</span
+                  >
                 </div>
                 <div>
                   <v-icon dense color="purple darken-1">

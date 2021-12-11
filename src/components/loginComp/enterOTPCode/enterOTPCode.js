@@ -3,14 +3,16 @@ import { mapGetters } from "vuex";
 import * as types from "../../../shared/store/types";
 import AuthService from "../../../core/services/modules/authService";
 import Snackbar from "@/components/snackbar/index";
+import Timer from "../../timer/index";
 
 export default {
   name: "enter-otp-code",
-  components: { Snackbar },
+  components: { Snackbar, Timer },
   props: [],
   data() {
     return {
       OTPCode: null,
+      timerInterval: null,
       signInLoading: false,
       timer: 119,
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
@@ -32,18 +34,17 @@ export default {
     }
   },
   mounted() {
-    setInterval(this.handleTimer, 1000);
     this.resetRegister();
   },
   methods: {
     backToPrevStep() {
       this.$router.push("/login");
     },
-    handleTimer() {
-      if (this.timer > 0) {
-        this.timer--;
-      }
-    },
+    // handleTimer() {
+    //   if (this.timer > 0) {
+    //     this.timer--;
+    //   }
+    // },
     resendConfirmCode() {
       this.timer = 119;
       this.handleSendOTP();
@@ -54,8 +55,7 @@ export default {
         identification: this.getDataFromStore.identification,
         type: 0
       };
-      OtpService.sendOTP(body).then(res => {
-        console.log(res);
+      OtpService.sendOTP(body).then(() => {
         this.showSnackbar = true;
         this.snackbarMessage = "کد مجددا ارسال شد";
       });
@@ -81,8 +81,7 @@ export default {
             }
           }
         })
-        .catch(error => {
-          console.log(error);
+        .catch(() => {
           this.showSnackbar = true;
           this.snackbarMessage = "کد وارد شده معتبر نیست.";
         });
@@ -111,6 +110,9 @@ export default {
     },
     hideSnackbar() {
       this.showSnackbar = false;
+    },
+    stopTimer(e) {
+      this.timer = e;
     }
   }
 };

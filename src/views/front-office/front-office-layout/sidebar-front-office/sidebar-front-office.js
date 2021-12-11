@@ -39,7 +39,6 @@ export default {
         }
       },
       set(val) {
-        console.log(val);
         this.drawerAction(val);
       }
     }

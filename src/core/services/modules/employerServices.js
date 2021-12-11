@@ -92,6 +92,10 @@ class employerServices {
   paymentInvoice(body) {
     return API_V1.post("/pay/invoice", body);
   }
+
+  mileStonePayFake(body) {
+    return API_V1.post("/milestone_pay", body);
+  }
 }
 
 export default new employerServices();

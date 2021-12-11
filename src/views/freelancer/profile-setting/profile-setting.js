@@ -235,7 +235,6 @@ export default {
       this.listOfFormData.map(item => {
         if (item.type === "experience") {
           this.experienceList.push(item.form);
-          console.log(this.experienceList);
         } else if (item.type === "education") {
           this.educationList.push(item.form);
         }

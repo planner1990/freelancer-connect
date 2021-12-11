@@ -1,19 +1,28 @@
 import DashboardCard from "@/components/dashboardCard/index";
 import TableDashboard from "@/components/table-dashboard/index";
+import { freelancerServices } from "@/core/services";
+import $thousandMask from "@/shared/mixins/thousandMask";
+import $removeThousand from "@/shared/mixins/removeThousand";
 export default {
   name: "transactions",
   components: { DashboardCard, TableDashboard },
   props: [],
+  mixins: [$thousandMask, $removeThousand],
   data() {
     return {
-      items: ["Foo", "Bar", "Fizz", "Buzz"],
+      items: [
+        { title: "برداشت", value: 1 },
+        { title: "واریز", value: 2 }
+      ],
       categories: [],
       expStart: null,
       usersDate: null,
+      detailList: "",
       filterForm: {
         typeOfTransaction: null,
         created_at: null,
-        price: null
+        price: null,
+        generic: null
       },
       dialog: false,
       name: "",
@@ -25,85 +34,78 @@ export default {
           text: "نوع تراکنش",
           align: "center",
           sortable: false,
-          value: "typeOfTransaction"
+          value: "type"
         },
         {
-          text: "مبلغ",
-          value: "price",
+          text: "وضعیت",
+          align: "center",
+          sortable: false,
+          value: "status"
+        },
+        {
+          text: "مبلغ(ریال)",
+          value: "amount",
           sortable: false,
           align: "center"
         },
         {
           text: "زمان",
-          value: "date",
+          value: "created_at",
           sortable: false,
           align: "center"
         },
         {
           text: "شناسه پرداخت",
-          value: "payId",
+          value: "payment_code",
           sortable: false,
           align: "center"
         },
         {
           text: "واریزکننده/دریافت کننده",
-          value: "payerDepositor",
+          value: "depositor_recipient",
           sortable: false,
           align: "center"
         },
         {
-          text: "پروژه‌ها",
-          value: "project",
+          text: "بابت",
+          value: "concern",
           sortable: false,
           align: "center"
         },
         { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
-      dataUserManagement: [
-        {
-          typeOfTransaction: "واریز",
-          price: "500/000 ریال",
-          date: "1400/06/12",
-          payId: "50259874526651",
-          payerDepositor: "محمد کاظمین",
-          project: "طراحی وب: بخش ۱"
-        },
-        {
-          typeOfTransaction: "واریز",
-          price: "500/000 ریال",
-          date: "1400/06/12",
-          payId: "50259874526651",
-          payerDepositor: "محمد کاظمین",
-          project: "طراحی وب: بخش ۲"
-        },
-        {
-          typeOfTransaction: "واریز",
-          price: "500/000 ریال",
-          date: "1400/06/12",
-          payId: "50259874526651",
-          payerDepositor: "محمد کاظمین",
-          project: "طراحی وب: بخش ۳"
-        },
-        {
-          typeOfTransaction: "واریز",
-          price: "500/000 ریال",
-          date: "1400/06/12",
-          payId: "50259874526651",
-          payerDepositor: "محمد کاظمین",
-          project: "طراحی وب: بخش ۴"
-        },
-        {
-          typeOfTransaction: "واریز",
-          price: "500/000 ریال",
-          date: "1400/06/12",
-          payId: "50259874526651",
-          payerDepositor: "محمد کاظمین",
-          project: "طراحی وب: بخش ۵"
-        }
-      ]
+      dataUserManagement: []
     };
   },
   computed: {},
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.transactionIndex();
+  },
+  methods: {
+    mask() {
+      this.filterForm.price = this.$removeThousand(this.filterForm.price);
+      this.filterForm.price = this.$thousandMask(this.filterForm.price);
+    },
+    transactionIndex() {
+      freelancerServices.transactionIndex().then(res => {
+        this.dataUserManagement = res.data.data;
+      });
+    },
+    showDetail(id) {
+      freelancerServices.showTransactionDetail(id).then(res => {
+        this.detailList = res?.data.data;
+      });
+    },
+    filterAction() {
+      const options = {
+        generic: this.filterForm.generic,
+        type: this.filterForm.typeOfTransaction,
+        price: this.filterForm.price,
+        created_at: this.filterForm.created_at
+      };
+      freelancerServices.transactionIndex(options).then(res => {
+        this.dataUserManagement = res.data.data;
+      });
+    }
+  }
 };

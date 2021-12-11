@@ -22,7 +22,6 @@ export default {
         let formData = new FormData();
         formData.append(`attachment[0]`, this.files[0]);
         if (this.files[0]) {
-          console.log(formData);
           UploadService.uploadFile(formData).then(res => {
             this.$emit("clicked", {
               id: Number(res.data.data.attachment_id),

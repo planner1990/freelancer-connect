@@ -80,9 +80,8 @@ export default {
         page: currentPage,
         perPage: 5
       };
-      employerServices.getIndexProjects(options).then(res => {
+      employerServices.getIndexProjects(options).then(() => {
         this.page = currentPage;
-        console.log(res);
       });
     },
     redirectToEditJob() {

@@ -1,4 +1,5 @@
 import DashboardCard from "@/components/dashboardCard/index";
+import { freelancerServices } from "@/core/services";
 export default {
   name: "bank-card",
   components: { DashboardCard },
@@ -10,11 +11,28 @@ export default {
       title: "",
       sheba: "",
       cardId: "",
-      accountInfo: []
+      items: [],
+      accountInfo: [],
+      formRule: {
+        title: [
+          v => !!v || "لطفا نام خود را وارد کنید",
+          v => (v && v.length >= 3) || "این آیتم بیشتر از 3 کاراکتر نباشد"
+        ],
+        sheba: [
+          v => !!v || "لطفا شماره شبا خود را وارد کنید",
+          v => (v && v.length === 16) || "این آیتم باید ۱۶ کاراکتر باشد"
+        ],
+        cardId: [
+          v => !!v || "لطفا شماره کارت خود را وارد کنید",
+          v => (v && v.length === 16) || "این آیتم باید ۱۶ کاراکتر باشد"
+        ]
+      }
     };
   },
   computed: {},
-  mounted() {},
+  mounted() {
+    this.indexAccount();
+  },
   methods: {
     validate() {
       this.$refs.form.validate();
@@ -26,13 +44,38 @@ export default {
       this.$refs.form.reset();
     },
     addToBankCard() {
-      this.accountInfo.push({
-        title: this.title,
-        sheba: this.sheba,
-        cardId: this.cardId
+      if (this.$refs.form.validate() === true) {
+        // this.accountInfo.push({
+        //   title: this.title,
+        //   sheba: this.sheba,
+        //   cardId: this.cardId
+        // });
+        this.accountStore();
+        this.dialog = false;
+        this.resetForm();
+      } else {
+        this.validate();
+      }
+    },
+    accountStore() {
+      const body = {
+        name: this.title,
+        card_number: this.cardId,
+        iban: this.sheba
+      };
+      freelancerServices.accountStore(body).then(res => {
+        console.log(res);
+        this.indexAccount();
       });
-      this.dialog = false;
+    },
+    indexAccount() {
+      freelancerServices.indexAccount().then(res => {
+        this.accountInfo = res.data.data;
+      });
+    },
+    closeDialog() {
       this.resetForm();
+      this.dialog = false;
     }
   }
 };

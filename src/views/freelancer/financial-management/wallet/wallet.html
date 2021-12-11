@@ -4,9 +4,13 @@
       <v-col md="4" sm="12">
         <v-row class="flex-column ml-5 text-center border">
           <v-col>موجودی کل:</v-col>
-          <v-col class="font-weight-bold">۸۰۰/۰۰۰ ریال</v-col>
+          <v-col class="font-weight-bold"
+            >{{ creditInfo['total_amount'] | thousandMask }} ریال</v-col
+          >
           <v-col>موجودی قابل برداشت:</v-col>
-          <v-col class="font-weight-bold">۸۰۰/۰۰۰ ریال</v-col>
+          <v-col class="font-weight-bold"
+            >{{ creditInfo['withdrawable_amount'] | thousandMask }} ریال</v-col
+          >
           <v-col>
             <v-dialog
               v-model="dialog"
@@ -32,21 +36,26 @@
                   <v-card-text>
                     <v-container>
                       <v-row>
-<!--                        <v-col-->
-<!--                          ><v-divider class="divide-card"></v-divider-->
-<!--                        ></v-col>-->
+                        <!--                        <v-col-->
+                        <!--                          ><v-divider class="divide-card"></v-divider-->
+                        <!--                        ></v-col>-->
                         <v-col cols="12">
                           <v-text-field
                             label="مبلغ به ریال"
+                            v-model="price"
                             required
                             outlined
                             dense
-                            type="number"
+                            :rules="walletRule.price"
+                            @input="mask"
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12">
                           <v-select
+                            v-model="accountId"
                             :items="items"
+                            item-value="id"
+                            item-text="name"
                             label="انتخاب حساب بانکی"
                             dense
                             outlined
@@ -59,7 +68,7 @@
                     <v-card-actions>
                       <v-spacer></v-spacer>
                       <v-col cols="12">
-                        <v-btn color="secondary" block>
+                        <v-btn color="secondary" block @click="withdraw">
                           تایید و برداشت
                         </v-btn>
                       </v-col>
@@ -70,7 +79,13 @@
             </v-dialog>
           </v-col>
           <v-col>
-            <v-btn color="primary" outlined block>
+            <v-btn
+              color="primary"
+              outlined
+              block
+              link
+              to="/freelancer/withdrawal-request-history"
+            >
               تاریخچه درخواست‌های برداشت
             </v-btn>
           </v-col>
@@ -84,11 +99,9 @@
   <!--  <transitionPage>-->
   <!--    <router-view v-if="this.$route.params.id" />-->
   <!--  </transitionPage>-->
-  <!--    <v-row>-->
-  <!--        <snackbar-->
-  <!--                :snackbarMessage="snackbarMessage"-->
-  <!--                :showSnackbar="showSnackbar"-->
-  <!--                @hideSnackbar="hideSnackbar"-->
-  <!--        ></snackbar>-->
-  <!--    </v-row>-->
+  <snackbar
+    :snackbarMessage="snackbarMessage"
+    :showSnackbar="showSnackbar"
+    @hideSnackbar="hideSnackbar"
+  ></snackbar>
 </dashboard-card>

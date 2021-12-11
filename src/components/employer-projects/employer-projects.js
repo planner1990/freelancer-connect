@@ -26,7 +26,9 @@ export default {
             description: item.description,
             price: item.min_price,
             image: item["attachments"],
-            username: item.username
+            username: item.username,
+            skills: item.skills,
+            createAt: item.created_at
           });
         });
         return serviceListItems;

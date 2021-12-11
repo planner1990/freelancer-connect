@@ -122,9 +122,8 @@ export default {
       };
       freelancerServices
         .submitMilestone(body)
-        .then(res => {
+        .then(() => {
           this.dialog = false;
-          console.log(res);
         })
         .catch(error => {
           console.log(error);
@@ -155,6 +154,10 @@ export default {
     },
 
     goToPaymentPage(id) {
+      // const body = {
+      //   id
+      // };
+      // employerServices.mileStonePayFake(body).then();
       this.$router.push({
         path: `/employer/ongoing-projects/${id}/payment`
       });
@@ -164,10 +167,9 @@ export default {
     mileStoneAction(id, status) {
       const body = {
         milestone_id: id,
-        status: status
+        confirmation: status
       };
-      employerServices.mileStoneAction(body).then(res => {
-        console.log(res);
+      employerServices.mileStoneAction(body).then(() => {
         this.getIndexMilestone();
         this.dialog = false;
       });

@@ -77,6 +77,42 @@ class freelancerServices {
   myServices() {
     return API_V1.get(`/freelancer/services`);
   }
+
+  showCredit() {
+    return API_V1.get(`/credit`);
+  }
+
+  transactionIndex(options) {
+    return API_V1.get(`/transaction`, { params: options });
+  }
+
+  accountStore(body) {
+    return API_V1.post(`/account`, body);
+  }
+
+  showTransactionDetail(id) {
+    return API_V1.get(`/transaction/${id}`);
+  }
+
+  indexAccount() {
+    return API_V1.get(`/account`);
+  }
+
+  transactionWithdraw(body) {
+    return API_V1.post(`/transaction/withdraw`, body);
+  }
+
+  payCredit(body) {
+    return API_V1.post(`/pay/credit`, body);
+  }
+
+  rejectJobOffer(body) {
+    return API_V1.post(`/freelancer/service/job_offers/reject`, body);
+  }
+
+  showJobOffer(id) {
+    return API_V1.get(`/freelancer/service/job_offers/show/${id}`);
+  }
 }
 
 export default new freelancerServices();

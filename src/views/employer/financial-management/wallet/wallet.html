@@ -2,16 +2,79 @@
   <v-container v-if="!this.$route.params.id" class="wallet">
     <v-row class="justify-end">
       <v-col md="2">
-        <v-btn text color="secondary">
-          + افزایش موجودی
-        </v-btn>
+        <v-dialog
+          v-model="dialog2"
+          max-width="600px"
+          persistent
+          :retain-focus="false"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn text color="secondary" v-bind="attrs" v-on="on">
+              + افزایش موجودی
+            </v-btn>
+          </template>
+          <v-form ref="form" v-model="valid" lazy-validation>
+            <v-card
+              class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+            >
+              <v-card-title class="justify-space-between title">
+                <span class="text-h6">افزایش موجودی</span>
+                <v-btn icon @click="dialog2 = false">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12">
+                      <v-text-field
+                        label="مبلغ به ریال"
+                        v-model="amountWallet"
+                        required
+                        outlined
+                        dense
+                        :rules="walletRule.price"
+                        @input="mask2"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-select
+                        v-model="gateway"
+                        :items="gatewaysList"
+                        item-value="id"
+                        item-text="name_fa"
+                        label="انتخاب درگاه بانکی"
+                        dense
+                        outlined
+                      ></v-select>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <v-col>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-col cols="12">
+                    <v-btn color="secondary" block @click="increaseWallet">
+                      پرداخت
+                    </v-btn>
+                  </v-col>
+                </v-card-actions>
+              </v-col>
+            </v-card>
+          </v-form>
+        </v-dialog>
       </v-col>
       <v-col md="12" sm="12">
         <v-row class="align-center text-center border">
           <v-col>موجودی کل:</v-col>
-          <v-col class="font-weight-bold">۸۰۰/۰۰۰ ریال</v-col>
+          <v-col class="font-weight-bold"
+            >{{ creditInfo['total_amount'] | thousandMask }} ریال</v-col
+          >
           <v-col>موجودی قابل برداشت:</v-col>
-          <v-col class="font-weight-bold">۸۰۰/۰۰۰ ریال</v-col>
+          <v-col class="font-weight-bold"
+            >{{ creditInfo['withdrawable_amount'] | thousandMask }} ریال</v-col
+          >
           <v-col>
             <v-col>
               <v-dialog
@@ -38,21 +101,23 @@
                     <v-card-text>
                       <v-container>
                         <v-row>
-<!--                          <v-col-->
-<!--                            ><v-divider class="divide-card"></v-divider-->
-<!--                          ></v-col>-->
                           <v-col cols="12">
                             <v-text-field
                               label="مبلغ به ریال"
+                              v-model="price"
                               required
                               outlined
                               dense
-                              type="number"
+                              :rules="walletRule.price"
+                              @input="mask"
                             ></v-text-field>
                           </v-col>
                           <v-col cols="12">
                             <v-select
+                              v-model="accountId"
                               :items="items"
+                              item-value="id"
+                              item-text="name"
                               label="انتخاب حساب بانکی"
                               dense
                               outlined
@@ -65,7 +130,7 @@
                       <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-col cols="12">
-                          <v-btn color="secondary" block>
+                          <v-btn color="secondary" block @click="withdraw">
                             تایید و برداشت
                           </v-btn>
                         </v-col>
@@ -76,26 +141,24 @@
               </v-dialog>
             </v-col>
             <v-col>
-              <v-btn color="primary" outlined block>
+              <v-btn
+                color="primary"
+                outlined
+                block
+                link
+                to="/employer/withdrawal-request-history"
+              >
                 تاریخچه درخواست‌های برداشت
               </v-btn>
             </v-col>
           </v-col>
         </v-row>
       </v-col>
-      <!--      <v-col md="8" sm="12" class="border">-->
-      <!--        <v-chart autoresize :option="option" />-->
-      <!--      </v-col>-->
     </v-row>
   </v-container>
-  <!--  <transitionPage>-->
-  <!--    <router-view v-if="this.$route.params.id" />-->
-  <!--  </transitionPage>-->
-  <!--    <v-row>-->
-  <!--        <snackbar-->
-  <!--                :snackbarMessage="snackbarMessage"-->
-  <!--                :showSnackbar="showSnackbar"-->
-  <!--                @hideSnackbar="hideSnackbar"-->
-  <!--        ></snackbar>-->
-  <!--    </v-row>-->
+  <snackbar
+    :snackbarMessage="snackbarMessage"
+    :showSnackbar="showSnackbar"
+    @hideSnackbar="hideSnackbar"
+  ></snackbar>
 </dashboard-card>

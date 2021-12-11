@@ -1,5 +1,8 @@
-import UploadService from "../../core/services/modules/uploadService";
-import { ServiceEmploymentService } from "../../core/services";
+import {
+  freelancerServices,
+  ServiceEmploymentService,
+  UploadService
+} from "@/core/services";
 import thousandMask from "@/shared/mixins/thousandMask";
 import Snackbar from "@/components/snackbar/index";
 
@@ -25,6 +28,10 @@ export default {
       dialog: false,
       valid: false,
       total_price: null,
+      showJobOfferFreelancer: {
+        title: "",
+        description: ""
+      },
       confirmJobOfferForm: {
         title: "",
         description: "",
@@ -32,7 +39,9 @@ export default {
         minPrice: null,
         duration: null,
         prepayment: null,
-        freelancerDescription: ""
+        freelancerDescription: "",
+        estimationId: null,
+        id: null
       },
       confirmJobOfferRule: {
         title: [
@@ -130,28 +139,43 @@ export default {
         }
       });
     },
-    showEstimationEmployer(id) {
+    showEstimationEmployer(estimation_id, id) {
       if (this.disableInput === true) {
-        ServiceEmploymentService.showEstimationEmployer(id).then(res => {
-          const response = res.data.data;
-          this.total_price = response.total_price;
-          this.confirmJobOfferForm = {
-            title: response.description,
-            description: response.description,
-            attachmentId: response["attachments"],
-            minPrice: response.price,
-            duration: response.duration,
-            prepayment: response.prepayment,
-            freelancerDescription: response.description
-          };
+        ServiceEmploymentService.showEstimationEmployer(estimation_id).then(
+          res => {
+            const response = res.data.data;
+            this.total_price = response.total_price;
+            this.confirmJobOfferForm = {
+              title: response.description,
+              description: response.description,
+              attachmentId: response["attachments"],
+              minPrice: response.price,
+              duration: response.duration,
+              prepayment: response.prepayment,
+              freelancerDescription: response.description,
+              estimationId: estimation_id
+            };
+          }
+        );
+      } else {
+        freelancerServices.showJobOffer(id).then(res => {
+          this.showJobOfferFreelancer = res?.data.data;
         });
       }
     },
     rejectEstimation(id) {
       this.showSnackbar = false;
       if (this.disableInput === true) {
-        ServiceEmploymentService.rejectEstimationEmployer(id).then(res => {
-          console.log(res);
+        ServiceEmploymentService.rejectEstimationEmployer(id).then(() => {
+          this.snackbarMessage = "عملیات با موفقیت انجام شد.";
+          this.showSnackbar = true;
+          this.dialog = false;
+        });
+      } else {
+        const body = {
+          job_offer_id: id
+        };
+        freelancerServices.rejectJobOffer(body).then(() => {
           this.snackbarMessage = "عملیات با موفقیت انجام شد.";
           this.showSnackbar = true;
           this.dialog = false;
@@ -167,8 +191,7 @@ export default {
         this.dialog = false;
       } else {
         this.showSnackbar = false;
-        ServiceEmploymentService.employmentService(id).then(res => {
-          console.log(res);
+        ServiceEmploymentService.employmentService(id).then(() => {
           this.snackbarMessage = "عملیات با موفقیت انجام شد.";
           this.showSnackbar = true;
           this.dialog = false;
@@ -178,7 +201,7 @@ export default {
     confirmEstimation(id) {
       if (this.$refs[`form`].validate() === true) {
         if (this.disableInput === true) {
-          this.hiredServiceByEmployer(id);
+          this.hiredServiceByEmployer(this.confirmJobOfferForm.estimationId);
           this.dialog = false;
         } else {
           this.estimationForFreelancer(id);
@@ -193,7 +216,9 @@ export default {
     },
     closeModal() {
       this.dialog = false;
-      this.$refs[`form`].reset();
+      if (this.disableInput === true) {
+        this.$refs[`form`].reset();
+      }
     }
   }
 };

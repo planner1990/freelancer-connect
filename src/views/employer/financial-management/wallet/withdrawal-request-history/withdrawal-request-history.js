@@ -1,34 +1,16 @@
-import DashboardCard from "@/components/dashboardCard/index";
-import TableDashboard from "@/components/table-dashboard/index";
 import { freelancerServices } from "@/core/services";
-import $thousandMask from "@/shared/mixins/thousandMask";
-import $removeThousand from "@/shared/mixins/removeThousand";
+
 export default {
-  name: "transactions",
-  components: { DashboardCard, TableDashboard },
+  name: "withdrawal-request-history",
+  components: {},
   props: [],
-  mixins: [$thousandMask, $removeThousand],
   data() {
     return {
-      items: [
-        { title: "برداشت", value: 1 },
-        { title: "واریز", value: 2 }
-      ],
-      categories: [],
-      expStart: null,
-      usersDate: null,
-      detailList: "",
-      filterForm: {
-        typeOfTransaction: null,
-        created_at: null,
-        price: null,
-        generic: null
-      },
       dialog: false,
-      name: "",
       page: 1,
       pageCount: 0,
       itemsPerPage: 4,
+      detailList: {},
       headersUserManagement: [
         {
           text: "نوع تراکنش",
@@ -82,29 +64,20 @@ export default {
     this.transactionIndex();
   },
   methods: {
-    mask() {
-      this.filterForm.price = this.$removeThousand(this.filterForm.price);
-      this.filterForm.price = this.$thousandMask(this.filterForm.price);
+    goBack() {
+      this.$router.push({ path: "/employer/wallet" });
     },
     transactionIndex() {
-      freelancerServices.transactionIndex().then(res => {
+      const option = {
+        type: "1"
+      };
+      freelancerServices.transactionIndex(option).then(res => {
         this.dataUserManagement = res.data.data;
       });
     },
     showDetail(id) {
       freelancerServices.showTransactionDetail(id).then(res => {
         this.detailList = res?.data.data;
-      });
-    },
-    filterAction() {
-      const options = {
-        generic: this.filterForm.generic,
-        type: this.filterForm.typeOfTransaction,
-        price: this.filterForm.price,
-        created_at: this.filterForm.created_at
-      };
-      freelancerServices.transactionIndex(options).then(res => {
-        this.dataUserManagement = res.data.data;
       });
     }
   }
