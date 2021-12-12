@@ -12,7 +12,8 @@
             :src="require(`../../../assets/image/connecta-logo-1.png`)"
           ></v-img>
         </div>
-        <v-row justify="center" class="fill-height mt-sm-16 mt-0">
+        <stepper-component :step="step"></stepper-component>
+        <v-row justify="center" class="fill-height mt-sm-5 mt-0">
           <v-col cols="11" sm="9" md="7">
             <v-card-text class="px-0">
               <transitionPage>

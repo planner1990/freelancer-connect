@@ -271,7 +271,7 @@
           $width: 2px,
           $height: 164px,
           $bgColor:
-            linear-gradient(to right, $surface-500, $surface-500, transparent)
+            linear-gradient(to right, $surface-hover, $surface-hover, transparent)
         );
       }
       &:not(:last-child):before {
@@ -308,6 +308,7 @@
     background-color: #222222;
     ul {
       list-style: none;
+      width: 45%;
 
       li {
         font-size: 14px;
@@ -318,6 +319,7 @@
     .copy-wright {
       font-size: 14px;
       color: $light-green;
+      width: 45%;
     }
   }
 }
@@ -336,7 +338,7 @@
 }
 
 .divide-card {
-  background-color: $surface-150;
+  background-color: $surface-hover2;
   width: 100%;
   margin: 14px 0;
 }

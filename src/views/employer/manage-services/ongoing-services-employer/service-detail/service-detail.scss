@@ -47,10 +47,10 @@
     }
   }
   .lock {
-    background-color: #8e8e8e;
+    background-color: $surface-150;
   }
   .pending {
-    background-color: #e5a000;
+    background-color: rgba(229, 160, 0, 0.43);
   }
   .finished {
     background-color: #59c1b8;
@@ -70,7 +70,7 @@
   height: 50vh;
   overflow: auto;
   margin: 0 auto 2em auto;
-  border: 3px solid $surface-350;
+  border: 1px solid $surface-350;
   padding-top: 30px;
 }
 .chat-header {

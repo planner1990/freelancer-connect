@@ -10,7 +10,7 @@ const routes = [
   {
     path: "/login",
     meta: { transitionName: "slide" },
-    beforeEnter: AuthGuard.loginGuard,
+    // beforeEnter: AuthGuard.loginGuard,
     component: () => import("../views/auth/login/index"),
     children: [
       {

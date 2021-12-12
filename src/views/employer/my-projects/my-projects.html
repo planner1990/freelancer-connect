@@ -68,7 +68,7 @@
         </div>
       </template>
     </v-data-table>
-    <div class="col-12 text-center pt-2" v-if="dataUserManagement >= 1">
+    <div class="col-12 text-center pt-2" v-if="dataUserManagement.length >= 1">
       <v-pagination
         v-model="paginationData['current_page']"
         :length="paginationData['last_page']"

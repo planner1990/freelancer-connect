@@ -12,7 +12,7 @@ export default {
       name: "",
       page: 1,
       pageCount: 0,
-      itemsPerPage: 5,
+      itemsPerPage: 10,
       paginationData: null,
       headersUserManagement: [
         {
@@ -52,7 +52,7 @@ export default {
     showMyProjects() {
       const options = {
         page: 1,
-        perPage: 5
+        perPage: 10
       };
       employerServices.myProjects(options).then(res => {
         this.dataUserManagement = res.data.data?.projects;
@@ -62,7 +62,7 @@ export default {
     changePage(currentPage) {
       const options = {
         page: currentPage,
-        perPage: 5
+        perPage: 10
       };
       employerServices.myProjects(options).then(res => {
         this.dataUserManagement = res.data.data?.projects;
