@@ -67,6 +67,65 @@
           </div>
         </div>
       </template>
+      <template v-slot:item.actions="{ item }" class="service-status">
+        <div class="d-flex justify-center align-center service-table">
+          <div class="d-flex flex-column align-start px-4">
+            <div class="m-0">
+              <v-dialog
+                v-model="dialog"
+                max-width="300px"
+                persistent
+                :retain-focus="false"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn color="primary" outlined v-bind="attrs" v-on="on">
+                    حذف
+                  </v-btn>
+                </template>
+                <v-form ref="form" v-model="valid" lazy-validation>
+                  <v-card
+                    class="d-flex flex-column justify-center align-center pb-4 send-jobOffer-freelancer"
+                  >
+                    <v-card-title class="justify-space-between title">
+                      <span class="text-h6">حذف پروژه</span>
+                      <v-btn icon @click="closeDialog">
+                        <v-icon>mdi-close</v-icon>
+                      </v-btn>
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>
+                          <v-col cols="12"
+                            >آیا از حذف پروژه اطمینان دارید؟</v-col
+                          >
+                        </v-row>
+                      </v-container>
+                    </v-card-text>
+                    <v-col cols="12">
+                      <v-card-actions>
+                        <v-col cols="12" md="6" sm="12" class="py-0">
+                          <v-btn color="secondary" @click="deleteService">
+                            بله حذف شود
+                          </v-btn>
+                        </v-col>
+                        <v-col cols="12" md="6" sm="12" class="py-0">
+                          <v-btn
+                            color="error"
+                            class="px-10"
+                            @click="closeDialog"
+                          >
+                            خیر
+                          </v-btn>
+                        </v-col>
+                      </v-card-actions>
+                    </v-col>
+                  </v-card>
+                </v-form>
+              </v-dialog>
+            </div>
+          </div>
+        </div>
+      </template>
     </v-data-table>
     <div class="col-12 text-center pt-2" v-if="dataUserManagement.length >= 1">
       <v-pagination

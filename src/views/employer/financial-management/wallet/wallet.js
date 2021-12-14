@@ -44,7 +44,7 @@ export default {
       this.price = this.$removeThousand(this.price);
       this.price = this.$thousandMask(this.price);
     },
-    mask2() {
+    maskPrice() {
       this.amountWallet = this.$removeThousand(this.amountWallet);
       this.amountWallet = this.$thousandMask(this.amountWallet);
     },
@@ -77,7 +77,7 @@ export default {
     },
     increaseWallet() {
       const body = {
-        amount: this.amountWallet,
+        amount: this.amountWallet.replace(/,/g, ""),
         gateway_id: this.gateway
       };
       freelancerServices.payCredit(body).then(res => {

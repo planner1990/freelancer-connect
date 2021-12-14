@@ -3,8 +3,9 @@ import {
   ServiceEmploymentService,
   UploadService
 } from "@/core/services";
-import thousandMask from "@/shared/mixins/thousandMask";
 import Snackbar from "@/components/snackbar/index";
+import $thousandMask from "@/shared/mixins/thousandMask";
+import $removeThousand from "@/shared/mixins/removeThousand";
 
 export default {
   name: "table-dashboard",
@@ -16,7 +17,7 @@ export default {
     "name",
     "disableInput"
   ],
-  mixins: [thousandMask],
+  mixins: [$thousandMask, $removeThousand],
   data() {
     return {
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
@@ -97,6 +98,22 @@ export default {
   },
   mounted() {},
   methods: {
+    mask() {
+      this.confirmJobOfferForm.minPrice = this.$removeThousand(
+        this.confirmJobOfferForm.minPrice
+      );
+      this.confirmJobOfferForm.minPrice = this.$thousandMask(
+        this.confirmJobOfferForm.minPrice
+      );
+    },
+    maskPrepayment() {
+      this.confirmJobOfferForm.prepayment = this.$removeThousand(
+        this.confirmJobOfferForm.prepayment
+      );
+      this.confirmJobOfferForm.prepayment = this.$thousandMask(
+        this.confirmJobOfferForm.prepayment
+      );
+    },
     editItem(item) {
       this.editedIndex = this.dataUserManagement.indexOf(item);
       this.editedItem = Object.assign({}, item);

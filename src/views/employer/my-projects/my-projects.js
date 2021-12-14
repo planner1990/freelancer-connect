@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       showSelect: true,
+      dialog: false,
       valid: true,
       name: "",
       page: 1,
@@ -68,6 +69,12 @@ export default {
         this.dataUserManagement = res.data.data?.projects;
         this.page = currentPage;
       });
+    },
+    closeDialog() {
+      this.dialog = false;
+    },
+    deleteService() {
+      console.log("dddd");
     }
   }
 };

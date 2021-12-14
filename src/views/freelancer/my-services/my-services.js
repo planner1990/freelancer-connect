@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       showSelect: true,
+      dialog: false,
       selected: [],
       valid: true,
       name: "",
@@ -39,7 +40,8 @@ export default {
           value: "numOfJobOffer",
           sortable: false,
           align: "center"
-        }
+        },
+        { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: []
     };
@@ -53,6 +55,12 @@ export default {
       freelancerServices.myServices().then(res => {
         this.dataUserManagement = res.data.data;
       });
+    },
+    closeDialog() {
+      this.dialog = false;
+    },
+    deleteService() {
+      console.log("dddd");
     }
   }
 };
