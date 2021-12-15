@@ -49,18 +49,6 @@ const routes = [
     ]
   },
   {
-    path: "/home",
-    redirect: { name: "home" }
-  },
-  {
-    path: "*",
-    redirect: { name: "home" }
-  },
-  {
-    path: "/front-office",
-    redirect: { name: "home" }
-  },
-  {
     path: "/",
     name: "front-office",
     meta: { transitionName: "slide" },
@@ -571,7 +559,7 @@ const routes = [
         component: () => import("../views/freelancer/my-saved-items/index")
       }
     ]
-  }
+  },
   // {
   //   path: "/",
   //   redirect: `/auth`
@@ -1156,6 +1144,10 @@ const routes = [
   //     // }
   //   ]
   // }
+  {
+    path: "*",
+    redirect: { name: "home" }
+  }
 ];
 
 const router = new VueRouter({
