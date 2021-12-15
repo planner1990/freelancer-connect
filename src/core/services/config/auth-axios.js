@@ -4,7 +4,8 @@ import authService from "../modules/authService";
 const headers = {
   "content-type": "application/json",
   Accept: "application/json",
-  "Accept-Language": "fa"
+  "Accept-Language": "fa",
+  "Access-Control-Allow-Origin": "*"
 };
 
 const API_V1 = axios.create({

@@ -61,6 +61,11 @@ const routes = [
     redirect: `/home`
   },
   {
+    path: "/blog",
+    name: "blog",
+    meta: { transitionName: "slide" }
+  },
+  {
     path: "/front-office",
     name: "front-office",
     meta: { transitionName: "slide" },
