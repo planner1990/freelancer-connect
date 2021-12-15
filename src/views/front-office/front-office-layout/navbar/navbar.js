@@ -14,10 +14,10 @@ export default {
   props: [],
   data: () => ({
     showSidebar: false,
+    baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,
     selectedItem: 0,
     items: [
       { text: "navbar.home", route: "/" },
-      { text: "navbar.blog", route: "/blog" },
       { text: "navbar.browseServices", route: "/browse-services" },
       { text: "navbar.browseProjects", route: "/browse-projects" }
     ],

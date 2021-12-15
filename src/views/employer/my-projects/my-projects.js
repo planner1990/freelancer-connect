@@ -10,6 +10,7 @@ export default {
       showSelect: true,
       dialog: false,
       valid: true,
+      projectId: null,
       name: "",
       page: 1,
       pageCount: 0,
@@ -74,7 +75,16 @@ export default {
       this.dialog = false;
     },
     deleteService() {
-      console.log("dddd");
+      const body = {
+        project_id: this.projectId
+      };
+      employerServices.deleteProject(body).then(() => {
+        this.showMyServices();
+        this.closeDialog();
+      });
+    },
+    getProjectId(id) {
+      this.projectId = id;
     }
   }
 };

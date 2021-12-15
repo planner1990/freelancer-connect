@@ -49,30 +49,25 @@ const routes = [
     ]
   },
   {
-    path: "/",
-    redirect: `/home`
+    path: "/home",
+    redirect: { name: "home" }
   },
   {
     path: "*",
-    redirect: `/home`
+    redirect: { name: "home" }
   },
   {
     path: "/front-office",
-    redirect: `/home`
+    redirect: { name: "home" }
   },
   {
-    path: "/blog",
-    name: "blog",
-    meta: { transitionName: "slide" }
-  },
-  {
-    path: "/front-office",
+    path: "/",
     name: "front-office",
     meta: { transitionName: "slide" },
     component: () => import("../views/front-office/front-office-layout/index"),
     children: [
       {
-        path: "/home",
+        path: "/",
         name: "home",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/home-page/index")

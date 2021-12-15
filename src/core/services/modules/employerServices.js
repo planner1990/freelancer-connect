@@ -96,6 +96,10 @@ class employerServices {
   mileStonePayFake(body) {
     return API_V1.post("/milestone_pay", body);
   }
+
+  deleteProject(body) {
+    return API_V1.post("/employer/projects/delete", body);
+  }
 }
 
 export default new employerServices();

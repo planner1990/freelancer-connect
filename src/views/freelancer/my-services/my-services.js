@@ -9,6 +9,7 @@ export default {
     return {
       showSelect: true,
       dialog: false,
+      serviceId: null,
       selected: [],
       valid: true,
       name: "",
@@ -60,7 +61,16 @@ export default {
       this.dialog = false;
     },
     deleteService() {
-      console.log("dddd");
+      const body = {
+        service_id: this.serviceId
+      };
+      freelancerServices.deleteService(body).then(() => {
+        this.showMyServices();
+        this.closeDialog();
+      });
+    },
+    getServiceId(id) {
+      this.serviceId = id;
     }
   }
 };

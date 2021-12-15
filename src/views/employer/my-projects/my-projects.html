@@ -78,7 +78,7 @@
                 :retain-focus="false"
               >
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="primary" outlined v-bind="attrs" v-on="on">
+                  <v-btn color="primary" outlined v-bind="attrs" v-on="on" @click="getProjectId(item.id)">
                     حذف
                   </v-btn>
                 </template>
@@ -104,7 +104,7 @@
                     <v-col cols="12">
                       <v-card-actions>
                         <v-col cols="12" md="6" sm="12" class="py-0">
-                          <v-btn color="secondary" @click="deleteService">
+                          <v-btn color="secondary" @click="deleteService(item.id)">
                             بله حذف شود
                           </v-btn>
                         </v-col>

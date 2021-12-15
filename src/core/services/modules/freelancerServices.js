@@ -113,6 +113,10 @@ class freelancerServices {
   showJobOffer(id) {
     return API_V1.get(`/freelancer/service/job_offers/show/${id}`);
   }
+
+  deleteService(body) {
+    return API_V1.post("/freelancer/services/delete", body);
+  }
 }
 
 export default new freelancerServices();
