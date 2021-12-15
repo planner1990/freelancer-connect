@@ -5,7 +5,7 @@
         <v-icon left>
           mdi-content-save-all-outline
         </v-icon>
-          جزئیات پروفایل
+        جزئیات پروفایل
       </v-tab>
       <v-tab>
         <v-icon left>
@@ -24,155 +24,161 @@
         <v-card flat>
           <v-card-text>
             <v-form ref="form" v-model="valid" lazy-validation>
-              <header-section
-                :header-section-title="'جزئیات پروفایل'"
-              ></header-section>
-              <v-row v-if="companyName === ''">
-                <v-col lg="6" md="12">
-                  <v-text-field
-                    v-model="profileInfo.user['first_name']"
-                    label="نام"
-                    required
-                    lazy
-                    outlined
-                    @change="enableUpdateProfileButton"
-                  ></v-text-field>
-                </v-col>
-                <v-col lg="6" md="12">
-                  <v-text-field
-                    v-model="profileInfo.user['last_name']"
-                    label="نام خانوادگی"
-                    required
-                    lazy
-                    outlined
-                    @change="enableUpdateProfileButton"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row v-if="companyName !== ''">
-                <v-col lg="6" md="12">
-                  <v-text-field
-                    v-model="profileInfo.user.company.name"
-                    label="نام شرکت"
-                    required
-                    lazy
-                    outlined
-                    @change="enableUpdateProfileButton"
-                  ></v-text-field>
-                </v-col>
-                <v-col lg="6" md="12">
-                  <v-text-field
-                    valu=""
-                    label="شماره ثبت شرکت"
-                    required
-                    lazy
-                    outlined
-                    @change="enableUpdateProfileButton"
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <!--                <v-col lg="6" md="12">-->
-                <!--                  <v-select-->
-                <!--                    v-if="profileInfo.user"-->
-                <!--                    v-model="profileForm.gender"-->
-                <!--                    :items="profileInfo['genders']"-->
-                <!--                    item-text="value"-->
-                <!--                    item-value="key"-->
-                <!--                    label="جنسیت"-->
-                <!--                    required-->
-                <!--                    outlined-->
-                <!--                  ></v-select>-->
-                <!--                </v-col>-->
-<!--                <v-col md="12">-->
-<!--                  <v-combobox-->
-<!--                    v-if="profileInfo.user"-->
-<!--                    v-model="profileInfo.skills"-->
-<!--                    :items="skillsList"-->
-<!--                    item-text="title"-->
-<!--                    item-value="id"-->
-<!--                    :search-input.sync="search"-->
-<!--                    hide-selected-->
-<!--                    hint="حداکثر ۵ گزینه میتوانید انتخاب کنید"-->
-<!--                    :label="$t('form.skills')"-->
-<!--                    multiple-->
-<!--                    persistent-hint-->
-<!--                    required-->
-<!--                    outlined-->
-<!--                    clearable-->
-<!--                    small-chips-->
-<!--                    :counter="5"-->
-<!--                    @change="selectSkills(profileInfo.skills)"-->
-<!--                  >-->
-<!--                    <template v-slot:no-data>-->
-<!--                      <v-list-item>-->
-<!--                        <v-list-item-content>-->
-<!--                          <v-list-item-title>-->
-<!--                            موردی یافت نشد "<strong>{{ search }}</strong>". برای-->
-<!--                            افزودن مهارت مورد نظر <kbd>enter</kbd>را فشار دهید-->
-<!--                          </v-list-item-title>-->
-<!--                        </v-list-item-content>-->
-<!--                      </v-list-item>-->
-<!--                    </template>-->
-<!--                  </v-combobox>-->
-<!--                </v-col>-->
-              </v-row>
-              <v-row>
-                <v-col md="12">
-                  <v-select
-                    :items="categories"
-                    item-text="title"
-                    item-value="id"
-                    label="زمینه کاری"
-                    v-model="profileInfo.user['category_id']"
-                    required
-                    outlined
-                    @change="enableUpdateProfileButton"
-                  ></v-select>
-                </v-col>
-              </v-row>
-              <!--              <v-row>-->
-              <!--                <v-textarea-->
-              <!--                  outlined-->
-              <!--                  name="input-7-4"-->
-              <!--                  label="توضیحات"-->
-              <!--                  value="پروژه ای که روی آن کار می کنم یک پروژه ی تستی است که قرار است در جستجوی گوگل در صفحات اول تا دوم ارتقا داده شود."-->
-              <!--                ></v-textarea>-->
-              <!--              </v-row>-->
-              <header-section
-                :header-section-title="'تصویر پروفایل'"
-              ></header-section>
-              <v-row>
-                <v-col lg="6" md="6" class="profile-setting">
-                  <file-input-dashboard
-                    :status="'avatar'"
-                    @clicked="getFileId"
-                    v-if="profileInfo.user"
-                    :imageProfile="profileInfo.user.profile.avatar"
-                  >
-                  </file-input-dashboard>
-                </v-col>
-              </v-row>
+              <v-container>
+                <header-section
+                  :header-section-title="'جزئیات پروفایل'"
+                ></header-section>
+                <v-row v-if="companyName === ''">
+                  <v-col lg="6" md="12">
+                    <v-text-field
+                      v-model="profileInfo.user['first_name']"
+                      label="نام"
+                      required
+                      lazy
+                      outlined
+                      @change="enableUpdateProfileButton"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col lg="6" md="12">
+                    <v-text-field
+                      v-model="profileInfo.user['last_name']"
+                      label="نام خانوادگی"
+                      required
+                      lazy
+                      outlined
+                      @change="enableUpdateProfileButton"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row v-if="companyName !== ''">
+                  <v-col lg="6" md="12">
+                    <v-text-field
+                      v-model="profileInfo.user.company.name"
+                      label="نام شرکت"
+                      required
+                      lazy
+                      outlined
+                      @change="enableUpdateProfileButton"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col lg="6" md="12">
+                    <v-text-field
+                      valu=""
+                      label="شماره ثبت شرکت"
+                      required
+                      lazy
+                      outlined
+                      @change="enableUpdateProfileButton"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <!--                <v-col lg="6" md="12">-->
+                  <!--                  <v-select-->
+                  <!--                    v-if="profileInfo.user"-->
+                  <!--                    v-model="profileForm.gender"-->
+                  <!--                    :items="profileInfo['genders']"-->
+                  <!--                    item-text="value"-->
+                  <!--                    item-value="key"-->
+                  <!--                    label="جنسیت"-->
+                  <!--                    required-->
+                  <!--                    outlined-->
+                  <!--                  ></v-select>-->
+                  <!--                </v-col>-->
+                  <!--                <v-col md="12">-->
+                  <!--                  <v-combobox-->
+                  <!--                    v-if="profileInfo.user"-->
+                  <!--                    v-model="profileInfo.skills"-->
+                  <!--                    :items="skillsList"-->
+                  <!--                    item-text="title"-->
+                  <!--                    item-value="id"-->
+                  <!--                    :search-input.sync="search"-->
+                  <!--                    hide-selected-->
+                  <!--                    hint="حداکثر ۵ گزینه میتوانید انتخاب کنید"-->
+                  <!--                    :label="$t('form.skills')"-->
+                  <!--                    multiple-->
+                  <!--                    persistent-hint-->
+                  <!--                    required-->
+                  <!--                    outlined-->
+                  <!--                    clearable-->
+                  <!--                    small-chips-->
+                  <!--                    :counter="5"-->
+                  <!--                    @change="selectSkills(profileInfo.skills)"-->
+                  <!--                  >-->
+                  <!--                    <template v-slot:no-data>-->
+                  <!--                      <v-list-item>-->
+                  <!--                        <v-list-item-content>-->
+                  <!--                          <v-list-item-title>-->
+                  <!--                            موردی یافت نشد "<strong>{{ search }}</strong>". برای-->
+                  <!--                            افزودن مهارت مورد نظر <kbd>enter</kbd>را فشار دهید-->
+                  <!--                          </v-list-item-title>-->
+                  <!--                        </v-list-item-content>-->
+                  <!--                      </v-list-item>-->
+                  <!--                    </template>-->
+                  <!--                  </v-combobox>-->
+                  <!--                </v-col>-->
+                </v-row>
+                <v-row>
+                  <v-col md="12">
+                    <v-select
+                      :items="categories"
+                      item-text="title"
+                      item-value="id"
+                      label="زمینه کاری"
+                      v-model="profileInfo.user['category_id']"
+                      required
+                      outlined
+                      @change="enableUpdateProfileButton"
+                    ></v-select>
+                  </v-col>
+                </v-row>
+                <!--              <v-row>-->
+                <!--                <v-textarea-->
+                <!--                  outlined-->
+                <!--                  name="input-7-4"-->
+                <!--                  label="توضیحات"-->
+                <!--                  value="پروژه ای که روی آن کار می کنم یک پروژه ی تستی است که قرار است در جستجوی گوگل در صفحات اول تا دوم ارتقا داده شود."-->
+                <!--                ></v-textarea>-->
+                <!--              </v-row>-->
+                <header-section
+                  :header-section-title="'تصویر پروفایل'"
+                ></header-section>
+                <v-row>
+                  <v-col class="profile-setting">
+                    <file-input-dashboard
+                      :status="'avatar'"
+                      @clicked="getFileId"
+                      v-if="profileInfo.user"
+                      :imageProfile="profileInfo.user.profile.avatar"
+                    >
+                    </file-input-dashboard>
+                  </v-col>
+                </v-row>
 
-              <!--              <header-section-->
-              <!--                :header-section-title="'تصویر بنر'"-->
-              <!--              ></header-section>-->
-              <!--              <v-row>-->
-              <!--                <v-col lg="6" md="12">-->
-              <!--                  <file-input-dashboard-->
-              <!--                    :status="'banner'"-->
-              <!--                    @clicked="getFileId"-->
-              <!--                    :imageProfile="profileInfo.user.profile.banner"-->
-              <!--                  ></file-input-dashboard>-->
-              <!--                </v-col>-->
-              <!--              </v-row>-->
-              <v-row class="my-10">
-                <v-col lg="6" md="12">
-                  <v-btn :disabled="!enableButton" color="error" @click="updateProfile">
-                    {{ $t("actions.save&update") }}
-                  </v-btn>
-                </v-col>
-              </v-row>
+                <!--              <header-section-->
+                <!--                :header-section-title="'تصویر بنر'"-->
+                <!--              ></header-section>-->
+                <!--              <v-row>-->
+                <!--                <v-col lg="6" md="12">-->
+                <!--                  <file-input-dashboard-->
+                <!--                    :status="'banner'"-->
+                <!--                    @clicked="getFileId"-->
+                <!--                    :imageProfile="profileInfo.user.profile.banner"-->
+                <!--                  ></file-input-dashboard>-->
+                <!--                </v-col>-->
+                <!--              </v-row>-->
+                <v-row class="my-10">
+                  <v-col lg="6" md="12">
+                    <v-btn
+                      :disabled="!enableButton"
+                      color="error"
+                      @click="updateProfile"
+                    >
+                      {{ $t("actions.save&update") }}
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </v-container>
             </v-form>
           </v-card-text>
         </v-card>
@@ -214,9 +220,7 @@
               :dataForDialogForm="addProjectsDataForDialogForm"
             ></form-dialog>
             <projects></projects>
-            <header-section
-              header-section-title="دوره آموزشی"
-            ></header-section>
+            <header-section header-section-title="دوره آموزشی"></header-section>
             <form-dialog
               :dataForDialogForm="addAwardDataForDialogForm"
             ></form-dialog>

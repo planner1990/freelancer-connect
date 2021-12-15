@@ -1,20 +1,25 @@
-<section>
-  <v-file-input
-    v-model="files"
-    :placeholder="$t('form.uploadImage')"
-    multiple
-    accept="image/*"
-    prepend-icon="mdi-paperclip"
-    @change="uploadImage($event)"
-    outlined
-    dense
-    class="col-md-6 col-sm-6 col-xs-12"
-  >
-    <template v-if="imageUrl" v-slot:selection="{ text }">
-      <img :src="imageUrl" alt="" />
-    </template>
-  </v-file-input>
-  <span v-if="imageProfile && !imageUrl">
-    <img :src="imageProfile" alt="" />
-  </span>
-</section>
+<v-container>
+  <v-row>
+    <v-col cols="12" lg="4" md="4" sm="4">
+      <v-file-input
+        v-model="files"
+        :placeholder="$t('form.uploadImage')"
+        multiple
+        accept="image/*"
+        prepend-icon="mdi-paperclip"
+        @change="uploadImage($event)"
+        outlined
+        dense
+      >
+        <template v-if="imageUrl" v-slot:selection="{ text }">
+          <v-col md="12" sm="12">
+            <img style="" :src="imageUrl" alt="" />
+          </v-col>
+        </template>
+      </v-file-input>
+      <span v-if="imageProfile && !imageUrl">
+        <img :src="imageProfile" alt="" />
+      </span>
+    </v-col>
+  </v-row>
+</v-container>
