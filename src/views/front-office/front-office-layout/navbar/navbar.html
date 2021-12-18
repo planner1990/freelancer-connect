@@ -47,7 +47,7 @@
               <v-list-item-title>{{$t(`${item.text}`)}}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item class="ma-0" link :href="'/blog'">
+          <v-list-item class="ma-0" link :to="'/blog'">
             <v-list-item-content>
               <v-list-item-title>بلاگ</v-list-item-title>
             </v-list-item-content>
@@ -106,7 +106,13 @@
                   </v-avatar>
                 </v-btn>
               </v-avatar>
-              <h3 class="mt-2">{{ user.first_name + ' ' + user.last_name}}</h3>
+              <h5 class="mt-2" v-if="user.is_company === 0">
+                {{ (user.first_name + ' ' + user.last_name) | readMore(20,
+                "...")}}
+              </h5>
+              <h5 class="mt-2" v-if="user.is_company === 1">
+                {{ user['company'].name | readMore(20, "...")}}
+              </h5>
               <p class="text-caption mt-1">
                 {{ role | roleTranslator}}
               </p>

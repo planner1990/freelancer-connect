@@ -37,9 +37,9 @@ export default {
         title: "",
         description: "",
         attachmentId: [],
-        minPrice: null,
+        minPrice: "",
         duration: null,
-        prepayment: null,
+        prepayment: "",
         freelancerDescription: "",
         estimationId: null,
         id: null
@@ -143,20 +143,34 @@ export default {
       this.showSnackbar = false;
       const body = {
         job_offer_id: id,
-        price: this.confirmJobOfferForm.minPrice,
+        price: this.confirmJobOfferForm.minPrice.replace(/,/g, ""),
         duration: this.confirmJobOfferForm.duration,
         description: this.confirmJobOfferForm.freelancerDescription,
-        prepayment: this.confirmJobOfferForm.prepayment,
+        prepayment: this.confirmJobOfferForm.prepayment.replace(/,/g, ""),
         attachment_id: this.confirmJobOfferForm.attachmentId
       };
-      ServiceEmploymentService.estimationForFreelancer(body).then(res => {
-        if (res) {
-          this.snackbarMessage = "عملیات با موفقیت انجام شد.";
+      ServiceEmploymentService.estimationForFreelancer(body)
+        .then(res => {
+          if (res) {
+            this.snackbarMessage = "عملیات با موفقیت انجام شد.";
+            this.showSnackbar = true;
+          }
+        })
+        .catch(err => {
           this.showSnackbar = true;
-        }
-      });
+          this.snackbarMessage = err?.response.data.errors.err;
+          this.confirmJobOfferForm = {
+            minPrice: "",
+            duration: null,
+            prepayment: "",
+            freelancerDescription: ""
+          };
+          this.$refs.form.resetValidation();
+          this.dialog = false;
+        });
     },
     showEstimationEmployer(estimation_id, id) {
+      this.confirmJobOfferForm.id = id;
       if (this.disableInput === true) {
         ServiceEmploymentService.showEstimationEmployer(estimation_id).then(
           res => {
@@ -209,19 +223,20 @@ export default {
       } else {
         this.showSnackbar = false;
         ServiceEmploymentService.employmentService(id).then(() => {
+          this.$emit("callEmployerPostedService", true);
           this.snackbarMessage = "عملیات با موفقیت انجام شد.";
           this.showSnackbar = true;
           this.dialog = false;
         });
       }
     },
-    confirmEstimation(id) {
+    confirmEstimation() {
       if (this.$refs[`form`].validate() === true) {
         if (this.disableInput === true) {
           this.hiredServiceByEmployer(this.confirmJobOfferForm.estimationId);
           this.dialog = false;
         } else {
-          this.estimationForFreelancer(id);
+          this.estimationForFreelancer(this.confirmJobOfferForm.id);
           this.dialog = false;
         }
       } else {

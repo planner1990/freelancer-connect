@@ -4,11 +4,11 @@
       <v-col cols="11" class="d-flex employer-projects-card pa-0">
         <div class="pa-5" style="width: 100%">
           <div class="employer-projects-card-title">
-            {{serviceDetailsById.title}}
+            {{serviceDetailsById.title | readMore(30, "...")}}
           </div>
           <div class="d-flex my-5">
             <div class="employer-projects-card-detail px-4 mb-0">
-              {{serviceDetailsById.username}}
+              {{serviceDetailsById.username | readMore(20, "...")}}
             </div>
             <v-divider class="divide-card-vertical" vertical></v-divider>
             <div class="employer-projects-card-detail px-4 mb-0">

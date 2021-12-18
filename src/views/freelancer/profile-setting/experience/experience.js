@@ -20,7 +20,6 @@ export default {
     ...mapGetters({
       formData: types.dialogForm.FORM_LIST_GET
     }),
-
     listOfFormData() {
       return this.formData;
     }

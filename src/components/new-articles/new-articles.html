@@ -56,17 +56,17 @@
               <v-icon class="px-1" color="primary" dense
                 >mdi-check-decagram</v-icon
               >
-              {{ serviceList.username }}
+              {{ serviceList.username | readMore(20, "...")}}
             </div>
             <div
               class="best-freelancer-card_title mb-6 px-4"
               @click="goToDetail(serviceList.id)"
             >
-              {{serviceList.title}}
+              {{serviceList.title | readMore(20, "...")}}
             </div>
             <div v-if="isService" class="best-freelancer-card_detail mb-6 px-4">
               شروع قیمت از
-              <strong>{{serviceList.price | thousandMask}} ریال</strong>
+              <strong>{{serviceList.price | thousandMask | readMore(20, "...")}} ریال</strong>
             </div>
           </div>
         </div>

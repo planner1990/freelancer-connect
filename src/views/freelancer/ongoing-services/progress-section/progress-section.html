@@ -85,7 +85,7 @@
             >
               قفل
             </div>
-            <div v-if="mileStone['payment_status'] === 0">ارسال شد</div>
+            <div class="lock-text" v-if="mileStone['payment_status'] === 0">ارسال شد</div>
             <div
               v-if="mileStone['confirmation'] === 0 && (mileStone['payment_status'] === 1 || mileStone['payment_status'] === 2)"
             >
@@ -126,7 +126,7 @@
                 class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
               >
                 <v-card-title>
-                  <span class="text-h5">تکمیل بخش دوم</span>
+                  <span class="text-h5">تکمیل بخش</span>
                 </v-card-title>
                 <v-card-text>
                   <v-container>
@@ -139,6 +139,7 @@
                           dense
                           v-model="jobOfferForm.linkName"
                           :rules="jobOfferRule.linkName"
+                          @keypress.prevent="$event.keyCode !== 13"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
@@ -196,10 +197,18 @@
     <section ref="chatArea" class="chat-area ma-0">
       <p
         v-for="message in messages"
-        class="message"
+        class="message d-flex align-center"
         :class="{ 'message-out': message.role === 'freelancer', 'message-in': message.role === 'employer' }"
       >
-        {{ message.text }}
+        <span class="d-block ml-auto" v-if="message.role === 'freelancer' ">
+          <v-icon large>mdi-account-circle</v-icon>
+          {{message.name}}</span
+        >
+          {{ message.text }}
+          <span class="d-block mr-auto" v-if="message.role === 'employer'">
+          {{message.name}}
+          <v-icon large>mdi-account-circle</v-icon>
+        </span>
       </p>
     </section>
 

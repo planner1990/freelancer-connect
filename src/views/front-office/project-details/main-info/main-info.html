@@ -17,9 +17,13 @@
             مهارت‌های مورد نیاز
           </div>
           <div class="mt-8">
-            <button class="ml-2">HTML</button>
-            <button class="ml-2">PHP</button>
-            <button class="ml-2">My SQL</button>
+            <button
+              class="ml-2"
+              v-for="(skill, index) in projectDetailsById.skills"
+              :key="index"
+            >
+              {{ skill }}
+            </button>
           </div>
           <div class="employer-projects-card-title mt-8">
             فایل‌های ضمیمه شده

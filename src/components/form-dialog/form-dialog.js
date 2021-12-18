@@ -72,6 +72,12 @@ export default {
   },
   mounted() {},
   methods: {
+    getAllowedDates(val) {
+      return val > this.experienceForm.experienceStart;
+    },
+    getAllowedDatesEducation(val) {
+      return val > this.educationForm.educationStart;
+    },
     validate() {
       this.$refs.newForm.reset();
       this.dialog = false;

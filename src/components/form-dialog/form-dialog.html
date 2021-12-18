@@ -107,6 +107,7 @@
                   outlined
                   dense
                   @input="expEnd = false"
+                  :allowed-dates="getAllowedDates"
                 >
                 </v-date-picker>
               </v-menu>
@@ -275,6 +276,7 @@
                   outlined
                   dense
                   @input="end = false"
+                  :allowed-dates="getAllowedDatesEducation"
                 >
                 </v-date-picker>
               </v-menu>

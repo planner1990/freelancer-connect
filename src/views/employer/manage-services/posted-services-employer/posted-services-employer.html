@@ -4,6 +4,7 @@
     :headersUserManagement="headersUserManagement"
     :dataUserManagement="dataUserManagement"
     :disableInput="true"
+    @callEmployerPostedService="showJobOfferOngoingEmployer"
   ></table-dashboard>
   <transitionPage>
     <router-view v-if="this.$route.params.id" />

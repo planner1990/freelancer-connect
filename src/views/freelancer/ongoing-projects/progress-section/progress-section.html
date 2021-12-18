@@ -10,7 +10,7 @@
                   نام پروژه: {{projectDetails.title}}
                 </v-col>
                 <v-col cols="6">
-                  {{ projectDetails.description | readMore(60, "...") }}
+                  {{ projectDetails.description | readMore(30, "...") }}
                 </v-col>
                 <v-col cols="8" class="text--secondary">
                   <v-fade-transition leave-absolute>
@@ -78,11 +78,18 @@
         <div class="d-flex justify-space-between align-center">
           <div>
             <!--          <div>بخش {{installments | installments}}</div>-->
-            <div class="lock-text" v-if="mileStone['payment_status'] === undefined">
+            <div
+              class="lock-text"
+              v-if="mileStone['payment_status'] === undefined"
+            >
               قفل
             </div>
-            <div v-if="mileStone['payment_status'] === 0">ارسال شد</div>
-            <div v-if="mileStone['payment_status'] === 1 || mileStone['payment_status'] === 2 && mileStone['confirmation'] === 0">
+            <div class="lock-text" v-if="mileStone['payment_status'] === 0">
+              ارسال شد
+            </div>
+            <div
+              v-if="mileStone['payment_status'] === 1 || mileStone['payment_status'] === 2 && mileStone['confirmation'] === 0"
+            >
               ارسال شد, در انتظار تایید کارفرما
             </div>
             <div v-if="mileStone['confirmation'] === 1">خاتمه یافته</div>
@@ -190,10 +197,18 @@
     <section ref="chatArea" class="chat-area ma-0">
       <p
         v-for="message in messages"
-        class="message"
+        class="message d-flex align-center"
         :class="{ 'message-out': message.role === 'freelancer', 'message-in': message.role === 'employer' }"
       >
+        <span class="d-block ml-auto" v-if="message.role === 'freelancer' ">
+          <v-icon large>mdi-account-circle</v-icon>
+          {{message.name}}</span
+        >
         {{ message.text }}
+        <span class="d-block mr-auto" v-if="message.role === 'employer'">
+          {{message.name}}
+          <v-icon large>mdi-account-circle</v-icon>
+        </span>
       </p>
     </section>
 

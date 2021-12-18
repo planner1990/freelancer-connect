@@ -12,7 +12,7 @@
       v-model="phone"
       :rules="phoneRules"
       dense
-      @keyup.enter="handleSendOTP()"
+      @keypress.enter.prevent="handleSendOTP()"
     ></v-text-field>
     <v-card-actions class="pa-0">
       <v-btn
