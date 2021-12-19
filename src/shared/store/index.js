@@ -10,6 +10,7 @@ import browseServiceData from "./modules/browseServiceData";
 import guideEmployerToLogin from "./modules/guideEmployertoLogin";
 import browseProjectData from "./modules/browseProjectData";
 import avatarManagement from "./modules/avatarManagement";
+import skeletonShow from "./modules/skeletonShow";
 
 Vue.use(Vuex);
 
@@ -23,6 +24,7 @@ export default new Vuex.Store({
     browseServiceData,
     guideEmployerToLogin,
     browseProjectData,
-    avatarManagement
+    avatarManagement,
+    skeletonShow
   }
 });

@@ -109,3 +109,17 @@ export const avatarManagement = {
     AVATAR_MANAGEMENT_ACTION: "AVATAR_MANAGEMENT_ACTION"
   }
 };
+
+export const skeletonShow = {
+  getters: {
+    SKELETON_GET: "SKELETON_GET"
+  },
+
+  mutations: {
+    SKELETON_MUTATE: "SKELETON_MUTATE"
+  },
+
+  actions: {
+    SKELETON_ACTION: "SKELETON_ACTION"
+  }
+};

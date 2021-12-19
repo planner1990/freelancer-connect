@@ -1,6 +1,5 @@
 import axios from "axios";
 import authService from "../modules/authService";
-
 const headers = {
   "content-type": "application/json",
   Accept: "application/json",

@@ -12,7 +12,7 @@ export default {
     return {
       valid: true,
       dialog: false,
-      creditInfo: null,
+      creditInfo: "",
       price: null,
       accountId: "",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
@@ -35,6 +35,17 @@ export default {
           text: "موجودی کل",
           left: "center"
         },
+        label: {
+          show: false,
+          position: "center"
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: "20",
+            fontWeight: "bold"
+          }
+        },
         tooltip: {
           trigger: "item",
           formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -48,11 +59,11 @@ export default {
           {
             name: "موجودی کل",
             type: "pie",
-            radius: "55%",
+            radius: ["40%", "70%"],
             center: ["50%", "60%"],
             data: [
-              { value: 0, name: "قابل برداشت" },
-              { value: 0, name: "غیر قابل برداشت" }
+              { value: null, name: "قابل برداشت" },
+              { value: null, name: "غیر قابل برداشت" }
             ],
             emphasis: {
               itemStyle: {
@@ -78,13 +89,17 @@ export default {
     },
     showCredit() {
       freelancerServices.showCredit().then(res => {
-        this.creditInfo = res.data.data;
-        this.option.series[0].data[0].value = this.creditInfo[
+        this.creditInfo = res?.data.data;
+        const valueFirst = (this.option.series[0].data[0].value = this.creditInfo[
           "withdrawable_amount"
-        ];
-        this.option.series[0].data[1].value = this.creditInfo[
+        ]);
+        const valueSecond = (this.option.series[0].data[1].value = this.creditInfo[
           "non_withdrawable_amount"
-        ];
+        ]);
+        if (valueFirst === 0 && valueSecond === 0) {
+          this.option.series[0].data[0].value = "";
+          this.option.series[0].data[1].value = "";
+        }
       });
     },
     indexAccount() {

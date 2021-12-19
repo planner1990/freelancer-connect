@@ -1,5 +1,4 @@
-import UploadService from "@/core/services/modules/uploadService";
-import projectsService from "@/core/services/modules/projectsService";
+import { UploadService, projectsService } from "@/core/services";
 import { mapMutations } from "vuex";
 import * as types from "../../../../shared/store/types";
 import Snackbar from "@/components/snackbar/index";
@@ -99,14 +98,15 @@ export default {
       };
       projectsService
         .sendJobOffer(body)
-        .then(res => {
-          this.$refs.form.reset();
-          this.dialog = false;
-          this.snackbarMessage = res.data?.message;
+        .then(() => {
           this.showSnackbar = true;
+          this.snackbarMessage = "درخواست شما با موفقیت ارسال شد.";
+          // this.snackbarMessage = res.data?.message;
+          this.dialog = false;
           setTimeout(() => {
             this.$router.push("/browse-services");
           }, 2000);
+          // this.$refs.form.reset();
         })
         .catch(error => {
           this.showSnackbar = true;
