@@ -113,7 +113,7 @@
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
-                        label="مدت زمان تخمینی اجرای پروژه(ساعت)*"
+                        :label="disableInput ? 'مدت زمان تخمینی اجرای خدمت(ساعت)*' : 'مدت زمان تخمینی اجرای پروژه(ساعت)*'"
                         required
                         outlined
                         dense

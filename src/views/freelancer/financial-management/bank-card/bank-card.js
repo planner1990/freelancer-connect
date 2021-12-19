@@ -1,5 +1,6 @@
 import DashboardCard from "@/components/dashboardCard/index";
 import { freelancerServices } from "@/core/services";
+
 export default {
   name: "bank-card",
   components: { DashboardCard },

@@ -92,8 +92,6 @@ export default {
         };
         this.storeChat(body);
         this.youMessage = "";
-      } else {
-        alert("خطایی رخ داده است.");
       }
       Vue.nextTick(() => {
         let messageDisplay = this.$refs.chatArea;

@@ -12,7 +12,7 @@ export default {
     return {
       items: [
         { title: "برداشت", value: 1 },
-        { title: "واریز", value: 2 }
+        { title: "واریز", value: 0 }
       ],
       categories: [],
       expStart: null,

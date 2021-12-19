@@ -21,7 +21,6 @@ export default {
     selectedItem: 0,
     items: [
       { text: "navbar.home", route: "/" },
-      { text: "navbar.blog", route: "/" },
       { text: "navbar.browseServices", route: "/browse-services" },
       { text: "navbar.browseProjects", route: "/browse-projects" }
     ]
