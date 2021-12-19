@@ -29,4 +29,9 @@
       font-size: 20px;
     }
   }
+  .slogan {
+    @include small {
+      margin-top: 100px;
+    }
+  }
 }
