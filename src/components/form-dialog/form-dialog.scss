@@ -1,5 +1,13 @@
+@import "src/assets/styles/mixins";
 .text--open-dialog {
   position: relative;
   top: -60px;
   left: -34%;
+  @include small {
+    position: unset;
+    margin-bottom: 30px;
+    background-color: #f6f6f6;
+    top: unset;
+    left: unset;
+  }
 }

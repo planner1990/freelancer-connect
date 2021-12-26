@@ -18,6 +18,7 @@ export default {
       expStart: null,
       usersDate: null,
       detailList: "",
+      loading: false,
       filterForm: {
         typeOfTransaction: null,
         created_at: null,
@@ -97,6 +98,7 @@ export default {
       });
     },
     filterAction() {
+      this.loading = true;
       const options = {
         generic: this.filterForm.generic,
         type: this.filterForm.typeOfTransaction,
@@ -105,6 +107,7 @@ export default {
       };
       freelancerServices.transactionIndex(options).then(res => {
         this.dataUserManagement = res.data.data;
+        this.loading = false;
       });
     }
   }

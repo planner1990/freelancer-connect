@@ -16,7 +16,7 @@ class employerServices {
   }
 
   projectShowById(id) {
-    return API_V1.get(`projects/${id}`);
+    return API_V1.get(`employer/project/${id}`);
   }
 
   serviceShowById(id) {

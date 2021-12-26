@@ -1,4 +1,4 @@
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import * as types from "../../../../shared/store/types";
 import customizeTheme from "@/components/cotumizeTheme/index";
 import {
@@ -17,16 +17,42 @@ export default {
     baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,
     selectedItem: 0,
     items: [
-      { text: "navbar.home", route: "/" },
       { text: "navbar.browseServices", route: "/browse-services" },
       { text: "navbar.browseProjects", route: "/browse-projects" }
     ],
     scrollPosition: null,
     user: {},
     role: "",
-    profileImage: ""
+    profileImage: "",
+    models: {
+      base: false,
+      conditional: false
+    }
   }),
-  computed: {},
+  computed: {
+    ...mapGetters({
+      drawerFront: types.GET_DRAWER_FRONT
+    }),
+    getDataDrawerFront() {
+      return this.drawerFront;
+    }
+  },
+  watch: {
+    $route(to) {
+      if (to.name === "home") {
+        this.items = [
+          { text: "navbar.browseServices", route: "/browse-services" },
+          { text: "navbar.browseProjects", route: "/browse-projects" }
+        ];
+      } else {
+        this.items = [
+          { text: "navbar.home", route: "/" },
+          { text: "navbar.browseServices", route: "/browse-services" },
+          { text: "navbar.browseProjects", route: "/browse-projects" }
+        ];
+      }
+    }
+  },
   mounted() {
     this.getInnerWidth();
     window.addEventListener("scroll", this.updateScroll);
@@ -39,6 +65,15 @@ export default {
     drawer() {
       this.drawerAction();
     },
+    // onClickOutside(e) {
+    //   e.preventDefault();
+    // },
+    // closeConditional(e) {
+    //   e.preventDefault();
+    //   if (this.getDataDrawerFront === true) {
+    //     this.drawerAction();
+    //   }
+    // },
     updateScroll() {
       this.scrollPosition = window.scrollY;
     },
@@ -85,6 +120,9 @@ export default {
       this.role = "";
       this.user = {};
       this.$router.push("/home");
+    },
+    goToHome() {
+      this.$router.push("/");
     }
   },
   created() {

@@ -20,9 +20,16 @@ export default {
     profileImage: "",
     selectedItem: 0,
     items: [
-      { text: "navbar.home", route: "/" },
-      { text: "navbar.browseServices", route: "/browse-services" },
-      { text: "navbar.browseProjects", route: "/browse-projects" }
+      {
+        text: "navbar.browseServices",
+        route: "/browse-services",
+        icon: "mdi-order-bool-ascending-variant"
+      },
+      {
+        text: "navbar.browseProjects",
+        route: "/browse-projects",
+        icon: "mdi-book-open-variant"
+      }
     ]
   }),
   computed: {
@@ -42,6 +49,38 @@ export default {
       }
     }
   },
+  watch: {
+    $route(to) {
+      if (to.name === "home") {
+        this.items = [
+          {
+            text: "navbar.browseServices",
+            route: "/browse-services",
+            icon: "mdi-order-bool-ascending-variant"
+          },
+          {
+            text: "navbar.browseProjects",
+            route: "/browse-projects",
+            icon: "mdi-book-open-variant"
+          }
+        ];
+      } else {
+        this.items = [
+          { text: "navbar.home", route: "/", icon: "mdi-home" },
+          {
+            text: "navbar.browseServices",
+            route: "/browse-services",
+            icon: "mdi-order-bool-ascending-variant"
+          },
+          {
+            text: "navbar.browseProjects",
+            route: "/browse-projects",
+            icon: "mdi-book-open-variant"
+          }
+        ];
+      }
+    }
+  },
   created() {},
   mounted() {
     this.getAssignedRole();
@@ -50,6 +89,11 @@ export default {
     ...mapActions({
       drawerAction: types.ACTION_DRAWER_FRONT
     }),
+    onClickOutside() {
+      if (this.drawerFront === false) {
+        this.drawerAction();
+      }
+    },
     goToCreateProject() {
       this.$router.push("/create-project");
     },

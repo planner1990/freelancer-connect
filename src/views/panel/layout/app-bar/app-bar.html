@@ -5,58 +5,71 @@
   flat
 >
   <v-app-bar-nav-icon @click="drawer()"></v-app-bar-nav-icon>
-  <v-btn icon large>
-    <v-avatar tile item size="40" >
-      <v-img alt="Vuetify" src="../../../../assets/image/connecta-logo-1.png"></v-img>
+  <v-btn icon large @click="goToHome">
+    <v-avatar tile item size="40">
+      <v-img
+        alt="Vuetify"
+        src="../../../../assets/image/connecta-logo-1.png"
+      ></v-img>
     </v-avatar>
   </v-btn>
   <v-spacer></v-spacer>
-    <v-list flat nav dense v-if="!showSidebar">
-        <v-list-item-group class="d-flex align-center" v-model="selectedItem" color="teal accent-3">
-            <v-list-item v-for="(item, i) in items" :key="i" class="ma-0" link :to="item.route">
-                <v-list-item-content>
-                    <v-list-item-title>{{$t(`${item.text}`)}}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item class="ma-0" link :href="baseURL+'/blog'" target="_blank">
-                <v-list-item-content>
-                    <v-list-item-title>بلاگ</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-        </v-list-item-group>
-    </v-list>
-<!--  <customizeTheme />-->
+  <v-list flat nav dense v-if="!showSidebar">
+    <v-list-item-group
+      class="d-flex align-center"
+      v-model="selectedItem"
+      color="teal accent-3"
+    >
+      <v-list-item
+        v-for="(item, i) in items"
+        :key="i"
+        class="ma-0"
+        link
+        :to="item.route"
+      >
+        <v-list-item-content>
+          <v-list-item-title>{{$t(`${item.text}`)}}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item class="ma-0" link :href="baseURL+'/blog'" target="_blank">
+        <v-list-item-content>
+          <v-list-item-title>بلاگ</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list-item-group>
+  </v-list>
+  <!--  <customizeTheme />-->
 
-<!--  <v-menu bottom offset-y origin="top right" transition="scale-transition">-->
-<!--    <template v-slot:activator="{ on, attrs }">-->
-<!--      <v-btn icon v-bind="attrs" v-on="on">-->
-<!--        <v-badge bottom color="primary" content="6" left overlap>-->
-<!--          <v-icon data-v-step="1">mdi-bell-outline</v-icon>-->
-<!--        </v-badge>-->
-<!--      </v-btn>-->
-<!--    </template>-->
+  <!--  <v-menu bottom offset-y origin="top right" transition="scale-transition">-->
+  <!--    <template v-slot:activator="{ on, attrs }">-->
+  <!--      <v-btn icon v-bind="attrs" v-on="on">-->
+  <!--        <v-badge bottom color="primary" content="6" left overlap>-->
+  <!--          <v-icon data-v-step="1">mdi-bell-outline</v-icon>-->
+  <!--        </v-badge>-->
+  <!--      </v-btn>-->
+  <!--    </template>-->
 
-<!--    <v-card max-width="450">-->
-<!--      <v-list three-line>-->
-<!--        <template v-for="item in items">-->
-<!--          <v-list-item :key="item.title">-->
-<!--            <v-list-item-avatar>-->
-<!--              <v-img :src="item.avatar"></v-img>-->
-<!--            </v-list-item-avatar>-->
+  <!--    <v-card max-width="450">-->
+  <!--      <v-list three-line>-->
+  <!--        <template v-for="item in items">-->
+  <!--          <v-list-item :key="item.title">-->
+  <!--            <v-list-item-avatar>-->
+  <!--              <v-img :src="item.avatar"></v-img>-->
+  <!--            </v-list-item-avatar>-->
 
-<!--            <v-list-item-content>-->
-<!--              <v-list-item-title v-html="item.title"></v-list-item-title>-->
-<!--              <v-list-item-subtitle-->
-<!--                v-html="item.subtitle"-->
-<!--              ></v-list-item-subtitle>-->
-<!--            </v-list-item-content>-->
-<!--          </v-list-item>-->
-<!--        </template>-->
-<!--      </v-list>-->
-<!--    </v-card>-->
-<!--  </v-menu>-->
+  <!--            <v-list-item-content>-->
+  <!--              <v-list-item-title v-html="item.title"></v-list-item-title>-->
+  <!--              <v-list-item-subtitle-->
+  <!--                v-html="item.subtitle"-->
+  <!--              ></v-list-item-subtitle>-->
+  <!--            </v-list-item-content>-->
+  <!--          </v-list-item>-->
+  <!--        </template>-->
+  <!--      </v-list>-->
+  <!--    </v-card>-->
+  <!--  </v-menu>-->
 
-<!--  <v-btn icon  data-v-step="2">-->
-<!--    <v-icon>mdi-magnify</v-icon>-->
-<!--  </v-btn>-->
+  <!--  <v-btn icon  data-v-step="2">-->
+  <!--    <v-icon>mdi-magnify</v-icon>-->
+  <!--  </v-btn>-->
 </v-app-bar>

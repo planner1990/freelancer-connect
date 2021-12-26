@@ -12,6 +12,7 @@ export default {
     return {
       valid: true,
       dialog: false,
+      isShowPieChart: true,
       creditInfo: "",
       price: null,
       accountId: "",
@@ -97,6 +98,7 @@ export default {
           "non_withdrawable_amount"
         ]);
         if (valueFirst === 0 && valueSecond === 0) {
+          this.isShowPieChart = false;
           this.option.series[0].data[0].value = "";
           this.option.series[0].data[1].value = "";
         }

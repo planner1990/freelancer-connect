@@ -1,52 +1,61 @@
-<section>
-  <div class="step-second" key="step2">
-    <p>
-      <v-icon dense @click="backToPrevStep()">
-        mdi-arrow-right
-      </v-icon>
-    </p>
-    <h5 class="text-h6 my-5">
-      {{$t('form.enterConfirmCode')}}
-    </h5>
-    <p>
-      کد تایید برای شماره همراه {{ getDataFromStore.identification }} ارسال شد.
-      لطفا کد ارسالی را وارد نمایید.
-    </p>
-    <v-text-field
-      :label="$t('form.enterConfirmCode')"
-      name="Username"
-      type="number"
-      class="text-green"
-      outlined
-      v-model="OTPCode"
-      :rules="OTPCodeRule"
-      @keyup.enter="handleVerifyOTP()"
-      dense
-    ></v-text-field>
-    <v-card-text class="text-center">
-      <div v-if="timer > 0" class="text">
-        <timer @stopTimer="stopTimer"></timer>
+<div>
+  <section>
+    <div class="step-second" key="step2">
+      <div class="text-h6 my-5 d-flex">
+        <div class="ml-3">
+          <v-icon dense @click="backToPrevStep()">
+            mdi-arrow-right
+          </v-icon>
+        </div>
+        {{$t('form.enterConfirmCode')}}
       </div>
-      <v-btn v-if="timer <= 0" text color="primary" @click="resendConfirmCode">
-        ارسال مجدد کد
-      </v-btn>
-    </v-card-text>
-    <v-card-actions class="pa-0">
-      <v-btn
-        color="teal accent-3"
-        :loading="signInLoading"
-        block
-        :disabled="!OTPCode"
-        :dark="!!OTPCode"
-        class="py-5"
-        @click="handleVerifyOTP()"
-        >{{ $t('actions.continue') }}</v-btn
-      >
-    </v-card-actions>
-  </div>
-  <snackbar
-    :snackbarMessage="snackbarMessage"
-    :showSnackbar="showSnackbar"
-    @hideSnackbar="hideSnackbar"
-  ></snackbar>
-</section>
+      <p>
+        کد تایید برای شماره همراه {{ getDataFromStore.identification }} ارسال
+        شد. لطفا کد ارسالی را وارد نمایید.
+      </p>
+      <v-text-field
+        :label="$t('form.enterConfirmCode')"
+        name="Username"
+        type="number"
+        class="text-green"
+        outlined
+        v-model="OTPCode"
+        :rules="OTPCodeRule"
+        @keyup.enter="handleVerifyOTP()"
+        dense
+      ></v-text-field>
+      <v-card-text class="text-center">
+        <div v-if="timer > 0" class="text">
+          <timer @stopTimer="stopTimer"></timer>
+        </div>
+        <v-btn
+          v-if="timer <= 0"
+          text
+          color="primary"
+          @click="resendConfirmCode"
+        >
+          ارسال مجدد کد
+        </v-btn>
+      </v-card-text>
+      <v-card-actions class="pa-0">
+        <v-btn
+          color="teal accent-3"
+          :loading="signInLoading"
+          block
+          :disabled="!OTPCode"
+          :dark="!!OTPCode"
+          class="py-5"
+          @click="handleVerifyOTP()"
+          >{{ $t('actions.continue') }}</v-btn
+        >
+      </v-card-actions>
+    </div>
+  </section>
+  <section>
+    <snackbar
+      :snackbarMessage="snackbarMessage"
+      :showSnackbar="showSnackbar"
+      @hideSnackbar="hideSnackbar"
+    ></snackbar>
+  </section>
+</div>

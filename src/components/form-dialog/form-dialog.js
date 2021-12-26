@@ -137,7 +137,6 @@ export default {
             break;
         }
         this.resetValidation();
-        this.resetForm();
         this.dialog = false;
         this.educationForm = {};
         this.experienceForm = {};

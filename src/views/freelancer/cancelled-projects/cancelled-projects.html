@@ -9,7 +9,6 @@
       class="elevation-1"
       @page-count="pageCount = $event"
       item-key="name"
-      :show-select="showSelect"
     >
       <template v-slot:item.actions="{ item , on, attrs }">
         <v-btn class="ma-2" dark small color="primary" v-bind="attrs" v-on="on">

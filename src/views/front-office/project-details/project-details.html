@@ -13,9 +13,11 @@
   <section>
     <v-container>
       <v-row>
-        <v-col class="mx-auto pr-1 pl-0" cols="12">
-          <div class="px-8 py-12 d-flex align-center header-details">
-            <div class="col-9">
+        <v-col class="mx-auto px-md-0 px-sm-3" cols="12">
+          <div
+            class="px-8 py-12 d-md-flex flex-sm-column align-center flex-md-row flex-sm-column header-details"
+          >
+            <v-col cols="12" md="9" sm="12">
               <div class="mb-3 header-details-title">
                 {{ projectDetailsById.title }}
               </div>
@@ -49,8 +51,8 @@
                   <span class="mx-1">افزودن به علاقمندی ها</span>
                 </div>
               </div>
-            </div>
-            <div class="col-3">
+            </v-col>
+            <v-col col="12" md="3" sm="12">
               <div class="d-flex align-center justify-center">
                 <v-row justify="center" class="px-5">
                   <template>
@@ -200,7 +202,7 @@
                   </v-dialog>
                 </v-row>
               </div>
-            </div>
+            </v-col>
           </div>
         </v-col>
       </v-row>

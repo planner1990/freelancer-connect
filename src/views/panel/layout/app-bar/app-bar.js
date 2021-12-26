@@ -29,6 +29,9 @@ export default {
     },
     myEventHandler(e) {
       this.showSidebar = e.target.innerWidth <= 968;
+    },
+    goToHome() {
+      this.$router.push("/");
     }
   },
   created() {

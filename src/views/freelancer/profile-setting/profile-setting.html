@@ -29,7 +29,7 @@
                   :header-section-title="'جزئیات پروفایل'"
                 ></header-section>
                 <v-row v-if="companyName === ''">
-                  <v-col lg="6" md="12">
+                  <v-col cols="12" lg="6" md="12" sm="12">
                     <v-text-field
                       v-model="profileInfo.user['first_name']"
                       label="نام"
@@ -39,7 +39,7 @@
                       @change="enableUpdateProfileButton"
                     ></v-text-field>
                   </v-col>
-                  <v-col lg="6" md="12">
+                  <v-col cols="12" lg="6" md="12" sm="12">
                     <v-text-field
                       v-model="profileInfo.user['last_name']"
                       label="نام خانوادگی"
@@ -51,7 +51,7 @@
                   </v-col>
                 </v-row>
                 <v-row v-if="companyName !== ''">
-                  <v-col lg="6" md="12">
+                  <v-col cols="12" lg="6" md="12" sm="12">
                     <v-text-field
                       v-model="profileInfo.user.company.name"
                       label="نام شرکت"
@@ -61,7 +61,7 @@
                       @change="enableUpdateProfileButton"
                     ></v-text-field>
                   </v-col>
-                  <v-col lg="6" md="12">
+                  <v-col cols="12" lg="6" md="12" sm="12">
                     <v-text-field
                       valu=""
                       label="شماره ثبت شرکت"
@@ -119,7 +119,7 @@
                   <!--                </v-col>-->
                 </v-row>
                 <v-row>
-                  <v-col md="12">
+                  <v-col cols="12" md="12">
                     <v-select
                       :items="categories"
                       item-text="title"
@@ -168,11 +168,12 @@
                 <!--                </v-col>-->
                 <!--              </v-row>-->
                 <v-row class="my-10">
-                  <v-col lg="6" md="12">
+                  <v-col cols="12" lg="3" md="4" sm="12">
                     <v-btn
                       :disabled="!enableButton"
                       color="error"
                       @click="updateProfile"
+                      block
                     >
                       {{ $t("actions.save&update") }}
                     </v-btn>
@@ -199,13 +200,16 @@
             ></form-dialog>
             <education></education>
             <v-row class="my-10">
-              <v-btn
-                color="error"
-                :disabled="!valid"
-                @click="updateExperienceEducation"
-              >
-                {{ $t("actions.save&update") }}
-              </v-btn>
+              <v-col cols="12" lg="3" md="4" sm="12">
+                <v-btn
+                  color="error"
+                  :disabled="!valid"
+                  @click="updateExperienceEducation"
+                  block
+                >
+                  {{ $t("actions.save&update") }}
+                </v-btn>
+              </v-col>
             </v-row>
           </v-card-text>
         </v-card>
@@ -226,8 +230,8 @@
             ></form-dialog>
             <award></award>
             <v-row class="my-10">
-              <v-col lg="6" md="12">
-                <v-btn color="error" @click="updateProjectsAward">
+              <v-col cols="12" lg="3" md="4" sm="12">
+                <v-btn color="error" @click="updateProjectsAward" block>
                   {{ $t("actions.save&update") }}
                 </v-btn>
               </v-col>

@@ -69,8 +69,8 @@
           </v-date-picker>
         </v-menu>
       </v-col>
-      <v-col cols="12" md="6" sm="12">
-        <v-btn depressed color="primary" class="px-8" @click="filterAction">
+      <v-col cols="12" lg="3" md="3" sm="12">
+        <v-btn depressed color="primary" class="px-8" block @click="filterAction" :loading="loading">
           اعمال فیلتر
         </v-btn>
       </v-col>
@@ -217,7 +217,7 @@
         </div>
       </template>
     </v-data-table>
-    <div class="text-center pt-2">
+    <div class="text-center pt-2" v-if="!dataUserManagement.length <= 0">
       <v-pagination v-model="page" :length="pageCount"></v-pagination>
     </div>
   </div>

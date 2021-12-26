@@ -1,14 +1,26 @@
 <dashboard-card :titleCard="$t('sidebar.bankCard')">
   <v-container class="account-store">
     <v-row class="justify-center">
-      <v-col md="8" class="mt-8" v-for="(info, index) in accountInfo" :key="index">
+      <v-col
+        md="8"
+        sm="8"
+        class="mt-8"
+        v-for="(info, index) in accountInfo"
+        :key="index"
+      >
         <v-row class="bank-card">
-          <v-col md="6">{{ info.name }}</v-col>
-          <v-col md="6" class="text-left">عنوان حساب</v-col>
-          <v-col md="6">شماره کارت</v-col>
-          <v-col md="6" class="text-left">{{ info.card_number }}</v-col>
-          <v-col md="6">شماره شبا</v-col>
-          <v-col md="6" class="text-left">IR{{ info.iban }}</v-col>
+          <v-col cols="12" md="6" sm="12">عنوان حساب</v-col>
+          <v-col cols="12" md="6" sm="12" class="text-left"
+            >{{ info.name }}</v-col
+          >
+          <v-col cols="12" md="6" sm="12">شماره کارت</v-col>
+          <v-col cols="12" md="6" sm="12" class="text-left"
+            >{{ info.card_number }}</v-col
+          >
+          <v-col cols="12" md="6" sm="12">شماره شبا</v-col>
+          <v-col cols="12" md="6" sm="12" class="text-left"
+            >IR{{ info.iban }}</v-col
+          >
         </v-row>
       </v-col>
       <v-col md="8" class="mt-8">

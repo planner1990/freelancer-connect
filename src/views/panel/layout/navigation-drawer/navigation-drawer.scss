@@ -29,6 +29,7 @@
     img {
       width: 100px;
       height: 100px;
+      object-fit: cover;
       border-radius: 50%;
       border: 6px solid $surface-100;
       box-shadow: 0 0 7px $surface-600;

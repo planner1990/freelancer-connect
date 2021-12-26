@@ -1,4 +1,5 @@
 @import "src/assets/styles/variable";
+@import "src/assets/styles/mixins";
 .best-freelancer {
   min-height: 600px;
   //background-color: $surface-100;
@@ -12,6 +13,9 @@
     }
     &.width_45 {
       min-width: 315px;
+      @include small {
+        min-width: 100%;
+      }
     }
 
     &_image {

@@ -8,12 +8,12 @@
         <template v-slot:default="{ open }">
           <v-row no-gutters>
             <v-col cols="4">
-              عنوان ( تاریخ ):
+              عنوان:
             </v-col>
             <v-col cols="8" class="text--secondary">
               <v-fade-transition leave-absolute>
                 <span v-if="open" key="0">
-                  عنوان ( تاریخ )
+                  {{ item.title }}
                 </span>
                 <span v-else key="1" dir="ltr">
                   <!--                  {{item.form.achieved_date}} : {{ item.title }}-->

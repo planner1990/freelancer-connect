@@ -5,28 +5,31 @@
         <template v-slot:default="{ open }">
           <v-row no-gutters>
             <v-col cols="4">
-              عنوان ( از تاریخ - تا تاریخ):
+              عنوان:
             </v-col>
             <v-col cols="8" class="text--secondary">
               <v-fade-transition leave-absolute>
                 <span v-if="open" key="0">
-                  عنوان ( از تاریخ - تا تاریخ)
+<!--                  عنوان ( از تاریخ - تا تاریخ)-->
+                    {{ item.degree_title }}
                 </span>
                 <span v-else key="1" dir="ltr">
-                  {{item.start_date | changeDate}} - {{item.end_date | changeDate}} : {{ item.degree_title
-                  }}
+                  {{ item.degree_title }}
                 </span>
+                <!--                <span v-else key="1" dir="ltr">-->
+                <!--                  {{item.start_date | changeDate}} - {{item.end_date |-->
+                <!--                  changeDate}} : {{ item.degree_title }}-->
+                <!--                </span>-->
               </v-fade-transition>
             </v-col>
           </v-row>
         </template>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
-        <v-row justify="space-around" no-gutters>
+        <v-row justify="space-around">
           <v-col cols="12" sm="6" md="6">
             <v-text-field
               v-model="item.degree_title"
-              class="pl-2"
               outlined
               dense
             ></v-text-field>
@@ -34,13 +37,12 @@
           <v-col cols="12" sm="6" md="6">
             <v-text-field
               v-model="item.institute_title"
-              class="pr-2"
               outlined
               dense
             ></v-text-field>
           </v-col>
         </v-row>
-        <v-row justify="space-around" no-gutters>
+        <v-row justify="space-around">
           <v-col cols="12" sm="6" md="6">
             <v-menu
               ref="startMenu"
@@ -55,7 +57,6 @@
                   readonly
                   v-bind="attrs"
                   v-on="on"
-                  class="pl-2"
                   outlined
                   dense
                   :value="item.start_date | changeDate"
@@ -92,7 +93,6 @@
                   readonly
                   v-bind="attrs"
                   v-on="on"
-                  class="pr-2"
                   outlined
                   dense
                   :value="item.end_date | changeDate"
@@ -143,8 +143,8 @@
                   عنوان ( از تاریخ - تا تاریخ)
                 </span>
                 <span v-else key="1" dir="ltr">
-                  {{item.form.start_date | changeDate}} - {{item.form.end_date | changeDate}} : {{
-                  item.form.degree_title }}
+                  {{item.form.start_date | changeDate}} - {{item.form.end_date |
+                  changeDate}} : {{ item.form.degree_title }}
                 </span>
               </v-fade-transition>
             </v-col>

@@ -1,4 +1,9 @@
+@import "src/assets/styles/mixins";
 img {
   width: 100px;
   height: 100px;
+  @include medium {
+    width: 200px;
+    height: 200px;
+  }
 }

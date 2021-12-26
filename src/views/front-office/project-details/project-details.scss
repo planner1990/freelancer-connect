@@ -47,5 +47,8 @@
     div {
       margin-left: 16px
     }
+    @include small {
+      flex-direction: column;
+    }
   }
 }

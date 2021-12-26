@@ -1,8 +1,8 @@
 <dashboard-card :titleCard="'کیف پول'">
   <v-container v-if="!this.$route.params.id" class="wallet">
     <v-row>
-      <v-col md="4" sm="12">
-        <v-row class="flex-column ml-5 text-center border">
+      <v-col cols="12" md="4" sm="12">
+        <v-row class="flex-column ml-md-5 ml-sm-0 text-center border">
           <v-col>موجودی کل:</v-col>
           <v-col class="font-weight-bold"
             >{{ creditInfo['total_amount'] | thousandMask }} ریال</v-col
@@ -92,7 +92,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col md="8" sm="12" class="border">
+      <v-col md="8" sm="12" class="border" v-if="isShowPieChart">
         <v-chart autoresize :option="option" />
       </v-col>
     </v-row>

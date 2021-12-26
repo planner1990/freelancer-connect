@@ -91,7 +91,7 @@ export default {
           .catch(err => {
             console.log(err);
             this.showSnackbar = true;
-            this.snackbarMessage = "حجم فایل بارگزاری شده بیش از حد مجاز است.";
+            this.snackbarMessage = "حجم فایل بارگذاری شده بیش از حد مجاز است.";
           });
       }
     },

@@ -1,8 +1,13 @@
 @import "src/assets/styles/variable";
+@import "src/assets/styles/mixins";
 .side-info {
   &-card {
     background-color: $surface-100;
     border-radius: 4px;
+    margin-right: 12px;
+    @include small {
+      margin-right: 0;
+    }
     strong {
       font-size: 16px;
       font-weight: 500;

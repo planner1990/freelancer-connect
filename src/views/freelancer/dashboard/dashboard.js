@@ -83,7 +83,7 @@ export default {
           src: "داخلی",
           notification: 0,
           title: "خدمات در حال انجام",
-          routeName: "ongoing-services"
+          routeName: "ongoing-services-Freelancer"
         }
       ]
     };
