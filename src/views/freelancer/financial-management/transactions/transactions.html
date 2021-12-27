@@ -219,7 +219,7 @@
       </template>
     </v-data-table>
     <div class="text-center pt-2">
-      <v-pagination v-model="page" :length="pageCount" v-if="!dataUserManagement.length <= 0"></v-pagination>
+      <v-pagination v-model="page" :length="pageCount" v-if="dataUserManagement.length !== 0"></v-pagination>
     </div>
   </div>
 </dashboard-card>

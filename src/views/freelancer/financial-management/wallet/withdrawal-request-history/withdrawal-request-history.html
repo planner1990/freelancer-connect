@@ -153,7 +153,7 @@
             </div>
           </template>
         </v-data-table>
-        <div class="text-center pt-2" v-if="!dataUserManagement.length <= 0">
+        <div class="text-center pt-2" v-if="dataUserManagement.length !== 0">
           <v-pagination v-model="page" :length="pageCount"></v-pagination>
         </div>
       </div>
