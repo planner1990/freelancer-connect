@@ -534,3 +534,7 @@ input[type="number"] {
 .v-navigation-drawer {
   will-change: initial;
 }
+
+.v-file-input__text {
+  direction: ltr;
+}

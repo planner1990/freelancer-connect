@@ -8,7 +8,9 @@ class employerServices {
   }
 
   getIndexServices(options) {
-    return API_V1.get(`/employer/service/job_offers?status=${options.status}`);
+    return API_V1.get(`/employer/service/job_offers?status=${options.status}`, {
+      params: options
+    });
   }
 
   getProposalsPerProject(projectId) {

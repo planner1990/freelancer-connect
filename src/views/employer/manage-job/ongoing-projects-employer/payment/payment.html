@@ -7,18 +7,18 @@
       بازگشت
     </v-col>
     <v-col md="3" class="pa-0 text-left">
-      صفحه پیش پرداخت
+      صفحه پرداخت
     </v-col>
   </v-row>
   <v-row class="prepayment-card">
-    <v-col md="6">مبلغ پیش پرداخت:</v-col>
+    <v-col md="6">مبلغ پرداخت:</v-col>
     <v-col class="text-left" md="6"
       >{{ paymentInfo['total_amount'] | roundNumber | thousandMask}} ریال</v-col
     >
   </v-row>
   <v-row class="mt-8 prepayment-card">
     <v-col md="6">موجودی کیف پول:</v-col>
-    <v-col class="text-left" md="6">{{ paymentInfo['credit'] }} ریال</v-col>
+    <v-col class="text-left" md="6">{{ paymentInfo['credit'] | thousandMask}} ریال</v-col>
     <v-col md="6" class="font-weight-bold">مبلغ قابل پرداخت:</v-col>
     <v-col class="text-left font-weight-bold" md="6"
       >{{ paymentInfo['payable_amount'] | thousandMask }} ریال</v-col
@@ -28,7 +28,7 @@
     <v-col md="12">
       <header-section
         class="mt-8"
-        :headerSectionTitle="'انتخاب درگاه بانکی'"
+        :headerSectionTitle="'نحوه‌ی پرداخت'"
       ></header-section>
     </v-col>
     <v-col md="12">

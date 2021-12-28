@@ -46,7 +46,7 @@ export default {
   methods: {
     showJobOfferOngoingEmployer() {
       ServiceEmploymentService.showJobOfferEmployer("pending").then(res => {
-        this.dataUserManagement = res.data.data;
+        this.dataUserManagement = res.data.data.data;
       });
     }
   }

@@ -50,6 +50,7 @@ export default {
       // };
       employerServices.confirmProposalByEmployer(this.proposalId).then(() => {
         this.dialog = false;
+        this.$router.push({ path: `/employer/ongoing-projects` });
       });
     },
     inquiryPayment() {

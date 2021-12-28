@@ -28,7 +28,7 @@ export default {
         {
           src: "تبلیغات",
           notification: 0,
-          title: "پروژه‌های اجرا شده",
+          title: "پروژه‌های کامل شده",
           routeName: "completed-projects-employer"
         },
         {
@@ -64,7 +64,7 @@ export default {
         {
           src: "مارکتینگ",
           notification: 0,
-          title: "خدمات اتمام یافته",
+          title: "خدمات کامل شده",
           routeName: "completed-services-employer"
         }
       ]

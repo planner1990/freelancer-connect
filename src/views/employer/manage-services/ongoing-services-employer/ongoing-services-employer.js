@@ -31,24 +31,25 @@ export default {
     },
     getOngoingProjects() {
       const options = {
-        status: "ongoing"
-        // page: 1,
-        // perPage: 5
+        status: "ongoing",
+        page: 1,
+        per_page: 10
       };
       employerServices.getIndexServices(options).then(res => {
-        this.indexProjectsList = res.data.data;
-        this.paginationData = res.data.data?.pagination;
+        this.indexProjectsList = res.data.data.data;
+        this.paginationData = res.data.data;
       });
     },
     changePage(currentPage) {
       const options = {
         status: "ongoing",
         page: currentPage,
-        perPage: 5
+        per_page: 10
       };
       employerServices.getIndexServices(options).then(res => {
-        this.indexProjectsList = res.data.data;
+        this.indexProjectsList = res.data.data.data;
         this.page = currentPage;
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     }
   }

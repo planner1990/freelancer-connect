@@ -43,16 +43,18 @@
         </div>
       </v-col>
     </v-row>
-    <div class="text-center text-h6 my-3" v-if="!indexProjectsList.length >= 1">
+    <div class="text-center text-h6 my-3" v-if="indexProjectsList.length === 0">
       هیچ موردی یافت نشد
     </div>
-    <!--    <div class="col-12 text-center pt-2">-->
-    <!--      <v-pagination-->
-    <!--        color="primary"-->
-    <!--        :length="totalPage"-->
-    <!--        :value="page"-->
-    <!--      ></v-pagination>-->
-    <!--    </div>-->
+    <div class="col-12 text-center pt-2" v-if="indexProjectsList.length !== 0">
+      <v-pagination
+        color="primary"
+        :length="paginationData['last_page']"
+        :total-visible="paginationData.total"
+        v-model="paginationData['current_page']"
+        @input="changePage($event)"
+      ></v-pagination>
+    </div>
   </v-container>
   <transitionPage>
     <router-view v-if="this.$route.params.id" />

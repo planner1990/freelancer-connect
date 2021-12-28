@@ -96,33 +96,35 @@ export default {
       }
     },
     sendJobOfferToFreelancer() {
-      this.showSnackbar = false;
-      const body = {
-        project_id: this.projectDetailsById.id,
-        project_duration_id: this.proposalForm.project_duration_id,
-        amount: this.proposalForm.price.replace(/,/g, ""),
-        prepayment: this.proposalForm.prepayment.replace(/,/g, ""),
-        content: this.proposalForm.description,
-        attachment_id: this.proposalForm.attachmentId
-      };
-      projectsService
-        .submitProposal(body)
-        .then(res => {
-          this.$refs.form.reset();
-          this.dialog = false;
-          this.snackbarMessage = res.data?.message;
-          this.showSnackbar = true;
-          setTimeout(() => {
-            this.$router.push("/browse-projects");
-          }, 2000);
-        })
-        .catch(error => {
-          this.showSnackbar = true;
-          this.snackbarMessage = error?.response.data.errors.err;
-          this.snackbarMessage = error?.response.data.errors.prepayment;
-          this.$refs.form.reset();
-          this.dialog = false;
-        });
+      if (this.$refs.form.validate() === true) {
+        this.showSnackbar = false;
+        const body = {
+          project_id: this.projectDetailsById.id,
+          project_duration_id: this.proposalForm.project_duration_id,
+          amount: this.proposalForm.price.replace(/,/g, ""),
+          prepayment: this.proposalForm.prepayment.replace(/,/g, ""),
+          content: this.proposalForm.description,
+          attachment_id: this.proposalForm.attachmentId
+        };
+        projectsService
+          .submitProposal(body)
+          .then(res => {
+            this.$refs.form.reset();
+            this.dialog = false;
+            this.snackbarMessage = res.data?.message;
+            this.showSnackbar = true;
+            setTimeout(() => {
+              this.$router.push("/browse-projects");
+            }, 2000);
+          })
+          .catch(error => {
+            this.showSnackbar = true;
+            this.snackbarMessage = error?.response.data.errors.err;
+            this.snackbarMessage = error?.response.data.errors.prepayment;
+            this.$refs.form.reset();
+            this.dialog = false;
+          });
+      }
     },
     goToLogin() {
       this.$store.commit(

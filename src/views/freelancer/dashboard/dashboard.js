@@ -46,13 +46,13 @@ export default {
         {
           src: "امنیت",
           notification: 0,
-          title: "پروژه‌های اجرا شده",
+          title: "پروژه‌های کامل شده",
           routeName: "completed-projects"
         },
         {
           src: "اپلیکیشن",
           notification: 0,
-          title: "پروژه‌های ناموفق",
+          title: "پروژه‌های ناتمام",
           routeName: "cancelled-projects"
         },
         {
