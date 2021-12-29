@@ -57,7 +57,7 @@ export default {
         linkName: [
           v => !!v || "لطفا آدرس لینک را وارد کنید",
           v =>
-            (v && v.length >= 3) ||
+            (v && v.length <= 3) ||
             "آدرس لینک وارد شده باید بیش از ۳ کاراکتر باشد"
         ],
         description: [

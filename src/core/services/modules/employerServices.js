@@ -21,6 +21,10 @@ class employerServices {
     return API_V1.get(`employer/project/${id}`);
   }
 
+  projectShowByIdForFreelancer(id) {
+    return API_V1.get(`projects/${id}`);
+  }
+
   serviceShowById(id) {
     return API_V1.get(`services/${id}`);
   }

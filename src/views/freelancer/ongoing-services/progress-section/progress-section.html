@@ -123,7 +123,7 @@
                 ارسال فایل
               </v-btn>
             </template>
-            <v-form ref="form" v-model="valid" lazy-validation>
+            <v-form ref="form2" v-model="valid" lazy-validation>
               <v-card
                 class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
               >
@@ -179,7 +179,7 @@
                   <v-btn color="error" @click="dialog = false">
                     بستن
                   </v-btn>
-                  <v-btn color="primary" @click="submitMilestone(unlock)">
+                  <v-btn color="primary" :disabled="!jobOfferForm.linkName" @click="submitMilestone(unlock)">
                     ارسال
                   </v-btn>
                 </v-card-actions>

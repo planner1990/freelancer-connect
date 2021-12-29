@@ -58,7 +58,13 @@ export default {
         gateway_id: this.bankId
       };
       employerServices.paymentInvoice(body).then(res => {
-        window.open(res.data.data.url, "_parent");
+        if (this.paymentInfo["payable_amount"] !== 0) {
+          window.open(res.data.data.url, "_parent");
+        } else {
+          this.showSnackbar = true;
+          this.snackbarMessage = "پرداخت با موفقیت انجام شد.";
+          this.$router.back();
+        }
       });
     },
     goBack() {

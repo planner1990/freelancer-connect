@@ -2,15 +2,18 @@ import DashboardCard from "@/components/dashboardCard/index";
 import transitionPage from "@/components/transitionPage/index";
 import HeaderSection from "@/components/header-section/index";
 import { employerServices } from "@/core/services";
+import Snackbar from "@/components/snackbar/index";
 export default {
   name: "payment",
-  components: { DashboardCard, transitionPage, HeaderSection },
+  components: { DashboardCard, transitionPage, HeaderSection, Snackbar },
   props: [],
   data() {
     return {
       paymentInfo: {},
       gatewaysList: [],
       bankId: null,
+      snackbarMessage: "",
+      showSnackbar: false,
       banksInfo: [
         {
           title: "بانک سامان",
@@ -58,11 +61,20 @@ export default {
         gateway_id: this.bankId
       };
       employerServices.paymentInvoice(body).then(res => {
-        window.open(res.data.data.url, "_parent");
+        if (this.paymentInfo["payable_amount"] !== 0) {
+          window.open(res.data.data.url, "_parent");
+        } else {
+          this.showSnackbar = true;
+          this.snackbarMessage = "پرداخت با موفقیت انجام شد.";
+          this.$router.back();
+        }
       });
     },
     goBack() {
       this.$router.back();
+    },
+    hideSnackbar() {
+      this.showSnackbar = false;
     }
   }
 };

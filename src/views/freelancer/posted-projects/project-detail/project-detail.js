@@ -54,7 +54,7 @@ export default {
   methods: {
     showDetailProject() {
       const id = this.$route.params.id;
-      employerServices.projectShowById(id).then(res => {
+      employerServices.projectShowByIdForFreelancer(id).then(res => {
         this.projectDetails = res.data.data;
       });
     },
