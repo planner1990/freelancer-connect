@@ -30,14 +30,14 @@ export default {
       });
     },
     getOngoingProjects() {
-      // const options = {
-      //   status: "ongoing",
-      //   page: 1,
-      //   perPage: 5
-      // };
-      freelancerServices.getFilteredServices("ongoing").then(res => {
-        this.indexProjectsList = res.data.data;
-        this.paginationData = res.data.data?.pagination;
+      const options = {
+        status: "ongoing",
+        page: 1,
+        perPage: 10
+      };
+      freelancerServices.getFilteredServices(options).then(res => {
+        this.indexProjectsList = res.data.data.data;
+        this.paginationData = res.data.data;
       });
     },
     changePage(currentPage) {

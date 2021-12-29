@@ -238,13 +238,21 @@
         :class="{ 'message-out': message.role === 'employer', 'message-in': message.role === 'freelancer' }"
       >
         <span class="d-block ml-auto" v-if="message.role === 'freelancer' ">
-          <v-icon large>mdi-account-circle</v-icon>
+          <v-avatar>
+            <img style="height: auto" :src="message.avatar" alt="connecta" />
+          </v-avatar>
           {{message.name}}</span
         >
-          {{ message.text }}
-          <span class="d-block mr-auto" v-if="message.role === 'employer'">
-          {{message.name}}
-          <v-icon large>mdi-account-circle</v-icon>
+        {{ message.text }}
+        <span class="d-block mr-auto" v-if="message.role === 'employer'">
+          {{authenticated.name}}
+          <v-avatar>
+            <img
+              style="height: auto"
+              :src="authenticated.avatar"
+              alt="connecta"
+            />
+          </v-avatar>
         </span>
       </p>
     </section>

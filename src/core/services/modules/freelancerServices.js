@@ -24,10 +24,9 @@ class freelancerServices {
   }
 
   getFilteredServices(options) {
-    return API_V1.get(
-      `/freelancer/service/job_offers/${options}`
-      // `/freelancer/services/${options.status}?per_page=${options.perPage}&page=${options.page}`
-    );
+    return API_V1.get(`/freelancer/service/job_offers/${options.status}`, {
+      params: options
+    });
   }
 
   submitMilestone(body) {
@@ -50,8 +49,10 @@ class freelancerServices {
     return API_V1.post(`/chat`, body);
   }
 
-  indexJobOffers(status) {
-    return API_V1.get(`/freelancer/service/job_offers/${status}`);
+  indexJobOffers(options) {
+    return API_V1.get(`/freelancer/service/job_offers/${options.status}`, {
+      params: options
+    });
   }
 
   showServiceById(serviceId) {

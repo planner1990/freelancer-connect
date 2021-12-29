@@ -1,7 +1,235 @@
 <dashboard-card :titleCard="$t('sidebar.postedServices')">
-    <table-dashboard
-            :headersUserManagement="headersUserManagement"
-            :dataUserManagement="dataUserManagement"
-    ></table-dashboard>
-</dashboard-card>
+  <div class="table-dashboard">
+    <v-data-table
+      :headers="headersUserManagement"
+      :items="dataUserManagement"
+      hide-default-footer
+      class="elevation-1"
+      item-key="name"
+    >
+      <template v-slot:item.actions="{ item, index }">
+        <v-row justify="center" class="px-5">
+          <v-dialog
+            v-model="dialog"
+            ref="form"
+            max-width="600px"
+            persistent
+            :retain-focus="false"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                class="ma-2"
+                :dark="item['has_estimation']"
+                small
+                color="primary"
+                v-bind="attrs"
+                v-on="on"
+                :disabled="item['has_estimation'] === false"
+                @click="showEstimationEmployer(item['estimation_id'], item['id'])"
+              >
+                <span v-if="item['has_estimation'] === false"
+                  >در انتظار پاسخ</span
+                >
+                <span
+                  v-if="!item['has_estimation'] && item['has_estimation'] !== false"
+                >
+                  ارزیابی</span
+                >
+                <span v-if="item['has_estimation']">مشاهده درخواست</span>
+              </v-btn>
+            </template>
+            <v-form ref="form" v-model="valid" lazy-validation>
+              <v-card
+                class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+              >
+                <v-card-title class="justify-space-between title">
+                  <v-btn icon @click="closeModal">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-row>
+                      <v-col cols="12">
+                        <v-text-field
+                          label="عنوان*"
+                          required
+                          outlined
+                          dense
+                          v-model="showJobOfferFreelancer['title']? showJobOfferFreelancer['title'] : confirmJobOfferForm.title"
+                          disabled
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-textarea
+                          outlined
+                          label="توضیحات*"
+                          required
+                          v-model="showJobOfferFreelancer.description? showJobOfferFreelancer.description : confirmJobOfferForm.description"
+                          disabled
+                        ></v-textarea>
+                      </v-col>
+                      <v-col cols="12">
+                        <div class="employer-projects-card-title mt-8">
+                          فایل‌های ضمیمه شده
+                        </div>
+                        <v-list>
+                          <v-list-item
+                            v-for="(file, index) in item.attachments"
+                            :key="index"
+                            class="list-item"
+                          >
+                            <v-list-item-content>
+                              <v-list-item-title>
+                                فایل شماره {{index + 1}}
+                              </v-list-item-title>
+                            </v-list-item-content>
+                            <v-list-item-action>
+                              <v-btn icon :href="file" target="_blank">
+                                <v-icon small>mdi-arrow-down</v-icon>
+                              </v-btn>
+                            </v-list-item-action>
+                          </v-list-item>
+                        </v-list>
+                      </v-col>
+                      <v-col><v-divider class="divide-card"></v-divider></v-col>
+                      <v-col cols="12">
+                        <v-text-field
+                          label="قیمت پیشنهادی پایه (ریال)*"
+                          required
+                          outlined
+                          dense
+                          v-model="confirmJobOfferForm.minPrice"
+                          :rules="confirmJobOfferRule.minPrice"
+                          @input="mask"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-text-field
+                          :label="'مدت زمان تخمینی اجرای پروژه(ساعت)*'"
+                          required
+                          outlined
+                          dense
+                          type="number"
+                          v-model="confirmJobOfferForm.duration"
+                          :rules="confirmJobOfferRule.duration"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-text-field
+                          label="پیش پرداخت (ریال)"
+                          required
+                          outlined
+                          dense
+                          v-model="confirmJobOfferForm.prepayment"
+                          @input="maskPrepayment"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="12">
+                        <!--                      <strong>برآورد کل قیمتی: {{total_price}}</strong>-->
+                      </v-col>
+                      <v-col cols="12">
+                        <v-textarea
+                          outlined
+                          label="توضیحات*"
+                          required
+                          v-model="confirmJobOfferForm.freelancerDescription"
+                          :rules="confirmJobOfferRule.freelancerDescription"
+                        ></v-textarea>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-file-input
+                          @change="handleFileInput($event)"
+                          counter
+                          label="ضمیمه فایل"
+                          placeholder="Select your files"
+                          prepend-icon="mdi-paperclip"
+                          outlined
+                          multiple
+                          dense
+                          :show-size="1000"
+                        >
+                          <template v-slot:selection="{ index, text }">
+                            <v-chip v-if="index < 3" dark label small>
+                              {{ text }}
+                            </v-chip>
 
+                            <span
+                              v-else-if="index === 3"
+                              class="text-overline grey--text text--darken-3 mx-2"
+                            >
+                              +{{ files.length - 3 }} File(s)
+                            </span>
+                          </template>
+                        </v-file-input>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                  <small>*موارد ستاره دار خالی نماند.</small>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="error" @click="rejectEstimation(item.id)">
+                    رد پیشنهاد
+                  </v-btn>
+                  <v-btn color="primary" @click="confirmEstimation(item.id)">
+                    ارسال ارزیابی
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-form>
+          </v-dialog>
+        </v-row>
+      </template>
+      <template v-slot:item.service_title="{ item }">
+        <div class="d-flex justify-center align-center service-table">
+          <div class="d-flex flex-column align-start px-4">
+            <div class="m-0">
+              {{item['service_title'] | readMore(15, '...')}}
+            </div>
+          </div>
+        </div>
+      </template>
+      <template v-slot:item.title="{ item }">
+        <div class="d-flex justify-center align-center service-table">
+          <div class="d-flex flex-column align-start px-4">
+            <div class="m-0 my-1 service-table-title">{{item.title}}</div>
+          </div>
+        </div>
+      </template>
+      <template v-slot:item.description="{ item }">
+        <div class="d-flex justify-center align-center service-table">
+          <div class="d-flex flex-column align-start px-4">
+            <div class="m-0">
+              {{item.description | readMore(15, '...')}}
+            </div>
+          </div>
+        </div>
+      </template>
+      <template v-slot:item.updated_at="{ item }">
+        <div class="d-flex justify-center align-center service-table">
+          <div class="d-flex flex-column align-start px-4">
+            <div class="m-0">
+              {{item['updated_at'] | changeDate() }}
+            </div>
+          </div>
+        </div>
+      </template>
+    </v-data-table>
+    <div class="col-12 text-center pt-2" v-if="dataUserManagement.length !== 0">
+      <v-pagination
+        v-model="paginationData['current_page']"
+        :length="paginationData['last_page']"
+        @input="changePage($event)"
+        :total-visible="paginationData.total"
+      ></v-pagination>
+    </div>
+  </div>
+  <section>
+    <snackbar
+      :snackbarMessage="snackbarMessage"
+      :showSnackbar="showSnackbar"
+      @hideSnackbar="hideSnackbar"
+    ></snackbar>
+  </section>
+</dashboard-card>

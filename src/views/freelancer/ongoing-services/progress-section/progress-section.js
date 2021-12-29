@@ -48,6 +48,7 @@ export default {
       ],
       youMessage: "",
       messages: [],
+      authenticated: "",
       jobOfferForm: {
         linkName: "",
         attachmentId: []
@@ -161,7 +162,8 @@ export default {
       freelancerServices
         .getChatListForService(estimationId)
         .then(res => {
-          this.messages = res.data.data;
+          this.messages = res.data.data.messages;
+          this.authenticated = res.data.data.authenticated;
         })
         .catch(error => {
           console.log(error);
