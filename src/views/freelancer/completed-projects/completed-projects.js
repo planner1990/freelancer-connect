@@ -1,5 +1,6 @@
-import DashboardCard from "../../../components/dashboardCard/index";
-import TableDashboard from "../../../components/table-dashboard/index";
+import DashboardCard from "@/components/dashboardCard/index";
+import TableDashboard from "@/components/table-dashboard/index";
+import { freelancerServices } from "@/core/services";
 export default {
   name: "completed-projects",
   components: { DashboardCard, TableDashboard },
@@ -11,11 +12,10 @@ export default {
       name: "",
       page: 1,
       pageCount: 0,
-      itemsPerPage: 8,
-      // nameRules: [
-      //   v => !!v || "Name is required",
-      //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
-      // ],
+      itemsPerPage: 10,
+      totalPage: 10,
+      paginationData: null,
+      indexProjectsList: [],
       headersUserManagement: [
         {
           text: "نام پروژه",
@@ -24,37 +24,53 @@ export default {
           value: "title"
         },
         {
-          text: "وضعیت پروژه",
-          value: "serviceStatus",
+          text: "توضیحات",
+          align: "center",
+          sortable: false,
+          value: "description"
+        },
+        {
+          text: "قیمت",
+          value: "price",
           sortable: false,
           align: "center"
         },
-        { text: "صف", value: "queue", sortable: false, align: "center" },
-        { text: "عملیات", value: "actions", sortable: false, align: "center" }
+        {
+          text: "تاریخ",
+          value: "created_at",
+          sortable: false,
+          align: "center"
+        }
       ],
-      dataUserManagement: [
-        // {
-        //   title: {
-        //     title: "راه اندازی پروژه فروشگاهی",
-        //     src: "https://picsum.photos/id/11/500/300",
-        //     price: "۸.۰۰۰.۰۰۰ تومان"
-        //   },
-        //   serviceStatus: ["تکمیل شده", "منتشر شده"],
-        //   queue: "اتمام پروژه"
-        // },
-        // {
-        //   title: {
-        //     title: "اپلیکیشن اعتبارسنجی بانکی",
-        //     src: "https://picsum.photos/id/732/500/300",
-        //     price: "۶.۵۰۰.۰۰۰ تومان"
-        //   },
-        //   serviceStatus: ["تکمیل شده", "منتشر شده"],
-        //   queue: "اتمام پروژه"
-        // }
-      ]
+      dataUserManagement: []
     };
   },
   computed: {},
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.getOngoingProjects();
+  },
+  methods: {
+    getOngoingProjects() {
+      const options = {
+        status: "completed",
+        page: 1,
+        perPage: 5
+      };
+      freelancerServices.getFilteredProjects(options).then(res => {
+        this.indexProjectsList = res.data.data?.projects;
+        this.paginationData = res.data.data?.pagination;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        status: "completed",
+        page: currentPage,
+        perPage: 5
+      };
+      freelancerServices.getFilteredProjects(options).then(res => {
+        this.indexProjectsList = res.data.data?.projects;
+        this.page = currentPage;
+      });
+    }
+  }
 };

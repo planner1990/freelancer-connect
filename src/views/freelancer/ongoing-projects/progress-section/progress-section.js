@@ -83,13 +83,13 @@ export default {
   methods: {
     showDetailProject() {
       const id = this.$route.params.id;
-      employerServices.projectShowById(id).then(res => {
+      employerServices.projectShowByIdForFreelancerSide(id).then(res => {
         this.projectDetails = res.data.data;
       });
     },
     getProposalsById() {
       freelancerServices
-        .getPendingProposalById(this.$route.params.id)
+        .getPendingProposalById(this.$route.query.proposalId)
         .then(res => {
           this.proposalForm = res.data.data["freelancer"];
           this.attachments = res.data.data.attachments;

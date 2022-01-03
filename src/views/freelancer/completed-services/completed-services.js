@@ -1,60 +1,75 @@
-import DashboardCard from "../../../components/dashboardCard/index";
-import TableDashboard from "../../../components/table-dashboard/index";
+import DashboardCard from "@/components/dashboardCard/index";
+import TableDashboard from "@/components/table-dashboard/index";
+import { freelancerServices } from "@/core/services";
 export default {
   name: "completed-services",
   components: { DashboardCard, TableDashboard },
   props: [],
   data() {
     return {
-      showSelect: true,
       valid: true,
       name: "",
       page: 1,
       pageCount: 0,
-      itemsPerPage: 8,
-      // nameRules: [
-      //   v => !!v || "Name is required",
-      //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
-      // ],
+      itemsPerPage: 10,
+      totalPage: 10,
+      paginationData: null,
+      indexProjectsList: [],
       headersUserManagement: [
         {
-          text: "نام خدمات",
+          text: "نام پروژه",
           align: "center",
           sortable: false,
           value: "title"
         },
         {
-          text: "وضعیت خدمات",
-          value: "serviceStatus",
+          text: "توضیحات",
+          align: "center",
+          sortable: false,
+          value: "description"
+        },
+        {
+          text: "عنوان خدمت",
+          value: "service_title",
           sortable: false,
           align: "center"
         },
-        { text: "صف", value: "queue", sortable: false, align: "center" },
-        { text: "عملیات", value: "actions", sortable: false, align: "center" }
+        {
+          text: "تاریخ",
+          value: "created_at",
+          sortable: false,
+          align: "center"
+        }
       ],
-      dataUserManagement: [
-        // {
-        //   title: {
-        //     title: "وب اپلیکیشن با Vue js",
-        //     src: "https://picsum.photos/id/11/500/300",
-        //     price: "200.000 تومان"
-        //   },
-        //   serviceStatus: ["جاری شدن پروژه"],
-        //   queue: "پروژه ناتمام"
-        // },
-        // {
-        //   title: {
-        //     title: "طراحی UI و فرانت اند",
-        //     src: "https://picsum.photos/id/732/500/300",
-        //     price: "350.000 تومان"
-        //   },
-        //   serviceStatus: ["جاری شدن پروژه"],
-        //   queue: "پروژه ناتمام"
-        // }
-      ]
+      dataUserManagement: []
     };
   },
   computed: {},
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.getOngoingProjects();
+  },
+  methods: {
+    getOngoingProjects() {
+      const options = {
+        status: "completed",
+        page: 1,
+        perPage: 5
+      };
+      freelancerServices.getFilteredServices(options).then(res => {
+        this.indexProjectsList = res.data.data.data;
+        this.paginationData = res.data.data;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        status: "completed",
+        page: currentPage,
+        perPage: 5
+      };
+      freelancerServices.getFilteredServices(options).then(res => {
+        this.indexProjectsList = res.data.data;
+        this.page = currentPage;
+      });
+    }
+  }
 };

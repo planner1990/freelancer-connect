@@ -1,5 +1,6 @@
 import DashboardCard from "@/components/dashboardCard/index";
 import TableDashboard from "@/components/table-dashboard/index";
+import { employerServices } from "@/core/services";
 export default {
   name: "completed-projects-employer",
   components: { DashboardCard, TableDashboard },
@@ -11,7 +12,10 @@ export default {
       name: "",
       page: 1,
       pageCount: 0,
-      itemsPerPage: 8,
+      itemsPerPage: 10,
+      totalPage: 10,
+      paginationData: null,
+      indexProjectsList: [],
       headersUserManagement: [
         {
           text: "نام پروژه",
@@ -20,37 +24,53 @@ export default {
           value: "title"
         },
         {
-          text: "وضعیت پروژه",
-          value: "serviceStatus",
+          text: "توضیحات",
+          align: "center",
+          sortable: false,
+          value: "description"
+        },
+        {
+          text: "قیمت",
+          value: "price",
           sortable: false,
           align: "center"
         },
-        { text: "صف", value: "queue", sortable: false, align: "center" },
-        { text: "عملیات", value: "actions", sortable: false, align: "center" }
+        {
+          text: "تاریخ",
+          value: "created_at",
+          sortable: false,
+          align: "center"
+        }
       ],
-      dataUserManagement: [
-        // {
-        //   title: {
-        //     title: "انجام کارهای بک اند با PHP",
-        //     src: "https://picsum.photos/id/11/500/300",
-        //     price: "200.000 تومان"
-        //   },
-        //   serviceStatus: ["تکمیل شده"],
-        //   queue: "اتمام پروژه"
-        // },
-        // {
-        //   title: {
-        //     title: "طراحی UI",
-        //     src: "https://picsum.photos/id/732/500/300",
-        //     price: "350.000 تومان"
-        //   },
-        //   serviceStatus: ["تکمیل شده"],
-        //   queue: "اتمام پروژه"
-        // }
-      ]
+      dataUserManagement: []
     };
   },
   computed: {},
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.getOngoingProjects();
+  },
+  methods: {
+    getOngoingProjects() {
+      const options = {
+        status: "completed",
+        page: 1,
+        perPage: 5
+      };
+      employerServices.getIndexProjects(options).then(res => {
+        this.indexProjectsList = res.data.data?.projects;
+        this.paginationData = res.data.data?.pagination;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        status: "completed",
+        page: currentPage,
+        perPage: 5
+      };
+      employerServices.getIndexProjects(options).then(res => {
+        this.indexProjectsList = res.data.data.projects;
+        this.page = currentPage;
+      });
+    }
+  }
 };

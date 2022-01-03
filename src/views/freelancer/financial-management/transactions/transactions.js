@@ -102,7 +102,7 @@ export default {
       const options = {
         generic: this.filterForm.generic,
         type: this.filterForm.typeOfTransaction,
-        price: this.filterForm.price,
+        price: this.filterForm.price.replace(/,/g, ""),
         created_at: this.filterForm.created_at
       };
       freelancerServices.transactionIndex(options).then(res => {

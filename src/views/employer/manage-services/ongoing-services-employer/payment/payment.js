@@ -59,7 +59,7 @@ export default {
       const body = {
         type: "milestone",
         id: this.$route.params.id,
-        gateway_id: "2"
+        gateway_id: this.bankId
       };
       employerServices.paymentInvoice(body).then(res => {
         if (this.paymentInfo["payable_amount"] !== 0) {

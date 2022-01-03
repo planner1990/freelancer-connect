@@ -111,17 +111,24 @@ export default {
     },
     withdraw() {
       this.showSnackbar = false;
-      const body = {
-        amount: this.price,
-        account_id: this.accountId
-      };
-      freelancerServices.transactionWithdraw(body).then(() => {
+      if (
+        this.price.replace(/,/g, "") <= this.creditInfo["withdrawable_amount"]
+      ) {
+        const body = {
+          amount: this.price.replace(/,/g, ""),
+          account_id: this.accountId
+        };
+        freelancerServices.transactionWithdraw(body).then(() => {
+          this.showSnackbar = true;
+          this.snackbarMessage = "عملیات شما با موفقیت انجام شد.";
+          this.price = "";
+          this.accountId = "";
+          this.dialog = false;
+        });
+      } else {
         this.showSnackbar = true;
-        this.snackbarMessage = "عملیات شما با موفقیت انجام شد.";
-        this.price = "";
-        this.accountId = "";
-        this.dialog = false;
-      });
+        this.snackbarMessage = "مبلغ وارد شده بیشتر از موجودی قابل برداشت است.";
+      }
     },
     hideSnackbar() {
       this.showSnackbar = false;

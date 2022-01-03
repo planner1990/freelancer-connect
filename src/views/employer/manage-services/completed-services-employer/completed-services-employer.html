@@ -2,7 +2,7 @@
   <div class="table-dashboard temporary-table">
     <v-data-table
       :headers="headersUserManagement"
-      :items="dataUserManagement"
+      :items="indexProjectsList"
       :page.sync="page"
       :items-per-page="itemsPerPage"
       hide-default-footer
@@ -15,27 +15,10 @@
           مشاهده خدمات نهایی
         </v-btn>
       </template>
-      <template v-slot:item.icon="{ item }">
-        <v-img
-          max-height="40"
-          max-width="40"
-          :src="item.icon"
-          class="ma-auto"
-        ></v-img>
-      </template>
       <template v-slot:item.title="{ item }">
         <div class="d-flex justify-center align-center service-table">
-          <div>
-            <img :src="item.title.src" alt="" />
-          </div>
           <div class="d-flex flex-column align-start px-4">
-            <v-btn class="white--text" color="error" depressed small>
-              featured
-            </v-btn>
-            <div class="m-0 my-1 service-table-title">{{item.title.title}}</div>
-            <div class="m-0">
-                قیمت به ریال از: <strong>{{item.title.price}}</strong>
-            </div>
+            <div class="m-0 my-1 service-table-title">{{item.title}}</div>
           </div>
         </div>
       </template>
@@ -48,11 +31,11 @@
           </div>
         </div>
       </template>
-      <template v-slot:item.updated_at="{ item }">
+      <template v-slot:item.created_at="{ item }">
         <div class="d-flex justify-center align-center service-table">
           <div class="d-flex flex-column align-start px-4">
             <div class="m-0">
-              {{item['updated_at'] | changeDate() }}
+              {{item['created_at'] | changeDate() }}
             </div>
           </div>
         </div>
@@ -70,11 +53,14 @@
         ></v-select>
       </template>
     </v-data-table>
-<!--    <div class="text-center pt-2">-->
-<!--      <v-pagination-->
-<!--        v-model="page"-->
-<!--        :length="pageCount"-->
-<!--      ></v-pagination>-->
-<!--    </div>-->
+    <div class="col-12 text-center pt-2" v-if="indexProjectsList.length >= 1">
+      <v-pagination
+        color="primary"
+        :length="paginationData['last_page']"
+        :total-visible="paginationData.total"
+        v-model="paginationData['current_page']"
+        @input="changePage($event)"
+      ></v-pagination>
+    </div>
   </div>
 </dashboard-card>
