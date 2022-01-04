@@ -135,13 +135,13 @@
                     <v-row>
                       <v-col cols="12">
                         <v-text-field
-                          label="لینک"
+                          label="لینک;;;;;"
                           required
                           outlined
                           dense
                           v-model="jobOfferForm.linkName"
                           :rules="jobOfferRule.linkName"
-                          @keypress.prevent="$event.keyCode !== 13"
+                          @keypress="disableEnterKey($event)"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
