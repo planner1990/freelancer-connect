@@ -36,6 +36,11 @@
     background-color: $background-navbar !important;
   }
 }
+.second_background_navbar {
+  .theme--light.v-app-bar.v-toolbar.v-sheet {
+    background-color: $background-navbar !important;
+  }
+}
 
 .sidebar-front-office {
   .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled),
@@ -537,4 +542,17 @@ input[type="number"] {
 
 .v-file-input__text {
   direction: ltr;
+}
+
+.faq {
+  .v-expansion-panel-content__wrap {
+    border-bottom: 1px solid $border-expansion-panel;
+    border-right: 1px solid $border-expansion-panel;
+    border-left: 1px solid $border-expansion-panel;
+    border-top: unset;
+  }
+  p {
+    margin-top: 16px;
+    text-align: justify;
+  }
 }

@@ -37,30 +37,27 @@
     <div class="col-lg-2 col-md-5 footer-front-office_top_text">
       <ul>
         <li>کانکتا</li>
-        <li>سوالات متداول</li>
-        <li>تماس با ما</li>
-        <li>قوانین و مقررات</li>
+        <li @click="goTo('/about-us')">درباره ما</li>
+        <li @click="goTo('/contact-us')">تماس با ما</li>
+        <li @click="goTo('/faq')">سوالات متداول</li>
       </ul>
     </div>
     <div class="col-lg-3 col-md-5 footer-front-office_top_text">
       <ul>
-        <li>کارجویان</li>
-        <li>رزومه ساز</li>
-        <li>جستجوی فرصت های شغلی</li>
-        <li>سوالات متداول</li>
+        <li>دسترسی سریع</li>
+        <li @click="goTo('/browse-projects')">جستجوی پروژه‌ها</li>
+        <li @click="goTo('/terms')">قوانین و مقررات</li>
+        <li @click="goTo('/privacy-policy')">سیاست حفظ حریم خصوصی</li>
       </ul>
     </div>
   </div>
-  <div
-    class="footer-front-office_bottom"
-  >
-    <div class="d-flex align-center justify-space-around flex-wrap flex-md-row flex-sm-column max-width-1140 mx-auto">
-      <div class="copy-wright">© ۱۴۰۰ - تمامی حقوق برای کانکتا محفوظ است.</div>
-      <ul class="d-md-flex d-sm-block">
-        <li>درباره ما</li>
-        <li>چگونه کار میکند</li>
-        <li>سیاست حفظ حریم خصوصی</li>
-      </ul>
+  <div class="footer-front-office_bottom">
+    <div
+      class="d-flex align-center justify-space-around flex-wrap flex-md-row flex-sm-column max-width-1140 mx-auto"
+    >
+      <div class="copy-wright text-center">
+        © ۱۴۰۰ - تمامی حقوق برای کانکتا محفوظ است.
+      </div>
     </div>
   </div>
 </div>

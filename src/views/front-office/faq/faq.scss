@@ -1,0 +1,14 @@
+@import "src/assets/styles/variable";
+.v-expansion-panel {
+  //margin-bottom: 10px !important;
+  &::before {
+      border-radius: inherit;
+      box-shadow: unset;
+  }
+}
+.border-faq {
+  border-top: 1px solid $border-expansion-panel;
+  border-right: 1px solid $border-expansion-panel;
+  border-left: 1px solid $border-expansion-panel;
+  border-bottom: unset;
+}

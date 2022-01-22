@@ -24,6 +24,7 @@ export default {
     user: {},
     role: "",
     profileImage: "",
+    routeName: "",
     models: {
       base: false,
       conditional: false
@@ -39,6 +40,7 @@ export default {
   },
   watch: {
     $route(to) {
+      this.routeName = to.name;
       if (to.name === "home") {
         this.items = [
           { text: "navbar.browseServices", route: "/browse-services" },
@@ -57,6 +59,7 @@ export default {
     this.getInnerWidth();
     window.addEventListener("scroll", this.updateScroll);
     this.getAssignedRole();
+    this.routeName = this.$route.name;
   },
   methods: {
     ...mapActions({

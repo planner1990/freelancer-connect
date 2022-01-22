@@ -7,5 +7,9 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {
+    goTo(path) {
+      this.$router.push({ path: path });
+    }
+  }
 };

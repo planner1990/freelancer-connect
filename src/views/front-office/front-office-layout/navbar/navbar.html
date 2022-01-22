@@ -1,5 +1,5 @@
 <div
-  :class="{change_background_color: scrollPosition > 50}"
+  :class="{change_background_color: scrollPosition > 50, second_background_navbar: routeName === 'faq' || 'contact-us' || 'terms' || 'about-us' || 'privacy-policy'}"
   class="navbar-front-office"
 >
   <v-app-bar
