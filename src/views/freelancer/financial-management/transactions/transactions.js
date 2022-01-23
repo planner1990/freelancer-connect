@@ -113,8 +113,7 @@ export default {
           this.dataUserManagement = res.data.data;
           this.loading = false;
         })
-        .catch(error => {
-          console.log(error);
+        .catch(() => {
           this.loading = false;
         });
     }
