@@ -102,13 +102,21 @@ export default {
       const options = {
         generic: this.filterForm.generic,
         type: this.filterForm.typeOfTransaction,
-        price: this.filterForm.price.replace(/,/g, ""),
+        price: this.filterForm.price
+          ? this.filterForm.price.replace(/,/g, "")
+          : null,
         created_at: this.filterForm.created_at
       };
-      freelancerServices.transactionIndex(options).then(res => {
-        this.dataUserManagement = res.data.data;
-        this.loading = false;
-      });
+      freelancerServices
+        .transactionIndex(options)
+        .then(res => {
+          this.dataUserManagement = res.data.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          console.log(error);
+          this.loading = false;
+        });
     }
   }
 };

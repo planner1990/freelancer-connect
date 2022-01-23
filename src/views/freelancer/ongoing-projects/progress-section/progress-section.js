@@ -141,7 +141,8 @@ export default {
         const body = {
           type: "proposal",
           id: this.$route.query.proposalId,
-          attachment_id: this.jobOfferForm.attachmentId
+          attachment_id: this.jobOfferForm.attachmentId,
+          description: this.jobOfferForm.linkName
         };
         freelancerServices
           .submitMilestone(body)

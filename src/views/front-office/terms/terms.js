@@ -1,22 +1,11 @@
-
 export default {
-  name: 'terms',
+  name: "terms",
   components: {},
   props: [],
-  data () {
-    return {
-
-    }
+  data() {
+    return {};
   },
-  computed: {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
-  }
-}
-
-
+  computed: {},
+  mounted() {},
+  methods: {}
+};

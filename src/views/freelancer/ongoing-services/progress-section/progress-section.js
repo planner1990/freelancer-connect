@@ -143,7 +143,8 @@ export default {
         const body = {
           type: "estimation",
           id: this.$route.query.estimationId,
-          attachment_id: this.jobOfferForm.attachmentId
+          attachment_id: this.jobOfferForm.attachmentId,
+          description: this.jobOfferForm.linkName
         };
         freelancerServices
           .submitMilestone(body)

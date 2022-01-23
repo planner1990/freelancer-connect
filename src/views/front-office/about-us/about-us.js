@@ -1,22 +1,11 @@
-
 export default {
-  name: 'about-us',
+  name: "about-us",
   components: {},
   props: [],
-  data () {
-    return {
-
-    }
+  data() {
+    return {};
   },
-  computed: {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
-  }
-}
-
-
+  computed: {},
+  mounted() {},
+  methods: {}
+};

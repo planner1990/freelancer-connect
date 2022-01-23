@@ -1,13 +1,13 @@
 import DashboardCard from "@/components/dashboardCard/index";
 import ProjectList from "@/components/project-list/index";
 import DialogDashboard from "@/components/dialog-dashboard/index";
+import Vue from "vue";
 import {
   employerServices,
   freelancerServices,
   UploadService
 } from "@/core/services";
 import headerSection from "@/components/header-section/index";
-import Vue from "vue";
 export default {
   name: "progress-section",
   components: {

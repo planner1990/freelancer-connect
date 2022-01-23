@@ -19,7 +19,7 @@ import transitionPage from "./components/transitionPage/index";
 export default {
   name: "App",
   props: {},
-  components: {  transitionPage },
+  components: { transitionPage },
   data: () => ({}),
   created() {}
 };

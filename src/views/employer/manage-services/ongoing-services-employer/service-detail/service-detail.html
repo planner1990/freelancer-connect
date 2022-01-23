@@ -171,6 +171,13 @@
                     <v-container>
                       <v-row>
                         <v-col cols="12">
+                          <v-text-field
+                            :value="mileStone.description"
+                            label="لینک ارسال شده"
+                            outlined
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12">
                           <v-list>
                             <v-list-item
                               v-for="(file, index) in mileStone.attachments"

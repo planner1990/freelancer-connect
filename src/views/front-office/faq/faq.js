@@ -1,22 +1,11 @@
-
 export default {
-  name: 'faq',
+  name: "faq",
   components: {},
   props: [],
-  data () {
-    return {
-
-    }
+  data() {
+    return {};
   },
-  computed: {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
-  }
-}
-
-
+  computed: {},
+  mounted() {},
+  methods: {}
+};

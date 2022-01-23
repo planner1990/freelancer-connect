@@ -1,22 +1,11 @@
-
 export default {
-  name: 'contact-us',
+  name: "contact-us",
   components: {},
   props: [],
-  data () {
-    return {
-
-    }
+  data() {
+    return {};
   },
-  computed: {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
-  }
-}
-
-
+  computed: {},
+  mounted() {},
+  methods: {}
+};
