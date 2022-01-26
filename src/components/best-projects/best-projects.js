@@ -1,4 +1,3 @@
-import { profileServices } from "../../core/services";
 
 export default {
   name: "best-projects",
@@ -56,16 +55,16 @@ export default {
   },
   computed: {},
   mounted() {
-    this.getBestProjects();
+    // this.getBestProjects();
   },
   methods: {
-    getBestProjects() {
-      const options = {
-        is_selected: true
-      };
-      profileServices.bestProjects(options).then(res => {
-        this.cards = res.data.data.data.slice(0, 7);
-      });
-    }
+    // getBestProjects() {
+    //   const options = {
+    //     is_selected: true
+    //   };
+    //   profileServices.bestProjects(options).then(res => {
+    //     this.cards = res.data.data.data.slice(0, 7);
+    //   });
+    // }
   }
 };
