@@ -7,8 +7,8 @@
     >
       <div>
         <img
-          style="width: 80px"
-          src="../../../../assets/image/connecta-logo-1.png"
+          style="width: 140px"
+          src="../../../../assets/image/logo/2.png"
           alt="connecta"
           class="mb-4"
         />
@@ -20,16 +20,24 @@
       کانکتا متصل کردن بهترینها به یکدیگر است.
 
       <div class="mt-5">
-        <v-icon dark class="ml-4">
+        <v-icon
+          class="ml-6"
+          dark
+          @click="goToPage('https://www.instagram.com/connecta_ir/')"
+        >
           mdi-instagram
         </v-icon>
-        <v-icon dark class="ml-4">
+        <v-icon
+          class="ml-6"
+          dark
+          @click="goToPage('https://www.linkedin.com/company/connecta-site')"
+        >
           mdi-linkedin
         </v-icon>
-        <v-icon dark class="ml-4">
-          mdi-twitter
-        </v-icon>
-        <v-icon dark class="ml-4">
+        <!--        <v-icon class="ml-6">-->
+        <!--          mdi-twitter-->
+        <!--        </v-icon>-->
+        <v-icon dark @click="goToPage('https://t.me/connectaofficial')">
           mdi-telegram
         </v-icon>
       </div>

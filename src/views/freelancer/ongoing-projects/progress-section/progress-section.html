@@ -175,7 +175,11 @@
                   <v-btn color="error" @click="dialog = false">
                     بستن
                   </v-btn>
-                  <v-btn color="primary" :disabled="!jobOfferForm.linkName" @click="submitMilestone(unlock)">
+                  <v-btn
+                    color="primary"
+                    :disabled="!jobOfferForm.linkName && !jobOfferForm.attachmentId"
+                    @click="submitMilestone(unlock)"
+                  >
                     ارسال
                   </v-btn>
                 </v-card-actions>

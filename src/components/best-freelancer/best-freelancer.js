@@ -1,3 +1,5 @@
+import { profileServices } from "../../core/services";
+
 export default {
   name: "best-freelancer",
   components: {},
@@ -33,10 +35,37 @@ export default {
           price: "۵۰۰.۰۰۰",
           location: "مشهد"
         }
+      ],
+      bestFreelancerImg: [
+        {
+          img: "امنیت.jpg"
+        },
+        {
+          img: "تبلیغات.jpg"
+        },
+        {
+          img: "اپلیکیشن.jpg"
+        },
+        {
+          img: "وبسایت.jpg"
+        }
       ]
     };
   },
   computed: {},
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.getBestFreelancers();
+  },
+  methods: {
+    getBestFreelancers() {
+      const options = {
+        is_selected: true,
+        role: "freelancer"
+      };
+      profileServices.bestFreelancers(options).then(res => {
+        this.bestFreelancerList = res.data.data.data.slice(0, 4);
+        this.bestFreelancerList.push(this.bestFreelancerImg);
+      });
+    }
+  }
 };

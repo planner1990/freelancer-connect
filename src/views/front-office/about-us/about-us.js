@@ -7,5 +7,9 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {
+    goToPage(link) {
+      window.open(link, "_blank");
+    }
+  }
 };

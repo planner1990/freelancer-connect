@@ -5,7 +5,9 @@
       class="d-flex flex-column justify-center align-center text-center"
     >
       <v-col cols="9">
-        <div class="best-project-title">برترین <strong>پروژه‌ها</strong></div>
+        <div class="best-project-title">
+          دسته‌بندی‌های <strong>منتخب</strong>
+        </div>
       </v-col>
     </v-row>
     <v-row
@@ -21,10 +23,14 @@
         :key="i"
       >
         <div class="border-image">
-          <div class="best-projects-img"><v-img :src="require(`../../assets/image/best-project/${card.img}`)" /></div>
+          <div class="best-projects-img">
+            <v-img :src="require(`@/assets/image/icons/${card.img}`)" />
+          </div>
         </div>
         <div class="mt-5 best-project-card-title">{{ card.projectTitle }}</div>
-        <div class="mt-5 text-font">{{card.projectDescription}}</div>
+        <div class="mt-5 text-font text-justify">
+          {{card.projectDescription | readMore(130, "...")}}
+        </div>
       </v-col>
       <v-col
         cols="11"
@@ -36,12 +42,18 @@
         <div
           class="inside-box d-flex flex-column align-center justify-center col-sm-12 pa-4"
         >
-          <div class="mt-5 best-project-card-title">پروژه‌های بیشتر</div>
+          <div class="mt-5 best-project-card-title">دسته‌بندی‌های بیشتر</div>
           <div class="mt-5 text-font">
-            لورم ایپسوم متن ساختگی با تولید سادگی نا گرافیک است
+            برای مشاهده پروژه‌های بیشتر کلیک کنید
           </div>
           <div class="mt-5">
-            <v-btn elevation="2" style="border-radius: 12px;" link to="/browse-projects">مشاهده همه</v-btn>
+            <v-btn
+              elevation="2"
+              style="border-radius: 12px;"
+              link
+              to="/browse-projects"
+              >مشاهده همه</v-btn
+            >
           </div>
         </div>
       </v-col>

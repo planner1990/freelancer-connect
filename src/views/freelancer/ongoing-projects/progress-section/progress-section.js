@@ -49,7 +49,7 @@ export default {
       authenticated: "",
       jobOfferForm: {
         linkName: "",
-        attachmentId: []
+        attachmentId: null
       },
       jobOfferRule: {
         linkName: [
@@ -131,9 +131,13 @@ export default {
         for (let i = 0; i <= file.length - 1; i++) {
           formData.append(`attachment[` + i + `]`, file[i]);
         }
-        UploadService.uploadFile(formData).then(res => {
-          this.jobOfferForm.attachmentId = res.data.data.attachment_id;
-        });
+        UploadService.uploadFile(formData)
+          .then(res => {
+            this.jobOfferForm.attachmentId = res.data.data.attachment_id;
+          })
+          .catch(() => {
+            this.jobOfferForm.attachmentId = null;
+          });
       }
     },
     submitMilestone(index) {

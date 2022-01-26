@@ -34,16 +34,16 @@
     <v-col cols="12" md="8" sm="12" class="text-center mx-auto mb-16">
       <h3>راه‌های ارتباطی با ما</h3>
       <div class="mt-5">
-        <v-icon class="ml-6">
+        <v-icon class="ml-6" @click="goToPage('https://www.instagram.com/connecta_ir/')">
           mdi-instagram
         </v-icon>
-        <v-icon class="ml-6">
+        <v-icon class="ml-6" @click="goToPage('https://www.linkedin.com/company/connecta-site')">
           mdi-linkedin
         </v-icon>
-        <v-icon class="ml-6">
-          mdi-twitter
-        </v-icon>
-        <v-icon>
+<!--        <v-icon class="ml-6">-->
+<!--          mdi-twitter-->
+<!--        </v-icon>-->
+        <v-icon @click="goToPage('https://t.me/connectaofficial')">
           mdi-telegram
         </v-icon>
       </div>

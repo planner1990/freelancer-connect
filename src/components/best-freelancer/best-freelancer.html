@@ -18,24 +18,27 @@
         :key="i"
       >
         <div class="best-freelancer-card_image">
-            <v-img :src="require(`../../assets/image/best-project/${freelancer.img}`)" max-height="163"/>
+          <v-img
+            :src="require(`../../assets/image/best-project/${freelancer.img}`)"
+            max-height="163"
+          />
         </div>
         <div class="best-freelancer-card_name mt-5">
           <v-icon class="px-1" color="primary" dense>mdi-check-decagram</v-icon
           >{{freelancer.name}}
         </div>
         <div class="best-freelancer-card_title mb-6">
-            {{freelancer.title | readMore(25, "...")}}
+          {{freelancer.category | readMore(25, "...")}}
         </div>
         <div class="best-freelancer-card_detail">
           <v-icon class="px-1" color="grey darken-3" dense
             >mdi-account-clock-outline</v-icon
-          >{{freelancer.price}} ریال / ساعتی
+          >1,000,000 ریال / ساعتی
         </div>
         <div class="best-freelancer-card_detail">
           <v-icon class="px-1" color="grey darken-3" dense
             >mdi-map-marker-outline</v-icon
-          >{{freelancer.location}}
+          >تهران
         </div>
         <div class="best-freelancer-card_detail">
           <v-icon class="px-1" color="grey darken-3" dense

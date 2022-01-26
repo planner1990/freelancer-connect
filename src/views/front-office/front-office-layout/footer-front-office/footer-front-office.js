@@ -10,6 +10,9 @@ export default {
   methods: {
     goTo(path) {
       this.$router.push({ path: path });
+    },
+    goToPage(link) {
+      window.open(link, "_blank");
     }
   }
 };
