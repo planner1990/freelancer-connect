@@ -60,14 +60,14 @@ const routes = [
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/home-page/index")
       },
-      // {
-      //   path: "/blog",
-      //   name: "blog",
-      //   beforeEnter() {
-      //     // Put the full page URL including the protocol http(s) below
-      //     window.location.replace("http://new-connecta-dev.ernyka.com/blog");
-      //   }
-      // },
+      {
+        path: "/blog",
+        name: "blog",
+        beforeEnter() {
+          // Put the full page URL including the protocol http(s) below
+          window.location.replace("http://connecta.ir/blog");
+        }
+      },
       {
         path: "/faq",
         name: "faq",
