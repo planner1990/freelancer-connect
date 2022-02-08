@@ -65,7 +65,7 @@
   }
   .v-text-field--outlined > .v-input__control > .v-input__slot {
     background: var(--v-lightest-base);
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0 !important;
   }
   .v-text-field--outlined fieldset {
     border: 1px solid $border-light-gray;

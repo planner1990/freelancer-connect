@@ -88,11 +88,11 @@ export default {
             //   route: "/freelancer/message-center",
             //   symbol: "mdi-message-bulleted"
             // },
-            {
-              title: "myServices",
-              route: "/freelancer/my-services",
-              symbol: "mdi-folder-star-multiple-outline"
-            },
+            // {
+            //   title: "myServices",
+            //   route: "/freelancer/my-services",
+            //   symbol: "mdi-folder-star-multiple-outline"
+            // },
             {
               title: "proposals",
               route: "/freelancer/proposals",
@@ -165,33 +165,33 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
-            },
-            {
-              title: "manageServices",
-              symbol: "mdi-cog-transfer-outline",
-              subCategory: [
-                {
-                  title: "postedServices",
-                  route: "/freelancer/posted-services",
-                  symbol: "mdi-account-cog-outline"
-                },
-                {
-                  title: "ongoingServices",
-                  route: "/freelancer/ongoing-services",
-                  symbol: "mdi-google-circles-group"
-                },
-                {
-                  title: "completedServices",
-                  route: "/freelancer/completed-services",
-                  symbol: "mdi-folder-star-multiple-outline"
-                },
-                {
-                  title: "cancelledServices",
-                  route: "/freelancer/cancelled-services",
-                  symbol: "mdi-close-box-multiple"
-                }
-              ]
             }
+            // {
+            //   title: "manageServices",
+            //   symbol: "mdi-cog-transfer-outline",
+            //   subCategory: [
+            //     {
+            //       title: "postedServices",
+            //       route: "/freelancer/posted-services",
+            //       symbol: "mdi-account-cog-outline"
+            //     },
+            //     {
+            //       title: "ongoingServices",
+            //       route: "/freelancer/ongoing-services",
+            //       symbol: "mdi-google-circles-group"
+            //     },
+            //     {
+            //       title: "completedServices",
+            //       route: "/freelancer/completed-services",
+            //       symbol: "mdi-folder-star-multiple-outline"
+            //     },
+            //     {
+            //       title: "cancelledServices",
+            //       route: "/freelancer/cancelled-services",
+            //       symbol: "mdi-close-box-multiple"
+            //     }
+            //   ]
+            // }
             // {
             //   title: "invoices",
             //   route: "/freelancer/invoices",
@@ -294,33 +294,33 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
-            },
-            {
-              title: "manageServices",
-              symbol: "mdi-cog-transfer-outline",
-              subCategory: [
-                {
-                  title: "postedServices",
-                  route: "/employer/posted-services",
-                  symbol: "mdi-account-cog-outline"
-                },
-                {
-                  title: "ongoingServices",
-                  route: "/employer/ongoing-services",
-                  symbol: "mdi-google-circles-group"
-                },
-                {
-                  title: "completedServices",
-                  route: "/employer/completed-services",
-                  symbol: "mdi-folder-star-multiple-outline"
-                },
-                {
-                  title: "cancelledServices",
-                  route: "/employer/cancelled-services",
-                  symbol: "mdi-close-box-multiple"
-                }
-              ]
             }
+            // {
+            //   title: "manageServices",
+            //   symbol: "mdi-cog-transfer-outline",
+            //   subCategory: [
+            //     {
+            //       title: "postedServices",
+            //       route: "/employer/posted-services",
+            //       symbol: "mdi-account-cog-outline"
+            //     },
+            //     {
+            //       title: "ongoingServices",
+            //       route: "/employer/ongoing-services",
+            //       symbol: "mdi-google-circles-group"
+            //     },
+            //     {
+            //       title: "completedServices",
+            //       route: "/employer/completed-services",
+            //       symbol: "mdi-folder-star-multiple-outline"
+            //     },
+            //     {
+            //       title: "cancelledServices",
+            //       route: "/employer/cancelled-services",
+            //       symbol: "mdi-close-box-multiple"
+            //     }
+            //   ]
+            // }
             // {
             //   title: "payout",
             //   route: "/employer/payout",

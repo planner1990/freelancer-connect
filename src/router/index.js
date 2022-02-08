@@ -98,12 +98,12 @@ const routes = [
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/privacy-policy/index")
       },
-      {
-        path: "/browse-services",
-        name: "browse-services",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/front-office/services-browse/index")
-      },
+      // {
+      //   path: "/browse-services",
+      //   name: "browse-services",
+      //   meta: { transitionName: "slide" },
+      //   component: () => import("../views/front-office/services-browse/index")
+      // },
       {
         path: "/browse-projects",
         name: "browse-projects",
@@ -187,12 +187,12 @@ const routes = [
         meta: { transitionName: "slide" },
         component: () => import("../views/freelancer/dashboard/index")
       },
-      {
-        path: "post-service",
-        name: "post-service",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/post-service/index")
-      },
+      // {
+      //   path: "post-service",
+      //   name: "post-service",
+      //   meta: { transitionName: "slide" },
+      //   component: () => import("../views/freelancer/post-service/index")
+      // },
       {
         path: "message-center",
         name: "message-center",
@@ -262,42 +262,42 @@ const routes = [
           }
         ]
       },
-      {
-        path: "posted-services",
-        name: "posted-services",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/posted-services/index")
-      },
-      {
-        path: "ongoing-services",
-        name: "ongoing-services-Freelancer",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/ongoing-services/index"),
-        children: [
-          {
-            path: ":id/progress-section",
-            name: "ongoing-service-detail-freelancer",
-            meta: { transitionName: "slide" },
-            component: () =>
-              import(
-                "../views/freelancer/ongoing-services/progress-section/index"
-              ),
-            props: true
-          }
-        ]
-      },
-      {
-        path: "completed-services",
-        name: "completed-services",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/completed-services/index")
-      },
-      {
-        path: "cancelled-services",
-        name: "cancelled-services",
-        meta: { transitionName: "slide" },
-        component: () => import("../views/freelancer/cancelled-services/index")
-      },
+      // {
+      //   path: "posted-services",
+      //   name: "posted-services",
+      //   meta: { transitionName: "slide" },
+      //   component: () => import("../views/freelancer/posted-services/index")
+      // },
+      // {
+      //   path: "ongoing-services",
+      //   name: "ongoing-services-Freelancer",
+      //   meta: { transitionName: "slide" },
+      //   component: () => import("../views/freelancer/ongoing-services/index"),
+      //   children: [
+      //     {
+      //       path: ":id/progress-section",
+      //       name: "ongoing-service-detail-freelancer",
+      //       meta: { transitionName: "slide" },
+      //       component: () =>
+      //         import(
+      //           "../views/freelancer/ongoing-services/progress-section/index"
+      //         ),
+      //       props: true
+      //     }
+      //   ]
+      // },
+      // {
+      //   path: "completed-services",
+      //   name: "completed-services",
+      //   meta: { transitionName: "slide" },
+      //   component: () => import("../views/freelancer/completed-services/index")
+      // },
+      // {
+      //   path: "cancelled-services",
+      //   name: "cancelled-services",
+      //   meta: { transitionName: "slide" },
+      //   component: () => import("../views/freelancer/cancelled-services/index")
+      // },
       {
         path: "proposals",
         name: "proposals",
@@ -510,74 +510,74 @@ const routes = [
           }
         ]
       },
-      {
-        path: "posted-services",
-        name: "posted-services-employer",
-        meta: { transitionName: "slide" },
-        component: () =>
-          import(
-            "../views/employer/manage-services/posted-services-employer/index"
-          ),
-        children: [
-          {
-            path: ":id/payment",
-            name: "posted-services-employer-payment",
-            meta: { transitionName: "slide" },
-            component: () =>
-              import(
-                "../views/employer/manage-services/posted-services-employer/payment/index"
-              )
-          }
-        ]
-      },
-      {
-        path: "ongoing-services",
-        name: "ongoing-services-employer",
-        meta: { transitionName: "slide" },
-        props: true,
-        component: () =>
-          import(
-            "../views/employer/manage-services/ongoing-services-employer/index"
-          ),
-        children: [
-          {
-            path: ":id/service-detail",
-            name: "ongoing-service-detail",
-            meta: { transitionName: "slide" },
-            component: () =>
-              import(
-                "../views/employer/manage-services/ongoing-services-employer/service-detail/index"
-              )
-          },
-          {
-            path: ":id/payment",
-            name: "ongoing-services-employer-payment",
-            meta: { transitionName: "slide" },
-            component: () =>
-              import(
-                "../views/employer/manage-services/ongoing-services-employer/payment/index"
-              )
-          }
-        ]
-      },
-      {
-        path: "completed-services",
-        name: "completed-services-employer",
-        meta: { transitionName: "slide" },
-        component: () =>
-          import(
-            "../views/employer/manage-services/completed-services-employer/index"
-          )
-      },
-      {
-        path: "cancelled-services",
-        name: "cancelled-services-employer",
-        meta: { transitionName: "slide" },
-        component: () =>
-          import(
-            "../views/employer/manage-services/cancelled-services-employer/index"
-          )
-      },
+      // {
+      //   path: "posted-services",
+      //   name: "posted-services-employer",
+      //   meta: { transitionName: "slide" },
+      //   component: () =>
+      //     import(
+      //       "../views/employer/manage-services/posted-services-employer/index"
+      //     ),
+      //   children: [
+      //     {
+      //       path: ":id/payment",
+      //       name: "posted-services-employer-payment",
+      //       meta: { transitionName: "slide" },
+      //       component: () =>
+      //         import(
+      //           "../views/employer/manage-services/posted-services-employer/payment/index"
+      //         )
+      //     }
+      //   ]
+      // },
+      // {
+      //   path: "ongoing-services",
+      //   name: "ongoing-services-employer",
+      //   meta: { transitionName: "slide" },
+      //   props: true,
+      //   component: () =>
+      //     import(
+      //       "../views/employer/manage-services/ongoing-services-employer/index"
+      //     ),
+      //   children: [
+      //     {
+      //       path: ":id/service-detail",
+      //       name: "ongoing-service-detail",
+      //       meta: { transitionName: "slide" },
+      //       component: () =>
+      //         import(
+      //           "../views/employer/manage-services/ongoing-services-employer/service-detail/index"
+      //         )
+      //     },
+      //     {
+      //       path: ":id/payment",
+      //       name: "ongoing-services-employer-payment",
+      //       meta: { transitionName: "slide" },
+      //       component: () =>
+      //         import(
+      //           "../views/employer/manage-services/ongoing-services-employer/payment/index"
+      //         )
+      //     }
+      //   ]
+      // },
+      // {
+      //   path: "completed-services",
+      //   name: "completed-services-employer",
+      //   meta: { transitionName: "slide" },
+      //   component: () =>
+      //     import(
+      //       "../views/employer/manage-services/completed-services-employer/index"
+      //     )
+      // },
+      // {
+      //   path: "cancelled-services",
+      //   name: "cancelled-services-employer",
+      //   meta: { transitionName: "slide" },
+      //   component: () =>
+      //     import(
+      //       "../views/employer/manage-services/cancelled-services-employer/index"
+      //     )
+      // },
       {
         path: "payout",
         name: "payout-employer",
