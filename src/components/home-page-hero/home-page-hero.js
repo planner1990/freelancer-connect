@@ -4,10 +4,18 @@ export default {
   props: [],
   data() {
     return {
-      items: ["فریلنسر", "کارفرما"]
+      items: ["فریلنسر", "کارفرما"],
+      searchParams: ""
     };
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {
+    goToSearchPage() {
+      this.$router.push({
+        path: `/search`,
+        query: { value: this.searchParams }
+      });
+    }
+  }
 };

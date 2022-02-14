@@ -13,6 +13,12 @@ class profileServices {
   bestFreelancers(options) {
     return API_V1.get(`/users`, { params: options });
   }
+  search(options) {
+    return API_V1.get(`/search`, { params: options });
+  }
+  searchTypesIndex() {
+    return API_V1.get(`/search/index`);
+  }
 }
 
 export default new profileServices();

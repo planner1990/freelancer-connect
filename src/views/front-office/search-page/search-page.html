@@ -1,5 +1,156 @@
+<div>
+  <section
+    class="home-page-hero d-flex flex-column align-center justify-center"
+  >
+    <v-container>
+      <v-row class="flex-column text-center">
+        <v-col cols="12" md="6" sm="11" class="mx-auto pa-0 first-slogan">
+          پروژه‌های موجود در کانکتا
+        </v-col>
+      </v-row>
+    </v-container>
+  </section>
 
-<section class="search-page">
-  <h1>search-page Component</h1>
-</section>
-
+  <section>
+    <v-container style="margin-top: -20px;">
+      <v-row no-gutters class="mobile-filter">
+        <v-col>
+          <v-container class="side-filter">
+            <v-row>
+              <v-col cols="12" class="side-filter-card">
+                <div class="employer-projects-card-title">دسته بندی ها</div>
+                <div
+                  class="col-md-12 pa-md-0 col-sm-12 px-sm-15 d-md-flex d-sm-block mt-8"
+                >
+                  <v-text-field
+                    :placeholder="$t('form.ImLookingFor')"
+                    outlined
+                    dense
+                  ></v-text-field>
+                </div>
+                <div class="category-checkbox">
+                  <v-checkbox
+                    v-for="(item, index) in checkboxLabel"
+                    :key="index"
+                    :label="item"
+                  ></v-checkbox>
+                </div>
+                <v-divider class="divide-card"></v-divider>
+                <div class="my-5">
+                  <v-btn depressed outlined block color="secondary">
+                    {{ $t('form.applyFilter') }}
+                  </v-btn>
+                </div>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-col>
+        <v-col cols="12" sm="12" md="9">
+          <v-row class="justify-space-between">
+            <v-col cols="7" class="pr-10">
+              <v-text-field
+                :placeholder="$t('form.ImLookingFor')"
+                outlined
+                dense
+                background-color="white"
+                prepend-inner-icon="mdi-magnify"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="3" class="pr-10">
+              <v-select
+                v-model="category"
+                :items="items"
+                label="دسته‌بندی‌ها"
+                outlined
+                item-value="value"
+                item-text="title_fa"
+                dense
+                background-color="white"
+                @change="changeCategory"
+              ></v-select>
+            </v-col>
+          </v-row>
+          <section class="employer-projects">
+            <v-container class="pr-10">
+              <v-row>
+                <v-col
+                  v-for="(result, index) in searchResult"
+                  :key="index"
+                  cols="12"
+                  class="d-flex employer-projects-card pa-0 mb-6"
+                >
+                  <div class="employer-projects-card-right pa-5">
+                    <div class="employer-projects-card-name">
+                      <span>{{result.name}}</span>
+                      <v-divider
+                        class="divide-card-title mx-2"
+                        vertical
+                      ></v-divider>
+                      <span>۲ روز پیش</span>
+                    </div>
+                    <div class="employer-projects-card-title">
+                      {{result.title}}
+                    </div>
+                    <!--                    <div class="employer-projects-card-type">-->
+                    <!--                      نوع پروژه: <span>دیجیتال مارکتینگ</span>-->
+                    <!--                    </div>-->
+                    <div class="employer-projects-card-description">
+                      {{result.description | readMore(150, "...")}}
+                    </div>
+                    <div class="mt-4">
+                      <button
+                        v-for="(skill, index) in result.skills"
+                        :key="index"
+                      >
+                        {{skill}}
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="d-flex flex-column employer-projects-card-left pa-5"
+                  >
+                    <div style="transform: translate(-106px, -23px);">
+                      <v-icon dense>
+                        mdi-heart-outline
+                      </v-icon>
+                    </div>
+                    <div>
+                      <span class="mx-4 employer-projects-card-budget"
+                        >بودجه پروژه</span
+                      >
+                    </div>
+                    <div class="mt-3 mb-5">
+                      <span class="mx-4 employer-projects-card-title"
+                        >{{ result.price | thousandMask}} ریال</span
+                      >
+                    </div>
+                    <div>
+                      <span class="mx-4 employer-projects-card-type"
+                        >{{ result.proposal.count }} پروپوزال دریافتی تا {{
+                        result.proposal['till'] | changeDate}}</span
+                      >
+                    </div>
+                  </div>
+                </v-col>
+                <v-col v-if="searchResult.length === 0">
+                  <h3 class="text-center mt-1">موردی یافت نشد.</h3>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col class="mt-8" v-if="getBrowseProjectData.total >= 11">
+                  <v-pagination
+                    color="primary"
+                    :length="getBrowseProjectData['last_page']"
+                    :total-visible="getBrowseProjectData.total"
+                    v-model="getBrowseProjectData['current_page']"
+                    @input="changePage($event)"
+                  ></v-pagination>
+                </v-col>
+              </v-row>
+            </v-container>
+          </section>
+        </v-col>
+      </v-row>
+    </v-container>
+  </section>
+</div>

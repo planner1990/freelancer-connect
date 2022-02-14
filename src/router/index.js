@@ -69,6 +69,12 @@ const routes = [
         }
       },
       {
+        path: "/search",
+        name: "search",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/search-page/index")
+      },
+      {
         path: "/faq",
         name: "faq",
         meta: { transitionName: "slide" },

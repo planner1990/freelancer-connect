@@ -53,11 +53,11 @@ export default {
     $route(to) {
       if (to.name === "home") {
         this.items = [
-          {
-            text: "navbar.browseServices",
-            route: "/browse-services",
-            icon: "mdi-order-bool-ascending-variant"
-          },
+          // {
+          //   text: "navbar.browseServices",
+          //   route: "/browse-services",
+          //   icon: "mdi-order-bool-ascending-variant"
+          // },
           {
             text: "navbar.browseProjects",
             route: "/browse-projects",
@@ -67,11 +67,11 @@ export default {
       } else {
         this.items = [
           { text: "navbar.home", route: "/", icon: "mdi-home" },
-          {
-            text: "navbar.browseServices",
-            route: "/browse-services",
-            icon: "mdi-order-bool-ascending-variant"
-          },
+          // {
+          //   text: "navbar.browseServices",
+          //   route: "/browse-services",
+          //   icon: "mdi-order-bool-ascending-variant"
+          // },
           {
             text: "navbar.browseProjects",
             route: "/browse-projects",

@@ -11,7 +11,7 @@ export default {
   data: () => ({
     items: [
       { text: "navbar.home", route: "/" },
-      { text: "navbar.browseServices", route: "/browse-services" },
+      // { text: "navbar.browseServices", route: "/browse-services" },
       { text: "navbar.browseProjects", route: "/browse-projects" }
     ],
     baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,

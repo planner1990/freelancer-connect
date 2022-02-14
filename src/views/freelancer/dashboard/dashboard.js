@@ -7,24 +7,24 @@ export default {
     return {
       show: false,
       cards: [
-        {
-          src: "امنیت",
-          notification: 0,
-          title: "ایجاد خدمات",
-          routeName: "post-service"
-        },
+        // {
+        //   src: "امنیت",
+        //   notification: 0,
+        //   title: "ایجاد خدمات",
+        //   routeName: "post-service"
+        // },
         // {
         //   src: "اپلیکیشن",
         //   notification: 0,
         //   title: "صندوق پیام",
         //   routeName: "message-center"
         // },
-        {
-          src: "بصری",
-          notification: 0,
-          title: "خدمات من",
-          routeName: "my-services"
-        },
+        // {
+        //   src: "بصری",
+        //   notification: 0,
+        //   title: "خدمات من",
+        //   routeName: "my-services"
+        // },
         {
           src: "تبلیغات",
           notification: 0,
@@ -60,31 +60,31 @@ export default {
           notification: 0,
           title: "پروژه‌های در حال اجرا",
           routeName: "ongoing-projects"
-        },
-        {
-          src: "وبسایت",
-          notification: 0,
-          title: "خدمات در حال انتظار",
-          routeName: "posted-services"
-        },
-        {
-          src: "امنیت",
-          notification: 0,
-          title: "خدمات تکمیل شده",
-          routeName: "completed-services"
-        },
-        {
-          src: "بصری",
-          notification: 0,
-          title: "خدمات ناتمام",
-          routeName: "cancelled-services"
-        },
-        {
-          src: "داخلی",
-          notification: 0,
-          title: "خدمات در حال انجام",
-          routeName: "ongoing-services-Freelancer"
         }
+        // {
+        //   src: "وبسایت",
+        //   notification: 0,
+        //   title: "خدمات در حال انتظار",
+        //   routeName: "posted-services"
+        // },
+        // {
+        //   src: "امنیت",
+        //   notification: 0,
+        //   title: "خدمات تکمیل شده",
+        //   routeName: "completed-services"
+        // },
+        // {
+        //   src: "بصری",
+        //   notification: 0,
+        //   title: "خدمات ناتمام",
+        //   routeName: "cancelled-services"
+        // },
+        // {
+        //   src: "داخلی",
+        //   notification: 0,
+        //   title: "خدمات در حال انجام",
+        //   routeName: "ongoing-services-Freelancer"
+        // }
       ]
     };
   },

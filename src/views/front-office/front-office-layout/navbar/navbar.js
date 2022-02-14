@@ -16,10 +16,7 @@ export default {
     showSidebar: false,
     baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,
     selectedItem: 0,
-    items: [
-      { text: "navbar.browseServices", route: "/browse-services" },
-      { text: "navbar.browseProjects", route: "/browse-projects" }
-    ],
+    items: [{ text: "navbar.browseProjects", route: "/browse-projects" }],
     scrollPosition: null,
     user: {},
     role: "",
@@ -43,13 +40,11 @@ export default {
       this.routeName = to.name;
       if (to.name === "home") {
         this.items = [
-          { text: "navbar.browseServices", route: "/browse-services" },
           { text: "navbar.browseProjects", route: "/browse-projects" }
         ];
       } else {
         this.items = [
           { text: "navbar.home", route: "/" },
-          { text: "navbar.browseServices", route: "/browse-services" },
           { text: "navbar.browseProjects", route: "/browse-projects" }
         ];
       }
