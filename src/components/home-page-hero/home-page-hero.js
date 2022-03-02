@@ -12,10 +12,12 @@ export default {
   mounted() {},
   methods: {
     goToSearchPage() {
-      this.$router.push({
-        path: `/search`,
-        query: { value: this.searchParams }
-      });
+      if (this.searchParams.length >= 3) {
+        this.$router.push({
+          path: `/search`,
+          query: { value: this.searchParams }
+        });
+      }
     }
   }
 };

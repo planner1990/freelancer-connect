@@ -11,7 +11,8 @@ export default {
   props: [],
   data() {
     return {
-      ProjectList: []
+      ProjectList: [],
+      noData: ""
     };
   },
   computed: {},
@@ -29,7 +30,8 @@ export default {
         page: 1
       };
       projectsService.getAllProjects(options).then(res => {
-        this.ProjectList = res.data.data;
+        this.ProjectList = res.data?.data;
+        this.noData = this.ProjectList.data?.length;
         this.setBrowseProjectData(res.data.data);
         window.scrollTo({ top: 0, behavior: "smooth" });
       });

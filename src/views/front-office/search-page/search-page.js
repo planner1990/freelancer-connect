@@ -32,8 +32,9 @@ export default {
         "جاوا"
       ],
       items: ["Foo", "Bar", "Fizz", "Buzz"],
-      category: null,
-      searchResult: []
+      category: 0,
+      searchResult: [],
+      searchText: ""
     };
   },
   computed: {
@@ -93,7 +94,7 @@ export default {
     },
     showSearchResult() {
       const options = {
-        text: this.$route.query.value,
+        text: this.searchText ? this.searchText : this.$route.query.value,
         type: this.category
       };
       profileServices.search(options).then(res => {

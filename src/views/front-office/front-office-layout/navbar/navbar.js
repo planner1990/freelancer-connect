@@ -54,7 +54,7 @@ export default {
     this.getInnerWidth();
     window.addEventListener("scroll", this.updateScroll);
     this.getAssignedRole();
-    this.routeName = this.$route.name;
+    this.getCurrentRoute();
   },
   methods: {
     ...mapActions({
@@ -62,6 +62,15 @@ export default {
     }),
     drawer() {
       this.drawerAction();
+    },
+    getCurrentRoute() {
+      this.routeName = this.$route.name;
+      if (this.routeName === "browse-projects") {
+        this.items = [
+          { text: "navbar.home", route: "/" },
+          { text: "navbar.browseProjects", route: "/browse-projects" }
+        ];
+      }
     },
     // onClickOutside(e) {
     //   e.preventDefault();

@@ -10,3 +10,4 @@ import "./employerMileStoneStatus";
 import "./freelancerMileStoneStatus";
 import "./installments";
 import "./roleTranslator";
+import "./persianDigit";

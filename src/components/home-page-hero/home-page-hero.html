@@ -40,6 +40,7 @@
             v-model="searchParams"
             placeholder="جستجو بر اساس عنوان و توضیحات پروژه..."
             outlined
+            @keyup.enter="goToSearchPage"
           ></v-text-field>
           <v-btn
             shaped
