@@ -1,6 +1,6 @@
 import { mapActions, mapGetters } from "vuex";
 import * as types from "../../shared/store/types";
-import projectsService from "../../core/services/modules/projectsService";
+import { projectsService } from "@/core/services";
 
 export default {
   name: "employer-projects",
@@ -59,6 +59,12 @@ export default {
     },
     goToDetail(id) {
       this.$router.push(`/project-details/${id}`);
+    },
+    goToSearchPage(skill) {
+      this.$router.push({
+        path: `/search`,
+        query: { value: skill }
+      });
     }
   }
 };

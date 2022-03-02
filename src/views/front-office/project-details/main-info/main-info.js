@@ -30,5 +30,12 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {
+    goToSearchPage(skill) {
+      this.$router.push({
+        path: `/search`,
+        query: { value: skill }
+      });
+    }
+  }
 };

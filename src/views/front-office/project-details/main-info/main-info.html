@@ -21,6 +21,7 @@
               class="ml-2"
               v-for="(skill, index) in projectDetailsById.skills"
               :key="index"
+              @click="goToSearchPage(skill)"
             >
               {{ skill }}
             </button>
