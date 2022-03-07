@@ -12,6 +12,7 @@ export default {
     show: false,
     mini: false,
     toggle: false,
+    dialog: false,
     logoutLoading: false,
     role: null,
     selected: [2],

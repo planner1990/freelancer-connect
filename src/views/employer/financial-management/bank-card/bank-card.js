@@ -9,6 +9,7 @@ export default {
       dialog: false,
       valid: false,
       title: "",
+      bankName: "",
       sheba: "",
       cardId: "",
       items: [],
@@ -17,6 +18,10 @@ export default {
         title: [
           v => !!v || "لطفا نام خود را وارد کنید",
           v => (v && v.length >= 3) || "این آیتم بیشتر از 3 کاراکتر نباشد"
+        ],
+        bankName: [
+          v => !!v || "لطفا نام خود را وارد کنید",
+          v => (v && v.length >= 2) || "این آیتم بیشتر از 2 کاراکتر نباشد"
         ],
         sheba: [
           v => !!v || "لطفا شماره شبا خود را وارد کنید",

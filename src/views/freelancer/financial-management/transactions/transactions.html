@@ -29,7 +29,7 @@
         <v-text-field
           v-model="filterForm.price"
           outlined
-          placeholder="مبلغ"
+          placeholder="مبلغ (ریال)"
           @input="mask"
           dense
           clearable
@@ -70,7 +70,14 @@
         </v-menu>
       </v-col>
       <v-col cols="12" lg="3" md="3" sm="12">
-        <v-btn depressed color="primary" block class="px-8" @click="filterAction" :loading="loading">
+        <v-btn
+          depressed
+          color="primary"
+          block
+          class="px-8"
+          @click="filterAction"
+          :loading="loading"
+        >
           اعمال فیلتر
         </v-btn>
       </v-col>
@@ -219,7 +226,12 @@
       </template>
     </v-data-table>
     <div class="text-center pt-2">
-      <v-pagination v-model="page" :length="pageCount" :total-visible="7" v-if="dataUserManagement.length !== 0"></v-pagination>
+      <v-pagination
+        v-model="page"
+        :length="pageCount"
+        :total-visible="7"
+        v-if="dataUserManagement.length !== 0"
+      ></v-pagination>
     </div>
   </div>
 </dashboard-card>

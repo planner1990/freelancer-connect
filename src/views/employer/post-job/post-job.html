@@ -7,6 +7,8 @@
           v-model="projectForm.title"
           :rules="createProjectRule.title"
           :label="$t('form.projectTitle')"
+          hint="لطفا عنوان را وارد کنید. انتخاب عنوان درست پروژه در یافتن فریلنسر مناسب به شما کمک می کند."
+          persistent-hint
           required
           outlined
         ></v-text-field>
@@ -21,6 +23,8 @@
           :label="$t('form.price')"
           required
           outlined
+          hint="حداقل مبلغ پروژه پنجاه میلیون ریال می باشد."
+          persistent-hint
           ref="inputRef"
         ></v-text-field>
       </v-col>
@@ -46,6 +50,8 @@
           :label="$t('form.description')"
           v-model="projectForm.description"
           :rules="createProjectRule.description"
+          hint="درج توضیحات کافی, موجب دریافت پروپوزال های باکیفیت از جانب فریلنسر ها می‌شود."
+          persistent-hint
         ></v-textarea>
       </v-col>
     </v-row>
@@ -61,7 +67,8 @@
           v-model="projectForm.categories"
           :label="$t('form.categories')"
           outlined
-          hint="یک گزینه میتوانید انتخاب کنید"
+          hint="یک گزینه میتوانید انتخاب کنید. انتخاب صحیح مهارت در یافتن فریلنسر مناسب به شما کمک  می کند."
+          persistent-hint
         >
           <template v-slot:append>
             <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>
@@ -147,6 +154,8 @@
           outlined
           multiple
           :show-size="1000"
+          hint="حداکثر حجم فایل ضمیمه 5 مگابایت می باشد."
+          persistent-hint
         >
           <template v-slot:selection="{ index, text }">
             <v-chip v-if="index < 3" dark label small>

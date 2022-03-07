@@ -9,7 +9,11 @@
         :key="index"
       >
         <v-row class="bank-card">
-          <v-col cols="12" md="6" sm="12">عنوان حساب</v-col>
+          <v-col cols="12" md="6" sm="12">نام صاحب حساب</v-col>
+          <v-col cols="12" md="6" sm="12" class="text-left"
+            >{{ info.name }}</v-col
+          >
+          <v-col cols="12" md="6" sm="12">نام بانک</v-col>
           <v-col cols="12" md="6" sm="12" class="text-left"
             >{{ info.name }}</v-col
           >
@@ -57,7 +61,18 @@
                           <v-text-field
                             v-model="title"
                             :rules="formRule.title"
-                            label="عنوان حساب"
+                            label="نام صاحب حساب"
+                            required
+                            outlined
+                            dense
+                            type="text"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12">
+                          <v-text-field
+                            v-model="bankName"
+                            :rules="formRule.bankName"
+                            label="نام بانک"
                             required
                             outlined
                             dense

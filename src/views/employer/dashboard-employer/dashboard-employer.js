@@ -16,7 +16,7 @@ export default {
         {
           src: "اپلیکیشن",
           notification: 0,
-          title: "پروژه‌های من",
+          title: "تاریخچه‌ پروژه‌ها",
           routeName: "my-projects"
         },
         {

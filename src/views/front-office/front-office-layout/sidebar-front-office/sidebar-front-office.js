@@ -12,6 +12,7 @@ export default {
   props: [],
 
   data: () => ({
+    baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,
     show: false,
     mini: false,
     toggle: false,

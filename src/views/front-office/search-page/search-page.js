@@ -93,13 +93,15 @@ export default {
       this.max = e[1];
     },
     showSearchResult() {
-      const options = {
-        text: this.searchText ? this.searchText : this.$route.query.value,
-        type: this.category
-      };
-      profileServices.search(options).then(res => {
-        this.searchResult = res.data?.data.data;
-      });
+      if (this.searchText.length >= 3) {
+        const options = {
+          text: this.searchText ? this.searchText : this.$route.query.value,
+          type: this.category
+        };
+        profileServices.search(options).then(res => {
+          this.searchResult = res.data?.data.data;
+        });
+      }
     },
     showSearchTypeIndex() {
       profileServices.searchTypesIndex().then(res => {

@@ -42,10 +42,10 @@
     "packages": "پکیج ها",
     "mySavedItems": "موارد ذخیره شده",
     "myServices": "خدمات من",
-    "myProjects": "پروژه‌های من",
+    "myProjects": "تاریخچه پروژه‌ها",
     "financialManagement": "مدیریت مالی",
     "wallet": "کیف پول",
-    "transactions": "تراکنش ها",
+    "transactions": "پرداخت",
     "bankCard": "کارت بانکی"
   },
   "actions": {
@@ -85,7 +85,7 @@
     "registerComplete": "تکمیل ثبت نام",
     "projectTitle": "عنوان پروژه",
     "price": "هزینه تخمینی به ریال",
-    "duration": "انتخاب مدت زمان",
+    "duration": "مدت زمان",
     "categories": "انتخاب دسته‌بندی پروژه",
     "skills": "انتخاب مهارت‌های مورد نیاز",
     "pending": "در انتظار تایید",
