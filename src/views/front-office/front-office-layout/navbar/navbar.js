@@ -16,7 +16,10 @@ export default {
     showSidebar: false,
     baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,
     selectedItem: 0,
-    items: [{ text: "navbar.browseProjects", route: "/browse-projects" }],
+    items: [
+      { text: "navbar.home", route: "/" },
+      { text: "navbar.browseProjects", route: "/browse-projects" }
+    ],
     scrollPosition: null,
     user: {},
     role: "",
