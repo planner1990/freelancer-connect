@@ -7,6 +7,7 @@ import ServiceEmploymentService from "./modules/serviceEmploymentService";
 import freelancerServices from "./modules/freelancerServices";
 import employerServices from "./modules/employerServices";
 import AuthGuard from "./modules/AuthGuard";
+import ScrollTopService from "./modules/scrollTopService";
 
 export {
   AuthService,
@@ -17,5 +18,6 @@ export {
   ServiceEmploymentService,
   freelancerServices,
   employerServices,
-  AuthGuard
+  AuthGuard,
+  ScrollTopService
 };

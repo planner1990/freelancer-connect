@@ -20,7 +20,7 @@
               <v-col cols="12" class="side-filter-card">
                 <div class="employer-projects-card-title">دسته بندی ها</div>
                 <div
-                  class="col-md-12 pa-md-0 col-sm-12 px-sm-15 d-md-flex d-sm-block mt-8"
+                  class="col-md-12 pa-md-0 col-sm-12 px-md-0 px-sm-15 d-md-flex d-sm-block mt-8"
                 >
                   <v-text-field
                     placeholder="جستجوی دسته..."
@@ -48,7 +48,7 @@
         </v-col>
         <v-col cols="12" sm="12" md="9">
           <v-row class="justify-space-between">
-            <v-col cols="7" md="7" class="pr-10">
+            <v-col cols="12" md="7" class="pr-10">
               <v-text-field
                 placeholder="جستجو بر اساس عنوان و توضیحات پروژه..."
                 outlined
@@ -59,7 +59,7 @@
                 @keyup.enter="showSearchResult"
               ></v-text-field>
             </v-col>
-            <v-col cols="3" class="pr-10">
+            <v-col cols="12" md="3" class="pr-10">
               <v-select
                 v-model="category"
                 :items="items"
@@ -84,13 +84,13 @@
                   @click="goToDetail(result.id)"
                 >
                   <div class="employer-projects-card-right pa-5">
-                    <div class="employer-projects-card-name">
-                      <span class="font-weight-bold">{{result.username}}</span>
+                    <div class="employer-projects-card-name d-flex">
+                      <div class="font-weight-bold">{{result.username}}</div>
                       <v-divider
                         class="divide-card-title mx-2"
                         vertical
                       ></v-divider>
-                      <span>۲ روز پیش</span>
+                      <div>۲ روز پیش</div>
                     </div>
                     <div class="employer-projects-card-title">
                       {{result.title}}

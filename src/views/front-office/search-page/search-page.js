@@ -1,6 +1,10 @@
 import { mapActions, mapGetters } from "vuex";
 import * as types from "../../../shared/store/types";
-import { projectsService, profileServices } from "@/core/services";
+import {
+  projectsService,
+  profileServices,
+  ScrollTopService
+} from "@/core/services";
 
 export default {
   name: "search-page",
@@ -68,6 +72,7 @@ export default {
   mounted() {
     this.showSearchTypeIndex();
     this.showSearchResult();
+    ScrollTopService.$scrollTop();
   },
   methods: {
     ...mapActions({

@@ -1,7 +1,12 @@
 import SideFilter from "@/components/side-filter/index";
 import MainInfo from "./main-info/index";
 import SideInfo from "./side-info/index";
-import { UploadService, AuthService, projectsService } from "@/core/services";
+import {
+  UploadService,
+  AuthService,
+  projectsService,
+  ScrollTopService
+} from "@/core/services";
 import * as types from "@/shared/store/types";
 import Snackbar from "@/components/snackbar/index";
 import $thousandMask from "@/shared/mixins/thousandMask";
@@ -55,6 +60,7 @@ export default {
     await this.detectRoleUser();
     await this.getProjectListById();
     this.getProjectDurations();
+    ScrollTopService.$scrollTop();
   },
   methods: {
     mask() {
