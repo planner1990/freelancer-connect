@@ -57,8 +57,8 @@ export default {
         perPage: 10
       };
       employerServices.myProjects(options).then(res => {
-        this.dataUserManagement = res.data.data?.projects;
-        this.paginationData = res.data.data?.pagination;
+        this.dataUserManagement = res.data.data?.data;
+        this.paginationData = res.data.data;
       });
     },
     changePage(currentPage) {
@@ -67,7 +67,7 @@ export default {
         perPage: 10
       };
       employerServices.myProjects(options).then(res => {
-        this.dataUserManagement = res.data.data?.projects;
+        this.dataUserManagement = res.data.data?.data;
         this.page = currentPage;
       });
     },

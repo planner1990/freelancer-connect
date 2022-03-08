@@ -1,3 +1,4 @@
+import axios from "axios";
 export default {
   name: "new-blog",
   components: {},
@@ -5,6 +6,7 @@ export default {
   data() {
     return {
       model: 0,
+      posts: [],
       lastArticles: [
         {
           category: "امنیت و شبکه",
@@ -32,5 +34,15 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {},
+  created() {
+    axios
+      .get(`https://connecta.ir/blog/index.php?rest_route=/wp/v2/posts`)
+      .then(response => {
+        this.posts = response?.data.slice(0, 3);
+      })
+      .catch(e => {
+        console.log(e.response);
+      });
+  }
 };

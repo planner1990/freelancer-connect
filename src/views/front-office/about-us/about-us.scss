@@ -1,3 +1,41 @@
-.about-us {
-
+@import "src/assets/styles/variable";
+@import "src/assets/styles/mixins";
+.about-us-back {
+  width: 100%;
+  height: 400px;
+  background-image: linear-gradient(
+      rgba(108, 108, 108, 0.28),
+      rgba(0, 0, 0, 0.07)
+    ),
+    url("../../../assets/image/Website Banners/بنرهای وب سایت/about-us.jpg");
+  transform: translateY(-77px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.first-slogan,
+.second-slogan {
+  font-size: 2vw;
+  color: $gray-100;
+  text-shadow: 5px 3px 9px #000000;
+  text-align: center;
+  @include small {
+    font-size: 1.3rem;
+  }
+}
+.brand-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 130px;
+    margin: 0 22px;
+  }
+  @include medium {
+    flex-direction: column;
+    img {
+      margin-bottom: 30px;
+      width: 100px;
+    }
+  }
 }

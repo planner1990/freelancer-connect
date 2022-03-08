@@ -46,7 +46,7 @@ export default {
         project_duration_id: this.getDataFromStore.detail.project_duration_id,
         price: this.getDataFromStore.detail.price,
         categories: this.getDataFromStore.activity.companyList,
-        skills: [],
+        skills: this.getDataFromStore.activity.skills,
         attachment_id: null
       };
       if (this.role === "employer") {

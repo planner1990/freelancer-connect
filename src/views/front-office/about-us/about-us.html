@@ -1,14 +1,12 @@
 <v-container class="faq" fluid>
   <v-row>
-    <v-col cols="12" class="text-center my-12">
-      <h1>درباره ما</h1>
-    </v-col>
-    <v-col cols="12" md="8" sm="12" class="text-center mx-auto mb-16">
-      <img
-        src="../../../assets/image/connecta-about-us.jpg"
-        style="width: 100%; height: 300px"
-        alt="کانکتا"
-      />
+    <v-col
+      cols="12"
+      md="12"
+      sm="12"
+      class="mx-auto pa-0 d-flex justify-center align-center about-us-back first-slogan"
+    >
+      <!--          درباره ما-->
     </v-col>
     <v-col cols="12" md="8" sm="12" class="text-center mx-auto mb-16">
       <p>
@@ -34,19 +32,32 @@
     <v-col cols="12" md="8" sm="12" class="text-center mx-auto mb-16">
       <h3>راه‌های ارتباطی با ما</h3>
       <div class="mt-5">
-        <v-icon class="ml-6" @click="goToPage('https://www.instagram.com/connecta_ir/')">
+        <v-icon
+          class="ml-6"
+          @click="goToPage('https://www.instagram.com/connecta_ir/')"
+        >
           mdi-instagram
         </v-icon>
-        <v-icon class="ml-6" @click="goToPage('https://www.linkedin.com/company/connecta-site')">
+        <v-icon
+          class="ml-6"
+          @click="goToPage('https://www.linkedin.com/company/connecta-site')"
+        >
           mdi-linkedin
         </v-icon>
-<!--        <v-icon class="ml-6">-->
-<!--          mdi-twitter-->
-<!--        </v-icon>-->
+        <!--        <v-icon class="ml-6">-->
+        <!--          mdi-twitter-->
+        <!--        </v-icon>-->
         <v-icon @click="goToPage('https://t.me/connectaofficial')">
           mdi-telegram
         </v-icon>
       </div>
+    </v-col>
+    <v-col cols="12" md="12" sm="12" class="text-center mx-auto mb-16 brand-logo">
+        <img src="../../../assets/image/brands-logo/Bitrah.png" alt="">
+        <img src="../../../assets/image/brands-logo/Excoino.png" alt="">
+        <img src="../../../assets/image/brands-logo/Ernyka.png" alt="">
+        <img src="../../../assets/image/brands-logo/FLIGHTIO.png" alt="">
+        <img src="../../../assets/image/brands-logo/Homsa.png" alt="">
     </v-col>
   </v-row>
 </v-container>

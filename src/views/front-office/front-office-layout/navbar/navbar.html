@@ -16,7 +16,7 @@
     <!--            <customizeTheme />-->
     <img
       class="header-logo"
-      src="../../../../assets/image/logo/1.png"
+      src="../../../../assets/image/logo/thumb-1.png"
       alt="connecta-logo"
       @click="goToHome"
     />
@@ -57,7 +57,7 @@
       </v-list>
       <v-divider class="divide-card" vertical></v-divider>
       <v-btn
-        color="white"
+        color="secondary"
         class="ml-5"
         text
         link
@@ -69,7 +69,7 @@
       <v-menu bottom min-width="200px" rounded offset-y v-if="role && user">
         <template v-slot:activator="{ on }">
           <v-btn text x-large v-on="on" class="mx-1 pa-0">
-            <v-icon size="30" color="white">
+            <v-icon size="30" color="secondary">
               mdi-chevron-down
             </v-icon>
             <v-avatar item size="38">

@@ -5,35 +5,6 @@
   <p>
     حوزه فعالیت خود را انتخاب کنید
   </p>
-  <!--    <v-combobox-->
-  <!--      v-model="projectForm.categories"-->
-  <!--      :items="activitiesList"-->
-  <!--      item-value="id"-->
-  <!--      item-text="title"-->
-  <!--      :search-input.sync="search"-->
-  <!--      hide-selected-->
-  <!--      hint="حداکثر ۵ گزینه میتوانید انتخاب کنید"-->
-  <!--      :label="$t('form.categories')"-->
-  <!--      multiple-->
-  <!--      persistent-hint-->
-  <!--      required-->
-  <!--      outlined-->
-  <!--      clearable-->
-  <!--      dense-->
-  <!--      small-chips-->
-  <!--      @change="selectCategories(projectForm.categories)"-->
-  <!--    >-->
-  <!--      <template v-slot:no-data>-->
-  <!--        <v-list-item>-->
-  <!--          <v-list-item-content>-->
-  <!--            <v-list-item-title>-->
-  <!--              موردی یافت نشد "<strong>{{ search }}</strong>". برای افزودن مهارت-->
-  <!--              مورد نظر <kbd>enter</kbd>را فشار دهید-->
-  <!--            </v-list-item-title>-->
-  <!--          </v-list-item-content>-->
-  <!--        </v-list-item>-->
-  <!--      </template>-->
-  <!--    </v-combobox>-->
   <v-select
     class="mb-4"
     :items="activitiesList"
@@ -51,6 +22,38 @@
       <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>
     </template>
   </v-select>
+  <v-combobox
+    v-model="projectForm.skills"
+    :items="skillsList"
+    item-value="title"
+    item-text="title"
+    :search-input.sync="search"
+    hide-selected
+    hint="حداکثر ۵ گزینه میتوانید انتخاب کنید"
+    :label="$t('form.skills')"
+    multiple
+    persistent-hint
+    required
+    outlined
+    dense
+    clearable
+    small-chips
+    deletable-chips
+    counter="5"
+    :rules="createProjectRule.skills"
+    @change="selectSkills(projectForm.skills)"
+  >
+    <template v-slot:no-data>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>
+            موردی یافت نشد "<strong>{{ search }}</strong>". برای افزودن مهارت
+            مورد نظر <kbd>enter</kbd>را فشار دهید
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </template>
+  </v-combobox>
   <v-card-actions class="pa-0 my-5">
     <v-btn
       color="teal accent-3"

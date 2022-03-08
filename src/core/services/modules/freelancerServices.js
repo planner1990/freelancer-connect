@@ -118,6 +118,10 @@ class freelancerServices {
   deleteService(body) {
     return API_V1.post("/freelancer/services/delete", body);
   }
+
+  deleteProposalRequest(id) {
+    return API_V1.delete(`/freelancer/proposals/${id}`);
+  }
 }
 
 export default new freelancerServices();

@@ -22,7 +22,7 @@
     background: transparent;
   }
   .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
-    color: var(--v-lightest-base) !important;
+    color: $secondary !important;
   }
   .v-icon {
     //color: var(--v-lightest-base) !important;
@@ -38,7 +38,8 @@
 }
 .second_background_navbar {
   .theme--light.v-app-bar.v-toolbar.v-sheet {
-    background-color: $background-navbar !important;
+    background-color: $surface-100 !important;
+    box-shadow: 0 1px 19px -1px rgb(0 0 0 / 55%) !important;
   }
 }
 
@@ -267,7 +268,7 @@
 
 .footer-front-office {
   width: 100%;
-  background-color: $gray-footer-background;
+  background-color: #0f0f0f;
   text-align: justify;
   &_top,
   &_bottom {
@@ -324,7 +325,8 @@
   &_bottom {
     min-height: 60px;
     line-height: 60px;
-    background-color: #222222;
+    background-color: #0f0f0f;
+    border-top: 1px solid $gray-footer-color;
     @include medium {
       line-height: unset;
     }
@@ -350,7 +352,7 @@
     }
     .copy-wright {
       font-size: 14px;
-      color: $light-green;
+      color: $gray-footer-color;
       width: 45%;
       @include small {
         width: 100% !important;

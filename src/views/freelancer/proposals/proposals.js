@@ -34,8 +34,8 @@ export default {
           sortable: false,
           align: "center"
         },
-        { text: "وضعیت", value: "status", sortable: false, align: "center" },
-        { text: "عملیات", value: "actions", sortable: false, align: "center" }
+        { text: "وضعیت", value: "status", sortable: false, align: "center" }
+        // { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataProposalTable: []
     };

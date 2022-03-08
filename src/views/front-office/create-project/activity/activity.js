@@ -11,9 +11,19 @@ export default {
       signInLoading: false,
       categories: [],
       activitiesList: [],
+      skillsList: [],
+      skills: [],
       search: null,
       projectForm: {
         categories: null
+      },
+      createProjectRule: {
+        categories: [v => !!v || "لطفا دسته‌بندی پروژه را مشخص کنید"],
+        skills: [
+          v => !!v || "مهارت مورد نیاز را انتخاب کنید",
+          v => (v && v.length >= 1) || "حداقل یک مورد را باید انتخاب کنید",
+          v => (v && v.length <= 5) || "تنها ۵ مورد را می توانید انتخاب کنید"
+        ]
       }
     };
   },
@@ -29,11 +39,13 @@ export default {
   mounted() {
     this.getActivitiesList();
     this.resetRegister();
+    this.getSkillsList();
   },
   methods: {
     goToActivity() {
       const activity = {
-        companyList: this.categories
+        companyList: this.categories,
+        skills: this.skills
       };
       this.$store.commit(types.storeRegisterForm.REGISTER_FORM_MUTATE, {
         activity
@@ -55,6 +67,22 @@ export default {
     getActivitiesList() {
       projectsService.activityTypes().then(res => {
         this.activitiesList = res.data.data;
+      });
+    },
+    selectSkills(list) {
+      let tempData = [];
+      for (let index = 0; index < list.length; index++) {
+        if (list[index].title) {
+          tempData.push(list[index].title);
+        } else {
+          tempData.push(list[index]);
+        }
+      }
+      return (this.skills = tempData);
+    },
+    getSkillsList() {
+      projectsService.skills().then(res => {
+        this.skillsList = res.data.data;
       });
     }
   },

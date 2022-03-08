@@ -5,11 +5,13 @@
       no-gutters
     >
       <v-col cols="9">
-        <div class="best-project-title">جدیدترین <strong>مقالات در وبلاگ کانکتا</strong></div>
-<!--        <div class="mt-5 text-font">-->
-<!--          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده-->
-<!--          از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله-->
-<!--        </div>-->
+        <div class="best-project-title">
+          جدیدترین <strong>مقالات در وبلاگ کانکتا</strong>
+        </div>
+        <!--        <div class="mt-5 text-font">-->
+        <!--          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده-->
+        <!--          از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله-->
+        <!--        </div>-->
       </v-col>
     </v-row>
     <v-row
@@ -21,32 +23,36 @@
         sm="5"
         xs="11"
         :class="`best-freelancer-card width_31 d-flex flex-column mx-2 my-sm-2 pa-0 pb-4`"
-        v-for="article in lastArticles"
-        :key="article.title"
+        v-for="(article, index) in posts"
+        :key="index"
       >
         <div class="d-flex justify-center">
           <div class="detail-container">
             <v-img
               max-height="200"
-              :src="require(`../../assets/image/best-project/${article.image}`)"
+              :src="require(`../../assets/image/best-project/تبلیغات.jpg`)"
             />
             <div class="best-freelancer-card_name px-2 mt-6 mb-2">
               <v-icon class="px-1" color="primary" dense
                 >mdi-check-decagram</v-icon
               >
-                دسته‌بندی پروژه: {{article.category}}
+              دسته‌بندی پروژه:
+              <span v-for="cat in article.categories">{{cat}}</span>
             </div>
-            <div class="best-freelancer-card_title mb-6 px-4">
-              {{article.title | readMore(150, "...")}}
+            <div class="best-freelancer-card_title px-4">
+              {{article.title['rendered'] | readMore(50, "...")}}
+            </div>
+            <div class="mb-6 px-4 text-justify">
+              {{article.excerpt['rendered'] | readMore(100, "...")}}
             </div>
           </div>
         </div>
         <!--        <v-divider v-if="isService" class="divide-card"></v-divider>-->
-        <div class="best-freelancer-card_detail px-4">
-          <v-icon class="px-1" color="grey lighten-1" dense
-            >mdi-calendar-month</v-icon
-          >{{ article.date }} - {{ article.time }}
-        </div>
+        <!--        <div class="best-freelancer-card_detail px-4">-->
+        <!--          <v-icon class="px-1" color="grey lighten-1" dense-->
+        <!--            >mdi-calendar-month</v-icon-->
+        <!--          >{{ article.date }} - {{ article.time }}-->
+        <!--        </div>-->
       </v-col>
     </v-row>
   </v-container>
