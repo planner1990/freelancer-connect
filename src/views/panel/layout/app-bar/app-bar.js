@@ -14,7 +14,7 @@ export default {
       // { text: "navbar.browseServices", route: "/browse-services" },
       { text: "navbar.browseProjects", route: "/browse-projects" }
     ],
-    baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,
+    baseURL: "https://connecta.ir",
     showSidebar: null,
     selectedItem: 0
   }),

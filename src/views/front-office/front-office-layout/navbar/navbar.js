@@ -14,7 +14,7 @@ export default {
   props: [],
   data: () => ({
     showSidebar: false,
-    baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,
+    baseURL: "https://connecta.ir",
     selectedItem: 0,
     items: [
       { text: "navbar.home", route: "/" },

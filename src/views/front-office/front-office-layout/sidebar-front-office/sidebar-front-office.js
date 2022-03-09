@@ -12,7 +12,7 @@ export default {
   props: [],
 
   data: () => ({
-    baseURL: process.env.VUE_APP_PUBLIC_BASE_URL,
+    baseURL: "https://connecta.ir",
     show: false,
     mini: false,
     toggle: false,
