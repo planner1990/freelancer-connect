@@ -1,4 +1,4 @@
-<div class="best-freelancer">
+<div class="best-freelancer new-article">
   <v-container class="pl-0">
     <v-row
       class="d-flex flex-column justify-start align-center text-center"
@@ -30,7 +30,7 @@
           <div class="detail-container">
             <v-img
               max-height="200"
-              :src="require(`../../assets/image/best-project/تبلیغات.jpg`)"
+              :src="`${article['_embedded']['wp:featuredmedia'][0]['source_url']}`"
             />
             <div class="best-freelancer-card_name px-2 mt-6 mb-2">
               <v-icon class="px-1" color="primary" dense
@@ -39,12 +39,17 @@
               دسته‌بندی پروژه:
               <span v-for="cat in article.categories">{{cat}}</span>
             </div>
-            <div class="best-freelancer-card_title px-4">
-              {{article.title['rendered'] | readMore(50, "...")}}
+            <div
+              class="best-freelancer-card_title px-4"
+              @click="goToArticlePage(article.guid)"
+            >
+              {{article.title['rendered'] | readMore(35, "...")}}
             </div>
-            <div class="mb-6 px-4 text-justify">
-              {{article.excerpt['rendered'] | readMore(100, "...")}}
-            </div>
+            <div
+              class="mb-6 px-4 text-justify"
+              @click="goToArticlePage(article.guid)"
+              v-html="jsonMethod(article.excerpt['rendered'])"
+            ></div>
           </div>
         </div>
         <!--        <v-divider v-if="isService" class="divide-card"></v-divider>-->

@@ -559,3 +559,10 @@ input[type="number"] {
     text-align: justify;
   }
 }
+
+.new-article {
+  .v-image__image--cover {
+    background-size: contain !important;
+    background-position: top !important;
+  }
+}

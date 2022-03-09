@@ -7,6 +7,7 @@ export default {
     return {
       model: 0,
       posts: [],
+      summaries: "",
       lastArticles: [
         {
           category: "امنیت و شبکه",
@@ -34,10 +35,19 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {},
+  methods: {
+    jsonMethod(message) {
+      return (this.summaries = message.slice(0, 150) + "...");
+    },
+    goToArticlePage(url) {
+      window.open(url.rendered, "_target");
+    }
+  },
   created() {
     axios
-      .get(`https://connecta.ir/blog/index.php?rest_route=/wp/v2/posts`)
+      .get(
+        `https://connecta.ir/blog/?rest_route=/wp/v2/posts&_embed&per_page=4`
+      )
       .then(response => {
         this.posts = response?.data.slice(0, 3);
       })
