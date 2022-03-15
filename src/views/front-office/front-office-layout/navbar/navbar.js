@@ -68,7 +68,11 @@ export default {
     },
     getCurrentRoute() {
       this.routeName = this.$route.name;
-      if (this.routeName === "browse-projects") {
+      if (this.routeName === "home") {
+        this.items = [
+          { text: "navbar.browseProjects", route: "/browse-projects" }
+        ];
+      } else {
         this.items = [
           { text: "navbar.home", route: "/" },
           { text: "navbar.browseProjects", route: "/browse-projects" }

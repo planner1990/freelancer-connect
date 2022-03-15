@@ -213,11 +213,11 @@ export default {
     updateProfile() {
       this.showSnackbar = false;
       const body = {
-        first_name: this.profileInfo.user["first_name"],
-        last_name: this.profileInfo.user["last_name"],
+        first_name: this.profileInfo?.user["first_name"],
+        last_name: this.profileInfo?.user["last_name"],
         gender: this.profileForm.gender,
         attachments: this.attachments,
-        category_id: this.profileInfo.user["category_id"]
+        category_id: this.profileInfo?.user["category_id"]
       };
       freelancerServices.updateProfile(body).then(res => {
         if (res) {

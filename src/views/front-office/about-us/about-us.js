@@ -6,7 +6,9 @@ export default {
     return {};
   },
   computed: {},
-  mounted() {},
+  mounted() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  },
   methods: {
     goToPage(link) {
       window.open(link, "_blank");

@@ -86,7 +86,7 @@
     "projectTitle": "عنوان پروژه",
     "price": "هزینه تخمینی به ریال",
     "duration": "مدت زمان",
-    "categories": "انتخاب دسته‌بندی پروژه",
+    "categories": "انتخاب نوع فعالیت",
     "skills": "انتخاب مهارت‌های مورد نیاز",
     "pending": "در انتظار تایید",
     "completed": "تکمیل شده",
@@ -98,11 +98,11 @@
     "bannerImage": "تصویر بنر",
     "uploadImage": "بارگذاری تصویر",
     "startSearch": "شروع جستجو",
-    "servicesSearch": "جستجوی خدمات",
+    "projectsSearch": "جستجوی پروژه‌ها",
     "priceRange": "بازه قیمت",
     "ImLookingFor": "من به دنبال",
     "applyLatestChanges": "به روز رسانی تغییرات",
-    "applyFilter": "به روز رسانی تغییرات",
+    "applyFilter": "جستجو",
     "priceRangeBetweenToNum": "بازه بین {min} تومان تا {max} تومان"
   },
   "navbar": {
