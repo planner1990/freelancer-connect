@@ -77,17 +77,17 @@
         </v-list-item-content>
       </v-card>
     </v-menu>
-    <v-btn
-      class="create-project_button mb-3"
-      color="teal accent-3"
-      dark
-      block
-      @click="goToCreateProject"
-    >
-      {{$t('navbar.createProject')}}
-    </v-btn>
+<!--    <v-btn-->
+<!--      class="create-project_button mb-3"-->
+<!--      color="teal accent-3"-->
+<!--      dark-->
+<!--      block-->
+<!--      @click="goToCreateProject"-->
+<!--    >-->
+<!--      {{$t('navbar.createProject')}}-->
+<!--    </v-btn>-->
   </div>
-  <v-divider class="divide-card-side"></v-divider>
+<!--  <v-divider class="divide-card-side"></v-divider>-->
   <v-list nav dense>
     <v-list-item-group v-model="selectedItem" color="teal accent-3">
       <v-list-item v-for="(item, i) in items" link :to="item.route" :key="i">

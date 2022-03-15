@@ -1,60 +1,74 @@
-<section class="home-page-hero d-flex flex-column align-center justify-center">
-  <v-container class="py-15">
-    <v-row class="flex-column slogan">
-      <v-col
-        cols="12"
-        md="6"
-        sm="11"
-        class="mx-auto text-center pa-0 first-slogan"
-      >
-        با حضور فریلنسرهای متخصص در کانکتا،
-      </v-col>
-      <v-col
-        cols="12"
-        md="6"
-        sm="11"
-        class="mx-auto pa-0 font-weight-bold text-center second-slogan"
-      >
-        برونسپاری مطمئن را تجربه کنید.
-      </v-col>
-      <div class="col-md-6 col-sm-11 offset-md-3 text-center my-6 third-slogan">
-        کانکتا، ارتباطی که می‌ماند.
-      </div>
-      <v-col cols="12" md="6" sm="11" class="mx-auto pa-0 d-md-flex d-sm-block">
-        <!--        <div-->
-        <!--          class="col-md-4 col-sm-12 pa-md-0 px-sm-15 select-category-hero pb-0"-->
-        <!--        >-->
-        <!--          <v-select-->
-        <!--            class="pb-0"-->
-        <!--            :items="items"-->
-        <!--            placeholder="انتخاب کنید"-->
-        <!--            outlined-->
-        <!--          >-->
-        <!--            <template v-slot:append>-->
-        <!--              <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>-->
-        <!--            </template>-->
-        <!--          </v-select>-->
-        <!--        </div>-->
-        <div class="col-md-12 pa-md-0 col-sm-12 px-sm-15 d-md-flex d-sm-block">
-          <v-text-field
-            v-model="searchParams"
-            placeholder="جستجو بر اساس عنوان و توضیحات پروژه..."
-            outlined
-            @keyup.enter="goToSearchPage"
-          ></v-text-field>
-          <v-btn
-            shaped
-            color="teal accent-3"
-            dark
-            class="col-md-1 col-sm-12"
-            @click="goToSearchPage"
-          >
-            <v-icon>
-              mdi-magnify
-            </v-icon>
-          </v-btn>
+<div class="hero">
+<!--    <img src="../../assets/image/Website Banners/بنرهای وب سایت/home-page.jpg" alt="">-->
+  <section
+    class="home-page-hero d-flex flex-column align-center justify-center"
+  >
+    <v-container class="py-15">
+      <v-row class="flex-column slogan">
+        <v-col
+          cols="12"
+          md="6"
+          sm="11"
+          class="mx-auto text-center pa-0 first-slogan"
+        >
+          با حضور فریلنسرهای متخصص در کانکتا،
+        </v-col>
+        <v-col
+          cols="12"
+          md="6"
+          sm="11"
+          class="mx-auto pa-0 font-weight-bold text-center second-slogan"
+        >
+          برونسپاری مطمئن را تجربه کنید.
+        </v-col>
+        <div
+          class="col-md-6 col-sm-11 offset-md-3 text-center my-6 third-slogan"
+        >
+          کانکتا، ارتباطی که می‌ماند.
         </div>
-      </v-col>
-    </v-row>
-  </v-container>
-</section>
+        <v-col
+          cols="12"
+          md="6"
+          sm="11"
+          class="mx-auto pa-0 d-md-flex d-sm-block"
+        >
+          <!--        <div-->
+          <!--          class="col-md-4 col-sm-12 pa-md-0 px-sm-15 select-category-hero pb-0"-->
+          <!--        >-->
+          <!--          <v-select-->
+          <!--            class="pb-0"-->
+          <!--            :items="items"-->
+          <!--            placeholder="انتخاب کنید"-->
+          <!--            outlined-->
+          <!--          >-->
+          <!--            <template v-slot:append>-->
+          <!--              <v-icon color="grey lighten-1">mdi-chevron-down</v-icon>-->
+          <!--            </template>-->
+          <!--          </v-select>-->
+          <!--        </div>-->
+          <div
+            class="col-md-12 pa-md-0 col-sm-12 px-sm-15 d-md-flex d-sm-block"
+          >
+            <v-text-field
+              v-model="searchParams"
+              placeholder="جستجو بر اساس عنوان و توضیحات پروژه..."
+              outlined
+              @keyup.enter="goToSearchPage"
+            ></v-text-field>
+            <v-btn
+              shaped
+              color="teal accent-3"
+              dark
+              class="col-md-1 col-sm-12"
+              @click="goToSearchPage"
+            >
+              <v-icon>
+                mdi-magnify
+              </v-icon>
+            </v-btn>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </section>
+</div>

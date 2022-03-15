@@ -8,17 +8,43 @@
     app
     flat
   >
-    <v-app-bar-nav-icon
-      @click="drawer()"
-      v-if="showSidebar"
-    ></v-app-bar-nav-icon>
-    <!--            <customizeTheme />-->
-    <img
-      class="header-logo"
-      src="../../../../assets/image/logo/thumb-1.png"
-      alt="connecta-logo"
-      @click="goToHome"
-    />
+    <div class="navbar-container">
+      <div>
+        <v-app-bar-nav-icon
+          @click="drawer()"
+          v-if="showSidebar"
+        ></v-app-bar-nav-icon>
+      </div>
+      <!--            <customizeTheme />-->
+      <!--      <div class="d-flex justify-center align-center">-->
+      <!--        <img-->
+      <!--          class="header-logo"-->
+      <!--          src="../../../../assets/image/logo/thumb-1.png"-->
+      <!--          alt="connecta-logo"-->
+      <!--          @click="goToHome"-->
+      <!--        />-->
+      <!--      </div>-->
+      <div class="logo-header-container">
+        <img
+          class="header-logo"
+          src="../../../../assets/image/logo/thumb-1.png"
+          alt="connecta-logo"
+          @click="goToHome"
+        />
+      </div>
+      <div v-if="showSidebar">
+        <v-btn
+          class="create-project_button"
+          color="teal accent-3"
+          dark
+          @click="goToCreateProject"
+          v-if="role !== 'freelancer'"
+        >
+          {{$t('navbar.createProject')}}
+        </v-btn>
+      </div>
+    </div>
+
     <!--    <v-toolbar-title data-v-step="0"></v-toolbar-title>-->
     <v-spacer></v-spacer>
     <!--        <v-btn icon large>-->

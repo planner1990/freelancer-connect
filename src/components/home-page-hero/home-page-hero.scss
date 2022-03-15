@@ -1,21 +1,22 @@
 @import "src/assets/styles/variable";
 @import "src/assets/styles/mixins";
 .home-page-hero {
-  width: 100%;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   background-image: linear-gradient(
       rgba(108, 108, 108, 0.28),
       rgba(0, 0, 0, 0.07)
     ),
     url("../../assets/image/Website Banners/بنرهای وب سایت/home-page.jpg");
-  transform: translateY(-77px);
+  transform: translateY(-55px);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
   @include small {
     background-image: linear-gradient(
         rgba(108, 108, 108, 0.88),
-                    rgba(0, 0, 0, 0.38)
+        rgba(0, 0, 0, 0.38)
       ),
       url("../../assets/image/mobile-view/412.915       mobile view هوم پیج.jpg");
     background-color: red;
