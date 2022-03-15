@@ -24,7 +24,8 @@ export default {
         "لاراول",
         "ویو جی اس",
         "جاوا"
-      ]
+      ],
+      searchParams: ""
     };
   },
   computed: {},
@@ -33,6 +34,14 @@ export default {
     setSlider(e) {
       this.min = e[0];
       this.max = e[1];
+    },
+    goToSearchPage() {
+      if (this.searchParams.length >= 3) {
+        this.$router.push({
+          path: `/search`,
+          query: { value: this.searchParams }
+        });
+      }
     }
   }
 };

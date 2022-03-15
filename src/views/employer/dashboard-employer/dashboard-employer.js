@@ -52,7 +52,7 @@ export default {
         {
           src: "اپلیکیشن",
           notification: 0,
-          title: "تراکنش‌ها",
+          title: "پرداخت",
           routeName: "employer-transactions"
         }
         // {

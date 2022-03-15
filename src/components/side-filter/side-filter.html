@@ -4,12 +4,21 @@
       <!--      <strong>{{ $t('form.startSearch') }}</strong>-->
       <!--      <v-divider class="divide-card"></v-divider>-->
       <v-text-field
-        :label="$t('form.projectsSearch')"
+        placeholder="جستجو بر اساس عنوان و توضیحات پروژه..."
         outlined
         class="mt-8"
         dense
+        v-model="searchParams"
+        @keyup.enter="goToSearchPage"
       ></v-text-field>
-      <v-btn style="max-width: 150px" depressed color="primary" class="mx-auto" block>
+      <v-btn
+        style="max-width: 150px"
+        depressed
+        color="primary"
+        class="mx-auto"
+        block
+        @click="goToSearchPage"
+      >
         {{ $t('form.applyFilter') }}
       </v-btn>
     </v-col>

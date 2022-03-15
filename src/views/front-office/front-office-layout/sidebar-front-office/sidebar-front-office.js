@@ -22,11 +22,6 @@ export default {
     selectedItem: 0,
     items: [
       {
-        text: "navbar.browseServices",
-        route: "/browse-services",
-        icon: "mdi-order-bool-ascending-variant"
-      },
-      {
         text: "navbar.browseProjects",
         route: "/browse-projects",
         icon: "mdi-book-open-variant"
