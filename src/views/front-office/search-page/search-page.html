@@ -4,7 +4,12 @@
   >
     <v-container>
       <v-row class="flex-column text-center">
-        <v-col cols="12" md="6" sm="11" class="mx-auto pa-0 first-slogan">
+        <v-col
+          cols="12"
+          md="6"
+          sm="11"
+          class="mx-auto pa-0 first-slogan font-weight-bold mt-16"
+        >
           پروژه‌های موجود در کانکتا
         </v-col>
       </v-row>
@@ -14,41 +19,41 @@
   <section>
     <v-container style="margin-top: -20px;">
       <v-row no-gutters class="mobile-filter">
-        <v-col>
-          <v-container class="side-filter">
-            <v-row>
-              <v-col cols="12" class="side-filter-card">
-                <div class="employer-projects-card-title">دسته بندی ها</div>
-                <div
-                  class="col-md-12 pa-md-0 col-sm-12 px-md-0 px-sm-15 d-md-flex d-sm-block mt-8"
-                >
-                  <v-text-field
-                    placeholder="جستجوی دسته..."
-                    outlined
-                    dense
-                  ></v-text-field>
-                </div>
-                <div class="category-checkbox">
-                  <v-checkbox
-                    v-for="(item, index) in checkboxLabel"
-                    :key="index"
-                    :label="item"
-                    :ripple="false"
-                  ></v-checkbox>
-                </div>
-                <v-divider class="divide-card"></v-divider>
-                <div class="my-5">
-                  <v-btn depressed outlined block color="secondary">
-                    {{ $t('form.applyFilter') }}
-                  </v-btn>
-                </div>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-col>
-        <v-col cols="12" sm="12" md="9">
+        <!--        <v-col>-->
+        <!--          <v-container class="side-filter">-->
+        <!--            <v-row>-->
+        <!--              <v-col cols="12" class="side-filter-card">-->
+        <!--                <div class="employer-projects-card-title">دسته بندی ها</div>-->
+        <!--                <div-->
+        <!--                  class="col-md-12 pa-md-0 col-sm-12 px-md-0 px-sm-15 d-md-flex d-sm-block mt-8"-->
+        <!--                >-->
+        <!--                  <v-text-field-->
+        <!--                    placeholder="جستجوی دسته..."-->
+        <!--                    outlined-->
+        <!--                    dense-->
+        <!--                  ></v-text-field>-->
+        <!--                </div>-->
+        <!--                <div class="category-checkbox">-->
+        <!--                  <v-checkbox-->
+        <!--                    v-for="(item, index) in checkboxLabel"-->
+        <!--                    :key="index"-->
+        <!--                    :label="item"-->
+        <!--                    :ripple="false"-->
+        <!--                  ></v-checkbox>-->
+        <!--                </div>-->
+        <!--                <v-divider class="divide-card"></v-divider>-->
+        <!--                <div class="my-5">-->
+        <!--                  <v-btn depressed outlined block color="secondary">-->
+        <!--                    {{ $t('form.applyFilter') }}-->
+        <!--                  </v-btn>-->
+        <!--                </div>-->
+        <!--              </v-col>-->
+        <!--            </v-row>-->
+        <!--          </v-container>-->
+        <!--        </v-col>-->
+        <v-col cols="12">
           <v-row class="justify-space-between">
-            <v-col cols="12" md="7" class="pr-10">
+            <v-col cols="12" md="7" class="pr-10 d-flex">
               <v-text-field
                 placeholder="جستجو بر اساس عنوان و توضیحات پروژه..."
                 outlined
@@ -58,6 +63,13 @@
                 v-model="searchText"
                 @keyup.enter="showSearchResult"
               ></v-text-field>
+              <v-btn
+                color="primary"
+                class="mx-2"
+                style="margin-top: 1px"
+                @click="showSearchResult"
+                >جستجو</v-btn
+              >
             </v-col>
             <v-col cols="12" md="3" class="pr-10">
               <v-select
@@ -90,7 +102,9 @@
                         class="divide-card-title mx-2"
                         vertical
                       ></v-divider>
-                      <div>۲ روز پیش</div>
+                      <div>
+                        {{result.created_at | changeDate | persianDigit}}
+                      </div>
                     </div>
                     <div class="employer-projects-card-title">
                       {{result.title}}
@@ -114,11 +128,11 @@
                   <div
                     class="d-flex flex-column employer-projects-card-left pa-5"
                   >
-                    <div style="transform: translate(-106px, -23px);">
-                      <v-icon dense>
-                        mdi-heart-outline
-                      </v-icon>
-                    </div>
+                    <!--                    <div style="transform: translate(-106px, -23px);">-->
+                    <!--                      <v-icon dense>-->
+                    <!--                        mdi-heart-outline-->
+                    <!--                      </v-icon>-->
+                    <!--                    </div>-->
                     <div>
                       <span class="mx-4 employer-projects-card-budget"
                         >بودجه پروژه</span
