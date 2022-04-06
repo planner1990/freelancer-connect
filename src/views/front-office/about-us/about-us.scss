@@ -14,10 +14,10 @@
   background-size: cover;
   @include medium {
     background-image: linear-gradient(
-                    rgba(108, 108, 108, 0.28),
-                    rgba(0, 0, 0, 0.07)
-    ),
-    url("../../../assets/image/mobile-view/412.915   mobile view  درباره ما.jpg");
+        rgba(108, 108, 108, 0.28),
+        rgba(0, 0, 0, 0.07)
+      ),
+      url("../../../assets/image/mobile-view/412.915   mobile view  درباره ما.jpg");
   }
 }
 .first-slogan,
@@ -46,4 +46,8 @@
       width: 100px;
     }
   }
+}
+ul {
+  text-align: right;
+  margin-top: 14px;
 }
