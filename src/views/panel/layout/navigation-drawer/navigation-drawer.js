@@ -161,12 +161,12 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
-            },
-            {
-              title: "messageCenter",
-              route: "/freelancer/message-center",
-              symbol: "mdi-message-bulleted"
             }
+            // {
+            //   title: "messageCenter",
+            //   route: "/freelancer/message-center",
+            //   symbol: "mdi-message-bulleted"
+            // }
             // {
             //   title: "manageServices",
             //   symbol: "mdi-cog-transfer-outline",
@@ -290,12 +290,12 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
-            },
-            {
-              title: "messageCenter",
-              route: "/employer/message-center",
-              symbol: "mdi-message-bulleted"
             }
+            // {
+            //   title: "messageCenter",
+            //   route: "/employer/message-center",
+            //   symbol: "mdi-message-bulleted"
+            // }
             // {
             //   title: "manageServices",
             //   symbol: "mdi-cog-transfer-outline",
