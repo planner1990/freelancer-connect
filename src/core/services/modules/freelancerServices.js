@@ -122,6 +122,10 @@ class freelancerServices {
   deleteProposalRequest(id) {
     return API_V1.delete(`/freelancer/proposals/${id}`);
   }
+
+  showMessage(params) {
+    return API_V1.get(`freelancer/notifications`, { params });
+  }
 }
 
 export default new freelancerServices();

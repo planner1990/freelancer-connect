@@ -110,6 +110,10 @@ class employerServices {
   deleteProject(body) {
     return API_V1.post("/employer/projects/delete", body);
   }
+
+  showMessageEmployer(params) {
+    return API_V1.get(`employer/notifications`, { params });
+  }
 }
 
 export default new employerServices();

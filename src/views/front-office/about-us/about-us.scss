@@ -8,7 +8,7 @@
       rgba(0, 0, 0, 0.07)
     ),
     url("../../../assets/image/Website Banners/بنرهای وب سایت/about-us.jpg");
-  transform: translateY(-77px);
+  transform: translateY(-40px);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,6 +37,7 @@
   img {
     width: 130px;
     margin: 0 22px;
+    cursor: pointer;
   }
   @include medium {
     flex-direction: column;

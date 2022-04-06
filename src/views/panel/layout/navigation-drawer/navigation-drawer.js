@@ -85,11 +85,6 @@ export default {
               symbol: "mdi-view-dashboard-variant"
             },
             // {
-            //   title: "messageCenter",
-            //   route: "/freelancer/message-center",
-            //   symbol: "mdi-message-bulleted"
-            // },
-            // {
             //   title: "myServices",
             //   route: "/freelancer/my-services",
             //   symbol: "mdi-folder-star-multiple-outline"
@@ -166,6 +161,11 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
+            },
+            {
+              title: "messageCenter",
+              route: "/freelancer/message-center",
+              symbol: "mdi-message-bulleted"
             }
             // {
             //   title: "manageServices",
@@ -218,11 +218,6 @@ export default {
               route: "/employer/dashboard",
               symbol: "mdi-view-dashboard-variant"
             },
-            // {
-            //   title: "messageCenter",
-            //   route: "/employer/message-center",
-            //   symbol: "mdi-message-bulleted"
-            // },
             {
               title: "myProjects",
               route: "/employer/my-projects",
@@ -295,6 +290,11 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
+            },
+            {
+              title: "messageCenter",
+              route: "/employer/message-center",
+              symbol: "mdi-message-bulleted"
             }
             // {
             //   title: "manageServices",

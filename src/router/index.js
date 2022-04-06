@@ -378,6 +378,12 @@ const routes = [
         component: () => import("../views/employer/dashboard-employer/index")
       },
       {
+        path: "message-center",
+        name: "message-center",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/employer/message-center/index")
+      },
+      {
         path: "post-job",
         name: "post-job",
         meta: { transitionName: "slide" },

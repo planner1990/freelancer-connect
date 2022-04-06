@@ -1,5 +1,5 @@
 import DashboardCard from "../../../components/dashboardCard/index";
-import { freelancerServices } from "../../../core/services";
+import { employerServices } from "../../../core/services";
 export default {
   name: "message-center",
   components: { DashboardCard },
@@ -18,7 +18,7 @@ export default {
       const params = {
         page: 1
       };
-      freelancerServices.showMessage(params).then(res => {
+      employerServices.showMessageEmployer(params).then(res => {
         this.messagesList = res.data?.data.data;
       });
     }
