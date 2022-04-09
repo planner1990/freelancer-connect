@@ -1,6 +1,6 @@
 import { mapActions, mapGetters } from "vuex";
 import * as types from "../../shared/store/types";
-import { projectsService } from "@/core/services";
+import { projectsService, profileServices } from "@/core/services";
 
 export default {
   name: "employer-projects",
@@ -9,7 +9,32 @@ export default {
   data() {
     return {
       length: 3,
-      page: 1
+      page: 1,
+      items: ["Foo", "Bar", "Fizz", "Buzz"],
+      value: [0, 1000],
+      min: 0,
+      max: 1000,
+      checkboxLabel: [
+        "موبایل",
+        "دیجیتال مارکتینگ",
+        "کپی رایتینگ",
+        "ویدیو",
+        "انیمیشن",
+        "طراحی وب",
+        "یو آی",
+        "یو ایکس",
+        "وب",
+        "گرافیک",
+        "بک اند",
+        "فرانت اند",
+        "پی اچ پی",
+        "لاراول",
+        "ویو جی اس",
+        "جاوا"
+      ],
+      category: 0,
+      searchResult: [],
+      searchText: ""
     };
   },
   computed: {
@@ -24,7 +49,7 @@ export default {
             id: item.id,
             title: item.title,
             description: item.description,
-            price: item.min_price,
+            price: item.price,
             image: item["attachments"],
             username: item.username,
             skills: item.skills,
@@ -40,7 +65,9 @@ export default {
       }
     }
   },
-  mounted() {},
+  mounted() {
+    this.showSearchTypeIndex();
+  },
   methods: {
     ...mapActions({
       setBrowseProjectData:
@@ -60,11 +87,30 @@ export default {
     goToDetail(id) {
       this.$router.push(`/project-details/${id}`);
     },
-    goToSearchPage(skill) {
-      this.$router.push({
-        path: `/search`,
-        query: { value: skill }
+    showSearchTypeIndex() {
+      profileServices.searchTypesIndex().then(res => {
+        this.items = res.data.data;
       });
+    },
+    showSearchResult() {
+      const options = {
+        text: this.searchText,
+        type: this.category
+      };
+      profileServices.search(options).then(res => {
+        this.searchResult = res.data?.data.data;
+      });
+    },
+    changeCategory() {
+      this.showSearchResult();
+    },
+    goToSearchPage() {
+      if (this.searchText.length >= 3) {
+        this.$router.push({
+          path: `/search`,
+          query: { value: this.searchText }
+        });
+      }
     }
   }
 };

@@ -19,6 +19,9 @@ class profileServices {
   searchTypesIndex() {
     return API_V1.get(`/search/index`);
   }
+  getInfo() {
+    return API_V1.get(`/users/info`);
+  }
 }
 
 export default new profileServices();

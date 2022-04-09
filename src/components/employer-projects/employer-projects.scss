@@ -1,11 +1,106 @@
+//@import "src/assets/styles/variable";
+//@import "src/assets/styles/mixins";
+//.employer-projects {
+//  &-card {
+//    height: 280px;
+//    background-color: $surface-100;
+//    border-radius: 6px;
+//    box-shadow: 2px 2px 38px -25px rgba(0, 0, 0, 0.72);
+//    transition: all 300ms;
+//    @include small {
+//      flex-wrap: wrap;
+//      height: unset;
+//      background-color: transparent;
+//      .v-divider--vertical {
+//        display: none;
+//      }
+//    }
+//    &:hover {
+//      box-shadow: 12px 12px 45px -16px rgb(0 0 0 / 72%);
+//    }
+//    .divide-card {
+//      margin: 0;
+//    }
+//    &-name {
+//      font-size: 14px;
+//      color: $surface-600;
+//    }
+//    &-title {
+//      font-size: 16px;
+//      font-weight: 400;
+//    }
+//    &-description {
+//      font-size: 14px;
+//      color: $surface-200;
+//      margin-top: 12px;
+//      min-height: 100px;
+//      overflow: hidden;
+//      @include small {
+//        min-height: 24px;
+//      }
+//    }
+//    &-right {
+//      width: 65%;
+//      background-color: #fdfcf2;
+//      border-radius: 8px;
+//      @include small {
+//        width: 100%;
+//      }
+//      button {
+//        border: 1px solid #ddd;
+//        font-size: 15px;
+//        color: $surface-200;
+//        border-radius: 20px;
+//        padding: 4px 18px;
+//        transition: all 300ms ease-in-out;
+//
+//        &:hover {
+//          background-color: $primary;
+//          color: $surface-100;
+//        }
+//      }
+//    }
+//    &-left {
+//      width: 35%;
+//      justify-content: space-evenly;
+//      font-size: 13px;
+//      @include small {
+//        width: 100%;
+//        background-color: #fdfcf2;
+//      }
+//    }
+//  }
+//}
+
 @import "src/assets/styles/variable";
 @import "src/assets/styles/mixins";
+.home-page-hero {
+  width: 100%;
+
+
+  .first-slogan,
+  .second-slogan {
+    font-size: 2vw;
+    color: $gray-100;
+    text-align: center;
+    @include small {
+      font-size: 1.3rem;
+    }
+  }
+  .third-slogan {
+    font-size: 1.5vw;
+    color: $gray-100;
+    @include small {
+      font-size: 20px;
+    }
+  }
+}
 .employer-projects {
   &-card {
-    height: 280px;
+    height: 248px;
     background-color: $surface-100;
-    border-radius: 6px;
-    box-shadow: 2px 2px 38px -25px rgba(0, 0, 0, 0.72);
+    border-radius: 4px;
+    border: 1px solid #dedede;
     transition: all 300ms;
     @include small {
       flex-wrap: wrap;
@@ -16,24 +111,38 @@
       }
     }
     &:hover {
-      box-shadow: 12px 12px 45px -16px rgb(0 0 0 / 72%);
-    }
-    .divide-card {
-      margin: 0;
+      box-shadow: 12px 12px 20px -16px rgba(0, 0, 0, 0.25);
     }
     &-name {
-      font-size: 14px;
+      font-size: 12px;
       color: $surface-600;
+      margin-bottom: 14px;
     }
     &-title {
       font-size: 16px;
+      font-weight: 600;
+    }
+    &-budget {
+      font-size: 14px;
       font-weight: 400;
+      color: #858586;
+    }
+    &-type {
+      font-size: 12px;
+      font-weight: 400;
+      color: $surface-200;
+      margin-top: 12px;
+      margin-bottom: 20px;
+      span {
+        color: $secondary;
+        font-weight: 600;
+      }
     }
     &-description {
       font-size: 14px;
       color: $surface-200;
       margin-top: 12px;
-      min-height: 100px;
+      min-height: 50px;
       overflow: hidden;
       @include small {
         min-height: 24px;
@@ -41,7 +150,6 @@
     }
     &-right {
       width: 65%;
-      background-color: #fdfcf2;
       border-radius: 8px;
       @include small {
         width: 100%;
@@ -49,9 +157,9 @@
       button {
         border: 1px solid #ddd;
         font-size: 15px;
-        color: $surface-200;
-        border-radius: 20px;
-        padding: 4px 18px;
+        color: #5498ab;
+        border-radius: 4px;
+        padding: 4px 12px;
         transition: all 300ms ease-in-out;
 
         &:hover {
@@ -62,12 +170,42 @@
     }
     &-left {
       width: 35%;
-      justify-content: space-evenly;
+      justify-content: center;
+      align-items: center;
       font-size: 13px;
+      margin-top: -38px;
       @include small {
         width: 100%;
         background-color: #fdfcf2;
       }
     }
   }
+}
+.side-filter {
+  &-card {
+    background-color: $surface-100;
+    border-radius: 4px;
+    strong {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .category-checkbox {
+      max-height: 190px;
+      overflow: auto;
+    }
+  }
+  .looking-for {
+    height: 60px;
+  }
+}
+.divide-card {
+  background-color: #f6f6f6;
+  width: 100%;
+  margin: 14px 0;
+}
+.divide-card-title {
+  background-color: #f6f6f6;
+  width: 100%;
+  height: 20px;
+  margin: 0;
 }

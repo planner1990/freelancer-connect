@@ -1,79 +1,117 @@
-<section class="employer-projects">
-  <v-container>
-    <v-row
-      class="justify-center mt-2 mb-8"
-      v-for="projectList in showServices"
-      :key="projectList.id"
-    >
-      <v-col cols="11" class="d-flex employer-projects-card pa-0">
-        <div class="employer-projects-card-right pa-5">
-          <div class="employer-projects-card-name">
-<!--            <v-icon dense color="primary">-->
-<!--              mdi-check-circle-->
-<!--            </v-icon>-->
-            {{ projectList.username }}
-          </div>
-          <div class="employer-projects-card-title">
-            {{ projectList.title }}
-          </div>
-          <div class="employer-projects-card-description">
-            {{projectList.description | readMore(330, "...")}}
-          </div>
-          <div class="mt-8">
-            <button
-              class="ml-2"
-              v-for="(skill, index) in projectList.skills"
-              :key="index"
-              @click="goToSearchPage(skill)"
-            >
-              {{ skill }}
-            </button>
-          </div>
-        </div>
-        <v-divider class="divide-card" vertical></v-divider>
-        <div class="d-flex flex-column employer-projects-card-left pa-5">
-<!--          <div>-->
-<!--            <v-icon dense color="blue darken-2">-->
-<!--              mdi-folder-->
-<!--            </v-icon>-->
-<!--            <span class="mx-4">نوع پروژه</span>-->
-<!--          </div>-->
-          <div>
-            <v-icon dense color="error">
-              mdi-calendar-clock
-            </v-icon>
-            <span class="mx-4">{{ projectList.createAt | changeDate | persianDigit }}</span>
-          </div>
-<!--          <div>-->
-<!--            <v-icon dense color="purple darken-1">-->
-<!--              mdi-briefcase-->
-<!--            </v-icon>-->
-<!--            <span class="mx-4">کد پروژه: A1UDS262</span>-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <v-icon dense>-->
-<!--              mdi-heart-outline-->
-<!--            </v-icon>-->
-<!--            <span class="mx-4">افزودن به علاقمندی ها</span>-->
-<!--          </div>-->
-          <div class="mt-8">
-            <v-btn color="primary" block @click="goToDetail(projectList.id)">
-              نمایش پروژه
-            </v-btn>
-          </div>
-        </div>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col class="mt-8" v-if="getBrowseProjectData.total >= 11">
-        <v-pagination
-          color="primary"
-          :length="getBrowseProjectData['last_page']"
-          :total-visible="getBrowseProjectData.total"
-          v-model="getBrowseProjectData['current_page']"
-          @input="changePage($event)"
-        ></v-pagination>
-      </v-col>
-    </v-row>
-  </v-container>
-</section>
+<div>
+  <section
+    class="home-page-hero d-flex flex-column align-center justify-center"
+  ></section>
+
+  <section>
+    <v-container style="margin-top: 25px;">
+      <v-row no-gutters class="mobile-filter">
+        <v-col cols="12">
+          <v-row class="justify-space-between">
+            <v-col cols="12" md="7" class="pr-10 d-flex">
+              <v-text-field
+                placeholder="جستجو بر اساس عنوان و توضیحات پروژه..."
+                outlined
+                dense
+                background-color="white"
+                prepend-inner-icon="mdi-magnify"
+                v-model="searchText"
+                @keyup.enter="goToSearchPage"
+              ></v-text-field>
+              <v-btn
+                color="primary"
+                class="mx-2"
+                style="margin-top: 1px"
+                @click="goToSearchPage"
+                >جستجو</v-btn
+              >
+            </v-col>
+            <v-col cols="12" md="3" class="pr-10">
+              <v-select
+                v-model="category"
+                :items="items"
+                label="دسته‌بندی‌ها"
+                outlined
+                item-value="value"
+                item-text="title_fa"
+                dense
+                background-color="white"
+                @change="changeCategory"
+              ></v-select>
+            </v-col>
+          </v-row>
+          <section class="employer-projects">
+            <v-container class="pr-10">
+              <v-row>
+                <v-col
+                  v-for="(result, index) in showServices"
+                  :key="index"
+                  cols="12"
+                  class="d-flex employer-projects-card pa-0 mb-6"
+                  @click="goToDetail(result.id)"
+                >
+                  <div class="employer-projects-card-right pa-5">
+                    <div class="employer-projects-card-name d-flex">
+                      <div class="font-weight-bold">{{result.username}}</div>
+                      <v-divider
+                        class="divide-card-title mx-2"
+                        vertical
+                      ></v-divider>
+                      <div>
+                        {{result.created_at | changeDate | persianDigit}}
+                      </div>
+                    </div>
+                    <div class="employer-projects-card-title">
+                      {{result.title}}
+                    </div>
+                    <div class="employer-projects-card-description">
+                      {{result.description | readMore(150, "...")}}
+                    </div>
+                    <div class="mt-4">
+                      <button
+                        v-for="(skill, index) in result.skills"
+                        :key="index"
+                        class="ml-2"
+                      >
+                        {{skill}}
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="d-flex flex-column employer-projects-card-left pa-5"
+                  >
+                    <div>
+                      <span class="mx-4 employer-projects-card-budget"
+                        >بودجه پروژه</span
+                      >
+                    </div>
+                    <div class="mt-3 mb-5">
+                      <span class="mx-4 employer-projects-card-title"
+                        >{{ result.price | thousandMask | persianDigit }}
+                        ریال</span
+                      >
+                    </div>
+                  </div>
+                </v-col>
+                <v-col v-if="showServices.length === 0">
+                  <h3 class="text-center mt-1">موردی یافت نشد.</h3>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col class="mt-8" v-if="showServices.total >= 11">
+                  <v-pagination
+                    color="primary"
+                    :length="getBrowseProjectData['last_page']"
+                    :total-visible="getBrowseProjectData.total"
+                    v-model="getBrowseProjectData['current_page']"
+                    @input="changePage($event)"
+                  ></v-pagination>
+                </v-col>
+              </v-row>
+            </v-container>
+          </section>
+        </v-col>
+      </v-row>
+    </v-container>
+  </section>
+</div>

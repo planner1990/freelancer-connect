@@ -27,6 +27,7 @@ export default {
       ["Update", "mdi-update"],
       ["Delete", "mdi-delete"]
     ],
+    badgeCounter: "",
     profileInfo: {}
   }),
   computed: {
@@ -49,6 +50,7 @@ export default {
   },
   mounted() {
     this.showProfile();
+    this.getInfo();
   },
   methods: {
     showProfile() {
@@ -69,6 +71,11 @@ export default {
           };
         });
       }
+    },
+    getInfo() {
+      profileServices.getInfo().then(res => {
+        this.badgeCounter = res.data.data;
+      });
     },
     logout() {
       localStorage.removeItem("accessToken");
@@ -161,12 +168,12 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
+            },
+            {
+              title: "messageCenter",
+              route: "/freelancer/message-center",
+              symbol: "mdi-message-bulleted"
             }
-            // {
-            //   title: "messageCenter",
-            //   route: "/freelancer/message-center",
-            //   symbol: "mdi-message-bulleted"
-            // }
             // {
             //   title: "manageServices",
             //   symbol: "mdi-cog-transfer-outline",
@@ -290,12 +297,12 @@ export default {
                   symbol: "mdi-close-box-multiple"
                 }
               ]
+            },
+            {
+              title: "messageCenter",
+              route: "/employer/message-center",
+              symbol: "mdi-message-bulleted"
             }
-            // {
-            //   title: "messageCenter",
-            //   route: "/employer/message-center",
-            //   symbol: "mdi-message-bulleted"
-            // }
             // {
             //   title: "manageServices",
             //   symbol: "mdi-cog-transfer-outline",

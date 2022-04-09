@@ -181,8 +181,14 @@
       <template v-slot:activator>
         <v-list-item-content>
           <v-list-item-title
-            >{{ $t(`sidebar.${item.title}`) }}</v-list-item-title
-          >
+            >{{ $t(`sidebar.${item.title}`) }}
+            <v-badge
+              v-if="item.title === 'messageCenter'"
+              color="red"
+              :content="(badgeCounter['count_of_notifications'] ? badgeCounter['count_of_notifications'] : '0')+' ' + 'پیام جدید'"
+            >
+            </v-badge>
+          </v-list-item-title>
         </v-list-item-content>
       </template>
       <v-list-item
@@ -196,8 +202,8 @@
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title
-            >{{ $t(`sidebar.${subCat.title}`) }}</v-list-item-title
-          >
+            >{{ $t(`sidebar.${subCat.title}`) }}
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list-group>
@@ -205,7 +211,13 @@
       <template>
         <v-dialog v-model="dialog" persistent max-width="350px">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn class="ma-0 pa-0" v-bind="attrs" v-on="on" text :ripple="false">
+            <v-btn
+              class="ma-0 pa-0"
+              v-bind="attrs"
+              v-on="on"
+              text
+              :ripple="false"
+            >
               <v-list-item-action>
                 <v-icon color="error">mdi-power</v-icon>
               </v-list-item-action>
@@ -224,7 +236,7 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12">
-                        آیا قصد خروج از پنل کاربری خود را دارید؟
+                      آیا قصد خروج از پنل کاربری خود را دارید؟
                     </v-col>
                   </v-row>
                 </v-container>
