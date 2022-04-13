@@ -193,7 +193,7 @@
 
   <v-container class="pa-0">
     <div class="chat-header">
-<!--      <v-icon large>mdi-account-circle</v-icon>-->
+      <!--      <v-icon large>mdi-account-circle</v-icon>-->
       {{ projectDetails.username }}
     </div>
     <section ref="chatArea" class="chat-area ma-0">
@@ -204,17 +204,37 @@
       >
         <span class="d-block ml-auto" v-if="message.role === 'freelancer' ">
           <v-avatar>
-            <img style="height: auto" :src="message.avatar" alt="connecta" />
+            <img
+              style="height: auto"
+              :src="message.avatar !== null ? message.avatar : require(`../../../../assets/image/connectalogo.png`)"
+              alt="connecta"
+            />
           </v-avatar>
           {{message.name}}</span
         >
-        {{ message.text }}
+        <span>
+          {{ message.text }}
+        </span>
+        <a
+          v-if="message.attachment"
+          style="text-decoration: none;"
+          :href="message.attachment"
+          download
+          target="_blank"
+        >
+          <v-icon large color="orange darken-2">
+            mdi-download
+          </v-icon></a
+        >
+        <!--          <v-icon @click="downloadTest(test)" large color="orange darken-2">-->
+        <!--            mdi-download-->
+        <!--          </v-icon>-->
         <span class="d-block mr-auto" v-if="message.role === 'employer'">
           {{authenticated.name}}
           <v-avatar>
             <img
               style="height: auto"
-              :src="authenticated.avatar"
+              :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
               alt="connecta"
             />
           </v-avatar>
@@ -232,15 +252,43 @@
           v-model="youMessage"
           v-if="!completedAt"
           class="mt-3 col-10"
+          :append-icon="'mdi-paperclip'"
           type="text"
           label="پیام شما"
           rows="2"
           height="45"
           outlined
           dense
+          @click:append="toggleFile"
           @keyup.enter.prevent="sendMessage('out')"
         >
         </v-textarea>
+        <v-file-input
+          @change="getFileInput($event)"
+          counter
+          id="avatar"
+          style="display:none"
+          label="فایل پیوستی"
+          placeholder="Select your files"
+          prepend-icon="mdi-paperclip"
+          outlined
+          dense
+          multiple
+          :show-size="1000"
+        >
+          <template v-slot:selection="{ index, text }">
+            <v-chip v-if="index < 3" dark label small>
+              {{ text }}
+            </v-chip>
+
+            <span
+              v-else-if="index === 3"
+              class="text-overline grey--text text--darken-3 mx-2"
+            >
+              +{{ files.length - 3 }} File(s)
+            </span>
+          </template>
+        </v-file-input>
         <v-btn
           v-if="!completedAt"
           depressed

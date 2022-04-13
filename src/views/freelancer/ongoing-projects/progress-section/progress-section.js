@@ -1,11 +1,13 @@
 import DashboardCard from "../../../../components/dashboardCard/index";
 import ProjectList from "../../../../components/project-list/index";
 import DialogDashboard from "../../../../components/dialog-dashboard/index";
-import employerServices from "../../../../core/services/modules/employerServices";
 import headerSection from "../../../../components/header-section/index";
-import freelancerServices from "../../../../core/services/modules/freelancerServices";
 import Vue from "vue";
-import UploadService from "../../../../core/services/modules/uploadService";
+import {
+  employerServices,
+  freelancerServices,
+  UploadService
+} from "@/core/services";
 export default {
   name: "progress-section",
   components: {
@@ -66,7 +68,8 @@ export default {
         ]
       },
       dialog: false,
-      valid: false
+      valid: false,
+      attachmentIdForChat: null
     };
   },
   computed: {
@@ -112,7 +115,8 @@ export default {
         const body = {
           type: "proposal",
           id: this.$route.query.proposalId,
-          text: this.youMessage
+          text: this.youMessage,
+          attachment_id: this.attachmentIdForChat
         };
         this.storeChat(body);
         this.youMessage = "";
@@ -123,7 +127,9 @@ export default {
       });
     },
     storeChat(body) {
-      freelancerServices.storeChat(body).then(() => {});
+      freelancerServices.storeChat(body).then(() => {
+        this.attachmentIdForChat = null;
+      });
     },
     handleFileInput(file) {
       let formData = new FormData();
@@ -188,6 +194,30 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    toggleFile() {
+      const file = document.getElementById("avatar");
+      file.click();
+    },
+    getFileInput(event) {
+      this.test = event;
+      this.youMessage = event[0].name;
+      let formData = new FormData();
+      if (event) {
+        for (let i = 0; i <= event.length - 1; i++) {
+          formData.append(`attachment[` + i + `]`, event[i]);
+        }
+        UploadService.uploadFile(formData)
+          .then(res => {
+            this.attachmentIdForChat = res.data.data.attachment_id;
+          })
+          .catch(() => {
+            this.attachmentIdForChat = null;
+          });
+      }
+    },
+    downloadTest(test) {
+      console.log(test);
     }
   }
 };

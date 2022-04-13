@@ -30,10 +30,10 @@ export default {
       proposalForm: {},
       mileStones: [],
       completedAt: null,
-      // nameRules: [
-      //   v => !!v || "Name is required",
-      //   v => (v && v.length <= 50) || "Name must be less than 10 characters"
-      // ],
+      nameRules: [
+        v => !!v || "Name is required",
+        v => (v && v.length <= 50) || "Name must be less than 10 characters"
+      ],
       youMessage: "",
       messages: [],
       authenticated: "",
@@ -52,7 +52,8 @@ export default {
         ]
       },
       dialog: false,
-      valid: false
+      valid: false,
+      attachmentIdForChat: null
     };
   },
   computed: {
@@ -89,7 +90,8 @@ export default {
         const body = {
           type: "proposal",
           id: this.$route.query.proposalId,
-          text: this.youMessage
+          text: this.youMessage,
+          attachment_id: this.attachmentIdForChat
         };
         this.storeChat(body);
         this.youMessage = "";
@@ -173,6 +175,27 @@ export default {
         this.getIndexMilestone();
         this.dialog = false;
       });
+    },
+    toggleFile() {
+      const file = document.getElementById("avatar");
+      file.click();
+    },
+    getFileInput(event) {
+      this.youMessage = event.target.files[0].name;
+      let files = event.target.files[0];
+      let formData = new FormData();
+      if (files) {
+        for (let i = 0; i <= files.length - 1; i++) {
+          formData.append(`attachment[` + i + `]`, files[i]);
+        }
+        UploadService.uploadFile(formData)
+          .then(res => {
+            this.attachmentIdForChat = res.data.data.attachment_id;
+          })
+          .catch(() => {
+            this.attachmentIdForChat = null;
+          });
+      }
     }
   }
 };
