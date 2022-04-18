@@ -566,3 +566,33 @@ input[type="number"] {
     background-position: top !important;
   }
 }
+.create-ticket {
+  .theme--light.v-text-field--filled > .v-input__control > .v-input__slot {
+    background: rgb(249, 251, 251) !important;
+  }
+  .v-text-field--outlined fieldset {
+    border-color: #e4e6e9;
+  }
+  .v-input__append-outer .v-icon,
+  .v-input__prepend-outer .v-icon {
+    display: none;
+  }
+  .v-text-field > .v-input__control > .v-input__slot:before {
+    border-style: unset !important;
+  }
+  .mdi-close::before {
+    position: absolute;
+    top: -46px;
+    left: -13px;
+  }
+  .v-text-field > .v-input__control > .v-input__slot:after {
+    border-style: unset;
+    border-width: thin 0 thin 0;
+  }
+  .v-input__slot {
+    top: -10px;
+  }
+}
+.v-application--is-rtl .v-text-field--outlined fieldset {
+  height: 76px !important;
+}

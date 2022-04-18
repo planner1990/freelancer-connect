@@ -1,0 +1,76 @@
+<section class="create-ticket">
+  <v-container class="px-0 pt-7">
+    <v-row class="justify-space-between py-4 mx-8 mb-4 header">
+      <v-col
+        class="pa-0 align-center d-flex align-center back-btn"
+        @click="goBack"
+      >
+        <v-icon class="ml-3">mdi-arrow-right</v-icon>
+        بازگشت
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-container>
+    <v-row class="mx-auto" style="width: 400px">
+      <v-col cols="12">
+        ثبت تیکت جدید
+      </v-col>
+      <v-col cols="12">
+        <v-select :items="items" label="پروژه" outlined filled></v-select>
+      </v-col>
+      <v-col cols="12">
+        <v-text-field label="عنوان" outlined filled></v-text-field>
+      </v-col>
+      <v-col cols="12">
+        <v-textarea outlined filled label="توضیحات" rows="4"></v-textarea>
+      </v-col>
+      <div class="attachment-box px-0" @click="chooseFiles()">
+        <v-file-input
+          v-model="files"
+          chips
+          multiple
+          id="fileUpload"
+          :show-size="1000"
+          :class="[fileName.length >= 1 ? 'isBlock' : 'isNone']"
+          @change="handleAttachment($event)"
+        >
+          <template v-slot:selection="{ index, text }">
+            <v-chip
+              v-if="index < 2"
+              color="blue lighten-5"
+              label
+              small
+            >
+              {{ text }}
+            </v-chip>
+
+            <span
+              v-else-if="index === 2"
+              class="text-overline grey--text text--darken-3 mx-2"
+            >
+              +{{ files.length - 2 }} File(s)
+            </span>
+          </template>
+        </v-file-input>
+        <div
+          class="d-flex flex-column align-center justify-center"
+          v-if="fileName.length === 0"
+        >
+          <div>
+            <img
+              src="../../../../assets/image/media-library-upload.png"
+              alt="کانکتا"
+            />
+          </div>
+          <div>افزودن فایل</div>
+          <div>(حداکثر حجم فایل ۴ مگابایت)</div>
+        </div>
+      </div>
+      <v-col cols="12">
+        <v-btn depressed color="secondary" block class="create-btn"
+          >ثبت و ارسال</v-btn
+        >
+      </v-col>
+    </v-row>
+  </v-container>
+</section>

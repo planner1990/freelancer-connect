@@ -173,6 +173,11 @@ export default {
               title: "messageCenter",
               route: "/freelancer/message-center",
               symbol: "mdi-message-bulleted"
+            },
+            {
+              title: "tickets",
+              route: "/freelancer/tickets",
+              symbol: "mdi-newspaper-plus"
             }
             // {
             //   title: "manageServices",

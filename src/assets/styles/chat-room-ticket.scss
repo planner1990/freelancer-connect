@@ -1,0 +1,47 @@
+@import "variable";
+@import "mixins";
+.chat-box {
+  width: 100%;
+  height: 622px;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  .v-btn__content {
+    color: #ec484a;
+  }
+  .v-btn:not(.v-btn--round).v-size--default {
+    width: 135px;
+    height: 46px;
+    border-radius: 12px;
+  }
+  .v-application--is-rtl .v-text-field--outlined fieldset {
+    height: 76px !important;
+  }
+  .v-input--dense > .v-input__control > .v-input__slot {
+    margin-bottom: 4px;
+    max-width: 1050px;
+  }
+  .v-text-field--outlined,
+  .v-text-field--solo {
+    border-radius: 8px;
+  }
+  .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state)
+    > .v-input__control
+    > .v-input__slot
+    fieldset {
+    border-color: #cfcfcf;
+  }
+  .v-application--is-rtl
+    .v-textarea.v-text-field--enclosed
+    .v-text-field__slot
+    textarea {
+    color: #62737a;
+  }
+}
+.v-application--is-rtl
+  .v-textarea.v-text-field--enclosed
+  .v-text-field__slot
+  textarea {
+  font-weight: 400;
+  font-size: 14px !important;
+  color: #62737a;
+}

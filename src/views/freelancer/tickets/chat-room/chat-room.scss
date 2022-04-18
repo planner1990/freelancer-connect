@@ -1,0 +1,92 @@
+@import "src/assets/styles/variable";
+.chat-room {
+  .header {
+    border-bottom: 1px solid #ededed;
+    .register {
+      height: 46px;
+      min-width: 132px;
+      padding: 12px 24px;
+      border-radius: 12px;
+    }
+  }
+  .chat-box {
+    width: 100%;
+    height: 622px;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    &-header {
+      height: 80px;
+      padding: 16px 25px;
+      border-bottom: 1px solid #cfcfcf;
+      &-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: #142226;
+        margin-bottom: 10px;
+      }
+      &-subject {
+        font-size: 14px;
+        font-weight: 500;
+        color: #374b54;
+      }
+    }
+    .v-btn__content {
+      color: #ec484a;
+    }
+  }
+  .chat-area {
+    height: 418px;
+    overflow: auto;
+    margin: 0 auto 2em auto;
+    padding-top: 30px;
+  }
+  .chat-header {
+    height: 70px;
+    padding: 15px;
+    line-height: 33px;
+  }
+  .message {
+    width: 45%;
+    min-width: 526px;
+    border-radius: 10px;
+    padding: 16px 0 16px 19px;
+    font-size: 0.7em;
+    .side-avatar {
+      transform: translate(38px, -14px);
+      width: 29px;
+      height: 29px;
+      border-radius: 50%;
+      border: 2px solid $primary;
+    }
+  }
+  .message-out {
+    background: #f5f7f6;
+    color: #374b54;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    margin-left: 50%;
+    margin-right: 64px;
+    border: 1px solid #e4e6e9;
+    border-radius: 16px 0 16px 16px;
+  }
+  .message-in {
+    background: #f1f0f0;
+    color: black;
+    margin-right: 54%;
+    text-align: right;
+    padding-left: 10px;
+  }
+  .attachment-link {
+    text-decoration: none;
+    color: #0a607a;
+    font-size: 10px;
+    font-weight: 500;
+  }
+  .send-ticket {
+    border-radius: 12px;
+    position: absolute;
+    left: 10%;
+    top: 37px;
+  }
+}

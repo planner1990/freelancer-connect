@@ -9,8 +9,11 @@ import "@mdi/font/css/materialdesignicons.css";
 import i18n from "./i18n";
 import "./assets/styles/styles.scss";
 import "./assets/styles/overrides.scss";
+import "./assets/styles/chat-room-ticket.scss";
 import "./shared/filters/index";
 import "./plugins/eChart";
+import Vuetify from "vuetify";
+Vue.use(Vuetify);
 Vue.config.productionTip = false;
 new Vue({
   router,

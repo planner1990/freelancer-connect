@@ -206,6 +206,25 @@ const routes = [
         component: () => import("../views/freelancer/message-center/index")
       },
       {
+        path: "tickets",
+        name: "tickets",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/tickets/index")
+      },
+      {
+        path: "create-ticket",
+        name: "create-ticket",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/freelancer/tickets/create-ticket/index")
+      },
+      {
+        path: "chat-room",
+        name: "chat-room",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/freelancer/tickets/chat-room/index")
+      },
+      {
         path: "my-services",
         name: "my-services",
         meta: { transitionName: "slide" },
