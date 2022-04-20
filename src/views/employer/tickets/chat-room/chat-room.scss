@@ -58,6 +58,13 @@
       border-radius: 50%;
       border: 2px solid $primary;
     }
+    .side-avatar-answer {
+      transform: translate(-57px, -14px);
+      width: 29px;
+      height: 29px;
+      border-radius: 50%;
+      border: 2px solid $primary;
+    }
   }
   .message-out {
     background: #f5f7f6;
@@ -71,11 +78,15 @@
     border-radius: 16px 0 16px 16px;
   }
   .message-in {
-    background: #f1f0f0;
-    color: black;
-    margin-right: 54%;
-    text-align: right;
-    padding-left: 10px;
+    background: #f5f7f6;
+    color: #374b54;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    margin-right: 42%;
+    border: 1px solid #e4e6e9;
+    padding-right: 10px;
+    border-radius: 0 16px 16px 16px;
   }
   .attachment-link {
     text-decoration: none;

@@ -70,11 +70,11 @@
               class="message d-flex align-center"
               :class="{ 'message-out': message.role === 'employer', 'message-in': message.role === 'freelancer' }"
             >
-              <img
-                :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
-                alt="connecta"
-                class="side-avatar"
-              />
+<!--              <img-->
+<!--                :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"-->
+<!--                alt="connecta"-->
+<!--                class="side-avatar"-->
+<!--              />-->
               <!--              <span-->
               <!--                class="d-block ml-auto"-->
               <!--                v-if="message.role === 'freelancer' "-->
@@ -108,13 +108,11 @@
               </span>
               <span class="d-block mr-auto" v-if="message.role === 'freelancer'">
                 {{authenticated.name}}
-                <v-avatar>
                   <img
-                    style="height: auto"
-                    :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
+                    :src="require(`../../../../assets/image/connectalogo.png`)"
                     alt="connecta"
+                    class="side-avatar-answer"
                   />
-                </v-avatar>
               </span>
             </p>
           </section>
@@ -130,11 +128,11 @@
               <v-textarea
                 v-model="youMessage"
                 v-if="subject['closed_at'] === null"
-                class="mt-6 col-10 mx-auto"
+                class="mt-6 col-10 mx-auto ticket-input"
                 type="text"
                 label="پیام شما"
                 rows="2"
-                height="45"
+                height="70"
                 outlined
                 dense
                 no-resize

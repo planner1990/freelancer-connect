@@ -611,3 +611,8 @@ input[type="number"] {
     background-color: #fff;
   }
 }
+.chat-inputs {
+  .v-application--is-rtl .v-text-field--outlined fieldset {
+    height: 76px !important;
+  }
+}

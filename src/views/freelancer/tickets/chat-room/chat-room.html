@@ -108,13 +108,12 @@
               </span>
               <span class="d-block mr-auto" v-if="message.role === 'employer'">
                 {{authenticated.name}}
-                <v-avatar>
                   <img
                     style="height: auto"
                     :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
                     alt="connecta"
+                    class="side-avatar-answer"
                   />
-                </v-avatar>
               </span>
             </p>
           </section>
@@ -134,7 +133,7 @@
                 type="text"
                 label="پیام شما"
                 rows="2"
-                height="45"
+                height="70"
                 outlined
                 dense
                 no-resize
