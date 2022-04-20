@@ -183,7 +183,7 @@
           <v-list-item-title
             >{{ $t(`sidebar.${item.title}`) }}
             <v-badge
-              v-if="item.title === 'messageCenter'"
+              v-if="item.title === 'messageCenter' && badgeCounter['count_of_notifications'] >= 1"
               color="red"
               :content="(badgeCounter['count_of_notifications'] ? badgeCounter['count_of_notifications'] : '0')+' ' + 'پیام جدید'"
             >
