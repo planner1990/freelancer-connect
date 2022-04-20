@@ -571,7 +571,7 @@ input[type="number"] {
     background: rgb(249, 251, 251) !important;
   }
   .v-text-field--outlined fieldset {
-    border-color: #e4e6e9;
+    border-color: transparent;
   }
   .v-input__append-outer .v-icon,
   .v-input__prepend-outer .v-icon {
@@ -592,7 +592,22 @@ input[type="number"] {
   .v-input__slot {
     top: -10px;
   }
-}
-.v-application--is-rtl .v-text-field--outlined fieldset {
-  height: 76px !important;
+  .v-text-field--filled > .v-input__control > .v-input__slot,
+  .v-text-field--full-width > .v-input__control > .v-input__slot,
+  .v-text-field--outlined > .v-input__control > .v-input__slot {
+    align-items: stretch;
+    min-height: 56px;
+    border: 1px solid #e4e6e9;
+    border-radius: 8px;
+  }
+  .v-application--is-rtl .v-text-field--outlined legend {
+    text-align: right;
+    background-color: #fff !important;
+  }
+  .v-text-field--filled:not(.v-text-field--single-line) input {
+    margin-top: 7px;
+  }
+  .v-input .v-label {
+    background-color: #fff;
+  }
 }

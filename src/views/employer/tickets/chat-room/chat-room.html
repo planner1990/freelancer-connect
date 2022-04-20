@@ -68,7 +68,7 @@
             <p
               v-for="message in messages"
               class="message d-flex align-center"
-              :class="{ 'message-out': message.role === 'freelancer', 'message-in': message.role === 'employer' }"
+              :class="{ 'message-out': message.role === 'employer', 'message-in': message.role === 'freelancer' }"
             >
               <img
                 :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
@@ -106,7 +106,7 @@
                   </a>
                 </span>
               </span>
-              <span class="d-block mr-auto" v-if="message.role === 'employer'">
+              <span class="d-block mr-auto" v-if="message.role === 'freelancer'">
                 {{authenticated.name}}
                 <v-avatar>
                   <img

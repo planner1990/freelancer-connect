@@ -1,16 +1,19 @@
 import {
+  employerServices,
   ticketService,
-  UploadService,
-  freelancerServices
+  UploadService
 } from "../../../../core/services";
+import Snackbar from "../../../../components/snackbar/index";
 
 export default {
   name: "create-ticket",
-  components: {},
+  components: { Snackbar },
   props: [],
   data() {
     return {
       items: [],
+      snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
+      showSnackbar: false,
       valid: false,
       files: [],
       fileName: [],
@@ -65,8 +68,9 @@ export default {
         page: 1,
         perPage: 5
       };
-      freelancerServices.getFilteredProjects(options).then(res => {
+      employerServices.getIndexProjects(options).then(res => {
         this.items = res.data.data?.projects;
+        this.paginationData = res.data.data?.pagination;
       });
     },
     storeTicket() {
@@ -79,6 +83,8 @@ export default {
         attachment_id: this.attachmentId
       };
       ticketService.storeTickets(body).then(() => {
+        this.showSnackbar = true;
+        this.snackbarMessage = "تیکت شما با موفقیت ایجاد شد.";
         window.history.back();
       });
     },
@@ -91,6 +97,9 @@ export default {
       if (e.length === 0) {
         this.fileName = [];
       }
+    },
+    hideSnackbar() {
+      this.showSnackbar = false;
     }
   }
 };

@@ -44,7 +44,7 @@ export default {
         return;
       }
       if (direction === "out") {
-        this.messages.push({ text: this.youMessage, role: "freelancer" });
+        this.messages.push({ text: this.youMessage, role: "employer" });
         const body = {
           text: this.youMessage,
           subject: this.subject,

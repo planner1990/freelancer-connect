@@ -403,6 +403,24 @@ const routes = [
         component: () => import("../views/employer/message-center/index")
       },
       {
+        path: "tickets",
+        name: "tickets-employer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/employer/tickets/index")
+      },
+      {
+        path: "create-ticket",
+        name: "create-ticket-employer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/employer/tickets/create-ticket/index")
+      },
+      {
+        path: "chat-room",
+        name: "chat-room-employer",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/employer/tickets/chat-room/index")
+      },
+      {
         path: "post-job",
         name: "post-job",
         meta: { transitionName: "slide" },

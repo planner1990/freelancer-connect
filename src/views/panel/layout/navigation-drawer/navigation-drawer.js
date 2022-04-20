@@ -307,6 +307,11 @@ export default {
               title: "messageCenter",
               route: "/employer/message-center",
               symbol: "mdi-message-bulleted"
+            },
+            {
+              title: "tickets",
+              route: "/employer/tickets",
+              symbol: "mdi-newspaper-plus"
             }
             // {
             //   title: "manageServices",

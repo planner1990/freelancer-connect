@@ -98,5 +98,12 @@
         </v-col>
       </v-row>
     </v-form>
+    <v-row>
+      <snackbar
+        :snackbarMessage="snackbarMessage"
+        :showSnackbar="showSnackbar"
+        @hideSnackbar="hideSnackbar"
+      ></snackbar>
+    </v-row>
   </v-container>
 </section>
