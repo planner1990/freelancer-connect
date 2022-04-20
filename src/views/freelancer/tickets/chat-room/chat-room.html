@@ -19,7 +19,7 @@
             <div class="chat-box-header-subject">{{subject.subject}}</div>
           </div>
           <div>
-            <v-dialog v-model="dialog" persistent max-width="350px">
+            <v-dialog v-model="dialog" persistent max-width="350px" v-if="subject['closed_at'] === null">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"

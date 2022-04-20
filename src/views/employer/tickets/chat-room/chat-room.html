@@ -19,7 +19,7 @@
             <div class="chat-box-header-subject">{{subject.subject}}</div>
           </div>
           <div>
-            <v-dialog v-model="dialog" persistent max-width="350px">
+            <v-dialog v-model="dialog" persistent max-width="350px" v-if="subject['closed_at'] === null">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"
@@ -70,11 +70,11 @@
               class="message d-flex align-center"
               :class="{ 'message-out': message.role === 'employer', 'message-in': message.role === 'freelancer' }"
             >
-<!--              <img-->
-<!--                :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"-->
-<!--                alt="connecta"-->
-<!--                class="side-avatar"-->
-<!--              />-->
+              <img
+                :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
+                alt="connecta"
+                class="side-avatar"
+              />
               <!--              <span-->
               <!--                class="d-block ml-auto"-->
               <!--                v-if="message.role === 'freelancer' "-->
