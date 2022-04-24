@@ -257,17 +257,6 @@
         <span>
           {{ message.text }}
         </span>
-        <a
-          v-if="message.attachment"
-          style="text-decoration: none;"
-          :href="message.attachment"
-          download
-          target="_blank"
-        >
-          <v-icon large color="orange darken-2">
-            mdi-download
-          </v-icon></a
-        >
         <span class="d-block mr-auto" v-if="message.role === 'employer'">
           {{authenticated.name}}
           <a
@@ -313,12 +302,19 @@
           @keyup.enter.prevent="sendMessage('out')"
         >
         </v-textarea>
-        <input
-          type="file"
+        <v-file-input
           @change="getFileInput($event)"
+          counter
+          label="ضمیمه فایل"
+          placeholder="Select your files"
+          prepend-icon="mdi-paperclip"
+          outlined
+          dense
           id="avatar"
+          :show-size="1000"
           style="display:none"
-        />
+        >
+        </v-file-input>
         <v-btn
           v-if="!completedAt"
           depressed

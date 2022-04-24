@@ -180,14 +180,15 @@ export default {
       const file = document.getElementById("avatar");
       file.click();
     },
-    getFileInput(event) {
-      this.youMessage = event.target.files[0].name;
-      let files = event.target.files[0];
+    getFileInput(file) {
+      this.youMessage = file[0].name;
       let formData = new FormData();
-      if (files) {
-        for (let i = 0; i <= files.length - 1; i++) {
-          formData.append(`attachment[` + i + `]`, files[i]);
+      console.log(file);
+      if (file) {
+        for (let i = 0; i <= file.length - 1; i++) {
+          formData.append(`attachment[` + i + `]`, file[i]);
         }
+        console.log(formData);
         UploadService.uploadFile(formData)
           .then(res => {
             this.attachmentIdForChat = res.data.data.attachment_id;
