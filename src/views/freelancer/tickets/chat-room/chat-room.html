@@ -15,7 +15,7 @@
       <v-col cols="12" class="pa-0 chat-box">
         <div class="d-flex justify-space-between chat-box-header">
           <div>
-            <div class="chat-box-header-title">عنوان تیکت</div>`
+            <div class="chat-box-header-title">عنوان تیکت</div>
             <div class="chat-box-header-subject">{{subject.subject}}</div>
           </div>
           <div>
@@ -68,10 +68,11 @@
             <p
               v-for="message in messages"
               class="message d-flex align-center"
-              :class="{ 'message-out': message.role === 'freelancer', 'message-in': message.role === 'employer' }"
+              :class="{ 'message-out': message.role === 'freelancer', 'message-in': message.role === 'employer', 'message-in': message.role === 'admin' }"
             >
               <img
                 :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
+                v-if="message.role === 'freelancer'"
                 alt="connecta"
                 class="side-avatar"
               />
@@ -106,10 +107,9 @@
                   </a>
                 </span>
               </span>
-              <span class="d-block mr-auto" v-if="message.role === 'employer'">
+              <span class="d-block mr-auto" v-if="message.role === 'employer' || message.role === 'admin'">
                 {{authenticated.name}}
                   <img
-                    style="height: auto"
                     :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
                     alt="connecta"
                     class="side-avatar-answer"

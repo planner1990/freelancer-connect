@@ -47,7 +47,7 @@ export default {
         this.messages.push({ text: this.youMessage, role: "freelancer" });
         const body = {
           text: this.youMessage,
-          subject: this.subject,
+          subject: this.subject.subject,
           project_id: this.$route.query.projectId,
           thread_code: this.$route.query.threadCode,
           type: null,

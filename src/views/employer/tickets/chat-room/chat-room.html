@@ -19,7 +19,12 @@
             <div class="chat-box-header-subject">{{subject.subject}}</div>
           </div>
           <div>
-            <v-dialog v-model="dialog" persistent max-width="350px" v-if="subject['closed_at'] === null">
+            <v-dialog
+              v-model="dialog"
+              persistent
+              max-width="350px"
+              v-if="subject['closed_at'] === null"
+            >
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"
@@ -68,10 +73,11 @@
             <p
               v-for="message in messages"
               class="message d-flex align-center"
-              :class="{ 'message-out': message.role === 'employer', 'message-in': message.role === 'freelancer' }"
+              :class="{ 'message-out': message.role === 'employer', 'message-in': message.role === 'freelancer' , 'message-in': message.role === 'admin'}"
             >
               <img
                 :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
+                v-if="message.role === 'employer'"
                 alt="connecta"
                 class="side-avatar"
               />
@@ -106,13 +112,16 @@
                   </a>
                 </span>
               </span>
-              <span class="d-block mr-auto" v-if="message.role === 'freelancer'">
+              <span
+                class="d-block mr-auto"
+                v-if="message.role === 'freelancer' || message.role === 'admin'"
+              >
                 {{authenticated.name}}
-                  <img
-                    :src="require(`../../../../assets/image/connectalogo.png`)"
-                    alt="connecta"
-                    class="side-avatar-answer"
-                  />
+                <img
+                  :src="require(`../../../../assets/image/connectalogo.png`)"
+                  alt="connecta"
+                  class="side-avatar-answer"
+                />
               </span>
             </p>
           </section>
