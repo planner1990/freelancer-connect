@@ -6,7 +6,8 @@ import Vue from "vue";
 import {
   employerServices,
   freelancerServices,
-  UploadService
+  UploadService,
+  ticketService
 } from "@/core/services";
 export default {
   name: "progress-section",
@@ -69,7 +70,9 @@ export default {
       },
       dialog: false,
       valid: false,
-      attachmentIdForChat: null
+      attachmentIdForChat: null,
+      dialog2: false,
+      rejDesc: ""
     };
   },
   computed: {
@@ -216,8 +219,19 @@ export default {
           });
       }
     },
-    downloadTest(test) {
-      console.log(test);
+    cancelProject() {
+      const body = {
+        text: this.rejDesc,
+        subject: null,
+        project_id: this.projectDetails.id,
+        thread_code: null,
+        type: 0,
+        attachment_id: null
+      };
+      ticketService.storeTickets(body).then(res => {
+        console.log(res);
+        this.dialog2 = false;
+      });
     }
   }
 };

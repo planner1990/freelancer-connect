@@ -5,6 +5,88 @@
         <v-expansion-panel>
           <v-expansion-panel-header>
             <template v-slot:default="{ open }">
+              <span style="position: absolute;left: 60px;">
+                <v-menu
+                  bottom
+                  origin="center center"
+                  transition="scale-transition"
+                  offset-y
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on">
+                      <v-icon>mdi-dots-vertical</v-icon>
+                    </v-btn>
+                  </template>
+
+                  <v-list>
+                    <v-list-item>
+                      <v-list-item-title>
+                        <v-dialog
+                          v-model="dialog2"
+                          persistent
+                          width="500"
+                          max-width="500"
+                        >
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                              text
+                              v-bind="attrs"
+                              v-on="on"
+                              color="#62737a"
+                            >
+                              <v-icon>mdi-close-circle-outline</v-icon> درخواست
+                              لغو پروژه
+                            </v-btn>
+                          </template>
+                          <v-card>
+                            <v-card-title
+                              class="text-h5 mb-8 d-flex justify-space-between"
+                            >
+                              درخواست لغو پروژه
+                              <v-btn
+                                depressed
+                                text
+                                fab
+                                @click="dialog2 = false"
+                              >
+                                <v-icon>
+                                  mdi-close
+                                </v-icon>
+                              </v-btn>
+                            </v-card-title>
+                            <v-card-text>
+                              <v-textarea
+                                label="دلیل لغو پروژه را بنویسید..."
+                                auto-grow
+                                outlined
+                                rows="4"
+                                v-model="rejDesc"
+                              ></v-textarea>
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn
+                                color="secondary"
+                                text
+                                @click="dialog2 = false"
+                              >
+                                بازگشت
+                              </v-btn>
+                              <v-btn
+                                color="secondary"
+                                text
+                                @click="cancelProject"
+                              >
+                                بله, لغو پروژه
+                              </v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                      </v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
+              </span>
               <v-row no-gutters>
                 <v-col cols="4">
                   نام پروژه: {{ projectDetails.title }}
