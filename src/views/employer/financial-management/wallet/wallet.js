@@ -61,7 +61,7 @@ export default {
     withdraw() {
       this.showSnackbar = false;
       const body = {
-        amount: this.price,
+        amount: this.price.replace(/,/g, ""),
         account_id: this.accountId
       };
       freelancerServices.transactionWithdraw(body).then(() => {

@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 module.exports = {
   transpileDependencies: ["vuetify"],
 
@@ -12,5 +13,8 @@ module.exports = {
       localeDir: "locales",
       enableInSFC: true
     }
-  }
+  },
+  configureWebpack: {
+    plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)]
+  },
 };

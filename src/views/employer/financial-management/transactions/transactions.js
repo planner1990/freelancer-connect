@@ -3,6 +3,7 @@ import TableDashboard from "@/components/table-dashboard/index";
 import { freelancerServices } from "@/core/services";
 import $thousandMask from "@/shared/mixins/thousandMask";
 import $removeThousand from "@/shared/mixins/removeThousand";
+
 export default {
   name: "transactions",
   components: { DashboardCard, TableDashboard },
@@ -10,6 +11,7 @@ export default {
   mixins: [$thousandMask, $removeThousand],
   data() {
     return {
+      date: "",
       items: [
         { title: "برداشت", value: 1 },
         { title: "واریز", value: 0 }
@@ -105,8 +107,9 @@ export default {
         price: this.filterForm.price
           ? this.filterForm.price.replace(/,/g, "")
           : null,
-        created_at: this.filterForm.created_at
+        created_at: this.date
       };
+      console.log(options);
       freelancerServices.transactionIndex(options).then(res => {
         this.dataUserManagement = res.data.data;
         this.loading = false;

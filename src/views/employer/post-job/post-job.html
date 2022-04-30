@@ -7,6 +7,7 @@
           v-model="projectForm.title"
           :rules="createProjectRule.title"
           :label="$t('form.projectTitle')"
+          placeholder="مثلا طراحی فروشگاه"
           hint="لطفا عنوان را وارد کنید. انتخاب عنوان درست پروژه در یافتن فریلنسر مناسب به شما کمک می کند."
           persistent-hint
           required
@@ -21,6 +22,7 @@
           :rules="createProjectRule.price"
           @input="mask"
           :label="$t('form.price')"
+          placeholder="مثلا ۵.۰۰۰.۰۰۰"
           required
           outlined
           hint="حداقل مبلغ پروژه پنجاه میلیون ریال می باشد."

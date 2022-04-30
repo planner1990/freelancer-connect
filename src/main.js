@@ -12,7 +12,10 @@ import "./assets/styles/overrides.scss";
 import "./assets/styles/chat-room-ticket.scss";
 import "./shared/filters/index";
 import "./plugins/eChart";
+import "./plugins/vueCalendar";
 import Vuetify from "vuetify";
+import VuePersianDatetimePicker from "vue-persian-datetime-picker";
+Vue.component("date-picker", VuePersianDatetimePicker);
 Vue.use(Vuetify);
 Vue.config.productionTip = false;
 new Vue({

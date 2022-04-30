@@ -616,3 +616,14 @@ input[type="number"] {
     height: 76px !important;
   }
 }
+
+.vpd-month-label {
+  width: 127px !important;
+}
+.vpd-input-group label {
+  border-radius: 0 4px 4px 0;
+}
+.vpd-input-group input {
+  height: 39px !important;
+  border-radius: 4px 0 0 4px !important;
+}

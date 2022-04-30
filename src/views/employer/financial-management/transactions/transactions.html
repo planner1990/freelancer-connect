@@ -35,42 +35,62 @@
           clearable
         ></v-text-field>
       </v-col>
+      <!--      <v-col cols="12" md="4" sm="12">-->
+      <!--        <v-menu-->
+      <!--          v-model="expStart"-->
+      <!--          :close-on-content-click="false"-->
+      <!--          offset-y-->
+      <!--          outlined-->
+      <!--          dense-->
+      <!--          min-width="290px"-->
+      <!--        >-->
+      <!--          <template v-slot:activator="{ on, attrs }">-->
+      <!--            <v-text-field-->
+      <!--              v-model="filterForm.created_at"-->
+      <!--              clearable-->
+      <!--              label="تاریخ"-->
+      <!--              append-icon="mdi-calendar"-->
+      <!--              readonly-->
+      <!--              v-bind="attrs"-->
+      <!--              v-on="on"-->
+      <!--              outlined-->
+      <!--              dense-->
+      <!--              @click:clear="filterForm.created_at = null"-->
+      <!--            ></v-text-field>-->
+      <!--          </template>-->
+      <!--          <v-date-picker-->
+      <!--            v-model="filterForm.created_at"-->
+      <!--            no-title-->
+      <!--            scrollable-->
+      <!--            outlined-->
+      <!--            dense-->
+      <!--            @input="expStart = false"-->
+      <!--          >-->
+      <!--          </v-date-picker>-->
+      <!--        </v-menu>-->
+      <!--      </v-col>-->
       <v-col cols="12" md="4" sm="12">
-        <v-menu
-          v-model="expStart"
-          :close-on-content-click="false"
-          offset-y
-          outlined
-          dense
-          min-width="290px"
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-text-field
-              v-model="filterForm.created_at"
-              clearable
-              label="تاریخ"
-              append-icon="mdi-calendar"
-              readonly
-              v-bind="attrs"
-              v-on="on"
-              outlined
-              dense
-              @click:clear="filterForm.created_at = null"
-            ></v-text-field>
-          </template>
-          <v-date-picker
-            v-model="filterForm.created_at"
-            no-title
-            scrollable
-            outlined
-            dense
-            @input="expStart = false"
-          >
-          </v-date-picker>
-        </v-menu>
+        <date-picker
+          v-model="date"
+          format="YYYY-MM-DD HH:mm:ss"
+          display-format="jYYYY-jMM-jDD HH:mm"
+          :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+        />
       </v-col>
       <v-col cols="12" lg="3" md="3" sm="12">
-        <v-btn depressed color="primary" class="px-8" block @click="filterAction" :loading="loading">
+        <v-btn
+          depressed
+          color="primary"
+          class="px-8"
+          block
+          @click="filterAction"
+          :loading="loading"
+        >
           اعمال فیلتر
         </v-btn>
       </v-col>
@@ -218,7 +238,11 @@
       </template>
     </v-data-table>
     <div class="text-center pt-2" v-if="dataUserManagement.length !== 0">
-      <v-pagination v-model="page" :length="pageCount" :total-visible="7"></v-pagination>
+      <v-pagination
+        v-model="page"
+        :length="pageCount"
+        :total-visible="7"
+      ></v-pagination>
     </div>
   </div>
 </dashboard-card>
