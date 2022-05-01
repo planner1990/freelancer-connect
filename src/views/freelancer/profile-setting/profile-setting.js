@@ -133,7 +133,7 @@ export default {
         ]
       },
       addAwardDataForDialogForm: {
-        titleButton: "افزودن دستاوردها",
+        titleButton: "افزودن دوره",
         type: "award",
         formField: [
           {

@@ -43,74 +43,97 @@
                 outlined
                 dense
               ></v-text-field>
-              <v-menu
+              <date-picker
                 v-if="dialogFormField.type === 'date-picker-from'"
-                v-model="expStart"
-                :close-on-content-click="false"
-                offset-y
-                outlined
-                dense
-                min-width="290px"
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field
-                    :label="dialogFormField.label"
-                    prepend-icon="mdi-calendar"
-                    v-on:click:prepend="expStart=true"
-                    readonly
-                    v-bind="attrs"
-                    v-on="on"
-                    outlined
-                    dense
-                    :rules="experienceFormRule.experienceStart"
-                    :value="experienceForm.experienceStart | changeDate"
-                  ></v-text-field>
-                </template>
-                <v-date-picker
-                  v-model="experienceForm.experienceStart"
-                  no-title
-                  scrollable
-                  outlined
-                  dense
-                  @input="expStart = false"
-                >
-                </v-date-picker>
-              </v-menu>
-
-              <v-menu
+                v-model="experienceForm.experienceStart"
+                format="YYYY-MM-DD HH:mm:ss"
+                display-format="jYYYY-jMM-jDD HH:mm"
+                :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+              />
+              <!--              <v-menu-->
+              <!--                v-if="dialogFormField.type === 'date-picker-from'"-->
+              <!--                v-model="expStart"-->
+              <!--                :close-on-content-click="false"-->
+              <!--                offset-y-->
+              <!--                outlined-->
+              <!--                dense-->
+              <!--                min-width="290px"-->
+              <!--              >-->
+              <!--                <template v-slot:activator="{ on, attrs }">-->
+              <!--                  <v-text-field-->
+              <!--                    :label="dialogFormField.label"-->
+              <!--                    prepend-icon="mdi-calendar"-->
+              <!--                    v-on:click:prepend="expStart=true"-->
+              <!--                    readonly-->
+              <!--                    v-bind="attrs"-->
+              <!--                    v-on="on"-->
+              <!--                    outlined-->
+              <!--                    dense-->
+              <!--                    :rules="experienceFormRule.experienceStart"-->
+              <!--                    :value="experienceForm.experienceStart | changeDate"-->
+              <!--                  ></v-text-field>-->
+              <!--                </template>-->
+              <!--                <v-date-picker-->
+              <!--                  v-model="experienceForm.experienceStart"-->
+              <!--                  no-title-->
+              <!--                  scrollable-->
+              <!--                  outlined-->
+              <!--                  dense-->
+              <!--                  @input="expStart = false"-->
+              <!--                >-->
+              <!--                </v-date-picker>-->
+              <!--              </v-menu>-->
+              <date-picker
                 v-if="dialogFormField.type === 'date-picker-to'"
-                v-model="expEnd"
-                :close-on-content-click="false"
-                offset-y
-                outlined
-                dense
-                min-width="290px"
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field
-                    :label="dialogFormField.label"
-                    prepend-icon="mdi-calendar"
-                    v-on:click:prepend="expEnd=true"
-                    readonly
-                    v-bind="attrs"
-                    v-on="on"
-                    outlined
-                    dense
-                    :rules="experienceFormRule.experienceEnd"
-                    :value="experienceForm.experienceEnd | changeDate"
-                  ></v-text-field>
-                </template>
-                <v-date-picker
-                  v-model="experienceForm.experienceEnd"
-                  no-title
-                  scrollable
-                  outlined
-                  dense
-                  @input="expEnd = false"
-                  :allowed-dates="getAllowedDates"
-                >
-                </v-date-picker>
-              </v-menu>
+                v-model="experienceForm.experienceEnd"
+                format="YYYY-MM-DD HH:mm:ss"
+                display-format="jYYYY-jMM-jDD HH:mm"
+                :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+              />
+              <!--              <v-menu-->
+              <!--                v-if="dialogFormField.type === 'date-picker-to'"-->
+              <!--                v-model="expEnd"-->
+              <!--                :close-on-content-click="false"-->
+              <!--                offset-y-->
+              <!--                outlined-->
+              <!--                dense-->
+              <!--                min-width="290px"-->
+              <!--              >-->
+              <!--                <template v-slot:activator="{ on, attrs }">-->
+              <!--                  <v-text-field-->
+              <!--                    :label="dialogFormField.label"-->
+              <!--                    prepend-icon="mdi-calendar"-->
+              <!--                    v-on:click:prepend="expEnd=true"-->
+              <!--                    readonly-->
+              <!--                    v-bind="attrs"-->
+              <!--                    v-on="on"-->
+              <!--                    outlined-->
+              <!--                    dense-->
+              <!--                    :rules="experienceFormRule.experienceEnd"-->
+              <!--                    :value="experienceForm.experienceEnd | changeDate"-->
+              <!--                  ></v-text-field>-->
+              <!--                </template>-->
+              <!--                <v-date-picker-->
+              <!--                  v-model="experienceForm.experienceEnd"-->
+              <!--                  no-title-->
+              <!--                  scrollable-->
+              <!--                  outlined-->
+              <!--                  dense-->
+              <!--                  @input="expEnd = false"-->
+              <!--                  :allowed-dates="getAllowedDates"-->
+              <!--                >-->
+              <!--                </v-date-picker>-->
+              <!--              </v-menu>-->
               <v-file-input
                 v-if="dialogFormField.type === 'file-input'"
                 v-model="files"
@@ -212,74 +235,97 @@
                 outlined
                 dense
               ></v-text-field>
-              <v-menu
+              <date-picker
                 v-if="dialogFormField.type === 'date-picker-from'"
-                v-model="start"
-                :close-on-content-click="false"
-                offset-y
-                min-width="290px"
-                outlined
-                dense
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field
-                    :value="educationForm.educationStart | changeDate"
-                    :rules="educationFormRule.educationStart"
-                    :label="dialogFormField.label"
-                    prepend-icon="mdi-calendar"
-                    v-on:click:prepend="start=true"
-                    readonly
-                    v-bind="attrs"
-                    v-on="on"
-                    outlined
-                    dense
-                  ></v-text-field>
-                </template>
-                <v-date-picker
-                  no-title
-                  scrollable
-                  @input="start = false"
-                  outlined
-                  dense
-                  v-model="educationForm.educationStart"
-                >
-                </v-date-picker>
-              </v-menu>
-
-              <v-menu
+                v-model="educationForm.educationStart"
+                format="YYYY-MM-DD HH:mm:ss"
+                display-format="jYYYY-jMM-jDD HH:mm"
+                :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+              />
+              <!--              <v-menu-->
+              <!--                v-if="dialogFormField.type === 'date-picker-from'"-->
+              <!--                v-model="start"-->
+              <!--                :close-on-content-click="false"-->
+              <!--                offset-y-->
+              <!--                min-width="290px"-->
+              <!--                outlined-->
+              <!--                dense-->
+              <!--              >-->
+              <!--                <template v-slot:activator="{ on, attrs }">-->
+              <!--                  <v-text-field-->
+              <!--                    :value="educationForm.educationStart | changeDate"-->
+              <!--                    :rules="educationFormRule.educationStart"-->
+              <!--                    :label="dialogFormField.label"-->
+              <!--                    prepend-icon="mdi-calendar"-->
+              <!--                    v-on:click:prepend="start=true"-->
+              <!--                    readonly-->
+              <!--                    v-bind="attrs"-->
+              <!--                    v-on="on"-->
+              <!--                    outlined-->
+              <!--                    dense-->
+              <!--                  ></v-text-field>-->
+              <!--                </template>-->
+              <!--                <v-date-picker-->
+              <!--                  no-title-->
+              <!--                  scrollable-->
+              <!--                  @input="start = false"-->
+              <!--                  outlined-->
+              <!--                  dense-->
+              <!--                  v-model="educationForm.educationStart"-->
+              <!--                >-->
+              <!--                </v-date-picker>-->
+              <!--              </v-menu>-->
+              <date-picker
                 v-if="dialogFormField.type === 'date-picker-to'"
-                v-model="end"
-                :close-on-content-click="false"
-                offset-y
-                min-width="290px"
-                outlined
-                dense
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field
-                    :label="dialogFormField.label"
-                    prepend-icon="mdi-calendar"
-                    v-on:click:prepend="end=true"
-                    readonly
-                    v-bind="attrs"
-                    v-on="on"
-                    outlined
-                    dense
-                    :value="educationForm.educationEnd | changeDate"
-                    :rules="educationFormRule.educationEnd"
-                  ></v-text-field>
-                </template>
-                <v-date-picker
-                  v-model="educationForm.educationEnd"
-                  no-title
-                  scrollable
-                  outlined
-                  dense
-                  @input="end = false"
-                  :allowed-dates="getAllowedDatesEducation"
-                >
-                </v-date-picker>
-              </v-menu>
+                v-model="educationForm.educationEnd"
+                format="YYYY-MM-DD HH:mm:ss"
+                display-format="jYYYY-jMM-jDD HH:mm"
+                :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+              />
+              <!--              <v-menu-->
+              <!--                v-if="dialogFormField.type === 'date-picker-to'"-->
+              <!--                v-model="end"-->
+              <!--                :close-on-content-click="false"-->
+              <!--                offset-y-->
+              <!--                min-width="290px"-->
+              <!--                outlined-->
+              <!--                dense-->
+              <!--              >-->
+              <!--                <template v-slot:activator="{ on, attrs }">-->
+              <!--                  <v-text-field-->
+              <!--                    :label="dialogFormField.label"-->
+              <!--                    prepend-icon="mdi-calendar"-->
+              <!--                    v-on:click:prepend="end=true"-->
+              <!--                    readonly-->
+              <!--                    v-bind="attrs"-->
+              <!--                    v-on="on"-->
+              <!--                    outlined-->
+              <!--                    dense-->
+              <!--                    :value="educationForm.educationEnd | changeDate"-->
+              <!--                    :rules="educationFormRule.educationEnd"-->
+              <!--                  ></v-text-field>-->
+              <!--                </template>-->
+              <!--                <v-date-picker-->
+              <!--                  v-model="educationForm.educationEnd"-->
+              <!--                  no-title-->
+              <!--                  scrollable-->
+              <!--                  outlined-->
+              <!--                  dense-->
+              <!--                  @input="end = false"-->
+              <!--                  :allowed-dates="getAllowedDatesEducation"-->
+              <!--                >-->
+              <!--                </v-date-picker>-->
+              <!--              </v-menu>-->
             </div>
           </v-card-text>
 
@@ -393,39 +439,51 @@
                 outlined
                 dense
               ></v-text-field>
-              <v-menu
+              <date-picker
                 v-if="dialogFormField.type === 'date-picker-to'"
-                v-model="start"
-                :close-on-content-click="false"
-                offset-y
-                min-width="290px"
-                outlined
-                dense
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field
-                    :label="dialogFormField.label"
-                    prepend-icon="mdi-calendar"
-                    v-on:click:prepend="start=true"
-                    readonly
-                    v-bind="attrs"
-                    v-on="on"
-                    outlined
-                    dense
-                    :value="awardForm.achieved_date | changeDate"
-                    :rules="awardFormRule.achieved_date"
-                  ></v-text-field>
-                </template>
-                <v-date-picker
-                  v-model="awardForm.achieved_date"
-                  no-title
-                  scrollable
-                  @input="start = false"
-                  outlined
-                  dense
-                >
-                </v-date-picker>
-              </v-menu>
+                v-model="awardForm.achieved_date"
+                format="YYYY-MM-DD HH:mm:ss"
+                display-format="jYYYY-jMM-jDD HH:mm"
+                :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+              />
+              <!--              <v-menu-->
+              <!--                v-if="dialogFormField.type === 'date-picker-to'"-->
+              <!--                v-model="start"-->
+              <!--                :close-on-content-click="false"-->
+              <!--                offset-y-->
+              <!--                min-width="290px"-->
+              <!--                outlined-->
+              <!--                dense-->
+              <!--              >-->
+              <!--                <template v-slot:activator="{ on, attrs }">-->
+              <!--                  <v-text-field-->
+              <!--                    :label="dialogFormField.label"-->
+              <!--                    prepend-icon="mdi-calendar"-->
+              <!--                    v-on:click:prepend="start=true"-->
+              <!--                    readonly-->
+              <!--                    v-bind="attrs"-->
+              <!--                    v-on="on"-->
+              <!--                    outlined-->
+              <!--                    dense-->
+              <!--                    :value="awardForm.achieved_date | changeDate"-->
+              <!--                    :rules="awardFormRule.achieved_date"-->
+              <!--                  ></v-text-field>-->
+              <!--                </template>-->
+              <!--                <v-date-picker-->
+              <!--                  v-model="awardForm.achieved_date"-->
+              <!--                  no-title-->
+              <!--                  scrollable-->
+              <!--                  @input="start = false"-->
+              <!--                  outlined-->
+              <!--                  dense-->
+              <!--                >-->
+              <!--                </v-date-picker>-->
+              <!--              </v-menu>-->
               <!--              <v-file-input-->
               <!--                v-if="dialogFormField.type === 'file-input'"-->
               <!--                v-model="awardForm.attachment_id"-->
