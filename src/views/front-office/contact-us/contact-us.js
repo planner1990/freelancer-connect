@@ -9,5 +9,9 @@ export default {
   mounted() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   },
-  methods: {}
+  methods: {
+    goTo(path) {
+      this.$router.push({ path: path });
+    }
+  }
 };

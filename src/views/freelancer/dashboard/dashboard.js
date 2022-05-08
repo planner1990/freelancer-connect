@@ -26,7 +26,7 @@ export default {
         //   routeName: "my-services"
         // },
         {
-          src: "تبلیغات",
+          src: "پروفایل",
           notification: 0,
           title: "پروفایل",
           routeName: "profile-setting"
@@ -38,25 +38,25 @@ export default {
         //   routeName: "my-saved-items"
         // },
         {
-          src: "وبسایت",
+          src: "لیست درخواست ها",
           notification: 0,
-          title: "لیست درخواست‌ها",
+          title: "پیشنهادهای ارائه شده",
           routeName: "proposals"
         },
         {
-          src: "امنیت",
+          src: "پروژه های کامل شده",
           notification: 0,
           title: "پروژه‌های کامل شده",
           routeName: "completed-projects"
         },
         {
-          src: "اپلیکیشن",
+          src: "پروژه های ناتمام",
           notification: 0,
           title: "پروژه‌های ناتمام",
           routeName: "cancelled-projects"
         },
         {
-          src: "بصری",
+          src: "پروژه های در حال اجرا",
           notification: 0,
           title: "پروژه‌های در حال اجرا",
           routeName: "ongoing-projects"

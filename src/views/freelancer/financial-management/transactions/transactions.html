@@ -13,18 +13,18 @@
       ></v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="4" sm="12">
-        <v-select
-          v-model="filterForm.typeOfTransaction"
-          :items="items"
-          item-value="value"
-          item-text="title"
-          label="نوع تراکنش"
-          dense
-          outlined
-          clearable
-        ></v-select>
-      </v-col>
+      <!--      <v-col cols="12" md="4" sm="12">-->
+      <!--        <v-select-->
+      <!--          v-model="filterForm.typeOfTransaction"-->
+      <!--          :items="items"-->
+      <!--          item-value="value"-->
+      <!--          item-text="title"-->
+      <!--          label="نوع تراکنش"-->
+      <!--          dense-->
+      <!--          outlined-->
+      <!--          clearable-->
+      <!--        ></v-select>-->
+      <!--      </v-col>-->
       <v-col cols="12" md="4" sm="12">
         <v-text-field
           v-model="filterForm.price"
@@ -36,38 +36,49 @@
         ></v-text-field>
       </v-col>
       <v-col cols="12" md="4" sm="12">
-        <v-menu
-          v-model="expStart"
-          :close-on-content-click="false"
-          offset-y
-          outlined
-          dense
-          min-width="290px"
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-text-field
-              v-model="filterForm.created_at"
-              clearable
-              label="تاریخ"
-              append-icon="mdi-calendar"
-              readonly
-              v-bind="attrs"
-              v-on="on"
-              outlined
-              dense
-              @click:clear="filterForm.created_at = null"
-            ></v-text-field>
-          </template>
-          <v-date-picker
-            v-model="filterForm.created_at"
-            no-title
-            scrollable
-            outlined
-            dense
-            @input="expStart = false"
-          >
-          </v-date-picker>
-        </v-menu>
+        <date-picker
+          v-model="filterForm.created_at"
+          format="YYYY-MM-DD HH:mm:ss"
+          display-format="jYYYY-jMM-jDD HH:mm"
+          :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+        />
+<!--        <v-menu-->
+<!--          v-model="expStart"-->
+<!--          :close-on-content-click="false"-->
+<!--          offset-y-->
+<!--          outlined-->
+<!--          dense-->
+<!--          min-width="290px"-->
+<!--        >-->
+<!--          <template v-slot:activator="{ on, attrs }">-->
+<!--            <v-text-field-->
+<!--              v-model="filterForm.created_at"-->
+<!--              clearable-->
+<!--              label="تاریخ"-->
+<!--              append-icon="mdi-calendar"-->
+<!--              readonly-->
+<!--              v-bind="attrs"-->
+<!--              v-on="on"-->
+<!--              outlined-->
+<!--              dense-->
+<!--              @click:clear="filterForm.created_at = null"-->
+<!--            ></v-text-field>-->
+<!--          </template>-->
+<!--          <v-date-picker-->
+<!--            v-model="filterForm.created_at"-->
+<!--            no-title-->
+<!--            scrollable-->
+<!--            outlined-->
+<!--            dense-->
+<!--            @input="expStart = false"-->
+<!--          >-->
+<!--          </v-date-picker>-->
+<!--        </v-menu>-->
       </v-col>
       <v-col cols="12" lg="3" md="3" sm="12">
         <v-btn
@@ -95,64 +106,64 @@
       item-key="name"
       dense
     >
-      <template v-slot:item.actions="{ item , on, attrs }">
-        <v-dialog
-          v-model="dialog"
-          max-width="600px"
-          persistent
-          :retain-focus="false"
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-              block
-              color="primary"
-              v-bind="attrs"
-              v-on="on"
-              @click="showDetail(item.id)"
-            >
-              مشاهده
-            </v-btn>
-          </template>
-          <v-card
-            class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
-          >
-            <v-card-title class="justify-space-between title">
-              <span class="text-h6">برداشت</span>
-              <v-btn icon @click="dialog = false">
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-            </v-card-title>
-            <v-card-text>
-              <v-container>
-                <v-row>
-                  <!--                  <v-col><v-divider class="divide-card"></v-divider></v-col>-->
-                  <v-col cols="12">
-                    <table class="detail-transaction">
-                      <tr>
-                        <th>نوع تراکنش</th>
-                        <th>مبلغ</th>
-                        <th>تاریخ</th>
-                        <th>واریز کننده</th>
-                        <th>بابت</th>
-                      </tr>
-                      <tr>
-                        <td>{{ detailList['type'] }}</td>
-                        <td>{{ detailList.amount | thousandMask }}</td>
-                        <td>{{ detailList.created_at | changeDate}}</td>
-                        <td>{{item['depositor'] + " " + item['recipient']}}</td>
-                        <td>
-                          {{ detailList['concern'] !== null ?
-                          detailList['concern'] : "اعتبار"}}
-                        </td>
-                      </tr>
-                    </table>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-card-text>
-          </v-card>
-        </v-dialog>
-      </template>
+      <!--      <template v-slot:item.actions="{ item , on, attrs }">-->
+      <!--        <v-dialog-->
+      <!--          v-model="dialog"-->
+      <!--          max-width="600px"-->
+      <!--          persistent-->
+      <!--          :retain-focus="false"-->
+      <!--        >-->
+      <!--          <template v-slot:activator="{ on, attrs }">-->
+      <!--            <v-btn-->
+      <!--              block-->
+      <!--              color="primary"-->
+      <!--              v-bind="attrs"-->
+      <!--              v-on="on"-->
+      <!--              @click="showDetail(item.id)"-->
+      <!--            >-->
+      <!--              مشاهده-->
+      <!--            </v-btn>-->
+      <!--          </template>-->
+      <!--          <v-card-->
+      <!--            class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"-->
+      <!--          >-->
+      <!--            <v-card-title class="justify-space-between title">-->
+      <!--              <span class="text-h6">برداشت</span>-->
+      <!--              <v-btn icon @click="dialog = false">-->
+      <!--                <v-icon>mdi-close</v-icon>-->
+      <!--              </v-btn>-->
+      <!--            </v-card-title>-->
+      <!--            <v-card-text>-->
+      <!--              <v-container>-->
+      <!--                <v-row>-->
+      <!--                  &lt;!&ndash;                  <v-col><v-divider class="divide-card"></v-divider></v-col>&ndash;&gt;-->
+      <!--                  <v-col cols="12">-->
+      <!--                    <table class="detail-transaction">-->
+      <!--                      <tr>-->
+      <!--                        <th>نوع تراکنش</th>-->
+      <!--                        <th>مبلغ</th>-->
+      <!--                        <th>تاریخ</th>-->
+      <!--                        <th>واریز کننده</th>-->
+      <!--                        <th>بابت</th>-->
+      <!--                      </tr>-->
+      <!--                      <tr>-->
+      <!--                        <td>{{ detailList['type'] }}</td>-->
+      <!--                        <td>{{ detailList.amount | thousandMask }}</td>-->
+      <!--                        <td>{{ detailList.created_at | changeDate}}</td>-->
+      <!--                        <td>{{item['depositor'] + " " + item['recipient']}}</td>-->
+      <!--                        <td>-->
+      <!--                          {{ detailList['concern'] !== null ?-->
+      <!--                          detailList['concern'] : "اعتبار"}}-->
+      <!--                        </td>-->
+      <!--                      </tr>-->
+      <!--                    </table>-->
+      <!--                  </v-col>-->
+      <!--                </v-row>-->
+      <!--              </v-container>-->
+      <!--            </v-card-text>-->
+      <!--          </v-card>-->
+      <!--        </v-dialog>-->
+      <!--      </template>-->
       <template v-slot:item.icon="{ item }">
         <v-img
           max-height="40"

@@ -116,6 +116,9 @@
       </div>
     </template>
   </v-data-table>
+  <div class="text-center pt-2 font-weight-bold" v-if="dataProposalTable.length === 0">
+    شما تاکنون هیچ پیشنهادی ارسال نکرده‌اید.
+  </div>
   <div class="text-center pt-2" v-if="dataProposalTable.length >= 5">
     <v-pagination
       v-model="page"

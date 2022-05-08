@@ -12,12 +12,12 @@ export default {
       itemsPerPage: 4,
       detailList: {},
       headersUserManagement: [
-        {
-          text: "نوع تراکنش",
-          align: "center",
-          sortable: false,
-          value: "type"
-        },
+        // {
+        //   text: "نوع تراکنش",
+        //   align: "center",
+        //   sortable: false,
+        //   value: "type"
+        // },
         {
           text: "وضعیت",
           align: "center",

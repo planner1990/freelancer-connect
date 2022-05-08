@@ -62,7 +62,7 @@ export default {
           align: "center"
         },
         {
-          text: "واریزکننده/دریافت کننده",
+          text: "واریزکننده",
           value: "depositor_recipient",
           sortable: false,
           align: "center"
@@ -72,8 +72,8 @@ export default {
           value: "concern",
           sortable: false,
           align: "center"
-        },
-        { text: "عملیات", value: "actions", sortable: false, align: "center" }
+        }
+        // { text: "عملیات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: []
     };

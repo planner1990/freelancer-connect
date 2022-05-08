@@ -8,33 +8,33 @@ export default {
       show: false,
       cards: [
         {
-          src: "امنیت",
+          src: "ایجاد پروژه",
           notification: 0,
           title: "ایجاد پروژه",
           routeName: "post-job"
         },
         {
-          src: "اپلیکیشن",
+          src: "تاریخچه پروژه ها",
           notification: 0,
           title: "تاریخچه‌ پروژه‌ها",
           routeName: "my-projects"
         },
         {
-          src: "بصری",
+          src: "پروفایل",
           notification: 0,
           title: "پروفایل",
           routeName: "profile-setting-employer"
         },
         {
-          src: "تبلیغات",
+          src: "پروژه های کامل شده",
           notification: 0,
           title: "پروژه‌های کامل شده",
           routeName: "completed-projects-employer"
         },
         {
-          src: "داخلی",
+          src: "پروژه های در حال اجرا",
           notification: 0,
-          title: "پروژه‌های در حال اجرا",
+          title: "پروژه های در حال اجرا",
           routeName: "ongoing-projects-employer"
         },
         // {
@@ -50,7 +50,7 @@ export default {
         //   routeName: "completed-services-employer"
         // },
         {
-          src: "اپلیکیشن",
+          src: "پرداخت",
           notification: 0,
           title: "پرداخت",
           routeName: "employer-transactions"

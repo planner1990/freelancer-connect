@@ -29,8 +29,8 @@ export default {
           sortable: false,
           align: "center"
         },
-        { text: "صف", value: "queue", sortable: false, align: "center" },
-        { text: "عملیات", value: "actions", sortable: false, align: "center" }
+        { text: "تاریخ", value: "queue", sortable: false, align: "center" },
+        { text: "توضیحات", value: "actions", sortable: false, align: "center" }
       ],
       dataUserManagement: [
         // {

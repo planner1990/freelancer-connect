@@ -37,7 +37,7 @@
     "ongoingServices": "خدمات در حال انجام",
     "completedServices": "خدمات کامل شده",
     "cancelledServices": "خدمات ناتمام",
-    "proposals": "لیست درخواست‌ها",
+    "proposals": "پیشنهادهای ارائه شده",
     "payout": "مدیریت پرداخت ها",
     "invoices": "صورتحساب",
     "packages": "پکیج ها",
@@ -46,7 +46,7 @@
     "myProjects": "تاریخچه پروژه‌ها",
     "financialManagement": "مدیریت مالی",
     "wallet": "کیف پول",
-    "transactions": "پرداخت",
+    "transactions": "برداشت",
     "bankCard": "کارت بانکی"
   },
   "actions": {

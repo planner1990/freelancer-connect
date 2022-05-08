@@ -18,7 +18,7 @@
       بهره مند شوند. بازار کار آنلاین کانکتا این امکان را فراهم میکند تا
       فریلنسرهای برگزیده بهترین خدمات را به برترین کارفرماها ارائه دهند. کار
       کانکتا متصل کردن بهترینها به یکدیگر است.
-      <div class="mt-5">
+      <div class="mt-5 d-flex">
         <v-icon
           class="ml-6"
           dark
@@ -36,9 +36,22 @@
         <!--        <v-icon class="ml-6">-->
         <!--          mdi-twitter-->
         <!--        </v-icon>-->
-        <v-icon dark @click="goToPage('https://t.me/connectaofficial')">
+        <v-icon
+          class="ml-5"
+          dark
+          @click="goToPage('https://t.me/connectaofficial')"
+        >
           mdi-telegram
         </v-icon>
+        <div>
+          <img
+            class="mt-1"
+            src="../../../../assets/image/aparat.png"
+            alt=""
+            @click="goToPage('https://www.aparat.com/connecta')"
+            style="width: 22px"
+          />
+        </div>
       </div>
     </div>
     <div class="col-lg-2 col-md-5 footer-front-office_top_text">
