@@ -224,8 +224,9 @@
                           @change="handleFileInput($event)"
                           counter
                           label="فایل پیوستی"
-                          placeholder="Select your files"
-                          prepend-icon="mdi-paperclip"
+                          append-icon="mdi-paperclip"
+                          prepend-icon=""
+                          :loading="loading"
                           outlined
                           dense
                           multiple

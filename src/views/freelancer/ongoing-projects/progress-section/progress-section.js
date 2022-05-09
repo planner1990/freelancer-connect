@@ -72,7 +72,8 @@ export default {
       valid: false,
       attachmentIdForChat: null,
       dialog2: false,
-      rejDesc: ""
+      rejDesc: "",
+      loading: false
     };
   },
   computed: {
@@ -135,6 +136,7 @@ export default {
       });
     },
     handleFileInput(file) {
+      this.loading = true;
       let formData = new FormData();
       if (file) {
         for (let i = 0; i <= file.length - 1; i++) {
@@ -143,9 +145,11 @@ export default {
         UploadService.uploadFile(formData)
           .then(res => {
             this.jobOfferForm.attachmentId = res.data.data.attachment_id;
+            this.loading = false;
           })
           .catch(() => {
             this.jobOfferForm.attachmentId = null;
+            this.loading = false;
           });
       }
     },

@@ -627,3 +627,8 @@ input[type="number"] {
   height: 39px !important;
   border-radius: 4px 0 0 4px !important;
 }
+
+.v-progress-linear .v-progress-linear__indeterminate .long,
+.v-progress-linear .v-progress-linear__indeterminate .short {
+  background-color: $secondary !important;
+}

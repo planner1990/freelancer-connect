@@ -28,7 +28,7 @@
           <v-row justify="space-around">
             <v-col cols="12" sm="6" md="6">
               <v-text-field
-                :value="item.job_title? item.job_title : experienceForm.name"
+                v-model="item.job_title"
                 ref="my_input"
                 outlined
                 dense
@@ -36,8 +36,7 @@
             </v-col>
             <v-col cols="12" sm="6" md="6">
               <v-text-field
-                :value="item.company_title"
-                v-model="experienceForm.companyName"
+                v-model="item.company_title"
                 outlined
                 dense
               ></v-text-field>
