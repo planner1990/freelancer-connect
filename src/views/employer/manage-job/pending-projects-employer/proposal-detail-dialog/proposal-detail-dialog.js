@@ -82,6 +82,12 @@ export default {
       } else {
         this.proposalAction();
       }
+    },
+    goToConversion() {
+      this.$router.push({
+        path: `conversationWithFreelancer`,
+        query: { proposalId: this.proposalId }
+      });
     }
   }
 };

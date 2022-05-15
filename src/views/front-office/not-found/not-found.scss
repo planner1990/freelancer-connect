@@ -1,0 +1,16 @@
+.not-found {
+  height: 100vh;
+  &-text {
+    div:first-child {
+      font-size: 64px;
+      font-weight: 300;
+      color: #cfcfcf;
+    }
+    div:nth-child(2) {
+      font-weight: 500;
+      font-size: 18px;
+      color: #142226;
+      margin-bottom: 24px;
+    }
+  }
+}

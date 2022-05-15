@@ -74,6 +74,12 @@ export default {
         perPage: 5
       };
       console.log(options);
+    },
+    goToConversion() {
+      this.$router.push({
+        path: `conversationWithEmployer`,
+        query: { proposalId: this.$route.query.proposalId }
+      });
     }
   }
 };

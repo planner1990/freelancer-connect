@@ -69,14 +69,23 @@ export default {
       OtpService.verifyOTP(body)
         .then(res => {
           if (res.data.data["is_registered"] === false) {
-            localStorage.setItem("accessToken", res.data.data.token);
+            localStorage.setItem(
+              "accessToken",
+              res.data.data.token["access_token"]
+            );
             this.$router.push("/login/freelancer-or-employer");
           } else {
             if (this.getEmployerData.currentURL) {
-              localStorage.setItem("accessToken", res.data.data.token);
+              localStorage.setItem(
+                "accessToken",
+                res.data.data.token["access_token"]
+              );
               this.$router.push(this.getEmployerData.currentURL);
             } else {
-              localStorage.setItem("accessToken", res.data.data.token);
+              localStorage.setItem(
+                "accessToken",
+                res.data.data.token["access_token"]
+              );
               this.goToDashboard();
             }
           }

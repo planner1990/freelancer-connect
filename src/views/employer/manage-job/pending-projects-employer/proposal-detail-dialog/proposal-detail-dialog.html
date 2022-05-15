@@ -71,7 +71,7 @@
             </v-col>
             <v-col cols="12">
               <div class="employer-projects-card-title mt-8">
-                  فایل‌های ضمیمه شده
+                فایل‌های ضمیمه شده
               </div>
               <v-list>
                 <v-list-item
@@ -96,18 +96,21 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-<!--        <v-btn-->
-<!--          color="primary"-->
-<!--          class="px-6"-->
-<!--          outlined-->
-<!--        >-->
-<!--          گفتگو با فریلنسر-->
-<!--        </v-btn>-->
+        <!--        <v-btn-->
+        <!--          color="primary"-->
+        <!--          class="px-6"-->
+        <!--          outlined-->
+        <!--        >-->
+        <!--          گفتگو با فریلنسر-->
+        <!--        </v-btn>-->
         <v-btn color="error" @click="rejectProposal(3)">
           رد پیشنهاد
         </v-btn>
         <v-btn color="primary" @click="hireFreelancerByPrepayment()">
           تایید پیشنهاد
+        </v-btn>
+        <v-btn color="secondary" @click="goToConversion">
+          گفتگو با فریلنسر
         </v-btn>
       </v-card-actions>
     </v-card>

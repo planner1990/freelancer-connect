@@ -2,7 +2,9 @@
   <v-container>
     <v-row>
       <v-col cols="12" class="px-0">
-        <div class="container--fluid d-lg-flex d-md-block project-row">
+        <div
+          class="container--fluid d-lg-flex d-md-block flex-wrap project-row"
+        >
           <div
             class="col-lg-8 col-md-12 d-flex flex-column align-start justify-center"
           >
@@ -32,6 +34,14 @@
                 بیشتر از یک هفته
               </div>
             </div>
+          </div>
+          <div class="col-12 mt-8">
+            <v-btn color="primary" outlined @click="goToConversion">
+              گفتگو با کارفرما
+              <v-icon class="mr-2">
+                mdi-chat-outline
+              </v-icon>
+            </v-btn>
           </div>
         </div>
       </v-col>

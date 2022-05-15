@@ -133,6 +133,12 @@ const routes = [
         name: "public-profile",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/public-profile/index")
+      },
+      {
+        path: "/not-found",
+        name: "not-found",
+        meta: { transitionName: "slide" },
+        component: () => import("../views/front-office/not-found/index")
       }
     ]
   },
@@ -254,6 +260,15 @@ const routes = [
             meta: { transitionName: "slide" },
             component: () =>
               import("../views/freelancer/posted-projects/project-detail/index")
+          },
+          {
+            path: ":id/conversationWithEmployer",
+            name: "conversationWithEmployer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/freelancer/posted-projects/conversationWithEmployer/index"
+              )
           }
         ]
       },
@@ -549,6 +564,15 @@ const routes = [
               )
           },
           {
+            path: ":id/conversationWithFreelancer",
+            name: "conversationWithFreelancer",
+            meta: { transitionName: "slide" },
+            component: () =>
+              import(
+                "../views/employer/manage-job/pending-projects-employer/conversationWithFreelancer/index"
+              )
+          },
+          {
             path: ":id/payment",
             name: "employer-payment",
             meta: { transitionName: "slide" },
@@ -649,7 +673,7 @@ const routes = [
   },
   {
     path: "*",
-    redirect: { name: "home" }
+    redirect: { name: "not-found" }
   }
 ];
 
