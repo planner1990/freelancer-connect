@@ -1,9 +1,7 @@
 @import "src/assets/styles/variable";
 .bgImage {
-  background-image: url("./../../../assets/image/front-office/pic.jpg");
-  background-position: left;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url("./../../../assets/image/Website Banners/کاور ثبت پروژه.jpg") #eff0f5 right no-repeat;
+  //background-size: cover;
 
   .backHome {
     cursor: pointer;

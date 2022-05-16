@@ -1,7 +1,7 @@
 @import "src/assets/styles/variable";
 @import "src/assets/styles/mixins";
 .bgImage {
-  background-image: url("./../../../assets/image/pic.jpg");
+  background-image: url("./../../../assets/image/Website Banners/کاور کد تایید.jpg");
   background-position: center;
   background-size: cover;
   @media (max-width: 599px) {
@@ -9,7 +9,7 @@
   }
   h2 {
     font-size: 40px;
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(42, 42, 42, 0.82);
     margin-right: 24px;
     &:first-child {
       margin-top: 150px;
