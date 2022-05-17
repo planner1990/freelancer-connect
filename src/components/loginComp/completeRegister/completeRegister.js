@@ -69,10 +69,7 @@ export default {
         };
         // this.setRegisterFormData(body);
         AuthService.register(body).then(res => {
-          localStorage.setItem(
-            "accessToken",
-            res.data.data.token["access_token"]
-          );
+          localStorage.setItem("accessToken", res.data.data.token);
           if (res.status === 200) {
             if (
               this.getEmployerData.currentURL

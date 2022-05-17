@@ -15,7 +15,8 @@ export default {
       subject: "",
       dialog: false,
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
-      showSnackbar: false
+      showSnackbar: false,
+      listOfFileInput: []
     };
   },
   computed: {},
@@ -66,8 +67,8 @@ export default {
       file.click();
     },
     getFileInput(event) {
-      this.test = event;
-      // this.youMessage = event[0].name;
+      this.listOfFileInput = event;
+      this.youMessage = event[0].name;
       let formData = new FormData();
       if (event) {
         for (let i = 0; i <= event.length - 1; i++) {

@@ -632,3 +632,14 @@ input[type="number"] {
 .v-progress-linear .v-progress-linear__indeterminate .short {
   background-color: $secondary !important;
 }
+
+.chat-room {
+  .v-input__icon {
+    left: 100px;
+    top: 15px;
+    position: relative;
+  }
+  .v-icon.v-icon.v-icon--link {
+    color: $secondary;
+  }
+}
