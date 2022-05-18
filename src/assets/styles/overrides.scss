@@ -634,12 +634,18 @@ input[type="number"] {
 }
 
 .chat-room {
-  .v-input__icon {
-    left: 100px;
-    top: 15px;
-    position: relative;
+  .message-box {
+    .v-input__icon {
+      left: 100px;
+      top: 15px;
+      position: relative;
+    }
+    .v-icon.v-icon.v-icon--link {
+      color: $secondary;
+    }
   }
-  .v-icon.v-icon.v-icon--link {
-    color: $secondary;
+  .v-input__append-outer .v-icon,
+  .v-input__prepend-outer .v-icon {
+    display: none !important;
   }
 }

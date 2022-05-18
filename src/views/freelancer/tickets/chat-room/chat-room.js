@@ -8,7 +8,7 @@ export default {
   props: [],
   data() {
     return {
-      youMessage: "",
+      youMessage: [],
       messages: [],
       authenticated: "",
       completedAt: null,
@@ -16,7 +16,10 @@ export default {
       dialog: false,
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
       showSnackbar: false,
-      listOfFileInput: []
+      listOfFileInput: [],
+      isShow: false,
+      fileInput: [],
+      attachmentIdForChat: []
     };
   },
   computed: {},
@@ -41,9 +44,9 @@ export default {
         });
     },
     sendMessage(direction) {
-      if (!this.youMessage) {
-        return;
-      }
+      // if (!this.youMessage) {
+      //   return;
+      // }
       if (direction === "out") {
         this.messages.push({ text: this.youMessage, role: "freelancer" });
         const body = {
@@ -52,7 +55,7 @@ export default {
           project_id: this.$route.query.projectId,
           thread_code: this.$route.query.threadCode,
           type: null,
-          attachment_id: this.attachmentId
+          attachment_id: this.attachmentIdForChat
         };
         this.storeTicket(body);
         this.youMessage = "";
@@ -67,8 +70,8 @@ export default {
       file.click();
     },
     getFileInput(event) {
+      this.isShow = event.length >= 1;
       this.listOfFileInput = event;
-      this.youMessage = event[0].name;
       let formData = new FormData();
       if (event) {
         for (let i = 0; i <= event.length - 1; i++) {
@@ -84,9 +87,14 @@ export default {
       }
     },
     storeTicket(body) {
-      ticketService.storeTickets(body).then(res => {
-        console.log(res);
-      });
+      ticketService
+        .storeTickets(body)
+        .then(() => {
+          this.isShow = false;
+        })
+        .catch(() => {
+          this.isShow = false;
+        });
     },
     closeTicket() {
       const body = {

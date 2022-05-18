@@ -98,8 +98,8 @@
                 <span class="d-block">{{ message.text }}</span>
                 <span class="d-block">
                   <a
-                    v-if="message.attachment"
-                    :href="message.attachment"
+                    v-if="message.attachments && message.attachments.length >= 1"
+                    :href="message.attachments"
                     download
                     target="_blank"
                     class="d-flex mt-4 attachment-link"
@@ -137,7 +137,7 @@
               <v-textarea
                 v-model="youMessage"
                 v-if="subject['closed_at'] === null"
-                class="mt-6 col-10 mx-auto"
+                class="mt-14 col-10 mx-auto message-box"
                 type="text"
                 label="پیام شما"
                 rows="2"
@@ -164,26 +164,26 @@
               </v-btn>
               <v-file-input
                 @change="getFileInput($event)"
-                counter
+                v-model="fileInput"
                 id="avatar"
-                label="فایل پیوستی"
-                placeholder="Select your files"
                 prepend-icon="mdi-paperclip"
                 outlined
+                style="position: absolute;top: -26px;right: 88px;width: 73%;"
+                :class="{ 'isShow': isShow === true, 'isNone': isShow === false }"
                 dense
                 multiple
+                small-chips
                 :show-size="1000"
               >
                 <template v-slot:selection="{ index, text }">
-                  <v-chip v-if="index < 3" dark label small>
+                  <v-chip v-if="index < 2" dark label small>
                     {{ text }}
                   </v-chip>
-
                   <span
-                    v-else-if="index === 3"
+                    v-else-if="index === 2"
                     class="text-overline grey--text text--darken-3 mx-2"
                   >
-                    +{{ files.length - 3 }} File(s)
+                    +{{ fileInput.length - 2 }} File(s)
                   </span>
                 </template>
               </v-file-input>
@@ -200,9 +200,9 @@
               <!--                                mdi-message-text-->
               <!--                              </v-icon>-->
               <!--                            </v-btn>-->
-<!--                <div v-for="(i, index) in listOfFileInput" :key="index">-->
-<!--                    <div>{{i.name}}</div>-->
-<!--                </div>-->
+              <!--                <div v-for="(i, index) in listOfFileInput" :key="index">-->
+              <!--                    <div>{{i.name}}</div>-->
+              <!--                </div>-->
               <v-btn
                 v-if="subject['closed_at'] !== null"
                 depressed
