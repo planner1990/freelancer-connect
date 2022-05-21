@@ -9,13 +9,15 @@ import {
   ticketService
 } from "@/core/services";
 import headerSection from "@/components/header-section/index";
+import Snackbar from "../../../../../components/snackbar/index";
 export default {
   name: "progress-section",
   components: {
     DashboardCard,
     ProjectList,
     DialogDashboard,
-    headerSection
+    headerSection,
+    Snackbar
   },
   props: [],
   mixins: [],
@@ -56,7 +58,10 @@ export default {
       valid: false,
       attachmentIdForChat: null,
       dialog2: false,
-      rejDesc: ""
+      rejDesc: "",
+      subject: "",
+      snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
+      showSnackbar: false
     };
   },
   computed: {
@@ -214,6 +219,9 @@ export default {
         console.log(res);
         this.dialog2 = false;
       });
+    },
+    hideSnackbar() {
+      this.showSnackbar = false;
     }
   }
 };

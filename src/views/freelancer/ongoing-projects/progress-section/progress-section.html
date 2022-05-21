@@ -72,7 +72,11 @@
                               >
                                 بازگشت
                               </v-btn>
-                              <v-btn color="secondary" text @click="cancelProject">
+                              <v-btn
+                                color="secondary"
+                                text
+                                @click="cancelProject"
+                              >
                                 بله, لغو پروژه
                               </v-btn>
                             </v-card-actions>
@@ -270,129 +274,216 @@
       </v-col>
     </v-row>
   </v-container>
-
-  <v-container class="pa-0">
-    <div class="chat-header">
-      <!--      <v-icon large>mdi-account-circle</v-icon>-->
-      {{ projectDetails.username }}
-    </div>
-    <section ref="chatArea" class="chat-area ma-0">
-      <p
-        v-for="message in messages"
-        class="message d-flex align-center"
-        :class="{ 'message-out': message.role === 'freelancer', 'message-in': message.role === 'employer' }"
-      >
-        <span class="d-block ml-auto" v-if="message.role === 'freelancer' ">
-          <v-avatar>
-            <img
-              style="height: auto"
-              :src="message.avatar !== null ? message.avatar : require(`../../../../assets/image/connectalogo.png`)"
-              alt="connecta"
-            />
-          </v-avatar>
-          {{message.name}}</span
-        >
-        <span>
-          {{ message.text }}
-        </span>
-        <a
-          v-if="message.attachment"
-          style="text-decoration: none;"
-          :href="message.attachment"
-          download
-          target="_blank"
-        >
-          <v-icon large color="orange darken-2">
-            mdi-download
-          </v-icon></a
-        >
-        <!--          <v-icon @click="downloadTest(test)" large color="orange darken-2">-->
-        <!--            mdi-download-->
-        <!--          </v-icon>-->
-        <span class="d-block mr-auto" v-if="message.role === 'employer'">
-          {{authenticated.name}}
-          <v-avatar>
-            <img
-              style="height: auto"
-              :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
-              alt="connecta"
-            />
-          </v-avatar>
-        </span>
-      </p>
-    </section>
-
-    <section class="chat-inputs">
-      <form
-        class="d-flex justify-space-between align-center"
-        @submit.prevent="sendMessage('out')"
-        id="person2-form"
-      >
-        <v-textarea
-          v-model="youMessage"
-          v-if="!completedAt"
-          class="mt-3 col-10"
-          :append-icon="'mdi-paperclip'"
-          type="text"
-          label="پیام شما"
-          rows="2"
-          height="45"
-          outlined
-          dense
-          @click:append="toggleFile"
-          @keyup.enter.prevent="sendMessage('out')"
-        >
-        </v-textarea>
-        <v-file-input
-          @change="getFileInput($event)"
-          counter
-          id="avatar"
-          style="display:none"
-          label="فایل پیوستی"
-          placeholder="Select your files"
-          prepend-icon="mdi-paperclip"
-          outlined
-          dense
-          multiple
-          :show-size="1000"
-        >
-          <template v-slot:selection="{ index, text }">
-            <v-chip v-if="index < 3" dark label small>
-              {{ text }}
-            </v-chip>
-
-            <span
-              v-else-if="index === 3"
-              class="text-overline grey--text text--darken-3 mx-2"
+  <v-container>
+    <v-row class="mx-8">
+      <v-col cols="12" class="pa-0 chat-box">
+        <div class="d-flex justify-space-between chat-box-header">
+          <div>
+            <div class="chat-box-header-title">عنوان تیکت</div>
+            <div class="chat-box-header-subject">{{authenticated.name}}</div>
+          </div>
+          <div>
+            <!--            <v-dialog-->
+            <!--              v-model="dialog"-->
+            <!--              persistent-->
+            <!--              max-width="350px"-->
+            <!--              v-if="subject['closed_at'] === null"-->
+            <!--            >-->
+            <!--              <template v-slot:activator="{ on, attrs }">-->
+            <!--                <v-btn-->
+            <!--                  v-bind="attrs"-->
+            <!--                  v-on="on"-->
+            <!--                  :ripple="false"-->
+            <!--                  depressed-->
+            <!--                  color="red lighten-5"-->
+            <!--                  dark-->
+            <!--                  class="create-btn"-->
+            <!--                >-->
+            <!--                  <img-->
+            <!--                    src="../../../../../assets/image/circles-delete-cross.png"-->
+            <!--                    alt=""-->
+            <!--                  />بستن تیکت-->
+            <!--                </v-btn>-->
+            <!--              </template>-->
+            <!--              <v-form ref="form" lazy-validation>-->
+            <!--                <v-card-->
+            <!--                  class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"-->
+            <!--                >-->
+            <!--                  <v-card-text>-->
+            <!--                    <v-container>-->
+            <!--                      <v-row>-->
+            <!--                        <v-col cols="12">-->
+            <!--                          آیا قصد بستن تیکت را دارید؟-->
+            <!--                        </v-col>-->
+            <!--                      </v-row>-->
+            <!--                    </v-container>-->
+            <!--                  </v-card-text>-->
+            <!--                  <v-card-actions>-->
+            <!--                    <v-spacer></v-spacer>-->
+            <!--                    <v-btn color="#ff0000" dark @click="dialog = false">-->
+            <!--                      خیر-->
+            <!--                    </v-btn>-->
+            <!--                    <v-btn color="#1ad715" dark @click="closeTicket">-->
+            <!--                      بله-->
+            <!--                    </v-btn>-->
+            <!--                  </v-card-actions>-->
+            <!--                </v-card>-->
+            <!--              </v-form>-->
+            <!--            </v-dialog>-->
+          </div>
+        </div>
+        <div class="chat-box-body">
+          <section ref="chatArea" class="chat-area ma-0">
+            <p
+              v-for="message in messages"
+              class="message d-flex align-center"
+              :class="{ 'message-out': message.role === 'freelancer', 'message-in': message.role === 'employer'}"
             >
-              +{{ files.length - 3 }} File(s)
-            </span>
-          </template>
-        </v-file-input>
-        <v-btn
-          v-if="!completedAt"
-          depressed
-          class="mb-4"
-          large
-          color="primary"
-          type="submit"
-        >
-          ارسال پیام
-          <v-icon class="mx-2">
-            mdi-message-text
-          </v-icon>
-        </v-btn>
-        <v-btn
-          v-if="completedAt"
-          depressed
-          class="mb-4 mt-5"
-          large
-          block
-          disabled
-        >
-          پیام بسته شد
-        </v-btn>
-      </form>
-    </section>
+              <img
+                :src="authenticated.avatar !== null ? authenticated.avatar : require(`../../../../assets/image/connectalogo.png`)"
+                v-if="message.role === 'freelancer'"
+                alt="connecta"
+                class="side-avatar"
+              />
+              <!--              <span-->
+              <!--                class="d-block ml-auto"-->
+              <!--                v-if="message.role === 'freelancer' "-->
+              <!--              >-->
+              <!--                <v-avatar>-->
+              <!--                  <img-->
+              <!--                    style="height: auto"-->
+              <!--                    :src="message.avatar !== null ? message.avatar : require(`../../../../assets/image/connectalogo.png`)"-->
+              <!--                    alt="connecta"-->
+              <!--                  />-->
+              <!--                </v-avatar>-->
+              <!--                {{message.name}}</span-->
+              <!--              >-->
+              <span>
+                <span class="d-block">{{ message.text }}</span>
+                <span class="d-block">
+                  <a
+                    v-if="message.attachment"
+                    :href="message.attachment"
+                    download
+                    target="_blank"
+                    class="d-flex mt-4 attachment-link"
+                  >
+                    <img
+                      src="../../../../assets/image/attachment-link.1.png"
+                      alt=""
+                    />
+                    <span style="">دانلود پیوست</span>
+                  </a>
+                </span>
+              </span>
+              <span
+                class="d-block mr-auto"
+                v-if="message.role === 'employer' || message.role === 'admin'"
+              >
+                <img
+                  :src="message.avatar !== null ? message.avatar : require(`../../../../assets/image/connectalogo.png`)"
+                  alt="connecta"
+                  class="side-avatar-answer"
+                />
+              </span>
+            </p>
+          </section>
+        </div>
+        <div class="chat-box-footer">
+          <section class="chat-inputs">
+            <form
+              class="d-flex justify-space-between align-center"
+              @submit.prevent="sendMessage('out')"
+              id="person2-form"
+              style="position: relative"
+            >
+              <v-textarea
+                v-model="youMessage"
+                class="mt-6 col-10 mx-auto ticket-input"
+                type="text"
+                label="پیام شما"
+                rows="2"
+                height="70"
+                outlined
+                dense
+                no-resize
+                @click:append="toggleFile"
+                @keyup.enter.prevent="sendMessage('out')"
+              >
+                <!--                  :append-icon="'mdi-paperclip'"-->
+              </v-textarea>
+              <v-btn
+                depressed
+                class="send-ticket"
+                color="secondary"
+                large
+                type="submit"
+              >
+                <v-icon color="white" size="20">
+                  mdi-arrow-up
+                </v-icon>
+              </v-btn>
+              <!--              <v-file-input-->
+              <!--                @change="getFileInput($event)"-->
+              <!--                counter-->
+              <!--                id="avatar"-->
+              <!--                style="display:none"-->
+              <!--                label="فایل پیوستی"-->
+              <!--                placeholder="Select your files"-->
+              <!--                prepend-icon="mdi-paperclip"-->
+              <!--                outlined-->
+              <!--                dense-->
+              <!--                multiple-->
+              <!--                :show-size="1000"-->
+              <!--              >-->
+              <!--                <template v-slot:selection="{ index, text }">-->
+              <!--                  <v-chip v-if="index < 3" dark label small>-->
+              <!--                    {{ text }}-->
+              <!--                  </v-chip>-->
+
+              <!--                  <span-->
+              <!--                    v-else-if="index === 3"-->
+              <!--                    class="text-overline grey&#45;&#45;text text&#45;&#45;darken-3 mx-2"-->
+              <!--                  >-->
+              <!--                    +{{ files.length - 3 }} File(s)-->
+              <!--                  </span>-->
+              <!--                </template>-->
+              <!--              </v-file-input>-->
+              <!--              <v-btn-->
+              <!--                v-if="!completedAt"-->
+              <!--                depressed-->
+              <!--                class="mb-4"-->
+              <!--                large-->
+              <!--                color="primary"-->
+              <!--                type="submit"-->
+              <!--              >-->
+              <!--                ارسال پیام-->
+              <!--                <v-icon class="mx-2">-->
+              <!--                  mdi-message-text-->
+              <!--                </v-icon>-->
+              <!--              </v-btn>-->
+              <!--              <v-btn-->
+              <!--                v-if="subject['closed_at'] !== null"-->
+              <!--                depressed-->
+              <!--                class="mb-4 mt-5"-->
+              <!--                style="max-width: 300px"-->
+              <!--                large-->
+              <!--                block-->
+              <!--                disabled-->
+              <!--              >-->
+              <!--                پیام بسته شد-->
+              <!--              </v-btn>-->
+            </form>
+          </section>
+        </div>
+      </v-col>
+    </v-row>
+    <v-row>
+      <snackbar
+        :snackbarMessage="snackbarMessage"
+        :showSnackbar="showSnackbar"
+        @hideSnackbar="hideSnackbar"
+      ></snackbar>
+    </v-row>
   </v-container>
 </div>

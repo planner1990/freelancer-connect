@@ -2,6 +2,7 @@ import DashboardCard from "../../../../components/dashboardCard/index";
 import ProjectList from "../../../../components/project-list/index";
 import DialogDashboard from "../../../../components/dialog-dashboard/index";
 import headerSection from "../../../../components/header-section/index";
+import Snackbar from "../../../../components/snackbar/index";
 import Vue from "vue";
 import {
   employerServices,
@@ -15,7 +16,8 @@ export default {
     DashboardCard,
     ProjectList,
     DialogDashboard,
-    headerSection
+    headerSection,
+    Snackbar
   },
   props: [],
   mixins: [],
@@ -73,7 +75,10 @@ export default {
       attachmentIdForChat: null,
       dialog2: false,
       rejDesc: "",
-      loading: false
+      loading: false,
+      subject: "",
+      snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
+      showSnackbar: false
     };
   },
   computed: {
@@ -236,6 +241,9 @@ export default {
         console.log(res);
         this.dialog2 = false;
       });
+    },
+    hideSnackbar() {
+      this.showSnackbar = false;
     }
   }
 };

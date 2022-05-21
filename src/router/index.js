@@ -139,6 +139,13 @@ const routes = [
         name: "not-found",
         meta: { transitionName: "slide" },
         component: () => import("../views/front-office/not-found/index")
+      },
+      {
+        path: "/profile",
+        name: "freelancer-profile",
+        meta: { transitionName: "slide" },
+        component: () =>
+          import("../views/front-office/freelancer-profile/index")
       }
     ]
   },

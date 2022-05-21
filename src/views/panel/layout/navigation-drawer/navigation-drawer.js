@@ -44,6 +44,11 @@ export default {
       drawer: types.GET_DRAWER
     })
   },
+  watch: {
+    $route() {
+      this.getInfo();
+    }
+  },
   created() {
     const role = this.$route.matched[0].name;
     this.checkRole(role);
