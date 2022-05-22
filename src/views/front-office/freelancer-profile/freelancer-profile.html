@@ -1,16 +1,127 @@
 <section class="freelancer-profile mt-8">
   <v-container id="container">
-    <v-row >
-      <v-col cols="12" md="3" id="left">Left</v-col>
-      <v-col cols="12" md="8" id="right">
-            dsafasfadf dsafdsfasdf asfasdf adfasdf dsafasfadf dsafasfadf
-            dsafdsfasdf asfasdf adfasdf dsafasfadf dsafasfadf dsafdsfasdf
-            asfasdf adfasdf dsafasfadf dsafdsfasdf asfasdf adfasdf dsafasfadf
-            dsafdsfasdf asfasdf adfasdf dsafasfadf dsafdsfasdf asfasdf adfasdf
-            dsafasfadf dsafdsfasdf asfasdf adfasdf dsafasfadf dsafdsfasdf
-            asfasdf adfasdf dsafasfadf dsafdsfasdf asfasdf adfasdf dsafasfadf
-            dsafdsfasdf asfasdf adfasdf dsafasfadf dsafdsfasdf asfasdf adfasdf
-            dsafasfadf dsafdsfasdf asfasdf adfasdf
+    <v-row>
+      <v-col
+        lg="3"
+        md="3"
+        id="left"
+        class="d-flex flex-column align-center pt-12 px-10"
+        style="position: absolute"
+        :style="{'position': scrollHeight >= 1100 ? 'absolute': 'fixed'}"
+      >
+        <div class="d-flex">
+          <div>
+            <img
+              style="width: 60px;height: auto;border-radius: 50%"
+              src="../../../assets/image/profile.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="mr-4">
+            <div>سیروس گرجستانی</div>
+            <div>طراح محصول</div>
+            <div>
+              <v-rating
+                v-model="rating"
+                background-color="gray"
+                color="primary"
+                small
+              ></v-rating>
+            </div>
+          </div>
+        </div>
+        <div class="my-5" style="color: #7e7e7f; font-size: 14px">
+          سلام من طراح محصول هستم و محصولات را به کمک تیم دیزاین طراحی می کنم.
+        </div>
+        <div
+          class="pa-4 mb-5"
+          style="background-color: rgba(232,232,232,0.61); width: 100%; border-radius: 8px;color: #0a3d62"
+        >
+          <span class="font-weight-bold" style="font-size: 22px">26</span><br />
+          <span class="d-block" style="font-size: 14px;margin-top: -7px;"
+            >پروژه موفق در کانکتا</span
+          >
+        </div>
+        <div style="width: 100%;">
+          <h4 class="mb-2">مهارت‌ها</h4>
+          <div>
+            <v-chip class="ml-1 mb-2 font-weight-bold" label color="#e6eef1">
+              <v-icon left color="secondary">
+                mdi-pound
+              </v-icon>
+              <span style="color: #0a3d62;">طراحی</span>
+            </v-chip>
+            <v-chip class="ml-1 mb-2 font-weight-bold" label color="#e6eef1">
+              <v-icon left color="secondary">
+                mdi-pound
+              </v-icon>
+              <span style="color: #0a3d62;">لوگو</span>
+            </v-chip>
+          </div>
+        </div>
+      </v-col>
+      <v-col cols="12" lg="7" md="8" id="right">
+        <h3 class="mb-2">پروژه‌ها</h3>
+        <div class="project-cards mb-10">
+          <div class="project-card" v-for="(i, index) in 6" :key="index">
+            <div>عکس</div>
+            <div>طراح رابط کاربری و کنترل ماشین تسلا مدل X</div>
+            <div>
+              <v-btn
+                style="min-width: 46px"
+                depressed
+                text
+                color="secondary"
+                class="px-0 mx-0"
+              >
+                مشاهده
+              </v-btn>
+            </div>
+          </div>
+        </div>
+        <h3 class="mb-2">تجربه‌های کاری</h3>
+        <div class="experience-cards mb-10">
+          <div
+            class="experience-card d-flex align-center justify-space-between"
+            v-for="(i, index) in 4"
+            :key="index"
+          >
+            <div>
+              <div class="mb-2 font-weight-bold">محقق کاربر</div>
+              <div>بلو اوریجین</div>
+            </div>
+            <div>شهریور ۱۳۹۹ - خرداد ۱۴۰۰</div>
+          </div>
+        </div>
+        <h3 class="mb-2">دوره‌های آموزشی</h3>
+        <div class="experience-cards mb-10">
+          <div
+            class="experience-card d-flex align-center justify-space-between"
+            v-for="(i, index) in 3"
+            :key="index"
+          >
+            <div>
+              <div class="mb-2 font-weight-bold">فوتوشاپ</div>
+              <div>جهاد دانشگاهی</div>
+            </div>
+            <div>شهریور ۱۳۹۹ - خرداد ۱۴۰۰</div>
+          </div>
+        </div>
+        <h3 class="mb-2">تحصیلات</h3>
+        <div class="experience-cards mb-10">
+          <div
+            class="experience-card d-flex align-center justify-space-between"
+            v-for="(i, index) in 2"
+            :key="index"
+          >
+            <div>
+              <div class="mb-2 font-weight-bold">کارشناسی نرم افزار</div>
+              <div>دانشگاه تهران</div>
+            </div>
+            <div>خرداد ۱۴۰۰</div>
+          </div>
+        </div>
       </v-col>
     </v-row>
   </v-container>

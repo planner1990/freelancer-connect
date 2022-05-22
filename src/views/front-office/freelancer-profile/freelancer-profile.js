@@ -3,9 +3,21 @@ export default {
   components: {},
   props: [],
   data() {
-    return {};
+    return {
+      rating: 3,
+      scrollHeight: 0
+    };
   },
-  computed: {},
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
   mounted() {},
-  methods: {}
+  methods: {
+    handleScroll() {
+      return (this.scrollHeight = window.pageYOffset);
+    }
+  },
+  destroyed() {
+    window.addEventListener("scroll", this.updateScroll);
+  }
 };

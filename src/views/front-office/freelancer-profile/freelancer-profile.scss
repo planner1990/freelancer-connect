@@ -5,21 +5,57 @@
     height: 2000px;
     max-width: 1180px;
     position: relative;
-    background-color: #0a3d62;
   }
   #left {
     height: 50vh;
-    //width: 15%;
-    background-color: tomato;
-    position: fixed;
     padding: 12px;
+    margin-top: 28px;
+    border-left: 1px solid #e5e5e5;
   }
   #right {
+    margin-top: 28px;
     flex-grow: 1;
     position: absolute;
     //width: 70%;
     left: 0;
-    background: pink;
     padding: 12px;
+    .project-cards {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .project-card {
+        background-color: rgba(232, 232, 232, 0.61);
+        width: 32%;
+        margin-bottom: 2%;
+        min-height: 300px;
+        padding: 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        div:first-child {
+          background-color: #d8d8d8;
+          height: 200px;
+          margin-bottom: 8px;
+          border-radius: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+    .experience-cards {
+      width: 100%;
+      .experience-card {
+        background-color: rgba(232, 232, 232, 0.61);
+        width: 100%;
+        height: 100px;
+        margin-bottom: 2%;
+        padding: 16px;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+    }
   }
 }
