@@ -67,7 +67,9 @@
     </v-row>
   </v-container>
 
-  <header-section :headerSectionTitle="'مراحل تحویل پروژه'"></header-section>
+  <header-section
+    :headerSectionTitle="'مراحل تحویل پروژه (تایم لاین انجام پروژه)'"
+  ></header-section>
   <v-container>
     <v-row class="progress-level">
       <v-col
@@ -83,7 +85,14 @@
               class="lock-text"
               v-if="mileStone['payment_status'] === undefined"
             >
-              قفل
+              <v-tooltip top>
+                <template v-slot:activator="{ on, attrs }">
+                  <span v-bind="attrs" v-on="on">در انتظار ارسال</span>
+                </template>
+                <span style="font-size: 11px;"
+                  >تا زمان تایید مرحله‌ قبل, امکان ارسال این بخش وجود ندارد.
+                </span>
+              </v-tooltip>
             </div>
             <div v-if="mileStone['payment_status'] === 0">در انتظار پرداخت</div>
             <div
@@ -236,7 +245,7 @@
 
   <v-container class="pa-0">
     <div class="chat-header">
-<!--      <v-icon large>mdi-account-circle</v-icon>-->
+      <!--      <v-icon large>mdi-account-circle</v-icon>-->
       {{projectDetails.username}}
     </div>
     <section ref="chatArea" class="chat-area ma-0">

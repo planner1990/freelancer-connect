@@ -71,14 +71,18 @@ export default {
         ]
       },
       dialog: false,
+      dialogDownloadFile: false,
       valid: false,
-      attachmentIdForChat: null,
       dialog2: false,
       rejDesc: "",
       loading: false,
       subject: "",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
-      showSnackbar: false
+      showSnackbar: false,
+      listOfFileInput: [],
+      isShow: false,
+      fileInput: [],
+      attachmentIdForChat: []
     };
   },
   computed: {
@@ -136,9 +140,15 @@ export default {
       });
     },
     storeChat(body) {
-      freelancerServices.storeChat(body).then(() => {
-        this.attachmentIdForChat = null;
-      });
+      freelancerServices
+        .storeChat(body)
+        .then(() => {
+          this.isShow = false;
+          this.attachmentIdForChat = null;
+        })
+        .catch(() => {
+          this.isShow = false;
+        });
     },
     handleFileInput(file) {
       this.loading = true;
@@ -212,8 +222,8 @@ export default {
       file.click();
     },
     getFileInput(event) {
-      this.test = event;
-      this.youMessage = event[0].name;
+      this.isShow = event.length >= 1;
+      this.listOfFileInput = event;
       let formData = new FormData();
       if (event) {
         for (let i = 0; i <= event.length - 1; i++) {

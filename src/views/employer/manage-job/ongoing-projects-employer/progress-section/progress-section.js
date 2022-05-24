@@ -55,6 +55,7 @@ export default {
         ]
       },
       dialog: false,
+      dialogDownloadFile: false,
       valid: false,
       attachmentIdForChat: null,
       dialog2: false,

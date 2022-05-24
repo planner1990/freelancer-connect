@@ -3,7 +3,11 @@
     <v-row class="mb-3" v-for="(message, index) in messagesList" :key="index">
       <v-col class="message-card">
         <div class="d-flex justify-space-between message-title">
-          <div>{{ message.title }}</div>
+          <div
+            :style="{'color': message['is_seen'] === 1 ? '#8e8e8e': '#000000'}"
+          >
+            {{ message.title }}
+          </div>
           <div class="ml-3">
             {{message.created_at | changeDate | persianDigit}}
           </div>
@@ -12,16 +16,16 @@
           <div>
             {{ message.detail }}
           </div>
-          <div>
-            <v-btn
-              color="secondary"
-              small
-              text
-              v-if="(message.detail).length > 174"
-            >
-              مشاهده بیشتر
-            </v-btn>
-          </div>
+<!--          <div>-->
+<!--            <v-btn-->
+<!--              color="secondary"-->
+<!--              small-->
+<!--              text-->
+<!--              v-if="(message.detail).length > 174"-->
+<!--            >-->
+<!--              مشاهده بیشتر-->
+<!--            </v-btn>-->
+<!--          </div>-->
         </div>
       </v-col>
     </v-row>
@@ -29,6 +33,18 @@
       <v-col class="no-message">
         تاکنون پیامی ثبت نشده است.
       </v-col>
+    </v-row>
+    <v-row
+      class="d-flex align-center justify-center col-12 text-center pt-2"
+      v-if="messagesList.length >= 1"
+    >
+      <v-pagination
+        color="primary"
+        :length="paginationData['last_page']"
+        :total-visible="paginationData.total"
+        v-model="paginationData['current_page']"
+        @input="changePage($event)"
+      ></v-pagination>
     </v-row>
   </v-container>
 </dashboard-card>

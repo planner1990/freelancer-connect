@@ -67,7 +67,9 @@
     </v-row>
   </v-container>
 
-  <header-section :headerSectionTitle="'مراحل تحویل پروژه'"></header-section>
+  <header-section
+    :headerSectionTitle="'مراحل تحویل پروژه (تایم لاین انجام پروژه)'"
+  ></header-section>
   <v-container>
     <v-row class="progress-level">
       <v-col
@@ -83,7 +85,14 @@
               class="lock-text"
               v-if="mileStone['payment_status'] === undefined"
             >
-              قفل
+              <v-tooltip top>
+                <template v-slot:activator="{ on, attrs }">
+                  <span v-bind="attrs" v-on="on">در انتظار ارسال</span>
+                </template>
+                <span style="font-size: 11px;"
+                  >تا زمان تایید مرحله‌ قبل, امکان ارسال این بخش وجود ندارد.
+                </span>
+              </v-tooltip>
             </div>
             <div class="lock-text" v-if="mileStone['payment_status'] === 0">
               ارسال شد
@@ -119,6 +128,7 @@
                 outlined
                 v-bind="attrs"
                 v-on="on"
+                small
               >
                 ارسال فایل
               </v-btn>
@@ -177,7 +187,11 @@
                   <v-btn color="error" @click="dialog = false">
                     بستن
                   </v-btn>
-                  <v-btn color="primary" :disabled="!jobOfferForm.linkName" @click="submitMilestone(unlock)">
+                  <v-btn
+                    color="primary"
+                    :disabled="!jobOfferForm.linkName"
+                    @click="submitMilestone(unlock)"
+                  >
                     ارسال
                   </v-btn>
                 </v-card-actions>
@@ -191,7 +205,7 @@
 
   <v-container class="pa-0">
     <div class="chat-header">
-<!--      <v-icon large>mdi-account-circle</v-icon>-->
+      <!--      <v-icon large>mdi-account-circle</v-icon>-->
       {{ projectDetails.username }}
     </div>
     <section ref="chatArea" class="chat-area ma-0">
@@ -202,7 +216,11 @@
       >
         <span class="d-block ml-auto" v-if="message.role === 'freelancer' ">
           <v-avatar>
-            <img style="height: auto" :src="authenticated.avatar" alt="connecta" />
+            <img
+              style="height: auto"
+              :src="authenticated.avatar"
+              alt="connecta"
+            />
           </v-avatar>
           {{authenticated.name}}</span
         >
@@ -210,11 +228,7 @@
         <span class="d-block mr-auto" v-if="message.role === 'employer'">
           {{authenticated.name}}
           <v-avatar>
-            <img
-              style="height: auto"
-              :src="message.avatar"
-              alt="connecta"
-            />
+            <img style="height: auto" :src="message.avatar" alt="connecta" />
           </v-avatar>
         </span>
       </p>

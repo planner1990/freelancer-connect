@@ -6,7 +6,11 @@ export default {
   props: [],
   data() {
     return {
-      messagesList: []
+      messagesList: [],
+      pageCount: 20,
+      page: 1,
+      totalPage: 10,
+      paginationData: null
     };
   },
   computed: {},
@@ -16,10 +20,22 @@ export default {
   methods: {
     showMessages() {
       const params = {
-        page: 1
+        page: 1,
+        perPage: 15
       };
       freelancerServices.showMessage(params).then(res => {
         this.messagesList = res.data?.data.data;
+        this.paginationData = res.data.data;
+      });
+    },
+    changePage(currentPage) {
+      const options = {
+        page: currentPage,
+        perPage: 15
+      };
+      freelancerServices.showMessage(options).then(res => {
+        this.messagesList = res.data?.data.data;
+        this.page = currentPage;
       });
     }
   }
