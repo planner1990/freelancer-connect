@@ -19,54 +19,79 @@
           </div>
 
           <div class="mr-4">
-            <div>سیروس گرجستانی</div>
-            <div>طراح محصول</div>
+            <div>
+              {{ profileSidebar.first_name + ' ' + profileSidebar.last_name }}
+            </div>
+            <div>{{ profileSidebar.category }}</div>
             <div>
               <v-rating
-                v-model="rating"
+                v-model="profileSidebar['stars']"
                 background-color="gray"
                 color="primary"
                 small
+                readonly
               ></v-rating>
             </div>
           </div>
         </div>
         <div class="my-5" style="color: #7e7e7f; font-size: 14px">
-          سلام من طراح محصول هستم و محصولات را به کمک تیم دیزاین طراحی می کنم.
+          <span v-if="profileSidebar.description !== null">
+            {{profileSidebar.description}}
+          </span>
+          <span v-else>تاکنون توضیحاتی برای این فرد ثبت نشده است.</span>
         </div>
         <div
           class="pa-4 mb-5"
           style="background-color: rgba(232,232,232,0.61); width: 100%; border-radius: 8px;color: #0a3d62"
         >
-          <span class="font-weight-bold" style="font-size: 22px">26</span><br />
-          <span class="d-block" style="font-size: 14px;margin-top: -7px;"
-            >پروژه موفق در کانکتا</span
-          >
+          <span class="font-weight-bold" style="font-size: 22px">
+            {{ profileSidebar['completed_projects'] }}
+          </span>
+          <br />
+          <span class="d-block" style="font-size: 14px;margin-top: -7px;">
+            پروژه موفق در کانکتا
+          </span>
         </div>
         <div style="width: 100%;">
           <h4 class="mb-2">مهارت‌ها</h4>
           <div>
-            <v-chip class="ml-1 mb-2 font-weight-bold" label color="#e6eef1">
+            <v-chip
+              class="ml-1 mb-2 font-weight-bold"
+              label
+              color="#e6eef1"
+              v-for="(skill, index) in profileSidebar.skills"
+              :key="index"
+            >
               <v-icon left color="secondary">
                 mdi-pound
               </v-icon>
-              <span style="color: #0a3d62;">طراحی</span>
+              <span style="color: #0a3d62;">{{ skill }}</span>
             </v-chip>
-            <v-chip class="ml-1 mb-2 font-weight-bold" label color="#e6eef1">
-              <v-icon left color="secondary">
-                mdi-pound
-              </v-icon>
-              <span style="color: #0a3d62;">لوگو</span>
-            </v-chip>
+            <span
+              v-if="profileSidebar.skills && profileSidebar.skills.length === 0"
+              style="color: #7e7e7f; font-size: 14px"
+            >
+              تاکنون مهارتی برای این فرد ثبت نشده است.
+            </span>
           </div>
         </div>
       </v-col>
       <v-col cols="12" lg="7" md="8" id="right">
         <h3 class="mb-2">پروژه‌ها</h3>
         <div class="project-cards mb-10">
-          <div class="project-card" v-for="(i, index) in 6" :key="index">
-            <div>عکس</div>
-            <div>طراح رابط کاربری و کنترل ماشین تسلا مدل X</div>
+          <div
+            class="project-card"
+            v-for="(project, index) in profileProjects"
+            :key="index"
+          >
+            <div>
+              <img
+                style="width: 100%;height: 100%;border-radius: 8px"
+                src="../../../assets/image/pic.jpg"
+                alt=""
+              />
+            </div>
+            <div>{{ project.detail.title }}</div>
             <div>
               <v-btn
                 style="min-width: 46px"
@@ -79,19 +104,30 @@
               </v-btn>
             </div>
           </div>
+          <span
+            v-if="profileProjects && profileSidebar.length === 0"
+            style="color: #7e7e7f; font-size: 14px"
+          >
+            تاکنون پروژه‌ای برای این فرد ثبت نشده است.
+          </span>
         </div>
         <h3 class="mb-2">تجربه‌های کاری</h3>
         <div class="experience-cards mb-10">
           <div
             class="experience-card d-flex align-center justify-space-between"
-            v-for="(i, index) in 4"
+            v-for="(experience, index) in profileDetails.experience"
             :key="index"
           >
             <div>
-              <div class="mb-2 font-weight-bold">محقق کاربر</div>
-              <div>بلو اوریجین</div>
+              <div class="mb-2 font-weight-bold">
+                {{experience['job_title']}}
+              </div>
+              <div>{{ experience['company_title'] }}</div>
             </div>
-            <div>شهریور ۱۳۹۹ - خرداد ۱۴۰۰</div>
+            <div>
+              {{experience.start_date | changeDate | persianDigit}} - {{
+              experience['end_date'] | changeDate | persianDigit}}
+            </div>
           </div>
         </div>
         <h3 class="mb-2">دوره‌های آموزشی</h3>
@@ -112,14 +148,19 @@
         <div class="experience-cards mb-10">
           <div
             class="experience-card d-flex align-center justify-space-between"
-            v-for="(i, index) in 2"
+            v-for="(education, index) in profileDetails.education"
             :key="index"
           >
             <div>
-              <div class="mb-2 font-weight-bold">کارشناسی نرم افزار</div>
-              <div>دانشگاه تهران</div>
+              <div class="mb-2 font-weight-bold">
+                {{ education['degree_title'] }}
+              </div>
+              <div>{{ education['institute_title'] }}</div>
             </div>
-            <div>خرداد ۱۴۰۰</div>
+            <div>
+              {{education.start_date | changeDate | persianDigit}} - {{
+              education['end_date'] | changeDate | persianDigit}}
+            </div>
           </div>
         </div>
       </v-col>

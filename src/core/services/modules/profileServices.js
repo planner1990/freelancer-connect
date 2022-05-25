@@ -22,6 +22,15 @@ class profileServices {
   getInfo() {
     return API_V1.get(`/users/info`);
   }
+  showProfileSidebar(user_id) {
+    return API_V1.get(`/profile/${user_id}`);
+  }
+  showProfileProject(user_id) {
+    return API_V1.get(`/profile/${user_id}/projects`);
+  }
+  showProfileDetail(user_id) {
+    return API_V1.get(`/profile/${user_id}/details`);
+  }
 }
 
 export default new profileServices();
