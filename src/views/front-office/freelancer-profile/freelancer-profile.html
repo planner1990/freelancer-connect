@@ -11,8 +11,8 @@
         <div class="d-flex">
           <div>
             <img
-              style="width: 60px;height: auto;border-radius: 50%"
-              src="../../../assets/image/profile.jpg"
+              style="width: 60px;height: 60px;border-radius: 50%"
+              :src="profileSidebar.avatar !== null ? profileSidebar.avatar : require('../../../assets/image/profile.jpg')"
               alt=""
             />
           </div>
@@ -90,7 +90,16 @@
                 alt=""
               />
             </div>
-            <div>{{ project.detail.title }}</div>
+            <v-tooltip top>
+              <template v-slot:activator="{ on, attrs }">
+                <span v-bind="attrs" v-on="on"
+                  >{{ project.detail.title | readMore(20, "...")}}</span
+                >
+              </template>
+              <span style="font-size: 11px;">
+                {{ project.detail.title}}
+              </span>
+            </v-tooltip>
             <div>
               <v-btn
                 style="min-width: 46px"
@@ -128,20 +137,32 @@
               experience['end_date'] | changeDate | persianDigit}}
             </div>
           </div>
+          <span
+            v-if="profileDetails.experience.length === 0"
+            style="color: #7e7e7f; font-size: 14px"
+          >
+            تاکنون تجربه کاری برای این فرد ثبت نشده است.
+          </span>
         </div>
         <h3 class="mb-2">دوره‌های آموزشی</h3>
         <div class="experience-cards mb-10">
           <div
             class="experience-card d-flex align-center justify-space-between"
-            v-for="(i, index) in 3"
+            v-for="(award, index) in profileDetails['awards']"
             :key="index"
           >
             <div>
-              <div class="mb-2 font-weight-bold">فوتوشاپ</div>
-              <div>جهاد دانشگاهی</div>
+              <div class="mb-2 font-weight-bold">{{award.title}}</div>
+              <!--              <div>جهاد دانشگاهی</div>-->
             </div>
-            <div>شهریور ۱۳۹۹ - خرداد ۱۴۰۰</div>
+            <div>{{award['achieved_date'] | changeDate | persianDigit}}</div>
           </div>
+          <span
+            v-if="profileDetails['awards'].length === 0"
+            style="color: #7e7e7f; font-size: 14px"
+          >
+            تاکنون تجربه کاری برای این فرد ثبت نشده است.
+          </span>
         </div>
         <h3 class="mb-2">تحصیلات</h3>
         <div class="experience-cards mb-10">
@@ -161,6 +182,12 @@
               education['end_date'] | changeDate | persianDigit}}
             </div>
           </div>
+          <span
+            v-if="profileDetails.education.length === 0"
+            style="color: #7e7e7f; font-size: 14px"
+          >
+            تاکنون دوره ی تحصیلی برای این فرد ثبت نشده است.
+          </span>
         </div>
       </v-col>
     </v-row>
