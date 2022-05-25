@@ -1,14 +1,13 @@
 <section class="freelancer-profile mt-8">
   <v-container id="container">
-    <v-row>
+    <v-row class="justify-space-around">
       <v-col
         lg="3"
         md="3"
         id="left"
         class="d-flex flex-column align-center pt-12 px-10"
-        style="position: absolute"
-        :style="{'position': scrollHeight >= 1100 ? 'absolute': 'fixed'}"
       >
+        <!--          :style="{'position': scrollHeight >= 1100 ? 'absolute': 'fixed'}"-->
         <div class="d-flex">
           <div>
             <img
@@ -105,7 +104,7 @@
             </div>
           </div>
           <span
-            v-if="profileProjects && profileSidebar.length === 0"
+            v-if="profileProjects && profileProjects.length === 0"
             style="color: #7e7e7f; font-size: 14px"
           >
             تاکنون پروژه‌ای برای این فرد ثبت نشده است.

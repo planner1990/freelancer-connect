@@ -141,7 +141,7 @@ const routes = [
         component: () => import("../views/front-office/not-found/index")
       },
       {
-        path: "/profile",
+        path: "/profile/:userId",
         name: "freelancer-profile",
         meta: { transitionName: "slide" },
         component: () =>

@@ -180,6 +180,15 @@
                       {{ $t("actions.save&update") }}
                     </v-btn>
                   </v-col>
+                  <v-col cols="12" lg="3" md="4" sm="12" class="mr-8">
+                    <v-btn
+                      color="secondary"
+                      block
+                      @click="goTo(profileInfo.user.id)"
+                    >
+                      پیشنمایی پروفایل
+                    </v-btn>
+                  </v-col>
                 </v-row>
               </v-container>
             </v-form>

@@ -290,6 +290,9 @@ export default {
     },
     enableUpdateProfileButton() {
       this.enableButton = true;
+    },
+    goTo(userId) {
+      this.$router.push(`/profile/${userId}`);
     }
   },
   watch: {}
