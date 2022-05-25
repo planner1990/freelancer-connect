@@ -248,7 +248,11 @@
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn outlined color="error" @click="dialogDownloadFile = false">
+                    <v-btn
+                      outlined
+                      color="error"
+                      @click="dialogDownloadFile = false"
+                    >
                       بستن
                     </v-btn>
                   </v-card-actions>
@@ -355,55 +359,6 @@
             </div>
             <div class="chat-box-header-subject">{{authenticated.name}}</div>
           </div>
-          <div>
-            <!--            <v-dialog-->
-            <!--              v-model="dialog"-->
-            <!--              persistent-->
-            <!--              max-width="350px"-->
-            <!--              v-if="subject['closed_at'] === null"-->
-            <!--            >-->
-            <!--              <template v-slot:activator="{ on, attrs }">-->
-            <!--                <v-btn-->
-            <!--                  v-bind="attrs"-->
-            <!--                  v-on="on"-->
-            <!--                  :ripple="false"-->
-            <!--                  depressed-->
-            <!--                  color="red lighten-5"-->
-            <!--                  dark-->
-            <!--                  class="create-btn"-->
-            <!--                >-->
-            <!--                  <img-->
-            <!--                    src="../../../../../assets/image/circles-delete-cross.png"-->
-            <!--                    alt=""-->
-            <!--                  />بستن تیکت-->
-            <!--                </v-btn>-->
-            <!--              </template>-->
-            <!--              <v-form ref="form" lazy-validation>-->
-            <!--                <v-card-->
-            <!--                  class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"-->
-            <!--                >-->
-            <!--                  <v-card-text>-->
-            <!--                    <v-container>-->
-            <!--                      <v-row>-->
-            <!--                        <v-col cols="12">-->
-            <!--                          آیا قصد بستن تیکت را دارید؟-->
-            <!--                        </v-col>-->
-            <!--                      </v-row>-->
-            <!--                    </v-container>-->
-            <!--                  </v-card-text>-->
-            <!--                  <v-card-actions>-->
-            <!--                    <v-spacer></v-spacer>-->
-            <!--                    <v-btn color="#ff0000" dark @click="dialog = false">-->
-            <!--                      خیر-->
-            <!--                    </v-btn>-->
-            <!--                    <v-btn color="#1ad715" dark @click="closeTicket">-->
-            <!--                      بله-->
-            <!--                    </v-btn>-->
-            <!--                  </v-card-actions>-->
-            <!--                </v-card>-->
-            <!--              </v-form>-->
-            <!--            </v-dialog>-->
-          </div>
         </div>
         <div class="chat-box-body">
           <section ref="chatArea" class="chat-area ma-0">
@@ -435,7 +390,7 @@
                 <span class="d-block">{{ message.text }}</span>
                 <span class="d-block">
                   <a
-                    v-if="message.attachment"
+                    v-if="message.attachment && message.attachment.length >= 1"
                     :href="message.attachment"
                     download
                     target="_blank"
@@ -472,18 +427,18 @@
             >
               <v-textarea
                 v-model="youMessage"
-                class="mt-6 col-10 mx-auto ticket-input message-box"
+                class="mt-14 col-10 mx-auto ticket-input message-box"
                 type="text"
                 label="پیام شما"
                 rows="2"
                 height="70"
                 outlined
                 dense
+                :append-icon="'mdi-paperclip'"
                 no-resize
                 @click:append="toggleFile"
                 @keyup.enter.prevent="sendMessage('out')"
               >
-                <!--                  :append-icon="'mdi-paperclip'"-->
               </v-textarea>
               <v-btn
                 depressed
@@ -521,56 +476,6 @@
                   </span>
                 </template>
               </v-file-input>
-              <!--              <v-file-input-->
-              <!--                @change="getFileInput($event)"-->
-              <!--                counter-->
-              <!--                id="avatar"-->
-              <!--                style="display:none"-->
-              <!--                label="فایل پیوستی"-->
-              <!--                placeholder="Select your files"-->
-              <!--                prepend-icon="mdi-paperclip"-->
-              <!--                outlined-->
-              <!--                dense-->
-              <!--                multiple-->
-              <!--                :show-size="1000"-->
-              <!--              >-->
-              <!--                <template v-slot:selection="{ index, text }">-->
-              <!--                  <v-chip v-if="index < 3" dark label small>-->
-              <!--                    {{ text }}-->
-              <!--                  </v-chip>-->
-
-              <!--                  <span-->
-              <!--                    v-else-if="index === 3"-->
-              <!--                    class="text-overline grey&#45;&#45;text text&#45;&#45;darken-3 mx-2"-->
-              <!--                  >-->
-              <!--                    +{{ files.length - 3 }} File(s)-->
-              <!--                  </span>-->
-              <!--                </template>-->
-              <!--              </v-file-input>-->
-              <!--              <v-btn-->
-              <!--                v-if="!completedAt"-->
-              <!--                depressed-->
-              <!--                class="mb-4"-->
-              <!--                large-->
-              <!--                color="primary"-->
-              <!--                type="submit"-->
-              <!--              >-->
-              <!--                ارسال پیام-->
-              <!--                <v-icon class="mx-2">-->
-              <!--                  mdi-message-text-->
-              <!--                </v-icon>-->
-              <!--              </v-btn>-->
-              <!--              <v-btn-->
-              <!--                v-if="subject['closed_at'] !== null"-->
-              <!--                depressed-->
-              <!--                class="mb-4 mt-5"-->
-              <!--                style="max-width: 300px"-->
-              <!--                large-->
-              <!--                block-->
-              <!--                disabled-->
-              <!--              >-->
-              <!--                پیام بسته شد-->
-              <!--              </v-btn>-->
             </form>
           </section>
         </div>

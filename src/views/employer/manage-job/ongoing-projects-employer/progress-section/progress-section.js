@@ -57,12 +57,15 @@ export default {
       dialog: false,
       dialogDownloadFile: false,
       valid: false,
-      attachmentIdForChat: null,
       dialog2: false,
       rejDesc: "",
       subject: "",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
-      showSnackbar: false
+      showSnackbar: false,
+      listOfFileInput: [],
+      isShow: false,
+      fileInput: [],
+      attachmentIdForChat: []
     };
   },
   computed: {
@@ -91,9 +94,9 @@ export default {
       console.log(options);
     },
     sendMessage(direction) {
-      if (!this.youMessage) {
-        return;
-      }
+      // if (!this.youMessage) {
+      //   return;
+      // }
       if (direction === "out") {
         this.messages.push({ text: this.youMessage, role: "employer" });
         const body = {
@@ -111,7 +114,15 @@ export default {
       });
     },
     storeChat(body) {
-      freelancerServices.storeChat(body).then();
+      freelancerServices
+        .storeChat(body)
+        .then(() => {
+          this.isShow = false;
+          this.attachmentIdForChat = null;
+        })
+        .catch(() => {
+          this.isShow = false;
+        });
     },
     handleFileInput(file) {
       let formData = new FormData();
@@ -189,15 +200,14 @@ export default {
       const file = document.getElementById("avatar");
       file.click();
     },
-    getFileInput(file) {
-      this.youMessage = file[0].name;
+    getFileInput(event) {
+      this.isShow = event.length >= 1;
+      this.listOfFileInput = event;
       let formData = new FormData();
-      console.log(file);
-      if (file) {
-        for (let i = 0; i <= file.length - 1; i++) {
-          formData.append(`attachment[` + i + `]`, file[i]);
+      if (event) {
+        for (let i = 0; i <= event.length - 1; i++) {
+          formData.append(`attachment[` + i + `]`, event[i]);
         }
-        console.log(formData);
         UploadService.uploadFile(formData)
           .then(res => {
             this.attachmentIdForChat = res.data.data.attachment_id;

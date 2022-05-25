@@ -1,8 +1,4 @@
-import {
-  freelancerServices
-  // ticketService,
-  // UploadService
-} from "../../../../core/services";
+import { freelancerServices, UploadService } from "../../../../core/services";
 import Snackbar from "../../../../components/snackbar/index";
 import Vue from "vue";
 
@@ -19,7 +15,11 @@ export default {
       subject: "",
       dialog: false,
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
-      showSnackbar: false
+      showSnackbar: false,
+      listOfFileInput: [],
+      isShow: false,
+      fileInput: [],
+      attachmentIdForChat: []
     };
   },
   computed: {},
@@ -43,16 +43,16 @@ export default {
         });
     },
     sendMessage(direction) {
-      if (!this.youMessage) {
-        return;
-      }
+      // if (!this.youMessage) {
+      //   return;
+      // }
       if (direction === "out") {
         this.messages.push({ text: this.youMessage, role: "freelancer" });
         const body = {
           type: "proposal",
           id: this.$route.query.proposalId,
           text: this.youMessage,
-          attachment_id: null
+          attachment_id: this.attachmentIdForChat
         };
         this.storeChat(body);
         this.youMessage = "";
@@ -63,65 +63,37 @@ export default {
       });
     },
     storeChat(body) {
-      freelancerServices.storeChat(body).then();
-    },
-    submitMilestone() {
-      const body = {
-        type: "proposal",
-        id: this.$route.query.proposalId,
-        attachment_id: null
-      };
       freelancerServices
-        .submitMilestone(body)
+        .storeChat(body)
         .then(() => {
-          this.dialog = false;
+          this.isShow = false;
+          this.attachmentIdForChat = null;
         })
-        .catch(error => {
-          console.log(error);
+        .catch(() => {
+          this.isShow = false;
         });
     },
     toggleFile() {
       const file = document.getElementById("avatar");
       file.click();
     },
-    // getFileInput(event) {
-    //   this.test = event;
-    //   // this.youMessage = event[0].name;
-    //   let formData = new FormData();
-    //   if (event) {
-    //     for (let i = 0; i <= event.length - 1; i++) {
-    //       formData.append(`attachment[` + i + `]`, event[i]);
-    //     }
-    //     UploadService.uploadFile(formData)
-    //       .then(res => {
-    //         this.attachmentIdForChat = res.data.data.attachment_id;
-    //       })
-    //       .catch(() => {
-    //         this.attachmentIdForChat = null;
-    //       });
-    //   }
-    // },
-    // storeTicket(body) {
-    //   ticketService.storeTickets(body).then(res => {
-    //     console.log(res);
-    //   });
-    // },
-    // closeTicket() {
-    //   const body = {
-    //     thread_code: this.$route.query.threadCode
-    //   };
-    //   ticketService
-    //     .fullFillTickets(body)
-    //     .then(() => {
-    //       this.dialog = false;
-    //       this.showSnackbar = true;
-    //       this.snackbarMessage = "تیکت شما با بسته شد.";
-    //       this.getChatList();
-    //     })
-    //     .catch(() => {
-    //       this.dialog = false;
-    //     });
-    // },
+    getFileInput(event) {
+      this.isShow = event.length >= 1;
+      this.listOfFileInput = event;
+      let formData = new FormData();
+      if (event) {
+        for (let i = 0; i <= event.length - 1; i++) {
+          formData.append(`attachment[` + i + `]`, event[i]);
+        }
+        UploadService.uploadFile(formData)
+          .then(res => {
+            this.attachmentIdForChat = res.data.data.attachment_id;
+          })
+          .catch(() => {
+            this.attachmentIdForChat = null;
+          });
+      }
+    },
     hideSnackbar() {
       this.showSnackbar = false;
     }

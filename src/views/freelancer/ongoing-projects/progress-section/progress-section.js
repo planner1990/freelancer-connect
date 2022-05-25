@@ -120,9 +120,9 @@ export default {
       console.log(options);
     },
     sendMessage(direction) {
-      if (!this.youMessage) {
-        return;
-      }
+      // if (!this.youMessage) {
+      //   return;
+      // }
       if (direction === "out") {
         this.messages.push({ text: this.youMessage, role: "freelancer" });
         const body = {
@@ -149,24 +149,6 @@ export default {
         .catch(() => {
           this.isShow = false;
         });
-    },
-    handleFileInput(file) {
-      this.loading = true;
-      let formData = new FormData();
-      if (file) {
-        for (let i = 0; i <= file.length - 1; i++) {
-          formData.append(`attachment[` + i + `]`, file[i]);
-        }
-        UploadService.uploadFile(formData)
-          .then(res => {
-            this.jobOfferForm.attachmentId = res.data.data.attachment_id;
-            this.loading = false;
-          })
-          .catch(() => {
-            this.jobOfferForm.attachmentId = null;
-            this.loading = false;
-          });
-      }
     },
     submitMilestone(index) {
       if (index === this.unlock) {
