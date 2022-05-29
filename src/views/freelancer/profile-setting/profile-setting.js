@@ -138,7 +138,7 @@ export default {
         formField: [
           {
             type: "text-field",
-            label: "عنوان دستاورد",
+            label: "عنوان دوره",
             class: "col-lg-6 col-md-12"
           },
           {

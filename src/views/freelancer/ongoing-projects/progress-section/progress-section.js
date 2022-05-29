@@ -82,7 +82,7 @@ export default {
       listOfFileInput: [],
       isShow: false,
       fileInput: [],
-      attachmentIdForChat: []
+      attachmentIdForChat: ""
     };
   },
   computed: {
@@ -204,20 +204,26 @@ export default {
       file.click();
     },
     getFileInput(event) {
+      this.loading = false;
       this.isShow = event.length >= 1;
       this.listOfFileInput = event;
       let formData = new FormData();
-      if (event) {
+      if (event && event.length >= 1) {
+        this.loading = true;
         for (let i = 0; i <= event.length - 1; i++) {
           formData.append(`attachment[` + i + `]`, event[i]);
         }
         UploadService.uploadFile(formData)
           .then(res => {
             this.attachmentIdForChat = res.data.data.attachment_id;
+            this.loading = false;
           })
           .catch(() => {
             this.attachmentIdForChat = null;
+            this.loading = false;
           });
+      } else {
+        this.attachmentIdForChat = "";
       }
     },
     cancelProject() {

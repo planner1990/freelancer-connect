@@ -299,7 +299,7 @@
                       </v-col>
                       <v-col cols="12">
                         <v-file-input
-                          @change="handleFileInput($event)"
+                          @change="getFileInput($event)"
                           counter
                           label="فایل پیوستی"
                           append-icon="mdi-paperclip"
@@ -335,7 +335,7 @@
                   </v-btn>
                   <v-btn
                     color="primary"
-                    :disabled="!jobOfferForm.linkName && !jobOfferForm.attachmentId"
+                    :disabled="!(jobOfferForm.linkName || attachmentIdForChat)"
                     @click="submitMilestone(unlock)"
                   >
                     ارسال

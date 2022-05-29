@@ -123,10 +123,10 @@ export default {
               this.$router.push("/browse-projects");
             }, 2000);
           })
-          .catch(() => {
+          .catch(error => {
             this.showSnackbar = true;
-            this.snackbarMessage = "امکان ارسال پروپوزال وجود ندارد.";
-            // this.snackbarMessage = error?.response.data.errors.err;
+            // this.snackbarMessage = "امکان ارسال پروپوزال وجود ندارد.";
+            this.snackbarMessage = error?.response.data.errors.err;
             // this.snackbarMessage = error?.response.data.errors.prepayment;
             this.$refs.form.reset();
             this.dialog = false;
