@@ -61,7 +61,8 @@ export default {
       activitiesList: [],
       skillsList: [],
       skills: [],
-      categories: []
+      categories: [],
+      dialog: false
     };
   },
   computed: {},
@@ -93,6 +94,9 @@ export default {
     toggle() {
       this.autoselectMenu = !this.autoselectMenu;
     },
+    checkForm() {
+      this.dialog = this.$refs[`form`].validate() !== true;
+    },
     createProject() {
       this.showSnackbar = false;
       if (this.$refs[`form`].validate() === true) {
@@ -105,14 +109,20 @@ export default {
           categories: this.categories,
           attachment_id: this.projectForm.attachmentId
         };
-        projectsService.createProject(body).then(res => {
-          if (res) {
-            this.showSnackbar = true;
-            this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
-            this.$refs.form.reset();
-            this.$router.push("/employer/my-projects");
-          }
-        });
+        projectsService
+          .createProject(body)
+          .then(res => {
+            if (res) {
+              this.dialog = false;
+              this.showSnackbar = true;
+              this.snackbarMessage = "پروژه شما با موفقیت ایجاد شد.";
+              this.$refs.form.reset();
+              this.$router.push("/employer/my-projects");
+            }
+          })
+          .then(() => {
+            this.dialog = false;
+          });
       } else {
         this.showSnackbar = true;
       }

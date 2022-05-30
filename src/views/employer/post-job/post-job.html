@@ -176,9 +176,46 @@
     </v-row>
     <v-row class="my-10">
       <v-col lg="6" md="12">
-        <v-btn class="px-8" color="secondary" @click="createProject">
-          {{ $t("actions.createProject") }}
-        </v-btn>
+        <v-dialog v-model="dialog" persistent max-width="350px">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="px-8"
+              v-bind="attrs"
+              v-on="on"
+              color="secondary"
+              :ripple="false"
+            >
+              <v-list-item-content @click="checkForm">
+                {{ $t("actions.createProject") }}
+              </v-list-item-content>
+            </v-btn>
+          </template>
+          <v-form ref="form" lazy-validation>
+            <v-card
+              class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+            >
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12">
+                      پس از ثبت نهایی پروژه, امکان تغییر آن را نخواهید داشت. قصد
+                      ثبت نهایی پروژه را دارید؟
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="#ff0000" dark @click="dialog = false">
+                  خیر
+                </v-btn>
+                <v-btn color="#1ad715" dark @click="createProject">
+                  بله
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </v-dialog>
       </v-col>
     </v-row>
     <v-row>

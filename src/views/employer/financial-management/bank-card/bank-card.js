@@ -65,6 +65,7 @@ export default {
     accountStore() {
       const body = {
         name: this.title,
+        bank_name: this.bankName,
         card_number: this.cardId,
         iban: this.sheba
       };

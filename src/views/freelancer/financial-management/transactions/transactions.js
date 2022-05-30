@@ -62,7 +62,7 @@ export default {
           align: "center"
         },
         {
-          text: "واریزکننده",
+          text: "واریزکننده/ دریافت کننده",
           value: "depositor_recipient",
           sortable: false,
           align: "center"
