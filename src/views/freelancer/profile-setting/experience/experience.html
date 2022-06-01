@@ -127,10 +127,10 @@
             <!--          </v-col>-->
           </v-row>
           <v-row>
-            <v-btn text color="red" @click.prevent="removeItem()">
+            <v-btn text color="red">
               حذف پروژه
             </v-btn>
-            <v-btn text color="secondary">
+            <v-btn text color="secondary" @click.prevent="removeItem()">
               ویرایش پروژه
             </v-btn>
           </v-row>
@@ -267,4 +267,9 @@
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-expansion-panels>
+  <snackbar
+    :snackbarMessage="snackbarMessage"
+    :showSnackbar="showSnackbar"
+    @hideSnackbar="hideSnackbar"
+  ></snackbar>
 </div>

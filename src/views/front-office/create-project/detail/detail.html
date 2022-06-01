@@ -26,6 +26,19 @@
     dense
     ref="form"
   ></v-text-field>
+  <div style="font-size: 10px; color: #0a3d62">
+    5% کمیسیون معادل ۱۰۰.۰۰۰ ریال
+    <v-tooltip top>
+      <template v-slot:activator="{ on, attrs }">
+        <span v-bind="attrs" v-on="on">
+          <v-icon style="width: 12px" x-small color="#59c1b8"
+            >mdi-alert-circle-outline</v-icon
+          ></span
+        >
+      </template>
+      <span style="font-size: 11px;">توضیحات در مورد کمیسیون و کانکتا </span>
+    </v-tooltip>
+  </div>
   <!--  <v-text-field-->
   <!--    :label="'حداکثر قیمت(ریال)'"-->
   <!--    type="text"-->

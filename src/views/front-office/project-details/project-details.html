@@ -4,7 +4,12 @@
   >
     <v-container>
       <v-row class="flex-column">
-        <v-col cols="12" md="6" sm="11" class="mx-auto pa-0 first-slogan font-weight-bold mt-16">
+        <v-col
+          cols="12"
+          md="6"
+          sm="11"
+          class="mx-auto pa-0 first-slogan font-weight-bold mt-16"
+        >
           توضیحات پروژه
         </v-col>
       </v-row>
@@ -22,18 +27,19 @@
                 {{ projectDetailsById.title }}
               </div>
               <div class="d-flex header-details-icons">
-<!--                <div>-->
-<!--                  <v-icon dense color="blue darken-2">-->
-<!--                    mdi-folder-->
-<!--                  </v-icon>-->
-<!--                  <span class="mx-1">نوع پروژه</span>-->
-<!--                </div>-->
+                <!--                <div>-->
+                <!--                  <v-icon dense color="blue darken-2">-->
+                <!--                    mdi-folder-->
+                <!--                  </v-icon>-->
+                <!--                  <span class="mx-1">نوع پروژه</span>-->
+                <!--                </div>-->
                 <div>
                   <v-icon dense color="error">
                     mdi-calendar-clock
                   </v-icon>
                   <span class="mx-1"
-                    >{{ projectDetailsById.created_at | changeDate | persianDigit }}</span
+                    >{{ projectDetailsById.created_at | changeDate |
+                    persianDigit }}</span
                   >
                 </div>
                 <div>
@@ -44,12 +50,12 @@
                     >کد پروژه: {{ projectDetailsById.id| persianDigit }}</span
                   >
                 </div>
-<!--                <div>-->
-<!--                  <v-icon dense>-->
-<!--                    mdi-heart-outline-->
-<!--                  </v-icon>-->
-<!--                  <span class="mx-1">افزودن به علاقمندی ها</span>-->
-<!--                </div>-->
+                <!--                <div>-->
+                <!--                  <v-icon dense>-->
+                <!--                    mdi-heart-outline-->
+                <!--                  </v-icon>-->
+                <!--                  <span class="mx-1">افزودن به علاقمندی ها</span>-->
+                <!--                </div>-->
               </div>
             </v-col>
             <v-col col="12" md="3" sm="12">
@@ -128,6 +134,24 @@
                                   :rules="proposalRule.price"
                                   @input="mask"
                                 ></v-text-field>
+                                <div style="font-size: 10px; color: #0a3d62">
+                                  5% کمیسیون معادل ۱۰۰.۰۰۰ ریال
+                                  <v-tooltip top>
+                                    <template v-slot:activator="{ on, attrs }">
+                                      <span v-bind="attrs" v-on="on">
+                                        <v-icon
+                                          style="width: 12px"
+                                          x-small
+                                          color="#59c1b8"
+                                          >mdi-alert-circle-outline</v-icon
+                                        ></span
+                                      >
+                                    </template>
+                                    <span style="font-size: 11px;"
+                                      >توضیحات در مورد کمیسیون و کانکتا
+                                    </span>
+                                  </v-tooltip>
+                                </div>
                               </v-col>
                               <v-col cols="12">
                                 <v-radio-group v-model="row" row>

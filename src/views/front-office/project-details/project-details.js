@@ -61,6 +61,7 @@ export default {
     await this.getProjectListById();
     this.getProjectDurations();
     ScrollTopService.$scrollTop();
+    this.getCommission();
   },
   methods: {
     mask() {
@@ -146,6 +147,11 @@ export default {
     getProjectDurations() {
       projectsService.projectDurations().then(res => {
         this.durationList = res.data.data;
+      });
+    },
+    getCommission() {
+      projectsService.getCommission().then(res => {
+        console.log(res);
       });
     }
   }

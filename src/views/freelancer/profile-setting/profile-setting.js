@@ -215,6 +215,7 @@ export default {
       const body = {
         first_name: this.profileInfo?.user["first_name"],
         last_name: this.profileInfo?.user["last_name"],
+        // company_name: this.profileInfo.user["company"].name,
         gender: this.profileForm.gender,
         attachments: this.attachments,
         category_id: this.profileInfo?.user["category_id"]
@@ -243,6 +244,7 @@ export default {
         experience: this.experienceList,
         education: this.educationList
       };
+      console.log(body);
       freelancerServices.updateExperienceEducation(body).then(res => {
         if (res) {
           this.showSnackbar = true;

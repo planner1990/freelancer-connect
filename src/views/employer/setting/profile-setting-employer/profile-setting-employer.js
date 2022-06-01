@@ -66,6 +66,7 @@ export default {
         const body = {
           first_name: this.profileForm.firstName,
           last_name: this.profileForm.lastName,
+          company_name: this.companyName,
           description: this.profileForm.description,
           category_id: this.profileForm.categoryId,
           no_of_employees: this.profileForm.noOfEmployees,

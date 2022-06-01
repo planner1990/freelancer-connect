@@ -44,6 +44,7 @@ export default {
     this.getProjectDurations();
     this.resetRegister();
     this.resetValidation();
+    this.getCommission();
   },
   methods: {
     resetValidation() {
@@ -116,6 +117,11 @@ export default {
       if (!this.getDataFromStore?.body) {
         this.$router.push("/create-project");
       }
+    },
+    getCommission() {
+      projectsService.getCommission().then(res => {
+        console.log(res);
+      });
     }
   }
 };

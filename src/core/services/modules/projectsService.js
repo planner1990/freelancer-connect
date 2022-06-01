@@ -39,9 +39,11 @@ class projectsService {
       `projects?per_page=${options.perPage}&page=${options.page}`
     );
   }
-
   submitProposal(body) {
     return API_V1.post("/freelancer/proposals", body);
+  }
+  getCommission() {
+    return API_V1.get(`/users/commission`);
   }
 }
 
