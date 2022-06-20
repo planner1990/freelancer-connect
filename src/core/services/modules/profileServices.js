@@ -31,6 +31,9 @@ class profileServices {
   showProfileDetail(user_id) {
     return API_V1.get(`/profile/${user_id}/details`);
   }
+  sendMessageContactUs(body) {
+    return API_V1.post("/contact-us", body);
+  }
 }
 
 export default new profileServices();

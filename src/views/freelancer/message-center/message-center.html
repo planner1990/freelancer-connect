@@ -16,11 +16,11 @@
           <div>
             {{ message.detail }}
           </div>
-<!--          <div>-->
-<!--            <v-btn color="secondary" small text>-->
-<!--              مشاهده بیشتر-->
-<!--            </v-btn>-->
-<!--          </div>-->
+          <div>
+            <v-btn color="secondary" small text :to="'/' + message.link">
+              مشاهده بیشتر
+            </v-btn>
+          </div>
         </div>
       </v-col>
     </v-row>

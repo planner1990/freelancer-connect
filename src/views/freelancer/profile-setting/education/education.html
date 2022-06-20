@@ -10,8 +10,8 @@
             <v-col cols="8" class="text--secondary">
               <v-fade-transition leave-absolute>
                 <span v-if="open" key="0">
-<!--                  عنوان ( از تاریخ - تا تاریخ)-->
-                    {{ item.degree_title }}
+                  <!--                  عنوان ( از تاریخ - تا تاریخ)-->
+                  {{ item.degree_title }}
                 </span>
                 <span v-else key="1" dir="ltr">
                   {{ item.degree_title }}
@@ -122,10 +122,23 @@
             ></v-textarea>
           </v-col>
         </v-row>
+        <v-row>
+          <v-btn text color="red">
+            حذف پروژه
+          </v-btn>
+          <v-btn text color="secondary" @click.prevent="editItem()">
+            ویرایش پروژه
+          </v-btn>
+        </v-row>
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-expansion-panels>
   <v-expansion-panels>
+    <snackbar
+      :snackbarMessage="snackbarMessage"
+      :showSnackbar="showSnackbar"
+      @hideSnackbar="hideSnackbar"
+    ></snackbar>
     <v-expansion-panel
       v-for="(item, index) in listOfFormData"
       v-if="item.type === 'education'"
@@ -244,14 +257,14 @@
               </v-date-picker>
             </v-menu>
           </v-col>
-          <!--          <v-col cols="12">-->
-          <!--            <v-textarea-->
-          <!--              outlined-->
-          <!--              name="input-7-4"-->
-          <!--              :label="$t('form.description')"-->
-          <!--              :value="item.companyName"-->
-          <!--            ></v-textarea>-->
-          <!--          </v-col>-->
+          <!--                    <v-col cols="12">-->
+          <!--                      <v-textarea-->
+          <!--                        outlined-->
+          <!--                        name="input-7-4"-->
+          <!--                        :label="$t('form.description')"-->
+          <!--                        :value="item.companyName"-->
+          <!--                      ></v-textarea>-->
+          <!--                    </v-col>-->
         </v-row>
       </v-expansion-panel-content>
     </v-expansion-panel>

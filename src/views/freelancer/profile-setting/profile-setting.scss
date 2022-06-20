@@ -1,3 +1,34 @@
+@import "src/assets/styles/mixins";
 .profile-setting {
-
+}
+.text--open-dialog {
+  position: relative;
+  top: -60px;
+  left: -34%;
+  @include small {
+    position: unset;
+    margin-bottom: 30px;
+    background-color: #f6f6f6;
+    top: unset;
+    left: unset;
+  }
+}
+.delete-icon {
+  position: absolute;
+  left: 13%;
+  top: -9px;
+}
+.edit-icon {
+  position: absolute;
+  left: 16%;
+}
+.delete-icon-education {
+  position: absolute;
+  left: 13%;
+  top: 24px;
+}
+.edit-icon-education {
+  position: absolute;
+  left: 16%;
+  top: 33px;
 }

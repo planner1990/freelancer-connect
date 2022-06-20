@@ -5,8 +5,11 @@
     </v-col>
     <v-col cols="12" md="8" sm="12" class="text-center mx-auto mb-5">
       <p class="text-center">
-        در صورت وجود هرگونه سوالی می‌توانید پاسخ خود را از <span class="font-weight-bold" @click="goTo('/faq')"> سوالات متداول</span> پیدا
-        کنید.
+        در صورت وجود هرگونه سوالی می‌توانید پاسخ خود را از
+        <span class="font-weight-bold" @click="goTo('/faq')">
+          سوالات متداول</span
+        >
+        پیدا کنید.
       </p>
       <p class="text-center">
         در صورتی که پاسخ سوال خود را نیافتید می‌توانید پرسش خود را از طریق فرم
@@ -29,23 +32,46 @@
         </div>
       </div>
       <div class="contact-section border-section">
-        <div>
-          <v-text-field label="نام و نام خانوادگی*" outlined></v-text-field>
-        </div>
-        <div>
-          <v-text-field label="ایمیل*" outlined></v-text-field>
-        </div>
-        <div>
-          <v-text-field label="تلفن تماس (اختیاری)" outlined></v-text-field>
-        </div>
-        <div>
-          <v-textarea outlined label="پیام شما" rows="3"></v-textarea>
-        </div>
-        <div>
-          <v-btn x-large color="secondary" block depressed>
-            ارسال پیام
-          </v-btn>
-        </div>
+        <v-form ref="newForm" v-model="valid" lazy-validation>
+          <v-text-field
+            v-model="messageBody.full_name"
+            :rules="messageRule.full_name"
+            label="نام و نام خانوادگی*"
+            required
+            outlined
+          ></v-text-field>
+          <v-text-field
+            v-model="messageBody.email"
+            :rules="messageRule.email"
+            label="ایمیل*"
+            outlined
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="messageBody.phone"
+            label="تلفن تماس (اختیاری)"
+            outlined
+          ></v-text-field>
+          <v-textarea
+            v-model="messageBody.message"
+            :rules="messageRule.message"
+            outlined
+            label="پیام شما"
+            rows="3"
+            required
+          ></v-textarea>
+          <div>
+            <v-btn
+              x-large
+              color="secondary"
+              block
+              depressed
+              @click="sendMessageContactUs"
+            >
+              ارسال پیام
+            </v-btn>
+          </div>
+        </v-form>
       </div>
     </v-col>
   </v-row>
@@ -63,5 +89,12 @@
         tabindex="0"
       ></iframe>
     </v-col>
+  </v-row>
+  <v-row>
+    <snackbar
+      :snackbarMessage="snackbarMessage"
+      :showSnackbar="showSnackbar"
+      @hideSnackbar="hideSnackbar"
+    ></snackbar>
   </v-row>
 </v-container>

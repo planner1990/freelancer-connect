@@ -1,261 +1,796 @@
 <dashboard-card :titleCard="$t('sidebar.profileSettings')">
-  <v-card class="my-saved-items">
-    <v-tabs :vertical="this.$vuetify.breakpoint.width >= 1264" color="error">
-      <v-tab>
-        <v-icon left>
-          mdi-content-save-all-outline
-        </v-icon>
-        جزئیات پروفایل
-      </v-tab>
-      <v-tab>
-        <v-icon left>
-          mdi-domain
-        </v-icon>
-        تجربه‌ها و تحصیلات
-      </v-tab>
-      <v-tab>
-        <v-icon left>
-          mdi-thumb-up-outline
-        </v-icon>
-        پروژه‌ها و دوره‌های آموزشی
-      </v-tab>
+  <!----------------------------------------------------  Personal Info ----------------------------------------------------->
 
-      <v-tab-item>
-        <v-card flat>
-          <v-card-text>
-            <v-form ref="form" v-model="valid" lazy-validation>
-              <v-container>
-                <header-section
-                  :header-section-title="'جزئیات پروفایل'"
-                ></header-section>
-                <v-row v-if="companyName === ''">
-                  <v-col cols="12" lg="6" md="12" sm="12">
-                    <v-text-field
-                      v-model="profileInfo.user['first_name']"
-                      label="نام"
-                      required
-                      lazy
-                      outlined
-                      @change="enableUpdateProfileButton"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" lg="6" md="12" sm="12">
-                    <v-text-field
-                      v-model="profileInfo.user['last_name']"
-                      label="نام خانوادگی"
-                      required
-                      lazy
-                      outlined
-                      @change="enableUpdateProfileButton"
-                    ></v-text-field>
-                  </v-col>
-                </v-row>
-                <v-row v-if="companyName !== ''">
-                  <v-col cols="12" lg="6" md="12" sm="12">
-                    <v-text-field
-                      label="نام شرکت"
-                      hint="نام ثبت شده شرکت خودرا وارد نمایید"
-                      persistent-hint
-                      required
-                      lazy
-                      outlined
-                      @change="enableUpdateProfileButton"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" lg="6" md="12" sm="12">
-                    <v-text-field
-                      valu=""
-                      label="شماره ثبت شرکت"
-                      required
-                      lazy
-                      outlined
-                      @change="enableUpdateProfileButton"
-                    ></v-text-field>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <!--                <v-col lg="6" md="12">-->
-                  <!--                  <v-select-->
-                  <!--                    v-if="profileInfo.user"-->
-                  <!--                    v-model="profileForm.gender"-->
-                  <!--                    :items="profileInfo['genders']"-->
-                  <!--                    item-text="value"-->
-                  <!--                    item-value="key"-->
-                  <!--                    label="جنسیت"-->
-                  <!--                    required-->
-                  <!--                    outlined-->
-                  <!--                  ></v-select>-->
-                  <!--                </v-col>-->
-                  <!--                <v-col md="12">-->
-                  <!--                  <v-combobox-->
-                  <!--                    v-if="profileInfo.user"-->
-                  <!--                    v-model="profileInfo.skills"-->
-                  <!--                    :items="skillsList"-->
-                  <!--                    item-text="title"-->
-                  <!--                    item-value="id"-->
-                  <!--                    :search-input.sync="search"-->
-                  <!--                    hide-selected-->
-                  <!--                    hint="حداکثر ۵ گزینه میتوانید انتخاب کنید"-->
-                  <!--                    :label="$t('form.skills')"-->
-                  <!--                    multiple-->
-                  <!--                    persistent-hint-->
-                  <!--                    required-->
-                  <!--                    outlined-->
-                  <!--                    clearable-->
-                  <!--                    small-chips-->
-                  <!--                    :counter="5"-->
-                  <!--                    @change="selectSkills(profileInfo.skills)"-->
-                  <!--                  >-->
-                  <!--                    <template v-slot:no-data>-->
-                  <!--                      <v-list-item>-->
-                  <!--                        <v-list-item-content>-->
-                  <!--                          <v-list-item-title>-->
-                  <!--                            موردی یافت نشد "<strong>{{ search }}</strong>". برای-->
-                  <!--                            افزودن مهارت مورد نظر <kbd>enter</kbd>را فشار دهید-->
-                  <!--                          </v-list-item-title>-->
-                  <!--                        </v-list-item-content>-->
-                  <!--                      </v-list-item>-->
-                  <!--                    </template>-->
-                  <!--                  </v-combobox>-->
-                  <!--                </v-col>-->
-                </v-row>
-                <v-row>
-                  <v-col cols="12" md="12">
-                    <v-select
-                      :items="categories"
-                      item-text="title"
-                      item-value="id"
-                      label="زمینه کاری"
-                      v-model="profileInfo.user['category_id']"
-                      required
-                      outlined
-                      @change="enableUpdateProfileButton"
-                    ></v-select>
-                  </v-col>
-                </v-row>
-                <!--              <v-row>-->
-                <!--                <v-textarea-->
-                <!--                  outlined-->
-                <!--                  name="input-7-4"-->
-                <!--                  label="توضیحات"-->
-                <!--                  value="پروژه ای که روی آن کار می کنم یک پروژه ی تستی است که قرار است در جستجوی گوگل در صفحات اول تا دوم ارتقا داده شود."-->
-                <!--                ></v-textarea>-->
-                <!--              </v-row>-->
-                <header-section
-                  :header-section-title="'تصویر پروفایل'"
-                ></header-section>
-                <v-row>
-                  <v-col class="profile-setting">
-                    <file-input-dashboard
-                      :status="'avatar'"
-                      @clicked="getFileId"
-                      v-if="profileInfo.user"
-                      :imageProfile="profileInfo.user.profile.avatar"
-                    >
-                    </file-input-dashboard>
-                  </v-col>
-                </v-row>
+  <v-form ref="form" v-model="valid" lazy-validation>
+    <v-container>
+      <header-section :header-section-title="'جزئیات پروفایل'"></header-section>
+      <v-row v-if="companyName === ''">
+        <v-col cols="12" lg="6" md="12" sm="12">
+          <v-text-field
+            v-model="profileInfo.user['first_name']"
+            label="نام"
+            required
+            lazy
+            outlined
+            @change="enableUpdateProfileButton"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" lg="6" md="12" sm="12">
+          <v-text-field
+            v-model="profileInfo.user['last_name']"
+            label="نام خانوادگی"
+            required
+            lazy
+            outlined
+            @change="enableUpdateProfileButton"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row v-if="companyName !== ''">
+        <v-col cols="12" lg="6" md="12" sm="12">
+          <v-text-field
+            label="نام شرکت"
+            hint="نام ثبت شده شرکت خودرا وارد نمایید"
+            persistent-hint
+            required
+            lazy
+            outlined
+            @change="enableUpdateProfileButton"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" lg="6" md="12" sm="12">
+          <v-text-field
+            valu=""
+            label="شماره ثبت شرکت"
+            required
+            lazy
+            outlined
+            @change="enableUpdateProfileButton"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" md="12">
+          <v-select
+            :items="categories"
+            item-text="title"
+            item-value="id"
+            label="زمینه کاری"
+            v-model="profileInfo.user['category_id']"
+            required
+            outlined
+            @change="enableUpdateProfileButton"
+          ></v-select>
+        </v-col>
+      </v-row>
+      <header-section :header-section-title="'تصویر پروفایل'"></header-section>
+      <v-row>
+        <v-col
+          class="profile-setting d-flex flex-column justify-center align-center"
+        >
+          <img
+            style="border-radius: 50%;border: 1px solid #c7c7c7;width: 100px"
+            :src="logo"
+            alt=""
+          />
 
-                <!--              <header-section-->
-                <!--                :header-section-title="'تصویر بنر'"-->
-                <!--              ></header-section>-->
-                <!--              <v-row>-->
-                <!--                <v-col lg="6" md="12">-->
-                <!--                  <file-input-dashboard-->
-                <!--                    :status="'banner'"-->
-                <!--                    @clicked="getFileId"-->
-                <!--                    :imageProfile="profileInfo.user.profile.banner"-->
-                <!--                  ></file-input-dashboard>-->
-                <!--                </v-col>-->
-                <!--              </v-row>-->
-                <v-row class="my-10">
-                  <v-col cols="12" lg="3" md="4" sm="12">
-                    <v-btn
-                      :disabled="!enableButton"
-                      color="error"
-                      @click="updateProfile"
-                      block
-                    >
-                      {{ $t("actions.save&update") }}
-                    </v-btn>
+          <v-btn
+            color="primary"
+            class="mt-4"
+            small
+            outlined
+            @click="toggleShow"
+          >
+            تغییر عکس پروفایل
+          </v-btn>
+          <my-upload
+            field="img"
+            @crop-success="cropSuccess"
+            @crop-upload-success="cropUploadSuccess"
+            @crop-upload-fail="cropUploadFail"
+            v-model="show"
+            :width="100"
+            :height="100"
+            url="/upload"
+            img-format="png"
+            lang-type="fa"
+          ></my-upload>
+        </v-col>
+      </v-row>
+      <v-row class="my-10 justify-end">
+        <v-col cols="12" lg="2" md="2" sm="12" class="ml-3">
+          <v-btn :disabled="!enableButton" color="error" @click="profileInfoUpdate">
+            ذخیره اطلاعات فردی
+          </v-btn>
+        </v-col>
+        <v-col cols="12" lg="2" md="2" sm="12" class="">
+          <v-btn color="secondary" @click="goTo(profileInfo.user.id)">
+            پیشنمایی پروفایل
+          </v-btn>
+        </v-col>
+      </v-row>
+      <v-divider class="divide-card mb-15" style="padding: 1px"></v-divider>
+      <!----------------------------------------------------  Education  -------------------------------------------------->
+
+      <header-section :header-section-title="'تحصیلات'"></header-section>
+      <v-form ref="newForm2" v-model="valid" lazy-validation>
+        <v-row justify="center">
+          <v-dialog v-model="dialog1" persistent max-width="600px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="primary open-dialog"
+                text
+                dark
+                v-bind="attrs"
+                v-on="on"
+              >
+                + افزودن تحصیلات
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title class="justify-center">
+                <span class="text-h6 text--secondary font-weight-regular">
+                  افزودن تحصیلات
+                </span>
+              </v-card-title>
+
+              <v-card-text class="mt-6">
+                <v-row>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <v-text-field
+                      v-model="educationForm.educationMajor"
+                      :rules="educationFormRule.major"
+                      label="مقطع تحصیلی"
+                      required
+                      outlined
+                      dense
+                    ></v-text-field>
                   </v-col>
-                  <v-col cols="12" lg="3" md="4" sm="12" class="mr-8">
-                    <v-btn
-                      color="secondary"
-                      block
-                      @click="goTo(profileInfo.user.id)"
-                    >
-                      پیشنمایی پروفایل
-                    </v-btn>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <v-text-field
+                      v-model="educationForm.educationLevel"
+                      :rules="educationFormRule.name"
+                      label="رشته تحصیلی"
+                      required
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="12" sm="12">
+                    <v-text-field
+                      v-model="educationForm.educationLocation"
+                      :rules="educationFormRule.educationLocation"
+                      label="نام دانشگاه یا موسسه آموزشی"
+                      required
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <date-picker
+                      v-model="educationForm.educationStart"
+                      format="YYYY-MM-DD HH:mm:ss"
+                      display-format="jYYYY-jMM-jDD HH:mm"
+                      :locale-config="{
+          fa: {
+            displayFormat: 'jYYYY/jMM/jDD',
+            lang: { label: 'شمسی' }
+          }
+        }"
+                    />
+                  </v-col>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <date-picker
+                      v-model="educationForm.educationEnd"
+                      format="YYYY-MM-DD HH:mm:ss"
+                      display-format="jYYYY-jMM-jDD HH:mm"
+                      :locale-config="{
+          fa: {
+            displayFormat: 'jYYYY/jMM/jDD',
+            lang: { label: 'شمسی' }
+          }
+        }"
+                    />
                   </v-col>
                 </v-row>
-              </v-container>
-            </v-form>
-          </v-card-text>
-        </v-card>
-      </v-tab-item>
-      <v-tab-item>
-        <v-card flat>
-          <v-card-text>
-            <header-section
-              header-section-title="تجربه‌های کاری"
-            ></header-section>
-            <form-dialog
-              :dataForDialogForm="addExperienceDataForDialogForm"
-            ></form-dialog>
-            <experience></experience>
-            <header-section header-section-title="تحصیلات"></header-section>
-            <form-dialog
-              :dataForDialogForm="addEducationDataForDialogForm"
-            ></form-dialog>
-            <education></education>
-            <v-row class="my-10">
-              <v-col cols="12" lg="3" md="4" sm="12">
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="error darken-1" text @click="validate">
+                  بستن
+                </v-btn>
                 <v-btn
-                  color="error"
-                  :disabled="!valid"
-                  @click="updateExperienceEducation"
-                  block
+                  color="blue darken-1"
+                  text
+                  @click.prevent="profileStoreAndEditEducation"
                 >
-                  {{ $t("actions.save&update") }}
+                  تایید اطلاعات
                 </v-btn>
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-      </v-tab-item>
-      <v-tab-item>
-        <v-card flat>
-          <v-card-text>
-            <header-section header-section-title="نمونه کارها"></header-section>
-            <form-dialog
-              :dataForDialogForm="addProjectsDataForDialogForm"
-            ></form-dialog>
-            <projects></projects>
-            <header-section
-              header-section-title="دوره‌های آموزشی گذرانده شده"
-            ></header-section>
-            <form-dialog
-              :dataForDialogForm="addAwardDataForDialogForm"
-            ></form-dialog>
-            <award></award>
-            <v-row class="my-10">
-              <v-col cols="12" lg="3" md="4" sm="12">
-                <v-btn color="error" @click="updateProjectsAward" block>
-                  {{ $t("actions.save&update") }}
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-row>
+      </v-form>
+      <v-row
+        justify="space-around"
+        no-gutters
+        v-for="(experience, index) in profileEducationIndexList"
+        :key="'A' + index"
+        style="position:relative;"
+      >
+        <v-dialog
+          v-model="dialogDeleteEducation"
+          persistent
+          max-width="350px"
+          :retain-focus="false"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="ma-0 pa-0 delete-icon"
+              v-bind="attrs"
+              v-on="on"
+              text
+              :ripple="false"
+              style="min-width: unset"
+              color="#777777"
+            >
+              <v-icon
+                class="ma-0 pa-0 delete-icon-education"
+                v-bind="attrs"
+                v-on="on"
+                text
+                :ripple="false"
+                @click="getProfileId(experience['id'])"
+              >
+                mdi-delete
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-form ref="form" lazy-validation>
+            <v-card
+              class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+            >
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12">
+                      آیا قصد حذف این فیلد را دارید؟
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="#ff0000"
+                  dark
+                  @click="dialogDeleteEducation = false"
+                >
+                  خیر
                 </v-btn>
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-      </v-tab-item>
-    </v-tabs>
-    <v-row>
-      <snackbar
-        :snackbarMessage="snackbarMessage"
-        :showSnackbar="showSnackbar"
-        @hideSnackbar="hideSnackbar"
-      ></snackbar>
-    </v-row>
-  </v-card>
+                <v-btn color="#1ad715" dark @click="profileEducationDelete">
+                  بله
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </v-dialog>
+        <v-icon
+          class="edit-icon-education"
+          @click="editEducationProfile(experience.id)"
+        >
+          mdi-pencil
+        </v-icon>
+        <v-col cols="12" sm="12" md="4">
+          مقطع: {{ experience.grade }}
+        </v-col>
+        <v-col cols="12" sm="12" md="4">
+          رشته تحصیلی: {{ experience.major }}
+        </v-col>
+        <v-col cols="12" sm="12" md="4" class="mb-4">
+          دانشگاه: {{ experience['university_name'] }}
+        </v-col>
+        <v-col cols="12" sm="12" md="4" class="mb-4">
+          تاریخ شروع: {{ experience.from | changeDate | persianDigit }}
+        </v-col>
+        <v-col cols="12" sm="12" md="4">
+          تاریخ اتمام: {{ experience.to | changeDate | persianDigit }}
+        </v-col>
+        <v-col cols="12" md="4"></v-col>
+        <v-col cols="12" md="12" style="padding: 0 120px">
+          <v-divider class="divide-card"></v-divider>
+        </v-col>
+      </v-row>
+
+      <!----------------------------------------------------  Experience -------------------------------------------------->
+
+      <header-section :header-section-title="'تجارب کاری'"></header-section>
+      <v-form ref="newForm1" v-model="valid" lazy-validation>
+        <v-row justify="center">
+          <v-dialog v-model="dialog2" persistent max-width="600px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="primary open-dialog"
+                text
+                dark
+                v-bind="attrs"
+                v-on="on"
+              >
+                + افزودن تجارب کاری
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title class="justify-center">
+                <span class="text-h6 text--secondary font-weight-regular">
+                  افزودن تجارب کاری
+                </span>
+              </v-card-title>
+
+              <v-card-text class="mt-6">
+                <v-row>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <v-text-field
+                      v-model="experienceForm.name"
+                      :rules="experienceFormRule.name"
+                      label="سمت"
+                      required
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <v-text-field
+                      v-model="experienceForm.companyName"
+                      :rules="experienceFormRule.companyName"
+                      label="نام شرکت"
+                      required
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <date-picker
+                      v-model="experienceForm.experienceStart"
+                      format="YYYY-MM-DD HH:mm:ss"
+                      display-format="jYYYY-jMM-jDD HH:mm"
+                      :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+                    />
+                  </v-col>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <date-picker
+                      v-model="experienceForm.experienceEnd"
+                      format="YYYY-MM-DD HH:mm:ss"
+                      display-format="jYYYY-jMM-jDD HH:mm"
+                      :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+                    />
+                  </v-col>
+                </v-row>
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="error darken-1" text @click="validate">
+                  بستن
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click.prevent="profileStoreAndEditExperience"
+                >
+                  تایید اطلاعات
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-row>
+      </v-form>
+      <v-row
+        justify="space-around"
+        no-gutters
+        v-for="(experience, index) in profileExperienceIndexList"
+        :key="index"
+        style="position:relative;"
+      >
+        <v-dialog
+          v-model="dialogDeleteExperience"
+          persistent
+          max-width="350px"
+          :retain-focus="false"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="ma-0 pa-0 delete-icon"
+              v-bind="attrs"
+              v-on="on"
+              text
+              :ripple="false"
+              style="min-width: unset"
+              color="#777777"
+            >
+              <v-icon
+                class="ma-0 pa-0 delete-icon"
+                v-bind="attrs"
+                v-on="on"
+                text
+                :ripple="false"
+                @click="getProfileId(experience['id'])"
+              >
+                mdi-delete
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-form ref="form" lazy-validation>
+            <v-card
+              class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+            >
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12">
+                      آیا قصد حذف این فیلد را دارید؟
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="#ff0000"
+                  dark
+                  @click="dialogDeleteExperience = false"
+                >
+                  خیر
+                </v-btn>
+                <v-btn color="#1ad715" dark @click="profileExperienceDelete">
+                  بله
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </v-dialog>
+        <v-icon class="edit-icon" @click="editExperienceProfile(experience.id)">
+          mdi-pencil
+        </v-icon>
+        <v-col cols="12" sm="12" md="4">
+          سمت: {{experience.position}}
+        </v-col>
+        <v-col cols="12" sm="12" md="4">
+          نام شرکت: {{experience['company_name']}}
+        </v-col>
+        <v-col cols="12" md="4"></v-col>
+        <v-col cols="12" sm="12" md="4" class="my-4">
+          تاریخ شروع: {{experience.from | changeDate | persianDigit}}
+        </v-col>
+        <v-col cols="12" sm="12" md="4" class="my-4">
+          تاریخ اتمام: {{experience.to | changeDate | persianDigit}}
+        </v-col>
+        <v-col cols="12" md="4"></v-col>
+        <v-col cols="12" md="12" style="padding: 0 120px">
+          <v-divider class="divide-card"></v-divider>
+        </v-col>
+      </v-row>
+
+      <!----------------------------------------------------  Project  -------------------------------------------------->
+
+      <header-section :header-section-title="'نمونه کار'"></header-section>
+      <v-form ref="newForm3" v-model="valid" lazy-validation>
+        <v-row justify="center">
+          <v-dialog v-model="dialog3" persistent max-width="600px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="primary open-dialog"
+                text
+                dark
+                v-bind="attrs"
+                v-on="on"
+              >
+                + افزودن نمونه کار
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title class="justify-center">
+                <span class="text-h6 text--secondary font-weight-regular">
+                  افزودن نمونه کار
+                </span>
+              </v-card-title>
+
+              <v-card-text class="mt-6">
+                <v-row>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <v-text-field
+                      v-model="projectsForm.title"
+                      :rules="projectRule.name"
+                      label="عنوان"
+                      required
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <v-text-field
+                      v-model="projectsForm.url"
+                      :rules="projectRule.url"
+                      label="آدرس URL"
+                      required
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="error darken-1" text @click="validate">
+                  بستن
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click.prevent="profileStoreAndEditProject"
+                >
+                  تایید اطلاعات
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-row>
+      </v-form>
+      <v-row
+        justify="space-around"
+        no-gutters
+        style="position:relative;"
+        v-for="(experience, index) in profileProjectIndexList"
+        :key="'b' + index"
+      >
+        <v-dialog
+          v-model="dialogDeleteProject"
+          persistent
+          max-width="350px"
+          :retain-focus="false"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="ma-0 pa-0 delete-icon"
+              v-bind="attrs"
+              v-on="on"
+              text
+              :ripple="false"
+              style="min-width: unset"
+              color="#777777"
+            >
+              <v-icon
+                class="ma-0 pa-0 delete-icon"
+                v-bind="attrs"
+                v-on="on"
+                text
+                :ripple="false"
+                @click="getProfileId(experience['id'])"
+              >
+                mdi-delete
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-form ref="form" lazy-validation>
+            <v-card
+              class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+            >
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12">
+                      آیا قصد حذف این فیلد را دارید؟
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="#ff0000" dark @click="dialogDeleteProject= false">
+                  خیر
+                </v-btn>
+                <v-btn color="#1ad715" dark @click="profileProjectDelete">
+                  بله
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </v-dialog>
+        <v-icon class="edit-icon" @click="editProjectProfile(experience.id)">
+          mdi-pencil
+        </v-icon>
+        <v-col cols="12" sm="12" md="4" class="mb-4">
+          عنوان: {{ experience.title }}
+        </v-col>
+        <v-col cols="12" sm="12" md="4">
+          آدرس:
+          <a :href="experience.url" target="_blank"
+            >{{experience.url | readMore(25, "...")}}</a
+          >
+        </v-col>
+        <v-col cols="12" md="4"></v-col>
+        <v-col cols="12" md="12" style="padding: 0 120px">
+          <v-divider class="divide-card"></v-divider>
+        </v-col>
+      </v-row>
+
+      <!----------------------------------------------------  Certificate -------------------------------------------------->
+
+      <header-section
+        :header-section-title="'دوره‌های آموزشی'"
+      ></header-section>
+      <v-form ref="newForm4" v-model="valid" lazy-validation>
+        <v-row justify="center">
+          <v-dialog v-model="dialog4" persistent max-width="600px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="primary open-dialog"
+                text
+                dark
+                v-bind="attrs"
+                v-on="on"
+              >
+                + افزودن دوره آموزشی
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title class="justify-center">
+                <span class="text-h6 text--secondary font-weight-regular">
+                  افزودن دوره آموزشی
+                </span>
+              </v-card-title>
+
+              <v-card-text class="mt-6">
+                <v-row>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <v-text-field
+                      v-model="certificateForm.title"
+                      :rules="certificateFormRule.name"
+                      label="عنوان مدرک"
+                      required
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" lg="6" md="12" sm="12">
+                    <date-picker
+                      v-model="certificateForm.achieved_date"
+                      format="YYYY-MM-DD HH:mm:ss"
+                      display-format="jYYYY-jMM-jDD HH:mm"
+                      :locale-config="{
+    fa: {
+      displayFormat: 'jYYYY/jMM/jDD',
+      lang: { label: 'شمسی' }
+    }
+  }"
+                    />
+                  </v-col>
+                </v-row>
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="error darken-1" text @click="validate">
+                  بستن
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click.prevent="profileStoreAndEditCertificate"
+                >
+                  تایید اطلاعات
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-row>
+      </v-form>
+      <v-row
+        justify="space-around"
+        no-gutters
+        style="position:relative;"
+        v-for="(experience, index) in profileCertificateIndexList"
+        :key="'c' + index"
+      >
+        <v-dialog
+          v-model="dialogDeleteCertificate"
+          persistent
+          max-width="350px"
+          :retain-focus="false"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="ma-0 pa-0 delete-icon"
+              v-bind="attrs"
+              v-on="on"
+              text
+              :ripple="false"
+              style="min-width: unset"
+              color="#777777"
+            >
+              <v-icon
+                class="ma-0 pa-0 delete-icon"
+                v-bind="attrs"
+                v-on="on"
+                text
+                :ripple="false"
+                @click="getProfileId(experience['id'])"
+              >
+                mdi-delete
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-form ref="form" lazy-validation>
+            <v-card
+              class="d-flex flex-column justify-center align-center pb-10 send-jobOffer-freelancer"
+            >
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12">
+                      آیا قصد حذف این فیلد را دارید؟
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="#ff0000"
+                  dark
+                  @click="dialogDeleteCertificate = false"
+                >
+                  خیر
+                </v-btn>
+                <v-btn color="#1ad715" dark @click="profileCertificateDelete">
+                  بله
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </v-dialog>
+        <v-icon
+          class="edit-icon"
+          @click="editCertificateProfile(experience.id)"
+        >
+          mdi-pencil
+        </v-icon>
+        <v-col cols="12" sm="12" md="4" class="mb-4">
+          عنوان مدرک: {{ experience.title }}
+        </v-col>
+        <v-col cols="12" sm="12" md="4">
+          تاریخ کسب مدرک: {{ experience['achieved_date'] | changeDate |
+          persianDigit }}
+        </v-col>
+        <v-col cols="12" md="4"></v-col>
+        <v-col cols="12" md="12" style="padding: 0 120px">
+          <v-divider class="divide-card"></v-divider>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-form>
+  <snackbar
+    :snackbarMessage="snackbarMessage"
+    :showSnackbar="showSnackbar"
+    @hideSnackbar="hideSnackbar"
+  ></snackbar>
 </dashboard-card>
+
+<!--          <file-input-dashboard-->
+<!--            :status="'avatar'"-->
+<!--            @clicked="getFileId"-->
+<!--            v-if="profileInfo.user"-->
+<!--            :imageProfile="profileInfo.user.profile.avatar"-->
+<!--          >-->
+<!--          </file-input-dashboard>-->

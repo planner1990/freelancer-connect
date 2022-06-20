@@ -48,9 +48,8 @@
                   :key="index"
                   cols="12"
                   class="d-flex employer-projects-card pa-0 mb-6"
-                  @click="goToDetail(result.id)"
                 >
-                  <div class="employer-projects-card-right pa-5">
+                  <div class="employer-projects-card-right pa-5" @click="goToDetail(result.id)">
                     <div class="employer-projects-card-name d-flex">
                       <div class="font-weight-bold">{{result.username}}</div>
                       <v-divider
@@ -76,9 +75,10 @@
                         {{skill}}
                       </button>
                     </div>
-                  </div>
+                  </div @click="goToDetail(result.id)">
                   <div
                     class="d-flex flex-column employer-projects-card-left pa-5"
+                    @click="goToDetail(result.id)"
                   >
                     <div>
                       <span class="mx-4 employer-projects-card-budget"

@@ -48,7 +48,7 @@ export default {
         this.educationList = res.data.data.user.profile?.education;
       });
     },
-    removeItem() {
+    editItem() {
       this.showSnackbar = false;
       this.experienceForm = {
         job_title: this.item.job_title,
@@ -60,10 +60,6 @@ export default {
         experience: this.experienceList,
         education: this.educationList
       };
-      // this.$store.commit(types.dialogForm.FORM_LIST_MUTATE, {
-      //   form: this.experienceList,
-      //   type: "experience"
-      // });
       freelancerServices
         .updateExperienceEducation(body)
         .then(res => {

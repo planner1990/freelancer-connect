@@ -16,16 +16,11 @@
           <div>
             {{ message.detail }}
           </div>
-<!--          <div>-->
-<!--            <v-btn-->
-<!--              color="secondary"-->
-<!--              small-->
-<!--              text-->
-<!--              v-if="(message.detail).length > 174"-->
-<!--            >-->
-<!--              مشاهده بیشتر-->
-<!--            </v-btn>-->
-<!--          </div>-->
+          <div>
+            <v-btn color="secondary" small text :to="'/' + message.link">
+              مشاهده بیشتر
+            </v-btn>
+          </div>
         </div>
       </v-col>
     </v-row>

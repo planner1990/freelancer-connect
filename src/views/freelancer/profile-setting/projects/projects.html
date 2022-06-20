@@ -1,8 +1,5 @@
 <div>
-  <v-expansion-panels
-    v-for="(item, index) in projectList"
-    :key="index"
-  >
+  <v-expansion-panels v-for="(item, index) in projectList" :key="index">
     <v-expansion-panel>
       <v-expansion-panel-header>
         <template v-slot:default="{ open }">
@@ -32,18 +29,31 @@
               dense
             ></v-text-field>
           </v-col>
-<!--          <v-col cols="12" sm="6" md="6">-->
-<!--            <v-text-field-->
-<!--              v-model="item.form.url"-->
-<!--              placeholder=""-->
-<!--              class="pr-2"-->
-<!--              outlined-->
-<!--              dense-->
-<!--            ></v-text-field>-->
-<!--          </v-col>-->
+          <v-col cols="12" sm="6" md="6">
+            <v-text-field
+              v-model="item.url"
+              placeholder=""
+              class="pl-2"
+              outlined
+              dense
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-btn text color="red">
+            حذف پروژه
+          </v-btn>
+          <v-btn text color="secondary" @click.prevent="editItem()">
+            ویرایش پروژه
+          </v-btn>
         </v-row>
       </v-expansion-panel-content>
     </v-expansion-panel>
+    <snackbar
+      :snackbarMessage="snackbarMessage"
+      :showSnackbar="showSnackbar"
+      @hideSnackbar="hideSnackbar"
+    ></snackbar>
   </v-expansion-panels>
   <v-expansion-panels
     v-for="(item, index) in listOfFormData"
