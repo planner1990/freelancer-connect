@@ -374,6 +374,7 @@ export default {
           this.snackbarMessage = "فیلد مورد نظر با موفقیت به روز رسانی شد.";
           this.profileExperienceIndex();
           this.validate();
+          this.profileId = "";
         });
     },
     profileExperienceShow(profileId) {
@@ -443,6 +444,7 @@ export default {
           this.snackbarMessage = "فیلد مورد نظر با موفقیت به روز رسانی شد.";
           this.profileEducationIndex();
           this.validate();
+          this.profileId = "";
         });
     },
     profileEducationShow(profileId) {
@@ -505,6 +507,7 @@ export default {
         // this.snackbarMessage = "فیلد مورد نظر با موفقیت به روز رسانی شد.";
         this.profileProjectIndex();
         this.validate();
+        this.profileId = "";
       });
     },
     profileProjectShow(profileId) {
@@ -566,6 +569,7 @@ export default {
           // this.snackbarMessage = "فیلد مورد نظر با موفقیت به روز رسانی شد.";
           this.profileCertificateIndex();
           this.validate();
+          this.profileId = "";
         });
     },
     profileCertificateShow(profileId) {
