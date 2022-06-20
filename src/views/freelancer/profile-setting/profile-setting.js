@@ -467,7 +467,7 @@ export default {
     profileEducationDelete() {
       freelancerServices.profileEducationDelete(this.profileId).then(() => {
         this.profileEducationIndex();
-        this.dialogDeleteProject = false;
+        this.dialogDeleteEducation = false;
         this.profileId = null;
       });
     },
