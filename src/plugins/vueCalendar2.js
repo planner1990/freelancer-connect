@@ -4,13 +4,13 @@ import Vue from "vue";
 // moment.updateLocale("fa", fa);
 import VuePersianDatetimePicker from "vue-persian-datetime-picker";
 Vue.use(VuePersianDatetimePicker, {
-  name: "date-picker",
+  name: "date-picker-second",
   props: {
     format: "YYYY-MM-DD HH:mm",
     displayFormat: "jYYYY-jMM-jDD HH:mm",
     // editable: false,
     inputClass: "form-control my-custom-class-name",
-    placeholder: " ",
+    placeholder: "تاریخ شروع",
     // altFormat: "YYYY-MM-DD HH:mm",
     color: "#59c1b8"
     // autoSubmit: true,

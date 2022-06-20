@@ -177,10 +177,12 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" lg="6" md="12" sm="12">
+                      تاریخ شروع
                     <date-picker
                       v-model="educationForm.educationStart"
                       format="YYYY-MM-DD HH:mm:ss"
                       display-format="jYYYY-jMM-jDD HH:mm"
+                      auto-submit
                       :locale-config="{
           fa: {
             displayFormat: 'jYYYY/jMM/jDD',
@@ -190,10 +192,12 @@
                     />
                   </v-col>
                   <v-col cols="12" lg="6" md="12" sm="12">
+                      تاریخ فارغ التحصیلی
                     <date-picker
                       v-model="educationForm.educationEnd"
                       format="YYYY-MM-DD HH:mm:ss"
                       display-format="jYYYY-jMM-jDD HH:mm"
+                      auto-submit
                       :locale-config="{
           fa: {
             displayFormat: 'jYYYY/jMM/jDD',
@@ -360,10 +364,12 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" lg="6" md="12" sm="12">
+                      تاریخ شروع
                     <date-picker
                       v-model="experienceForm.experienceStart"
                       format="YYYY-MM-DD HH:mm:ss"
                       display-format="jYYYY-jMM-jDD HH:mm"
+                      auto-submit
                       :locale-config="{
     fa: {
       displayFormat: 'jYYYY/jMM/jDD',
@@ -373,10 +379,12 @@
                     />
                   </v-col>
                   <v-col cols="12" lg="6" md="12" sm="12">
+                      تاریخ خاتمه
                     <date-picker
                       v-model="experienceForm.experienceEnd"
                       format="YYYY-MM-DD HH:mm:ss"
                       display-format="jYYYY-jMM-jDD HH:mm"
+                      auto-submit
                       :locale-config="{
     fa: {
       displayFormat: 'jYYYY/jMM/jDD',
@@ -678,6 +686,7 @@
                       v-model="certificateForm.achieved_date"
                       format="YYYY-MM-DD HH:mm:ss"
                       display-format="jYYYY-jMM-jDD HH:mm"
+                      auto-submit
                       :locale-config="{
     fa: {
       displayFormat: 'jYYYY/jMM/jDD',

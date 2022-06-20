@@ -13,11 +13,13 @@ import "./assets/styles/chat-room-ticket.scss";
 import "./shared/filters/index";
 import "./plugins/eChart";
 import "./plugins/vueCalendar";
+import "./plugins/vueCalendar2";
 import Vuetify from "vuetify";
 import VuePersianDatetimePicker from "vue-persian-datetime-picker";
 import myUpload from "vue-image-crop-upload/upload-2.vue";
 Vue.component("myUpload", myUpload);
 Vue.component("date-picker", VuePersianDatetimePicker);
+Vue.component("date-picker-second", VuePersianDatetimePicker);
 Vue.use(Vuetify);
 Vue.config.productionTip = false;
 new Vue({
