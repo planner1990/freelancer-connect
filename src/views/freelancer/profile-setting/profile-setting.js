@@ -6,6 +6,7 @@ import projectsService from "../../../core/services/modules/projectsService";
 import Snackbar from "../../../components/snackbar/index";
 import { mapActions, mapGetters } from "vuex";
 import * as types from "../../../shared/store/types";
+import uploadService from "../../../core/services/modules/uploadService";
 
 export default {
   name: "profile-setting",
@@ -113,7 +114,8 @@ export default {
       profileProjectIndexList: [],
       profileCertificateIndexList: [],
       profileId: "",
-      profileInfoIndexList: ""
+      profileInfoIndexList: "",
+      attachment_id: null
     };
   },
   computed: {
@@ -128,9 +130,10 @@ export default {
       return this.profileInfo?.user?.is_company === 1;
     },
     logo() {
-      return this.imgDataUrl
-        ? this.imgDataUrl
-        : require("../../../assets/image/profile.jpg");
+      // return this.imgDataUrl
+      //   ? this.imgDataUrl
+      //   : require("../../../assets/image/profile.jpg");
+      return require("../../../assets/image/profile.jpg");
     }
   },
   mounted() {
@@ -187,10 +190,16 @@ export default {
     toggleShow() {
       this.show = !this.show;
     },
-    cropSuccess(imgDataUrl, field) {
-      console.log("-------- crop success --------");
-      console.log(field);
+    cropSuccess(imgDataUrl) {
       this.imgDataUrl = imgDataUrl;
+      fetch(imgDataUrl)
+        .then(res => res.blob())
+        .then(blob => {
+          const file = new File([blob], "attachment[0]");
+          let formData = new FormData();
+          formData.append(`attachment[0]`, file);
+          this.uploadAvatar(formData);
+        });
     },
     cropUploadSuccess(jsonData, field) {
       console.log("-------- upload success --------");
@@ -270,7 +279,7 @@ export default {
             break;
         }
         // this.resetValidation();
-        this.dialog = false;
+        // this.dialog = false;
         this.educationForm = {};
         this.experienceForm = {};
         this.awardForm = {};
@@ -301,12 +310,27 @@ export default {
       const body = {
         first_name: this.profileInfo.user["first_name"],
         last_name: this.profileInfo.user["last_name"],
-        category_id: this.profileInfo.user["category_id"]
+        category_id: this.profileInfo.user["category_id"],
+        attachment: [
+          { id: this.attachment_id, type: "avatar", is_deleted: "false" }
+        ]
       };
       freelancerServices.profileInfoUpdate(body).then(() => {
+        this.enableButton = false;
         this.showSnackbar = true;
         this.snackbarMessage = "فیلد مورد نظر با موفقیت ایجاد شد.";
       });
+    },
+    uploadAvatar(formData) {
+      uploadService
+        .uploadFile(formData)
+        .then(res => {
+          this.attachment_id = res.data.data.attachment_id[0];
+          this.enableButton = true;
+        })
+        .catch(res => {
+          console.log(res);
+        });
     },
     profileExperienceIndex() {
       freelancerServices.profileExperienceIndex().then(res => {
