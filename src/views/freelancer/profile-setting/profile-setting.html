@@ -4,6 +4,22 @@
   <v-form ref="form" v-model="valid" lazy-validation>
     <v-container>
       <header-section :header-section-title="'جزئیات پروفایل'"></header-section>
+      <v-row class="my-10 justify-end">
+        <v-col cols="12" lg="2" md="2" sm="12" class="ml-3">
+          <v-btn
+            :disabled="!enableButton"
+            color="error"
+            @click="profileInfoUpdate"
+          >
+            ذخیره اطلاعات فردی
+          </v-btn>
+        </v-col>
+        <v-col cols="12" lg="2" md="2" sm="12" class="">
+          <v-btn color="secondary" @click="goTo(profileInfo.user.id)">
+            پیشنمایی پروفایل
+          </v-btn>
+        </v-col>
+      </v-row>
       <v-row v-if="companyName === ''">
         <v-col cols="12" lg="6" md="12" sm="12">
           <v-text-field
@@ -12,7 +28,7 @@
             required
             lazy
             outlined
-            @change="enableUpdateProfileButton"
+            @keyup="enableUpdateProfileButton"
           ></v-text-field>
         </v-col>
         <v-col cols="12" lg="6" md="12" sm="12">
@@ -22,7 +38,7 @@
             required
             lazy
             outlined
-            @change="enableUpdateProfileButton"
+            @keyup="enableUpdateProfileButton"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -35,7 +51,7 @@
             required
             lazy
             outlined
-            @change="enableUpdateProfileButton"
+            @keyup="enableUpdateProfileButton"
           ></v-text-field>
         </v-col>
         <v-col cols="12" lg="6" md="12" sm="12">
@@ -45,7 +61,7 @@
             required
             lazy
             outlined
-            @change="enableUpdateProfileButton"
+            @keyup="enableUpdateProfileButton"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -63,7 +79,7 @@
           ></v-select>
         </v-col>
       </v-row>
-      <header-section :header-section-title="'تصویر پروفایل'"></header-section>
+<!--      <header-section :header-section-title="'تصویر پروفایل'"></header-section>-->
       <v-row>
         <v-col
           class="profile-setting d-flex flex-column justify-center align-center"
@@ -103,23 +119,7 @@
           ></my-upload>
         </v-col>
       </v-row>
-      <v-row class="my-10 justify-end">
-        <v-col cols="12" lg="2" md="2" sm="12" class="ml-3">
-          <v-btn
-            :disabled="!enableButton"
-            color="error"
-            @click="profileInfoUpdate"
-          >
-            ذخیره اطلاعات فردی
-          </v-btn>
-        </v-col>
-        <v-col cols="12" lg="2" md="2" sm="12" class="">
-          <v-btn color="secondary" @click="goTo(profileInfo.user.id)">
-            پیشنمایی پروفایل
-          </v-btn>
-        </v-col>
-      </v-row>
-      <v-divider class="divide-card mb-15" style="padding: 1px"></v-divider>
+      <v-divider class="divide-card my-15" style="padding: 1px"></v-divider>
       <!----------------------------------------------------  Education  -------------------------------------------------->
 
       <header-section :header-section-title="'تحصیلات'"></header-section>
@@ -177,7 +177,7 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" lg="6" md="12" sm="12">
-                      تاریخ شروع
+                    تاریخ شروع
                     <date-picker
                       v-model="educationForm.educationStart"
                       format="YYYY-MM-DD HH:mm:ss"
@@ -192,7 +192,7 @@
                     />
                   </v-col>
                   <v-col cols="12" lg="6" md="12" sm="12">
-                      تاریخ فارغ التحصیلی
+                    تاریخ فارغ التحصیلی
                     <date-picker
                       v-model="educationForm.educationEnd"
                       format="YYYY-MM-DD HH:mm:ss"
@@ -364,7 +364,7 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" lg="6" md="12" sm="12">
-                      تاریخ شروع
+                    تاریخ شروع
                     <date-picker
                       v-model="experienceForm.experienceStart"
                       format="YYYY-MM-DD HH:mm:ss"
@@ -379,7 +379,7 @@
                     />
                   </v-col>
                   <v-col cols="12" lg="6" md="12" sm="12">
-                      تاریخ خاتمه
+                    تاریخ خاتمه
                     <date-picker
                       v-model="experienceForm.experienceEnd"
                       format="YYYY-MM-DD HH:mm:ss"

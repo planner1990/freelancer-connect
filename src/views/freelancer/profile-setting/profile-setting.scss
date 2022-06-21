@@ -17,6 +17,9 @@
   position: absolute;
   left: 13%;
   top: -9px;
+  @include small {
+    left: 6%;
+  }
 }
 .edit-icon {
   position: absolute;

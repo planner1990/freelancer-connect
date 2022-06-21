@@ -10,6 +10,7 @@ import browseServiceData from "./modules/browseServiceData";
 import guideEmployerToLogin from "./modules/guideEmployertoLogin";
 import browseProjectData from "./modules/browseProjectData";
 import avatarManagement from "./modules/avatarManagement";
+import firstNameAndLastNameManagement from "./modules/firstNameAndLastNameManagement";
 import skeletonShow from "./modules/skeletonShow";
 
 Vue.use(Vuex);
@@ -25,6 +26,7 @@ export default new Vuex.Store({
     guideEmployerToLogin,
     browseProjectData,
     avatarManagement,
-    skeletonShow
+    skeletonShow,
+    firstNameAndLastNameManagement
   }
 });

@@ -34,8 +34,14 @@ export default {
     ...mapGetters({
       imageSrc: types.avatarManagement.getters.AVATAR_MANAGEMENT_GET
     }),
+    ...mapGetters({
+      name: types.firstNameAndLastNameManagement.getters.NAME_MANAGEMENT_GET
+    }),
     getDrawerImage() {
       return this.imageSrc;
+    },
+    getFullName() {
+      return this.name;
     },
     getStatusImage() {
       return this.imageSrc?.status === "banner";

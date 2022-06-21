@@ -110,6 +110,20 @@ export const avatarManagement = {
   }
 };
 
+export const firstNameAndLastNameManagement = {
+  getters: {
+    NAME_MANAGEMENT_GET: "NAME_MANAGEMENT_GET"
+  },
+
+  mutations: {
+    NAME_MANAGEMENT_MUTATE: "NAME_MANAGEMENT_MUTATE"
+  },
+
+  actions: {
+    NAME_MANAGEMENT_ACTION: "NAME_MANAGEMENT_ACTION"
+  }
+};
+
 export const skeletonShow = {
   getters: {
     SKELETON_GET: "SKELETON_GET"

@@ -183,6 +183,17 @@ export default {
     },
     enableUpdateProfileButton() {
       this.enableButton = true;
+      this.$store.commit(
+        types.firstNameAndLastNameManagement.mutations.NAME_MANAGEMENT_MUTATE,
+        {
+          userName: {
+            name:
+              this.profileInfo.user["first_name"].substring(0, 9) +
+              " " +
+              this.profileInfo.user["last_name"].substring(0, 9)
+          }
+        }
+      );
     },
     goTo(userId) {
       this.$router.push(`/profile/${userId}`);
@@ -195,6 +206,12 @@ export default {
       fetch(imgDataUrl)
         .then(res => res.blob())
         .then(blob => {
+          this.$store.commit(
+            types.avatarManagement.mutations.AVATAR_MANAGEMENT_MUTATE,
+            {
+              imageSrc: { image: imgDataUrl, status: this.status }
+            }
+          );
           const file = new File([blob], "attachment[0]");
           let formData = new FormData();
           formData.append(`attachment[0]`, file);
@@ -311,9 +328,9 @@ export default {
         first_name: this.profileInfo.user["first_name"],
         last_name: this.profileInfo.user["last_name"],
         category_id: this.profileInfo.user["category_id"],
-        attachment: [
-          { id: this.attachment_id, type: "avatar", is_deleted: "false" }
-        ]
+        attachment: this.attachment_id
+          ? [{ id: this.attachment_id, type: "avatar", is_deleted: "false" }]
+          : null
       };
       freelancerServices.profileInfoUpdate(body).then(() => {
         this.enableButton = false;
