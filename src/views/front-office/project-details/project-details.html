@@ -171,6 +171,33 @@
                                   @input="mask"
                                 ></v-text-field>
                               </v-col>
+                              <v-col cols="12" class="expansion">
+                                <v-expansion-panels flat>
+                                  <v-expansion-panel>
+                                    <v-expansion-panel-header
+                                      style="color: #9d9d9d"
+                                    >
+                                      تنظیمات پیشرفته جهت تحویل مراحل پروژه
+                                    </v-expansion-panel-header>
+                                    <v-expansion-panel-content>
+                                      <div>
+                                        به پیشنهاد کانکتا, پروژه ی شما بر اساس
+                                        تجربه‌های موفق در کانکتا به سه قسمت
+                                        تقسیم شده است. در صورت نیاز, تغییرات
+                                        مورد نظر خود را اعمال فرمایید.
+                                      </div>
+                                      <div class="mt-8">
+                                        <v-slider
+                                          @change="setSlider($event)"
+                                          v-model="breakDown"
+                                          step="25"
+                                          :tick-labels="ticksLabels"
+                                        ></v-slider>
+                                      </div>
+                                    </v-expansion-panel-content>
+                                  </v-expansion-panel>
+                                </v-expansion-panels>
+                              </v-col>
                               <v-col cols="12">
                                 <v-textarea
                                   outlined

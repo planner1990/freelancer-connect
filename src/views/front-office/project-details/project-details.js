@@ -52,7 +52,10 @@ export default {
             (v && v.length >= 20) ||
             "توضیحات وارد شده باید بیش از ۲۰ کاراکتر باشد"
         ]
-      }
+      },
+      breakDown: 50,
+      breakDownValue: 3,
+      ticksLabels: ["1", "2", "3", "4", "5"]
     };
   },
   computed: {},
@@ -109,9 +112,10 @@ export default {
           project_id: this.projectDetailsById.id,
           project_duration_id: this.proposalForm.project_duration_id,
           amount: this.proposalForm.price.replace(/,/g, ""),
-          prepayment: this.proposalForm.prepayment.replace(/,/g, ""),
+          prepayment: this.proposalForm.prepayment?.replace(/,/g, ""),
           content: this.proposalForm.description,
-          attachment_id: this.proposalForm.attachmentId
+          attachment_id: this.proposalForm.attachmentId,
+          breakdown_manual_installments: this.breakDownValue
         };
         projectsService
           .submitProposal(body)
@@ -153,6 +157,27 @@ export default {
       projectsService.getCommission().then(res => {
         console.log(res);
       });
+    },
+    setSlider(e) {
+      switch (e) {
+        case 0:
+          this.breakDownValue = 1;
+          break;
+        case 25:
+          this.breakDownValue = 2;
+          break;
+        case 50:
+          this.breakDownValue = 3;
+          break;
+        case 75:
+          this.breakDownValue = 4;
+          break;
+        case 100:
+          this.breakDownValue = 5;
+          break;
+        default:
+          this.breakDownValue = 3;
+      }
     }
   }
 };

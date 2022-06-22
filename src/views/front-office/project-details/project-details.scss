@@ -13,7 +13,8 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  .first-slogan, .second-slogan {
+  .first-slogan,
+  .second-slogan {
     font-size: 2vw;
     color: $gray-100;
     text-align: center;
@@ -45,7 +46,7 @@
   }
   &-icons {
     div {
-      margin-left: 16px
+      margin-left: 16px;
     }
     @include small {
       flex-direction: column;
