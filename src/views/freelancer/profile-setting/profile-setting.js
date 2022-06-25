@@ -24,12 +24,12 @@ export default {
       name: "",
       companyName: "",
       nameRules: [
-        v => !!v || "لطفا نام خود را وارد کنید",
+        v => !!v.trim() || "لطفا نام خود را وارد کنید",
         v => (v && v.length <= 10) || "نام وارد شده باید بیش از ۱۰ کاراکتر باشد"
       ],
       email: "",
       emailRules: [
-        v => !!v || "لطفا ایمیل خود را وارد کنید",
+        v => !!v.trim() || "لطفا ایمیل خود را وارد کنید",
         v => /.+@.+\..+/.test(v) || "ایمیل وارد شده معتبر نیست"
       ],
       select: "",
@@ -68,11 +68,11 @@ export default {
         educationEnd: null
       },
       educationFormRule: {
-        name: [v => !!v || "لطفا عنوان را وارد کنید"],
+        name: [v => !!v.trim() || "لطفا عنوان را وارد کنید"],
         educationLocation: [
-          v => !!v || "لطفا نام دانشگاه یا موسسه را وارد کنید"
+          v => !!v.trim() || "لطفا نام دانشگاه یا موسسه را وارد کنید"
         ],
-        major: [v => !!v || "لطفا مقطع تحصیلی را وارد کنید"],
+        major: [v => !!v.trim() || "لطفا مقطع تحصیلی را وارد کنید"],
         educationStart: [v => !!v || "لطفا تاریخ شروع تحصیل را وارد کنید"],
         educationEnd: [v => !!v || "لطفا پایان تحصیل را وارد کنید"]
       },
@@ -83,8 +83,8 @@ export default {
         experienceEnd: null
       },
       experienceFormRule: {
-        name: [v => !!v || "لطفا سمت را وارد کنید"],
-        companyName: [v => !!v || "لطفا نام شرکت را وارد کنید"],
+        name: [v => !!v.trim() || "لطفا سمت را وارد کنید"],
+        companyName: [v => !!v.trim() || "لطفا نام شرکت را وارد کنید"],
         experienceStart: [v => !!v || "لطفا تاریخ شروع فعالیت را وارد کنید"],
         experienceEnd: [v => !!v || "لطفا پایان فعالیت را وارد کنید"]
       },
@@ -93,9 +93,9 @@ export default {
         url: ""
       },
       projectRule: {
-        name: [v => !!v || "لطفا عنوان را وارد کنید"],
+        name: [v => !!v.trim() || "لطفا عنوان را وارد کنید"],
         url: [
-          v => !!v || "لطفا آدرس پروژه را وارد کنید",
+          v => !!v.trim() || "لطفا آدرس پروژه را وارد کنید",
           v =>
             /^http[s]?:\/\/(www\.)?(.*)?\/?(.)*/.test(v) ||
             "طبق مثال وارد نمایید: http(s)://test.com"
@@ -106,7 +106,7 @@ export default {
         achieved_date: null
       },
       certificateFormRule: {
-        name: [v => !!v || "لطفا عنوان را وارد کنید"],
+        name: [v => !!v.trim() || "لطفا عنوان را وارد کنید"],
         achieved_date: [v => !!v || "لطفا تاریخ شروع فعالیت را وارد کنید"]
       },
       profileExperienceIndexList: [],

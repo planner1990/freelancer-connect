@@ -23,7 +23,7 @@ export default {
       itemsPerPage: 10,
       paginationData: null,
       nameRules: [
-        v => !!v || "لطفا نام خود را وارد کنید",
+        v => !!v.trim() || "لطفا نام خود را وارد کنید",
         v => (v && v.length <= 30) || "نام وارد شده باید بیش از ۳۰ کاراکتر باشد"
       ],
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
@@ -46,23 +46,23 @@ export default {
       },
       confirmJobOfferRule: {
         title: [
-          v => !!v || "لطفا عنوان را وارد کنید",
+          v => !!v.trim() || "لطفا عنوان را وارد کنید",
           v =>
             (v && v.length >= 3) || "عنوان مورد نظر حداقل باید ۳ کاراکتر باشد"
         ],
         description: [
-          v => !!v || "لطفا توضیحات خود را وارد کنید",
+          v => !!v.trim() || "لطفا توضیحات خود را وارد کنید",
           v =>
             (v && v.length >= 20) ||
             "توضیحات مورد نظر باید بیش از ۲۰ کاراکتر باشد"
         ],
-        minPrice: [v => !!v || "لطفا مبلغ را وارد کنید"],
+        minPrice: [v => !!v.trim() || "لطفا مبلغ را وارد کنید"],
         duration: [v => !!v || "لطفا مدت زمان را وارد کنید"],
         // prepayment: [
         //   v => !!v || "Name is required",
         //   v => (v && v.length >= 3) || "Name must be more than 3 characters"
         // ],
-        freelancerDescription: [v => !!v || "لطفا توضیحات را وارد کنید"]
+        freelancerDescription: [v => !!v.trim() || "لطفا توضیحات را وارد کنید"]
       },
       headersUserManagement: [
         {

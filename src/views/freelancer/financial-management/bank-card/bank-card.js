@@ -17,7 +17,7 @@ export default {
       accountInfo: [],
       formRule: {
         title: [
-          v => !!v || "لطفا نام خود را وارد کنید",
+          v => !!v.trim() || "لطفا نام خود را وارد کنید",
           v => (v && v.length >= 3) || "این آیتم بیشتر از 3 کاراکتر نباشد"
         ],
         bankName: [

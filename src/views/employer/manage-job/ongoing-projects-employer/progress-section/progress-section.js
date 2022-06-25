@@ -34,7 +34,7 @@ export default {
       mileStones: [],
       completedAt: null,
       nameRules: [
-        v => !!v || "Name is required",
+        v => !!v.trim() || "Name is required",
         v => (v && v.length <= 50) || "Name must be less than 10 characters"
       ],
       youMessage: "",
@@ -46,11 +46,11 @@ export default {
       },
       jobOfferRule: {
         linkName: [
-          v => !!v || "لطفا لینک را وارد کنید",
+          v => !!v.trim() || "لطفا لینک را وارد کنید",
           v => (v && v.length >= 3) || "لینک باید حداقل ۳ کاراکتر باشد"
         ],
         description: [
-          v => !!v || "لطفا توضیحات را وارد کنید",
+          v => !!v.trim() || "لطفا توضیحات را وارد کنید",
           v => (v && v.length >= 20) || "توضیحات حداقل باید ۲۰ کاراکتر باشد"
         ]
       },

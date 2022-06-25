@@ -14,7 +14,7 @@ export default {
       switch1: false,
       email: "ernika@gmail.com",
       emailRules: [
-        v => !!v || "ایمیل خود را وارد کنید",
+        v => !!v.trim() || "ایمیل خود را وارد کنید",
         v => /.+@.+\..+/.test(v) || "ایمیل شما معتبر نیست"
       ],
       pass: ""

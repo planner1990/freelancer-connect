@@ -45,6 +45,10 @@ class projectsService {
   getCommission() {
     return API_V1.get(`/users/commission`);
   }
+
+  getInstallments(price) {
+    return API_V1.get(`/installments/${price}`);
+  }
 }
 
 export default new projectsService();

@@ -133,6 +133,7 @@
                                   v-model="proposalForm.price"
                                   :rules="proposalRule.price"
                                   @input="mask"
+                                  @change="getInstallments"
                                 ></v-text-field>
                                 <div style="font-size: 10px; color: #0a3d62">
                                   5% کمیسیون معادل ۱۰۰.۰۰۰ ریال

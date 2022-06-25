@@ -2,7 +2,7 @@ export default {
   methods: {
     $removeThousand(value) {
       const str = value?.toString();
-      return str.replace(/,/gi, "");
+      return str?.replace(/,/gi, "");
     }
   }
 };

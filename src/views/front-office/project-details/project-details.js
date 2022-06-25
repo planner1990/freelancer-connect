@@ -36,7 +36,7 @@ export default {
       proposalRule: {
         duration: [v => !!v || "لطفا مدت زمان را مشخص کنید"],
         price: [
-          v => !!v || "لطفا مبلغ را وارد کنید",
+          v => !!v.trim() || "لطفا مبلغ را وارد کنید",
           v =>
             (v && v.replace(/,/g, "") >= 50000000) ||
             "مبلغ وارد شده باید بیش از ۵۰.۰۰۰.۰۰۰ ریال باشد"
@@ -47,13 +47,13 @@ export default {
         //     (v && v.length >= 3) || "حداقل وارد شده باید بیش از ۳ کاراکتر باشد"
         // ],
         description: [
-          v => !!v || "لطفا توضیحات را وارد کنید",
+          v => !!v.trim() || "لطفا توضیحات را وارد کنید",
           v =>
             (v && v.length >= 20) ||
             "توضیحات وارد شده باید بیش از ۲۰ کاراکتر باشد"
         ]
       },
-      breakDown: 50,
+      breakDown: "",
       breakDownValue: 3,
       ticksLabels: ["1", "2", "3", "4", "5"]
     };
@@ -178,6 +178,33 @@ export default {
         default:
           this.breakDownValue = 3;
       }
+    },
+    setSliderFromAPI(e) {
+      switch (e) {
+        case 1:
+          this.breakDown = 0;
+          break;
+        case 2:
+          this.breakDown = 25;
+          break;
+        case 3:
+          this.breakDown = 50;
+          break;
+        case 4:
+          this.breakDown = 75;
+          break;
+        case 5:
+          this.breakDown = 75;
+          break;
+        default:
+          this.breakDown = 50;
+      }
+    },
+    getInstallments() {
+      const price = this.proposalForm.price.replace(/,/g, "");
+      projectsService.getInstallments(price).then(res => {
+        this.setSliderFromAPI(res.data.data["installments_number"]);
+      });
     }
   }
 };

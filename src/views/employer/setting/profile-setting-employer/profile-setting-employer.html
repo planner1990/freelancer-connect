@@ -6,7 +6,7 @@
     <v-row v-if="profileForm.isCompany === 0">
       <v-col lg="6" md="12">
         <v-text-field
-          v-model="profileForm.firstName"
+          v-model.trim="profileForm.firstName"
           :label="$t('form.firstname')"
           :rules="profileRule.firstnameRules"
           required
@@ -15,7 +15,7 @@
       </v-col>
       <v-col lg="6" md="12">
         <v-text-field
-          v-model="profileForm.lastName"
+          v-model.trim="profileForm.lastName"
           :label="$t('form.lastname')"
           :rules="profileRule.lastnameRules"
           required
