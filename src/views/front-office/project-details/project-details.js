@@ -55,7 +55,9 @@ export default {
       },
       breakDown: "",
       breakDownValue: 3,
-      ticksLabels: ["1", "2", "3", "4", "5"]
+      ticksLabels: ["1", "2", "3", "4", "5"],
+      commissionRate: "",
+      mainCommission: 0
     };
   },
   computed: {},
@@ -156,6 +158,7 @@ export default {
     getCommission() {
       projectsService.getCommission().then(res => {
         console.log(res);
+        this.commissionRate = res.data?.data["percentage"];
       });
     },
     setSlider(e) {
@@ -205,6 +208,10 @@ export default {
       projectsService.getInstallments(price).then(res => {
         this.setSliderFromAPI(res.data.data["installments_number"]);
       });
+    },
+    calculateCommission() {
+      const price = this.proposalForm.price.replace(/,/g, "");
+      this.mainCommission = (this.commissionRate / 100) * price;
     }
   }
 };

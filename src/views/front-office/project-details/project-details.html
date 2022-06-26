@@ -134,9 +134,12 @@
                                   :rules="proposalRule.price"
                                   @input="mask"
                                   @change="getInstallments"
+                                  @keyup="calculateCommission"
                                 ></v-text-field>
                                 <div style="font-size: 10px; color: #0a3d62">
-                                  5% کمیسیون معادل ۱۰۰.۰۰۰ ریال
+                                  {{ commissionRate }}% کمیسیون معادل {{
+                                  mainCommission | roundNumber | thousandMask }}
+                                  ریال
                                   <v-tooltip top>
                                     <template v-slot:activator="{ on, attrs }">
                                       <span v-bind="attrs" v-on="on">
