@@ -25,14 +25,8 @@ export default {
     },
     showProfile() {
       const userId = this.$route.params.userId;
-      profileServices.showProfileDetail(userId).then(res => {
-        this.profileDetails = res.data.data;
-      });
       profileServices.showProfileSidebar(userId).then(res => {
         this.profileSidebar = res.data.data;
-      });
-      profileServices.showProfileProject(userId).then(res => {
-        this.profileProjects = res.data.data;
       });
     }
   },

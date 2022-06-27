@@ -21,7 +21,7 @@
             <div>
               {{ profileSidebar.first_name + ' ' + profileSidebar.last_name }}
             </div>
-            <div>{{ profileSidebar.category }}</div>
+            <div>{{ profileSidebar['category_fa'] }}</div>
             <div>
               <v-rating
                 v-model="profileSidebar['stars']"
@@ -51,36 +51,36 @@
             پروژه موفق در کانکتا
           </span>
         </div>
-        <div style="width: 100%;">
-          <h4 class="mb-2">مهارت‌ها</h4>
-          <div>
-            <v-chip
-              class="ml-1 mb-2 font-weight-bold"
-              label
-              color="#e6eef1"
-              v-for="(skill, index) in profileSidebar.skills"
-              :key="index"
-            >
-              <v-icon left color="secondary">
-                mdi-pound
-              </v-icon>
-              <span style="color: #0a3d62;">{{ skill }}</span>
-            </v-chip>
-            <span
-              v-if="profileSidebar.skills && profileSidebar.skills.length === 0"
-              style="color: #7e7e7f; font-size: 14px"
-            >
-              تاکنون مهارتی برای این فرد ثبت نشده است.
-            </span>
-          </div>
-        </div>
+        <!--        <div style="width: 100%;">-->
+        <!--          <h4 class="mb-2">مهارت‌ها</h4>-->
+        <!--          <div>-->
+        <!--            <v-chip-->
+        <!--              class="ml-1 mb-2 font-weight-bold"-->
+        <!--              label-->
+        <!--              color="#e6eef1"-->
+        <!--              v-for="(skill, index) in profileSidebar.skills"-->
+        <!--              :key="index"-->
+        <!--            >-->
+        <!--              <v-icon left color="secondary">-->
+        <!--                mdi-pound-->
+        <!--              </v-icon>-->
+        <!--              <span style="color: #0a3d62;">{{ skill }}</span>-->
+        <!--            </v-chip>-->
+        <!--            <span-->
+        <!--              v-if="profileSidebar.skills && profileSidebar.skills.length === 0"-->
+        <!--              style="color: #7e7e7f; font-size: 14px"-->
+        <!--            >-->
+        <!--              تاکنون مهارتی برای این فرد ثبت نشده است.-->
+        <!--            </span>-->
+        <!--          </div>-->
+        <!--        </div>-->
       </v-col>
       <v-col cols="12" lg="7" md="8" id="right">
         <h3 class="mb-2">پروژه‌ها</h3>
         <div class="project-cards mb-10">
           <div
             class="project-card"
-            v-for="(project, index) in profileProjects"
+            v-for="(project, index) in profileSidebar['profileProject']"
             :key="index"
           >
             <div>
@@ -93,11 +93,11 @@
             <v-tooltip top>
               <template v-slot:activator="{ on, attrs }">
                 <span v-bind="attrs" v-on="on"
-                  >{{ project.detail.title | readMore(20, "...")}}</span
+                  >{{ project.title | readMore(20, "...")}}</span
                 >
               </template>
               <span style="font-size: 11px;">
-                {{ project.detail.title}}
+                {{ project.title}}
               </span>
             </v-tooltip>
             <div>
@@ -113,7 +113,7 @@
             </div>
           </div>
           <span
-            v-if="profileProjects && profileProjects.length === 0"
+            v-if="profileSidebar['profileProject'] && profileSidebar['profileProject'].length === 0"
             style="color: #7e7e7f; font-size: 14px"
           >
             تاکنون پروژه‌ای برای این فرد ثبت نشده است.
@@ -123,22 +123,22 @@
         <div class="experience-cards mb-10">
           <div
             class="experience-card d-flex align-center justify-space-between"
-            v-for="(experience, index) in profileDetails.experience"
+            v-for="(experience, index) in profileSidebar['profileExperience']"
             :key="index"
           >
             <div>
               <div class="mb-2 font-weight-bold">
-                {{experience['job_title']}}
+                {{experience['position']}}
               </div>
-              <div>{{ experience['company_title'] }}</div>
+              <div>{{ experience['company_name'] }}</div>
             </div>
             <div>
-              {{experience.start_date | changeDate | persianDigit}} - {{
-              experience['end_date'] | changeDate | persianDigit}}
+              {{experience.from | changeDate | persianDigit}} - {{
+              experience['to'] | changeDate | persianDigit}}
             </div>
           </div>
           <span
-            v-if="profileDetails.experience.length === 0"
+            v-if="profileSidebar['profileExperience'].length === 0"
             style="color: #7e7e7f; font-size: 14px"
           >
             تاکنون تجربه کاری برای این فرد ثبت نشده است.
@@ -148,17 +148,18 @@
         <div class="experience-cards mb-10">
           <div
             class="experience-card d-flex align-center justify-space-between"
-            v-for="(award, index) in profileDetails['awards']"
+            v-for="(certificate, index) in profileSidebar['profileCertificate']"
             :key="index"
           >
             <div>
-              <div class="mb-2 font-weight-bold">{{award.title}}</div>
-              <!--              <div>جهاد دانشگاهی</div>-->
+              <div class="mb-2 font-weight-bold">{{certificate.title}}</div>
             </div>
-            <div>{{award['achieved_date'] | changeDate | persianDigit}}</div>
+            <div>
+              {{certificate['achieved_date'] | changeDate | persianDigit}}
+            </div>
           </div>
           <span
-            v-if="profileDetails['awards'].length === 0"
+            v-if="profileSidebar['profileCertificate'].length === 0"
             style="color: #7e7e7f; font-size: 14px"
           >
             تاکنون دوره ی آموزشی برای این فرد ثبت نشده است.
@@ -168,22 +169,22 @@
         <div class="experience-cards mb-10">
           <div
             class="experience-card d-flex align-center justify-space-between"
-            v-for="(education, index) in profileDetails.education"
+            v-for="(education, index) in profileSidebar['profileEducation']"
             :key="index"
           >
             <div>
               <div class="mb-2 font-weight-bold">
-                {{ education['degree_title'] }}
+                {{ education['grade'] }} - {{education['major']}}
               </div>
-              <div>{{ education['institute_title'] }}</div>
+              <div>{{ education['university_name'] }}</div>
             </div>
             <div>
-              {{education.start_date | changeDate | persianDigit}} - {{
-              education['end_date'] | changeDate | persianDigit}}
+              {{education.from | changeDate | persianDigit}} - {{ education.to |
+              changeDate | persianDigit}}
             </div>
           </div>
           <span
-            v-if="profileDetails.education.length === 0"
+            v-if="profileSidebar['profileEducation'].length === 0"
             style="color: #7e7e7f; font-size: 14px"
           >
             تاکنون دوره ی تحصیلی برای این فرد ثبت نشده است.

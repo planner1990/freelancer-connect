@@ -158,7 +158,7 @@ export default {
     },
     showProfile() {
       freelancerServices.showProfile().then(res => {
-        this.profileInfo = res.data.data;
+        this.profileInfo = res.data?.data;
         this.experienceList = res.data.data.user.profile?.experience;
         this.educationList = res.data.data.user.profile?.education;
         if (this.profileInfo.user["company"]) {
@@ -188,9 +188,9 @@ export default {
         {
           userName: {
             name:
-              this.profileInfo.user["first_name"].substring(0, 9) +
+              this.profileInfo?.user["first_name"].substring(0, 9) +
               " " +
-              this.profileInfo.user["last_name"].substring(0, 9)
+              this.profileInfo?.user["last_name"].substring(0, 9)
           }
         }
       );
@@ -319,15 +319,15 @@ export default {
     },
     profileInfoIndex() {
       freelancerServices.profileInfoIndex().then(res => {
-        this.profileInfoIndexList = res.data.data;
+        this.profileInfoIndexList = res.data?.data;
       });
     },
     profileInfoUpdate() {
       this.showSnackbar = false;
       const body = {
-        first_name: this.profileInfo.user["first_name"],
-        last_name: this.profileInfo.user["last_name"],
-        category_id: this.profileInfo.user["category_id"],
+        first_name: this.profileInfo?.user["first_name"],
+        last_name: this.profileInfo?.user["last_name"],
+        category_id: this.profileInfo?.user["category_id"],
         attachment: this.attachment_id
           ? [{ id: this.attachment_id, type: "avatar", is_deleted: "false" }]
           : null
