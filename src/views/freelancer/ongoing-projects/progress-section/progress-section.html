@@ -425,32 +425,34 @@
               id="person2-form"
               style="position: relative"
             >
-              <v-textarea
-                v-model="youMessage"
-                class="mt-14 col-10 mx-auto ticket-input message-box"
-                type="text"
-                label="پیام شما"
-                rows="2"
-                height="70"
-                outlined
-                dense
-                :append-icon="'mdi-paperclip'"
-                no-resize
-                @click:append="toggleFile"
-                @keyup.enter.prevent="sendMessage('out')"
-              >
-              </v-textarea>
-              <v-btn
-                depressed
-                class="send-ticket"
-                color="secondary"
-                large
-                type="submit"
-              >
-                <v-icon color="white" size="20">
-                  mdi-arrow-up
-                </v-icon>
-              </v-btn>
+              <v-col cols="10" class="mt-14 mx-auto ticket-input message-box">
+                <v-textarea
+                  v-model="youMessage"
+                  class=""
+                  type="text"
+                  label="پیام شما"
+                  rows="2"
+                  height="70"
+                  outlined
+                  dense
+                  :append-icon="'mdi-paperclip'"
+                  no-resize
+                  @click:append="toggleFile"
+                  @keyup.enter.prevent="sendMessage('out')"
+                >
+                </v-textarea>
+                <v-btn
+                  depressed
+                  class="send-ticket"
+                  color="secondary"
+                  large
+                  type="submit"
+                >
+                  <v-icon color="white" size="20">
+                    mdi-arrow-up
+                  </v-icon>
+                </v-btn>
+              </v-col>
               <v-file-input
                 @change="getFileInput($event)"
                 v-model="fileInput"
