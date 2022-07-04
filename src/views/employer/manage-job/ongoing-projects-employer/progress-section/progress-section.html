@@ -495,31 +495,34 @@
                   </v-icon>
                 </v-btn>
               </v-col>
-              <v-file-input
-                @change="getFileInput($event)"
-                v-model="fileInput"
-                id="avatar"
-                prepend-icon="mdi-paperclip"
-                outlined
-                style="position: absolute;top: -26px;right: 88px;width: 73%;"
+              <v-col
                 :class="{ 'isShow': isShow === true, 'isNone': isShow === false }"
-                dense
-                multiple
-                small-chips
-                :show-size="1000"
               >
-                <template v-slot:selection="{ index, text }">
-                  <v-chip v-if="index < 2" dark label small>
-                    {{ text }}
-                  </v-chip>
-                  <span
-                    v-else-if="index === 2"
-                    class="text-overline grey--text text--darken-3 mx-2"
-                  >
-                    +{{ fileInput.length - 2 }} File(s)
-                  </span>
-                </template>
-              </v-file-input>
+                <v-file-input
+                  @change="getFileInput($event)"
+                  v-model="fileInput"
+                  id="avatar"
+                  prepend-icon="mdi-paperclip"
+                  outlined
+                  style="position: absolute;top: 16px;right: 65px;width: 73%;"
+                  dense
+                  multiple
+                  small-chips
+                  :show-size="1000"
+                >
+                  <template v-slot:selection="{ index, text }">
+                    <v-chip v-if="index < 2" dark label small>
+                      {{ text }}
+                    </v-chip>
+                    <span
+                      v-else-if="index === 2"
+                      class="text-overline grey--text text--darken-3 mx-2"
+                    >
+                      +{{ fileInput.length - 2 }} File(s)
+                    </span>
+                  </template>
+                </v-file-input>
+              </v-col>
             </form>
           </section>
         </div>

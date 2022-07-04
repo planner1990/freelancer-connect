@@ -642,6 +642,11 @@ input[type="number"] {
   .v-icon.v-icon.v-icon--link {
     color: $secondary;
   }
+  .v-input__icon--clear {
+    left: 0;
+    top: 0;
+    position: relative;
+  }
 }
 .v-input__append-outer .v-icon,
 .v-input__prepend-outer .v-icon {
