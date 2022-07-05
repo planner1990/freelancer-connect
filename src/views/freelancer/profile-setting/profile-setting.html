@@ -79,7 +79,7 @@
           ></v-select>
         </v-col>
       </v-row>
-<!--      <header-section :header-section-title="'تصویر پروفایل'"></header-section>-->
+      <!--      <header-section :header-section-title="'تصویر پروفایل'"></header-section>-->
       <v-row>
         <v-col
           class="profile-setting d-flex flex-column justify-center align-center"
@@ -297,13 +297,13 @@
           mdi-pencil
         </v-icon>
         <v-col cols="12" sm="12" md="4">
-          مقطع: {{ experience.grade }}
+          مقطع: {{ experience.grade | readMore(15, "") }}
         </v-col>
         <v-col cols="12" sm="12" md="4">
-          رشته تحصیلی: {{ experience.major }}
+          رشته تحصیلی: {{ experience.major| readMore(15, "") }}
         </v-col>
         <v-col cols="12" sm="12" md="4" class="mb-4">
-          دانشگاه: {{ experience['university_name'] }}
+          دانشگاه: {{ experience['university_name']| readMore(15, "") }}
         </v-col>
         <v-col cols="12" sm="12" md="4" class="mb-4">
           تاریخ شروع: {{ experience.from | changeDate | persianDigit }}
@@ -481,10 +481,10 @@
           mdi-pencil
         </v-icon>
         <v-col cols="12" sm="12" md="4">
-          سمت: {{experience.position}}
+          سمت: {{experience.position| readMore(15, "")}}
         </v-col>
         <v-col cols="12" sm="12" md="4">
-          نام شرکت: {{experience['company_name']}}
+          نام شرکت: {{experience['company_name']| readMore(15, "")}}
         </v-col>
         <v-col cols="12" md="4"></v-col>
         <v-col cols="12" sm="12" md="4" class="my-4">
@@ -629,7 +629,7 @@
           mdi-pencil
         </v-icon>
         <v-col cols="12" sm="12" md="4" class="mb-4">
-          عنوان: {{ experience.title }}
+          عنوان: {{ experience.title| readMore(15, "") }}
         </v-col>
         <v-col cols="12" sm="12" md="4">
           آدرس:
@@ -786,7 +786,7 @@
           mdi-pencil
         </v-icon>
         <v-col cols="12" sm="12" md="4" class="mb-4">
-          عنوان مدرک: {{ experience.title }}
+          عنوان مدرک: {{ experience.title| readMore(15, "") }}
         </v-col>
         <v-col cols="12" sm="12" md="4">
           تاریخ کسب مدرک: {{ experience['achieved_date'] | changeDate |
