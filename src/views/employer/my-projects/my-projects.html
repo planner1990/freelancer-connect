@@ -18,7 +18,7 @@
         <div class="d-flex justify-center align-center service-table">
           <div class="d-flex flex-column align-start px-4">
             <div class="m-0">
-              {{item['number_of_proposals']}}
+              {{item['proposal_count']}}
             </div>
           </div>
         </div>
@@ -61,7 +61,19 @@
         <div class="d-flex justify-center align-center service-table">
           <div class="d-flex flex-column align-start px-4">
             <div class="m-0" v-if="item['deleted_at'] === null">
-              {{item.status | myProjectStatus}}
+              <span v-if="item.status !== 'pending'">
+                {{item.status | myProjectStatus}}
+              </span>
+              <span
+                v-if="item.status === 'pending' && item['proposal_count'] === 0"
+              >
+                در انتظار دریافت پیشنهاد
+              </span>
+              <span
+                v-if="item.status === 'pending' && item['proposal_count'] !== 0"
+              >
+                در انتظار تعیین فریلنسر از سوی شما
+              </span>
             </div>
             <div class="m-0" v-else>
               حذف شده

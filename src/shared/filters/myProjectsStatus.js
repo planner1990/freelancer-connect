@@ -3,7 +3,7 @@ Vue.filter("myProjectStatus", function(statusCode) {
   let status = "";
   switch (statusCode) {
     case "pending":
-      status = "در حال انتظار";
+      status = "در انتظار تعیین فریلنسر از سوی شما";
       break;
     case "ongoing":
       status = "در حال انجام";
@@ -16,6 +16,9 @@ Vue.filter("myProjectStatus", function(statusCode) {
       break;
     case "rejected":
       status = "رد شده";
+      break;
+    case "draft":
+      status = "در انتظار تایید ادمین";
       break;
     default:
       status = "در انتظار تعیین وضعیت";
