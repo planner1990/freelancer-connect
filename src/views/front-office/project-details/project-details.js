@@ -134,7 +134,7 @@ export default {
             this.showSnackbar = true;
             // this.snackbarMessage = "امکان ارسال پروپوزال وجود ندارد.";
             this.snackbarMessage = error?.response.data.errors.err;
-            // this.snackbarMessage = error?.response.data.errors.prepayment;
+            this.snackbarMessage = error?.response.data.message;
             this.$refs.form.reset();
             this.dialog = false;
           });
