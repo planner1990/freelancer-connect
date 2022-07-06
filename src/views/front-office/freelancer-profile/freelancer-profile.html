@@ -19,7 +19,8 @@
 
           <div class="mr-4">
             <div>
-              {{ profileSidebar.first_name + ' ' + profileSidebar.last_name }}
+              {{ profileSidebar.first_name | readMore(8, "")}} {{' ' +
+              profileSidebar.last_name | readMore(8, "") }}
             </div>
             <div>{{ profileSidebar['category_fa'] }}</div>
             <div>
@@ -97,7 +98,7 @@
                 >
               </template>
               <span style="font-size: 11px;">
-                {{ project.title}}
+                {{ project.title | readMore(20, "...")}}
               </span>
             </v-tooltip>
             <div>
@@ -128,9 +129,9 @@
           >
             <div>
               <div class="mb-2 font-weight-bold">
-                {{experience['position']}}
+                {{experience['position'] | readMore(20, "...")}}
               </div>
-              <div>{{ experience['company_name'] }}</div>
+              <div>{{ experience['company_name'] | readMore(20, "...")}}</div>
             </div>
             <div>
               {{experience.from | changeDate | persianDigit}} - {{
@@ -152,7 +153,9 @@
             :key="index"
           >
             <div>
-              <div class="mb-2 font-weight-bold">{{certificate.title}}</div>
+              <div class="mb-2 font-weight-bold">
+                {{certificate.title | readMore(20, "...")}}
+              </div>
             </div>
             <div>
               {{certificate['achieved_date'] | changeDate | persianDigit}}
@@ -174,9 +177,10 @@
           >
             <div>
               <div class="mb-2 font-weight-bold">
-                {{ education['grade'] }} - {{education['major']}}
+                {{ education['grade'] | readMore(12, "...")}} -
+                {{education['major'] | readMore(12, "...")}}
               </div>
-              <div>{{ education['university_name'] }}</div>
+              <div>{{ education['university_name'] | readMore(20, "...")}}</div>
             </div>
             <div>
               {{education.from | changeDate | persianDigit}} - {{ education.to |
