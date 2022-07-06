@@ -28,11 +28,11 @@
         </div>
         <div class="username" v-if="!profileInfo.user['company']">
           <span v-if="!getFullName.userName">
-            {{ profileInfo.user.first_name | readMore(12, " ") }} {{" " +
-            profileInfo.user.last_name | readMore(12, " ")}}
+            {{ profileInfo.user.first_name | readMore(8, " ") }} {{" " +
+            profileInfo.user.last_name | readMore(10, " ")}}
           </span>
           <span v-if="getFullName.userName">
-              {{getFullName.userName.name | readMore(18, " ")}}
+            {{getFullName.userName.name | readMore(18, " ")}}
           </span>
         </div>
         <div class="username" v-if="profileInfo.user['company']">
@@ -42,7 +42,7 @@
           {{ profileInfo.user.roles[0].name | roleTranslator}}
         </div>
         <div class="sub" v-if="profileInfo.user['company']">
-          {{ profileInfo.user['company'].name }}
+          {{ profileInfo.user.roles[0].name | roleTranslator }}
         </div>
       </div>
     </div>
