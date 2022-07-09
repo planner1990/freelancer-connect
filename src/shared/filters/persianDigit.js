@@ -13,9 +13,11 @@ Vue.filter("persianDigit", function(value) {
     8: "۸",
     9: "۹"
   };
-  let result = value.toString();
+  let result = value ? value.toString() : value;
   for (let i = 0; i <= 9; i++) {
-    result = result.replace(new RegExp(`${i}`, "g"), persian[i]);
+    result = result
+      ? result.replace(new RegExp(`${i}`, "g"), persian[i])
+      : result;
   }
   // value = result;
   return result;

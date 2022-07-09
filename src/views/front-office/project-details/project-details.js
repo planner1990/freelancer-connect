@@ -36,7 +36,7 @@ export default {
       proposalRule: {
         duration: [v => !!v || "لطفا مدت زمان را مشخص کنید"],
         price: [
-          v => !!v.trim() || "لطفا مبلغ را وارد کنید",
+          v => (v && !!v.trim()) || "لطفا مبلغ را وارد کنید",
           v =>
             (v && v.replace(/,/g, "") >= 50000000) ||
             "مبلغ وارد شده باید بیش از ۵۰.۰۰۰.۰۰۰ ریال باشد"
@@ -47,7 +47,7 @@ export default {
         //     (v && v.length >= 3) || "حداقل وارد شده باید بیش از ۳ کاراکتر باشد"
         // ],
         description: [
-          v => !!v.trim() || "لطفا توضیحات را وارد کنید",
+          v => (v && !!v.trim()) || "لطفا توضیحات را وارد کنید",
           v =>
             (v && v.length >= 20) ||
             "توضیحات وارد شده باید بیش از ۲۰ کاراکتر باشد"
@@ -98,7 +98,7 @@ export default {
     },
     handleFileInput(file) {
       let formData = new FormData();
-      if (file.length >= 1) {
+      if (file && file.length >= 1) {
         for (let i = 0; i <= file.length - 1; i++) {
           formData.append(`attachment[` + i + `]`, file[i]);
         }
@@ -107,7 +107,11 @@ export default {
         });
       }
     },
+    openModal() {
+      this.showSnackbar = false;
+    },
     sendJobOfferToFreelancer() {
+      this.showSnackbar = false;
       if (this.$refs.form.validate() === true) {
         this.showSnackbar = false;
         const body = {
@@ -133,8 +137,11 @@ export default {
           .catch(error => {
             this.showSnackbar = true;
             // this.snackbarMessage = "امکان ارسال پروپوزال وجود ندارد.";
-            this.snackbarMessage = error?.response.data.errors.err;
-            this.snackbarMessage = error?.response.data.message;
+            if (error?.response.status === 417) {
+              this.snackbarMessage = error?.response.data.errors?.prepayment;
+            } else {
+              this.snackbarMessage = error?.response.data.errors.err;
+            }
             this.$refs.form.reset();
             this.dialog = false;
           });
