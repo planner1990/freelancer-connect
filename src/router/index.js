@@ -150,6 +150,12 @@ const routes = [
     ]
   },
   {
+    path: "/landing",
+    name: "landing",
+    meta: { transitionName: "slide" },
+    component: () => import("../views/front-office/landing/index")
+  },
+  {
     path: "/create-project",
     name: "create-project",
     meta: { transitionName: "slide" },

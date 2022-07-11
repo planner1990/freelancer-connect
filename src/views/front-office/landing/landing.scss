@@ -1,0 +1,67 @@
+@import "src/assets/styles/mixins";
+.landing {
+  background: linear-gradient(
+    100deg,
+    rgb(69, 163, 165) 0%,
+    rgb(26, 103, 124) 100%
+  );
+  padding: 6% 4.2%;
+  overflow-y: auto;
+  &-container {
+    height: 100%;
+    background-color: #fff;
+    border-radius: 18px;
+    &-menu {
+      background-color: #1a677c;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 400;
+      div {
+        min-width: 25%;
+        text-align: center;
+        cursor: pointer;
+      }
+      @include medium() {
+        display: none !important;
+      }
+    }
+    &-main {
+      div {
+        width: 50%;
+        text-align: center;
+        padding: 0 4%;
+        p {
+          font-weight: 400;
+          text-align: justify;
+          line-height: 28px;
+          @include medium() {
+            margin-top: 22px;
+            font-size: 16px;
+          }
+        }
+        h2 {
+          margin-bottom: 22px;
+          @include medium() {
+            margin-top: 22px;
+            font-size: 16px;
+          }
+        }
+        @include medium() {
+          width: 100%;
+        }
+      }
+      @include medium() {
+        display: block;
+      }
+    }
+    .v-btn:not(.v-btn--round).v-size--x-large {
+      border-radius: 18px;
+    }
+    .v-window--show-arrows-on-hover {
+      height: 420px !important;
+      @include medium() {
+        height: 300px !important;
+      }
+    }
+  }
+}

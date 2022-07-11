@@ -778,3 +778,16 @@ input[type="number"] {
     max-width: 1185px !important;
   }
 }
+
+
+.landing {
+  .v-carousel__controls {
+    background: unset;
+  }
+  .theme--dark.v-btn.v-btn--icon {
+    color: #9ca09d;
+  }
+  .v-btn--active {
+    color: $primary !important;
+  }
+}

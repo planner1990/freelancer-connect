@@ -1,0 +1,66 @@
+<section class="landing">
+  <v-container class="landing-container">
+    <v-row class="pa-8">
+      <v-col
+        cols="12"
+        md="6"
+        class="landing-container-menu d-md-flex justify-space-around d-sm-none"
+      >
+        <div>ثبت نام</div>
+        <div>کانکتا چیست</div>
+        <div>تماس با ما</div>
+      </v-col>
+      <v-col
+        cols="12"
+        class="landing-container-main d-md-flex flex-row-reverse align-center"
+      >
+        <div>
+          <v-carousel
+            cycle
+            show-arrows-on-hover
+            style="width: 100%;"
+            @change="changeSlider($event)"
+          >
+            <v-carousel-item
+              v-for="(slide, i) in slides"
+              :key="i"
+              :src="require(`../../../assets/image/landing/${slide}`)"
+              style="width: 100%"
+            >
+            </v-carousel-item>
+          </v-carousel>
+        </div>
+        <div v-if="sliderFlag === 0">
+          <h2>مزایای همکاری برای فریلنسرها ۱۱۱</h2>
+          <p>
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
+            و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای
+            زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
+            متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
+          </p>
+        </div>
+        <div v-if="sliderFlag === 1">
+          <h2>مزایای همکاری برای فریلنسرها ۲۲۲</h2>
+          <p>
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+          </p>
+        </div>
+      </v-col>
+      <v-col cols="12" md="4" class="d-sm-flex">
+        <v-col>
+          <v-btn color="secondary" depressed block x-large>
+            ثبت نام
+          </v-btn>
+        </v-col>
+        <v-col>
+          <v-btn color="primary" outlined depressed block x-large>
+            بیشتر بدانید
+          </v-btn>
+        </v-col>
+      </v-col>
+    </v-row>
+  </v-container>
+</section>
