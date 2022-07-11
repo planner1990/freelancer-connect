@@ -17,9 +17,11 @@
       color: #fff;
       font-weight: 400;
       div {
-        min-width: 25%;
+        min-width: 20%;
         text-align: center;
         cursor: pointer;
+        display: flex;
+        align-items: center;
       }
       @include medium() {
         display: none !important;
@@ -30,20 +32,32 @@
         width: 50%;
         text-align: center;
         padding: 0 4%;
-        p {
+        p,
+        ul {
           font-weight: 400;
-          text-align: justify;
+          text-align: right;
           line-height: 28px;
+          margin-right: 18px;
           @include medium() {
-            margin-top: 22px;
             font-size: 16px;
+            text-align: right;
+            width: 65%;
+            //margin: 22px auto 0 auto;
           }
         }
         h2 {
           margin-bottom: 22px;
+          text-align: right;
           @include medium() {
             margin-top: 22px;
             font-size: 16px;
+            text-align: center;
+          }
+        }
+        li {
+          min-width: 235px;
+          @include medium() {
+            font-size: 15px;
           }
         }
         @include medium() {
@@ -58,9 +72,9 @@
       border-radius: 18px;
     }
     .v-window--show-arrows-on-hover {
-      height: 420px !important;
+      height: 493px !important;
       @include medium() {
-        height: 300px !important;
+        height: 350px !important;
       }
     }
   }

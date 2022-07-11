@@ -6,9 +6,15 @@
         md="6"
         class="landing-container-menu d-md-flex justify-space-around d-sm-none"
       >
-        <div>ثبت نام</div>
-        <div>کانکتا چیست</div>
-        <div>تماس با ما</div>
+        <div @click="goTo('/')">
+          <img
+            style="width: 92px"
+            src="../../../assets/image/logo/2.png"
+            alt="connecta"
+          />
+        </div>
+        <div @click="goTo('/login')">ثبت نام</div>
+        <div @click="goTo('/contact-us')">تماس با ما</div>
       </v-col>
       <v-col
         cols="12"
@@ -16,7 +22,6 @@
       >
         <div>
           <v-carousel
-            cycle
             show-arrows-on-hover
             style="width: 100%;"
             @change="changeSlider($event)"
@@ -31,32 +36,48 @@
           </v-carousel>
         </div>
         <div v-if="sliderFlag === 0">
-          <h2>مزایای همکاری برای فریلنسرها ۱۱۱</h2>
-          <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
-            و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای
-            زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
-            متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
-          </p>
+          <h2>مزایای همکاری با کانکتا برای فریلنسرها</h2>
+          <ul>
+            <li>ثبت نام به صورت فردی و سازمانی</li>
+            <li>امکان تعریف پروژه‌های سازمانی</li>
+            <li>پرداخت هزینه پروژه به صورت مرحله‌ای</li>
+          </ul>
         </div>
         <div v-if="sliderFlag === 1">
-          <h2>مزایای همکاری برای فریلنسرها ۲۲۲</h2>
-          <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-          </p>
+          <h2>مزایای همکاری با کانکتا برای کارفرمایان</h2>
+          <ul>
+            <li>ثبت نام به صورت فردی و سازمانی</li>
+            <li>دسترسی به پروژه‌های بزرگتر و سازمانی</li>
+            <li>تحویل پروژه به‌صورت مرحله‌ای</li>
+          </ul>
         </div>
       </v-col>
-      <v-col cols="12" md="4" class="d-sm-flex">
+      <v-col
+        cols="12"
+        md="4"
+        style="max-width: 338px"
+        class="d-sm-flex mx-md-0 mx-auto"
+      >
         <v-col>
-          <v-btn color="secondary" depressed block x-large>
+          <v-btn
+            color="secondary"
+            depressed
+            block
+            x-large
+            @click="goTo('/login')"
+          >
             ثبت نام
           </v-btn>
         </v-col>
         <v-col>
-          <v-btn color="primary" outlined depressed block x-large>
+          <v-btn
+            color="primary"
+            outlined
+            depressed
+            block
+            x-large
+            @click="goTo('/about-us')"
+          >
             بیشتر بدانید
           </v-btn>
         </v-col>

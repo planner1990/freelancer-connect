@@ -13,6 +13,9 @@ export default {
   methods: {
     changeSlider(event) {
       this.sliderFlag = event;
+    },
+    goTo(path) {
+      this.$router.push({ path: path });
     }
   }
 };

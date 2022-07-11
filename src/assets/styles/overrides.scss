@@ -779,15 +779,37 @@ input[type="number"] {
   }
 }
 
-
 .landing {
   .v-carousel__controls {
     background: unset;
+    width: 94%;
   }
   .theme--dark.v-btn.v-btn--icon {
     color: #9ca09d;
   }
   .v-btn--active {
-    color: $primary !important;
+    color: $secondary !important;
+  }
+  .v-image__image,
+  .v-image__placeholder {
+    height: 86% !important;
+  }
+  .mdi-circle::before {
+    font-size: 14px;
+  }
+  @include medium() {
+    .v-image__image--cover {
+      background-size: contain;
+    }
+    .v-image__image,
+    .v-image__placeholder {
+      height: 60% !important;
+    }
+    .mdi-circle::before {
+      font-size: 12px;
+    }
+  }
+  .v-carousel__controls__item {
+    margin: 0 0;
   }
 }
