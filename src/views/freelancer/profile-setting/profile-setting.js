@@ -1,8 +1,7 @@
 import DashboardCard from "../../../components/dashboardCard/index";
 import HeaderSection from "../../../components/header-section/index";
 import ProjectList from "../../../components/project-list/index";
-import freelancerServices from "../../../core/services/modules/freelancerServices";
-import projectsService from "../../../core/services/modules/projectsService";
+import { freelancerServices, projectsService } from "@/core/services";
 import Snackbar from "../../../components/snackbar/index";
 import { mapActions, mapGetters } from "vuex";
 import * as types from "../../../shared/store/types";
@@ -56,7 +55,6 @@ export default {
       attachments: [],
       experienceList: [],
       educationList: [],
-      skillsList: [],
       enableButton: false,
       show: false,
       imgDataUrl: "", // the dateBase64 url of created image
@@ -115,7 +113,10 @@ export default {
       profileCertificateIndexList: [],
       profileId: "",
       profileInfoIndexList: "",
-      attachment_id: null
+      attachment_id: null,
+      skillsList: [],
+      skills: [],
+      search: null
     };
   },
   computed: {
@@ -159,11 +160,11 @@ export default {
     showProfile() {
       freelancerServices.showProfile().then(res => {
         this.profileInfo = res.data?.data;
-        this.experienceList = res.data.data.user.profile?.experience;
-        this.educationList = res.data.data.user.profile?.education;
-        if (this.profileInfo.user["company"]) {
-          this.companyName = this.profileInfo.user?.company?.name;
-        }
+        // this.experienceList = res.data.data.user.profile?.experience;
+        // this.educationList = res.data.data.user.profile?.education;
+        // if (this.profileInfo["is_company"] === 1) {
+        //   this.companyName = this.profileInfo.company_name;
+        // }
         this.avatarProfile(this.profileInfo);
       });
     },
@@ -188,12 +189,26 @@ export default {
         {
           userName: {
             name:
-              this.profileInfo?.user["first_name"].substring(0, 9) +
+              this.profileInfo["first_name"].substring(0, 9) +
               " " +
-              this.profileInfo?.user["last_name"].substring(0, 9)
+              this.profileInfo["last_name"].substring(0, 9)
           }
         }
       );
+    },
+    selectSkills(list) {
+      this.enableButton = true;
+      let tempData = [];
+      for (let index = 0; index < list.length; index++) {
+        if (list[index].id) {
+          tempData.push(list[index].id);
+          this.enableButton = true;
+        } else {
+          tempData.push(list[index]);
+          this.enableButton = true;
+        }
+      }
+      return (this.skills = tempData);
     },
     goTo(userId) {
       this.$router.push(`/profile/${userId}`);
@@ -325,12 +340,20 @@ export default {
     profileInfoUpdate() {
       this.showSnackbar = false;
       const body = {
-        first_name: this.profileInfo?.user["first_name"],
-        last_name: this.profileInfo?.user["last_name"],
-        category_id: this.profileInfo?.user["category_id"],
-        attachment: this.attachment_id
-          ? [{ id: this.attachment_id, type: "avatar", is_deleted: "false" }]
-          : null
+        first_name: this.profileInfo["first_name"],
+        last_name: this.profileInfo["last_name"],
+        category_id: this.profileInfo["category_id"],
+        attachment_id: this.attachment_id ? this.attachment_id : null,
+        company_name: this.profileInfo.company_name
+          ? this.profileInfo.company_name
+          : null,
+        description: this.profileInfo.description,
+        employees_count: null,
+        skills: this.skills ? this.skills : this.profileInfo.skills,
+        email: this.profileInfo.email,
+        registration_number: null,
+        national_id: null,
+        code: null
       };
       freelancerServices.profileInfoUpdate(body).then(() => {
         this.enableButton = false;

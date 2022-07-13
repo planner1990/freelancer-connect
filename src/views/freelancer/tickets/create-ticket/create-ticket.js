@@ -33,7 +33,13 @@ export default {
             (v && v.length >= 15) ||
             "توضیحات وارد شده باید بیش از ۱۵ کاراکتر باشد"
         ]
-      }
+      },
+      rules: [
+        files =>
+          !files ||
+          !files.some(file => file.size > 4e6) ||
+          "حجم فایل مورد نظر نباید بیش از ۴ مگابایت باشد."
+      ]
     };
   },
   computed: {},
@@ -45,19 +51,37 @@ export default {
       window.history.back();
     },
     handleFileInput(file) {
+      console.log(file);
       let formData = new FormData();
       if (file.length === 0) {
         this.fileName = [];
       }
-      if (file) {
+      if (file && file.length !== 0) {
         this.fileName.push(file);
         for (let i = 0; i <= file.length - 1; i++) {
           formData.append(`attachment[` + i + `]`, file[i]);
         }
-        UploadService.uploadFile(formData).then(res => {
-          this.attachmentId = res.data.data.attachment_id;
-        });
+        Array.from(formData.entries(), ([key, prop]) => ({
+          [key]: {
+            ContentLength:
+              typeof prop === "string"
+                ? prop.length
+                : (this.fileSize = prop.size)
+          }
+        }));
+        if (this.fileSize <= 4000000) {
+          UploadService.uploadFile(formData).then(res => {
+            this.attachmentId = res.data.data.attachment_id;
+          });
+        }
       }
+    },
+    sum(input, key) {
+      let total;
+      for (let i = 0; i < key; i++) {
+        total += Number(input);
+      }
+      return console.log(total);
     },
     getOngoingProjects() {
       const options = {

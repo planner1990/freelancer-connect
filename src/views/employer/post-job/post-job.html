@@ -19,16 +19,16 @@
       <v-col lg="6" md="12">
         <v-text-field
           v-model="projectForm.price"
-          :rules="createProjectRule.price"
           @input="mask"
           :label="$t('form.price')"
-          placeholder="مثلا ۵.۰۰۰.۰۰۰"
+          placeholder="مثلا ۵۰.۰۰۰.۰۰۰"
           required
           outlined
           hint="حداقل مبلغ پروژه پنجاه میلیون ریال می باشد."
           persistent-hint
           ref="inputRef"
         ></v-text-field>
+<!--          :rules="createProjectRule.price"-->
       </v-col>
       <v-col lg="6" md="12">
         <v-select

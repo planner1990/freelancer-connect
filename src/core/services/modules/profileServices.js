@@ -5,7 +5,7 @@ class profileServices {
     return API_V1.post(`/profile_info/update`, body);
   }
   employerGetProfile() {
-    return API_V1.get(`/employer/profile`);
+    return API_V1.get(`/profile_info`);
   }
   bestProjects(options) {
     return API_V1.get(`/projects`, { params: options });

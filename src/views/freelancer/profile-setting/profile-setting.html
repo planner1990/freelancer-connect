@@ -15,15 +15,15 @@
           </v-btn>
         </v-col>
         <v-col cols="12" lg="2" md="2" sm="12" class="">
-          <v-btn color="secondary" @click="goTo(profileInfo.user.id)">
+          <v-btn color="secondary" @click="goTo(profileInfo.id)">
             پیشنمایی پروفایل
           </v-btn>
         </v-col>
       </v-row>
-      <v-row v-if="companyName === ''">
+      <v-row v-if="profileInfo['is_company'] === 0">
         <v-col cols="12" lg="6" md="12" sm="12">
           <v-text-field
-            v-model="profileInfo.user['first_name']"
+            v-model="profileInfo['first_name']"
             label="نام"
             required
             lazy
@@ -33,7 +33,7 @@
         </v-col>
         <v-col cols="12" lg="6" md="12" sm="12">
           <v-text-field
-            v-model="profileInfo.user['last_name']"
+            v-model="profileInfo['last_name']"
             label="نام خانوادگی"
             required
             lazy
@@ -42,9 +42,10 @@
           ></v-text-field>
         </v-col>
       </v-row>
-      <v-row v-if="companyName !== ''">
+      <v-row v-if="profileInfo['is_company'] === 1">
         <v-col cols="12" lg="6" md="12" sm="12">
           <v-text-field
+            v-model="profileInfo.company_name"
             label="نام شرکت"
             hint="نام ثبت شده شرکت خودرا وارد نمایید"
             persistent-hint
@@ -56,6 +57,7 @@
         </v-col>
         <v-col cols="12" lg="6" md="12" sm="12">
           <v-text-field
+            v-model="profileInfo.registration_number"
             valu=""
             label="شماره ثبت شرکت"
             required
@@ -66,17 +68,80 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12" md="12">
+        <v-col lg="6" md="12">
+          <v-text-field
+            v-model="profileInfo.phone"
+            label="شماره موبایل"
+            required
+            outlined
+            disabled
+          ></v-text-field>
+        </v-col>
+        <v-col lg="6" md="12">
+          <v-text-field
+            v-model="profileInfo.email"
+            label="ایمیل"
+            required
+            outlined
+            @keyup="enableUpdateProfileButton"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" lg="6" md="12">
           <v-select
             :items="categories"
             item-text="title"
             item-value="id"
             label="زمینه کاری"
-            v-model="profileInfo.user['category_id']"
+            v-model="profileInfo['category_id']"
             required
             outlined
             @change="enableUpdateProfileButton"
           ></v-select>
+        </v-col>
+        <v-col lg="6" md="12">
+          <v-combobox
+            v-model="profileInfo.skills"
+            :items="skillsList"
+            item-value="id"
+            item-text="title"
+            :search-input.sync="search"
+            hide-selected
+            hint="حداکثر ۵ گزینه میتوانید انتخاب کنید."
+            :label="$t('form.skills')"
+            multiple
+            persistent-hint
+            required
+            outlined
+            clearable
+            small-chips
+            deletable-chips
+            counter="5"
+            @change="selectSkills(profileInfo.skills)"
+          >
+            <template v-slot:no-data>
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    موردی یافت نشد "<strong>{{ search }}</strong>". برای افزودن
+                    مهارت مورد نظر <kbd>enter</kbd>را فشار دهید
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+          </v-combobox>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col md="12">
+          <v-textarea
+            v-model="profileInfo.description"
+            outlined
+            name="input-7-4"
+            :label="$t('form.description')"
+            @keyup="enableUpdateProfileButton"
+          ></v-textarea>
         </v-col>
       </v-row>
       <!--      <header-section :header-section-title="'تصویر پروفایل'"></header-section>-->

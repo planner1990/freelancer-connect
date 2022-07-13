@@ -48,9 +48,9 @@ export default {
         });
     },
     sendMessage(direction) {
-      // if (!this.youMessage) {
-      //   return;
-      // }
+      if (!this.youMessage) {
+        return;
+      }
       if (direction === "out") {
         this.messages.push({ text: this.youMessage, role: "employer" });
         const body = {

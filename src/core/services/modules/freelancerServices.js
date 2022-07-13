@@ -60,7 +60,7 @@ class freelancerServices {
   }
 
   showProfile() {
-    return API_V1.get(`/freelancer/profile`);
+    return API_V1.get(`/profile_info`);
   }
 
   updateProfile(body) {

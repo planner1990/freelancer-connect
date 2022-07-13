@@ -4,6 +4,7 @@ import FileInputDashboard from "../../../../components/file-input-dashboard/inde
 import projectsService from "../../../../core/services/modules/projectsService";
 import profileServices from "../../../../core/services/modules/profileServices";
 import Snackbar from "@/components/snackbar/index";
+import * as types from "../../../../shared/store/types";
 export default {
   name: "profile-setting-employer",
   components: {
@@ -22,16 +23,17 @@ export default {
       isDisable: false,
       companyCriteriaItems: [],
       companyTypeLists: [],
-      attachments: [],
+      attachments: null,
       titleCard: "پروژه‌ها",
       profileForm: {
         firstName: "",
         lastName: "",
         description: "",
         categoryId: null,
-        noOfEmployees: "",
+        noOfEmployees: null,
         showSnackbar: false,
-        isCompany: null
+        isCompany: null,
+        skills: []
       },
       companyName: "",
       snackbarMessage: "لطفا کلیه موارد مشخص شده را کامل نمایید.",
@@ -50,7 +52,10 @@ export default {
           v => !!v.trim() || "لطفا توضیحات را وارد کنید",
           v => v.length >= 10 || "توضیحات وارد شده باید بیش از ۱۰ کاراکتر باشد"
         ]
-      }
+      },
+      skillsList: [],
+      skills: [],
+      search: null
     };
   },
   computed: {},
@@ -58,6 +63,7 @@ export default {
     this.getCompanyCriteriaItems();
     this.getCategoryId();
     this.getProfileInfo();
+    this.getSkillsList();
   },
   methods: {
     updateProfile() {
@@ -69,8 +75,13 @@ export default {
           company_name: this.companyName,
           description: this.profileForm.description,
           category_id: this.profileForm.categoryId,
-          no_of_employees: this.profileForm.noOfEmployees,
-          attachments: this.attachments
+          employees_count: null,
+          attachment_id: this.attachments,
+          skills: this.skills ? this.skills : this.profileForm.skills,
+          email: this.profileForm.email,
+          registration_number: null,
+          national_id: null,
+          code: null
         };
         profileServices.employerUpdateProfile(body).then(res => {
           if (res) {
@@ -80,20 +91,28 @@ export default {
         });
       }
     },
+    getSkillsList() {
+      projectsService.skills().then(res => {
+        this.skillsList = res.data.data;
+      });
+    },
     getProfileInfo() {
       profileServices.employerGetProfile().then(res => {
-        const user = res.data.data.user;
-        if (user.company) {
-          this.companyName = user.company.name;
+        const user = res.data?.data;
+        if (user["is_company"] === 1) {
+          this.companyName = user.company_name;
         }
-        this.profileImage = res.data.data.user;
+        this.profileImage = res.data.data;
         this.profileForm = {
           firstName: user.first_name,
           lastName: user.last_name,
-          description: user.profile.description,
+          description: user.description,
           categoryId: user.category_id,
-          noOfEmployees: String(user.profile.no_of_employees),
-          isCompany: user.is_company
+          noOfEmployees: String(user["employees_count"]),
+          is_company: user.is_company,
+          skills: user.skills,
+          phone: user.phone,
+          email: user.email
         };
       });
     },
@@ -108,10 +127,36 @@ export default {
       });
     },
     getFileId(value) {
-      this.attachments.push(value);
+      this.attachments = value.id;
+      console.log(this.attachments);
     },
     hideSnackbar() {
       this.showSnackbar = false;
+    },
+    selectSkills(list) {
+      let tempData = [];
+      for (let index = 0; index < list.length; index++) {
+        if (list[index].id) {
+          tempData.push(list[index].id);
+        } else {
+          tempData.push(list[index]);
+        }
+      }
+      return (this.skills = tempData);
+    },
+    enableUpdateProfileButton() {
+      this.enableButton = true;
+      this.$store.commit(
+        types.firstNameAndLastNameManagement.mutations.NAME_MANAGEMENT_MUTATE,
+        {
+          userName: {
+            name:
+              this.profileForm.firstName.substring(0, 9) +
+              " " +
+              this.profileForm.lastName.substring(0, 9)
+          }
+        }
+      );
     }
   },
   watch: {}

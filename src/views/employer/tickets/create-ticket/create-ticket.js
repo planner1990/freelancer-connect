@@ -36,7 +36,12 @@ export default {
             (v && v.length >= 15) ||
             "توضیحات وارد شده باید بیش از ۱۵ کاراکتر باشد"
         ]
-      }
+      },
+      fileRules: [
+        value =>
+          value.size > 4000000 ||
+          "حجم فایل ارسالی نباید بیشتر از ۴ مگابایت باشد."
+      ]
     };
   },
   computed: {},
@@ -52,14 +57,24 @@ export default {
       if (file.length === 0) {
         this.fileName = [];
       }
-      if (file) {
+      if (file && file.length !== 0) {
         this.fileName.push(file);
         for (let i = 0; i <= file.length - 1; i++) {
           formData.append(`attachment[` + i + `]`, file[i]);
         }
-        UploadService.uploadFile(formData).then(res => {
-          this.attachmentId = res.data.data.attachment_id;
-        });
+        Array.from(formData.entries(), ([key, prop]) => ({
+          [key]: {
+            ContentLength:
+              typeof prop === "string"
+                ? prop.length
+                : (this.fileSize = prop.size)
+          }
+        }));
+        if (this.fileSize <= 4000000) {
+          UploadService.uploadFile(formData).then(res => {
+            this.attachmentId = res.data.data.attachment_id;
+          });
+        }
       }
     },
     getOngoingProjects() {

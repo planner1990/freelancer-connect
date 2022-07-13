@@ -5,75 +5,73 @@
   :mini-variant="mini"
   :value="drawer"
 >
-  <!--    <img src="../../../../assets/image/connecta-logo-2.png" alt="">-->
   <template v-slot:prepend>
-    <div
-      v-if="profileInfo.user && role === 1"
-      class="timeline mar-b-120"
-      :style="{ 'background-image': 'url(' + profileInfo.user.profile.banner + ')' }"
-    >
+    <div v-if="profileInfo && role === 1" class="timeline mar-b-120">
+      <!--        :style="{ 'background-image': 'url(' + profileInfo.user.profile.banner + ')' }"-->
       <div class="username-info d-flex flex-column align-center">
         <img
-          v-if="profileInfo.user.profile.avatar && !getDrawerImage.imageSrc"
-          :src="profileInfo.user.profile.avatar"
+          v-if="profileInfo.avatar && !getDrawerImage.imageSrc"
+          :src="profileInfo.avatar"
           alt=""
         />
         <img
-          v-if="!profileInfo.user.profile.avatar && !getDrawerImage.imageSrc"
+          v-if="!profileInfo.avatar && !getDrawerImage.imageSrc"
           src="../../../../assets/image/profile.jpg"
           alt=""
         />
         <div v-if="getDrawerImage.imageSrc && getDrawerImage.imageSrc.image">
           <img :src="getDrawerImage.imageSrc.image" alt="" />
         </div>
-        <div class="username" v-if="!profileInfo.user['company']">
+        <div class="username" v-if="profileInfo['is_company'] === 0">
           <span v-if="!getFullName.userName">
-            {{ profileInfo.user.first_name | readMore(8, " ") }} {{" " +
-            profileInfo.user.last_name | readMore(10, " ")}}
+            {{ profileInfo.first_name | readMore(8, " ") }} {{" " +
+            profileInfo.last_name | readMore(10, " ")}}
           </span>
           <span v-if="getFullName.userName">
             {{getFullName.userName.name | readMore(18, " ")}}
           </span>
         </div>
-        <div class="username" v-if="profileInfo.user['company']">
-          {{ profileInfo.user['company'].name }}
+        <div class="username" v-if="profileInfo['is_company'] === 1">
+          {{ profileInfo['company_name'] }}
         </div>
-        <div class="sub" v-if="!profileInfo.user['company']">
-          {{ profileInfo.user.roles[0].name | roleTranslator}}
+        <div class="sub" v-if="profileInfo['is_company'] === 0">
+          {{ profileInfo.role | roleTranslator}}
         </div>
-        <div class="sub" v-if="profileInfo.user['company']">
-          {{ profileInfo.user.roles[0].name | roleTranslator }}
+        <div class="sub" v-if="profileInfo['is_company'] === 1">
+          {{ profileInfo.role | roleTranslator }}
         </div>
       </div>
     </div>
-    <div
-      v-if="profileInfo.user && role === 2"
-      class="timeline mar-b-120"
-      :style="{ 'background-image': 'url(' + profileInfo.user.profile.banner + ')' }"
-    >
+    <div v-if="profileInfo && role === 2" class="timeline mar-b-120">
+      <!--        :style="{ 'background-image': 'url(' + profileInfo.user.profile.banner + ')' }"-->
       <div class="username-info d-flex flex-column align-center">
         <img
-          v-if="profileInfo.user.profile.avatar && !getDrawerImage.imageSrc"
-          :src="profileInfo.user.profile.avatar"
+          v-if="profileInfo.avatar && !getDrawerImage.imageSrc"
+          :src="profileInfo.avatar"
           alt=""
         />
         <img
-          v-if="!profileInfo.user.profile.avatar && !getDrawerImage.imageSrc"
+          v-if="!profileInfo.avatar && !getDrawerImage.imageSrc"
           src="../../../../assets/image/profile.jpg"
           alt=""
         />
         <div v-if="getDrawerImage.imageSrc && getDrawerImage.imageSrc.image">
           <img :src="getDrawerImage.imageSrc.image" alt="" />
         </div>
-
-        <div class="username" v-if="!profileInfo.user['company']">
-          {{ profileInfo.user.first_name + " " + profileInfo.user.last_name}}
+        <div class="username" v-if="profileInfo['is_company'] === 0">
+            <span v-if="!getFullName.userName">
+            {{ profileInfo.first_name | readMore(8, " ") }} {{" " +
+            profileInfo.last_name | readMore(10, " ")}}
+          </span>
+            <span v-if="getFullName.userName">
+            {{getFullName.userName.name | readMore(18, " ")}}
+          </span>
         </div>
-        <div class="username" v-if="profileInfo.user['company']">
+        <div class="username" v-if="profileInfo['is_company'] === 1">
           {{ profileInfo.user['company'].name }}
         </div>
         <div class="sub">
-          {{ profileInfo.user.roles[0].name | roleTranslator}}
+          {{ profileInfo.role | roleTranslator}}
         </div>
       </div>
     </div>
@@ -259,46 +257,6 @@
           </v-form>
         </v-dialog>
       </template>
-      <!--      <template v-else>-->
-      <!--        <v-list-item-content>-->
-      <!--          <v-progress-circular-->
-      <!--            indeterminate-->
-      <!--            color="error"-->
-      <!--          ></v-progress-circular>-->
-      <!--        </v-list-item-content>-->
-      <!--      </template>-->
     </v-list-item>
   </v-list>
 </v-navigation-drawer>
-
-<!--        <v-list-item-->
-<!--                @click="-->
-<!--            $vuetify.rtl === true-->
-<!--              ? ($vuetify.rtl = false)-->
-<!--              : ($vuetify.rtl = true)-->
-<!--          "-->
-<!--                link-->
-<!--        >-->
-<!--            <v-list-item-action>-->
-<!--                <v-icon>mdi-arrow-expand-right</v-icon>-->
-<!--            </v-list-item-action>-->
-<!--            <v-list-item-content>-->
-<!--                <v-list-item-title>RTL mode</v-list-item-title>-->
-<!--            </v-list-item-content>-->
-<!--        </v-list-item>-->
-
-<!--  <template v-slot:append>-->
-<!--        <v-list-item link color="info" @click.stop="mini = !mini" dense>-->
-<!--            <v-list-item-action>-->
-<!--                <template v-if="!mini">-->
-<!--                    <v-icon class="text-info">mdi-arrow-collapse-left</v-icon>-->
-<!--                </template>-->
-<!--                <template v-else>-->
-<!--                    <v-icon class="text-info">mdi-arrow-collapse-right</v-icon>-->
-<!--                </template>-->
-<!--            </v-list-item-action>-->
-<!--            <v-list-item-content>-->
-<!--                <v-list-item-title class="text-info">minimize</v-list-item-title>-->
-<!--            </v-list-item-content>-->
-<!--        </v-list-item>-->
-<!--  </template>-->

@@ -50,12 +50,13 @@
         </v-col>
         <div class="attachment-box px-0" @click="chooseFiles()">
           <v-file-input
+            :rules="rules"
             v-model="files"
             chips
             multiple
             id="fileUpload"
             :show-size="1000"
-            :class="[fileName.length >= 1 ? 'isBlock' : 'isNone']"
+            :class="[files.length >= 1 ? 'isBlock' : 'isNone']"
             @change="handleFileInput($event)"
           >
             <template v-slot:selection="{ index, text }">
@@ -73,7 +74,7 @@
           </v-file-input>
           <div
             class="d-flex flex-column align-center justify-center"
-            v-if="fileName.length === 0"
+            v-if="files.length === 0"
           >
             <div>
               <img

@@ -753,6 +753,8 @@ input[type="number"] {
 }
 .isShow {
   display: block;
+  position: absolute;
+  top: 0;
 }
 .isNone {
   display: none;
@@ -811,5 +813,23 @@ input[type="number"] {
   }
   .v-carousel__controls__item {
     margin: 0 0;
+  }
+}
+
+.v-textarea textarea {
+  max-width: 80%;
+  &::-webkit-scrollbar-thumb {
+    background: unset !important;
+    border-radius: unset !important;
+  }
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track {
+    box-shadow: unset;
+    border-radius: unset;
+    background-color: unset;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: unset;
+    border-radius: unset;
   }
 }

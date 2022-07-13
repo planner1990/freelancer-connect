@@ -120,9 +120,9 @@ export default {
       console.log(options);
     },
     sendMessage(direction) {
-      // if (!this.youMessage) {
-      //   return;
-      // }
+      if (!this.youMessage) {
+        return;
+      }
       if (direction === "out") {
         this.messages.push({ text: this.youMessage, role: "freelancer" });
         const body = {

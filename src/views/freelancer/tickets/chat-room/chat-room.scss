@@ -103,6 +103,8 @@
   }
   .isShow {
     display: block;
+    position: absolute;
+    top: 0;
   }
   .isNone {
     display: none;

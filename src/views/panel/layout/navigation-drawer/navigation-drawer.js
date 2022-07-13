@@ -71,15 +71,15 @@ export default {
         });
       } else if (this.role === 2) {
         profileServices.employerGetProfile().then(res => {
-          const user = res.data.data.user;
+          // const user = res.data.data;
           this.profileInfo = res.data.data;
-          this.profileForm = {
-            firstName: user.first_name,
-            lastName: user.last_name,
-            description: user.profile.description,
-            categoryId: user.id,
-            noOfEmployees: String(user.profile.no_of_employees)
-          };
+          // this.profileForm = {
+          //   first_name: user.first_name,
+          //   last_name: user.last_name
+          //   // description: user.profile.description,
+          //   // categoryId: user.id,
+          //   // noOfEmployees: String(user.profile.no_of_employees)
+          // };
         });
       }
     },

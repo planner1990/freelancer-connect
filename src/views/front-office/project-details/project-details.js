@@ -39,7 +39,10 @@ export default {
           v => (v && !!v.trim()) || "لطفا مبلغ را وارد کنید",
           v =>
             (v && v.replace(/,/g, "") >= 50000000) ||
-            "مبلغ وارد شده باید بیش از ۵۰.۰۰۰.۰۰۰ ریال باشد"
+            "مبلغ وارد شده باید بیش از ۵۰.۰۰۰.۰۰۰ ریال باشد",
+          v =>
+            (v && v.replace(/,/g, "") <= 5000000000000000) ||
+            "مبلغ وارد شده بیش از حد مجاز است"
         ],
         // minPrice: [
         //   v => !!v || "حداقل مبلغ را وارد کنید",
@@ -219,6 +222,9 @@ export default {
     calculateCommission() {
       const price = this.proposalForm.price.replace(/,/g, "");
       this.mainCommission = (this.commissionRate / 100) * price;
+      if (price >= 5000000000000000) {
+        this.mainCommission = null;
+      }
     }
   }
 };

@@ -191,26 +191,11 @@
                   </template>
                 </v-file-input>
               </v-col>
-              <!--                            <v-btn-->
-              <!--                              v-if="!completedAt"-->
-              <!--                              depressed-->
-              <!--                              class="mb-4"-->
-              <!--                              large-->
-              <!--                              color="primary"-->
-              <!--                              type="submit"-->
-              <!--                            >-->
-              <!--                              ارسال پیام-->
-              <!--                              <v-icon class="mx-2">-->
-              <!--                                mdi-message-text-->
-              <!--                              </v-icon>-->
-              <!--                            </v-btn>-->
-              <!--                <div v-for="(i, index) in listOfFileInput" :key="index">-->
-              <!--                    <div>{{i.name}}</div>-->
-              <!--                </div>-->
+            </form>
+            <v-col cols="12" class="mx-auto">
               <v-btn
                 v-if="subject['closed_at'] !== null"
                 depressed
-                class="mb-4 mt-5"
                 style="max-width: 300px"
                 large
                 block
@@ -218,7 +203,7 @@
               >
                 پیام بسته شد
               </v-btn>
-            </form>
+            </v-col>
           </section>
         </div>
       </v-col>

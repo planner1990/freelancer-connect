@@ -3,7 +3,7 @@
     <header-section
       :header-section-title="$t('form.IndividualAndSkillDetails')"
     ></header-section>
-    <v-row v-if="profileForm.isCompany === 0">
+    <v-row v-if="profileForm['is_company'] === 0">
       <v-col lg="6" md="12">
         <v-text-field
           v-model.trim="profileForm.firstName"
@@ -11,6 +11,7 @@
           :rules="profileRule.firstnameRules"
           required
           outlined
+          @keyup="enableUpdateProfileButton"
         ></v-text-field>
       </v-col>
       <v-col lg="6" md="12">
@@ -20,10 +21,11 @@
           :rules="profileRule.lastnameRules"
           required
           outlined
+          @keyup="enableUpdateProfileButton"
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-row v-if="profileForm.isCompany === 1">
+    <v-row v-if="profileForm['is_company'] === 1">
       <v-col lg="6" md="12">
         <v-text-field
           v-model="companyName"
@@ -44,6 +46,36 @@
     </v-row>
     <v-row>
       <v-col lg="6" md="12">
+        <v-text-field
+          v-model="profileForm.phone"
+          label="شماره موبایل"
+          required
+          outlined
+          disabled
+        ></v-text-field>
+      </v-col>
+      <v-col lg="6" md="12">
+        <v-text-field
+          v-model="profileForm.email"
+          label="ایمیل"
+          required
+          outlined
+        ></v-text-field>
+      </v-col>
+      <v-col lg="12" md="12" v-if="profileForm['is_company'] === 1">
+        <v-select
+          v-model="profileForm.noOfEmployees"
+          :items="companyCriteriaItems"
+          item-text="name"
+          item-value="max_value"
+          :label="$t('form.noOfEmployees')"
+          required
+          outlined
+        ></v-select>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col lg="6" md="12">
         <v-select
           v-model="profileForm.categoryId"
           :items="companyTypeLists"
@@ -55,6 +87,38 @@
         ></v-select>
       </v-col>
       <v-col lg="6" md="12">
+        <v-combobox
+          v-model="profileForm.skills"
+          :items="skillsList"
+          item-value="id"
+          item-text="title"
+          :search-input.sync="search"
+          hide-selected
+          hint="حداکثر ۵ گزینه میتوانید انتخاب کنید."
+          :label="$t('form.skills')"
+          multiple
+          persistent-hint
+          required
+          outlined
+          clearable
+          small-chips
+          deletable-chips
+          counter="5"
+          @change="selectSkills(profileForm.skills)"
+        >
+          <template v-slot:no-data>
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title>
+                  موردی یافت نشد "<strong>{{ search }}</strong>". برای افزودن
+                  مهارت مورد نظر <kbd>enter</kbd>را فشار دهید
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+        </v-combobox>
+      </v-col>
+      <v-col lg="12" md="12" v-if="profileForm['is_company'] === 1">
         <v-select
           v-model="profileForm.noOfEmployees"
           :items="companyCriteriaItems"
@@ -85,25 +149,25 @@
           :status="'avatar'"
           @clicked="getFileId"
           v-if="profileImage"
-          :imageProfile="profileImage.profile.avatar"
+          :imageProfile="profileImage.avatar"
         >
         </file-input-dashboard>
       </v-col>
     </v-row>
 
-<!--    <header-section-->
-<!--      :header-section-title="$t('form.bannerImage')"-->
-<!--    ></header-section>-->
-<!--    <v-row>-->
-<!--      <v-col lg="4" md="12">-->
-<!--        <file-input-dashboard-->
-<!--          :status="'banner'"-->
-<!--          @clicked="getFileId"-->
-<!--          v-if="profileImage"-->
-<!--          :imageProfile="profileImage.profile.banner"-->
-<!--        ></file-input-dashboard>-->
-<!--      </v-col>-->
-<!--    </v-row>-->
+    <!--    <header-section-->
+    <!--      :header-section-title="$t('form.bannerImage')"-->
+    <!--    ></header-section>-->
+    <!--    <v-row>-->
+    <!--      <v-col lg="4" md="12">-->
+    <!--        <file-input-dashboard-->
+    <!--          :status="'banner'"-->
+    <!--          @clicked="getFileId"-->
+    <!--          v-if="profileImage"-->
+    <!--          :imageProfile="profileImage.profile.banner"-->
+    <!--        ></file-input-dashboard>-->
+    <!--      </v-col>-->
+    <!--    </v-row>-->
     <v-row class="my-10">
       <v-col lg="6" md="12">
         <v-btn color="error" @click="updateProfile">

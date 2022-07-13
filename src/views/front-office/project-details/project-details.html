@@ -137,7 +137,10 @@
                                   @change="getInstallments"
                                   @keyup="calculateCommission"
                                 ></v-text-field>
-                                <div style="font-size: 10px; color: #0a3d62">
+                                <div
+                                  style="font-size: 10px; color: #0a3d62"
+                                  v-if="mainCommission !== null"
+                                >
                                   {{ commissionRate }}% کمیسیون معادل {{
                                   mainCommission | roundNumber | thousandMask }}
                                   ریال
